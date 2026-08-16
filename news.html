@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Branding, Design &amp; AI News | Glossy Branding Agency</title>
+<meta name="description" content="News, insights and experiments from Glossy Branding Agency in Ghent, covering branding, design, technology, generative AI and creative production.">
+<link rel="canonical" href="https://glossybranding.com/news">
+<meta property="og:title" content="Branding, Design &amp; AI News | Glossy Branding Agency">
+<meta property="og:description" content="News, insights and experiments from Glossy Branding Agency in Ghent.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/webclip.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="index.html" aria-label="Glossy Branding Agency — home">
+      <img src="assets/img/logo.svg" alt="Glossy Branding Agency" width="154" height="58">
+    </a>
+    <nav class="nav" data-nav aria-label="Main">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__list">
+        <li><a class="nav__link" href="about.html">About</a></li>
+        <li><a class="nav__link" href="brand-ai-consultancy.html">AI Consultancy</a></li>
+        <li><a class="nav__link" href="cases.html">Cases</a></li>
+        <li><a class="nav__link" href="news.html" aria-current="page">News</a></li>
+        <li><a class="nav__link" href="careers.html">Careers</a></li>
+        <li><a class="nav__link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="container hero">
+    <h1 class="hero__title">Some noteworthy &amp; sometimes inspiring news</h1>
+  </section>
+
+  <section class="container section--tight">
+    <div class="news-list"
+         data-collection="data/news.json"
+         data-kind="news"
+         data-per-page="12"
+         data-more="#news-more"
+         data-counter="#news-counter">
+      <p class="is-loading">Loading news…</p>
+    </div>
+    <p style="margin-top: var(--space-l); display: flex; align-items: center; gap: var(--space-m);">
+      <button class="btn" id="news-more" type="button" hidden>Read more →</button>
+      <span class="eyebrow" id="news-counter"></span>
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <a class="logo" href="index.html" aria-label="Glossy Branding Agency — home">
+      <img src="assets/img/logo.svg" alt="" width="154" height="58">
+    </a>
+
+    <div class="site-footer__grid">
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="cases.html">Work</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Social">
+        <ul>
+          <li><a href="https://www.linkedin.com/company/glossy-branding-agency/" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/glossybrandingagency/" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/glossybrandingagency" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/glossybranding" rel="noopener">X (ex-Twitter)</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <p><strong>Interesting Spam for Your Soul!</strong></p>
+        <form class="newsletter" method="post" action="#" novalidate>
+          <div class="field">
+            <label for="nl-email">Email address</label>
+            <input type="email" id="nl-email" name="email" autocomplete="email" required>
+          </div>
+          <label style="display:flex; gap:.5em; font-size:var(--step--1); color:var(--ink-soft);">
+            <input type="checkbox" name="consent" required style="width:auto;">
+            <span>I agree to the terms &amp; conditions and <a href="privacy-policy.html">privacy policy</a>.</span>
+          </label>
+          <button class="btn" type="submit" style="margin-top: var(--space-s);">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="site-footer__badges">
+        <img src="assets/img/badge-kmo.png" alt="Erkend dienstverlener KMO-portefeuille" loading="lazy">
+        <img src="assets/img/badge-school.svg" alt="School of Branding" loading="lazy">
+      </div>
+    </div>
+
+    <div class="site-footer__legal">
+      <a href="privacy-policy.html">Privacy &amp; cookie policy</a>
+      <a href="kmo-portefeuille.html">KMO Portefeuille</a>
+      <span>© 2004–2026 · Glossy Branding Agency</span>
+      <span>All rights reserved</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
