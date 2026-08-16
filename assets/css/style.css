@@ -451,8 +451,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* The CMS "White Nav Text" switch: light type over a dark opening frame. */
 .has-hero.nav-invert .site-header { color: var(--paper); }
 .has-hero.nav-invert .nav__toggle span { background: var(--paper); }
-.has-hero.nav-invert .logo__anim svg path,
-.has-hero.nav-invert .logo__anim svg g { fill: var(--paper); }
 .has-hero.nav-invert .lottie-fallback { filter: invert(1) brightness(2); }
 
 /* Once the hero has scrolled away the header behaves normally again. */
@@ -462,8 +460,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: color-mix(in srgb, var(--paper) 88%, transparent);
   backdrop-filter: blur(10px);
 }
-.has-hero.nav-invert .site-header[data-past-hero="true"] .logo__anim svg path,
-.has-hero.nav-invert .site-header[data-past-hero="true"] .logo__anim svg g { fill: var(--ink); }
 .has-hero.nav-invert .site-header[data-past-hero="true"] .nav__toggle span { background: var(--ink); }
 .has-hero.nav-invert .site-header[data-past-hero="true"] .lottie-fallback { filter: none; }
 

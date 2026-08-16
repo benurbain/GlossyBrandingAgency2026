@@ -177,7 +177,13 @@ function initLottie() {
       renderer: 'svg',
       loop: true,
       autoplay: el.dataset.lottieAutoplay !== 'false',
-      path: assetUrl(el.dataset.lottie),
+      path: assetUrl(
+        // A light header needs the white artwork: the counters of O, B and D are
+        // painted white shapes, so tinting the black file fills them in.
+        document.body.classList.contains('nav-invert') && el.dataset.lottieWhite
+          ? el.dataset.lottieWhite
+          : el.dataset.lottie
+      ),
     });
     anim.addEventListener('DOMLoaded', () => {
       el.querySelector('.lottie-fallback')?.remove();
