@@ -246,18 +246,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: grid;
   place-items: center;
   background: var(--paper);
+  /* Hidden unless the script explicitly raises it: with JavaScript off no
+     data-state is ever set, and an opaque default blanked the whole page. */
+  opacity: 0;
+  visibility: hidden;
   transition: opacity 420ms var(--ease), visibility 420ms var(--ease);
 }
 
-/* Starts covering the page, lifts once this document has painted. */
-.transition[data-state="out"] { opacity: 0; visibility: hidden; }
-.transition[data-state="in"]  { opacity: 1; visibility: visible; }
+.transition[data-state="in"] { opacity: 1; visibility: visible; }
 
 .transition__logo { width: clamp(140px, 14vw, 220px); aspect-ratio: 154 / 58; }
 .transition__logo svg { display: block; width: 100%; height: 100%; }
-
-/* With JS off there is no curtain to lift, so never let it block the page. */
-.no-js .transition { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .transition { display: none; }
@@ -633,12 +632,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* Rich text arriving from the CMS — keep it readable whatever it contains. */
-.case-body :where(h2, h3) { margin-top: var(--space-l); }
-.case-body :where(img, video) {
+.case-intro :where(h2, h3, h4) { margin-top: var(--space-l); }
+.case-intro :where(img, video) {
   border-radius: var(--radius);
   margin-block: var(--space-m);
 }
-.case-body a { text-decoration: underline; }
+.case-intro a { text-decoration: underline; }
 
 .case-figure {
   width: 100%;
@@ -823,6 +822,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .steps { counter-reset: step; display: grid; gap: var(--space-xl); }
 .step__num { font-size: var(--step-1); color: var(--gray); font-weight: 500; }
+
+/* Wrapper for the four steps; each step carries its own rule and padding. */
+.about-steps { display: block; }
 
 /* About sets its own, quieter type scale: the page title is regular weight at
    roughly 44px, not the heavy display size the other heroes use. */
