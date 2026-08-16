@@ -1051,8 +1051,9 @@
         "layout": "third",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/64355d29698433ca6f299db9_BuddyPas.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/719130940/rendition/1080p/file.mp4?loc=external&signature=8a96af71d01d8699f22990ba118a3b478cafe178821f5beeaa4979005950fd49",
+            "poster": "assets/media/64355d29698433ca6f299db9_BuddyPas.webp"
           },
           {
             "type": "image",
@@ -1074,8 +1075,9 @@
         "layout": "full",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/643560356d9d634e91af7cf3_BB-Naming.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/719128038/rendition/1080p/file.mp4?loc=external&signature=c1598f9bf502a82d7f62efc11889774cf15b851389538126a9cdf4a143ad6987",
+            "poster": "assets/media/643560356d9d634e91af7cf3_BB-Naming.webp"
           }
         ]
       },
@@ -1123,8 +1125,9 @@
         "layout": "full",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/643562c0c5baef6c9fc9612e_BB-Trademark.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/719839665/rendition/1080p/file.mp4?loc=external&signature=c3a82d3fbaad6b0fad2661f58cfeae076a6b59f4c80ad4f7a1d080a96d21aa80",
+            "poster": "assets/media/643562c0c5baef6c9fc9612e_BB-Trademark.webp"
           }
         ]
       },
@@ -1157,8 +1160,9 @@
             "src": "assets/media/6435649b5cf78f65fd6bb272_BB_2160x2160_16.webp"
           },
           {
-            "type": "image",
-            "src": "assets/media/64356568cbc88d411ef43810_BB-AD1.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/720585736/rendition/1080p/file.mp4?loc=external&signature=dd60e4adf576cb57c2f0ee71eb5a10b13a7bd6bde4b5f68e6a4951e20969f6bb",
+            "poster": "assets/media/64356568cbc88d411ef43810_BB-AD1.webp"
           }
         ]
       },
@@ -1168,8 +1172,9 @@
         "layout": "full",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/6435663adeec6ad5f155e1b4_BB-AD2.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/719920190/rendition/1080p/file.mp4?loc=external&signature=23e2e55f651075052fe4fa63e939dcf2ca8cbb1214502535c4ef4eefe9a383c4",
+            "poster": "assets/media/6435663adeec6ad5f155e1b4_BB-AD2.webp"
           }
         ]
       },
@@ -1928,8 +1933,9 @@
         "layout": "full",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/643686134eca41e082908e5e_art-direction.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/816842464/rendition/1080p/file.mp4?loc=external&signature=79fbae64263781dca0189c6245cf0dc93be9a85d6a3fcf7570e9f26afab62413",
+            "poster": "assets/media/643686134eca41e082908e5e_art-direction.webp"
           }
         ]
       }
@@ -2244,12 +2250,14 @@
         "layout": "half",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/64357e5b1b43c60abaf4671f_tpb3.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/720283965/rendition/1080p/file.mp4?loc=external&signature=e5ca055342b457da4875781f3998e28884194034279aa2e6879c58e5a3d12040",
+            "poster": "assets/media/64357e5b1b43c60abaf4671f_tpb3.webp"
           },
           {
-            "type": "image",
-            "src": "assets/media/64357d89c5baef6654cb5304_TPB2.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/720284297/rendition/1080p/file.mp4?loc=external&signature=19307297cd12feacd9c9f24df97b45c6cf75489b015e69dffa55117769c5c4d2",
+            "poster": "assets/media/64357d89c5baef6654cb5304_TPB2.webp"
           }
         ]
       },
@@ -2307,8 +2315,9 @@
         "layout": "full",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/643661dcf8cdeb8bbb408373_TPB-storytelling.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/720616111/rendition/1080p/file.mp4?loc=external&signature=68b3232446af11d5b6080cb46a097c6664565f5a6a1b8864568cbffa8a1ed018",
+            "poster": "assets/media/643661dcf8cdeb8bbb408373_TPB-storytelling.webp"
           }
         ]
       },
@@ -2329,12 +2338,14 @@
         "layout": "half",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/6436625eed1627622687fb8c_Screenshot-2023-04-11-at-17.22.05.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/720283702/rendition/1080p/file.mp4?loc=external&signature=097d885482aa40b2707c80583a988403768ca0ce7ac001e8ee7cf435e2211a3e",
+            "poster": "assets/media/6436625eed1627622687fb8c_Screenshot-2023-04-11-at-17.22.05.webp"
           },
           {
-            "type": "image",
-            "src": "assets/media/64366264ec53b33013e5a777_Screenshot-2023-04-11-at-17.21.53.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/720598361/rendition/1080p/file.mp4?loc=external&signature=b6369b167b5b4269ef22dc1c2df92d331297ebe46eacc9c0653f73725406f462",
+            "poster": "assets/media/64366264ec53b33013e5a777_Screenshot-2023-04-11-at-17.21.53.webp"
           }
         ]
       },
@@ -2344,8 +2355,9 @@
         "layout": "full",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/643662b4ff96ad19b988070f_tpb-ad.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/724428907/rendition/1080p/file.mp4?loc=external&signature=6b03078f795559da0e6db803eeae29338574ada9db06d8e1ec59906abb3f3f4c",
+            "poster": "assets/media/643662b4ff96ad19b988070f_tpb-ad.webp"
           }
         ]
       },
@@ -2378,8 +2390,9 @@
         "layout": "full",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/6436633c103902a9147a4dd4_copywriting-TPB.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/720600271/rendition/1080p/file.mp4?loc=external&signature=ef8a4f52a9ab4c35e1dc0002b2ebf9a5f4abaf60d79ce32a4f24e5463a1fd8a2",
+            "poster": "assets/media/6436633c103902a9147a4dd4_copywriting-TPB.webp"
           }
         ]
       },
@@ -2389,8 +2402,9 @@
         "layout": "full",
         "media": [
           {
-            "type": "image",
-            "src": "assets/media/64366367649ff09f79c809a2_website-tpb.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/720614039/rendition/1080p/file.mp4?loc=external&signature=e64c61ab7a62d1051bfe22cf3cea8480b6a99d5f25a10cf5888023ecf71b5463",
+            "poster": "assets/media/64366367649ff09f79c809a2_website-tpb.webp"
           }
         ]
       },
@@ -3518,8 +3532,9 @@
             "src": "assets/media/64367d28f96293fc3330c285_moovly_stripes.webp"
           },
           {
-            "type": "image",
-            "src": "assets/media/64367e803a6c9c2beabae735_moovly-shutterstock.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/816846501/rendition/1080p/file.mp4?loc=external&signature=33c3dff18d9aa0da2a36e0f4fd0b09f8cac6a49ac5622f1adcf8a58dff71fca6",
+            "poster": "assets/media/64367e803a6c9c2beabae735_moovly-shutterstock.webp"
           }
         ]
       }
@@ -4980,8 +4995,9 @@
             "src": "assets/media/6435410f43537841d10c2d82_6422ef3f0df8cb455188072c_nightingale_level-up_3600x2400_07.webp"
           },
           {
-            "type": "image",
-            "src": "assets/media/6435410f4353782bb50c2d7f_6422f0559815454ae78bf1ea_nightingale_level-up_video-fallback.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/186394453/rendition/720p/file.mp4?loc=external&signature=1123811fdda353256d2059dfd5b57e74a2b16f9fdeb40b687aeb49be687c16f2",
+            "poster": "assets/media/6435410f4353782bb50c2d7f_6422f0559815454ae78bf1ea_nightingale_level-up_video-fallback.webp"
           }
         ]
       }
@@ -5259,8 +5275,9 @@
             "src": "assets/media/6435410caa83865eec830516_6422dc2570bc48f5dbe13f99_zorro_glossy_namecards.webp"
           },
           {
-            "type": "image",
-            "src": "assets/media/6435410caa83862ad3830514_6422dec19ad1ab2d3ac63cf6_tram.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/812398302/rendition/720p/file.mp4?loc=external&signature=57eeb84b0f828009c9a3c671fc673721835fa440a5b453e9c1d9e6a4fe6a30f8",
+            "poster": "assets/media/6435410caa83862ad3830514_6422dec19ad1ab2d3ac63cf6_tram.webp"
           },
           {
             "type": "image",
@@ -5501,8 +5518,9 @@
             "src": "assets/media/6435410bcea7fb83f82a239d_6422bae179a04754573c50b6__mg_7132.webp"
           },
           {
-            "type": "image",
-            "src": "assets/media/6435410bcea7fb10af2a2399_6422de40a892dd50c2a5313b_Jim.webp"
+            "type": "video",
+            "src": "https://player.vimeo.com/progressive_redirect/playback/812356384/rendition/1080p/file.mp4?loc=external&signature=e95b5cde1b395d59ef2c2dac973216294983b8a0631e430b2c2e69d7feb6ba68",
+            "poster": "assets/media/6435410bcea7fb10af2a2399_6422de40a892dd50c2a5313b_Jim.webp"
           }
         ]
       }

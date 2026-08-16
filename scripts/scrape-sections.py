@@ -54,12 +54,28 @@ class CaseParser(HTMLParser):
         self.title_depth = None
         self.rich_depth = None
         self.visual_depth = None
+        self.pending = None
         self.item_depth = None
         self.skip_depth = None     # inside a hidden block
 
     # -- helpers -----------------------------------------------------------
     def _classes(self, attrs):
         return dict(attrs).get("class", "") or ""
+
+    def _close_visual(self):
+        """A visual yields one media item: the video if it has one (the <img>
+        beside it is its poster), otherwise the image."""
+        p, self.pending, self.visual_depth = self.pending or {}, None, None
+        if self.cur is None:
+            return
+        if p.get("video"):
+            self.cur["media"].append({
+                "type": "video",
+                "src": p["video"],
+                "poster": full_res(p["img"]) if p.get("img") else None,
+            })
+        elif p.get("img"):
+            self.cur["media"].append({"type": "image", "src": full_res(p["img"])})
 
     def _flush(self):
         if self.cur and (self.cur["media"] or self.cur["title"] or self.cur["description"].strip()):
@@ -76,17 +92,15 @@ class CaseParser(HTMLParser):
         cls = self._classes(attrs)
 
         if tag in VOID:
-            # No depth change; just harvest media if we are inside a visual.
+            # No depth change. A .visual holds the poster <img> first and the
+            # Vimeo <source> after it, so buffer both and decide on close —
+            # taking whichever came first would always discard the video.
             if self.skip_depth is None and self.cur is not None \
-                    and self.visual_depth is not None and tag in ("img", "source"):
+                    and self.pending is not None and tag in ("img", "source"):
                 src = (dict(attrs).get("src") or "").strip()
                 if src:
-                    kind = "image" if tag == "img" else "video"
-                    item = {"type": kind, "src": full_res(src)}
-                    if kind == "video":
-                        item["poster"] = None
-                    self.cur["media"].append(item)
-                    self.visual_depth = None
+                    key = "img" if tag == "img" else "video"
+                    self.pending.setdefault(key, src)
             if self.skip_depth is None and self.rich_depth is not None:
                 self.cur["description"] += f"<{tag}>"
             return
@@ -124,19 +138,7 @@ class CaseParser(HTMLParser):
             self.rich_depth = d
         elif has(cls, "visual"):
             self.visual_depth = d
-        elif self.visual_depth is not None:
-            # Media lives inside the visual block.
-            a = dict(attrs)
-            if tag == "img":
-                src = (a.get("src") or "").strip()
-                if src:
-                    self.cur["media"].append({"type": "image", "src": full_res(src)})
-                    self.visual_depth = None
-            elif tag == "source":
-                src = (a.get("src") or "").strip()
-                if src:
-                    self.cur["media"].append({"type": "video", "src": src, "poster": None})
-                    self.visual_depth = None
+            self.pending = {}
 
         if self.rich_depth is not None and d > self.rich_depth:
             self.cur["description"] += f"<{tag}>"
@@ -160,7 +162,7 @@ class CaseParser(HTMLParser):
         if self.title_depth is not None and d == self.title_depth:
             self.title_depth = None
         if self.visual_depth is not None and d <= self.visual_depth:
-            self.visual_depth = None
+            self._close_visual()
         if self.item_depth is not None and d == self.item_depth:
             self._flush()
             self.item_depth = None
