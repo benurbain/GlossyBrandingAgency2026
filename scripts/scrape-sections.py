@@ -27,6 +27,15 @@ BASE = "https://www.glossybranding.com/cases/"
 HIDDEN = "w-condition-invisible"
 EMPTY = "w-dyn-bind-empty"
 
+# Each section renders all three layout variants and hides the two that the CMS
+# "Visual Type" switch did not pick, so the visible container names the layout.
+VARIANT = {
+    "_16-9_ratio": "full",
+    "square-overview": "half",
+    "square-ratio": "half",
+    "third-ratio": "third",
+}
+
 # Void elements never get an end tag, so they must not go on the depth stack.
 VOID = {"img", "br", "hr", "input", "meta", "link", "source", "area", "base",
         "col", "embed", "param", "track", "wbr"}
@@ -132,6 +141,16 @@ class CaseParser(HTMLParser):
         if self.cur is None:
             return
 
+        # The layout switch is the one variant container that is a *direct* child
+        # of the section and is not hidden. Deeper in the tree the same class
+        # names reappear on nested wrappers that never render, so matching at any
+        # depth picks the wrong one.
+        if self.item_depth is not None and d == self.item_depth + 1:
+            for token in cls.split():
+                if token in VARIANT:
+                    self.cur["layout"] = VARIANT[token]
+                    break
+
         if has(cls, "tb10") and not has(cls, EMPTY):
             self.title_depth = d
         elif has(cls, "rich-case") and not has(cls, EMPTY):
@@ -184,12 +203,6 @@ def full_res(src):
     return re.sub(r"-p-\d+(\.\w+)$", r"\1", src)
 
 
-def infer_layout(n):
-    """The published markup does not expose the CMS Visual Type, so read the
-    rhythm from how many visuals the section carries."""
-    return "full" if n <= 1 else ("half" if n == 2 else "third")
-
-
 def fetch(slug, cached):
     CACHE.mkdir(parents=True, exist_ok=True)
     path = CACHE / f"{slug}.html"
@@ -221,8 +234,6 @@ def main():
         p = CaseParser()
         p.feed(html_doc)
         secs = [s for s in p.sections if s["media"] or s["title"]]
-        for s in secs:
-            s["layout"] = infer_layout(len(s["media"]))
 
         if secs:
             c["sections"] = secs
