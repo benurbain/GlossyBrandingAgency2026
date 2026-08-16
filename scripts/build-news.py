@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+"""
+Generate one static HTML page per news item from data/news.json.
+
+    python3 scripts/export-cms.py    # refresh data/ from the raw exports
+    python3 scripts/build-news.py    # then regenerate news/
+"""
+
+import json
+import pathlib
+import re
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from _shell import FOOTER, e, head, media_tag, nav  # noqa: E402
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+OUT = ROOT / "news"
+
+
+def hero(item):
+    video = item.get("video")
+    if video and re.match(r"^https?://\S+\.(mp4|webm)(\?|$)", video):
+        poster = f' poster="{e(item["image"])}"' if item.get("image") else ""
+        return (
+            f'<video class="case-hero__media" src="{e(video)}"{poster} '
+            f"autoplay muted loop playsinline></video>"
+        )
+    if item.get("image"):
+        return (
+            f'<img class="case-hero__media" src="{e(item["image"])}" '
+            f'alt="{e(item["name"])}" fetchpriority="high" decoding="async">'
+        )
+    return ""
+
+
+def gallery(item):
+    tiles = [media_tag({"type": "image", "src": src}, alt=item["name"])
+             for src in item.get("gallery") or []]
+    tiles += [media_tag({"type": "video", "src": v}) for v in item.get("videos") or []]
+    tiles = [t for t in tiles if t]
+    if not tiles:
+        return ""
+    cols = 2 if len(tiles) > 1 else 1
+    return f"""
+  <section class="container case-section">
+    <div class="case-section__grid" data-cols="{cols}">
+      {"".join(tiles)}
+    </div>
+  </section>"""
+
+
+def page(item, prev_item, next_item):
+    title = f'{item["name"]} | Glossy'
+    desc = item.get("seo") or item.get("subtitle") or item.get("excerpt") or item["name"]
+
+    body = (
+        f'<div class="prose case-intro">{item["body"]}</div>'
+        if (item.get("body") or "").strip()
+        else ""
+    )
+
+    link = ""
+    if item.get("link"):
+        label = item.get("linkText") or "Read more"
+        link = (
+            f'<p style="margin-top: var(--space-l);">'
+            f'<a class="btn" href="{e(item["link"])}" rel="noopener">{e(label)} →</a></p>'
+        )
+
+    pager = "".join(
+        f'<a class="case-pager__link" href="{e(n["slug"])}.html">'
+        f'<span class="eyebrow">{label}</span>'
+        f'<span class="case-pager__name">{e(n["name"])}</span></a>'
+        for n, label in ((prev_item, "Newer"), (next_item, "Older"))
+        if n
+    )
+
+    date = item.get("monthYear") or item.get("published") or ""
+    subtitle = (
+        f'<p class="hero__lead">{e(item["subtitle"])}</p>' if item.get("subtitle") else ""
+    )
+
+    return (
+        head(title, desc, f"https://glossybranding.com/news/{item['slug']}", item.get("image"))
+        + nav("news.html")
+        + f"""
+<main id="main">
+
+  <article>
+    <header class="container hero">
+      <p class="eyebrow">{e(date)}</p>
+      <h1 class="hero__title" style="margin-top: var(--space-s);">{e(item["name"])}</h1>
+      {subtitle}
+    </header>
+
+    <div class="container section--tight">
+      <figure class="case-hero">{hero(item)}</figure>
+    </div>
+
+    <div class="container section--tight">
+      {body}
+      {link}
+    </div>
+{gallery(item)}
+  </article>
+
+  <nav class="container section" aria-label="More news">
+    <div class="case-pager">{pager}</div>
+    <p style="margin-top: var(--space-l);"><a class="btn" href="../news.html">All news</a></p>
+  </nav>
+
+</main>
+"""
+        + FOOTER
+    )
+
+
+def main():
+    items = json.loads((ROOT / "data" / "news.json").read_text())
+    OUT.mkdir(exist_ok=True)
+
+    written = 0
+    for i, item in enumerate(items):
+        if not item.get("slug"):
+            print(f"  ! skipped (no slug): {item.get('name')}")
+            continue
+        prev_item = items[i - 1] if i > 0 else None
+        next_item = items[i + 1] if i + 1 < len(items) else None
+        (OUT / f"{item['slug']}.html").write_text(page(item, prev_item, next_item))
+        written += 1
+
+    print(f"Wrote {written} news pages")
+
+
+if __name__ == "__main__":
+    main()

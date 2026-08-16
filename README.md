@@ -28,7 +28,13 @@ kmo-portefeuille.html          Subsidies for consultancy & strategy
 404.html                       Self-contained (inlined CSS) so it works at any depth
 
 cases/<slug>.html              52 generated case detail pages
-scripts/build-cases.py         Generates cases/ from data/cases.json
+news/<slug>.html               36 generated news detail pages
+
+scripts/export-cms.py          Raw Webflow exports -> data/*.json
+scripts/build-cases.py         data/cases.json -> cases/
+scripts/build-news.py          data/news.json  -> news/
+scripts/_shell.py              Shared nav/footer/media markup
+scripts/raw/                   Raw CMS exports (input to export-cms.py)
 
 assets/css/style.css           Design system: tokens, layout, components
 assets/js/main.js              Nav, FAQ accordion, CMS rendering
@@ -37,6 +43,25 @@ assets/img/                    Logo, favicon, partner badges
 
 data/cases.json                52 published cases, exported from Webflow CMS
 data/news.json                 36 published news items
+```
+
+## How a case page is assembled
+
+A case is not one CMS record — it is stitched from **five collections**:
+
+| Collection | Role on the page |
+|---|---|
+| Cases | Hero, baseline, facts, slogan, intro, testimonial |
+| Case Sections | The visual body: each section has a heading, description and up to 15 media slots |
+| Consultancy / Strategy / Branding / Experience Services | MultiReference IDs resolved to the "Services" tags |
+
+Each Case Section carries a **Visual Type** (Full / Half / Third) which becomes
+`data-cols="1|2|3"` on its media grid — that is what drives the layout rhythm.
+
+Regenerate everything with:
+
+```bash
+python3 scripts/export-cms.py && python3 scripts/build-cases.py && python3 scripts/build-news.py
 ```
 
 ## The CMS layer
@@ -75,11 +100,14 @@ python3 -m http.server 8899
   Webflow (HTTP 401), so its copy could not be read.
 - **Case and news images still point at the Webflow CDN.** They render fine today,
   but they are not self-hosted — localise them before switching Webflow off.
-- **News detail pages are not built.** Case detail pages exist (52 of them); news
-  items still render as cards only, with no page behind them.
+- **29 of 52 cases are missing their Case Sections.** The Webflow MCP's
+  `list_collection_items` ignores `limit` and `offset` — it always returns the
+  first 100 records — and Case Sections has 177. So 95 sections came through,
+  covering 23 cases (including 10 of the 12 newest). The other 29 fall back to
+  hero + facts + intro text. Filling the gap needs the remaining 82 sections
+  pulled another way (a direct Webflow API call with a token, or the CSV export).
 - **Forms have no backend.** Both the contact and newsletter forms post to `#` —
   point them at a form handler.
-- **5 of 52 cases have no body text** in the CMS, so those detail pages show the
-  hero, facts and slogan only. Only one case carries a testimonial.
+- **Only one case carries a testimonial** in the CMS.
 - **The homepage Lottie logo is a static SVG here**, to avoid pulling in a
   Lottie player.

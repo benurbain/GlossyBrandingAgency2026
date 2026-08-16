@@ -2,110 +2,62 @@
 """
 Generate one static HTML page per case from data/cases.json.
 
-Output: cases/<slug>.html — real files, no build step at runtime.
-Re-run after re-exporting the CMS:
+A case page is assembled from several CMS collections: the case record, its
+ordered Case Sections (each with its own Full/Half/Third layout and media),
+and the four service taxonomies flattened into tags.
 
-    python3 scripts/build-cases.py
+    python3 scripts/export-cms.py     # refresh data/ from the raw exports
+    python3 scripts/build-cases.py    # then regenerate cases/
 """
 
-import html
 import json
 import pathlib
 import re
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from _shell import FOOTER, e, head, media_tag, nav  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "cases"
 
-e = lambda s: html.escape(str(s or ""), quote=True)
+# How many media items sit on one row for each CMS "Visual Type".
+COLUMNS = {"full": 1, "half": 2, "third": 3}
 
 
-def nav(current=""):
-    links = [
-        ("about.html", "About"),
-        ("brand-ai-consultancy.html", "AI Consultancy"),
-        ("cases.html", "Cases"),
-        ("news.html", "News"),
-        ("careers.html", "Careers"),
-        ("contact.html", "Contact"),
-    ]
-    items = "\n".join(
-        f'        <li><a class="nav__link" href="../{href}"'
-        f'{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>'
-        for href, label in links
+def section_html(sec, case_name):
+    """One Case Section: optional heading + description, then its media grid."""
+    head_parts = []
+    if sec.get("title"):
+        head_parts.append(f'<h2 class="case-section__title">{e(sec["title"])}</h2>')
+    if (sec.get("description") or "").strip():
+        head_parts.append(f'<div class="prose">{sec["description"]}</div>')
+    header = (
+        f'<header class="case-section__head">{"".join(head_parts)}</header>'
+        if head_parts
+        else ""
     )
-    return f"""<header class="site-header">
-  <div class="container site-header__inner">
-    <a class="logo" href="../index.html" aria-label="Glossy Branding Agency — home">
-      <img src="../assets/img/logo.svg" alt="Glossy Branding Agency" width="154" height="58">
-    </a>
-    <nav class="nav" data-nav aria-label="Main">
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__list">
-{items}
-      </ul>
-    </nav>
-  </div>
-</header>"""
 
+    media = sec.get("media") or []
+    grid = ""
+    if media:
+        cols = COLUMNS.get(sec.get("layout"), 1)
+        tiles = "\n        ".join(
+            media_tag(m, alt=f"{case_name} — {sec.get('title') or 'case visual'}")
+            for m in media
+        )
+        grid = (
+            f'\n      <div class="case-section__grid" data-cols="{cols}">\n'
+            f"        {tiles}\n      </div>"
+        )
 
-FOOTER = """<footer class="site-footer">
-  <div class="container">
-    <a class="logo" href="../index.html" aria-label="Glossy Branding Agency — home">
-      <img src="../assets/img/logo.svg" alt="" width="154" height="58">
-    </a>
+    if not header and not grid:
+        return ""
 
-    <div class="site-footer__grid">
-      <nav aria-label="Footer">
-        <ul>
-          <li><a href="../about.html">About</a></li>
-          <li><a href="../cases.html">Work</a></li>
-          <li><a href="../news.html">News</a></li>
-          <li><a href="../contact.html">Contact</a></li>
-        </ul>
-      </nav>
-
-      <nav aria-label="Social">
-        <ul>
-          <li><a href="https://www.linkedin.com/company/glossy-branding-agency/" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.instagram.com/glossybrandingagency/" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/glossybrandingagency" rel="noopener">Facebook</a></li>
-          <li><a href="https://x.com/glossybranding" rel="noopener">X (ex-Twitter)</a></li>
-        </ul>
-      </nav>
-
-      <div class="site-footer__badges">
-        <img src="../assets/img/badge-kmo.png" alt="Erkend dienstverlener KMO-portefeuille" loading="lazy">
-        <img src="../assets/img/badge-school.svg" alt="School of Branding" loading="lazy">
-      </div>
-    </div>
-
-    <div class="site-footer__legal">
-      <a href="../privacy-policy.html">Privacy &amp; cookie policy</a>
-      <span>© 2004–2026 · Glossy Branding Agency</span>
-      <span>All rights reserved</span>
-    </div>
-  </div>
-</footer>"""
-
-
-def meta_row(case):
-    """The small fact list under the hero — only rows that actually have a value."""
-    rows = [
-        ("Client", case.get("client") or case.get("name")),
-        ("Industry", case.get("industry")),
-        ("Location", case.get("location")),
-        ("When", case.get("when")),
-        ("Services", case.get("services")),
-    ]
-    out = "".join(
-        f'\n        <div class="case-meta__row">'
-        f'<dt class="eyebrow">{e(k)}</dt><dd>{e(v)}</dd></div>'
-        for k, v in rows
-        if v
-    )
-    return f'<dl class="case-meta">{out}\n      </dl>' if out else ""
+    return f"""
+  <section class="container case-section">
+    {header}{grid}
+  </section>"""
 
 
 def hero_media(case):
@@ -114,27 +66,54 @@ def hero_media(case):
         poster = f' poster="{e(img)}"' if img else ""
         return (
             f'<video class="case-hero__media" src="{e(video)}"{poster} '
-            f'autoplay muted loop playsinline></video>'
+            f"autoplay muted loop playsinline></video>"
         )
     if img:
         return (
-            f'<img class="case-hero__media" src="{e(img)}" '
-            f'alt="{e(case["name"])}" fetchpriority="high" decoding="async">'
+            f'<img class="case-hero__media" src="{e(img)}" alt="{e(case["name"])}" '
+            f'fetchpriority="high" decoding="async">'
         )
     return ""
+
+
+def facts(case):
+    rows = [
+        ("Client", case.get("client") or case.get("name")),
+        ("Industry", case.get("industry")),
+        ("Location", case.get("location")),
+        ("When", case.get("when")),
+    ]
+    out = "".join(
+        f'\n          <div class="case-meta__row">'
+        f"<dt>{e(k)}</dt><dd>{e(v)}</dd></div>"
+        for k, v in rows
+        if v
+    )
+    return f'<dl class="case-meta">{out}\n        </dl>' if out else ""
+
+
+def tag_list(case):
+    tags = case.get("tags") or []
+    if not tags:
+        return ""
+    items = "".join(f"<li>{e(t)}</li>" for t in tags)
+    return f"""
+        <div class="case-tags">
+          <p class="eyebrow">Services</p>
+          <ul class="tag-list">{items}</ul>
+        </div>"""
 
 
 def page(case, prev_case, next_case):
     title = f'{case["name"]} • Glossy Branding Agency'
     desc = case.get("seo") or case.get("baseline") or case["name"]
 
-    body = case.get("body") or ""
-    body_html = f'<div class="prose case-body">{body}</div>' if body.strip() else ""
-
-    slogan = (
-        f'<p class="case-slogan">{e(case["slogan"])}</p>' if case.get("slogan") else ""
+    intro = (
+        f'<div class="prose case-intro">{case["intro"]}</div>'
+        if (case.get("intro") or "").strip()
+        else ""
     )
-
+    slogan = f'<p class="case-slogan">{e(case["slogan"])}</p>' if case.get("slogan") else ""
     website = (
         f'<p style="margin-top: var(--space-l);">'
         f'<a class="btn" href="{e(case["website"])}" rel="noopener">Visit website →</a></p>'
@@ -142,25 +121,26 @@ def page(case, prev_case, next_case):
         else ""
     )
 
-    testimonial = ""
-    if case.get("testimonial"):
-        who = " — ".join(
-            filter(None, [case.get("testimonialPerson"), case.get("testimonialTitle")])
-        )
-        cite = f"<footer>{e(who)}</footer>" if who else ""
-        testimonial = f"""
-  <section class="container section">
-    <blockquote class="case-quote">
-      <p>{e(case["testimonial"])}</p>
-      {cite}
-    </blockquote>
-  </section>"""
+    sections = "".join(section_html(s, case["name"]) for s in case.get("sections") or [])
 
     second = ""
     if case.get("secondHero"):
         second = f"""
   <section class="container section--tight">
     <img class="case-figure" src="{e(case["secondHero"])}" alt="" loading="lazy" decoding="async">
+  </section>"""
+
+    testimonial = ""
+    if case.get("testimonial"):
+        who = " — ".join(
+            filter(None, [case.get("testimonialPerson"), case.get("testimonialTitle")])
+        )
+        testimonial = f"""
+  <section class="container section">
+    <blockquote class="case-quote">
+      <p>{e(case["testimonial"])}</p>
+      {f"<footer>{e(who)}</footer>" if who else ""}
+    </blockquote>
   </section>"""
 
     pager = "".join(
@@ -171,30 +151,12 @@ def page(case, prev_case, next_case):
         if c
     )
 
-    flag = '<span class="case-card__flag" style="position:static;display:inline-block;margin-bottom:var(--space-s);">new</span>' if case.get("isNew") else ""
+    flag = '<span class="case-flag">new</span>' if case.get("isNew") else ""
 
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(title)}</title>
-<meta name="description" content="{e(desc)}">
-<link rel="canonical" href="https://glossybranding.com/cases/{e(case['slug'])}">
-<meta property="og:title" content="{e(title)}">
-<meta property="og:description" content="{e(desc)}">
-<meta property="og:type" content="article">
-{f'<meta property="og:image" content="{e(case["image"])}">' if case.get("image") else ""}
-<link rel="icon" href="../assets/img/favicon.png">
-<link rel="apple-touch-icon" href="../assets/img/webclip.png">
-<link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-
-<a class="skip-link" href="#main">Skip to content</a>
-
-{nav("cases.html")}
-
+    return (
+        head(title, desc, f"https://glossybranding.com/cases/{case['slug']}", case.get("image"))
+        + nav("cases.html")
+        + f"""
 <main id="main">
 
   <article>
@@ -209,16 +171,18 @@ def page(case, prev_case, next_case):
     </div>
 
     <div class="container section--tight">
-      <div class="split">
-        <div>{meta_row(case)}</div>
+      <div class="case-intro-grid">
+        <aside>
+          {facts(case)}{tag_list(case)}
+        </aside>
         <div>
           {slogan}
-          {body_html}
+          {intro}
           {website}
         </div>
       </div>
     </div>
-{second}{testimonial}
+{sections}{second}{testimonial}
   </article>
 
   <nav class="container section" aria-label="More cases">
@@ -227,34 +191,27 @@ def page(case, prev_case, next_case):
   </nav>
 
 </main>
-
-{FOOTER}
-
-<script src="../assets/js/main.js"></script>
-</body>
-</html>
 """
+        + FOOTER
+    )
 
 
 def main():
     cases = json.loads((ROOT / "data" / "cases.json").read_text())
     OUT.mkdir(exist_ok=True)
 
-    seen = {}
+    written = 0
     for i, case in enumerate(cases):
-        slug = case.get("slug")
-        if not slug:
+        if not case.get("slug"):
             print(f"  ! skipped (no slug): {case.get('name')}")
             continue
-        if slug in seen:
-            print(f"  ! duplicate slug '{slug}' — {case.get('name')} overwrites {seen[slug]}")
-        seen[slug] = case.get("name")
-
         prev_case = cases[i - 1] if i > 0 else None
         next_case = cases[i + 1] if i + 1 < len(cases) else None
-        (OUT / f"{slug}.html").write_text(page(case, prev_case, next_case))
+        (OUT / f"{case['slug']}.html").write_text(page(case, prev_case, next_case))
+        written += 1
 
-    print(f"Wrote {len(seen)} case pages to {OUT.relative_to(ROOT)}/")
+    with_sections = sum(1 for c in cases if c.get("sections"))
+    print(f"Wrote {written} case pages ({with_sections} with CMS sections)")
 
 
 if __name__ == "__main__":

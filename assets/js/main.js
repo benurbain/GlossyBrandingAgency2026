@@ -55,7 +55,7 @@ const escapeHtml = (s) =>
 
 // Pages live at the site root, case detail pages one level down in /cases/.
 // Links are built relative so the site works under a GitHub Pages subpath too.
-const basePath = () => (/\/cases\/[^/]*$/.test(location.pathname) ? '../' : '');
+const basePath = () => (/\/(cases|news)\/[^/]*$/.test(location.pathname) ? '../' : '');
 
 async function loadJson(path) {
   const res = await fetch(path);
@@ -89,10 +89,12 @@ function newsCard(item) {
     : '';
   return `
     <article class="news-item">
-      <div class="news-item__media">${img}</div>
-      <p class="news-item__date">${escapeHtml(item.monthYear || item.published || '')}</p>
-      <h2 class="news-item__title">${escapeHtml(item.name)}</h2>
-      <p class="news-item__excerpt">${escapeHtml(item.excerpt || item.subtitle || '')}</p>
+      <a class="news-item__link" href="${basePath()}news/${escapeHtml(item.slug)}.html">
+        <div class="news-item__media">${img}</div>
+        <p class="news-item__date">${escapeHtml(item.monthYear || item.published || '')}</p>
+        <h2 class="news-item__title">${escapeHtml(item.name)}</h2>
+        <p class="news-item__excerpt">${escapeHtml(item.excerpt || item.subtitle || '')}</p>
+      </a>
     </article>`;
 }
 
