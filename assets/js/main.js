@@ -253,6 +253,37 @@ function initHeroHeader() {
   io.observe(hero);
 }
 
+/* --- Cookie banner -------------------------------------------------------- */
+
+/**
+ * Remembers the visitor's answer so the bar appears once, not every page.
+ *
+ * NOTE: this build ships no analytics or advertising scripts, so there is
+ * nothing for a refusal to switch off yet. Wire real gating in here at the same
+ * time as any tracker, otherwise the choice is only cosmetic.
+ */
+function initCookieBar() {
+  const bar = document.querySelector('[data-cookie-bar]');
+  if (!bar) return;
+
+  const KEY = 'glossy.cookie-choice';
+  let stored = null;
+  try { stored = localStorage.getItem(KEY); } catch { /* private mode */ }
+  if (stored) return;
+
+  bar.dataset.open = 'false';
+  requestAnimationFrame(() => { bar.dataset.open = 'true'; });
+
+  const close = (choice) => {
+    try { localStorage.setItem(KEY, choice); } catch { /* private mode */ }
+    bar.dataset.open = 'false';
+    bar.addEventListener('transitionend', () => bar.removeAttribute('data-open'), { once: true });
+  };
+
+  bar.querySelector('[data-cookie-accept]')?.addEventListener('click', () => close('accepted'));
+  bar.querySelector('[data-cookie-close]')?.addEventListener('click', () => close('dismissed'));
+}
+
 /* --- Boot ----------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -261,5 +292,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLottie();
   initTransition();
   initHeroHeader();
+  initCookieBar();
   document.querySelectorAll('[data-collection]').forEach(initCollection);
 });
