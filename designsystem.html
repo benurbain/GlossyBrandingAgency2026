@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design system — Glossy rebuild</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  /* Page-local styling for the documentation itself. Everything being
+     documented is rendered with the real site classes, so specimens cannot
+     drift away from the stylesheet they describe. */
+  .ds-wrap { max-width: 68rem; margin-inline: auto; padding: var(--space-xl) var(--gutter) var(--space-3xl); }
+  .ds-lede { max-width: 60ch; color: var(--ink-soft); }
+  .ds-section { padding-block: var(--space-2xl); border-top: 1px solid var(--line); }
+  .ds-section > h2 { font-size: var(--step-2); font-weight: 400; margin-bottom: var(--space-s); }
+  .ds-section > p { max-width: 62ch; color: var(--ink-soft); margin-bottom: var(--space-l); }
+  .ds-note { border-left: 2px solid var(--cream); background: color-mix(in srgb, var(--cream) 45%, transparent);
+             padding: var(--space-s) var(--space-m); margin-top: var(--space-m); max-width: 62ch; font-size: var(--step--1); }
+
+  table.ds { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  table.ds th { text-align: left; font-weight: 500; color: var(--gray); text-transform: uppercase;
+                letter-spacing: 0.08em; padding: 0 var(--space-m) var(--space-2xs) 0; white-space: nowrap; }
+  table.ds td { padding: var(--space-2xs) var(--space-m) var(--space-2xs) 0; border-top: 1px solid var(--line); vertical-align: baseline; }
+  table.ds code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
+  .ds-scroll { overflow-x: auto; }
+
+  .ds-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: var(--space-m); }
+  .ds-swatch__chip { height: 4.5rem; border-radius: var(--radius); border: 1px solid var(--line); }
+  .ds-swatch p { font-size: var(--step--1); margin: var(--space-2xs) 0 0; }
+  .ds-swatch span { color: var(--gray); }
+
+  .ds-bar { background: var(--ink); height: 10px; border-radius: 2px; }
+  .ds-demo { border: 1px dashed var(--line); border-radius: var(--radius); padding: var(--space-m); }
+  .ds-demo--tint { background: var(--smoke); }
+  .ds-cell { background: var(--gray); border-radius: 3px; display: grid; place-items: center;
+             color: var(--paper); font-size: 11px; }
+  .ds-row { display: flex; flex-wrap: wrap; gap: var(--space-m); align-items: center; }
+  .ds-val { color: var(--gray); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .ds-toc { columns: 2; column-gap: var(--space-xl); font-size: var(--step--1); }
+  .ds-toc a { display: block; padding: 0.15em 0; }
+  .ds-toc a:hover { color: var(--gray); }
+  @media (max-width: 600px) { .ds-toc { columns: 1; } }
+</style>
+</head>
+<body>
+
+<div class="ds-wrap">
+
+  <header>
+    <p class="eyebrow">Internal reference · not linked from the site</p>
+    <h1 style="font-size: var(--step-3); font-weight: 400; margin-top: var(--space-s);">The design system, as actually built</h1>
+    <p class="ds-lede" style="margin-top: var(--space-m);">
+      This documents what the stylesheet does today — not an intention. Every specimen below is rendered
+      with the real site classes, and the measurements in the right-hand column are read from the browser's
+      computed styles at your current viewport width (<strong id="ds-vw">…</strong>). Resize and they follow.
+    </p>
+    <div class="ds-note">
+      <strong>Where the numbers come from.</strong> Two different sources, and it matters which.
+      Values marked <em>measured</em> were read off the published glossybranding.com and matched deliberately.
+      Values marked <em>chosen</em> are mine — the original had no equivalent, or its approach did not survive
+      the rebuild (its type scaled off <code>1vw</code>, which breaks under browser zoom; this uses
+      <code>clamp()</code> instead).
+    </div>
+
+    <nav class="ds-toc" style="margin-top: var(--space-xl);" aria-label="Contents">
+      <a href="#colour">01 · Colour</a>
+      <a href="#type">02 · Type scale</a>
+      <a href="#page-type">03 · Page type (measured)</a>
+      <a href="#space">04 · Spacing</a>
+      <a href="#layout">05 · Layout &amp; containers</a>
+      <a href="#grids">06 · Grids</a>
+      <a href="#components">07 · Components</a>
+      <a href="#motion">08 · Motion</a>
+      <a href="#breakpoints">09 · Breakpoints</a>
+      <a href="#rules">10 · Conventions</a>
+    </nav>
+  </header>
+
+  <!-- 01 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="colour">
+    <h2>01 · Colour</h2>
+    <p>Seven tokens, no more. The palette is essentially black on white; everything else is a tint used for
+      surfaces, hairlines and one accent.</p>
+
+    <div class="ds-swatches">
+      <div class="ds-swatch"><div class="ds-swatch__chip" style="background: var(--paper)"></div>
+        <p><code>--paper</code><br><span>#ffffff — page ground</span></p></div>
+      <div class="ds-swatch"><div class="ds-swatch__chip" style="background: var(--ink)"></div>
+        <p><code>--ink</code><br><span>#111111 — body text</span></p></div>
+      <div class="ds-swatch"><div class="ds-swatch__chip" style="background: var(--ink-soft)"></div>
+        <p><code>--ink-soft</code><br><span>#333333 — secondary prose</span></p></div>
+      <div class="ds-swatch"><div class="ds-swatch__chip" style="background: var(--gray)"></div>
+        <p><code>--gray</code><br><span>#b3b3b3 — labels, meta</span></p></div>
+      <div class="ds-swatch"><div class="ds-swatch__chip" style="background: var(--smoke)"></div>
+        <p><code>--smoke</code><br><span>#f3f1f1 — media placeholders</span></p></div>
+      <div class="ds-swatch"><div class="ds-swatch__chip" style="background: var(--cream)"></div>
+        <p><code>--cream</code><br><span>#fffbe9 — accent, hover wipe</span></p></div>
+      <div class="ds-swatch"><div class="ds-swatch__chip" style="background: var(--line)"></div>
+        <p><code>--line</code><br><span>#e2e2e2 — hairlines</span></p></div>
+    </div>
+
+    <div class="ds-note">
+      <strong>Two hairline weights, on purpose.</strong> Section dividers use <code>--line</code>;
+      the divider inside an About step uses full <code>--ink</code>. That contrast is deliberate — it is a
+      structural rule, not a separator.
+    </div>
+  </section>
+
+  <!-- 02 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="type">
+    <h2>02 · Type scale</h2>
+    <p>One typeface: <strong>Rethink Sans</strong>, variable, weights 400–800, self-hosted. Six fluid steps,
+      each a <code>clamp()</code> so it interpolates with the viewport but stops at both ends.</p>
+
+    <div class="ds-scroll">
+      <table class="ds">
+        <thead><tr><th>Token</th><th>Specimen</th><th>Definition</th><th>Here</th></tr></thead>
+        <tbody>
+          <tr><td><code>--step-4</code></td><td style="font-size: var(--step-4); line-height: 1.05;">Ag</td>
+              <td><code>clamp(2.5rem, 1.63rem + 4.35vw, 5rem)</code></td><td class="ds-val" data-measure="--step-4"></td></tr>
+          <tr><td><code>--step-3</code></td><td style="font-size: var(--step-3); line-height: 1.05;">Ag</td>
+              <td><code>clamp(2rem, 1.48rem + 2.61vw, 3.5rem)</code></td><td class="ds-val" data-measure="--step-3"></td></tr>
+          <tr><td><code>--step-2</code></td><td style="font-size: var(--step-2); line-height: 1.1;">Ag</td>
+              <td><code>clamp(1.5rem, 1.24rem + 1.30vw, 2.25rem)</code></td><td class="ds-val" data-measure="--step-2"></td></tr>
+          <tr><td><code>--step-1</code></td><td style="font-size: var(--step-1);">Ag</td>
+              <td><code>clamp(1.125rem, 1.02rem + 0.52vw, 1.5rem)</code></td><td class="ds-val" data-measure="--step-1"></td></tr>
+          <tr><td><code>--step-0</code></td><td style="font-size: var(--step-0);">Ag — body default</td>
+              <td><code>clamp(0.938rem, 0.89rem + 0.24vw, 1.063rem)</code></td><td class="ds-val" data-measure="--step-0"></td></tr>
+          <tr><td><code>--step--1</code></td><td style="font-size: var(--step--1);">Ag — labels, meta</td>
+              <td><code>clamp(0.75rem, 0.71rem + 0.20vw, 0.875rem)</code></td><td class="ds-val" data-measure="--step--1"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size: var(--step-1); font-weight: 500; margin-top: var(--space-xl);">Defaults</h3>
+    <div class="ds-scroll">
+      <table class="ds" style="margin-top: var(--space-s);">
+        <thead><tr><th>Element</th><th>Size</th><th>Weight</th><th>Line height</th><th>Tracking</th></tr></thead>
+        <tbody>
+          <tr><td><code>body</code></td><td><code>--step-0</code></td><td>400</td><td>1.55</td><td>—</td></tr>
+          <tr><td><code>h1</code></td><td><code>--step-4</code></td><td>700</td><td>1.08</td><td>-0.02em</td></tr>
+          <tr><td><code>h2</code></td><td><code>--step-3</code></td><td>700</td><td>1.08</td><td>-0.02em</td></tr>
+          <tr><td><code>h3</code></td><td><code>--step-2</code></td><td>700</td><td>1.08</td><td>-0.02em</td></tr>
+          <tr><td><code>.eyebrow</code></td><td><code>--step--1</code></td><td>500</td><td>—</td><td>0.08em, uppercase, <code>--gray</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-note">
+      <strong>Headings default to bold, but the two most important pages override that to 400.</strong>
+      About and AI Consultancy set their own regular-weight titles because that is what the original does.
+      The bold default survives on case pages, news and cards. It is the one real inconsistency in the system —
+      worth resolving one way or the other.
+    </div>
+  </section>
+
+  <!-- 03 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="page-type">
+    <h2>03 · Page type — measured off the live site</h2>
+    <p>About and AI Consultancy share one editorial scale, read directly from glossybranding.com's computed
+      styles at 1600px and matched. These are the numbers to protect if the pages are ever restyled.</p>
+
+    <div class="ds-scroll">
+      <table class="ds">
+        <thead><tr><th>Role</th><th>Class</th><th>Target @1600px</th><th>Here</th><th>Weight</th><th>Measure</th></tr></thead>
+        <tbody>
+          <tr><td>Page title</td><td><code>.about-hero__title</code> / <code>.consultancy-section__title</code></td>
+              <td>44.16px</td><td class="ds-val" data-measure-el=".ds-probe-title"></td><td>400</td><td>22–24ch</td></tr>
+          <tr><td>Lead</td><td><code>.about-hero__lead</code> / <code>.consultancy-lead</code></td>
+              <td>28.8px</td><td class="ds-val" data-measure-el=".ds-probe-lead"></td><td>400</td><td>42–46ch</td></tr>
+          <tr><td>Body</td><td><code>.about-hero__note</code> / <code>.consultancy-body</code></td>
+              <td>20.8px</td><td class="ds-val" data-measure-el=".ds-probe-body"></td><td>400</td><td>62ch</td></tr>
+          <tr><td>Kicker</td><td><code>.consultancy-kicker</code></td>
+              <td>13.28px</td><td class="ds-val" data-measure-el=".ds-probe-kicker"></td><td>400</td><td>0.1em, uppercase</td></tr>
+          <tr><td>Step number</td><td><code>.about-step__num</code></td>
+              <td>33.28px</td><td class="ds-val" data-measure-el=".ds-probe-num"></td><td>400</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Hidden probes so the readouts above measure the real classes. -->
+    <div style="position:absolute; visibility:hidden; pointer-events:none; height:0; overflow:hidden;" aria-hidden="true">
+      <span class="ds-probe-title about-hero__title">A</span>
+      <span class="ds-probe-lead about-hero__lead">A</span>
+      <span class="ds-probe-body consultancy-body">A</span>
+      <span class="ds-probe-kicker consultancy-kicker">A</span>
+      <span class="ds-probe-num about-step__num">A</span>
+    </div>
+
+    <div class="ds-note">
+      Two of these needed their <code>vw</code> coefficients corrected after the fact: the lead and body
+      stopped at 26.4px and 18.72px because the clamp never reached its ceiling at 1600px. If you change a
+      clamp, check it at 1600 — the max is not where it lands.
+    </div>
+  </section>
+
+  <!-- 04 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="space">
+    <h2>04 · Spacing</h2>
+    <p>A fixed rem scale, roughly 1.5× between steps. Deliberately not fluid — only type and gutters respond
+      to viewport, so vertical rhythm stays predictable.</p>
+
+    <div class="ds-scroll">
+      <table class="ds">
+        <thead><tr><th>Token</th><th>rem</th><th>px</th><th>Scale</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td><code>--space-2xs</code></td><td>0.5</td><td>8</td><td><div class="ds-bar" style="width: 8px"></div></td><td>tight gaps, list rows</td></tr>
+          <tr><td><code>--space-xs</code></td><td>0.75</td><td>12</td><td><div class="ds-bar" style="width: 12px"></div></td><td>rarely used</td></tr>
+          <tr><td><code>--space-s</code></td><td>1</td><td>16</td><td><div class="ds-bar" style="width: 16px"></div></td><td>grid gaps, tile padding</td></tr>
+          <tr><td><code>--space-m</code></td><td>1.5</td><td>24</td><td><div class="ds-bar" style="width: 24px"></div></td><td>card padding, card grid gap</td></tr>
+          <tr><td><code>--space-l</code></td><td>2.5</td><td>40</td><td><div class="ds-bar" style="width: 40px"></div></td><td>block separation</td></tr>
+          <tr><td><code>--space-xl</code></td><td>4</td><td>64</td><td><div class="ds-bar" style="width: 64px"></div></td><td><code>.section--tight</code></td></tr>
+          <tr><td><code>--space-2xl</code></td><td>6</td><td>96</td><td><div class="ds-bar" style="width: 96px"></div></td><td><code>.section</code>, step padding</td></tr>
+          <tr><td><code>--space-3xl</code></td><td>9</td><td>144</td><td><div class="ds-bar" style="width: 144px"></div></td><td>reserved, unused</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 05 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="layout">
+    <h2>05 · Layout &amp; containers</h2>
+
+    <div class="ds-scroll">
+      <table class="ds">
+        <thead><tr><th>Token / class</th><th>Value</th><th>Here</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td><code>--gutter</code></td><td><code>clamp(1.25rem, 0.55rem + 3.5vw, 5.5rem)</code></td>
+              <td class="ds-val" data-measure="--gutter"></td><td>page inset, both sides</td></tr>
+          <tr><td><code>--measure</code></td><td><code>62ch</code></td><td>—</td><td>prose line length ceiling</td></tr>
+          <tr><td><code>--radius</code></td><td><code>4px</code></td><td>—</td><td>panels, figures</td></tr>
+          <tr><td><code>.container</code></td><td><code>max-width: 1760px</code> + gutter</td>
+              <td class="ds-val" data-measure-width=".ds-probe-container"></td><td>every page section</td></tr>
+          <tr><td><code>.consultancy-section</code></td><td><code>max-width: 75rem</code> (1200px)</td>
+              <td>—</td><td>measured off live</td></tr>
+          <tr><td><code>.section</code></td><td><code>padding-block: 6rem</code></td><td>—</td><td>standard rhythm</td></tr>
+          <tr><td><code>.section--tight</code></td><td><code>padding-block: 4rem</code></td><td>—</td><td>between related blocks</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container ds-probe-container" style="position:absolute; visibility:hidden; height:0;" aria-hidden="true"></div>
+
+    <div class="ds-note">
+      <strong>Card radius is 5px, not <code>--radius</code>.</strong> Case cards use <code>border-radius: 5px</code>
+      because the original does. It is the single value that ignores the token — kept for fidelity, and flagged
+      here so it does not read as an accident.
+    </div>
+  </section>
+
+  <!-- 06 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="grids">
+    <h2>06 · Grids</h2>
+    <p>Four distinct grids. They are not variations on one idea — each was measured separately, and two of them
+      caught me out by being different from what I assumed.</p>
+
+    <h3 style="font-size: var(--step-1); font-weight: 500;">Homepage — six columns, 14-card cycle</h3>
+    <p style="margin-top: var(--space-s);">Column spans repeat every 14 cards. Aspect ratios scale with the span
+      so each row keeps one height.</p>
+    <div class="ds-demo" style="margin-bottom: var(--space-l);">
+      <div style="display:grid; grid-template-columns: repeat(6,1fr); gap:8px;">
+        <div class="ds-cell" style="grid-column: span 3; aspect-ratio: 16/10;">1 · span 3</div>
+        <div class="ds-cell" style="grid-column: span 3; aspect-ratio: 16/10;">2 · span 3</div>
+        <div class="ds-cell" style="grid-column: span 2; aspect-ratio: 16/15;">3 · span 2</div>
+        <div class="ds-cell" style="grid-column: span 4; aspect-ratio: 32/15;">4 · span 4</div>
+        <div class="ds-cell" style="grid-column: span 4; aspect-ratio: 32/15;">5 · span 4</div>
+        <div class="ds-cell" style="grid-column: span 2; aspect-ratio: 16/15;">6 · span 2</div>
+        <div class="ds-cell" style="grid-column: span 3; aspect-ratio: 16/10;">7</div>
+        <div class="ds-cell" style="grid-column: span 3; aspect-ratio: 16/10;">8</div>
+      </div>
+      <p style="font-size: var(--step--1); color: var(--gray); margin-top: var(--space-s);">
+        Full cycle: 3+3 · 2+4 · 4+2 · 3+3 · 3+3 · 2+4 · 3+3 — 14 cards per page.
+      </p>
+    </div>
+
+    <div class="ds-scroll">
+      <table class="ds">
+        <thead><tr><th>Grid</th><th>Columns</th><th>Gap</th><th>Per page</th><th>Steps down at</th></tr></thead>
+        <tbody>
+          <tr><td>Homepage <code>.case-grid--feature</code></td><td>6, spans 2/3/4</td><td><code>--space-m</code></td><td>14</td><td>700px → 1 col</td></tr>
+          <tr><td>Cases <code>.case-grid--uniform</code></td><td>4, uniform 16:10</td><td><code>--space-m</code></td><td>12</td><td>1100 → 2, 700 → 1</td></tr>
+          <tr><td>Client wall <code>.client-wall</code></td><td>7</td><td><code>--space-s</code></td><td>all 90</td><td>1200→5, 860→4, 600→3</td></tr>
+          <tr><td>Case sections <code>.case-section__grid</code></td><td>1 / 2 / 3 via <code>data-cols</code></td><td><code>--space-m</code></td><td>—</td><td>900 → 2, 600 → 1</td></tr>
+          <tr><td>About services <code>.about-step__services</code></td><td>3</td><td>0.35em / <code>--space-m</code></td><td>9</td><td>860 → 2, 560 → 1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-note">
+      <strong>Case section columns come from the CMS, not from the media count.</strong> Webflow renders all three
+      layout variants per section and hides the two the "Visual Type" switch did not pick:
+      <code>_16-9_ratio</code> → 1 column, <code>square-overview</code>/<code>square-ratio</code> → 2,
+      <code>third-ratio</code> → 3. Current spread across 54 cases: 111 full, 44 half, 4 third.
+    </div>
+    <div class="ds-note">
+      <strong>Client tiles set height outright, not via <code>aspect-ratio</code>.</strong>
+      <code>max-height: 100%</code> on a logo only resolves against a definite height. With aspect-ratio alone the
+      large marks fell back to intrinsic size and pushed the grid 1180px through the footer. Do not "tidy" this back.
+    </div>
+  </section>
+
+  <!-- 07 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="components">
+    <h2>07 · Components</h2>
+
+    <h3 style="font-size: var(--step-1); font-weight: 500;">Buttons</h3>
+    <div class="ds-demo ds-row" style="margin: var(--space-s) 0 var(--space-l);">
+      <a class="btn" href="#components">Outline</a>
+      <a class="btn btn--solid" href="#components">Solid</a>
+      <span style="font-size: var(--step--1); color: var(--gray);">
+        pill · <code>0.7em 1.4em</code> · <code>--step--1</code> · 0.06em uppercase · outline fills on hover, solid goes cream
+      </span>
+    </div>
+
+    <h3 style="font-size: var(--step-1); font-weight: 500;">Tags &amp; meta</h3>
+    <div class="ds-demo" style="margin: var(--space-s) 0 var(--space-l);">
+      <ul class="tag-list"><li>Brand ideation</li><li>Visual identity</li><li>Design systems</li></ul>
+      <dl class="case-meta" style="margin-top: var(--space-m); max-width: 22rem;">
+        <div class="case-meta__row"><dt>Industry</dt><dd>Shared Mobility</dd></div>
+        <div class="case-meta__row"><dt>Location</dt><dd>Ghent, Belgium</dd></div>
+      </dl>
+    </div>
+
+    <h3 style="font-size: var(--step-1); font-weight: 500;">Marquee</h3>
+    <div style="margin: var(--space-s) 0 var(--space-l);">
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track"><span>From Consultancy To Curiosity</span><span>From Curiosity To Authenticity</span><span>From Authenticity To Identity</span><span>From Identity To Reality</span></div>
+        <div class="marquee__track"><span>From Consultancy To Curiosity</span><span>From Curiosity To Authenticity</span><span>From Authenticity To Identity</span><span>From Identity To Reality</span></div>
+      </div>
+      <p style="font-size: var(--step--1); color: var(--gray); margin-top: var(--space-s);">
+        Two identical tracks, 38s linear loop. Reduced-motion hides the second track and stops the animation.
+      </p>
+    </div>
+
+    <div class="ds-scroll">
+      <table class="ds">
+        <thead><tr><th>Component</th><th>Behaviour</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Header</td><td>sticky, <code>z-50</code>, 88% paper + 10px blur</td><td>on case pages it floats over the hero instead</td></tr>
+          <tr><td>Nav link</td><td>cream block wipes up from below on hover</td><td>pure CSS; the original used a Webflow interaction</td></tr>
+          <tr><td>Case card</td><td>hero video if present, else hero image; caption fades in</td><td>media scales 1.03 on hover</td></tr>
+          <tr><td>Case hero</td><td><code>100svh</code>, min 32rem, object-fit cover</td><td>scroll cue pinned bottom-centre</td></tr>
+          <tr><td>Nav invert</td><td>CMS <code>white-nav-text</code> → light header over dark hero</td><td>27 of 54 cases; observer restores it past the hero</td></tr>
+          <tr><td>Logo</td><td>Lottie, 154×58, 240 frames @30fps</td><td>separate white file when inverted — see note</td></tr>
+          <tr><td>Page curtain</td><td><code>z-2000</code>, 420ms fade, logo centred</td><td>skipped under reduced-motion; reset on <code>pageshow</code></td></tr>
+          <tr><td>Cookie bar</td><td>slides up once, choice in <code>localStorage</code></td><td>hidden until the script confirms no stored answer</td></tr>
+          <tr><td>FAQ</td><td><code>grid-template-rows: 0fr → 1fr</code></td><td>animates open without measuring heights in JS</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-note">
+      <strong>The logo cannot be recoloured with CSS.</strong> The artwork is 79 white paths and 17 black ones —
+      the counters of O, B and D are painted white shapes, not holes. Tinting every path closes them. Use
+      <code>glossy-logo-white.json</code> for light headers, as the original does.
+    </div>
+  </section>
+
+  <!-- 08 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="motion">
+    <h2>08 · Motion</h2>
+    <div class="ds-scroll">
+      <table class="ds">
+        <thead><tr><th>Token / use</th><th>Value</th><th>Applies to</th></tr></thead>
+        <tbody>
+          <tr><td><code>--dur</code></td><td>320ms</td><td>hovers, nav wipe, FAQ, header state</td></tr>
+          <tr><td><code>--ease</code></td><td><code>cubic-bezier(0.22, 0.61, 0.36, 1)</code></td><td>everything</td></tr>
+          <tr><td>Media hover</td><td>600ms</td><td>card and news image scale</td></tr>
+          <tr><td>Curtain</td><td>420ms + 900ms failsafe</td><td>page transition</td></tr>
+          <tr><td>Marquee</td><td>38s linear, infinite</td><td>About breaker</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ds-note">
+      <code>prefers-reduced-motion</code> is honoured globally (all durations → 0.01ms) and specifically:
+      the curtain is removed entirely and the marquee stops rather than merely speeding up.
+    </div>
+  </section>
+
+  <!-- 09 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="breakpoints">
+    <h2>09 · Breakpoints</h2>
+    <p>Seven, all <code>max-width</code>. They are per-component rather than global — each grid steps down where
+      its own content stops working, which is why they do not form a tidy series.</p>
+    <div class="ds-scroll">
+      <table class="ds">
+        <thead><tr><th>Width</th><th>What changes</th></tr></thead>
+        <tbody>
+          <tr><td>1200px</td><td>client wall 7 → 5</td></tr>
+          <tr><td>1100px</td><td>cases grid 4 → 2</td></tr>
+          <tr><td>900px</td><td>case intro stacks; section grid 3 → 2</td></tr>
+          <tr><td>860px</td><td>nav → full-screen panel; About step stacks; services 3 → 2; client wall → 4</td></tr>
+          <tr><td>700px</td><td>all card grids → 1; cookie bar stacks</td></tr>
+          <tr><td>600px</td><td>section grid → 1; client wall → 3</td></tr>
+          <tr><td>560px</td><td>services → 1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 10 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="rules">
+    <h2>10 · Conventions worth keeping</h2>
+    <div class="ds-scroll">
+      <table class="ds">
+        <thead><tr><th>Rule</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Type and gutters are fluid; spacing is not</td><td>keeps vertical rhythm predictable while text adapts</td></tr>
+          <tr><td>No <code>vw</code>-based root font size</td><td>the original scaled off <code>1vw</code>, which breaks browser zoom</td></tr>
+          <tr><td>Media paths are stored repo-relative</td><td><code>asset()</code> in the generators, <code>assetUrl()</code> in JS add <code>../</code> one level down</td></tr>
+          <tr><td>Every interactive state has a <code>:focus-visible</code></td><td>2px ink outline, 3px offset, globally</td></tr>
+          <tr><td>Real headings, in order</td><td>the Webflow original had none at all — 321 divs, zero h1–h6</td></tr>
+          <tr><td>Components fail soft</td><td>no-JS keeps the static logo, no curtain, no cookie bar blocking</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-note" style="border-left-color: var(--gray); background: var(--smoke);">
+      <strong>Known open items.</strong> Heading weight is inconsistent (bold default vs 400 on the two editorial
+      pages). <code>--space-xs</code> and <code>--space-3xl</code> are defined but unused. Card radius bypasses the
+      radius token. None of these break anything; all three are decisions waiting to be made.
+    </div>
+  </section>
+
+  <footer style="padding-top: var(--space-xl); border-top: 1px solid var(--line); font-size: var(--step--1); color: var(--gray);">
+    <p>Generated from <code>assets/css/style.css</code> — 243 rules, 1075 lines. Measurements read live from the
+      browser, so this page cannot go stale on numbers. Prose notes are hand-written and can.</p>
+  </footer>
+
+</div>
+
+<script>
+  // Read the real computed values so nothing here is a transcription.
+  (function () {
+    const cs = getComputedStyle(document.documentElement);
+    const px = (v) => v ? `${Math.round(parseFloat(v) * 100) / 100}px` : '—';
+
+    const show = () => {
+      document.getElementById('ds-vw').textContent = `${document.documentElement.clientWidth}px`;
+
+      document.querySelectorAll('[data-measure]').forEach((el) => {
+        // Resolve the token by applying it to a probe: clamp() is not computed on :root.
+        const probe = document.createElement('span');
+        probe.style.cssText = `position:absolute;visibility:hidden;font-size:var(${el.dataset.measure});
+                               width:var(${el.dataset.measure})`;
+        document.body.appendChild(probe);
+        const v = getComputedStyle(probe);
+        el.textContent = px(el.dataset.measure === '--gutter' ? v.width : v.fontSize);
+        probe.remove();
+      });
+
+      document.querySelectorAll('[data-measure-el]').forEach((el) => {
+        const t = document.querySelector(el.dataset.measureEl);
+        el.textContent = t ? px(getComputedStyle(t).fontSize) : '—';
+      });
+
+      document.querySelectorAll('[data-measure-width]').forEach((el) => {
+        const t = document.querySelector(el.dataset.measureWidth);
+        el.textContent = t ? `${Math.round(t.getBoundingClientRect().width)}px` : '—';
+      });
+    };
+
+    show();
+    addEventListener('resize', show, { passive: true });
+  })();
+</script>
+
+</body>
+</html>
