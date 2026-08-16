@@ -27,7 +27,7 @@ privacy-policy.html            Privacy & cookie policy
 kmo-portefeuille.html          Subsidies for consultancy & strategy
 404.html                       Self-contained (inlined CSS) so it works at any depth
 
-cases/<slug>.html              52 generated case detail pages
+cases/<slug>.html              54 generated case detail pages
 news/<slug>.html               36 generated news detail pages
 
 scripts/export-cms.py          Raw Webflow exports -> data/*.json
@@ -44,7 +44,7 @@ assets/fonts/                  Rethink Sans (variable, roman + italic)
 assets/img/                    Logo, favicon, partner badges
 assets/media/                  803 case/news/client assets (324 MB), self-hosted
 
-data/cases.json                52 published cases, exported from Webflow CMS
+data/cases.json                54 published cases, exported from Webflow CMS
 data/news.json                 36 published news items
 ```
 
@@ -61,11 +61,25 @@ A case is not one CMS record — it is stitched from **five collections**:
 Each Case Section carries a **Visual Type** (Full / Half / Third) which becomes
 `data-cols="1|2|3"` on its media grid — that is what drives the layout rhythm.
 
-Regenerate everything with:
+### Regenerating — order matters
+
+`export-cms.py` rebuilds `data/*.json` from the raw exports, which **overwrites
+the scraped sections and the localised asset paths**. Always run the full chain:
 
 ```bash
-python3 scripts/export-cms.py && python3 scripts/build-cases.py && python3 scripts/build-news.py
+python3 scripts/export-cms.py && python3 scripts/scrape-sections.py --cached && python3 scripts/localize-assets.py && python3 scripts/build-cases.py && python3 scripts/build-news.py
 ```
+
+### Grids
+
+The homepage and the cases overview do not share a layout:
+
+| Page | Grid | Per page |
+|---|---|---|
+| `index.html` | 6 columns, spans repeating every 14 cards (3+3 · 2+4 · 4+2 · 3+3 · 3+3 · 2+4 · 3+3) | 14 |
+| `cases.html` | uniform 4-up (2-up under 1100px) | 12 |
+
+Aspect ratios scale with the column span so each row keeps a single height.
 
 ## The CMS layer
 

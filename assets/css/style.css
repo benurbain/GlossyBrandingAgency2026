@@ -281,25 +281,62 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .case-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-m);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* The homepage runs a six-column grid whose column spans repeat every 14 cards:
+   3+3 · 2+4 · 4+2 · 3+3 · 3+3 · 2+4 · 3+3. Aspect ratios scale with the span so
+   every row keeps one height, the way the original's named grid areas do. */
+.case-grid--feature { grid-template-columns: repeat(6, 1fr); }
+
+.case-grid--feature > * { grid-column: span 3; aspect-ratio: 16 / 10; }
+
+.case-grid--feature > :nth-child(14n+3),
+.case-grid--feature > :nth-child(14n+6),
+.case-grid--feature > :nth-child(14n+11) {
+  grid-column: span 2;
+  aspect-ratio: 16 / 15;
+}
+
+.case-grid--feature > :nth-child(14n+4),
+.case-grid--feature > :nth-child(14n+5),
+.case-grid--feature > :nth-child(14n+12) {
+  grid-column: span 4;
+  aspect-ratio: 32 / 15;
+}
+
+/* The cases overview is a plain four-up grid, not the homepage rhythm. */
+.case-grid--uniform { grid-template-columns: repeat(4, 1fr); }
+.case-grid--uniform > * { aspect-ratio: 16 / 10; }
+
+@media (max-width: 1100px) {
+  .case-grid--uniform { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 700px) {
-  .case-grid { grid-template-columns: 1fr; }
+  .case-grid,
+  .case-grid--feature,
+  .case-grid--uniform { grid-template-columns: 1fr; }
+  .case-grid--feature > *,
+  .case-grid--feature > :nth-child(14n+3),
+  .case-grid--feature > :nth-child(14n+4),
+  .case-grid--feature > :nth-child(14n+5),
+  .case-grid--feature > :nth-child(14n+6),
+  .case-grid--feature > :nth-child(14n+11),
+  .case-grid--feature > :nth-child(14n+12) {
+    grid-column: span 1;
+    aspect-ratio: 16 / 10;
+  }
 }
 
 .case-card {
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: var(--radius);
+  border-radius: 5px;
   background: var(--smoke);
-  aspect-ratio: 16 / 10;
 }
-
-/* Every third card runs narrow, echoing the original's alternating rhythm. */
-.case-card--narrow { aspect-ratio: 4 / 5; }
 
 .case-card__media {
   width: 100%;

@@ -110,6 +110,14 @@ def month_year(v):
     return f"{names[month - 1]} {year}" if 1 <= month <= 12 else s
 
 
+def is_live(it):
+    """Webflow sets isDraft on an item that has unpublished edits, even when a
+    published version is still serving. Only drop items never published."""
+    if it.get("isArchived"):
+        return False
+    return bool(it.get("lastPublished")) or not it.get("isDraft")
+
+
 def load_items(*names):
     """Read raw export files and concatenate their `items` arrays."""
     items = []
@@ -149,13 +157,13 @@ def main():
     # --- sections, indexed by id so cases can resolve their references ---------
     sections = {}
     for it in load_items("case-sections-1.json", "case-sections-2.json"):
-        if not (it.get("isDraft") or it.get("isArchived")):
+        if is_live(it):
             sections[it["id"]] = build_section(it["fieldData"])
 
     # --- cases ----------------------------------------------------------------
     cases = []
     for it in load_items("cases.json"):
-        if it.get("isDraft") or it.get("isArchived"):
+        if not is_live(it):
             continue
         f = it["fieldData"]
 
@@ -210,12 +218,12 @@ def main():
     id_to_slug = {
         it["id"]: it["fieldData"].get("slug")
         for it in load_items("cases.json")
-        if not (it.get("isDraft") or it.get("isArchived"))
+        if is_live(it)
     }
 
     logos = []
     for it in load_items("client-logos.json"):
-        if it.get("isDraft") or it.get("isArchived"):
+        if not is_live(it):
             continue
         f = it["fieldData"]
         src = url(f.get("logo"))
@@ -235,7 +243,7 @@ def main():
     # --- news -----------------------------------------------------------------
     news = []
     for it in load_items("news.json"):
-        if it.get("isDraft") or it.get("isArchived"):
+        if not is_live(it):
             continue
         f = it["fieldData"]
         extra = [url(f.get(f"extra-image-{i}")) for i in range(1, 7)]

@@ -68,9 +68,7 @@ async function loadJson(path) {
   return res.json();
 }
 
-function caseCard(item, index) {
-  // Mirror the original's rhythm: every third card runs tall/narrow.
-  const narrow = index % 3 === 2 ? ' case-card--narrow' : '';
+function caseCard(item) {
   const img = item.image
     ? `<img class="case-card__media" src="${escapeHtml(assetUrl(item.image))}"
           alt="${escapeHtml(item.name)} — ${escapeHtml(item.baseline || 'case')}"
@@ -79,7 +77,7 @@ function caseCard(item, index) {
   const flag = item.isNew ? '<span class="case-card__flag">new</span>' : '';
 
   return `
-    <a class="case-card${narrow}" href="${basePath()}cases/${escapeHtml(item.slug)}.html">
+    <a class="case-card" href="${basePath()}cases/${escapeHtml(item.slug)}.html">
       ${img}${flag}
       <span class="case-card__body">
         <span class="case-card__name">${escapeHtml(item.name)}</span>
