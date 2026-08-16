@@ -204,6 +204,34 @@ def main():
         json.dumps(cases, indent=2, ensure_ascii=False)
     )
 
+    # --- client logos ---------------------------------------------------------
+    # The About page closes on a client wall. Each logo may point at a case,
+    # by item id, so resolve those to the slug the generated pages actually use.
+    id_to_slug = {
+        it["id"]: it["fieldData"].get("slug")
+        for it in load_items("cases.json")
+        if not (it.get("isDraft") or it.get("isArchived"))
+    }
+
+    logos = []
+    for it in load_items("client-logos.json"):
+        if it.get("isDraft") or it.get("isArchived"):
+            continue
+        f = it["fieldData"]
+        src = url(f.get("logo"))
+        if not src:
+            continue
+        logos.append({
+            "name": plain(f.get("name")),
+            "logo": src,
+            "case": id_to_slug.get(f.get("link-to-case")),
+        })
+
+    logos.sort(key=lambda l: l["name"].lower())
+    (ROOT / "data" / "clients.json").write_text(
+        json.dumps(logos, indent=2, ensure_ascii=False)
+    )
+
     # --- news -----------------------------------------------------------------
     news = []
     for it in load_items("news.json"):
@@ -233,6 +261,9 @@ def main():
     (ROOT / "data" / "news.json").write_text(
         json.dumps(news, indent=2, ensure_ascii=False)
     )
+
+    linked = sum(1 for l in logos if l["case"])
+    print(f"clients:  {len(logos)}  ({linked} linked to a case)")
 
     with_sections = sum(1 for c in cases if c["sections"])
     total_media = sum(len(s["media"]) for c in cases for s in c["sections"])

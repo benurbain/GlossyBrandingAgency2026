@@ -31,7 +31,6 @@
         <li><a class="nav__link" href="brand-ai-consultancy.html">AI Consultancy</a></li>
         <li><a class="nav__link" href="cases.html">Cases</a></li>
         <li><a class="nav__link" href="news.html">News</a></li>
-        <li><a class="nav__link" href="careers.html">Careers</a></li>
         <li><a class="nav__link" href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -148,18 +147,13 @@
 
   <section class="container section">
     <h2>Our Great Clients</h2>
-    <div class="case-grid" style="margin-top: var(--space-l);"
-         data-collection="data/cases.json"
-         data-kind="cases"
-         data-per-page="9"
-         data-more="#cases-more"
-         data-counter="#cases-counter">
-      <p class="is-loading">Loading work…</p>
+    <div class="client-wall" style="margin-top: var(--space-l);"
+         data-collection="data/clients.json"
+         data-kind="clients"
+         data-per-page="90">
+      <p class="is-loading">Loading clients…</p>
     </div>
-    <p style="margin-top: var(--space-l); display: flex; align-items: center; gap: var(--space-m);">
-      <button class="btn" id="cases-more" type="button" hidden>Next →</button>
-      <span class="eyebrow" id="cases-counter"></span>
-    </p>
+    <p style="margin-top: var(--space-l);"><a class="btn" href="cases.html">See our work →</a></p>
   </section>
 
 </main>

@@ -519,6 +519,41 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .case-pager__name { font-size: var(--step-1); font-weight: 700; letter-spacing: -0.02em; }
 .case-pager__link:hover .case-pager__name { color: var(--gray); }
 
+/* --- Client wall ---------------------------------------------------------- */
+
+.client-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(7rem, 12vw, 11rem), 1fr));
+  gap: var(--space-s);
+}
+
+.client {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 2;
+  padding: var(--space-s);
+  border-radius: var(--radius);
+  background: var(--smoke);
+}
+
+.client__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* The marks are supplied in mixed colours; sit them back until hovered. */
+  filter: grayscale(1);
+  opacity: 0.65;
+  transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease),
+              transform var(--dur) var(--ease);
+}
+
+.client--linked:hover .client__logo,
+.client--linked:focus-visible .client__logo {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
 /* --- Buttons -------------------------------------------------------------- */
 
 .btn {

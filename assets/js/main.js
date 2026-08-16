@@ -98,6 +98,17 @@ function newsCard(item) {
     </article>`;
 }
 
+function clientCard(item) {
+  const logo = `<img class="client__logo" src="${escapeHtml(item.logo)}"
+      alt="${escapeHtml(item.name)}" loading="lazy" decoding="async">`;
+
+  // Roughly a third of the clients have a case behind them; those become links.
+  return item.case
+    ? `<a class="client client--linked" href="${basePath()}cases/${escapeHtml(item.case)}.html"
+         title="${escapeHtml(item.name)}">${logo}</a>`
+    : `<div class="client">${logo}</div>`;
+}
+
 /**
  * Renders a JSON collection into a container, a page at a time.
  * The original paginated its case grid ("NEXT", 1/5) — same idea here.
@@ -106,8 +117,11 @@ async function initCollection(root) {
   const src = root.dataset.collection;
   const perPage = Number(root.dataset.perPage) || 12;
   const kind = root.dataset.kind || 'cases';
-  const moreBtn = document.querySelector(root.dataset.more || '');
-  const counter = document.querySelector(root.dataset.counter || '');
+  // querySelector('') throws, so only look these up when a selector is given —
+  // collections that render in one go (the client wall) declare neither.
+  const pick = (sel) => (sel ? document.querySelector(sel) : null);
+  const moreBtn = pick(root.dataset.more);
+  const counter = pick(root.dataset.counter);
 
   let items;
   try {
@@ -117,7 +131,7 @@ async function initCollection(root) {
     return;
   }
 
-  const render = kind === 'news' ? newsCard : caseCard;
+  const render = { news: newsCard, clients: clientCard }[kind] || caseCard;
   const pages = Math.max(1, Math.ceil(items.length / perPage));
   let shown = 0;
 

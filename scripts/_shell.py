@@ -10,7 +10,6 @@ NAV_LINKS = [
     ("brand-ai-consultancy.html", "AI Consultancy"),
     ("cases.html", "Cases"),
     ("news.html", "News"),
-    ("careers.html", "Careers"),
     ("contact.html", "Contact"),
 ]
 
