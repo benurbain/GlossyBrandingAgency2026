@@ -587,13 +587,59 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .case-pager__name { font-size: var(--step-1); font-weight: 700; letter-spacing: -0.02em; }
 .case-pager__link:hover .case-pager__name { color: var(--gray); }
 
+/* --- Marquee -------------------------------------------------------------- */
+
+/* The four process steps run past as a strip between the steps and the client
+   wall. Two identical tracks slide left; when the first has travelled its own
+   width the pair resets, so the loop reads as continuous. */
+.marquee {
+  --marquee-duration: 38s;
+  display: flex;
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  padding-block: var(--space-s);
+  user-select: none;
+}
+
+.marquee__track {
+  display: flex;
+  flex: none;
+  gap: var(--space-l);
+  padding-right: var(--space-l);
+  animation: marquee var(--marquee-duration) linear infinite;
+}
+
+.marquee span {
+  flex: none;
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+@keyframes marquee {
+  to { transform: translateX(-100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+  .marquee__track + .marquee__track { display: none; }
+}
+
 /* --- Client wall ---------------------------------------------------------- */
 
+/* Seven across, as on the original; it steps down rather than reflowing freely
+   so the rows stay even. */
 .client-wall {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(7rem, 12vw, 11rem), 1fr));
+  grid-template-columns: repeat(7, 1fr);
   gap: var(--space-s);
 }
+
+@media (max-width: 1200px) { .client-wall { grid-template-columns: repeat(5, 1fr); } }
+@media (max-width: 860px)  { .client-wall { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 600px)  { .client-wall { grid-template-columns: repeat(3, 1fr); } }
 
 .client {
   display: grid;
@@ -682,6 +728,56 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .steps { counter-reset: step; display: grid; gap: var(--space-xl); }
 .step__num { font-size: var(--step-1); color: var(--gray); font-weight: 500; }
+
+/* About runs its four steps as one narrow column — number and label first, then
+   the body — rather than the two-up split used elsewhere. */
+.about-step {
+  display: grid;
+  gap: var(--space-m);
+  max-width: 50rem;
+  padding-block: var(--space-xl);
+  border-top: 1px solid var(--line);
+}
+
+.about-step__head { display: grid; gap: 0.15em; }
+.about-step__num { font-size: var(--step-1); font-weight: 500; color: var(--gray); }
+.about-step h3 { margin-top: var(--space-2xs); }
+
+/* Service lists sit two-up so a nine-item list does not run the page long. */
+.about-step .prose ul {
+  columns: 2;
+  column-gap: var(--space-l);
+}
+@media (max-width: 600px) { .about-step .prose ul { columns: 1; } }
+
+/* --- Consultancy sections ------------------------------------------------- */
+
+.consultancy-section {
+  max-width: 54rem;
+  padding-block: var(--space-xl);
+  border-top: 1px solid var(--line);
+}
+
+.consultancy-section > h2 { margin-top: var(--space-2xs); }
+
+/* One section is set on a tinted panel on the original. */
+.consultancy-section--highlight {
+  max-width: none;
+  border-top: 0;
+  border-radius: var(--radius);
+  background: var(--cream);
+  padding: var(--space-xl) var(--space-l);
+}
+.consultancy-section--highlight > * { max-width: 54rem; }
+
+.consultancy-cta {
+  border-radius: var(--radius);
+  background: var(--smoke);
+  padding: var(--space-xl) var(--space-l);
+  margin-block: var(--space-2xl) 0;
+}
+.consultancy-cta h2 { max-width: 22ch; }
+.consultancy-cta p { max-width: 52ch; margin-top: var(--space-m); }
 
 .split {
   display: grid;
