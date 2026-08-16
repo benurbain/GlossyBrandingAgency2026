@@ -187,6 +187,37 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .logo { display: block; width: clamp(110px, 10vw, 154px); }
 .logo img { width: 100%; }
 
+/* Lottie injects its own <svg>; the static logo sits underneath until then so
+   the mark is never missing, including with JavaScript off. */
+.logo__anim { display: block; aspect-ratio: 154 / 58; }
+.logo__anim svg { display: block; width: 100%; height: 100%; }
+
+/* --- Page transition ------------------------------------------------------ */
+
+.transition {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  transition: opacity 420ms var(--ease), visibility 420ms var(--ease);
+}
+
+/* Starts covering the page, lifts once this document has painted. */
+.transition[data-state="out"] { opacity: 0; visibility: hidden; }
+.transition[data-state="in"]  { opacity: 1; visibility: visible; }
+
+.transition__logo { width: clamp(140px, 14vw, 220px); aspect-ratio: 154 / 58; }
+.transition__logo svg { display: block; width: 100%; height: 100%; }
+
+/* With JS off there is no curtain to lift, so never let it block the page. */
+.no-js .transition { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .transition { display: none; }
+}
+
 .nav__list {
   display: flex;
   align-items: center;

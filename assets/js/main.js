@@ -162,10 +162,79 @@ async function initCollection(root) {
   if (moreBtn) moreBtn.addEventListener('click', renderNext);
 }
 
+/* --- Animated logo -------------------------------------------------------- */
+
+/**
+ * The wordmark is a Lottie animation on the original. Each [data-lottie] holds a
+ * static SVG as its no-JS fallback, swapped out once the animation is ready.
+ */
+function initLottie() {
+  if (!window.lottie) return;
+
+  document.querySelectorAll('[data-lottie]').forEach((el) => {
+    const anim = window.lottie.loadAnimation({
+      container: el,
+      renderer: 'svg',
+      loop: true,
+      autoplay: el.dataset.lottieAutoplay !== 'false',
+      path: assetUrl(el.dataset.lottie),
+    });
+    anim.addEventListener('DOMLoaded', () => {
+      el.querySelector('.lottie-fallback')?.remove();
+      el.dataset.ready = 'true';
+    });
+    el._anim = anim;
+  });
+}
+
+/* --- Page transition ------------------------------------------------------ */
+
+/**
+ * Clicking through to a case pulls a white curtain over the page with the logo
+ * animating in the middle, the way the original does between pages.
+ */
+function initTransition() {
+  const curtain = document.querySelector('[data-transition]');
+  if (!curtain) return;
+
+  // Lift the curtain once this page has painted.
+  requestAnimationFrame(() => { curtain.dataset.state = 'out'; });
+
+  const sameOrigin = (a) =>
+    a.origin === location.origin &&
+    !a.hasAttribute('download') &&
+    a.target !== '_blank' &&
+    !a.getAttribute('href').startsWith('#');
+
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    const a = e.target.closest('a[href]');
+    if (!a || !sameOrigin(a) || a.href === location.href) return;
+
+    // Respect people who asked for less motion: navigate straight away.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    e.preventDefault();
+    curtain.dataset.state = 'in';
+    const go = () => { location.href = a.href; };
+    curtain.addEventListener('transitionend', go, { once: true });
+    // Never strand the visitor if the transition never fires.
+    setTimeout(go, 900);
+  });
+
+  // Coming back via the browser's cache would otherwise show a stuck curtain.
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) curtain.dataset.state = 'out';
+  });
+}
+
 /* --- Boot ----------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initFaq();
+  initLottie();
+  initTransition();
   document.querySelectorAll('[data-collection]').forEach(initCollection);
 });
