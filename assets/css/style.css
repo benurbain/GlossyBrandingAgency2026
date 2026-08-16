@@ -688,17 +688,26 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 860px)  { .client-wall { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 600px)  { .client-wall { grid-template-columns: repeat(3, 1fr); } }
 
-/* No tile behind the marks — they sit straight on the page, as on the original. */
+/* No tile behind the marks — they sit straight on the page, as on the original.
+   The height is set outright rather than via aspect-ratio: the logo's
+   `max-height: 100%` only resolves against a definite height, and without one
+   large marks fell back to their intrinsic size and burst out of the grid. */
 .client {
   display: grid;
   place-items: center;
-  aspect-ratio: 3 / 2;
+  height: clamp(4.5rem, 7vw, 8rem);
   padding: var(--space-s);
+  overflow: hidden;
 }
 
+/* Constrain rather than stretch. `height: 100%` inside a tile whose row height
+   comes from its own content is circular, so large logos fell back to their
+   intrinsic size and pushed the grid straight through the footer. */
 .client__logo {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
@@ -706,13 +715,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .client--linked:hover .client__logo,
 .client--linked:focus-visible .client__logo {
   opacity: 0.55;
-  transform: scale(1.04);
-}
-
-.client--linked:hover .client__logo,
-.client--linked:focus-visible .client__logo {
-  filter: grayscale(0);
-  opacity: 1;
   transform: scale(1.04);
 }
 
