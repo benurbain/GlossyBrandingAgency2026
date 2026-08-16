@@ -77,31 +77,47 @@ def hero_media(case):
 
 
 def facts(case):
+    """The overview strip: four labelled facts side by side, as on the original."""
     rows = [
-        ("Client", case.get("client") or case.get("name")),
+        ("Founders", case.get("founders")),
+        ("Company", case.get("company") or case.get("client") or case.get("name")),
         ("Industry", case.get("industry")),
         ("Location", case.get("location")),
-        ("When", case.get("when")),
     ]
     out = "".join(
-        f'\n          <div class="case-meta__row">'
-        f"<dt>{e(k)}</dt><dd>{e(v)}</dd></div>"
+        f'\n        <div class="case-facts__item"><dt>{e(k)}</dt><dd>{e(v)}</dd></div>'
         for k, v in rows
         if v
     )
-    return f'<dl class="case-meta">{out}\n        </dl>' if out else ""
+    return f'<dl class="case-facts">{out}\n      </dl>' if out else ""
 
 
-def tag_list(case):
-    tags = case.get("tags") or []
-    if not tags:
+SERVICE_LABEL = {
+    "consultancy": "Consultancy",
+    "strategy": "Strategy",
+    "branding": "Branding",
+    "experience": "Experience",
+}
+
+
+def what_we_did(case):
+    """Services stay grouped by their taxonomy — four columns, not one tag soup."""
+    groups = case.get("services") or {}
+    cols = "".join(
+        f'\n        <div class="what-we-did__col"><p class="what-we-did__label">{e(label)}</p>'
+        + "".join(f"<p>{e(n)}</p>" for n in groups[key])
+        + "</div>"
+        for key, label in SERVICE_LABEL.items()
+        if groups.get(key)
+    )
+    if not cols:
         return ""
-    items = "".join(f"<li>{e(t)}</li>" for t in tags)
     return f"""
-        <div class="case-tags">
-          <p class="eyebrow">Services</p>
-          <ul class="tag-list">{items}</ul>
-        </div>"""
+  <section class="container case-block">
+    <h2 class="case-block__title">What we did</h2>
+    <div class="what-we-did">{cols}
+    </div>
+  </section>"""
 
 
 def page(case, prev_case, next_case):
@@ -115,20 +131,19 @@ def page(case, prev_case, next_case):
     )
     slogan = f'<p class="case-slogan">{e(case["slogan"])}</p>' if case.get("slogan") else ""
     website = (
-        f'<p style="margin-top: var(--space-l);">'
-        f'<a class="btn" href="{e(case["website"])}" rel="noopener">Visit website →</a></p>'
+        f'<div class="container case-website">'
+        f'<a class="btn" href="{e(case["website"])}" rel="noopener">Visit the website here</a></div>'
         if case.get("website")
         else ""
     )
 
     sections = "".join(section_html(s, case["name"]) for s in case.get("sections") or [])
 
-    second = ""
-    if case.get("secondHero"):
-        second = f"""
-  <section class="container section--tight">
-    <img class="case-figure" src="{e(asset(case["secondHero"]))}" alt="" loading="lazy" decoding="async">
-  </section>"""
+    second = (
+        f'<img class="case-overview__figure" src="{e(asset(case["secondHero"]))}" '
+        f'alt="" loading="lazy" decoding="async">'
+        if case.get("secondHero") else ""
+    )
 
     testimonial = ""
     if case.get("testimonial"):
@@ -143,15 +158,16 @@ def page(case, prev_case, next_case):
     </blockquote>
   </section>"""
 
-    pager = "".join(
-        f'<a class="case-pager__link" href="{e(c["slug"])}.html">'
-        f'<span class="eyebrow">{label}</span>'
-        f'<span class="case-pager__name">{e(c["name"])}</span></a>'
-        for c, label in ((prev_case, "Previous"), (next_case, "Next"))
-        if c
-    )
+    def more_card(c):
+        img = (f'<img src="{e(asset(c.get("hero") or c.get("image")))}" alt="" '
+               f'loading="lazy" decoding="async">') if (c.get("hero") or c.get("image")) else ""
+        return (f'<a class="more-cases__card" href="{e(c["slug"])}.html">{img}'
+                f'<span class="more-cases__name">{e(c["name"])}</span>'
+                f'<span class="more-cases__baseline">{e(c.get("baseline") or "")}</span></a>')
 
-    flag = '<span class="case-flag">new</span>' if case.get("isNew") else ""
+    pager = "".join(more_card(c) for c in (prev_case, next_case) if c)
+
+    flag = ' <span class="case-flag">new</span>' if case.get("isNew") else ""
 
     return (
         head(title, desc, f"https://glossybranding.com/cases/{case['slug']}", absolute(case.get("image")),
@@ -161,37 +177,39 @@ def page(case, prev_case, next_case):
 <main id="main">
 
   <article>
-
     <div class="case-hero-wrap">
       <figure class="case-hero">{hero_media(case)}</figure>
       <a class="case-hero__scroll" href="#case-body">Scroll down</a>
     </div>
 
-    <header class="container hero" id="case-body">
-      {flag}
-      <h1 class="hero__title">{e(case["name"])}</h1>
-      {f'<p class="hero__lead">{e(case["baseline"])}</p>' if case.get("baseline") else ""}
-    </header>
-
-    <div class="container section--tight">
-      <div class="case-intro-grid">
-        <aside>
-          {facts(case)}{tag_list(case)}
-        </aside>
-        <div>
-          {slogan}
-          {intro}
-          {website}
-        </div>
+    <div class="container case-overview" id="case-body">
+      <div class="case-overview__head">
+        <h1 class="case-overview__title">{e(case["name"])}{flag}</h1>
+        {f'<p class="case-overview__date">{e(case["when"])}</p>' if case.get("when") else ""}
       </div>
+      {f'<p class="case-overview__baseline">{e(case["baseline"])}</p>' if case.get("baseline") else ""}
+      {facts(case)}
+      {second}
+      {intro}
     </div>
-{sections}{second}{testimonial}
+{sections}
+    {website}
+{testimonial}
   </article>
+{what_we_did(case)}
+  <section class="container case-block">
+    <h2 class="case-block__title">Inspired by this case?</h2>
+    <p class="case-block__lead">Can your business, organisation or product benefit from a (re)branding?
+      Contact us to discover if we are the right partner for you. See you soon!</p>
+    <p><a class="btn btn--solid" href="../contact.html">Contact us</a></p>
+  </section>
 
-  <nav class="container section" aria-label="More cases">
-    <div class="case-pager">{pager}</div>
-    <p style="margin-top: var(--space-l);"><a class="btn" href="../cases.html">All cases</a></p>
-  </nav>
+  <section class="more-cases">
+    <div class="container">
+      <h2 class="case-block__title">You might also like</h2>
+      <div class="more-cases__grid">{pager}</div>
+    </div>
+  </section>
 
 </main>
 """

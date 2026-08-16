@@ -167,12 +167,15 @@ def main():
             continue
         f = it["fieldData"]
 
+        services = {}
         tags = []
         for group in SERVICE_GROUPS:
-            for sid in f.get(group) or []:
-                name = SERVICES.get(sid)
-                if name and name not in tags:
-                    tags.append(name)
+            names = [SERVICES[sid] for sid in (f.get(group) or []) if sid in SERVICES]
+            if names:
+                services[group] = names
+            for n in names:
+                if n not in tags:
+                    tags.append(n)
 
         body_sections = [
             sections[sid] for sid in (f.get("case-sections") or []) if sid in sections
@@ -202,6 +205,7 @@ def main():
             "testimonialTitle": plain(f.get("testimonial-title")),
             "testimonialImage": url(f.get("testimonial-image")),
             "tags": tags,
+            "services": services,
             "sections": body_sections,
             "isNew": bool(f.get("new-case")),
             # CMS switch: nav sits white over a dark full-screen hero.

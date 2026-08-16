@@ -512,6 +512,136 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .has-hero.nav-invert .nav[data-open="true"] { color: var(--ink); }
 }
 
+/* --- Case overview -------------------------------------------------------- */
+
+.case-overview { padding-block: var(--space-2xl) 0; }
+
+.case-overview__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-m);
+  flex-wrap: wrap;
+}
+
+.case-overview__title {
+  font-size: clamp(1.75rem, 1.2rem + 1.9vw, 2.76rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.case-overview__date {
+  margin: 0;
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.case-overview__baseline {
+  max-width: 26ch;
+  margin-top: var(--space-m);
+  font-size: clamp(1.15rem, 0.95rem + 0.85vw, 1.8rem);
+  line-height: 1.25;
+}
+
+/* Four facts side by side, each label above its value. */
+.case-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-m);
+  margin: var(--space-2xl) 0 0;
+  padding-block: var(--space-l);
+  border-block: 1px solid var(--line);
+}
+
+.case-facts dt {
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 0.4em;
+}
+.case-facts dd { margin: 0; }
+
+.case-overview__figure {
+  width: 100%;
+  margin-top: var(--space-2xl);
+  border-radius: var(--radius);
+}
+
+.case-overview .case-intro { margin-top: var(--space-2xl); max-width: var(--measure); }
+
+.case-website { padding-block: var(--space-xl); }
+
+@media (max-width: 860px) {
+  .case-facts { grid-template-columns: repeat(2, 1fr); gap: var(--space-l) var(--space-m); }
+}
+@media (max-width: 500px) {
+  .case-facts { grid-template-columns: 1fr; }
+}
+
+/* --- Case closing blocks -------------------------------------------------- */
+
+.case-block { padding-block: var(--space-2xl); border-top: 1px solid var(--line); }
+
+.case-block__title {
+  font-size: clamp(1.25rem, 1rem + 1.08vw, 2.08rem);
+  font-weight: 400;
+  margin-bottom: var(--space-l);
+}
+
+.case-block__lead { max-width: 52ch; margin-bottom: var(--space-l); }
+
+/* Services stay in their four CMS taxonomies rather than merging into one list. */
+.what-we-did {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-l) var(--space-m);
+  font-size: var(--step--1);
+}
+
+.what-we-did__label {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 0.6em;
+}
+.what-we-did__col p { margin: 0 0 0.35em; }
+
+@media (max-width: 860px) { .what-we-did { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .what-we-did { grid-template-columns: 1fr; } }
+
+/* --- More cases ----------------------------------------------------------- */
+
+.more-cases {
+  background: var(--ink);
+  color: var(--paper);
+  padding-block: var(--space-2xl);
+  margin-top: var(--space-2xl);
+}
+
+.more-cases__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-m);
+}
+
+.more-cases__card { display: grid; gap: 0.2em; }
+.more-cases__card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: var(--space-s);
+  transition: opacity var(--dur) var(--ease);
+}
+.more-cases__card:hover img { opacity: 0.75; }
+.more-cases__name { font-size: var(--step-1); }
+.more-cases__baseline { font-size: var(--step--1); color: var(--gray); }
+
+@media (max-width: 700px) { .more-cases__grid { grid-template-columns: 1fr; } }
+
 /* Facts + services sit in a narrow rail beside the intro on wide screens. */
 .case-intro-grid {
   display: grid;
