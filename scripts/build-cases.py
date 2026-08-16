@@ -154,21 +154,24 @@ def page(case, prev_case, next_case):
     flag = '<span class="case-flag">new</span>' if case.get("isNew") else ""
 
     return (
-        head(title, desc, f"https://glossybranding.com/cases/{case['slug']}", absolute(case.get("image")))
+        head(title, desc, f"https://glossybranding.com/cases/{case['slug']}", absolute(case.get("image")),
+             body_class="has-hero nav-invert" if case.get("whiteNav") else "has-hero")
         + nav("cases.html")
         + f"""
 <main id="main">
 
   <article>
-    <header class="container hero">
+
+    <div class="case-hero-wrap">
+      <figure class="case-hero">{hero_media(case)}</figure>
+      <a class="case-hero__scroll" href="#case-body">Scroll down</a>
+    </div>
+
+    <header class="container hero" id="case-body">
       {flag}
       <h1 class="hero__title">{e(case["name"])}</h1>
       {f'<p class="hero__lead">{e(case["baseline"])}</p>' if case.get("baseline") else ""}
     </header>
-
-    <div class="container section--tight">
-      <figure class="case-hero">{hero_media(case)}</figure>
-    </div>
 
     <div class="container section--tight">
       <div class="case-intro-grid">

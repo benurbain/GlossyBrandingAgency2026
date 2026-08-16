@@ -408,17 +408,68 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* --- Case detail ---------------------------------------------------------- */
 
+/* A case opens on a full-screen frame, with the header laid over it. */
 .case-hero {
   margin: 0;
-  border-radius: var(--radius);
   overflow: hidden;
   background: var(--smoke);
+  height: 100svh;
+  min-height: 32rem;
 }
 
 .case-hero__media {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   object-fit: cover;
+}
+
+.case-hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-l);
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 0.5em 1.2em;
+  border-radius: 100px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  color: var(--ink);
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.case-hero-wrap { position: relative; }
+
+/* Header floats over the hero rather than pushing it down. */
+.has-hero .site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  background: none;
+  backdrop-filter: none;
+}
+
+/* The CMS "White Nav Text" switch: light type over a dark opening frame. */
+.has-hero.nav-invert .site-header { color: var(--paper); }
+.has-hero.nav-invert .nav__toggle span { background: var(--paper); }
+.has-hero.nav-invert .logo__anim svg path,
+.has-hero.nav-invert .logo__anim svg g { fill: var(--paper); }
+.has-hero.nav-invert .lottie-fallback { filter: invert(1) brightness(2); }
+
+/* Once the hero has scrolled away the header behaves normally again. */
+.has-hero .site-header[data-past-hero="true"] {
+  position: fixed;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+.has-hero.nav-invert .site-header[data-past-hero="true"] .logo__anim svg path,
+.has-hero.nav-invert .site-header[data-past-hero="true"] .logo__anim svg g { fill: var(--ink); }
+.has-hero.nav-invert .site-header[data-past-hero="true"] .nav__toggle span { background: var(--ink); }
+.has-hero.nav-invert .site-header[data-past-hero="true"] .lottie-fallback { filter: none; }
+
+@media (max-width: 860px) {
+  /* The full-screen menu panel is opaque, so keep its links readable. */
+  .has-hero.nav-invert .nav[data-open="true"] { color: var(--ink); }
 }
 
 /* Facts + services sit in a narrow rail beside the intro on wide screens. */
@@ -641,24 +692,25 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 860px)  { .client-wall { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 600px)  { .client-wall { grid-template-columns: repeat(3, 1fr); } }
 
+/* No tile behind the marks — they sit straight on the page, as on the original. */
 .client {
   display: grid;
   place-items: center;
   aspect-ratio: 3 / 2;
   padding: var(--space-s);
-  border-radius: var(--radius);
-  background: var(--smoke);
 }
 
 .client__logo {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  /* The marks are supplied in mixed colours; sit them back until hovered. */
-  filter: grayscale(1);
-  opacity: 0.65;
-  transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease),
-              transform var(--dur) var(--ease);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.client--linked:hover .client__logo,
+.client--linked:focus-visible .client__logo {
+  opacity: 0.55;
+  transform: scale(1.04);
 }
 
 .client--linked:hover .client__logo,
@@ -729,26 +781,84 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .steps { counter-reset: step; display: grid; gap: var(--space-xl); }
 .step__num { font-size: var(--step-1); color: var(--gray); font-weight: 500; }
 
-/* About runs its four steps as one narrow column — number and label first, then
-   the body — rather than the two-up split used elsewhere. */
+/* About sets its own, quieter type scale: the page title is regular weight at
+   roughly 44px, not the heavy display size the other heroes use. */
+.about-hero__title {
+  max-width: 22ch;
+  font-size: clamp(1.75rem, 1.2rem + 1.9vw, 2.76rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.about-hero__lead {
+  max-width: 46ch;
+  margin-top: var(--space-l);
+  font-size: clamp(1.15rem, 0.95rem + 0.7vw, 1.8rem);
+  line-height: 1.35;
+}
+
+.about-hero__note {
+  max-width: 62ch;
+  margin-top: var(--space-l);
+  font-size: clamp(0.95rem, 0.87rem + 0.3vw, 1.3rem);
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+/* Each step is a narrow label column and a wide body column, divided by a hairline. */
 .about-step {
   display: grid;
-  gap: var(--space-m);
-  max-width: 50rem;
-  padding-block: var(--space-xl);
+  grid-template-columns: 1fr 4fr;
+  column-gap: clamp(2rem, 1rem + 5vw, 8.33rem);
+  padding-block: var(--space-2xl);
   border-top: 1px solid var(--line);
 }
 
-.about-step__head { display: grid; gap: 0.15em; }
-.about-step__num { font-size: var(--step-1); font-weight: 500; color: var(--gray); }
-.about-step h3 { margin-top: var(--space-2xs); }
-
-/* Service lists sit two-up so a nine-item list does not run the page long. */
-.about-step .prose ul {
-  columns: 2;
-  column-gap: var(--space-l);
+.about-step__num {
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 2.08rem);
+  font-weight: 400;
+  margin-bottom: var(--space-l);
 }
-@media (max-width: 600px) { .about-step .prose ul { columns: 1; } }
+
+.about-step__baseline {
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 2.08rem);
+  font-weight: 400;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.about-step__icon { width: clamp(28px, 3vw, 44px); margin-top: var(--space-xl); }
+
+.about-step__body {
+  border-left: 1px solid var(--ink);
+  padding-left: clamp(1.5rem, 0.8rem + 3.5vw, 5rem);
+}
+
+.about-step__body h3 { font-weight: 400; font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.5rem); }
+.about-step__body > p { margin-top: var(--space-m); max-width: 62ch; }
+
+/* Nine services read as a three-up index, uppercase and small. */
+.about-step__services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35em var(--space-m);
+  margin-top: var(--space-l);
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.about-step__services li { padding-left: 1em; text-indent: -1em; }
+.about-step__services li::before { content: "•"; color: var(--gray); padding-right: 0.5em; }
+
+@media (max-width: 860px) {
+  .about-step { grid-template-columns: 1fr; row-gap: var(--space-l); }
+  .about-step__body { border-left: 0; padding-left: 0; }
+  .about-step__icon { margin-top: var(--space-m); }
+  .about-step__services { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .about-step__services { grid-template-columns: 1fr; }
+}
 
 /* --- Consultancy sections ------------------------------------------------- */
 

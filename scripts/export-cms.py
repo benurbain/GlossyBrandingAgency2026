@@ -204,6 +204,8 @@ def main():
             "tags": tags,
             "sections": body_sections,
             "isNew": bool(f.get("new-case")),
+            # CMS switch: nav sits white over a dark full-screen hero.
+            "whiteNav": bool(f.get("white-nav-text")),
             "seo": plain(f.get("seo-share-text")),
         })
 

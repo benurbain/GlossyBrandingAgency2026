@@ -29,7 +29,7 @@ NAV_LINKS = [
 ]
 
 
-def head(title, description, canonical, image=None):
+def head(title, description, canonical, image=None, body_class=""):
     og_image = f'\n<meta property="og:image" content="{e(image)}">' if image else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -46,7 +46,7 @@ def head(title, description, canonical, image=None):
 <link rel="apple-touch-icon" href="../assets/img/webclip.png">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
+<body class="{body_class}">
 
 <a class="skip-link" href="#main">Skip to content</a>
 """

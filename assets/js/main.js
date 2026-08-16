@@ -229,6 +229,24 @@ function initTransition() {
   });
 }
 
+/* --- Header over a full-screen hero --------------------------------------- */
+
+/**
+ * Case pages open on a full-screen frame with the header laid over it. Once
+ * that frame has scrolled away the header returns to its normal solid state.
+ */
+function initHeroHeader() {
+  const hero = document.querySelector('.case-hero');
+  const header = document.querySelector('.site-header');
+  if (!hero || !header) return;
+
+  const io = new IntersectionObserver(
+    ([entry]) => { header.dataset.pastHero = String(!entry.isIntersecting); },
+    { rootMargin: `-${header.offsetHeight}px 0px 0px 0px`, threshold: 0 }
+  );
+  io.observe(hero);
+}
+
 /* --- Boot ----------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -236,5 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaq();
   initLottie();
   initTransition();
+  initHeroHeader();
   document.querySelectorAll('[data-collection]').forEach(initCollection);
 });

@@ -152,6 +152,7 @@
       }
     ],
     "isNew": true,
+    "whiteNav": true,
     "seo": "Glossy partnered with BattMobility on a full-service brand transformation: go-to-market strategy, visual identity, a 2025 design system, AI-driven imagery and a suite of custom marketing apps, helping shared mobility grow from 2,000 to 3,000 users under the banner Freedom in Motion."
   },
   {
@@ -318,6 +319,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Formerly known as Tournamentcenter, together with the Fanfinity team, we rebranded the organization to become a fancentric agency. Fanfinity creates meaningful fan experiences for game publishers and brands looking to establish lasting bonds with gaming communities. Their team of experts has a deep passion for gaming culture and communities. With their tailored approach, they aim to share their excitement to create meaningful and lasting bonds between gaming communities and their clients."
   },
   {
@@ -491,6 +493,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "We are proud to reveal the new brand identity for The Smiles, an indoor entertainment hotspot, where people gather to chill, have fun, and explore exciting new activities. Our ultimate goal is to create smiles and spread happiness to every visitor."
   },
   {
@@ -655,6 +658,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Glossy Branding Agency had the honor of rebranding Madison.Partners, a leading Data Strategy Consultancy firm based in Ghent, with offices in New York and Singapore. Collaborating closely with the Madison.Partners team, we developed a comprehensive brand strategy that sets the stage for their growth and expansion in the coming years."
   },
   {
@@ -724,6 +728,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Bravosix is an independent interior design agency based in Ostend, Belgium. Founder Nicolas Delahaye asked us to develop a brand that matches his own personality. A brand in which simplicity is key, but with the proper twist."
   },
   {
@@ -950,6 +955,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Kenny & Mathias came to us to set up a new payrolling office. They were looking for a more personal approach than the existing offices. A clear strategic framework was essential."
   },
   {
@@ -1279,6 +1285,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Charlotte & Mattijs, two students from Vlerick Marketing, approached Glossy Branding Agency to assist them in the development of a new brand. A concept for online dog food. It provides a service that delivers tailor-made and healthy dog food at home. Together we built BuddyBites, a subscription model for customised healthy dog food. BuddyBites is defined as a brand that prepares quality food mixes tailored to your pet. Tell BuddyBites everything about your pet on their interactive platform, and their algorithm will prepare the right unique & healthy food mix. This way you and your pet can enjoy a longer and more active friendship!"
   },
   {
@@ -1482,6 +1489,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Creating a brand for a venture studio that specializes in Deep Tech & AI with a love for music. Here, the people behind tech are placed in front. Miles Ahead is a Venture Studio helping first-time founders of Deep Tech & AI startups grow faster by producing and funding their business within an empowering environment."
   },
   {
@@ -1571,6 +1579,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Welcome to Dragòn, an \"International Premium Beer Café\" in the heart of Ghent. Our bar is located in the historic center in Klein Turkey, just opposite the Sint-Niklaaskerk, situated on the Korenmarkt in Ghent."
   },
   {
@@ -1691,6 +1700,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Back in 2016, Glossy Branding Agency was asked to help develop a sustainable & future-proof brand for a new retail park at the old Ikea site in Ternat (Brussels). We proposed a 18h during ideation session, based on our Branding Through Strategy© ideology."
   },
   {
@@ -1770,6 +1780,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "In the summer of 2018, P&G asked glossy.tv to help in building, naming & visualising their new 'open innovation platform'. Based on their in house inqbet strategy, P&G wanted to share and combine the knowledge with other companies serving the FMCG market."
   },
   {
@@ -1941,6 +1952,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "A new soccer arena, a new identity. KAA Gent (since 1895), also called the 'BUFFALO'S' since 1924, uses an indian as their logo. For many years, the indian logo never changed, and multiple versions of the logo were used."
   },
   {
@@ -2045,6 +2057,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "For over 30 years Pukkelpop selects a musical line-up with an alternative fringe. The festival has become one of Europe’s greatest outdoor music events with more than 250 current musical sensations, living legends and visionary alternative artists. It’s fun, relaxed, varied and very much built around the love of music!"
   },
   {
@@ -2192,6 +2205,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "In March 2018, a new international ecosystem is born for scale-ups. Led by serial tech entrepreneur Jurgen Ingels, Scale-Ups.eu aims to become the top-of-mind time squeezer for scale-ups in Europe."
   },
   {
@@ -2467,6 +2481,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Kevin and Ramses came to Glossy because they wanted to start a friterie in Bruges, a city which already has a lot of them. The challenge was to create a friterie that would stand out."
   },
   {
@@ -2607,6 +2622,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "After two years of hard work, La Vie Ostend asked us to come up with a new strategy for their restaurant. They wanted the right story and a recognisable visual identity. Say no more ..."
   },
   {
@@ -2702,6 +2718,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "For the 2017 season, Glossy.tv was asked to develop the complete team identity for the new Quick-Step Pro Cycling Team. As passionate cycle lovers, it was our pleasure to create a fresh and up-to-date identity for one of the most iconic teams in the peloton."
   },
   {
@@ -2791,6 +2808,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Glossy Branding Agency took on the exciting task of creating a comprehensive branding for B-Hive, a collaborative fintech platform in Europe. Through an intensive ideation process, Glossy Branding Agency developed a unique naming, a captivating baseline, and a compelling storytelling approach for the platform."
   },
   {
@@ -2864,6 +2882,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Element Architects, a firm driven by the desire to build and create, approached Glossy Branding Agency with a unique challenge. They sought a brand identity that would embody their \"less is more\" philosophy, while remaining recognizable yet understated."
   },
   {
@@ -2941,6 +2960,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "'IBBT has a new name. We are now called iMinds. Our new name reflects that we need more than technology to tackle major societal challenges. That’s why our organization relies on world-class researchers and entrepreneurs from different backgrounds."
   },
   {
@@ -3000,6 +3020,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Filliers Dry Gin 28, a handcrafted premium gin with a rich heritage, has been a hallmark of excellence since 1880. Infused and distilled with 28 meticulously selected botanicals, this gin is a testament to the artistry of the Master Distiller at Filliers Distillery."
   },
   {
@@ -3096,6 +3117,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Welcome home to Pukkelpop! Glossy Branding Agency took the developed branding from 2015 and transformed it into an exciting new campaign. Pukkelpop is not just about music; it's about the collective experience. Together we create the vibrant atmosphere that makes it feel like home."
   },
   {
@@ -3157,6 +3179,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Glossy Branding Agency joined forces with the Café Costume team to embark on a journey of modernizing their brand. Drawing inspiration from the rich heritage of European textile ateliers, we delved into the history of the garments industry."
   },
   {
@@ -3276,6 +3299,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Night Shift brings together entrepreneurs for a new way of doing business. The company works their magic by transforming several locations in Belgium to a co-creation platform for young entrepreneurs. Night Shift is an event where start ups and (international) established businesses walk hand in hand."
   },
   {
@@ -3349,6 +3373,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Expanding the new identity of Orbit abroad, for 2016, Orbit is Electric Blue. At Light + Building Frankfurt Orbit wanted to stand out. As it was the first booth at the wel known Light + Building fair. We created an eclectic & electric atmosphere based on the Orbit identity."
   },
   {
@@ -3450,6 +3475,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "If you’re looking to experience a not so regular Italian restaurant in the heart of historic Ghent. You made it. Barbaro is not a tourist trap."
   },
   {
@@ -3540,6 +3566,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Moovly has a great track record. In less than 5 years they developed an online platform for creating videos, presentations, e-cards and so much more. All built form scratch."
   },
   {
@@ -3659,6 +3686,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "When FC70 (the infamous Antwerp Fashion Agent) asked us to rethink their own brand SVNTY, it felt as if a dream came true. With great pleasure we guided founders Miguel & Gregory and their team towards an idea that will make SVNTY a brand that stands out of the ordinary ..."
   },
   {
@@ -3745,6 +3773,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "When building a brand, it is crucial to understand what, why, how and for whom. Ray, an architectural and contemporary glass pavilion, stands proudly next to St. Nicholas Church in the vibrant city center of Ghent, Belgium."
   },
   {
@@ -3822,6 +3851,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "The Café Costume x Glossy.tv Opaque linings are based on the most detailed & beautiful marble surfaces in the world. Marble was the favorite medium for greek and roman sculptors and architects, and became a cultural symbol of tradition and refined taste."
   },
   {
@@ -3907,6 +3937,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Hello, we are Fetch, a new and authentic kitchen for food lovers that serves handmade quality food. Our meals are daily made with high quality ingredients, and served fresh from our kitchen to your table."
   },
   {
@@ -3974,6 +4005,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Introducing Café Costume's new venue, a stylish bar nestled in the heart of Antwerp. With its abundance of marble, we crafted a captivating identity that embodies the venue's allure and sophistication."
   },
   {
@@ -4033,6 +4065,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Ai is the next big disruption, even better, artificial Intelligence is already here. Miia helps your organisation in building the business models of the future. Reduce your costs drastically by enabling machines to understand text like you and me would. We helped the brand to reposition in the market by changing the brand's communication."
   },
   {
@@ -4092,6 +4125,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "The Breakfast Club is just like in the 80’s film a place where people from all different corners come together."
   },
   {
@@ -4177,6 +4211,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "For the 2017 campaign, we looked into the future. The Digital Shift is happening as we speak, and it’s a shift with a great amplitude. Every small digital innovation and change influences an entire brand philosophy."
   },
   {
@@ -4262,6 +4297,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Brand Update for the 2016 edition of Belgium largest ‘Alternative’ festival Pukkelpop. We developed the festivals’ online & offline presence."
   },
   {
@@ -4331,6 +4367,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "As a personal expert Dominique will help your body follow your mind again. Dominique promises a tailor-made program based on sports, insights, nutrition & coaching. The one doing it is the person in the mirror, let me hold the mirror. Dominique stands for result. We developed a complete 'premium' identity based on the 4 pillars of Dominique's philosophy."
   },
   {
@@ -4392,6 +4429,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "In 2016 JUMA architects wanted to focus on their delivered projects. We developed a pure and simple look and feel, online and offline."
   },
   {
@@ -4463,6 +4501,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "How to build a premium fitness club? Venice Beach teamed up with Glenn Sestig Architects and Glossy Branding Agency to develop a venue that breathes sports. Convenience and luxury are key!"
   },
   {
@@ -4512,6 +4551,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "At The Makers, we care about your brand. We are your privileged partner in developing and producing your collection of menswear, ladies wear and made to measure garments. Glossy.tv and The Makers made an 'out of the ordinary' brand movie."
   },
   {
@@ -4589,6 +4629,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "For Night Shift 2016 we developed the The After Hours Business Lab. This idea emphasises the creative aspect of business, a playground where experiments lead to innovation."
   },
   {
@@ -4660,6 +4701,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Full Branding for Wim De Waele and Jurgen Ingels' new Fintech hub. Eggsplore is more than an incubator or co-working space."
   },
   {
@@ -4726,6 +4768,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "The Glue offers the global banking industry a technology platform to enable fundamental digital transformation. Digital disruption is everywhere, so we've built an identity that sticks."
   },
   {
@@ -4787,6 +4830,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "It all starts with the food, with a strong focus on the whole experience. Always with a contemporary approach for quality seekers who want to level up."
   },
   {
@@ -4860,6 +4904,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "A new look and feel for Quatre Mains Klaviercentrum. Or as we say: 'Quatre Mains is more than just a piano shop. It is a place where musical notes seduce and music lovers can express their passion. Where international artists may find a home and are presented with the space and resources to work, compose and relax.'"
   },
   {
@@ -4929,6 +4974,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Prezenta is a Belgian based presentation pop-up company that strives for corporate creativity. Glossy.tv built their complete identity, that represents their storytelling, focus and character. Prezenta makes your presentation a real experience."
   },
   {
@@ -5003,6 +5049,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Glossy Branding Agency had a vision for the Nightingale's Press Days 2015, an exhibition that focuses on performance, photography, installation and video, all in the context of fashion, food, technology and design."
   },
   {
@@ -5056,6 +5103,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "For Nightingale, an experimental marketing agency based in Antwerp and Berlin, we developed a communication strategy for AW 2014. 'Adding Gold' enabled Nightingale to create more awareness for their brand, online & offline. The campagne was used in several magazines, in Belgium and abroad."
   },
   {
@@ -5159,6 +5207,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "For the 30th edition of Pukkelpop, Glossy.tv developed a complete make over. Pukkelpop is more than just music, it's a discovery festival with more than 200 live artists during 4 days."
   },
   {
@@ -5225,6 +5274,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "In the last two years, Night Shift made its mission statement come true. Connecting (young) entrepreneurs & building an unique (new) network. The mission is clear, and (some) success has been accomplished, Glossy.tv would like to propose a campaign, based on the company's values."
   },
   {
@@ -5299,6 +5349,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Full branding for a new & stylish 'frituur', located at the city of Gent's student district. All the food is freshly made in the hacienda!"
   },
   {
@@ -5368,6 +5419,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Meet Mòris, the new bar in the center of Ghent. With a focus on unforgettable nights and premium drinks, Mòris promises \"The Perfect Bliss.\" Join us for an exquisite experience with carefully curated drinks that excite the taste buds."
   },
   {
@@ -5467,6 +5519,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": true,
     "seo": "Back in 2010, Café Costume asked us to design some exclusive linings for their suits. As Café Costume was on the verge of taking the tailoring market by storm, Glossy.tv decided that the linings should be a collaboration between Café Costume and Glossy.tv. We proposed six different linings and all six got in production. The official release of the linings was in the summer of 2010, and the national and international press reacted very positive."
   },
   {
@@ -5526,6 +5579,7 @@
       }
     ],
     "isNew": false,
+    "whiteNav": false,
     "seo": "Wow. This is a long time ago. But we had to add this project to our list. In the year 2007, the (legendary and not so legendary) Culture Club Ghent became 7 years."
   }
 ]
