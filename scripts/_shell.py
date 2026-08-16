@@ -5,6 +5,21 @@ import html
 
 e = lambda s: html.escape(str(s or ""), quote=True)
 
+SITE = "https://glossybranding.com/"
+
+
+def asset(src):
+    """data/*.json stores media repo-relative ("assets/media/x.webp") so the
+    root pages can use it as-is. Generated pages sit one level down."""
+    src = str(src or "")
+    return src if src.startswith(("http://", "https://", "../", "/")) else "../" + src
+
+
+def absolute(src):
+    """og:image must be an absolute URL."""
+    src = str(src or "")
+    return src if src.startswith(("http://", "https://")) else SITE + src.lstrip("./")
+
 NAV_LINKS = [
     ("about.html", "About"),
     ("brand-ai-consultancy.html", "AI Consultancy"),
@@ -111,12 +126,12 @@ FOOTER = """
 
 def media_tag(m, alt="", eager=False):
     """One media slot from a CMS section: image, silent looping video, or embed."""
-    src = m.get("src")
-    if not src:
+    src = asset(m.get("src"))
+    if not m.get("src"):
         return ""
 
     if m["type"] == "video":
-        poster = f' poster="{e(m["poster"])}"' if m.get("poster") else ""
+        poster = f' poster="{e(asset(m["poster"]))}"' if m.get("poster") else ""
         return (
             f'<video class="media" src="{e(src)}"{poster} '
             f'autoplay muted loop playsinline preload="metadata"></video>'

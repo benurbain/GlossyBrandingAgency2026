@@ -16,7 +16,7 @@ import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from _shell import FOOTER, e, head, media_tag, nav  # noqa: E402
+from _shell import FOOTER, absolute, asset, e, head, media_tag, nav  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "cases"
@@ -63,14 +63,14 @@ def section_html(sec, case_name):
 def hero_media(case):
     video, img = case.get("heroVideo"), case.get("hero")
     if video and re.match(r"^https?://\S+\.(mp4|webm)(\?|$)", video):
-        poster = f' poster="{e(img)}"' if img else ""
+        poster = f' poster="{e(asset(img))}"' if img else ""
         return (
-            f'<video class="case-hero__media" src="{e(video)}"{poster} '
+            f'<video class="case-hero__media" src="{e(asset(video))}"{poster} '
             f"autoplay muted loop playsinline></video>"
         )
     if img:
         return (
-            f'<img class="case-hero__media" src="{e(img)}" alt="{e(case["name"])}" '
+            f'<img class="case-hero__media" src="{e(asset(img))}" alt="{e(case["name"])}" '
             f'fetchpriority="high" decoding="async">'
         )
     return ""
@@ -127,7 +127,7 @@ def page(case, prev_case, next_case):
     if case.get("secondHero"):
         second = f"""
   <section class="container section--tight">
-    <img class="case-figure" src="{e(case["secondHero"])}" alt="" loading="lazy" decoding="async">
+    <img class="case-figure" src="{e(asset(case["secondHero"]))}" alt="" loading="lazy" decoding="async">
   </section>"""
 
     testimonial = ""
@@ -154,7 +154,7 @@ def page(case, prev_case, next_case):
     flag = '<span class="case-flag">new</span>' if case.get("isNew") else ""
 
     return (
-        head(title, desc, f"https://glossybranding.com/cases/{case['slug']}", case.get("image"))
+        head(title, desc, f"https://glossybranding.com/cases/{case['slug']}", absolute(case.get("image")))
         + nav("cases.html")
         + f"""
 <main id="main">

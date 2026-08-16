@@ -32,6 +32,7 @@ news/<slug>.html               36 generated news detail pages
 
 scripts/export-cms.py          Raw Webflow exports -> data/*.json
 scripts/scrape-sections.py     Recovers Case Sections the MCP cannot reach
+scripts/localize-assets.py     Downloads Webflow media into assets/media/
 scripts/build-cases.py         data/cases.json -> cases/
 scripts/build-news.py          data/news.json  -> news/
 scripts/_shell.py              Shared nav/footer/media markup
@@ -41,6 +42,7 @@ assets/css/style.css           Design system: tokens, layout, components
 assets/js/main.js              Nav, FAQ accordion, CMS rendering
 assets/fonts/                  Rethink Sans (variable, roman + italic)
 assets/img/                    Logo, favicon, partner badges
+assets/media/                  803 case/news/client assets (324 MB), self-hosted
 
 data/cases.json                52 published cases, exported from Webflow CMS
 data/news.json                 36 published news items
@@ -95,12 +97,22 @@ Needs a real HTTP server — the CMS rendering uses `fetch`, which `file://` blo
 python3 -m http.server 8899
 ```
 
+## Assets
+
+All 807 Webflow-hosted files were pulled into `assets/media/` (803 after four
+duplicates — the same asset served from both `uploads-ssl` and `cdn.prod` —
+collapsed). Nothing on the site loads from Webflow any more.
+
+Paths in `data/*.json` are stored repo-relative (`assets/media/x.webp`). Root
+pages use them as-is; `cases/` and `news/` prefix `../` (`asset()` in
+`scripts/_shell.py`, `assetUrl()` in `main.js`).
+
+The 75 Vimeo embeds stay remote — they were never Webflow's.
+
 ## Known gaps
 
 - **`careers.html` is a placeholder.** The live page is password-protected in
   Webflow (HTTP 401), so its copy could not be read.
-- **Case and news images still point at the Webflow CDN.** They render fine today,
-  but they are not self-hosted — localise them before switching Webflow off.
 - **Case Section layout is inferred for the 29 scraped cases.** The Webflow MCP's
   `list_collection_items` ignores `limit`/`offset` and always returns the first
   100 records, while Case Sections has 177 — so 29 cases came back empty and were
@@ -108,6 +120,9 @@ python3 -m http.server 8899
   rendered markup does not expose the CMS Visual Type, so those sections get their
   layout from media count (1 = full, 2 = half, 3+ = third) rather than the real
   Full/Half/Third value. All 52 cases now have sections; 23 use the true CMS layout.
+- **`assets/media/` is 324 MB.** Fine for GitHub (largest file is 4 MB, well
+  under the 100 MB limit) but it makes clones heavy, and these are full-size
+  originals rather than web-optimised derivatives.
 - **Forms have no backend.** Both the contact and newsletter forms post to `#` —
   point them at a form handler.
 - **Only one case carries a testimonial** in the CMS.

@@ -12,7 +12,7 @@ import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from _shell import FOOTER, e, head, media_tag, nav  # noqa: E402
+from _shell import FOOTER, absolute, asset, e, head, media_tag, nav  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "news"
@@ -21,14 +21,14 @@ OUT = ROOT / "news"
 def hero(item):
     video = item.get("video")
     if video and re.match(r"^https?://\S+\.(mp4|webm)(\?|$)", video):
-        poster = f' poster="{e(item["image"])}"' if item.get("image") else ""
+        poster = f' poster="{e(asset(item["image"]))}"' if item.get("image") else ""
         return (
-            f'<video class="case-hero__media" src="{e(video)}"{poster} '
+            f'<video class="case-hero__media" src="{e(asset(video))}"{poster} '
             f"autoplay muted loop playsinline></video>"
         )
     if item.get("image"):
         return (
-            f'<img class="case-hero__media" src="{e(item["image"])}" '
+            f'<img class="case-hero__media" src="{e(asset(item["image"]))}" '
             f'alt="{e(item["name"])}" fetchpriority="high" decoding="async">'
         )
     return ""
@@ -82,7 +82,7 @@ def page(item, prev_item, next_item):
     )
 
     return (
-        head(title, desc, f"https://glossybranding.com/news/{item['slug']}", item.get("image"))
+        head(title, desc, f"https://glossybranding.com/news/{item['slug']}", absolute(item.get("image")))
         + nav("news.html")
         + f"""
 <main id="main">

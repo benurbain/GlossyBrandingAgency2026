@@ -57,6 +57,11 @@ const escapeHtml = (s) =>
 // Links are built relative so the site works under a GitHub Pages subpath too.
 const basePath = () => (/\/(cases|news)\/[^/]*$/.test(location.pathname) ? '../' : '');
 
+// Media in data/*.json is stored repo-relative; Vimeo and other absolute URLs
+// are left alone.
+const assetUrl = (src) =>
+  /^(https?:)?\/\//.test(src || '') ? src : basePath() + (src || '');
+
 async function loadJson(path) {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`${path} → HTTP ${res.status}`);
@@ -67,7 +72,7 @@ function caseCard(item, index) {
   // Mirror the original's rhythm: every third card runs tall/narrow.
   const narrow = index % 3 === 2 ? ' case-card--narrow' : '';
   const img = item.image
-    ? `<img class="case-card__media" src="${escapeHtml(item.image)}"
+    ? `<img class="case-card__media" src="${escapeHtml(assetUrl(item.image))}"
           alt="${escapeHtml(item.name)} — ${escapeHtml(item.baseline || 'case')}"
           loading="lazy" decoding="async">`
     : '';
@@ -85,7 +90,7 @@ function caseCard(item, index) {
 
 function newsCard(item) {
   const img = item.image
-    ? `<img src="${escapeHtml(item.image)}" alt="" loading="lazy" decoding="async">`
+    ? `<img src="${escapeHtml(assetUrl(item.image))}" alt="" loading="lazy" decoding="async">`
     : '';
   return `
     <article class="news-item">
@@ -99,7 +104,7 @@ function newsCard(item) {
 }
 
 function clientCard(item) {
-  const logo = `<img class="client__logo" src="${escapeHtml(item.logo)}"
+  const logo = `<img class="client__logo" src="${escapeHtml(assetUrl(item.logo))}"
       alt="${escapeHtml(item.name)}" loading="lazy" decoding="async">`;
 
   // Roughly a third of the clients have a case behind them; those become links.

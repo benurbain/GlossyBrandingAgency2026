@@ -6,14 +6,14 @@
     "subtitle": "After more than six months on the sidelines, we tested the new model with six painted summer scenes from Ghent.",
     "excerpt": "Midjourney 8.2 is a major step forward. After more than six months of barely using Midjourney, we are adding it back to our creative workflow. Previous versions were fast and visually impressive, but other models had become a better fit for our production needs. With version 8.2,",
     "body": "<p><strong>Midjourney 8.2 is a major step forward.</strong></p><p>After more than six months of barely using Midjourney, we are adding it back to our creative workflow. Previous versions were fast and visually impressive, but other models had become a better fit for our production needs. With version 8.2, that balance has changed again.</p><p><strong>What changed in Midjourney 8.2?</strong></p><p>The official update focuses on aesthetics, image quality and personalisation. Midjourney also states that random low-quality generations should occur much less often and that personalisation profiles should understand individual taste more accurately.</p><p>For a creative workflow, those improvements are more important than simply producing a sharper image. Fewer failed generations mean less rerolling. Better personalisation means a visual direction can be reached faster. More consistent aesthetics make it easier to build a coherent series instead of selecting one isolated result.</p><p><strong>Testing the model with Ghent</strong></p><p>We tested version 8.2 by creating six oil-painting-style scenes of a hot summer day in Ghent. The set includes canal boats, a street performer making soap bubbles, people eating ice cream, a busy terrace, children having a water fight and an improvised rooftop pool.</p><p>The objective was to see whether the model could maintain one visual language across different locations, compositions and groups of people.</p><p>The results were noticeably more consistent than what we experienced with previous Midjourney models. The colour palette, visible paint texture, level of detail and treatment of architecture remain coherent across the complete set. The compositions also required fewer generations before producing something usable.</p><p><strong>From image generation to production</strong></p><p>The selected images were then animated with Seedance 2. This is an important part of the test: generated images rarely remain final images in our workflow. They become source material for motion, design and further post-production.</p><p>Our current process looks like this:</p><p>• Define the visual direction and subject.</p><p>• Generate and explore compositions in Midjourney 8.2.</p><p>• Curate the strongest results and refine the series.</p><p>• Animate selected frames with Seedance 2.</p><p>• Finish the output through editing and post-production.</p><p><strong>Why Midjourney is back</strong></p><p>Midjourney 8.2 is not returning to our workflow simply because it makes more attractive images. It is returning because the output is more consistent, more aligned with a defined visual direction and more useful in the next stages of production.</p><p>After more than six months of leaving the model aside, version 8.2 gives us a good reason to use it again.</p>",
-    "image": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6a69cdac64d18d8518808879_6a69cc30972894625bd4e6ff_midjourney-8-2-ghent-summer-canal-boats.png",
+    "image": "assets/media/6a69cdac64d18d8518808879_6a69cc30972894625bd4e6ff_midjourney-8-2-ghent-summer-canal-boats.png",
     "video": "https://player.vimeo.com/progressive_redirect/playback/1213860693/rendition/720p/file.mp4%20%28720p%29.mp4?loc=external&log_user=0&signature=a2bef773636aa1162b6dfc56bd8652ef42e4257557717fea0618879582721330",
     "gallery": [
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6a69cdac64d18d8518808876_6a69cc71a81357648ac4db25_midjourney-8-2-ghent-summer-bubbles.png",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6a69cdad64d18d8518808889_6a69cc71da36d413f3a8d732_midjourney-8-2-ghent-summer-ice-cream.png",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6a69cdad64d18d8518808886_6a69cc7282b65c392b508933_midjourney-8-2-ghent-summer-terrace.png",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6a69cdad64d18d8518808883_6a69cc724f1a895f188f0044_midjourney-8-2-ghent-summer-water-fight.png",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6a69cdad64d18d8518808880_6a69cc73ffbecc340d3e86f5_midjourney-8-2-ghent-summer-rooftop-pool.png"
+      "assets/media/6a69cdac64d18d8518808876_6a69cc71a81357648ac4db25_midjourney-8-2-ghent-summer-bubbles.png",
+      "assets/media/6a69cdad64d18d8518808889_6a69cc71da36d413f3a8d732_midjourney-8-2-ghent-summer-ice-cream.png",
+      "assets/media/6a69cdad64d18d8518808886_6a69cc7282b65c392b508933_midjourney-8-2-ghent-summer-terrace.png",
+      "assets/media/6a69cdad64d18d8518808883_6a69cc724f1a895f188f0044_midjourney-8-2-ghent-summer-water-fight.png",
+      "assets/media/6a69cdad64d18d8518808880_6a69cc73ffbecc340d3e86f5_midjourney-8-2-ghent-summer-rooftop-pool.png"
     ],
     "videos": [],
     "link": null,
@@ -28,7 +28,7 @@
     "subtitle": "Back On track July 31st 2025",
     "excerpt": "We're taking a break for the summer holidays. Back On track July 31st 2025. Enjoy the summer!",
     "body": "<p id=\"\">We're taking a break for the summer holidays.<br>Back On track July 31st 2025.</p><p id=\"\">Enjoy the summer!</p>",
-    "image": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/687627162c0c954006d5630c_summer_2025.webp",
+    "image": "assets/media/687627162c0c954006d5630c_summer_2025.webp",
     "video": "https://player.vimeo.com/progressive_redirect/playback/1101481197/rendition/1080p/file.mp4?loc=external&log_user=0&signature=87dda95f326335f5b41fe11f23859dde68c3b1fcaaeab7ac2fa0105477d16c3d",
     "gallery": [],
     "videos": [],
@@ -44,10 +44,10 @@
     "subtitle": "Gen Ai is more than just creating beautiful imagery.",
     "excerpt": "We love having ideas, and most of them sit in our “idea drawer.” But for the past two years, the AI wave has grabbed all our energy → in a good way. But for us, Generative Ai is more than making videos or images only, it is a powerful way to finally do what we always wanted to do",
     "body": "<p id=\"\">We love having ideas, and most of them sit in our “idea drawer.” But for the past two years, the AI wave has grabbed all our energy → in a good way. <br>But for us, Generative Ai is more than making videos or images only, it is a powerful way to finally do what we always wanted to do. <br>So we wanted a fast video generator to spin our brand assets into a smooth reel for clients and socials, so we sketched the flow in Figma, teamed up with our accounts on ChatGPT-4o, Claude, and Gemini, and iterated until version 43 (!) finally felt right.<br><br>Our Video Bento Generator was born: a lightweight, fully responsive app built with plain HTML, CSS, and JS. <br>• Drop any image, file, or video, hit Start, and watch the animation roll. <br>• Bento instantly outputs a .webm clip you can convert to MP4 in seconds. <br>• Runs locally, no installs or sign-ups, and feels at home on desktop, tablet, or phone.<br><br>We’re giving it away for free because we believe the future is open source.<br>Try it, remix it, and show us what you’ve built!</p>",
-    "image": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/685918206934e2b35aecf890_thumb%20(18).jpg",
+    "image": "assets/media/685918206934e2b35aecf890_thumb--18-.jpg",
     "video": "https://player.vimeo.com/progressive_redirect/playback/1095527455/rendition/1080p/file.mp4?loc=external&log_user=0&signature=3272837fb7edd1271545024284d50a326615a06bd92d637b2eb109be735ebb14",
     "gallery": [
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/68591bef64480204a8d55dd4_Generator_v01.jpg"
+      "assets/media/68591bef64480204a8d55dd4_Generator_v01.jpg"
     ],
     "videos": [
       "https://player.vimeo.com/progressive_redirect/download/1095529185/container/bb95ee28-8d49-44e0-89ed-ac5c1bf84ca9/0c232395/bento_video_generator_02%20%281080p%29.mp4?expires=1750756114&loc=external&signature=df72ce25ebbd3c549dc9f328134f272d27acbfd64148ff39c8dbb771e59d9f5c&user_id=3194897"
@@ -64,7 +64,7 @@
     "subtitle": "Artificial Intelligence and Generative AI are becoming more personalised and easier to deploy.",
     "excerpt": "Nederlandse versie The Future? Open Source! ‍ Artificial Intelligence en Generative AI zijn niet alleen voor de grote spelers, en ik wil daarbij opmerken dat dat eigenlijk nooit zo is geweest. In de onderbuik van digitale innovaties en ontwikkelingen is de open‑source filosofie a",
     "body": "<p id=\"\">Nederlandse versie</p><h2 id=\"\"><strong id=\"\">The Future? Open Source!<br>‍</strong></h2><p id=\"\">Artificial Intelligence en Generative AI zijn niet alleen voor de grote spelers, en ik wil daarbij opmerken dat dat eigenlijk nooit zo is geweest. In de onderbuik van digitale innovaties en ontwikkelingen is de open‑source filosofie al sinds jaar en dag vanzelfsprekend. Mensen creëren en delen hun kennis via whitepapers en repositories (code snippets, modellen, etc.). Deze onderdelen binnen de community zijn aanpasbaar en dupliceerbaar voor wie dat wil.</p><p id=\"\">De snelle evoluties in het AI‑landschap zijn op dezelfde manier tot stand gekomen: Test, share, listen, adapt, share again…. Deze evolutie is globaal en duizenden mensen – of zelfs meer – zijn dagelijks actief in deze community. Dankzij open‑source projecten kan vrijwel iedereen met enige technische kennis er meestal gratis gebruik van maken (let op de licenties).</p><p id=\"\">Maar de grootste evolutie is dat deze verzameling van data en kleine snippets een gigantisch kluwen vormt waarvan niemand nog echt weet wat er allemaal beschikbaar is en al is gemaakt. Maar raad eens? Elke “uit de kluit gewassen” LLM (die je ook lokaal kunt draaien) kan in deze data zoeken en je de weg wijzen naar wat jij wilt weten of maken.</p><p id=\"\">De nieuwste tools maken het mogelijk om geavanceerde AI op je eigen laptop of zelfs telefoon te draaien, terwijl betaalbare hardware en slimme manieren om je eigen data te integreren, de toegang tot AI steeds sneller vergemakkelijken.</p><p id=\"\"><strong id=\"\">01. AI‑modellen worden steeds kleiner en kleiner</strong></p><p id=\"\">Vandaag zien we dat de LLM’s (Large Language Models, modellen die getraind zijn in menselijke taal om te begrijpen, te genereren en te manipuleren) steeds kleiner worden. Begrijp dit niet verkeerd: de grootste modellen hebben meer dan 1 miljard parameters, maar de vraag is: hebben we dat altijd en overal nodig? De tijden dat je een supercomputer nodig had om grote AI-modellen te draaien, zijn voorbij. De nieuwste (vaak open‑source) modellen zijn zo ontworpen dat ze op alledaagse apparaten kunnen draaien. Zo laten projecten zoals TinyLLM zien dat deze modellen zelfstandig werken zonder dat er enorme rekenkracht nodig is.</p><p id=\"\"><strong id=\"\">02. Kleinere, slimmere modellen = goedkopere hardware</strong></p><p id=\"\">De noodzakelijke hardware, zoals CPU’s en GPU’s, wordt steeds meer betaalbaar. Door de gezonde concurrentie in de markt dalen de prijzen, en zelfs cloudservices, waarmee je online rekenkracht kunt huren, worden steeds betaalbaarder. Dit betekent dat we steeds meer toegang hebben tot de (jawel open‑source) technologie die nodig is om AI‑projecten te bouwen en te draaien. Of je nu onderzoek doet, een startup runt of als tech-liefhebber het nodige op je eigen computer installeert met tools zoals Ollama, je hoeft niet langer te investeren in een dure datacenter infrastructuur.</p><p id=\"\"><strong id=\"\">03. Persoonlijke data = Persoonlijke AI‑agent</strong></p><p id=\"\">Een van de meest opwindende ontwikkelingen in open‑source AI is de mogelijkheid om AI te personaliseren met je eigen informatie. Dit gebeurt met een methode die Retrieval‑Augmented Generation (RAG) wordt genoemd – je kunt het zien als het toevoegen van een persoonlijke bibliotheek aan je workflow. Zo maken tools als RAGFlow het mogelijk om je eigen bestanden en data te koppelen aan een eigen AI‑model. Het resultaat is een slimme assistent die jouw specifieke behoeften begrijpt en relevantere antwoorden geeft. Dankzij deze mate van personalisatie zit je niet vast aan een standaard, dure SaaS‑provider; je kunt er een bouwen die precies doet wat jij nodig hebt.</p><p id=\"\">Er bestaan zelfs AI‑tools die jouw data helpen structureren, labelen en optimaliseren – tools die het monotone handwerk van data‑optimalisatie automatiseren.</p><p id=\"\"><strong id=\"\">Conclusie</strong></p><p id=\"\">Open‑source AI maakt geavanceerde technologie toegankelijk voor iedereen. Met slimmere, kleinere modellen die op alledaagse apparaten draaien, dalende kosten van hardware en de mogelijkheid om AI te personaliseren met je eigen data (ondersteund door document intelligence-modellen die je data nog sneller en nauwkeuriger structureren), is de toekomst open en transparant. Je hoeft geen volbloed tech-expert meer te zijn, en in deze snelle evolutie zou het wel eens kunnen dat we sneller dan gedacht onze eigen systemen kunnen bouwen, trainen en toepassen.</p><h4 id=\"\">Geïnteresseerd in AI consultancy?<br>Mail gerust -&gt; <a id=\"\" href=\"mailto: info@glossy.tv\">info@glossy.tv</a></h4><p id=\"\">‍</p><p id=\"\">English version</p><h2 id=\"\"><strong id=\"\">The Future? Open Source!<br>‍</strong></h2><p id=\"\">Artificial Intelligence and Generative AI aren’t just for the big players—and I’d like to point out that they really never have been. At the heart of digital innovation and development, the open‑source philosophy has always been a given. People create and share their knowledge through whitepapers and repositories (code snippets, models, etc.). These community resources are adaptable and replicable for anyone who wants them.</p><p id=\"\">The rapid evolution in the AI landscape has come about in the same way: test, share, listen, adapt, share again… This evolution is global, with thousands—or even more—of people active in this community every day. Thanks to open‑source projects, almost anyone with a bit of technical know‑how can usually use these tools for free (just be sure to check the licenses).</p><p id=\"\">But the biggest evolution is that this massive collection of data and tiny snippets forms an enormous tangle, and no one really knows what’s out there or what has already been created. But guess what? Every “from-the-mold” LLM (which you can also run locally) can search through this data and point you in the direction of what you want to know or build!</p><p id=\"\">The latest tools make it possible to run advanced AI on your very own laptop—or even your phone—while affordable hardware and clever ways to integrate your own data are making access to AI faster than ever.</p><p id=\"\"><strong id=\"\">01. AI Models Are Getting Smaller and Smaller</strong></p><p id=\"\">Today, we see that LLMs (Large Language Models—models trained to understand, generate, and manipulate human language) are becoming smaller. Don’t get me wrong: the biggest models have more than 1 billion parameters, but the question is, do we always and everywhere need that much? The days when you needed a supercomputer to run large AI models are over. The newest (often open‑source) models are designed to run on everyday devices. Projects like TinyLLM show that these models can work autonomously without requiring enormous computing power.</p><p id=\"\"><strong id=\"\">02. Smaller, Smarter Models = Cheaper Hardware</strong></p><p id=\"\">The necessary hardware, like CPUs and GPUs, is becoming increasingly affordable. With healthy market competition, prices are dropping, and even cloud services—where you rent computing power—are getting more budget‑friendly. This means we have more access to the (yes, open‑source) technology needed to build and run AI projects. Whether you’re doing research, running a startup, or just a tech enthusiast installing tools like Ollama on your own computer, you no longer have to invest in an expensive data center infrastructure.</p><p id=\"\"><strong id=\"\">03. Personal Data = Personal AI Agent</strong></p><p id=\"\">One of the most exciting developments in open‑source AI is the ability to personalize AI with your own information. This is done using a method called Retrieval‑Augmented Generation (RAG)—think of it as adding a personal library to your workflow. Tools like RAGFlow make it possible to connect your own files and data to your own AI model. The result is a smart assistant that understands your specific needs and gives more relevant answers. Thanks to this level of personalization, you’re not stuck with a standard, expensive SaaS provider; you can build a system that does exactly what you need.</p><p id=\"\">There are even AI tools that help structure, label, and optimize your data—automating the monotonous manual work of data optimization.</p><p id=\"\"><strong id=\"\">Conclusion</strong></p><p id=\"\">Open‑source AI makes advanced technology accessible to everyone. With smarter, smaller models that run on everyday devices, dropping hardware costs, and the ability to personalize AI with your own data (supported by document intelligence models that structure your data even faster and more accurately), the future is open and transparent. You no longer have to be a die-hard tech expert, and in this rapid evolution, it might just be that we can build, train, and deploy our own systems faster than we ever imagined.</p><h4 id=\"\">Interested in AI consultancy?<br>Mail us -&gt; <a id=\"\" href=\"mailto: info@glossy.tv\">info@glossy.tv</a></h4>",
-    "image": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/67a8d342de9bee760c8bdb3b_Open%20Source%20copy.webp",
+    "image": "assets/media/67a8d342de9bee760c8bdb3b_Open-Source-copy.webp",
     "video": "https://player.vimeo.com/progressive_redirect/playback/1055154288/rendition/720p/file.mp4?loc=external&log_user=0&signature=fa9ebb33553b55d2f0d3df0cc42326fde8c45ff594befb14f9fbd85a11e9113b",
     "gallery": [],
     "videos": [],
@@ -80,15 +80,15 @@
     "subtitle": "Do you want to learn what Generative AI is, what its applications are, and how you can get started with it? Then this Generative AI masterclass is for you.",
     "excerpt": "Are you a creative director, art director, graphic designer, content creator, marketer, copywriter, or photographer, and do you want to learn what Generative AI is, what its applications are, and how you can get started with it yourself? Then this Generative AI masterclass is for",
     "body": "<p id=\"\">Are you a creative director, art director, graphic designer, content creator, marketer, copywriter, or photographer, and do you want to learn what Generative AI is, what its applications are, and how you can get started with it yourself? Then this Generative AI masterclass is for you.<br><br></p><p id=\"\">In the first sessions, we dive into the fundamental knowledge of what AI actually is, and we explain how neural networks work in an understandable way. You’ll receive up-to-date examples of AI usage, both in societal and business contexts. We’ll also address the ethical, legal, and environmental impacts of AI, giving you a holistic perspective on this rapidly evolving technology.</p><p id=\"\">Next, we focus on generative AI in practice. You’ll learn how AI is used to generate content and discover the steps that lead to creating custom visual and textual output.</p><p id=\"\">In the final sessions, we take it a step further: we introduce several advanced techniques in image generation using models like Stable Diffusion. Think of the visual interface ComfyUI, setting up image generation workflows, and leveraging techniques such as ControlNet, Image-To-Image, and LoRA to produce unique content. Whether you want to refine an existing image or incorporate your own styles and concepts, after this masterclass you’ll have a range of tools at your disposal to use AI the way you want.</p><p id=\"\">‍</p><p id=\"\"><strong id=\"\">Session 01<br>AI Fundamentals</strong><br>Tuesday March 11th - 2025 18:30-21:30</p><p id=\"\"><strong id=\"\">Session 02<br>Generative AI in Business</strong><br>Tuesday March 18th - 2025 18:30-21:30</p><p id=\"\"><strong id=\"\">Session 03<br>Models &amp; Image Generation</strong><br>Tuesday March 25th - 2025 18:30-21:30</p><p id=\"\"><strong id=\"\">Session 04<br>Advanced image Generation</strong>‍<br>Tuesday April 1st - 2025 18:30-21:30<br>‍<br><br></p><p id=\"\">Image 01 generated by the V6.1 Model by Midjourney</p><p id=\"\">Image 02 generated by the Flux 1.1 Model by Black Forest Labs</p><p id=\"\">Image 03 generated by the Ideogram 2.0 Model by Ideogram</p><p id=\"\">Image 04 Generated by the Flux 1.1 Pro Model by Black Forest Labs</p><p id=\"\">Image 05 Generated by the Flux 1.1 Pro Ultra Model by Black Forest Labs</p><p id=\"\">Image 06 Generated by the Stable Diffusion 3.5 Large Model</p><p id=\"\">‍</p><p id=\"\">‍</p>",
-    "image": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/67641037db92139fe8b084ab_thumb%20(4).jpg",
+    "image": "assets/media/67641037db92139fe8b084ab_thumb--4-.jpg",
     "video": "https://player.vimeo.com/progressive_redirect/playback/1048928524/rendition/1080p/file.mp4?loc=external&log_user=0&signature=03fbb3cf1648a5c341134a7c1c9aae514f5d1b12215cedbf3a36d5a5fa102d3a",
     "gallery": [
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/676429653aef3d820be2a57a_0_0-8.jpg",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/676426d54a1ce4ad68125896_img-57.webp",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/67642751c03047d625690992_img-58.webp",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/676425ef5b32b429de255a45_img-55.webp",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/676426ab3c541977b7cabba2_img-56.webp",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/67642ba32f6f3772a0afcd42_kggkgkghlhlhhl.png"
+      "assets/media/676429653aef3d820be2a57a_0_0-8.jpg",
+      "assets/media/676426d54a1ce4ad68125896_img-57.webp",
+      "assets/media/67642751c03047d625690992_img-58.webp",
+      "assets/media/676425ef5b32b429de255a45_img-55.webp",
+      "assets/media/676426ab3c541977b7cabba2_img-56.webp",
+      "assets/media/67642ba32f6f3772a0afcd42_kggkgkghlhlhhl.png"
     ],
     "videos": [],
     "link": "https://events.arteveldehogeschool.be/Details/9098",
@@ -103,7 +103,7 @@
     "subtitle": "Exploring Generative SaaS Models, LLMs, and the Future of Creative Innovation",
     "excerpt": "On November 28th 2024, Ben Urbain, creative lead at Glossy Branding Agency, will present his first talk at the School of Branding, delving into the intersection of AI and creativity. The session will explore the capabilities of Generative SaaS Models and Large Language Models (LL",
     "body": "<p id=\"\">On November 28th 2024, Ben Urbain, creative lead at Glossy Branding Agency, will present his first talk at the School of Branding, delving into the intersection of AI and creativity. The session will explore the capabilities of Generative SaaS Models and Large Language Models (LLMs) and what they can—and can’t—achieve in the realm of branding and design.</p><p id=\"\">Ben will take a practical approach to highlight the potential of these technologies while addressing the pitfalls and challenges that come with integrating AI into creative processes. The talk will provide actionable insights into navigating these obstacles, offering real-world solutions and exploring innovative possibilities that AI can unlock.</p><p id=\"\">Whether you're curious about the future of AI in branding or looking to understand its practical applications, this talk is designed to spark new perspectives and conversations.</p><p>‍</p>",
-    "image": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/673b4d3398b8e29ecc54ddd2_thumb%20(3).jpeg",
+    "image": "assets/media/673b4d3398b8e29ecc54ddd2_thumb--3-.jpeg",
     "video": "https://player.vimeo.com/progressive_redirect/playback/1030759342/rendition/1080p/file.mp4?loc=external&log_user=0&signature=30b338a2461c3408d29fd0634987b36017de619e26718551c3aaea07c45dab00",
     "gallery": [],
     "videos": [],
@@ -119,7 +119,7 @@
     "subtitle": "Glossy Branding Agency Joins the 2024-2025 School of Branding Cycle (Again)",
     "excerpt": "We’re excited to announce that Glossy Branding Agency will be a proud participant in the upcoming 2024-2025 School of Branding Year ! For those passionate about graphic design and branding, the School of Branding is the perfect place to learn the ins and outs of the industry, fro",
     "body": "<p id=\"\">We’re excited to announce that Glossy Branding Agency will be a proud participant in the upcoming <strong id=\"\">2024-2025 School of Branding Year</strong>! For those passionate about graphic design and branding, the School of Branding is the perfect place to learn the ins and outs of the industry, from strategic thinking to visual design—and even how to launch your own brand.<br></p><p id=\"\">This prestigious program brings together the best in the business to share their expertise, and we’re honored to join an incredible lineup of industry leaders, including Base Design, Skinn, WeWantMore, and many others. At Glossy Branding Agency, we’re committed to shaping the next generation of branding experts, and we’re thrilled to be part of this initiative.<br></p><p id=\"\">Through hands-on workshops, expert insights, and real-world projects, students will get the chance to learn from the best. Whether it’s building a brand from scratch or mastering the latest design trends, the School of Branding offers the tools and inspiration to turn creative passion into professional success.<br></p><p id=\"\">Stay tuned as we share our experience and insights throughout the School of Branding year—because we believe in investing in the future of branding, one designer at a time.</p><p>‍</p>",
-    "image": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/66f2b70bb23cb0894ae81ca6_fallback.jpg",
+    "image": "assets/media/66f2b70bb23cb0894ae81ca6_fallback.jpg",
     "video": "https://player.vimeo.com/progressive_redirect/playback/1012386295/rendition/720p/file.mp4?loc=external&log_user=0&signature=36d54523f1f70c05c0dcb7f11ed2dfd87184052e9801323f75f795ad90d49f84",
     "gallery": [],
     "videos": [],
@@ -135,13 +135,13 @@
     "subtitle": "Unveiling the Future of Creativity: Glossy Branding Agency Co-Founds Prompt Up The Jam™",
     "excerpt": "At Glossy Branding Agency, we’re always looking for ways to push the boundaries of design and technology. That’s why we’re excited to announce our role as one of the founding partners of Prompt Up The Jam™ , an innovative event where AI meets creativity. Together with a team of v",
     "body": "<p id=\"\">At Glossy Branding Agency, we’re always looking for ways to push the boundaries of design and technology. That’s why we’re excited to announce our role as one of the founding partners of <strong id=\"\">Prompt Up The Jam™</strong>, an innovative event where AI meets creativity.</p><p id=\"\">Together with a team of visionary creatives, we’ve developed this live competition where four teams have just one hour to create stunning visuals using advanced AI tools. The event showcases not only the potential of AI in design but also how technology can elevate the creative process in unexpected ways. And the best part? The live audience plays an active role in determining the winning creations.</p><p id=\"\"><strong>Prompt Up The Jam™</strong> isn’t just about competition—it’s about exploring the intersection of art and technology, pushing the limits of what AI can do, and sparking conversations about the future of creativity. With experts from the worlds of design, ethics, and technology on hand, the event promises to be a thought-provoking and inspiring experience.</p><p id=\"\">As co-founders, we at Glossy Branding Agency are proud to be at the forefront of this movement, championing AI as a tool that can enhance, not replace, human creativity.</p><p id=\"\">Stay tuned for more updates and insights from the event—and don’t miss out on the chance to experience the future of design firsthand!</p><p id=\"\">‍</p>",
-    "image": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/66f2a5fe3453b5567070bc29_PUTJ_16_9.jpg",
+    "image": "assets/media/66f2a5fe3453b5567070bc29_PUTJ_16_9.jpg",
     "video": "https://player.vimeo.com/progressive_redirect/playback/1010955196/rendition/1080p/file.mp4?loc=external&log_user=0&signature=2b63e9f63010178a9482fbc3ff2833381256a0ebb723de1ac10d57fa435756c8",
     "gallery": [
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/66eacc0998c6a7dc75f1fe3e_berlinde.webp",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/66eacb29bf892ec1d4c909fd_Erin%20Armstrong.webp",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/66eac86b0cc7d3d8f27d4f74_1280x720.jpg",
-      "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/66eaca715721d9b2e7683c42_MichaelBorremans.webp"
+      "assets/media/66eacc0998c6a7dc75f1fe3e_berlinde.webp",
+      "assets/media/66eacb29bf892ec1d4c909fd_Erin-Armstrong.webp",
+      "assets/media/66eac86b0cc7d3d8f27d4f74_1280x720.jpg",
+      "assets/media/66eaca715721d9b2e7683c42_MichaelBorremans.webp"
     ],
     "videos": [],
     "link": "https://www.promptupthejam.be/",
@@ -156,11 +156,11 @@
     "subtitle": "A strategic redesign of the brand to better reflect its evolving services. Crafting meaningful fan experiences.",
     "excerpt": "Meet Fanfinity, the new face of what was once tournamentcenter. In collaboration with the Fanfinity crew, we have executed a complete rebranding, transforming the organisation into a fan-focused agency. Fanfinity is dedicated to create meaningful fan experiences for game publishe",
     "body": "<p id=\"\">Meet Fanfinity, the new face of what was once tournamentcenter. In collaboration with the Fanfinity crew, we have executed a complete rebranding, transforming the organisation into a fan-focused agency. Fanfinity is dedicated to create meaningful fan experiences for game publishers and brands looking to establish lasting bonds with gaming communities.</p><p id=\"\">Fanfinity's team of experts has a deep passion for gaming culture and communities. With their tailored approach, they aim to share their excitement to create meaningful and lasting bonds between gaming communities and their clients.</p><p id=\"\">We have introduced a completely new brand architecture inspired by trading card games, alongside vibrant colours and a friendly font that reflects the spirit of the brand. An identity that fits their new community focused strategy.</p><p id=\"\">Stay tuned for the full case study, coming soon!</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6617b09798346e2176911937_6606dc57963d82394278a5a5___FOR%20STILL_00000.webp",
+    "image": "assets/media/6617b09798346e2176911937_6606dc57963d82394278a5a5___FOR-STILL_00000.webp",
     "video": "https://player.vimeo.com/progressive_redirect/playback/928795182/rendition/1080p/file.mp4?loc=external&log_user=0&signature=9a4375a85b3ecc67bb5c886d175739097acb601f985e54a8b3f163aeb752c762",
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6606942ac35a283dfbd51d35_20240323%2020242503%20FTI%20-%20Fanfinity%20-%20HR-134.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6606c69c9a4e98b1e13fe38b_FF_mockup_purple.jpg"
+      "assets/media/6606942ac35a283dfbd51d35_20240323-20242503-FTI---Fanfinity---HR-134.jpg",
+      "assets/media/6606c69c9a4e98b1e13fe38b_FF_mockup_purple.jpg"
     ],
     "videos": [],
     "link": "http://www.fanfinity.agency",
@@ -175,7 +175,7 @@
     "subtitle": "This year, we are thrilled to welcome two interns to Glossy Branding Agency.",
     "excerpt": "Sarah, a new talent from School of Branding, will strengthen our team as an intern Brand designer. Meanwhile, Armani, from Artevelde University of Applied Sciences, will join our team as a Graphic design intern specialising in motion design. Together, they will bring an amount of",
     "body": "<p id=\"\">Sarah, a new talent from School of Branding, will strengthen our team as an intern Brand designer. Meanwhile, Armani, from Artevelde University of Applied Sciences, will join our team as a Graphic design intern specialising in motion design.</p><p id=\"\">Together, they will bring an amount of creativity and fresh perspectives to our projects.</p><p id=\"\">We wish you both an inspiring internship filled with new experiences!<br></p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/66056d4ed7e7d8ac92db90b7_Glossy_post-intern.jpg",
+    "image": "assets/media/66056d4ed7e7d8ac92db90b7_Glossy_post-intern.jpg",
     "video": null,
     "gallery": [],
     "videos": [],
@@ -191,11 +191,11 @@
     "subtitle": "A new identity, menus and a revamped website",
     "excerpt": "We are delighted to unveil the complete rebranding of Histoires d'O, the charming seaside restaurant in Ostend. With a brand new identity, revamped menus and an updated website, Histoires d'O is ready to strengthen its position as the destination for delicious apéros and creative",
     "body": "<p id=\"\">We are delighted to unveil the complete rebranding of Histoires d'O, the charming seaside restaurant in Ostend. With a brand new identity, revamped menus and an updated website, Histoires d'O is ready to strengthen its position as the destination for delicious apéros and creative cuisine.</p><p id=\"\">With a new colour combination straight from the golden hour on their terrace, we went to work to give the brand a warm and contemporary look. We also created exclusive posters of Ostend for the first visitors, to give them a memento of their visit.</p><p id=\"\">Discover the new face of seaside indulgence!</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/655cbd37f215931034a8f691_HDO_1920X1080.jpg",
+    "image": "assets/media/655cbd37f215931034a8f691_HDO_1920X1080.jpg",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/655cbd44643e819372c7788e_HDO_SOCIAL_1.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/655cbd48f00f5d0c48af0708_HDO_SOCIAL_3.jpg"
+      "assets/media/655cbd44643e819372c7788e_HDO_SOCIAL_1.jpg",
+      "assets/media/655cbd48f00f5d0c48af0708_HDO_SOCIAL_3.jpg"
     ],
     "videos": [],
     "link": "https://www.histoiresdo.be/",
@@ -210,11 +210,11 @@
     "subtitle": "Returning to the roots of music festivals",
     "excerpt": "We are excited to be working for Live is Live - an Antwerp city music festival. Together with the FKP Scorpio team, we worked on a new brand strategy. We also updated the current art direction to bring the brand vividly to life. Experience the magic of Live is Live, a three-day m",
     "body": "<p id=\"\">We are excited to be working for Live is Live - an Antwerp city music festival. Together with the FKP Scorpio team, we worked on a new brand strategy. We also updated the current art direction to bring the brand vividly to life.</p><p id=\"\">Experience the magic of Live is Live, a three-day music festival in Middenvijverpark, Linkeroever, Antwerp. Immerse yourself in good vibes, good times, and world-class performances. Start your summer with an authentic lineup, friends, and a laid-back festival atmosphere. Enjoy legendary acts and ultimate comfort for a unique, carefree total experience.</p><p id=\"\">Rediscover the original festival vibe and let’s go back to the festival experience without all the extra fuss.</p><p id=\"\">Live is Live is on a mission to redefine the festival experience for music lovers who are looking for added value. They are all about delivering an exceptional journey where the visitors and the music are at the centre. With a relentless focus on hassle-free enjoyment, comfort and attention to detail, Live is Live wants to return to the roots of music festivals.</p><p id=\"\">The new website has been launched, stay tuned for the full line-up!</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6545099055e3aa8722f32154_Screenshot-2023-11-03-at-15.53.18.webp",
+    "image": "assets/media/6545099055e3aa8722f32154_Screenshot-2023-11-03-at-15.53.18.webp",
     "video": "https://player.vimeo.com/progressive_redirect/playback/880910398/rendition/1080p/file.mp4?loc=external&log_user=0&signature=8ae7afb65afc94e525daa73c8a90ad9e18782395f0368550249e3332c6e6e97e",
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/65450a15efc4853ab275778a_LIL_BRANDING_Template_Square_1080x1080.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/65450a2e8427165ec7b725b7_LIL_AVATAR_Template_Square_1080x10807.jpg"
+      "assets/media/65450a15efc4853ab275778a_LIL_BRANDING_Template_Square_1080x1080.jpg",
+      "assets/media/65450a2e8427165ec7b725b7_LIL_AVATAR_Template_Square_1080x10807.jpg"
     ],
     "videos": [],
     "link": "https://www.liveislive.be/",
@@ -229,11 +229,11 @@
     "subtitle": "Crafting a new Haircare Brand with Love and Care",
     "excerpt": "Two years ago, we teamed up with Hairco to introduce \"Tanx\" to the world. A brand through which Hairco successfully wants to drive the creative growth of haircare professionals. Tanx consists of a comprehensive line of haircare products, meticulously developed to cater to the nee",
     "body": "<p id=\"\">Two years ago, we teamed up with Hairco to introduce \"Tanx\" to the world. A brand through which Hairco successfully wants to drive the creative growth of haircare professionals.</p><p id=\"\">Tanx consists of a comprehensive line of haircare products, meticulously developed to cater to the needs of hairstylists and their customers. We took on the responsibility of shaping the brand strategy, crafting its unique identity, and designing the packaging that encapsulates the essence of Tanx.</p><p id=\"\">Tanx is like that loyal friend who always has your back, but for your hair. Our branding efforts have been deliberately tailored to convey the essence of Tanx as a brand that cares. We've harnessed a soothing color palette of soft earth tones and incorporated a unique design element, the Tanx terrazzo, as a unifying visual motif. We've kept our communication simple, relying on minimalistic typography and imagery to convey the underlying sense of care and beauty.</p><p id=\"\">To showcase the Tanx product line, we used the power of 3D rendering. This also allows the Tanx team to easily create new product images without the hassle of printing them every time.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6541061ed2604ff8a218b42d_Screenshot-2023-10-31-at-14.49.25.webp",
+    "image": "assets/media/6541061ed2604ff8a218b42d_Screenshot-2023-10-31-at-14.49.25.webp",
     "video": "https://player.vimeo.com/progressive_redirect/playback/879793175/rendition/1080p/file.mp4?loc=external&log_user=0&signature=ebb3b3db2d3e754665f1ea515f0ab36ae649263ea19b77c741af6bed72efb839",
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/654106c92a3530ee45b8a472_TANX_02.webp",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/654106d08da72696189aff5b_TANX_05.webp"
+      "assets/media/654106c92a3530ee45b8a472_TANX_02.webp",
+      "assets/media/654106d08da72696189aff5b_TANX_05.webp"
     ],
     "videos": [],
     "link": "https://www.hairco.com/nl/merken/tanx",
@@ -248,7 +248,7 @@
     "subtitle": "Online Identity for Febelhair",
     "excerpt": "In collaboration with the Belgian Hairdressers Federation, Febelhair, Glossy Branding Agency proudly presents a revamped online identity. We've crafted a future-proof portal website aimed at guiding and informing professional hairdressers across Belgium. The goal was clear: to eq",
     "body": "<p id=\"\">In collaboration with the Belgian Hairdressers Federation, Febelhair, Glossy Branding Agency proudly presents a revamped online identity. We've crafted a future-proof portal website aimed at guiding and informing professional hairdressers across Belgium.</p><p id=\"\">The goal was clear: to equip Febelhair for the future with a modern UX design and a soft, inviting color palette. These changes ensure that users can effortlessly navigate the content-rich website, making it a valuable resource for Belgian hairdressers.</p><p id=\"\">But our commitment to Febelhair didn't stop there. We really enjoyed to capture the essence of the Febelhair office and team, infusing the website with a personal touch to make the website more welcoming to new members.&nbsp;</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/65144bd043e8a755d087b3ba_GBA_Febelhair_1920x1080-2.jpg",
+    "image": "assets/media/65144bd043e8a755d087b3ba_GBA_Febelhair_1920x1080-2.jpg",
     "video": null,
     "gallery": [],
     "videos": [],
@@ -264,7 +264,7 @@
     "subtitle": "We are ready to guide you in integrating AI into your branding journey",
     "excerpt": "Artificial intelligence is changing industries at an unprecedented pace and at Glossy Branding Agency, we are at the forefront of this transformative wave. Over the past few months, we have focused on mastering the fine details of AI technology, not as a copywriting tool, but as ",
     "body": "<p id=\"\">Artificial intelligence is changing industries at an unprecedented pace and at Glossy Branding Agency, we are at the forefront of this transformative wave.</p><p id=\"\">Over the past few months, we have focused on mastering the fine details of AI technology, not as a copywriting tool, but as a dynamic visual tool capable of delivering fast and truly inspiring results for our clients. As emerging Prompt Engineers, we are ready to guide you in integrating AI into your brand communication.</p><p id=\"\">Are you intrigued by the possibilities of AI in your brand experience? At Glossy Branding Agency, we are your trusted partners on this exciting journey.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/650314b61aacd7ab1e96cedf_inflatable-totalitarianism-8.webp",
+    "image": "assets/media/650314b61aacd7ab1e96cedf_inflatable-totalitarianism-8.webp",
     "video": null,
     "gallery": [],
     "videos": [],
@@ -280,11 +280,11 @@
     "subtitle": "Brand strategy for the most iconic Art-deco hotel in the heart of Ostend",
     "excerpt": "We are delighted to finally share our collaboration with the iconic Hotel Du Parc in Ostend. Together with Shannah Zeebroek, Nicolas Linden and Ruth Vanden Berghe, we have redefined the essence of this historic art deco gem. Welcome to Hotel Du Parc, one of the most iconic places",
     "body": "<p id=\"\">We are delighted to finally share our collaboration with the iconic Hotel Du Parc in Ostend. Together with Shannah Zeebroek, Nicolas Linden and Ruth Vanden Berghe, we have redefined the essence of this historic art deco gem.</p><p id=\"\">Welcome to Hotel Du Parc, one of the most iconic places in Ostend since 1929. Our mission was clear: capture the hotel's rich heritage and translate it into a brand strategy that promises an unforgettable experience.</p><p id=\"\">From stylish rooms to culinary delights, Hotel Du Parc excites the senses. Whether enjoying a gourmet lunch or an aperitif, you are just steps away from the beautiful coastline.</p><p id=\"\">Our collaboration highlights Hotel Du Parc's iconic heritage while giving it a contemporary vitality. It remains a symbol of sophistication, where guests can escape the ordinary and embrace the extraordinary.</p><p id=\"\">Experience the blend of history, art and modern elegance at Hotel Du Parc, a coastal treasure since 1929. We enjoyed a delicious lunch on the terrace, and we must admit, it is more than worth it!</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/65004cf91ec989771475d183_FullSizeRender%205.jpeg",
+    "image": "assets/media/65004cf91ec989771475d183_FullSizeRender-5.jpeg",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/65004d0f7c5d8668c4c029f3_kim_vanbesien_fotografie-39.jpeg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/65004f92d101e433e25547e6_IMG_8390-preview.JPG"
+      "assets/media/65004d0f7c5d8668c4c029f3_kim_vanbesien_fotografie-39.jpeg",
+      "assets/media/65004f92d101e433e25547e6_IMG_8390-preview.JPG"
     ],
     "videos": [],
     "link": null,
@@ -299,11 +299,11 @@
     "subtitle": "Driving innovation and growth in the technology sector",
     "excerpt": "We are excited to announce that our client Miles Ahead has successfully raised €20 million in funding for startups in Deep Tech and AI sectors. The total sum can still reach up to €30 million. Miles Ahead is a Venture Studio helping first-time founders of Deep Tech & AI startups ",
     "body": "<p id=\"\">We are excited to announce that our client Miles Ahead has successfully raised €20 million in funding for startups in Deep Tech and AI sectors. The total sum can still reach up to €30 million.</p><p id=\"\">Miles Ahead is a Venture Studio helping first-time founders of Deep Tech &amp; AI startups grow faster by producing and funding their business within an empowering environment. The venture studio has reached this important milestone, proving its commitment to driving innovation and growth in the AI industry.</p><p id=\"\">Their dedicated fund, Miles Ahead Capital, backed by private investors and strategic partners, is poised to drive the development of promising startups in the field of artificial intelligence and deep tech.</p><p id=\"\">This substantial investment will pave the way for exciting opportunities in these dynamic sectors and we look forward to witnessing the transformative impact Miles Ahead will have on the future of technology.</p><p id=\"\">We would like to thank the Miles Ahead team for trusting Glossy Branding Agency to craft their brand strategy, brand identity &amp; brand experiences.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64ef543c65868315e548ab7c_MA_Press_1920x1080.jpg",
+    "image": "assets/media/64ef543c65868315e548ab7c_MA_Press_1920x1080.jpg",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6437d9236cf4fe4180f62108_MA_2160x2160_07.webp",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6437d92cc0a2d75e257e1e57_MA_2160x2160_08.webp"
+      "assets/media/6437d9236cf4fe4180f62108_MA_2160x2160_07.webp",
+      "assets/media/6437d92cc0a2d75e257e1e57_MA_2160x2160_08.webp"
     ],
     "videos": [],
     "link": "https://www.milesahead.ai/",
@@ -318,11 +318,11 @@
     "subtitle": "You Never Woke Alone at Kamping Kitsch Club",
     "excerpt": "If you haven't yet experienced the wild energy of Kamping Kitsch Club, you're in for something! Prepare to dive into the craziness of Europe's greatest dress-up festival. With our profound strategy and creative art direction, we have transformed Kamping Kitsch Club into an unpara",
     "body": "<p id=\"\">If you haven't yet experienced the wild energy of Kamping Kitsch Club, you're in for something! Prepare to dive into the craziness of Europe's greatest dress-up festival. With our profound strategy and creative art direction, we have transformed Kamping Kitsch Club into an unparalleled experience about to welcome as many as 25,000 festival-goers!</p><p id=\"\">It's time to mark your calendar for a Saturday like no other. On 19 August, the Langemunte in Kortrijk will be flipped upside down when Kamping Kitsch Club takes over.</p><p id=\"\">Thanks to our dedicated efforts, Kamping Kitsch Club has become more than an event; it's a lifestyle. Our in-depth strategy and creative art direction have taken this festival to new heights, ensuring that every visitor walks away with memories for life.</p><p id=\"\">Get ready to lose yourself in the whirlwind of Kamping Kitsch Club. Bring your craziest outfit &amp; your wildest spirit. Let's make the place go wild, and let's do it together.</p><p id=\"\">Join us on 19 August at Langemunte Kortrijk for Kamping Kitsch Club 2023. See you there?</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64dca1b7fec90a680e35c0a7_KKC23_social_v02_eventheader.jpg",
+    "image": "assets/media/64dca1b7fec90a680e35c0a7_KKC23_social_v02_eventheader.jpg",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64dca2a16f35a1fa4dfe960f_220820-KKC2022-TuurDhooge-15.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64dca2ae63b3e08fbdb78616_220820-KKC2022-TuurDhooge-41.jpg"
+      "assets/media/64dca2a16f35a1fa4dfe960f_220820-KKC2022-TuurDhooge-15.jpg",
+      "assets/media/64dca2ae63b3e08fbdb78616_220820-KKC2022-TuurDhooge-41.jpg"
     ],
     "videos": [],
     "link": "http://www.kampingkitschclub.be",
@@ -337,7 +337,7 @@
     "subtitle": "Stay Connected with Hybrid Blue",
     "excerpt": "We are thrilled to announce the launch of Hybrid Blue, the game-changing active suit with smart features tailored for all occasions. This innovative suit is weatherproof, wrinkleproof, and washproof, offering unmatched convenience and durability. Hybrid Blue is dedicated to suppo",
     "body": "<p id=\"\">We are thrilled to announce the launch of Hybrid Blue, the game-changing active suit with smart features tailored for all occasions. This innovative suit is weatherproof, wrinkleproof, and washproof, offering unmatched convenience and durability.</p><p id=\"\">Hybrid Blue is dedicated to supporting the urban commuter by seamlessly blending tailored sportswear and activewear. Their mission is to create products that are not only comfortable and easy-care, but also to disrupt the traditional suit industry through innovation in fabrics. Their fashionable designs are specifically crafted to benefit the modern urban resident, revolutionising the suit lifestyle.</p><p>Together with the Hybrid Blue team we created the brand strategy &amp; art direction for the innovative brand.</p><p id=\"\">Stay tuned as we prepare to unveil the case study.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64abdbc7480a17e27cf464b8_Hybrid_Blue.webp",
+    "image": "assets/media/64abdbc7480a17e27cf464b8_Hybrid_Blue.webp",
     "video": "https://player.vimeo.com/progressive_redirect/playback/843827342/rendition/1080p/file.mp4?loc=external&signature=61527355294add6057e66e2dd5677bed15fb10f841cd8b94c1a57569aa98025a",
     "gallery": [],
     "videos": [],
@@ -353,7 +353,7 @@
     "subtitle": "Dive into the World of Culinary Excellence by Seastorm",
     "excerpt": "We are excited to announce our branding work for Seastorm, a prominent food company specializing in exceptional (sea)food dishes, located just 200 meters away from the Oostende shoreline. It was our honor to handle their branding and visual identity. Stay tuned as we prepare to u",
     "body": "<p>We are excited to announce our branding work for Seastorm, a prominent food company specializing in exceptional (sea)food dishes, located just 200 meters away from the Oostende shoreline. It was our honor to handle their branding and visual identity.</p><p id=\"\">Stay tuned as we prepare to unveil the case study!</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/647df1b9b5ec82777b174acd_ezgif.com-optimize%20(1).gif",
+    "image": "assets/media/647df1b9b5ec82777b174acd_ezgif.com-optimize--1-.gif",
     "video": null,
     "gallery": [],
     "videos": [],
@@ -369,7 +369,7 @@
     "subtitle": "Transforming the Identity of a Dedicated People Agency",
     "excerpt": "In a collaborative effort with the MaisonRouge team, we executed a comprehensive rebranding project. MaisonRouge, a people agency specializing in providing trained and hardworking students for catering and event assignments, underwent a transformative journey with our assistance.",
     "body": "<p id=\"\">In a collaborative effort with the MaisonRouge team, we executed a comprehensive rebranding project. MaisonRouge, a people agency specializing in providing trained and hardworking students for catering and event assignments, underwent a transformative journey with our assistance.</p><p id=\"\">Stay tuned as we prepare to unveil the full case study, showcasing the results of this rebranding endeavor. </p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/647de37e216797e556d8cd1f_MAISON%20ROUGE-JUNI%2022_%C2%A9JORN%20URBAIN-97.webp",
+    "image": "assets/media/647de37e216797e556d8cd1f_MAISON-ROUGE-JUNI-22_-JORN-URBAIN-97.webp",
     "video": null,
     "gallery": [],
     "videos": [],
@@ -385,7 +385,7 @@
     "subtitle": "An Unforgettable Co-Creation Platform and Networking Event",
     "excerpt": "For the fifth consecutive year, Night Shift is bringing together entrepreneurs in Belgium for a unique approach to doing business. Through their transformative magic, multiple locations in Belgium are turned into vibrant co-creation platforms. This event seamlessly blends start-u",
     "body": "<p id=\"\">For the fifth consecutive year, Night Shift is bringing together entrepreneurs in Belgium for a unique approach to doing business. Through their transformative magic, multiple locations in Belgium are turned into vibrant co-creation platforms. This event seamlessly blends start-ups and established businesses, both local and international, while adding a touch of excitement with a central dance floor.</p><p id=\"\">What sets them apart is their commitment to mixing business with pleasure. Indulge your senses with delectable local catering and enjoy a refreshing drink at one of our many bars. </p><p id=\"\">Join us this Saturday at Night Shift, where we expertly blend business with pleasure. And don't miss the opportunity to be inspired by our creative director, Ben Urbain, as he delivers an insightful talk on branding. Catch the man, the legend, the voice live at 21:00h sharp! #brandbrand</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64244bd84cdf1b219bc16575_nightshift2017_08.webp",
+    "image": "assets/media/64244bd84cdf1b219bc16575_nightshift2017_08.webp",
     "video": null,
     "gallery": [],
     "videos": [],
@@ -401,11 +401,11 @@
     "subtitle": "An Evening of Insights and Inspiration",
     "excerpt": "Our founder Ben Urbain had the honor of being one of the  speakers at Let's Talk Design, organized by the Creative Network, held on June 20th. This captivating evening featured a lineup of four exceptional speakers, including Bart Lommelen, Squarefish, and Louise Rosenkrands from",
     "body": "<p id=\"\">Our founder Ben Urbain had the honor of being one of the &nbsp;speakers at Let's Talk Design, organized by the Creative Network, held on June 20th.</p><p id=\"\">This captivating evening featured a lineup of four exceptional speakers, including Bart Lommelen, Squarefish, and Louise Rosenkrands from Denmark.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479f7eb3c2d48676d1c4de4_65103433_2117468611698542_6308564078805647360_n.jpeg",
+    "image": "assets/media/6479f7eb3c2d48676d1c4de4_65103433_2117468611698542_6308564078805647360_n.jpeg",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479f7e5df57efce7ba415bd_64613897_2117468645031872_728343874065399808_n.jpeg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479f7d885b275c85b313f42_64616582_2117467808365289_2781093741950140416_n.jpeg"
+      "assets/media/6479f7e5df57efce7ba415bd_64613897_2117468645031872_728343874065399808_n.jpeg",
+      "assets/media/6479f7d885b275c85b313f42_64616582_2117467808365289_2781093741950140416_n.jpeg"
     ],
     "videos": [],
     "link": "https://creative-network.org/",
@@ -420,13 +420,13 @@
     "subtitle": "We took charge of the art direction, design, and website development for De Verloren Kost",
     "excerpt": "De Verloren Kost is a new society located at the Coupure in Ghent. This society is a haven for creative individuals seeking an inspiring work environment and an opportunity to actively contribute to our agenda. Members of De Verloren Kost have access to a space that combines work",
     "body": "<p id=\"\">De Verloren Kost is a new society located at the Coupure in Ghent. This society is a haven for creative individuals seeking an inspiring work environment and an opportunity to actively contribute to our agenda.</p><p id=\"\">Members of De Verloren Kost have access to a space that combines work and pleasure, while also playing an active role in shaping our events. </p><p id=\"\">On the ground floor, several flexible spaces are available for work and meetings. The founders believe that surrounding oneself with beautiful things enhances the work experience. That's why interior architect Caroline De Wolf (Casa Argentaurum) designed De Verloren Kost, showcasing a rotating collection of art objects on a permanent basis.</p><p id=\"\">In the sous-terrain, members can unwind in the lounge and bar area, which also serves as the backdrop for most of our delightful activities.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/647db4c1d7799125e9d3141a_Coupure-030.webp",
+    "image": "assets/media/647db4c1d7799125e9d3141a_Coupure-030.webp",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479f1472fd620df1ef1570e_01.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479f1590a8a2d1ae729fc3b_03.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479f160f3aef28a9a4e1f3d_04.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479f1543af9d8d7d81de2c3_02.jpg"
+      "assets/media/6479f1472fd620df1ef1570e_01.jpg",
+      "assets/media/6479f1590a8a2d1ae729fc3b_03.jpg",
+      "assets/media/6479f160f3aef28a9a4e1f3d_04.jpg",
+      "assets/media/6479f1543af9d8d7d81de2c3_02.jpg"
     ],
     "videos": [],
     "link": "https://www.deverlorenkost.be/",
@@ -441,13 +441,13 @@
     "subtitle": "The Serve and The Push offer modern culinary experiences in the new sports infrastructure of Gantoise",
     "excerpt": "MTM Group has developed exceptional dining and drinks concepts for Gantoise Hockey & Padel in their newly constructed sports complex. The Serve, a contemporary brasserie situated near the Padel and Tennis courts as well as the Field Hockey A-Terrein, welcomes both members and non",
     "body": "<p id=\"\">MTM Group has developed exceptional dining and drinks concepts for Gantoise Hockey &amp; Padel in their newly constructed sports complex.</p><p id=\"\">The Serve, a contemporary brasserie situated near the Padel and Tennis courts as well as the Field Hockey A-Terrein, welcomes both members and non-members to indulge in a sophisticated dining experience.</p><p id=\"\">Meanwhile, with over 3000 members, Gantoise Hockey &amp; Padel entrusted MTM Group to create a premium bar and bites concept, resulting in The Push.</p><p id=\"\">Glossy Branding Agency was tasked with crafting the brand identity and web design for both establishments, aligning them seamlessly with the modern Gantoise hockey and padel infrastructure.</p><p id=\"\">Together, The Serve and The Push promise to offer a refined culinary experience that perfectly complements the sports facilities at Gantoise Hockey &amp; Padel.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6439186dd24ac61cf8faa0eb_2021-09-12%2BGantoise-141.jpeg",
+    "image": "assets/media/6439186dd24ac61cf8faa0eb_2021-09-12-Gantoise-141.jpeg",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479eeb6acaf6f475074e908_ThePush_02.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479eda9c346f5433957b570_ThePush_04.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479edb0ccd705fc7f613d63_The%2BSERVE_Field_Photo_middle2%2B(1)%20copy.webp",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479ee6b73145355e0f98e9a_Pocket-Booklet-%2BCatalog-Set-Mockup%20copy.webp"
+      "assets/media/6479eeb6acaf6f475074e908_ThePush_02.jpg",
+      "assets/media/6479eda9c346f5433957b570_ThePush_04.jpg",
+      "assets/media/6479edb0ccd705fc7f613d63_The-SERVE_Field_Photo_middle2--1--copy.webp",
+      "assets/media/6479ee6b73145355e0f98e9a_Pocket-Booklet--Catalog-Set-Mockup-copy.webp"
     ],
     "videos": [],
     "link": null,
@@ -462,13 +462,13 @@
     "subtitle": "Unleash Your Creativity with Unique Wrapping Papers",
     "excerpt": "The Holiday Season is upon us once again, bringing joy and sometimes even social anxiety. Whether you're a Christmas enthusiast or feel a little awkward during this time, we have something special for you. If you're a digital creative who has been Instagramming soy milk lattes si",
     "body": "<p id=\"\">The Holiday Season is upon us once again, bringing joy and sometimes even social anxiety. Whether you're a Christmas enthusiast or feel a little awkward during this time, we have something special for you.</p><p id=\"\">If you're a digital creative who has been Instagramming soy milk lattes since 2011 and proudly owns a vintage Scandinavian chair with matching 'Vegan Alpaca Wool' pillows, you might find the holiday season overwhelming. Stress, sweaty palms, and a touch of Eminem's \"Lose Yourself\" lyrics might resonate with you.</p><p id=\"\">After weeks of surfing the web, you've come across countless wrapping paper options, but nothing seems to fit your unique style.</p><p id=\"\">But fear not, young Padawan!</p><p id=\"\">Glossy Branding Agency is thrilled to offer you a delightful surprise - a completely royalty-free collection of downloadable wrapping papers that are easy to produce. And the best part? No hassle, no payment required.</p><p id=\"\">Because during the Holiday Season, we have a special love for our digital brothers and sisters. Imagine the look of amazement on your family and friends' faces when they receive your beautifully wrapped presents. Admit it, you can't wait to place those uniquely packaged gifts under the Christmas tree.<br></p><p id=\"\">Oh, and by the way, we're also taking a holiday break from the 24th of December until the first of January 2017. See you next year!</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/647db3f511e8fde08efd2461_ezgif.com-optimize.gif",
+    "image": "assets/media/647db3f511e8fde08efd2461_ezgif.com-optimize.gif",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479e15a2f63630ff94d3c7b_wrapping-paper_02.webp",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479e15ee712aa4c088621e0_wrapping-paper_03.webp",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479e1622b672c8facc38f93_wrapping-paper_04.webp",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479e1679224233b47c4fc66_wrapping-paper_05.webp"
+      "assets/media/6479e15a2f63630ff94d3c7b_wrapping-paper_02.webp",
+      "assets/media/6479e15ee712aa4c088621e0_wrapping-paper_03.webp",
+      "assets/media/6479e1622b672c8facc38f93_wrapping-paper_04.webp",
+      "assets/media/6479e1679224233b47c4fc66_wrapping-paper_05.webp"
     ],
     "videos": [],
     "link": "https://holidays.glossy.tv/",
@@ -482,12 +482,12 @@
     "monthYear": "October 2019",
     "subtitle": "VRT unites media sector to host inspiring discussions and launch innovative projects",
     "excerpt": "Glossy Branding Agency developed the visual identity for the Media Fast Forward 2019 event. Organized by VRT, this annual event brings together professionals from the media sector to reflect on the future of media. It provides a platform for discussions on new business models, di",
-    "body": "<p id=\"\">Glossy Branding Agency developed the visual identity for the Media Fast Forward 2019 event. Organized by VRT, this annual event brings together professionals from the media sector to reflect on the future of media. It provides a platform for discussions on new business models, digital formats, artificial intelligence and media literacy, sharing insights and inspiration regarding media innovation.</p><p id=\"\">The Media Fast Forward event featured inspiring speakers and talk shows that focused on the future of media. There was also a market present with more than 30 technology projects and start-ups. Our founder - Ben Urbain - shared his insights on the inextricable connection between branding, design and user experience (UX). He emphasized that every new and exciting communication channel must be built and designed with the brand's core values in mind.</p><p id=\"\">‍</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-normal\" data-rt-type=\"image\" data-rt-align=\"normal\" data-rt-max-width=\"\"><div id=\"\"><img id=\"\" src=\"https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479db50e19c825ae889ed22_MFF-Ben-Urbain.gif\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><p id=\"\">‍</p><blockquote id=\"\">\"Everything we use in the modern world is created and 'designed' with a purpose, coming from another person's mind. The digital world has provided marketers, designers, advertisers, ... provided with an incredible new range of communication channels. Each of those (new and exciting) channels must be built and designed with the brand's well-defined core values in mind.\" - Ben Urbain</blockquote><p id=\"\">The Media Fast Forward event offered professionals from Flemish and European media the opportunity to meet changemakers and discuss the challenges and opportunities in the sector. It stimulated a lively exchange of ideas and insights between participants from different disciplines.</p><p id=\"\">‍<em id=\"\">© Photography by Studio Nunu</em></p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479c72cc412a0d4f954935a_MMF_Image_Overlay_1920x1080_alpha.gif",
+    "body": "<p id=\"\">Glossy Branding Agency developed the visual identity for the Media Fast Forward 2019 event. Organized by VRT, this annual event brings together professionals from the media sector to reflect on the future of media. It provides a platform for discussions on new business models, digital formats, artificial intelligence and media literacy, sharing insights and inspiration regarding media innovation.</p><p id=\"\">The Media Fast Forward event featured inspiring speakers and talk shows that focused on the future of media. There was also a market present with more than 30 technology projects and start-ups. Our founder - Ben Urbain - shared his insights on the inextricable connection between branding, design and user experience (UX). He emphasized that every new and exciting communication channel must be built and designed with the brand's core values in mind.</p><p id=\"\">‍</p><figure id=\"\" class=\"w-richtext-figure-type-image w-richtext-align-normal\" data-rt-type=\"image\" data-rt-align=\"normal\" data-rt-max-width=\"\"><div id=\"\"><img id=\"\" src=\"assets/media/6479db50e19c825ae889ed22_MFF-Ben-Urbain.gif\" width=\"auto\" height=\"auto\" loading=\"lazy\"></div></figure><p id=\"\">‍</p><blockquote id=\"\">\"Everything we use in the modern world is created and 'designed' with a purpose, coming from another person's mind. The digital world has provided marketers, designers, advertisers, ... provided with an incredible new range of communication channels. Each of those (new and exciting) channels must be built and designed with the brand's well-defined core values in mind.\" - Ben Urbain</blockquote><p id=\"\">The Media Fast Forward event offered professionals from Flemish and European media the opportunity to meet changemakers and discuss the challenges and opportunities in the sector. It stimulated a lively exchange of ideas and insights between participants from different disciplines.</p><p id=\"\">‍<em id=\"\">© Photography by Studio Nunu</em></p>",
+    "image": "assets/media/6479c72cc412a0d4f954935a_MMF_Image_Overlay_1920x1080_alpha.gif",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479c76c92ab02ae0b28fa46_MFF2018(C)STUDIONUNU-120.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6479c76792ab02ae0b28f693_MFF2018(C)STUDIONUNU-47.jpg"
+      "assets/media/6479c76c92ab02ae0b28fa46_MFF2018-C-STUDIONUNU-120.jpg",
+      "assets/media/6479c76792ab02ae0b28f693_MFF2018-C-STUDIONUNU-47.jpg"
     ],
     "videos": [],
     "link": null,
@@ -502,11 +502,11 @@
     "subtitle": "We created the brand identity for The Data Tank, a nonprofit that serves the common good by using data differently",
     "excerpt": "On Open Data Day - march 7, The Data Tank was launched. Together with their team, Glossy created a remarkable branding that helps them to achieve their goal to serve the common good by using data differently. We wholeheartedly congratulate CEO Dr. Julia Stamm, co-founder Dr. Stef",
     "body": "<p id=\"\">On Open Data Day - march 7, The Data Tank was launched. Together with their team, Glossy created a remarkable branding that helps them to achieve their goal to serve the common good by using data differently.</p><p id=\"\">We wholeheartedly congratulate CEO Dr. Julia Stamm, co-founder Dr. Stefaan Verhulst, Board Secretary Wim De Waele, Chairman Luc Tayart de Borms and the entire Data Tank Team on the launch of this exciting nonprofit venture. It truly has the power to revolutionize the use and accessibility of data, benefiting people from all walks of life.</p><p id=\"\">We are eagerly looking forward to the future and are excited about the challenges and opportunities arising from the data-driven transformation of today's society.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64706ed1937a5e96dec40f40_6407505105b0ea4a1648561c_DataTankVIP-29.webp",
+    "image": "assets/media/64706ed1937a5e96dec40f40_6407505105b0ea4a1648561c_DataTankVIP-29.webp",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64707254d3b6b46a219806e5_64088b40046d69b728314713_DataTankVIP-8-p-1600.webp",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6470725850825663928d256a_64075753f76e3d05f861a03b_DataTankVIP-34.webp"
+      "assets/media/64707254d3b6b46a219806e5_64088b40046d69b728314713_DataTankVIP-8.webp",
+      "assets/media/6470725850825663928d256a_64075753f76e3d05f861a03b_DataTankVIP-34.webp"
     ],
     "videos": [],
     "link": "http://www.datatank.org",
@@ -521,7 +521,7 @@
     "subtitle": "Our account manager Sam gave a guest lecture at Artevelde Academy",
     "excerpt": "On Wednesday 19 April 2023, our account manager Sam gave a guest lecture at Artevelde Academy about our branding work to the marketers of the future. The focus was on all the different aspects of branding and how branding lays the foundation for organisations, products or service",
     "body": "<p id=\"\">On Wednesday 19 April 2023, our account manager Sam gave a guest lecture at Artevelde Academy about our branding work to the marketers of the future. The focus was on all the different aspects of branding and how branding lays the foundation for organisations, products or services. Sam also talked about what it is like to work at an agency and tried to convince these young marketing potentials to consider applying for jobs in the amazing world of agencies. </p><p id=\"\">Fun fact: Sam started his journey at Glossy Branding Agency after attending the guest lecture about branding by our founder Ben Urbain during his studies at the Artevelde Academy. The circle is complete!</p><p id=\"\">We thank Artevelde Academy &amp; Nathalie De Boeck for the invitation.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/65391f421d983297b00070d2_IMG_3881.jpg",
+    "image": "assets/media/65391f421d983297b00070d2_IMG_3881.jpg",
     "video": null,
     "gallery": [],
     "videos": [],
@@ -537,11 +537,11 @@
     "subtitle": "Woehoe. We got featured on the infamous Fonts In Use blog.",
     "excerpt": "Fonts In Use is a public archive of typography indexed by typeface, format, industry, and period. Yay!",
     "body": "<p id=\"\">Fonts In Use is a public archive of typography indexed by typeface, format, industry, and period. Yay!</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/643923bc5d736de82e5e647f_MerleBlanc%2BPlaisirdesmerles_09-09-2020.webp",
+    "image": "assets/media/643923bc5d736de82e5e647f_MerleBlanc-Plaisirdesmerles_09-09-2020.webp",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/643923bc06071e13bc561fdc_MerleBlanc_09-09-2020.webp",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/643923bccdf729135f2262f3_PlaisirdeMerles_09-09-2020.webp"
+      "assets/media/643923bc06071e13bc561fdc_MerleBlanc_09-09-2020.webp",
+      "assets/media/643923bccdf729135f2262f3_PlaisirdeMerles_09-09-2020.webp"
     ],
     "videos": [],
     "link": "https://fontsinuse.com/uses/36960/merles-blanc-and-plaisir-des-merles?fbclid=IwAR0MxRjbhUmm5S8357nHODQX04UsRZXq0GYjXofLw0nqPo26E6NwQAS7Kl4",
@@ -556,7 +556,7 @@
     "subtitle": "So, are you a graphic designer with a thing for branding?",
     "excerpt": "Then pre-register for School of Branding as of 22 April 2023 and who knows, maybe you'll be able to do an internship with us or one of the other top branding agencies in Belgium! We are proud to contribute to School Of Branding by Artevelde Academy. Our founder Ben Urbain will jo",
     "body": "<p id=\"\">Then pre-register for School of Branding as of 22 April 2023 and who knows, maybe you'll be able to do an internship with us or one of the other top branding agencies in Belgium!</p><p id=\"\">We are proud to contribute to School Of Branding by Artevelde Academy. Our founder <a id=\"\" href=\"https://www.linkedin.com/in/benurbain/\">Ben Urbain</a> will join other founders of great Belgian branding agencies as lecturers at School of Branding.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/645a114868f25b5a44684069_school-of-branding-2.webp",
+    "image": "assets/media/645a114868f25b5a44684069_school-of-branding-2.webp",
     "video": "https://vimeo.com/817587293",
     "gallery": [],
     "videos": [],
@@ -572,7 +572,7 @@
     "subtitle": "Vyncke-Daels launches it's own Spiced Rhum! Say hello to Rhum Cinq.",
     "excerpt": "We are proud to introduce Rhum Cinq by Vyncke-Daels, a Belgian premium rum made with great respect for our heritage. With the new name & revamped elegant label, we pay tribute to their legacy. We carefully designed the label to reflect the essence of Vyncke-Daels, paying homage t",
     "body": "<p id=\"\">We are proud to introduce Rhum Cinq by Vyncke-Daels, a Belgian premium rum made with great respect for our heritage. With the new name &amp; revamped elegant label, we pay tribute to their legacy.</p><p id=\"\">We carefully designed the label to reflect the essence of Vyncke-Daels, paying homage to their age-old recipe and commitment to quality. With attention to detail and a deep appreciation for their history, we created a label that truly represents the spirit of Rhum Cinq.</p><p id=\"\">The elegant bottle design not only showcases the top quality of the rum, but also pays homage to their rich heritage. The striking label and sophisticated bottle embody the essence of Vyncke-Daels and are a testament to their commitment to excellence.</p><p id=\"\">We are proud to continuously work with Vyncke-Daels and share their dedication to create products that are both beautiful and meaningful. Together, we have created Rhum Cinq, a premium spiced rum that celebrates the heritage of Vyncke-Daels and the art of craft distilling.</p><p id=\"\">So raise a glass of Rhum Cinq and enjoy the rich history and exquisite flavour that only a product of this calibre can offer.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64391cdc0d0f1523d6a6b913_rhum-cinq.webp",
+    "image": "assets/media/64391cdc0d0f1523d6a6b913_rhum-cinq.webp",
     "video": "https://player.vimeo.com/progressive_redirect/playback/819855527/rendition/1080p/file.mp4?loc=external&signature=10b2b019c7d50ac11725041f5974a5ae5f718e83cae28189e15d494aea915d3e",
     "gallery": [],
     "videos": [],
@@ -588,7 +588,7 @@
     "subtitle": "We created the new website for Hype Empire",
     "excerpt": "Hype Empire has launched its new website and we are proud to be part of the process again! We branded and developed the content-heavy website in-house. Hype Empire is a global award-winning commercial film production company with an obsessive focus on visual storytelling within t",
     "body": "<p id=\"\">Hype Empire has launched its new website and we are proud to be part of the process again! We branded and developed the content-heavy website in-house. </p><p id=\"\">Hype Empire is a global award-winning commercial film production company with an obsessive focus on visual storytelling within the world of sports, lifestyle, culture and technology.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64391c33d124f3ba65c4881f_Screenshot%202023-04-14%20at%2011.21.51.png",
+    "image": "assets/media/64391c33d124f3ba65c4881f_Screenshot-2023-04-14-at-11.21.51.png",
     "video": "https://player.vimeo.com/progressive_redirect/playback/817579003/rendition/720p/file.mp4?loc=external&signature=24dde5b5f18ff10c6d14603dbb893506830d43c2a9303f5fdd200346c670b3c4",
     "gallery": [],
     "videos": [],
@@ -604,7 +604,7 @@
     "subtitle": "More opportunities for children & young people with the Street League 9000 initiative",
     "excerpt": "Our client KAA Gent Foundation asked us to create the identity for a new football network in Ghent that gives children & young people more opportunities by playing football with them on various squares in the city. Street League 9000 is formed by the KAA Gent Foundation, Futsal B",
     "body": "<p id=\"\">Our client KAA Gent Foundation asked us to create the identity for a new football network in Ghent that gives children &amp; young people more opportunities by playing football with them on various squares in the city.</p><p id=\"\">Street League 9000 is formed by the KAA Gent Foundation, Futsal Besiktas, vzw Jong, FC Rooigem, Futsal Gent, vzw Ergenekon and vzw Sportaround.</p><p id=\"\">We are delighted to have been able to contribute to wonderful initiative!</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64391399903fd099c77604b6_street-league-9000.webp",
+    "image": "assets/media/64391399903fd099c77604b6_street-league-9000.webp",
     "video": null,
     "gallery": [],
     "videos": [],
@@ -620,13 +620,13 @@
     "subtitle": "Congratulations to our client MTM Group for becoming a Trends Ambassador!",
     "excerpt": "We are very proud that our client MTM Group became a Trends Ambassador! Congratulations to Jean-Michel Teerlinck, Julien Malingreau, Bart Meyskens & the whole MTM team. Discover some of our work here: Dragòn , Ray , Mòris , The Serve , The Push .",
     "body": "<p id=\"\">We are very proud that our client MTM Group became a Trends Ambassador! Congratulations to Jean-Michel Teerlinck, Julien Malingreau, Bart Meyskens &amp; the whole MTM team.</p><p id=\"\">Discover some of our work here: <a id=\"\" href=\"/cases/dragon-belgian-beer-culture-at-its-finest\" target=\"_blank\">Dragòn</a>, <a id=\"\" href=\"/cases/ray-a-city-garden\" target=\"_blank\">Ray</a>, <a id=\"\" href=\"/cases/moris-the-perfect-bliss\" target=\"_blank\">Mòris</a>, <a id=\"\" href=\"http://www.theserve.gent\" target=\"_blank\">The Serve</a>, <a id=\"\" href=\"http://www.thepush.gent\" target=\"_blank\">The Push</a>.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/645a28b90c7f63a3eaaa5424_6caa119d1dc8cfd425cd6e3f93c89cbd_XL.jpeg",
+    "image": "assets/media/645a28b90c7f63a3eaaa5424_6caa119d1dc8cfd425cd6e3f93c89cbd_XL.jpeg",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6439186dd24ac61cf8faa0eb_2021-09-12%2BGantoise-141.jpeg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6439186ea4d5fe8df758fd56_image-asset.jpeg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6439186e00946e0263dc2684_RAY%2B10.jpeg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64391798903fd041ae76506a_moris_glossysite_06-2.webp"
+      "assets/media/6439186dd24ac61cf8faa0eb_2021-09-12-Gantoise-141.jpeg",
+      "assets/media/6439186ea4d5fe8df758fd56_image-asset.jpeg",
+      "assets/media/6439186e00946e0263dc2684_RAY-10.jpeg",
+      "assets/media/64391798903fd041ae76506a_moris_glossysite_06-2.webp"
     ],
     "videos": [],
     "link": "https://www.mtmgroup.be/",
@@ -641,13 +641,13 @@
     "subtitle": "We join forces with ACC and other great Belgian Branding Agencies to create a new expert centrum",
     "excerpt": "We are glad to have hosted the second meeting of the Expert Center Brand Consultants by ACC Belgium . See you again in September 2022! Thank you all for the inspiring session.",
     "body": "<p id=\"\">We are glad to have hosted the second meeting of the Expert Center Brand Consultants by <a id=\"\" href=\"http://www.acc.be\">ACC Belgium</a>. </p><p id=\"\">See you again in September 2022! Thank you all for the inspiring session.</p>",
-    "image": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/643915cd5a111b1f7a81f5b8_ACC-GLOSSY.TV_SOME-KLEUR_%C2%A9JORN%20URBAIN_3000pix-17.jpg",
+    "image": "assets/media/643915cd5a111b1f7a81f5b8_ACC-GLOSSY.TV_SOME-KLEUR_-JORN-URBAIN_3000pix-17.jpg",
     "video": null,
     "gallery": [
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6439159e18a463184c1f6573_ACC-GLOSSY.TV_KLEUR_%C2%A9JORN%20URBAIN-103.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/643915ad184cd46f253896ff_ACC-GLOSSY.TV_SOME-KLEUR_%C2%A9JORN%20URBAIN_3000pix-13.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/643915bc772835004050eee6_ACC-GLOSSY.TV_SOME-KLEUR_%C2%A9JORN%20URBAIN_3000pix-15.jpg",
-      "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/64391708424aa392a4170ed9_ACC-GLOSSY.TV_SOME-KLEUR_%C2%A9JORN%20URBAIN_3000pix-1.jpg"
+      "assets/media/6439159e18a463184c1f6573_ACC-GLOSSY.TV_KLEUR_-JORN-URBAIN-103.jpg",
+      "assets/media/643915ad184cd46f253896ff_ACC-GLOSSY.TV_SOME-KLEUR_-JORN-URBAIN_3000pix-13.jpg",
+      "assets/media/643915bc772835004050eee6_ACC-GLOSSY.TV_SOME-KLEUR_-JORN-URBAIN_3000pix-15.jpg",
+      "assets/media/64391708424aa392a4170ed9_ACC-GLOSSY.TV_SOME-KLEUR_-JORN-URBAIN_3000pix-1.jpg"
     ],
     "videos": [],
     "link": "https://www.acc.be/glossytv",

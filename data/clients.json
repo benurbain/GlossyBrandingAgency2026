@@ -1,452 +1,452 @@
 [
   {
     "name": "Artevelde Academy",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b75604e8b354ac7649e7_GLOSSY-CLIENTS_ARTEVELDE_ACADEMY.png",
+    "logo": "assets/media/6421b75604e8b354ac7649e7_GLOSSY-CLIENTS_ARTEVELDE_ACADEMY.png",
     "case": null
   },
   {
     "name": "B-hive",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b74ac3a0c88d7e35963d_GLOSSY-CLIENTS_B_HIVE.png",
+    "logo": "assets/media/6421b74ac3a0c88d7e35963d_GLOSSY-CLIENTS_B_HIVE.png",
     "case": "b-hive"
   },
   {
     "name": "Barbaro",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b760fc58cd0f7614f183_GLOSSY-CLIENTS_BARBARO.png",
+    "logo": "assets/media/6421b760fc58cd0f7614f183_GLOSSY-CLIENTS_BARBARO.png",
     "case": "barbaro"
   },
   {
     "name": "Barvatar",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b76c2793a8cfdf4f04d2_GLOSSY-CLIENTS_BARVATAR.png",
+    "logo": "assets/media/6421b76c2793a8cfdf4f04d2_GLOSSY-CLIENTS_BARVATAR.png",
     "case": null
   },
   {
     "name": "Be Work Happy",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b77998e5de317fd17230_GLOSSY-CLIENTS_BEWORKHAPPY.png",
+    "logo": "assets/media/6421b77998e5de317fd17230_GLOSSY-CLIENTS_BEWORKHAPPY.png",
     "case": null
   },
   {
     "name": "Bravosix",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b78875316481784767d5_GLOSSY-CLIENTS_BRAVOSIX.png",
+    "logo": "assets/media/6421b78875316481784767d5_GLOSSY-CLIENTS_BRAVOSIX.png",
     "case": "bravosix"
   },
   {
     "name": "Brouwerij Van Steenberge",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7970dee120142888240_GLOSSY-CLIENTS_BROUWERIJ_VAN_STEENBERGE.png",
+    "logo": "assets/media/6421b7970dee120142888240_GLOSSY-CLIENTS_BROUWERIJ_VAN_STEENBERGE.png",
     "case": null
   },
   {
     "name": "Buddybites",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7a114046771917e6324_GLOSSY-CLIENTS_BUDDYBITES.png",
+    "logo": "assets/media/6421b7a114046771917e6324_GLOSSY-CLIENTS_BUDDYBITES.png",
     "case": "buddybites"
   },
   {
     "name": "Café Costume",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7aa5e78ed5be193fe97_GLOSSY-CLIENTS_CAFE%CC%81_COSTUME.png",
+    "logo": "assets/media/6421b7aa5e78ed5be193fe97_GLOSSY-CLIENTS_CAFE-_COSTUME.png",
     "case": "cafe-costume-x-glossy"
   },
   {
     "name": "Cardea",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7b283acef1699290120_GLOSSY-CLIENTS_CARDEA.png",
+    "logo": "assets/media/6421b7b283acef1699290120_GLOSSY-CLIENTS_CARDEA.png",
     "case": null
   },
   {
     "name": "Chase Creative",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7bc8f7e3887fd0a074b_GLOSSY-CLIENTS_CHASE_CREATIVE.png",
+    "logo": "assets/media/6421b7bc8f7e3887fd0a074b_GLOSSY-CLIENTS_CHASE_CREATIVE.png",
     "case": null
   },
   {
     "name": "Compagnie Cecilia",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7ccbd58cdcb6b77468e_GLOSSY-CLIENTS_COMPAGNIE_CECILIA.png",
+    "logo": "assets/media/6421b7ccbd58cdcb6b77468e_GLOSSY-CLIENTS_COMPAGNIE_CECILIA.png",
     "case": null
   },
   {
     "name": "Culture Club",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7d8167a092158df60ba_GLOSSY-CLIENTS_CULTURE_CLUB.png",
+    "logo": "assets/media/6421b7d8167a092158df60ba_GLOSSY-CLIENTS_CULTURE_CLUB.png",
     "case": "culture-club"
   },
   {
     "name": "Dark",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7e2ced01b06576782ac_GLOSSY-CLIENTS_DARK.png",
+    "logo": "assets/media/6421b7e2ced01b06576782ac_GLOSSY-CLIENTS_DARK.png",
     "case": null
   },
   {
     "name": "De Cierk",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7ecddcaaa4c9b04590f_GLOSSY-CLIENTS_DE_CIERK.png",
+    "logo": "assets/media/6421b7ecddcaaa4c9b04590f_GLOSSY-CLIENTS_DE_CIERK.png",
     "case": null
   },
   {
     "name": "De Verloren Kost",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b7f71f5e5519726cb853_GLOSSY-CLIENTS_DE_VERLOREN_KOST.png",
+    "logo": "assets/media/6421b7f71f5e5519726cb853_GLOSSY-CLIENTS_DE_VERLOREN_KOST.png",
     "case": null
   },
   {
     "name": "Dominique Peeters",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b80592b8a5fd46588c24_GLOSSY-CLIENTS_DOMINIQUE_PEETERS.png",
+    "logo": "assets/media/6421b80592b8a5fd46588c24_GLOSSY-CLIENTS_DOMINIQUE_PEETERS.png",
     "case": "dominique-peeters"
   },
   {
     "name": "Dragòn",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b827ffbaca129331e71a_GLOSSY-CLIENTS_DRAGO%CC%80N.png",
+    "logo": "assets/media/6421b827ffbaca129331e71a_GLOSSY-CLIENTS_DRAGO-N.png",
     "case": "dragon"
   },
   {
     "name": "Eggsplore",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b81e26daff50a8fe6432_GLOSSY-CLIENTS_EGGSPLORE.png",
+    "logo": "assets/media/6421b81e26daff50a8fe6432_GLOSSY-CLIENTS_EGGSPLORE.png",
     "case": "eggsplore"
   },
   {
     "name": "Element Architecten",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b833aec7134d5398c349_GLOSSY-CLIENTS_ELEMENT_ARCHITECTEN.png",
+    "logo": "assets/media/6421b833aec7134d5398c349_GLOSSY-CLIENTS_ELEMENT_ARCHITECTEN.png",
     "case": "element-architecten"
   },
   {
     "name": "Elixir De Roulers",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b840e8c17a3cac0f3fc7_GLOSSY-CLIENTS_ELIXIR_DE_ROULERS.png",
+    "logo": "assets/media/6421b840e8c17a3cac0f3fc7_GLOSSY-CLIENTS_ELIXIR_DE_ROULERS.png",
     "case": null
   },
   {
     "name": "Eye On Fashion",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b84af1de01318f785afb_GLOSSY-CLIENTS_EYE_ON_FASHION.png",
+    "logo": "assets/media/6421b84af1de01318f785afb_GLOSSY-CLIENTS_EYE_ON_FASHION.png",
     "case": null
   },
   {
     "name": "Fanfinity",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6605775db29508d58c6b210c_GLOSSY-CLIENTS-FANFINITY.png",
+    "logo": "assets/media/6605775db29508d58c6b210c_GLOSSY-CLIENTS-FANFINITY.png",
     "case": null
   },
   {
     "name": "Febelhair",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b853c3a0c807f035a370_GLOSSY-CLIENTS_FEBELHAIR.png",
+    "logo": "assets/media/6421b853c3a0c807f035a370_GLOSSY-CLIENTS_FEBELHAIR.png",
     "case": null
   },
   {
     "name": "Fetch",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b85bf1de0127b8785bf3_GLOSSY-CLIENTS_FETCH.png",
+    "logo": "assets/media/6421b85bf1de0127b8785bf3_GLOSSY-CLIENTS_FETCH.png",
     "case": "fetch"
   },
   {
     "name": "Filliers",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b86ef1de01c11d785d40_GLOSSY-CLIENTS_FILLIERS.png",
+    "logo": "assets/media/6421b86ef1de01c11d785d40_GLOSSY-CLIENTS_FILLIERS.png",
     "case": "filliers-dry-gin-28"
   },
   {
     "name": "FKP scorpio",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b87b8c79ec44d3e93d60_GLOSSY-CLIENTS_FKP_SCORPIO.png",
+    "logo": "assets/media/6421b87b8c79ec44d3e93d60_GLOSSY-CLIENTS_FKP_SCORPIO.png",
     "case": null
   },
   {
     "name": "Foodpunks",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b8850a29f75a23df09b9_GLOSSY-CLIENTS_FOODPUNKS.png",
+    "logo": "assets/media/6421b8850a29f75a23df09b9_GLOSSY-CLIENTS_FOODPUNKS.png",
     "case": null
   },
   {
     "name": "Foodsie",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b88e9c47e3748da2f7dd_GLOSSY-CLIENTS_FOODSIE.png",
+    "logo": "assets/media/6421b88e9c47e3748da2f7dd_GLOSSY-CLIENTS_FOODSIE.png",
     "case": "foodsie"
   },
   {
     "name": "Goforest",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b89cc3a0c8a63535a477_GLOSSY-CLIENTS_GOFOREST.png",
+    "logo": "assets/media/6421b89cc3a0c8a63535a477_GLOSSY-CLIENTS_GOFOREST.png",
     "case": null
   },
   {
     "name": "Histoires d'O",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6605776fb29508d58c6b32df_GLOSSY-CLIENTS-Histoires-D%27O.png",
+    "logo": "assets/media/6605776fb29508d58c6b32df_GLOSSY-CLIENTS-Histoires-D-O.png",
     "case": null
   },
   {
     "name": "Hurley",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b8b1ddcaaa42050467c0_GLOSSY-CLIENTS_HURLEY.png",
+    "logo": "assets/media/6421b8b1ddcaaa42050467c0_GLOSSY-CLIENTS_HURLEY.png",
     "case": null
   },
   {
     "name": "Hybrid Blue",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b8bd85c23e7d3dcd1e48_GLOSSY-CLIENTS_HYBRID_BLUE.png",
+    "logo": "assets/media/6421b8bd85c23e7d3dcd1e48_GLOSSY-CLIENTS_HYBRID_BLUE.png",
     "case": null
   },
   {
     "name": "Hype Empire",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b8c69c47e3ccf7a2fb2d_GLOSSY-CLIENTS_HYPE_EMPIRE.png",
+    "logo": "assets/media/6421b8c69c47e3ccf7a2fb2d_GLOSSY-CLIENTS_HYPE_EMPIRE.png",
     "case": null
   },
   {
     "name": "iMinds",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b8dab053fb438fe83ed0_GLOSSY-CLIENTS_IMINDS.png",
+    "logo": "assets/media/6421b8dab053fb438fe83ed0_GLOSSY-CLIENTS_IMINDS.png",
     "case": "iminds"
   },
   {
     "name": "Juma Architects",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b8e5d09b401868b6d745_GLOSSY-CLIENTS_JUMA_ARCHITECTS.png",
+    "logo": "assets/media/6421b8e5d09b401868b6d745_GLOSSY-CLIENTS_JUMA_ARCHITECTS.png",
     "case": "juma-architects"
   },
   {
     "name": "KAA Gent",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b8f298d5c2d082bd7b0c_GLOSSY-CLIENTS_KAA_GENT.png",
+    "logo": "assets/media/6421b8f298d5c2d082bd7b0c_GLOSSY-CLIENTS_KAA_GENT.png",
     "case": "kaa-gent"
   },
   {
     "name": "Kitsch Club",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b8fef1de010725786425_GLOSSY-CLIENTS_KITSCH_CLUB.png",
+    "logo": "assets/media/6421b8fef1de010725786425_GLOSSY-CLIENTS_KITSCH_CLUB.png",
     "case": null
   },
   {
     "name": "Krush Club",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b90726daff50fafe7380_GLOSSY-CLIENTS_KRUSH_CLUB.png",
+    "logo": "assets/media/6421b90726daff50fafe7380_GLOSSY-CLIENTS_KRUSH_CLUB.png",
     "case": null
   },
   {
     "name": "Lambrecht Wijnen",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b916e72056d696b4c465_GLOSSY-CLIENTS_LAMBRECHT.png",
+    "logo": "assets/media/6421b916e72056d696b4c465_GLOSSY-CLIENTS_LAMBRECHT.png",
     "case": null
   },
   {
     "name": "Laser Vision Clinics",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b9275e00f70db83ba6a8_GLOSSY-CLIENTS_LASER_VISION_CLINICS.png",
+    "logo": "assets/media/6421b9275e00f70db83ba6a8_GLOSSY-CLIENTS_LASER_VISION_CLINICS.png",
     "case": null
   },
   {
     "name": "Live is Live",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6605777a25c94848ffba9ae4_GLOSSY-CLIENTS-LIVEISLIVE.png",
+    "logo": "assets/media/6605777a25c94848ffba9ae4_GLOSSY-CLIENTS-LIVEISLIVE.png",
     "case": null
   },
   {
     "name": "Lost N Found",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b9315c54feb85bc0546c_GLOSSY-CLIENTS_LOST_N_FOUND.png",
+    "logo": "assets/media/6421b9315c54feb85bc0546c_GLOSSY-CLIENTS_LOST_N_FOUND.png",
     "case": null
   },
   {
     "name": "Madison.Partners",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b93d83acef70e629254a_GLOSSY-CLIENTS_MADISON.PARTNERS.png",
+    "logo": "assets/media/6421b93d83acef70e629254a_GLOSSY-CLIENTS_MADISON.PARTNERS.png",
     "case": null
   },
   {
     "name": "Maison Rouge",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b947cc52d984605400f2_GLOSSY-CLIENTS_MAISON_ROUGE.png",
+    "logo": "assets/media/6421b947cc52d984605400f2_GLOSSY-CLIENTS_MAISON_ROUGE.png",
     "case": null
   },
   {
     "name": "Miia",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b9502793a8f0bf4f2154_GLOSSY-CLIENTS_MIIA.png",
+    "logo": "assets/media/6421b9502793a8f0bf4f2154_GLOSSY-CLIENTS_MIIA.png",
     "case": "miia"
   },
   {
     "name": "Miles Ahead",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b95caec713dd8e98d563_GLOSSY-CLIENTS_MILES_AHEAD.png",
+    "logo": "assets/media/6421b95caec713dd8e98d563_GLOSSY-CLIENTS_MILES_AHEAD.png",
     "case": "miles-ahead"
   },
   {
     "name": "Moovly",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b96526daff0584fe79d0_GLOSSY-CLIENTS_MOOVLY.png",
+    "logo": "assets/media/6421b96526daff0584fe79d0_GLOSSY-CLIENTS_MOOVLY.png",
     "case": "moovly"
   },
   {
     "name": "Moris",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5df3829b083fcd4ecbc_GLOSSY-CLIENTS_MO%CC%80RIS.png",
+    "logo": "assets/media/6421b5df3829b083fcd4ecbc_GLOSSY-CLIENTS_MO-RIS.png",
     "case": "moris"
   },
   {
     "name": "MTM",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5ecec22a5050a9d7e22_GLOSSY-CLIENTS_MTM.png",
+    "logo": "assets/media/6421b5ecec22a5050a9d7e22_GLOSSY-CLIENTS_MTM.png",
     "case": null
   },
   {
     "name": "Nighshift",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5cae720567a43b473db_GLOSSY-CLIENTS_NIGHTSHIFT.png",
+    "logo": "assets/media/6421b5cae720567a43b473db_GLOSSY-CLIENTS_NIGHTSHIFT.png",
     "case": "night-shift-2018"
   },
   {
     "name": "Nightingale",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5d9602706e99359e1c1_GLOSSY-CLIENTS_NIGHTINGALE.png",
+    "logo": "assets/media/6421b5d9602706e99359e1c1_GLOSSY-CLIENTS_NIGHTINGALE.png",
     "case": "nightingale-adding-gold"
   },
   {
     "name": "Nike",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5d10a29f7fcb4ded748_GLOSSY-CLIENTS_NIKE.png",
+    "logo": "assets/media/6421b5d10a29f7fcb4ded748_GLOSSY-CLIENTS_NIKE.png",
     "case": null
   },
   {
     "name": "Orbit",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5c3f1de01c501783f6c_GLOSSY-CLIENTS_ORBIT.png",
+    "logo": "assets/media/6421b5c3f1de01c501783f6c_GLOSSY-CLIENTS_ORBIT.png",
     "case": "orbit-frankfurt"
   },
   {
     "name": "Prezenta",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5b6ddcaaa263e043c9e_GLOSSY-CLIENTS_PREZENTA.png",
+    "logo": "assets/media/6421b5b6ddcaaa263e043c9e_GLOSSY-CLIENTS_PREZENTA.png",
     "case": "prezenta"
   },
   {
     "name": "Pukkelpop",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5bc5e78ed374893bdea_GLOSSY-CLIENTS_PUKKELPOP.png",
+    "logo": "assets/media/6421b5bc5e78ed374893bdea_GLOSSY-CLIENTS_PUKKELPOP.png",
     "case": "pukkelpop-2018"
   },
   {
     "name": "Quatre Mains",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5af753164678747479a_GLOSSY-CLIENTS_QUATRE_MAINS.png",
+    "logo": "assets/media/6421b5af753164678747479a_GLOSSY-CLIENTS_QUATRE_MAINS.png",
     "case": "quatre-mains"
   },
   {
     "name": "Quick-Step Pro Rycling Team",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5a70a29f742edded43a_GLOSSY-CLIENTS_QUICK_STEP.png",
+    "logo": "assets/media/6421b5a70a29f742edded43a_GLOSSY-CLIENTS_QUICK_STEP.png",
     "case": "quick-step-floors-pro-cycling-team-2017"
   },
   {
     "name": "Radiologie-Cardea",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b602ddcaaa86d70440dd_GLOSSY-CLIENTS_RADIOLOGIE_CARDEA.png",
+    "logo": "assets/media/6421b602ddcaaa86d70440dd_GLOSSY-CLIENTS_RADIOLOGIE_CARDEA.png",
     "case": null
   },
   {
     "name": "Ray",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b60acc52d940e453ce42_GLOSSY-CLIENTS_RAY.png",
+    "logo": "assets/media/6421b60acc52d940e453ce42_GLOSSY-CLIENTS_RAY.png",
     "case": "ray"
   },
   {
     "name": "Redevco",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b614602706efe659e650_GLOSSY-CLIENTS_REDEVCO.png",
+    "logo": "assets/media/6421b614602706efe659e650_GLOSSY-CLIENTS_REDEVCO.png",
     "case": null
   },
   {
     "name": "Rewind",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b58ec288e880396d9f1f_GLOSSY-CLIENTS_REWIND.png",
+    "logo": "assets/media/6421b58ec288e880396d9f1f_GLOSSY-CLIENTS_REWIND.png",
     "case": null
   },
   {
     "name": "Scale-Ups",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b62b5e00f774453b7c2c_GLOSSY-CLIENTS_SCALE_UPS.EU.png",
+    "logo": "assets/media/6421b62b5e00f774453b7c2c_GLOSSY-CLIENTS_SCALE_UPS.EU.png",
     "case": "scale-ups-eu"
   },
   {
     "name": "Scantemp",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b635cc52d90c2153d195_GLOSSY-CLIENTS_SCANTEMP.png",
+    "logo": "assets/media/6421b635cc52d90c2153d195_GLOSSY-CLIENTS_SCANTEMP.png",
     "case": null
   },
   {
     "name": "Sea-Storm",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b63d0dee126e76886884_GLOSSY-CLIENTS_SEA_STORM.png",
+    "logo": "assets/media/6421b63d0dee126e76886884_GLOSSY-CLIENTS_SEA_STORM.png",
     "case": null
   },
   {
     "name": "Soulwax",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b64be8c17a52df0f1c5a_GLOSSY-CLIENTS_SOULWAX.png",
+    "logo": "assets/media/6421b64be8c17a52df0f1c5a_GLOSSY-CLIENTS_SOULWAX.png",
     "case": null
   },
   {
     "name": "Spark",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5508f7e385cba09dacc_GLOSSY-CLIENTS_SPARK-05.png",
+    "logo": "assets/media/6421b5508f7e385cba09dacc_GLOSSY-CLIENTS_SPARK-05.png",
     "case": null
   },
   {
     "name": "STUBRU",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b5187531643db5474455_GLOSSY-CLIENTS_STUBRU.png",
+    "logo": "assets/media/6421b5187531643db5474455_GLOSSY-CLIENTS_STUBRU.png",
     "case": null
   },
   {
     "name": "Suitcase",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b65cfad3f7610daae777_GLOSSY-CLIENTS_SUITCASE.png",
+    "logo": "assets/media/6421b65cfad3f7610daae777_GLOSSY-CLIENTS_SUITCASE.png",
     "case": null
   },
   {
     "name": "SVNTY",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6680dee12562b886c77_GLOSSY-CLIENTS_SVNTY.png",
+    "logo": "assets/media/6421b6680dee12562b886c77_GLOSSY-CLIENTS_SVNTY.png",
     "case": "svnty"
   },
   {
     "name": "Talkies",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6708f7e38461609eee9_GLOSSY-CLIENTS_TALKIES.png",
+    "logo": "assets/media/6421b6708f7e38461609eee9_GLOSSY-CLIENTS_TALKIES.png",
     "case": null
   },
   {
     "name": "Tanx",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6c283acef350f28f000_GLOSSY-CLIENTS_TANX.png",
+    "logo": "assets/media/6421b6c283acef350f28f000_GLOSSY-CLIENTS_TANX.png",
     "case": null
   },
   {
     "name": "The Breakfast Club",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6b7ef2992202ce6953b_GLOSSY-CLIENTS_THE_BREAKFAST_CLUB.png",
+    "logo": "assets/media/6421b6b7ef2992202ce6953b_GLOSSY-CLIENTS_THE_BREAKFAST_CLUB.png",
     "case": null
   },
   {
     "name": "The Data Tank",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6a904765742b5012aec_GLOSSY-CLIENTS_THE_DATA_TANK.png",
+    "logo": "assets/media/6421b6a904765742b5012aec_GLOSSY-CLIENTS_THE_DATA_TANK.png",
     "case": null
   },
   {
     "name": "The Glue",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b69f98e5de8ff6d16853_GLOSSY-CLIENTS_THE_GLUE.png",
+    "logo": "assets/media/6421b69f98e5de8ff6d16853_GLOSSY-CLIENTS_THE_GLUE.png",
     "case": "the-glue"
   },
   {
     "name": "The Growcery",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b68e8f7e385e7b09efdd_GLOSSY-CLIENTS_THE_GROWCERY.png",
+    "logo": "assets/media/6421b68e8f7e385e7b09efdd_GLOSSY-CLIENTS_THE_GROWCERY.png",
     "case": "the-growcery"
   },
   {
     "name": "The Leaf",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6873829b031d5d4f514_GLOSSY-CLIENTS_THE_LEAF.png",
+    "logo": "assets/media/6421b6873829b031d5d4f514_GLOSSY-CLIENTS_THE_LEAF.png",
     "case": "the-leaf"
   },
   {
     "name": "The Payroll Office",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b67d0e33138af0c70448_GLOSSY-CLIENTS_THE_PAYROLL_OFFICE.png",
+    "logo": "assets/media/6421b67d0e33138af0c70448_GLOSSY-CLIENTS_THE_PAYROLL_OFFICE.png",
     "case": "the-payroll-office"
   },
   {
     "name": "The Potato Bar",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6d0167a095406df524f_GLOSSY-CLIENTS_THE_POTATO_BAR.png",
+    "logo": "assets/media/6421b6d0167a095406df524f_GLOSSY-CLIENTS_THE_POTATO_BAR.png",
     "case": "the-potato-bar"
   },
   {
     "name": "The Push",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6dfddcaaa1024044b0c_GLOSSY-CLIENTS_THE_PUSH.png",
+    "logo": "assets/media/6421b6dfddcaaa1024044b0c_GLOSSY-CLIENTS_THE_PUSH.png",
     "case": null
   },
   {
     "name": "The Serve",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6e80328a69d8b5e815d_GLOSSY-CLIENTS_THE_SERVE.png",
+    "logo": "assets/media/6421b6e80328a69d8b5e815d_GLOSSY-CLIENTS_THE_SERVE.png",
     "case": null
   },
   {
     "name": "The Smiles",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6605778c23584ea4fe556f7b_GLOSSY-CLIENTS-THESMILES.png",
+    "logo": "assets/media/6605778c23584ea4fe556f7b_GLOSSY-CLIENTS-THESMILES.png",
     "case": null
   },
   {
     "name": "Theater Malpertuis",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6f4ddcaaa7c80044bdc_GLOSSY-CLIENTS_THEATER_MALPERTUIS.png",
+    "logo": "assets/media/6421b6f4ddcaaa7c80044bdc_GLOSSY-CLIENTS_THEATER_MALPERTUIS.png",
     "case": null
   },
   {
     "name": "Tomorrowland",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b6fe7531644599475eeb_GLOSSY-CLIENTS_TOMORROWLAND.png",
+    "logo": "assets/media/6421b6fe7531644599475eeb_GLOSSY-CLIENTS_TOMORROWLAND.png",
     "case": null
   },
   {
     "name": "Venice Beach",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b708167a0926cbdf532f_GLOSSY-CLIENTS_VENICE_BEACH.png",
+    "logo": "assets/media/6421b708167a0926cbdf532f_GLOSSY-CLIENTS_VENICE_BEACH.png",
     "case": "venice-beach"
   },
   {
     "name": "VGD",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b710ced01b06ac677835_GLOSSY-CLIENTS_VGD.png",
+    "logo": "assets/media/6421b710ced01b06ac677835_GLOSSY-CLIENTS_VGD.png",
     "case": null
   },
   {
     "name": "VRT",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b71883acef2c1128f3b2_GLOSSY-CLIENTS_VRT.png",
+    "logo": "assets/media/6421b71883acef2c1128f3b2_GLOSSY-CLIENTS_VRT.png",
     "case": null
   },
   {
     "name": "Vyncke-Daels",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b723e4b103607dd5d763_GLOSSY-CLIENTS_VYNCKE_DAELS.png",
+    "logo": "assets/media/6421b723e4b103607dd5d763_GLOSSY-CLIENTS_VYNCKE_DAELS.png",
     "case": null
   },
   {
     "name": "Willemen",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b72d8c79ece28fe91f35_GLOSSY-CLIENTS_WILLEMEN.png",
+    "logo": "assets/media/6421b72d8c79ece28fe91f35_GLOSSY-CLIENTS_WILLEMEN.png",
     "case": null
   },
   {
     "name": "Zorro Frituur",
-    "logo": "https://uploads-ssl.webflow.com/641c73395e6dc61d470cc5e0/6421b736e4b10348f3d5d7b7_GLOSSY-CLIENTS_ZORRO.png",
+    "logo": "assets/media/6421b736e4b10348f3d5d7b7_GLOSSY-CLIENTS_ZORRO.png",
     "case": "frituur-zorro"
   }
 ]
