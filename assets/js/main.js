@@ -69,16 +69,26 @@ async function loadJson(path) {
 }
 
 function caseCard(item) {
-  const img = item.image
-    ? `<img class="case-card__media" src="${escapeHtml(assetUrl(item.image))}"
-          alt="${escapeHtml(item.name)} — ${escapeHtml(item.baseline || 'case')}"
-          loading="lazy" decoding="async">`
-    : '';
+  // Cards lead with the case's own opening frame: the hero video where there is
+  // one, with the hero image behind it as poster/fallback. `item.image` is the
+  // social-share asset — a different picture — so it is deliberately not used.
+  const poster = item.hero ? ` poster="${escapeHtml(assetUrl(item.hero))}"` : '';
+  const alt = `${escapeHtml(item.name)} — ${escapeHtml(item.baseline || 'case')}`;
+
+  let media = '';
+  if (item.heroVideo) {
+    media = `<video class="case-card__media" src="${escapeHtml(item.heroVideo)}"${poster}
+          autoplay muted loop playsinline preload="metadata" aria-label="${alt}"></video>`;
+  } else if (item.hero) {
+    media = `<img class="case-card__media" src="${escapeHtml(assetUrl(item.hero))}"
+          alt="${alt}" loading="lazy" decoding="async">`;
+  }
+
   const flag = item.isNew ? '<span class="case-card__flag">new</span>' : '';
 
   return `
     <a class="case-card" href="${basePath()}cases/${escapeHtml(item.slug)}.html">
-      ${img}${flag}
+      ${media}${flag}
       <span class="case-card__body">
         <span class="case-card__name">${escapeHtml(item.name)}</span>
         <span class="case-card__baseline">${escapeHtml(item.baseline || '')}</span>

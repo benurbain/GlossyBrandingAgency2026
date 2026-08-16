@@ -70,6 +70,19 @@ the scraped sections and the localised asset paths**. Always run the full chain:
 python3 scripts/export-cms.py && python3 scripts/scrape-sections.py --cached && python3 scripts/localize-assets.py && python3 scripts/build-cases.py && python3 scripts/build-news.py
 ```
 
+### Card media
+
+The CMS field names are misleading and easy to wire up backwards:
+
+| CMS field | Display name | Used for |
+|---|---|---|
+| `video-url-1` | Hero Video Url | the card's animation |
+| `social-share-image` | **Hero** Fallback Image | the card image / video poster |
+| `video-fallback-image` | **Social Share** Image | `og:image` only |
+
+Cards lead with the case's own opening frame — the hero video where there is
+one (9 of the 14 on the homepage), the hero image otherwise.
+
 ### Grids
 
 The homepage and the cases overview do not share a layout:
