@@ -31,6 +31,7 @@ cases/<slug>.html              52 generated case detail pages
 news/<slug>.html               36 generated news detail pages
 
 scripts/export-cms.py          Raw Webflow exports -> data/*.json
+scripts/scrape-sections.py     Recovers Case Sections the MCP cannot reach
 scripts/build-cases.py         data/cases.json -> cases/
 scripts/build-news.py          data/news.json  -> news/
 scripts/_shell.py              Shared nav/footer/media markup
@@ -100,12 +101,13 @@ python3 -m http.server 8899
   Webflow (HTTP 401), so its copy could not be read.
 - **Case and news images still point at the Webflow CDN.** They render fine today,
   but they are not self-hosted — localise them before switching Webflow off.
-- **29 of 52 cases are missing their Case Sections.** The Webflow MCP's
-  `list_collection_items` ignores `limit` and `offset` — it always returns the
-  first 100 records — and Case Sections has 177. So 95 sections came through,
-  covering 23 cases (including 10 of the 12 newest). The other 29 fall back to
-  hero + facts + intro text. Filling the gap needs the remaining 82 sections
-  pulled another way (a direct Webflow API call with a token, or the CSV export).
+- **Case Section layout is inferred for the 29 scraped cases.** The Webflow MCP's
+  `list_collection_items` ignores `limit`/`offset` and always returns the first
+  100 records, while Case Sections has 177 — so 29 cases came back empty and were
+  recovered from the published site instead (`scripts/scrape-sections.py`). The
+  rendered markup does not expose the CMS Visual Type, so those sections get their
+  layout from media count (1 = full, 2 = half, 3+ = third) rather than the real
+  Full/Half/Third value. All 52 cases now have sections; 23 use the true CMS layout.
 - **Forms have no backend.** Both the contact and newsletter forms post to `#` —
   point them at a form handler.
 - **Only one case carries a testimonial** in the CMS.

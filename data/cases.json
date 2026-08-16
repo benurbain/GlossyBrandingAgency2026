@@ -657,7 +657,283 @@
       "Packaging design",
       "Social media"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "The Challenge",
+        "description": "<p>Charlotte & Mattijs, two Vlerick Marketing students, approached Glossy Branding Agency with the request to assist them in the development of a new brand. A concept for online dog food. A service that delivers tailor-made and healthy dog food to your home. Together we built BuddyBites, a subscription model for tailor-made healthy dog food.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643550337999659ecb9557d3_BUDDYBITES_4K_01.webp"
+          }
+        ]
+      },
+      {
+        "title": "Brand Ideation",
+        "description": "<p>Using our brand questionnaire, we sat down with the founders during three ideation sessions. Here, we decided together why the startup is doing what they are doing and how they want to communicate this to their target audience.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64355906aa838634f484ded0_BB_4K_IDEATION.webp"
+          }
+        ]
+      },
+      {
+        "title": "Concept Validation",
+        "description": "<p>For several years now, the 'Humanisation of Pets' has also been on the rise in Belgium. This term stands for the fact that true animal lovers increasingly see their animal as a real member of their family. It is safe to say that animal and owner(s) have a deeply rooted bond of trust, with many similarities to a real (human) relationship. As humans, we also want to eat healthier and healthier food, this is equally true for our pets. So it was more than obvious that a concept like BuddyBites is needed in Belgium.</p>",
+        "layout": "half",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64355b22c5baefa0afc8e094_BB_2160x2160_01.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64355b27d72af00561442866_BB_2160x2160_02.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64355b4a69843355f52970c6_BUDDYBITES_4K_02.webp"
+          }
+        ]
+      },
+      {
+        "title": "Brand Opportunities",
+        "description": "<p>It was not yet possible for buddy owners to order customised food for their pets online in Belgium. The opportunities for the brand are therefore very great to take a large share of the market for this through their unique BuddyPas. Using this pass, BuddyBites makes personalised and tasty food. This always at the right price for your buddy.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64355d29698433ca6f299db9_BuddyPas.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64355d3ad1b5662387155946_BB_2160x2160_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64355d448d6e9711a0994f53_BB_2160x2160_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64355d4b464c5806d52f1549_BB_2160x2160_05.webp"
+          }
+        ]
+      },
+      {
+        "title": "Naming",
+        "description": "<p>The name speaks for itself, our pets are increasingly becoming our friends hence we choose Buddy. This young term feels playful, just like our pets. Also, the focus is always on healthy and tasty food: the Bites. Say hello to BuddyBites.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643560356d9d634e91af7cf3_BB-Naming.webp"
+          }
+        ]
+      },
+      {
+        "title": "Brand Definition",
+        "description": "<p>BuddyBites is defined as a brand that prepares quality food mixes tailored to your pet. Tell BuddyBites everything about your pet on their interactive platform, and their algorithm prepares the right unique & healthy food mix. That way, you and your pet can enjoy a longer and more active friendship together!</p>",
+        "layout": "half",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643561f1b29d15ce9ebcc9dc_BB_2160x2160_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643561f5c0f7bd340dc3e05d_BB_2160x2160_07.webp"
+          }
+        ]
+      },
+      {
+        "title": "Purpose",
+        "description": "<p>Just as allergens are becoming more common in humans, this is also the case for our pets. However, for many dogs, the supply is too limited and it is not possible to obtain healthy dog food adapted to their allergy. BuddyBites' mission is to help all pets live healthier lives tailored to their needs. The nutritional substances are therefore always screened for sustainability and transparency. All BuddyBites products contain only healthy building blocks.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435621869843322612a00a9_BB_2160x2160_08.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435621ccbc88dcdfbf3ebd5_BB_2160x2160_09.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643562210bac328119de45cc_BB_2160x2160_10.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356227c5baef3acec9552c_BB_2160x2160_11.webp"
+          }
+        ]
+      },
+      {
+        "title": "Trademark",
+        "description": "<p>Using our own naming strategy, it was possible to also trademark the brand. BuddyBites was registered in Benelux & France. In this way, the trademark is protected against other identities that might want to use the name or logo in their own communications. As a result, the trademark always provides a strategic advantage.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643562c0c5baef6c9fc9612e_BB-Trademark.webp"
+          }
+        ]
+      },
+      {
+        "title": "Proposition",
+        "description": "<p>BuddyBites is a brand that personally helps and guides animal lovers in their pet's wellbeing, by creating a nutritional schedule together with the customer, BuddyBites can and translate it into a unique, tailor-made nutritional mix. BuddyBites can guarantee 100% improvement, truly helping both animal and owner. BuddyBites is an honest & transparent brand, helping to optimise and improve the future health of the animal. BuddyBites is a new player that uses innovative techniques to help improve the well-being of pets and their owners.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435644ed0b158deb9602e33_BB_2160x2160_12.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643564528d6e974b1899e76e_BB_2160x2160_13.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356455757c186452bf913d_BB_2160x2160_14.webp"
+          }
+        ]
+      },
+      {
+        "title": "Art Direction",
+        "description": "<p>The logo is balanced throughout in X-Y axis. The logo also seamlessly complements the wordmark, which was designed in the Nunito Font. Continuing this font gives the brand a young, dynamic but reliable feel. The colours are bright and happy and complement the pets. As a pattern, we use the fur of the buddies to reflect the animal aspect of the brand.</p>",
+        "layout": "half",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435649b5cf78f65fd6bb272_BB_2160x2160_16.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356568cbc88d411ef43810_BB-AD1.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435663adeec6ad5f155e1b4_BB-AD2.webp"
+          }
+        ]
+      },
+      {
+        "title": "Imagery",
+        "description": "<p>The Buddies are always at the centre of BuddyBites' imagery. In studio images, the pets are always on a background in one of our brand colours. In atmospheric images, we use the BuddyBites box as much as possible to continue the brand identity in the visual language.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643568454f36943332ad6bd8_BUDDYBITES_4K_22.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435684acf264574769699ab_BUDDYBITES_4K_23.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356850cf2645bbc89699c0_BUDDYBITES_4K_25.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356855a40c24594a5c749d_BUDDYBITES_4K_24.webp"
+          }
+        ]
+      },
+      {
+        "title": "Tone Of Voice",
+        "description": "<p>The BuddyBites Tone of Voice is very honest and transparent. To address the young nature of the brand, we also often use humour in the identity. We inform and guide consumers in a cool way with fun slogans. The baseline food for friends sums up the essence of the brand.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435687d946c6e8501745af0_BUDDYBITES_4K_26.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643568824353782de20ec34a_BUDDYBITES_4K_27.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356885cf26455e54969d28_BUDDYBITES_4K_28.webp"
+          }
+        ]
+      },
+      {
+        "title": "Brand Story",
+        "description": "<p>BuddyBites is the brainchild of Mattijs Brandt and Charlotte Coene. They believe that, as with humans, nutrients are the basis for any pet's well-being. When Sky - Charlotte's brother's dog - developed a skin allergy, together they began a search for the right healthy solution. They soon realised that the current market for healthy pet food offered a wide range of solutions, but none appeared to be unique and tailor-made to their specific needs. That is why they founded BuddyBites in 2019. With the brand, they want to guarantee healthy and tasty tailor-made dog food that also gives effective and long-term results that really benefit your pet.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643568a8946c6e17e9745cb5_BB_4K_Story.webp"
+          }
+        ]
+      },
+      {
+        "title": "Packaging",
+        "description": "<p>The BuddyBites Box is a fixture of the brand. It is the first offline contact moment customers have with the identity. Consequently, with every delivery, customers always see some happy dogs. Each bag of food also always features your pet's unique Buddy pass.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356a4934b768155db6b833_BB_2160x2160_15.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356a5f986a062bb0806e40_BUDDYBITES_4K_29.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356a658d6e97113c9a5269_BUDDYBITES_4K_30.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356a6a5301cc8205473dcf_BUDDYBITES_4K_31.webp"
+          }
+        ]
+      },
+      {
+        "title": "Products",
+        "description": "<p>The full brand was continued in a product line including salmon oil for a better coat. Biscuit rolls with lamb and apple. Essential vitamins that give the right boost to your buddy. Jummy strips and, of course, pooping bags for when the need arises.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356a8d95b0eef8399a612e_BUDDYBITES_4K_32.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356a94698433cff22a8b29_BUDDYBITES_4K_33.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356a9ddeec6a3de856140f_BUDDYBITES_4K_34.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64356aa16984331a922a8c10_BUDDYBITES_4K_35.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Charlotte & Mattijs, two students from Vlerick Marketing, approached Glossy Branding Agency to assist them in the development of a new brand. A concept for online dog food. It provides a service that delivers tailor-made and healthy dog food at home. Together we built BuddyBites, a subscription model for customised healthy dog food. BuddyBites is defined as a brand that prepares quality food mixes tailored to your pet. Tell BuddyBites everything about your pet on their interactive platform, and their algorithm will prepare the right unique & healthy food mix. This way you and your pet can enjoy a longer and more active friendship!"
   },
@@ -1182,7 +1458,143 @@
       "Campaigns",
       "Brand curation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "half",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64368497426a2c64588a86d0_Vlag-Mockup.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643684a2ec653a3f237c4fe0_Ghelamco-Arena.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643684c0ee872484d7171c3a_Voetbalveld.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643684d74eca41c95c907e48_Stoeltjes-1.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643684dc4eca41185d907ea5_Stoeltjes-2.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643684e25eb8222b1de03e53_Stoeltjes-3.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643684e60469ed3e02c319b3_Stoeltjes-4.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367a6bec53b30335e74607_Spelers-Tunnel.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "half",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6436851a31c54c5d94859eb9_Voetbal.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64368521ff96ad686d8a93c3_Supporters.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "half",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643685826cfcbd4d3c816c5a_Street%20League%20Logo.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367a882590dbac5e19606c_Geestige-Buffalos.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643685cffe9b982e0294dd3f_Street%20League%20Logos%20Mockup.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643685e75f25eef51c182847_Administratie-1.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643685f0fe9b98409f94de1f_Sjaal.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643685f8b0b6706741257013_Handdoek.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643685fd876f3fd6972ba608_Administratie-2.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643686134eca41e082908e5e_art%20direction.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "A new soccer arena, a new identity. KAA Gent (since 1895), also called the 'BUFFALO'S' since 1924, uses an indian as their logo. For many years, the indian logo never changed, and multiple versions of the logo were used."
   },
@@ -1475,7 +1887,232 @@
       "Film & Photography",
       "Spatial design"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "The Challenge",
+        "description": "<p>Kevin and Ramses came to Glossy because they wanted to start a friterie in Bruges, a city which already has a lot of them. The challenge was to create a friterie that would stand out. The two friends left with all the ingredients to make their dream a reality.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64357c9868eeb821fd015d73_TPB_challenge.webp"
+          }
+        ]
+      },
+      {
+        "title": "Brand Ideation",
+        "description": "<p>During our ideation sessions, it became clear that we needed to make the brand unique in all its experiences. We achieved this through original recipes such as the Veganaise and the Mary of Burgundy. In addition, we chose sustainable Belgian ingredients throughout the menu to emphasise the local character of The Potato Bar in the entire brand story.</p>",
+        "layout": "half",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64357e5b1b43c60abaf4671f_tpb3.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64357d89c5baef6654cb5304_TPB2.webp"
+          }
+        ]
+      },
+      {
+        "title": "Concept Validation",
+        "description": "<p>After a thorough competitor analysis, it became clear that the numerous friteries in Bruges always offer the same experience to their customers. To make sure that The Potato Bar concept would catch on, it was very important for The Potato Bar to distinguish itself from its competitors by offering a unique experience.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6436603f71e7a8984fc10978_TPB_concept-validation_1.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "half",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643660571f47ef72d9eff5ac_TPB_concept-validation_2.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6436605bec653a1202798950_TPB_concept-validation_3.webp"
+          }
+        ]
+      },
+      {
+        "title": "Cultural Context",
+        "description": "<p>Bruges is annually visited by almost 8 million tourists, who want to taste Belgian culture. At The Potato Bar they can enjoy this quite literally because the brand combines the best of what Belgium has to offer. We found it crucial that the bar not only becomes a tourist attraction, but also that the real Bruges inhabitants can go there for their favourite fries and an original croquette or hamburger.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64366082702aad972148fb17_TPB_cultural-context.webp"
+          }
+        ]
+      },
+      {
+        "title": "Brand Definition",
+        "description": "<p>We define the brand of The Potato Bar as an eatery that combines all the best that Belgium has to offer, creating all our products with great care in order to always guarantee the typical Belgian taste. In addition, we chose to combine the friterie with a cozy bar in an original way.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64357c894f36945a97aefb8a_TPB_brand-definition.webp"
+          }
+        ]
+      },
+      {
+        "title": "Storytelling",
+        "description": "<p>Ramses and Kevin have been good friends for 10 years and together they wanted to make their entrepreneurial dream come true. They aim to serve Belgian fries in a less traditional and more unique way. With their experience as chefs, they were able to fulfil this dream with The Potato Bar. Expect extraordinary flavour combinations with the greatest love for the potato and for Belgian cuisine.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643661dcf8cdeb8bbb408373_TPB-storytelling.webp"
+          }
+        ]
+      },
+      {
+        "title": "Purpose",
+        "description": "<p>As a typical Bruges brand, The Potato Bar considers it important that their products are home-made and genuine. The Potato Bar therefore always opts for local and sustainable ingredients with the utmost respect for Belgian culture.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6436621739b2cc7014c70f68_TPB_purpose.webp"
+          }
+        ]
+      },
+      {
+        "title": "Art Direction",
+        "description": "<p>The logo is inspired by the act of peeling a potato. By working with vintage illustrations in the graphic identity, we created an authentic experience. The colour palette was deliberately kept simple, we chose black, white and brown. We used the brown for the kraft paper because it gives it an artisan feel. As fonts, we chose ‘Akzidenz’ and ‘Gotham’.</p>",
+        "layout": "half",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6436625eed1627622687fb8c_Screenshot%202023-04-11%20at%2017.22.05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64366264ec53b33013e5a777_Screenshot%202023-04-11%20at%2017.21.53.webp"
+          }
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643662b4ff96ad19b988070f_tpb-ad.webp"
+          }
+        ]
+      },
+      {
+        "title": "Imagery",
+        "description": "<p>The visual language of The Potato Bar is unique, playful and atmospheric. We chose images full of light that focus on the pleasant atmosphere and the delicious food. The food photography portrays authentically the unique and tasteful combinations for which the brand is known.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643662f139b2cc7c9ec71dcb_TPB_imagery_1.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643662f64f4173808b5b1292_TPB_imagery_2.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64357c524f36948dd1aef965_TPB_imagery_3.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643662fe971df63295c964a5_TPB_imagery_4.webp"
+          }
+        ]
+      },
+      {
+        "title": "Copywriting",
+        "description": "<p>English was chosen as the brand language for The Potato Bar. Always with a young and rough tone. The names of the dishes are also always original.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6436633c103902a9147a4dd4_copywriting-TPB.webp"
+          }
+        ]
+      },
+      {
+        "title": "Website",
+        "description": "<p>The website of The Potato Bar is the place where the online brand experience is paramount. Therefore, a user-friendly and fresh website is extremely important to convince consumers.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64366367649ff09f79c809a2_website-tpb.webp"
+          }
+        ]
+      },
+      {
+        "title": "Social Media",
+        "description": "<p>Convenient social media templates ensure that The Potato Bar can approach their audience in a consistent manner on all relevant social media channels. This with an amusing approach, because humour works.</p>",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64366398ec53b3c832e5b6a6_TPB_social-media.webp"
+          }
+        ]
+      },
+      {
+        "title": "Offline Brand Tools",
+        "description": "<p>The menus were printed on kraft paper just like the placemats and all other flyers. This way, the artisanal feeling returns.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643663c510390242747a51f5_TPB_offline-brand-tools_1.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643663cb71e7a804c6c13e74_TPB_offline-brand-tools_2.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643663ce7d5603dad9e8873a_TPB_offline-brand-tools_3.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643663d37bd14fae5d022b74_TPB_offline-brand-tools_4.webp"
+          }
+        ]
+      },
+      {
+        "title": "Spatial Design",
+        "description": "<p>We created a clear moodboard that was delivered to the interior designer to ensure that the brand experience of The Potato Bar was complete.</p>",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643663fef8cdebec3040a586_TPB_spatial-design_1.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643664056fd1ba24873efc88_TPB_spatial-design_2.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6436640931c54c7025834451_TPB_spatial-design_3.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6436640d7d5603e469e888a6_TPB_spatial-design_4.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Kevin and Ramses came to Glossy because they wanted to start a friterie in Bruges, a city which already has a lot of them. The challenge was to create a friterie that would stand out."
   },
@@ -2499,7 +3136,55 @@
       "Content creation",
       "Websites"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367e327a17367d81b9e3a8_moovly_logo_colors.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367e39c15bb6df222f2566_moovly_icons.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367e3e6cfcbd81358101ca_moovly_forbusiness.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367e45260faea5ee180144_moovly_foreduction.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367e4dff96ad2dc88a0295_moovly_website_phone.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367e5fb0b670c6a924f7ca_moolvy_phone.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367e68971df66c6acb7096_moovly_instagram.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367e6d2590db1c3e19c0e2_moovly_styleguidepages.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367d28f96293fc3330c285_moovly_stripes.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64367e803a6c9c2beabae735_moovly-shutterstock.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Moovly has a great track record. In less than 5 years they developed an online platform for creating videos, presentations, e-cards and so much more. All built form scratch."
   },
@@ -2745,7 +3430,43 @@
       "Campaigns",
       "Content creation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643574a65333d903aaab47df_costumes_reveal_done_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643574addf2a4f780c4fd12a_opaque_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643574b1bac5510b8ae1257e_opaque_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643574b5cf26450ae197c8a9_opaque_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643574bd280dce04c97bd17d_opaque_07.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643574c26ffb9aa06ac42bdd_opaque_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643574c9cf2645493a97cbe6_opaque_05.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "The Café Costume x Glossy.tv Opaque linings are based on the most detailed & beautiful marble surfaces in the world. Marble was the favorite medium for greek and roman sculptors and architects, and became a cultural symbol of tradition and refined taste."
   },
@@ -2786,7 +3507,51 @@
       "Brand curation",
       "Packaging design"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435726e5cf78f038f6cb0b2_fetch_3600x2400_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64357280cf26455d28979372_fetch_reportage__3000pix-6.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435728f68eeb87126006be5_fetch_3600x2400_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643572975301cc34f747cf41_fetch_3600x2400_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435729da40c24e1da5d1e1f_fetch_food_3000pix-1.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643572a3bcb560ae5df07df0_fetch_food_3000pix-10.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643572b1bac55173c3e0fc14_fetch_reportage__3000pix-1.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643572b968eeb8678c006dde_fetch_reportage__3000pix-2.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643572c8a05bcf72415d858c_fetch_reportage__3000pix-5.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Hello, we are Fetch, a new and authentic kitchen for food lovers that serves handmade quality food. Our meals are daily made with high quality ingredients, and served fresh from our kitchen to your table."
   },
@@ -2821,7 +3586,39 @@
       "Content creation",
       "Spatial design"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bbdaf6d57bc6eda6c_642452de775218507fb9b4df_cc_the-bar_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bbdaf6d4b596eda73_642452ea61e9572521c824b3_cafecostume-4.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bbdaf6dea176eda71_642452fde77ce5830268159c_unspecified.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bbdaf6d7c316eda6f_6424530e0e5d142c97a78e74_cafecostume-53.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bbdaf6d287f6eda6e_6424531aea39c7fbcc9ff53e_unspecified-1.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bbdaf6d93b76eda6d_6424532783fe0010438f1141_cafecostume-86.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Introducing Café Costume's new venue, a stylish bar nestled in the heart of Antwerp. With its abundance of marble, we crafted a captivating identity that embodies the venue's allure and sophistication."
   },
@@ -2860,7 +3657,27 @@
       "Websites",
       "Brand curation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410cc0f7bd3f7bc178cf_64245154972f4967db97d0e1_gs_miia_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410cc0f7bd0475c178d1_64245160702948bde03f763b_icons.gif"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410cc0f7bd7198c178d0_64245167b543bc63c7374f54_gs_miia_01.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Ai is the next big disruption, even better, artificial Intelligence is already here. Miia helps your organisation in building the business models of the future. Reduce your costs drastically by enabling machines to understand text like you and me would. We helped the brand to reposition in the market by changing the brand's communication."
   },
@@ -2895,7 +3712,31 @@
       "Brand curation",
       "Content creation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643541100476b903eb320431_64244f0f09498c79db79ea63_thebreakfastclub_13.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643541100476b9269b320436_64244f1549e0d8d7532a8d05_thebreakfastclub_12.gif"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643541100476b90ee6320434_64244f1c9d9f3b7aa0198964_thebreakfastclub_08.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643541100476b922a5320432_64244f21ff31b3b2dc27fd01_thebreakfastclub-bureau2.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "The Breakfast Club is just like in the 80’s film a place where people from all different corners come together."
   },
@@ -2936,7 +3777,51 @@
       "Film & Photography",
       "Brand curation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f5efcf24583d28560_64244bca47f66385f7274675_nightshift2017_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f5efcf226bbd28567_64244bcc5afeb432f822a8be_nightshift2017_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f5efcf267ffd28566_64244bd0827e1a114188494b_nightshift2017_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f5efcf281d3d28561_64244bd299d413d413ecfcd5_nightshift2017_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f5efcf23d3dd28562_64244bd5d7aa0e2ec620e7d7_nightshift2017_07.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f5efcf2f23ad2856a_64244bd84cdf1b219bc16575_nightshift2017_08.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f5efcf2bd13d28568_64244bdd49e0d8d2762a5547_nightshift2017_09.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f5efcf249f3d2856b_64244bdf6dc6ad63d475bc2c_nightshift2017_10.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f5efcf20593d2856c_64244be20076292c860d86e3_nightshift2017_11.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "For the 2017 campaign, we looked into the future. The Digital Shift is happening as we speak, and it’s a shift with a great amplitude. Every small digital innovation and change influences an entire brand philosophy."
   },
@@ -2973,7 +3858,55 @@
       "Campaigns",
       "Websites"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c1877dcbc9cb4_6424496b9109525e45a47609_gs_pkp16_07.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c185ec5bc9cb3_642449771e17dd5d970def74_gs_pkp16_10.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c18b127bc9cb7_6424498cd2e0ab63ba4d6043_gs_pkp16_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c187536bc9cb9_6424499a1e17dd4ab70df096_gs_pkp16_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c185659bc9cb6_642449c9161d9b7f5955aa1d_gs_pkp16_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c18a6e3bc9cbf_642449d89d5c2c8f40b69544_gs_pkp16_08.gif"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c18e763bc9cbd_642449e347f663540227219c_gs_pkp16_09.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c183956bc9cb8_642449f80ddadc23580d40f2_gs_pkp16_11.gif"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c18702ebc9cc1_642449f8fc5bd75ffb05af68_gs_pkp16_12.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112757c18722fbc9cbe_64244a0a8d2a5145ce22448d_gs_pkp16_13.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Brand Update for the 2016 edition of Belgium largest ‘Alternative’ festival Pukkelpop. We developed the festivals’ online & offline presence."
   },
@@ -3014,7 +3947,35 @@
       "Social media",
       "Brand curation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bdeec6a6517537c5f_6424463a71b2854ababd31f7_gs_dominiquepeeters_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bdeec6af56c537c5c_6424462f827e1a660788082a_gs_dominiquepeeters_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bdeec6a9e8f537c5d_642446447d66db021f18179d_gs_dominiquepeeters_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bdeec6a6c86537c5b_6424464e161d9b25d8556daa_gs_dominiquepeeters_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bdeec6a7d08537c5e_6424465747f663cb0325c26b_gs_dominiquepeeters_07.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "As a personal expert Dominique will help your body follow your mind again. Dominique promises a tailor-made program based on sports, insights, nutrition & coaching. The one doing it is the person in the mirror, let me hold the mirror. Dominique stands for result. We developed a complete 'premium' identity based on the 4 pillars of Dominique's philosophy."
   },
@@ -3055,7 +4016,27 @@
       "Film & Photography",
       "Campaigns"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410eb29d15788eba9879_6424441fda8d9a66c376884f_juma2017_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410eb29d15b57bba9877_6424442a6bdb2a40b8719f44_juma2017_01.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64390db1903fd0d6e6758a9e_juma_identity_03.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "In 2016 JUMA architects wanted to focus on their delivered projects. We developed a pure and simple look and feel, online and offline."
   },
@@ -3090,7 +4071,43 @@
       "Social media",
       "Brand curation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111150e76f906248715_64243d77bcbb39000449782c_venicebeach_11.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111150e760252248711_64243d814d918678af8c2a92_venicebeach_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111150e7665be248714_64243d903663c25b9b360533_venicebeach_12.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111150e766a88248713_64243d9f0ff9d3ece59550fb_venicebeach_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111150e764b44248718_64243dbf49e0d8126b296717_venicebeach_07.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111150e76656b248712_64243dca26f6c576a7f7f52e_venicebeach_08.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111150e76d873248716_64243dd2fb8d73d3eb3dfea0_venicebeach_09.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "How to build a premium fitness club? Venice Beach teamed up with Glenn Sestig Architects and Glossy Branding Agency to develop a venue that breathes sports. Convenience and luxury are key!"
   },
@@ -3127,7 +4144,19 @@
       "Content creation",
       "Campaigns"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643541145e254343aeefd288_64243aeb70add2f89ab2c314_screen-shot-2016-10-05-at-12.31.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "At The Makers, we care about your brand. We are your privileged partner in developing and producing your collection of menswear, ladies wear and made to measure garments. Glossy.tv and The Makers made an 'out of the ordinary' brand movie."
   },
@@ -3168,7 +4197,43 @@
       "Brand curation",
       "Content creation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa83867391830546_6423016e7843cf68f4cc5b65_gs_nightshift_2016_3600x2400_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa8386a2b983054a_6423017494915fc77596dedf_gs_nightshift_2016_3600x2400_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa83867829830547_6423017890ea3a8cd11e0844_gs_nightshift_2016_3600x2400_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa83862c29830548_6423017ccbd86446d959566d_gs_nightshift_2016_3600x2400_07.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa838682fa83054b_6423019159d07a2980f46264_gs_nightshift_2016_3600x2400_08.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64230193ffb4119749bc5fca_gs_nightshift_2016_3600x2400_09.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa838631eb83054c_64230197062e30c32ffdbd68_gs_nightshift_2016_3600x2400_10.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "For Night Shift 2016 we developed the The After Hours Business Lab. This idea emphasises the creative aspect of business, a playground where experiments lead to innovation."
   },
@@ -3207,7 +4272,39 @@
       "Content creation",
       "Websites"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410c42b231f28c24001d_6422ffa890ea3a4cc71de95f_3.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410c42b231894b240020_6422ffb47843cf1a9fcc4470_1.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410c42b231e58a24001e_6422ff9036c198844369e758_2.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410c42b231dcfb240021_6422ffc7c0cdef26c7c4de8f_4.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410c42b231c60924001f_6422ffd359d07a4015f441ef_6.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410c42b2316686240022_6422ffdaf1172a33273da556_7.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Full Branding for Wim De Waele and Jurgen Ingels' new Fintech hub. Eggsplore is more than an incubator or co-working space."
   },
@@ -3241,7 +4338,39 @@
       "Websites",
       "Brand curation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111c0f7bd591bc178eb_6422fddcf8547c2d114782f2_theglue_framework_3600x2400.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111c0f7bd1232c178e7_6422fde6ccc63583354ea06d_theglue_3600x2400_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111c0f7bd69d3c178e3_6422fdf0f6b79943c01b5cb6_theglue_innovative_3600x2400.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64634ee74648fab8dc7ebd47_thegluegif_2.gif"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111c0f7bd1f87c178e8_6422fe02493a596485413875_theglue_platform_3600x2400.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354111c0f7bdb314c178e9_6422fe0a908a9b6c58d7b540_2.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "The Glue offers the global banking industry a technology platform to enable fundamental digital transformation. Digital disruption is everywhere, so we've built an identity that sticks."
   },
@@ -3282,7 +4411,27 @@
       "Brand curation",
       "Social media"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/643541106984330144278a20_6422fbed6a2a0cbdd5442022_foodsie_3600x2400_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354110698433ce55278a21_6422fbfae773bcacbd3a749f_foodsie_3600x2400_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354110698433334d278a1f_6422fc0261576b0c854ca0cf_foodsie_3600x2400_05.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "It all starts with the food, with a strong focus on the whole experience. Always with a contemporary approach for quality seekers who want to level up."
   },
@@ -3323,7 +4472,39 @@
       "Websites",
       "Social media"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354110757c18c5f5bc9c8a_6422f595f1172a6ee73ce0fa_quatremains_3600x2400_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354110757c1882ddbc9c90_6422f599f1172af8993ce0fc_quatremains_3600x2400_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354110757c187495bc9c91_6422f59de8e9016b8760fb28_quatremains_3600x2400_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354110757c1826bcbc9c8f_6422f59f7dbef8606c710a46_quatremains_3600x2400_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354110757c18c30ebc9c8e_6422f5a3d5004f16e607fcc2_quatremains_3600x2400_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354110757c180900bc9c8b_6422f5a7c087bfd7dcd446f2_quatremains_3600x2400_07.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "A new look and feel for Quatre Mains Klaviercentrum. Or as we say: 'Quatre Mains is more than just a piano shop. It is a place where musical notes seduce and music lovers can express their passion. Where international artists may find a home and are presented with the space and resources to work, compose and relax.'"
   },
@@ -3364,7 +4545,35 @@
       "Social media",
       "Websites"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa8386298b830551_6422f33de8e901064360ce27_prezenta_cards_3600x2400_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa83868b60830552_6422f3410ccc72525782e726_prezenta_cards_3600x2400_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa8386e85c830553_6422f3457653b48db7a2ce6d_prezenta_cards_3600x2400_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa838668a2830555_6422f34ac8c293d968231ec6_prezenta_cards_3600x2400_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410faa8386e5a3830556_6422f34ee8e9011f2860d00e_prezenta_cards_3600x2400_07.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Prezenta is a Belgian based presentation pop-up company that strives for corporate creativity. Glossy.tv built their complete identity, that represents their storytelling, focus and character. Prezenta makes your presentation a real experience."
   },
@@ -3405,7 +4614,39 @@
       "Advertising",
       "Campaigns"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f435378819a0c2d7d_6422ef199e75608e19151608_nightingale_level-up_3600x2400_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f4353784f7c0c2d7e_6422ef221cd9ca5def42e204_nightingale_level-up_3600x2400_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f43537874cf0c2d80_6422ef2a789e5c4d9dd58113_nightingale_level-up_3600x2400_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f435378e12d0c2d81_6422ef34767b4d6ec3d0701d_nightingale_level-up_3600x2400_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f43537841d10c2d82_6422ef3f0df8cb455188072c_nightingale_level-up_3600x2400_07.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410f4353782bb50c2d7f_6422f0559815454ae78bf1ea_nightingale_level-up_video-fallback.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Glossy Branding Agency had a vision for the Nightingale's Press Days 2015, an exhibition that focuses on performance, photography, installation and video, all in the context of fashion, food, technology and design."
   },
@@ -3446,7 +4687,19 @@
       "Campaigns",
       "Film & Photography"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "full",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410fb29d157714ba987f_6422eb227182ca8f6d4d135d_nightingale_drip_artichoque.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "For Nightingale, an experimental marketing agency based in Antwerp and Berlin, we developed a communication strategy for AW 2014. 'Adding Gold' enabled Nightingale to create more awareness for their brand, online & offline. The campagne was used in several magazines, in Belgium and abroad."
   },
@@ -3489,7 +4742,67 @@
       "Social media",
       "Websites"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6a583e537cd3_6422e4cc189d7ee560a23166_pukkelpop_2015_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6a2aad537cd2_6422e4d0b344d09c90141379_pukkelpop_2015_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6a6897537cd9_6422e4d4b344d0b60b1413a6_pukkelpop_2015_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6a4c21537cd6_6422e4d8557fa295000cc2d1_pukkelpop_2015_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6a6cf0537cd7_6422e4dc188d8d6b2ef5fe35_pukkelpop_2015_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6a8b2c537cd8_6422e4e1717e776b509eccaa_pukkelpop_2015_07.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6af646537cd5_6422e4e5060d367c24c4053c_pukkelpop_2015_08.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6a65d5537cda_6422e4e93df2421f8bcd8372_pukkelpop_2015_09.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6af51f537cdb_6422e4ee789e5c0245d4e88d_pukkelpop_2015_10.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6af862537cdc_6422e4f2188d8d512cf5febd_pukkelpop_2015_11.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6a8414537cde_6422e4fec3f0d253013f6210_pukkelpop_2015_13.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6ae014537ce1_6422e50fd5004f2fd3070883_pukkelpop_2015_15.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/64354112deec6aa3ea537cdd_6422e51822b62fc461f01473_pukkelpop_2015_16.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "For the 30th edition of Pukkelpop, Glossy.tv developed a complete make over. Pukkelpop is more than just music, it's a discovery festival with more than 200 live artists during 4 days."
   },
@@ -3531,7 +4844,31 @@
       "Campaigns",
       "Content creation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410e8d6e97853d9731eb_6422e0c0cf26263ee924a406_night_shift_2015_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410e8d6e97a5329731ef_6422e0c5c22c93f159698af2_night_shift_2015_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410e8d6e9750979731ea_6422e0cb3df2421778cd3cdb_night_shift_2015_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410e8d6e9769be9731ec_6422e0d22ee58a5f05c53a94_night_shift_2015_05.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "In the last two years, Night Shift made its mission statement come true. Connecting (young) entrepreneurs & building an unique (new) network. The mission is clear, and (some) success has been accomplished, Glossy.tv would like to propose a campaign, based on the company's values."
   },
@@ -3572,7 +4909,39 @@
       "Campaigns",
       "Social media"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410caa83865eec830516_6422dc2570bc48f5dbe13f99_zorro_glossy_namecards.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410caa83862ad3830514_6422dec19ad1ab2d3ac63cf6_tram.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410caa83869935830511_6422dc35c22c935d84694fdd_01.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410caa8386775b830513_6422dc3dd436185283758fa4_02.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410caa83860fa7830517_6422dc44def84443ec8934aa_1576.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410caa8386d369830515_6422dc4bd2afc41fa631407f_zorro_glossy_04.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Full branding for a new & stylish 'frituur', located at the city of Gent's student district. All the food is freshly made in the hacienda!"
   },
@@ -3613,7 +4982,35 @@
       "Brand curation",
       "Content creation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410ecea7fb1ff22a23c2_6422d8d33cd0d4b347134682_moris_glossysite_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410ecea7fbdd1d2a23c6_6422d8dc9e75603a4013b94c_moris_glossysite_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410ecea7fbdbd82a23c3_6422d8e222b62f41a9ef6068_moris_glossysite_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410ecea7fb61512a23c5_6422d8eb22b62fe68def6095_moris_glossysite_07.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410ecea7fbd46c2a23c4_6422da7a7a6f7523fae7cc54_moris_glossysite_08-2.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Meet Mòris, the new bar in the center of Ghent. With a focus on unforgettable nights and premium drinks, Mòris promises \"The Perfect Bliss.\" Join us for an exquisite experience with carefully curated drinks that excite the taste buds."
   },
@@ -3652,7 +5049,67 @@
       "Film & Photography",
       "Campaigns"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c62caeefe2c9_6422c62c869f535ed88745e4_cafecostume_limitededitionlinings_03.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c61af9efe2d1_6422c632f90fa382a754ac0f_cafecostume_limitededitionlinings_04.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c6007defe2ca_6422c637716d2d0cc0d02d42_cafecostume_limitededitionlinings_05.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c66332efe2cd_6422c63cb097f51293d69e9b_cafecostume_limitededitionlinings_06.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c65ba7efe2cc_6422c642e728d41c1a4f374c_cafecostume_limitededitionlinings_07.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c6d30defe2cf_6422c6482b68e3369b9e6071_cafecostume_limitededitionlinings_08.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c616f0efe2d0_6422c64b2b68e3740d9e60a7_cafecostume_limitededitionlinings_09.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c6557befe2ce_6422c653e48d3021c049c26b_cafecostume_limitededitionlinings_10.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c6f041efe2d9_6422d71d70bc480a7be0c5b4_cafecostume_limitededitionlinings_11.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c6ba42efe2d8_6422d720c0fe99a2dcd52d1f_cafecostume_limitededitionlinings_12.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c60a99efe2da_6422d723d5004f2c190620ab_cafecostume_limitededitionlinings_13.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c6b191efe2db_6422d726c13ad9218d22f88e_cafecostume_limitededitionlinings_14.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410b1b43c61029efe2d7_6422d728d97b9b31ce411f01_cafecostume_limitededitionlinings_15.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Back in 2010, Café Costume asked us to design some exclusive linings for their suits. As Café Costume was on the verge of taking the tailoring market by storm, Glossy.tv decided that the linings should be a collaboration between Café Costume and Glossy.tv. We proposed six different linings and all six got in production. The official release of the linings was in the summer of 2010, and the national and international press reacted very positive."
   },
@@ -3686,7 +5143,31 @@
       "Campaigns",
       "Content creation"
     ],
-    "sections": [],
+    "sections": [
+      {
+        "title": "",
+        "description": "",
+        "layout": "third",
+        "media": [
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bcea7fb4fc92a239a_6422bad00590137f1dc4492a__mg_7114.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bcea7fb1aea2a239e_6422bad62b68e327599d9c10__mg_7125.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bcea7fb83f82a239d_6422bae179a04754573c50b6__mg_7132.webp"
+          },
+          {
+            "type": "image",
+            "src": "https://cdn.prod.website-files.com/641c73395e6dc61d470cc5e0/6435410bcea7fb10af2a2399_6422de40a892dd50c2a5313b_Jim.webp"
+          }
+        ]
+      }
+    ],
     "isNew": false,
     "seo": "Wow. This is a long time ago. But we had to add this project to our list. In the year 2007, the (legendary and not so legendary) Culture Club Ghent became 7 years."
   }
