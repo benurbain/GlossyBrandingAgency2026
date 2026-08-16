@@ -53,6 +53,10 @@ const escapeHtml = (s) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
   );
 
+// Pages live at the site root, case detail pages one level down in /cases/.
+// Links are built relative so the site works under a GitHub Pages subpath too.
+const basePath = () => (/\/cases\/[^/]*$/.test(location.pathname) ? '../' : '');
+
 async function loadJson(path) {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`${path} → HTTP ${res.status}`);
@@ -70,7 +74,7 @@ function caseCard(item, index) {
   const flag = item.isNew ? '<span class="case-card__flag">new</span>' : '';
 
   return `
-    <a class="case-card${narrow}" href="/cases/${escapeHtml(item.slug)}">
+    <a class="case-card${narrow}" href="${basePath()}cases/${escapeHtml(item.slug)}.html">
       ${img}${flag}
       <span class="case-card__body">
         <span class="case-card__name">${escapeHtml(item.name)}</span>

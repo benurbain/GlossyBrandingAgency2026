@@ -338,6 +338,90 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 500;
 }
 
+/* --- Case detail ---------------------------------------------------------- */
+
+.case-hero {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--smoke);
+}
+
+.case-hero__media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.case-meta { margin: 0; }
+
+.case-meta__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.1em;
+  padding-block: var(--space-s);
+  border-bottom: 1px solid var(--line);
+}
+.case-meta__row:first-child { border-top: 1px solid var(--line); }
+
+.case-meta dd { margin: 0; }
+
+.case-slogan {
+  font-size: var(--step-2);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin-bottom: var(--space-m);
+}
+
+/* Rich text arriving from the CMS — keep it readable whatever it contains. */
+.case-body :where(h2, h3) { margin-top: var(--space-l); }
+.case-body :where(img, video) {
+  border-radius: var(--radius);
+  margin-block: var(--space-m);
+}
+.case-body a { text-decoration: underline; }
+
+.case-figure {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+.case-quote {
+  max-width: 46ch;
+  margin: 0 auto;
+  text-align: center;
+  font-size: var(--step-2);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.case-quote footer {
+  margin-top: var(--space-m);
+  font-size: var(--step--1);
+  font-weight: 400;
+  color: var(--gray);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.case-pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-m);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-l);
+}
+
+.case-pager__link { display: grid; gap: 0.2em; }
+.case-pager__link:last-child { text-align: right; margin-left: auto; }
+.case-pager__name { font-size: var(--step-1); font-weight: 700; letter-spacing: -0.02em; }
+.case-pager__link:hover .case-pager__name { color: var(--gray); }
+
 /* --- Buttons -------------------------------------------------------------- */
 
 .btn {

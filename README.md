@@ -23,7 +23,12 @@ contact.html                   Contact details, form, FAQ accordion
 brand-ai-consultancy.html      AI Consultancy
 ai-driven-brand-innovation.html  AI-Driven Brand Innovation
 careers.html                   PLACEHOLDER — see "Known gaps"
-404.html
+privacy-policy.html            Privacy & cookie policy
+kmo-portefeuille.html          Subsidies for consultancy & strategy
+404.html                       Self-contained (inlined CSS) so it works at any depth
+
+cases/<slug>.html              52 generated case detail pages
+scripts/build-cases.py         Generates cases/ from data/cases.json
 
 assets/css/style.css           Design system: tokens, layout, components
 assets/js/main.js              Nav, FAQ accordion, CMS rendering
@@ -70,9 +75,11 @@ python3 -m http.server 8899
   Webflow (HTTP 401), so its copy could not be read.
 - **Case and news images still point at the Webflow CDN.** They render fine today,
   but they are not self-hosted — localise them before switching Webflow off.
-- **Case and news detail pages are not built.** Only the overviews exist; case
-  cards link to `/cases/<slug>`, which has no page behind it yet.
+- **News detail pages are not built.** Case detail pages exist (52 of them); news
+  items still render as cards only, with no page behind them.
 - **Forms have no backend.** Both the contact and newsletter forms post to `#` —
   point them at a form handler.
+- **5 of 52 cases have no body text** in the CMS, so those detail pages show the
+  hero, facts and slogan only. Only one case carries a testimonial.
 - **The homepage Lottie logo is a static SVG here**, to avoid pulling in a
   Lottie player.
