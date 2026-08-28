@@ -884,6 +884,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/cases/culture-club"/>
   </url>
   <url>
+    <loc>https://glossy.tv/news/gen-ai-workshop-mediafin</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/gen-ai-workshop-mediafin"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news/gen-ai-workshop-mediafin"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news/gen-ai-workshop-mediafin"/>
+  </url>
+  <url>
+    <loc>https://glossy.tv/nl/news/gen-ai-workshop-mediafin</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/gen-ai-workshop-mediafin"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news/gen-ai-workshop-mediafin"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news/gen-ai-workshop-mediafin"/>
+  </url>
+  <url>
     <loc>https://glossy.tv/news/midjourney-8-2-back-in-our-workflow</loc>
     <lastmod>2026-08-28</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/midjourney-8-2-back-in-our-workflow"/>
