@@ -1350,9 +1350,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* --- Home & about: pillar columns, fact strips, inline links -------------- */
 
 .cols-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-xl); }
+.cols-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl); }
 .cols-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-l); }
 @media (max-width: 980px) {
-  .cols-3, .cols-4 { grid-template-columns: 1fr; }
+  .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; }
 }
 
 .rule-col {
