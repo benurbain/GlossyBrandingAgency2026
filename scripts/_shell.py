@@ -8,6 +8,7 @@ Call set_lang() before rendering a batch; asset() then climbs the right
 number of levels (../ for the English tree, ../../ from inside nl/)."""
 
 import html
+import re
 
 e = lambda s: html.escape(str(s or ""), quote=True)
 
@@ -61,6 +62,8 @@ STR = {
                   '<a href="{p}privacy-policy.html">cookie policy</a>.',
         "accept": "Accept cookies",
         "close": "Dismiss",
+        "external_blocked": "This video is provided by Vimeo and stays blocked until you allow external media.",
+        "manage_cookies": "Manage preferences",
         "switch_label": "NL",
         "switch_aria": "Nederlandse versie",
         "switch_hreflang": "nl",
@@ -89,6 +92,8 @@ STR = {
                   '<a href="{p}privacy-policy.html">cookiebeleid</a>.',
         "accept": "Accepteer cookies",
         "close": "Sluiten",
+        "external_blocked": "Deze video wordt door Vimeo geleverd en blijft geblokkeerd tot je externe media toestaat.",
+        "manage_cookies": "Voorkeuren beheren",
         "switch_label": "EN",
         "switch_aria": "English version",
         "switch_hreflang": "en",
@@ -149,7 +154,7 @@ def head(title, description, path, image=None, body_class=""):
 <meta property="og:type" content="article">{og_image}
 <link rel="icon" href="{A}assets/img/favicon.png">
 <link rel="apple-touch-icon" href="{A}assets/img/webclip.png">
-<link rel="stylesheet" href="{A}assets/css/style.css?v=3">{redirect}
+<link rel="stylesheet" href="{A}assets/css/style.css?v=4">{redirect}
 </head>
 <body class="{body_class}">
 
@@ -249,7 +254,7 @@ def footer():
 </div>
 
 <script src="{A}assets/js/lottie.min.js"></script>
-<script src="{A}assets/js/main.js?v=3"></script>
+<script src="{A}assets/js/main.js?v=4"></script>
 <script>
 document.querySelectorAll('[data-set-lang]').forEach(function (a) {{
   a.addEventListener('click', function () {{
@@ -276,10 +281,20 @@ def media_tag(m, alt="", eager=False):
         )
 
     if m["type"] == "embed":
+        match = re.match(r"https?://(?:www\.)?vimeo\.com/(\d+)", src)
+        embed_src = (
+            f"https://player.vimeo.com/video/{match.group(1)}?dnt=1"
+            if match
+            else src
+        )
+        s = STR[LANG]
         return (
-            f'<div class="media media--embed">'
-            f'<iframe src="{e(src)}" title="{e(alt) or "Video"}" loading="lazy" '
-            f'allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>'
+            f'<div class="media media--embed" data-consent-embed '
+            f'data-consent-src="{e(embed_src)}" data-consent-title="{e(alt) or "Video"}">'
+            f'<div class="consent-embed__placeholder" data-consent-placeholder>'
+            f'<p>{s["external_blocked"]}</p>'
+            f'<button class="btn cookie-btn" type="button" data-consent-manage>'
+            f'{s["manage_cookies"]}</button></div></div>'
         )
 
     loading = "eager" if eager else "lazy"

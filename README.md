@@ -45,7 +45,7 @@ scripts/_shell.py              Shared nav/footer/media markup, per language
 scripts/raw/                   Raw CMS exports (input to export-cms.py)
 
 assets/css/style.css           Design system: tokens, layout, components
-assets/js/main.js              Nav, FAQ accordion, CMS rendering
+assets/js/main.js              Nav, FAQ, CMS rendering and consent management
 assets/fonts/                  Rethink Sans (variable, roman + italic)
 assets/img/                    Logo, favicon, partner badges
 assets/media/                  803 case/news/client assets (324 MB), self-hosted
@@ -141,6 +141,23 @@ Type scales fluidly with `clamp()` rather than the original's `font-size: 1vw`,
 which broke under browser zoom. Tokens live at the top of `assets/css/style.css`:
 `--ink`, `--paper`, `--smoke`, `--cream`, `--step-0`…`--step-4`, `--space-*`.
 
+## Consent management
+
+The black bottom bar carries the visual language of the previous Webflow site,
+but consent is explicit by category: Necessary, Analytics, Marketing and
+External media. Accept and reject have equal prominence, preferences expire
+after six months and the footer always offers a way to revise the choice.
+
+Optional scripts must be inert in source and declare their category:
+
+```html
+<script type="text/plain" data-consent="analytics" data-src="…"></script>
+```
+
+Interactive Vimeo players are emitted as local placeholders by `_shell.py` and
+receive an iframe only after External media is enabled. Rebuilding the case
+trees therefore preserves the consent gate.
+
 ## Local development
 
 Needs a real HTTP server — the CMS rendering uses `fetch`, which `file://` blocks.
@@ -159,7 +176,8 @@ Paths in `data/*.json` are stored repo-relative (`assets/media/x.webp`). Root
 pages use them as-is; `cases/` and `news/` prefix `../` (`asset()` in
 `scripts/_shell.py`, `assetUrl()` in `main.js`).
 
-The 75 Vimeo embeds stay remote — they were never Webflow's.
+Vimeo-hosted video files stay remote — they were never Webflow's. Interactive
+Vimeo players are consent-gated before their iframe is requested.
 
 ## Known gaps
 

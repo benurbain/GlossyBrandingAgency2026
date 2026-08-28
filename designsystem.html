@@ -6,7 +6,7 @@
 <title>Design system · Glossy rebuild</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/style.css?v=3">
+<link rel="stylesheet" href="assets/css/style.css?v=4">
 <style>
   /* Page-local styling for the documentation itself. Everything being
      documented is rendered with the real site classes, so specimens cannot
@@ -409,8 +409,9 @@
           <tr><td>No <code>vw</code>-based root font size</td><td>the original scaled off <code>1vw</code>, which breaks browser zoom</td></tr>
           <tr><td>Media paths are stored repo-relative</td><td><code>asset()</code> in the generators, <code>assetUrl()</code> in JS add <code>../</code> one level down</td></tr>
           <tr><td>Every interactive state has a <code>:focus-visible</code></td><td>2px ink outline, 3px offset, globally</td></tr>
+          <tr><td>Consent is explicit and reversible</td><td>accept and reject carry equal weight; optional scripts and external media stay inert until their category is enabled</td></tr>
           <tr><td>Real headings, in order</td><td>the Webflow original had none at all: 321 divs, zero h1–h6</td></tr>
-          <tr><td>Components fail soft</td><td>no-JS keeps the static logo, no curtain, no cookie bar blocking</td></tr>
+          <tr><td>Components fail soft</td><td>no-JS keeps the static logo and no curtain; gated external media remains safely blocked</td></tr>
         </tbody>
       </table>
     </div>
