@@ -9,7 +9,7 @@
   font-family: "Rethink Sans";
   src: url("../fonts/RethinkSans-var.ttf") format("truetype-variations"),
        url("../fonts/RethinkSans-var.ttf") format("truetype");
-  font-weight: 400 600;
+  font-weight: 400 500;
   font-style: normal;
   font-display: swap;
 }
@@ -18,7 +18,7 @@
   font-family: "Rethink Sans";
   src: url("../fonts/RethinkSans-Italic-var.ttf") format("truetype-variations"),
        url("../fonts/RethinkSans-Italic-var.ttf") format("truetype");
-  font-weight: 400 600;
+  font-weight: 400 500;
   font-style: italic;
   font-display: swap;
 }
@@ -47,7 +47,7 @@
   --step-4:  clamp(2.5rem, 1.63rem + 4.35vw, 5rem);
 
   /* Type roles */
-  --weight-heading: 600;
+  --weight-heading: 400;
   --weight-heading-editorial: 400;
 
   /* Space */
@@ -109,9 +109,9 @@ h4 { font-size: var(--step-1); }
 p { margin: 0 0 1em; text-wrap: pretty; }
 p:last-child { margin-bottom: 0; }
 
-/* Nothing on the site goes heavier than 600, browser-default bold included;
-   the face range caps at 600 and no faux bold may be synthesised past it. */
-strong, b, th { font-weight: 600; }
+/* Rethink Sans only sings at regular: everything sits at 400, strong (and
+   b/th) at 500, the face range caps there and no faux bold is synthesised. */
+strong, b, th { font-weight: 500; }
 body { font-synthesis-weight: none; }
 
 a { color: inherit; text-decoration: none; }
@@ -152,7 +152,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .eyebrow {
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gray);
@@ -237,7 +237,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin: 0;
   color: var(--paper);
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -355,7 +355,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .cookie-option__title {
   display: block;
   font-size: var(--step-0);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .cookie-option__description {
@@ -490,7 +490,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: inline-block;
   padding: 0.45em 0.85em;
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
   isolation: isolate;
   overflow: hidden;
   border-radius: var(--radius);
@@ -675,7 +675,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--cream);
   color: var(--ink);
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* --- Case detail ---------------------------------------------------------- */
@@ -895,7 +895,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .case-meta dt {
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gray);
@@ -926,7 +926,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-radius: 100px;
   background: var(--cream);
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* --- Case sections (the CMS-driven visual body) --------------------------- */
@@ -1007,7 +1007,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin: 0 auto;
   text-align: center;
   font-size: var(--step-2);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25;
   letter-spacing: -0.01em;
   text-wrap: balance;
@@ -1061,7 +1061,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .marquee span {
   flex: none;
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gray);
@@ -1133,7 +1133,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border: 1px solid var(--ink);
   border-radius: 100px;
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
@@ -1205,7 +1205,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .steps { counter-reset: step; display: grid; gap: var(--space-xl); }
-.step__num { font-size: var(--step-1); color: var(--gray); font-weight: 500; }
+.step__num { font-size: var(--step-1); color: var(--gray); font-weight: 400; }
 
 /* Wrapper for the four steps; each step carries its own rule and padding. */
 .about-steps { display: block; }
@@ -1376,12 +1376,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .col-num, .col-note { font-size: var(--step--1); color: var(--gray); }
 .col-baseline {
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--gray);
 }
-.fact-figure { font-size: var(--step-2); font-weight: 600; letter-spacing: -0.02em; }
+.fact-figure { font-size: var(--step-2); font-weight: 400; letter-spacing: -0.02em; }
 
 .textlink {
   text-decoration: underline;
@@ -1443,7 +1443,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   width: 100%;
   padding: var(--space-m) 0;
   font-size: var(--step-1);
-  font-weight: 500;
+  font-weight: 400;
   text-align: left;
 }
 
