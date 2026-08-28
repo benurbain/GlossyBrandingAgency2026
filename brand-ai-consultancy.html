@@ -7,7 +7,7 @@
 <meta name="description" content="Brand &amp; AI consultancy in Ghent, Belgium. Twenty years of brand judgement, now steering AI: workflows, brand-trained image models, custom tools and hands-on training for marketing teams.">
 <link rel="canonical" href="https://glossybranding.com/brand-ai-consultancy">
 <link rel="alternate" hreflang="en" href="https://glossybranding.com/brand-ai-consultancy">
-<link rel="alternate" hreflang="nl" href="https://glossybranding.com/brand-ai-consultancy-nl">
+<link rel="alternate" hreflang="nl" href="https://glossybranding.com/nl/brand-ai-consultancy">
 <link rel="alternate" hreflang="x-default" href="https://glossybranding.com/brand-ai-consultancy">
 <meta property="og:title" content="AI Consultancy Belgium | Brand &amp; AI Strategy | Glossy">
 <meta property="og:description" content="Brand &amp; AI consultancy in Ghent, Belgium. Twenty years of brand judgement, now steering AI: workflows, brand-trained image models, custom tools and hands-on training for marketing teams.">
@@ -25,7 +25,7 @@
     var wantsNl = (navigator.languages || [navigator.language || '']).some(function (l) {
       return String(l).toLowerCase().indexOf('nl') === 0;
     });
-    if (choice !== 'en' && (choice === 'nl' || wantsNl)) location.replace('brand-ai-consultancy-nl.html');
+    if (choice !== 'en' && (choice === 'nl' || wantsNl)) location.replace('nl/brand-ai-consultancy.html');
   } catch (e) {}
 })();
 </script>
@@ -51,7 +51,7 @@
         <li><a class="nav__link" href="cases.html">Cases</a></li>
         <li><a class="nav__link" href="news.html">News</a></li>
         <li><a class="nav__link" href="contact.html">Contact</a></li>
-        <li><a class="nav__link nav__link--lang" href="brand-ai-consultancy-nl.html" hreflang="nl" data-set-lang="nl" aria-label="Nederlandse versie">
+        <li><a class="nav__link nav__link--lang" href="nl/brand-ai-consultancy.html" hreflang="nl" data-set-lang="nl" aria-label="Nederlandse versie">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/><path d="M3.2 9h17.6M3.2 15h17.6"/></svg>
           NL</a></li>
       </ul>
@@ -272,7 +272,7 @@
 </div>
 
 <script src="assets/js/lottie.min.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?v=2"></script>
 <script>
 document.querySelectorAll('[data-set-lang]').forEach(function (a) {
   a.addEventListener('click', function () {
