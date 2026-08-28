@@ -1483,14 +1483,23 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: var(--step--1);
 }
 
-.site-footer__grid {
+/* Like the approved concept: the logo sits left, the link columns cluster on
+   the right, and the legal row runs small underneath the full width. */
+.site-footer .container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-l);
-  margin-top: var(--space-l);
+  grid-template-columns: 1fr auto;
+  align-items: start;
 }
+
+.site-footer__grid {
+  display: flex;
+  gap: var(--space-2xl);
+  margin-top: 0;
+}
+
 @media (max-width: 860px) {
-  .site-footer__grid { grid-template-columns: 1fr; }
+  .site-footer .container { grid-template-columns: 1fr; }
+  .site-footer__grid { flex-direction: column; gap: var(--space-l); margin-top: var(--space-l); }
 }
 
 .site-footer li + li { margin-top: 0.35em; }
@@ -1507,6 +1516,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .site-footer__badges img { width: 83px; height: auto; }
 
 .site-footer__legal {
+  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2xs) var(--space-l);
