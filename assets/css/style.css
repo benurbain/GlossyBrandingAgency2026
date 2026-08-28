@@ -1096,6 +1096,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    large marks fell back to their intrinsic size and burst out of the grid. */
 .client {
   display: grid;
+  /* One definite row: the logo's max-height percentage only resolves against
+     a definite track, and an auto row sizes to the image and clips instead. */
+  grid-template-rows: 100%;
   place-items: center;
   height: clamp(4.5rem, 7vw, 8rem);
   padding: var(--space-s);
