@@ -1332,7 +1332,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .consultancy-body:has(> .cols-2),
 .consultancy-body:has(> .cols-3) { max-width: none; }
 .consultancy-body:has(> .cols-3) > p,
-.consultancy-body:has(> .cols-2) > p { max-width: 62ch; }
+.consultancy-body:has(> .cols-2) > p { max-width: 62ch; font-size: var(--step-0); }
 .consultancy-body a {
   text-decoration: underline;
   text-underline-offset: 0.22em;
