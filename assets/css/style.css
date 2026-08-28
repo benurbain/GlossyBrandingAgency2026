@@ -9,7 +9,7 @@
   font-family: "Rethink Sans";
   src: url("../fonts/RethinkSans-var.ttf") format("truetype-variations"),
        url("../fonts/RethinkSans-var.ttf") format("truetype");
-  font-weight: 400 800;
+  font-weight: 400 600;
   font-style: normal;
   font-display: swap;
 }
@@ -18,7 +18,7 @@
   font-family: "Rethink Sans";
   src: url("../fonts/RethinkSans-Italic-var.ttf") format("truetype-variations"),
        url("../fonts/RethinkSans-Italic-var.ttf") format("truetype");
-  font-weight: 400 800;
+  font-weight: 400 600;
   font-style: italic;
   font-display: swap;
 }
@@ -47,7 +47,7 @@
   --step-4:  clamp(2.5rem, 1.63rem + 4.35vw, 5rem);
 
   /* Type roles */
-  --weight-heading: 700;
+  --weight-heading: 600;
   --weight-heading-editorial: 400;
 
   /* Space */
@@ -108,6 +108,11 @@ h4 { font-size: var(--step-1); }
 
 p { margin: 0 0 1em; text-wrap: pretty; }
 p:last-child { margin-bottom: 0; }
+
+/* Nothing on the site goes heavier than 600, browser-default bold included;
+   the face range caps at 600 and no faux bold may be synthesised past it. */
+strong, b, th { font-weight: 600; }
+body { font-synthesis-weight: none; }
 
 a { color: inherit; text-decoration: none; }
 
@@ -1373,7 +1378,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   text-transform: uppercase;
   color: var(--gray);
 }
-.fact-figure { font-size: var(--step-2); font-weight: 700; letter-spacing: -0.02em; }
+.fact-figure { font-size: var(--step-2); font-weight: 600; letter-spacing: -0.02em; }
 
 .textlink {
   text-decoration: underline;

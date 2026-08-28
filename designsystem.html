@@ -6,7 +6,7 @@
 <title>Design system · Glossy rebuild</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/style.css?v=7">
+<link rel="stylesheet" href="assets/css/style.css?v=8">
 <style>
   /* Page-local styling for the documentation itself. Everything being
      documented is rendered with the real site classes, so specimens cannot
@@ -113,7 +113,7 @@
   <!-- 02 ------------------------------------------------------------------ -->
   <section class="ds-section" id="type">
     <h2>02 · Type scale</h2>
-    <p>One typeface: <strong>Rethink Sans</strong>, variable, weights 400–800, self-hosted. Six fluid steps,
+    <p>One typeface: <strong>Rethink Sans</strong>, variable, weights 400–600, self-hosted. Six fluid steps,
       each a <code>clamp()</code> so it interpolates with the viewport but stops at both ends.</p>
 
     <div class="ds-scroll">
@@ -142,16 +142,16 @@
         <thead><tr><th>Element</th><th>Size</th><th>Weight</th><th>Line height</th><th>Tracking</th></tr></thead>
         <tbody>
           <tr><td><code>body</code></td><td><code>--step-0</code></td><td>400</td><td>1.55</td><td>–</td></tr>
-          <tr><td><code>h1</code></td><td><code>--step-4</code></td><td><code>--weight-heading</code> (700)</td><td>1.08</td><td>-0.02em</td></tr>
-          <tr><td><code>h2</code></td><td><code>--step-3</code></td><td><code>--weight-heading</code> (700)</td><td>1.08</td><td>-0.02em</td></tr>
-          <tr><td><code>h3</code></td><td><code>--step-2</code></td><td><code>--weight-heading</code> (700)</td><td>1.08</td><td>-0.02em</td></tr>
+          <tr><td><code>h1</code></td><td><code>--step-4</code></td><td><code>--weight-heading</code> (600)</td><td>1.08</td><td>-0.02em</td></tr>
+          <tr><td><code>h2</code></td><td><code>--step-3</code></td><td><code>--weight-heading</code> (600)</td><td>1.08</td><td>-0.02em</td></tr>
+          <tr><td><code>h3</code></td><td><code>--step-2</code></td><td><code>--weight-heading</code> (600)</td><td>1.08</td><td>-0.02em</td></tr>
           <tr><td><code>.eyebrow</code></td><td><code>--step--1</code></td><td>500</td><td>–</td><td>0.08em, uppercase, <code>--gray</code></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="ds-note">
-      <strong>Two heading roles, deliberately.</strong> Display headings use <code>--weight-heading</code> (700).
+      <strong>Two heading roles, deliberately.</strong> Display headings use <code>--weight-heading</code> (600).
       About and AI Consultancy use <code>--weight-heading-editorial</code> (400), preserving the quieter scale
       measured on the original. Both roles are tokens, so pages cannot drift through one-off weight values.
     </div>

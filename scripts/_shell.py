@@ -154,7 +154,7 @@ def head(title, description, path, image=None, body_class=""):
 <meta property="og:type" content="article">{og_image}
 <link rel="icon" href="{A}assets/img/favicon.png">
 <link rel="apple-touch-icon" href="{A}assets/img/webclip.png">
-<link rel="stylesheet" href="{A}assets/css/style.css?v=7">{redirect}
+<link rel="stylesheet" href="{A}assets/css/style.css?v=8">{redirect}
 </head>
 <body class="{body_class}">
 
