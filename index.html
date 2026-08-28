@@ -60,24 +60,77 @@
 
   <section class="container hero">
     <h1 class="hero__title"><span class="light">Hello, we are a</span> Brand Transformation &amp; AI Consultancy</h1>
-    <p class="hero__lead">We are a deliberately small brand &amp; AI consultancy, led by founder <a href="https://www.linkedin.com/in/benurbain/" target="_blank" rel="noopener">Ben Urbain</a>, with a burning desire to create meaningful identities and smarter brand systems. Since 2004, we have combined strategic thinking, award-winning design and emerging technology to build the brands of tomorrow.</p>
+    <p class="hero__lead">Strategy, branding and AI consultancy from Ghent. Since 2004 we have built brands that work; since 2023 we also build the AI workflows, image models and tools behind them.</p>
+    <div class="hero__actions">
+      <a class="btn btn--solid" href="contact.html">Book a free intake meeting</a>
+      <a class="btn" href="cases.html">See our work</a>
+    </div>
   </section>
 
   <section class="container section--tight">
-    <h2 class="visually-hidden">Selected work</h2>
-    <div class="case-grid case-grid--feature"
+    <p class="eyebrow">What we do</p>
+    <div class="cols-3" style="margin-top: var(--space-l);">
+      <div class="rule-col">
+        <p class="col-num">01.</p>
+        <h3>Strategy</h3>
+        <p>Positioning, propositions and go-to-market. We put the decisions on paper that you can start on Monday, from brand definition to launch.</p>
+        <p><a class="textlink" href="about.html">Our approach</a></p>
+      </div>
+      <div class="rule-col">
+        <p class="col-num">02.</p>
+        <h3>Branding</h3>
+        <p>Identities, design systems and campaigns built to last. Twenty years of work for KAA Gent, Pukkelpop, Quick-Step and dozens of SMEs.</p>
+        <p><a class="textlink" href="cases.html">See the cases</a></p>
+      </div>
+      <div class="rule-col">
+        <p class="col-num">03.</p>
+        <h3>AI Consultancy</h3>
+        <p>Workflows, brand-trained image models, tools and training for marketing teams. From €1,200 a day, up to 30% back through the KMO-portefeuille.</p>
+        <p><a class="textlink" href="brand-ai-consultancy.html">Read how we work</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section--tight">
+    <p class="eyebrow">Selected work</p>
+    <div class="case-grid case-grid--uniform" style="margin-top: var(--space-l);"
          data-collection="data/cases.json"
          data-kind="cases"
-         data-per-page="14"
-         data-more="#cases-more"
-         data-counter="#cases-counter">
+         data-per-page="8">
       <p class="is-loading">Loading work…</p>
     </div>
-    <p style="margin-top: var(--space-l); display: flex; align-items: center; gap: var(--space-m);">
-      <button class="btn" id="cases-more" type="button" hidden>Next →</button>
-      <span class="eyebrow" id="cases-counter"></span>
-    </p>
+    <p style="margin-top: var(--space-l);"><a class="btn" href="cases.html">See all 54 cases</a></p>
   </section>
+
+  <section class="container section--tight">
+    <p class="eyebrow">From the studio</p>
+    <div class="news-list" style="margin-top: var(--space-l);"
+         data-collection="data/news.json"
+         data-kind="news"
+         data-per-page="3">
+      <p class="is-loading">Loading news…</p>
+    </div>
+    <p style="margin-top: var(--space-l);"><a class="btn" href="news.html">All news</a></p>
+  </section>
+
+  <div class="container">
+    <div class="consultancy-section consultancy-section--highlight">
+      <p class="consultancy-kicker">Why Glossy</p>
+      <h2 class="consultancy-section__title">Strategy, systems and taste belong in the same room.</h2>
+      <div class="consultancy-body">
+        <p>Twenty years of brand work sit underneath this studio: KAA Gent, Pukkelpop, Quick-Step, iMinds and <a href="cases.html">54 documented cases</a>. Today the same judgement steers our AI work.</p>
+        <p>Deliberately small, led by founder <a href="https://www.linkedin.com/in/benurbain/" target="_blank" rel="noopener">Ben Urbain</a>, with specialist partners when the work needs them. A registered KMO-portefeuille provider: Flemish SMEs recover up to 30% of the fee.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding-bottom: var(--space-2xl);">
+    <div class="consultancy-cta">
+      <h2 class="consultancy-section__title">Ready to move your brand forward?</h2>
+      <p class="consultancy-lead">Book a free intake meeting. You talk directly to Ben and you leave with an honest first assessment.</p>
+      <p><a class="btn btn--solid" href="contact.html">Book a free intake meeting</a></p>
+    </div>
+  </div>
 
 </main>
 
