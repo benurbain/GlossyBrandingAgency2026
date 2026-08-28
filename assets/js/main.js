@@ -118,7 +118,7 @@ function newsCard(item) {
       <a class="news-item__link" href="${basePath()}news/${escapeHtml(item.slug)}.html">
         <div class="news-item__media">${media}</div>
         <h2 class="news-item__title">${escapeHtml(item.name)}</h2>
-        <p class="news-item__more">${readMore} →</p>
+        <p class="news-item__more">${readMore}</p>
       </a>
     </article>`;
 }

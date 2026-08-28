@@ -6,7 +6,7 @@
 <title>Design system · Glossy rebuild</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/style.css?v=12">
+<link rel="stylesheet" href="assets/css/style.css?v=13">
 <style>
   /* Page-local styling for the documentation itself. Everything being
      documented is rendered with the real site classes, so specimens cannot
@@ -124,12 +124,12 @@
         <p class="ds-spec__meta">.hero__lead · <span class="ds-px" data-px="#ds-x-hl">…</span> · --step-0 · --ink-soft · max 58ch</p>
       </div>
       <div class="ds-spec__row">
-        <p style="max-width: 62ch;" id="ds-x-p">Gewone bodytekst met <strong>strong op 500</strong>, <em>cursief</em> en een <a class="textlink" href="#specimen">inline tekstlink</a>. Zwaarder dan 500 bestaat niet op de site; de font-range klemt alles af.</p>
+        <p style="max-width: 62ch;" id="ds-x-p">Gewone bodytekst met <strong>strong op 500</strong> en <em>cursief</em>. Zwaarder dan 500 bestaat niet op de site; de font-range klemt alles af.</p>
         <p class="ds-spec__meta">body p · <span class="ds-px" data-px="#ds-x-p">…</span> · --step-0 (0.938rem to 1.063rem) · weight 400 · lh 1.55 · strong/b/th = 500</p>
       </div>
       <div class="ds-spec__row">
-        <div class="consultancy-body"><p id="ds-x-cb">De consultancy-bodymaat, iets ruimer dan gewone tekst: agreed tools, shared prompts, clear review moments en één geschreven definitie van wat on-brand betekent.</p></div>
-        <p class="ds-spec__meta">.consultancy-body · <span class="ds-px" data-px="#ds-x-cb">…</span> · clamp(0.95rem to 1.3rem) · max 62ch · lh 1.45</p>
+        <div class="consultancy-body"><p id="ds-x-cb">De consultancy-bodymaat, iets ruimer dan gewone tekst: agreed tools, shared prompts, clear review moments en <a href="#specimen">één geschreven definitie</a> van wat on-brand betekent.</p></div>
+        <p class="ds-spec__meta">.consultancy-body · <span class="ds-px" data-px="#ds-x-cb">…</span> · clamp(0.95rem to 1.3rem) · max 62ch · lh 1.45 · link in de zin: underline-offset 0.22em (losse cues: 0.5em)</p>
       </div>
       <div class="ds-spec__row">
         <p class="eyebrow" id="ds-x-eb">Wat we doen</p>
@@ -144,8 +144,8 @@
         <p class="ds-spec__meta">.step__num · <span class="ds-px" data-px="#ds-x-sn">…</span> · --step--1 · --gray&nbsp;&nbsp;|&nbsp;&nbsp;.col-baseline · <span class="ds-px" data-px="#ds-x-bl">…</span> · uppercase · ls 0</p>
       </div>
       <div class="ds-spec__row">
-        <div><h2 class="news-item__title" style="margin: 0 0 0.2em;" id="ds-x-nt">Midjourney 8.2 is terug in onze workflow</h2><p class="news-item__more" id="ds-x-nm">Lees meer →</p></div>
-        <p class="ds-spec__meta">.news-item__title · <span class="ds-px" data-px="#ds-x-nt">…</span> · --step-1 · weight 400&nbsp;&nbsp;|&nbsp;&nbsp;.news-item__more · <span class="ds-px" data-px="#ds-x-nm">…</span> · --step--1 · underline --gray</p>
+        <div><h2 class="news-item__title" style="margin: 0 0 0.2em;" id="ds-x-nt">Midjourney 8.2 is terug in onze workflow</h2><p class="news-item__more" id="ds-x-nm">Lees meer</p></div>
+        <p class="ds-spec__meta">.news-item__title · <span class="ds-px" data-px="#ds-x-nt">…</span> · --step-1 · weight 400&nbsp;&nbsp;|&nbsp;&nbsp;.news-item__more · <span class="ds-px" data-px="#ds-x-nm">…</span> · --step--1 · pijl vóór · underline --gray</p>
       </div>
       <div class="ds-spec__row">
         <div class="site-footer__legal" style="margin-top: 0;"><a href="#specimen" id="ds-x-lg">Privacy- &amp; cookiebeleid</a><a href="#specimen">KMO-portefeuille</a><span>© 2004–2026 · Glossy Branding Agency</span></div>
@@ -167,7 +167,7 @@
       </div>
       <div class="ds-spec__row">
         <p><a class="textlink" href="#specimen" id="ds-x-tl">Onze aanpak</a></p>
-        <p class="ds-spec__meta">.textlink · <span class="ds-px" data-px="#ds-x-tl">…</span> · underline 1px --gray · hover underline --ink · zelfde patroon als .consultancy-body a en .hero__lead a</p>
+        <p class="ds-spec__meta">.textlink · <span class="ds-px" data-px="#ds-x-tl">…</span> · pijl vóór de tekst (::before, buiten de underline) · underline 1px --gray · hover underline --ink · zelfde patroon als .consultancy-body a en .hero__lead a</p>
       </div>
       <div class="ds-spec__row">
         <div class="ds-row" style="font-size: var(--step--1);"><a href="#specimen" id="ds-x-fl">Werk</a><a href="#specimen">Nieuws</a><a href="#specimen">Contact</a></div>
