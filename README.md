@@ -26,16 +26,22 @@ careers.html                   PLACEHOLDER — see "Known gaps"
 privacy-policy.html            Privacy & cookie policy
 kmo-portefeuille.html          Subsidies for consultancy & strategy
 404.html                       Self-contained (inlined CSS) so it works at any depth
+brand-ai-consultancy-nl.html   Redirect stub — the page moved to nl/
 
 cases/<slug>.html              54 generated case detail pages
 news/<slug>.html               36 generated news detail pages
 
+nl/                            The complete Dutch site: translated root pages
+nl/cases/<slug>.html           plus both generated trees, same slugs as English
+nl/news/<slug>.html
+
 scripts/export-cms.py          Raw Webflow exports -> data/*.json
 scripts/scrape-sections.py     Recovers Case Sections the MCP cannot reach
 scripts/localize-assets.py     Downloads Webflow media into assets/media/
-scripts/build-cases.py         data/cases.json -> cases/
-scripts/build-news.py          data/news.json  -> news/
-scripts/_shell.py              Shared nav/footer/media markup
+scripts/build-cases.py         data/cases(-nl).json -> cases/ and nl/cases/
+scripts/build-news.py          data/news(-nl).json  -> news/ and nl/news/
+scripts/merge-nl.py            Translator output + fixed glossary -> data/*-nl.json
+scripts/_shell.py              Shared nav/footer/media markup, per language
 scripts/raw/                   Raw CMS exports (input to export-cms.py)
 
 assets/css/style.css           Design system: tokens, layout, components
@@ -46,7 +52,26 @@ assets/media/                  803 case/news/client assets (324 MB), self-hosted
 
 data/cases.json                54 published cases, exported from Webflow CMS
 data/news.json                 36 published news items
+data/cases-nl.json             Dutch twin of cases.json — same slugs, media and
+data/news-nl.json              layout; only the copy, tags and dates differ
 ```
+
+## Two languages
+
+The Dutch site is a full mirror under `nl/`, sharing slugs, assets and
+`main.js` with the English tree. `_shell.py` carries both string sets; the
+builders write both trees in one run. Every page links its twin via a globe
+switch in the nav and via `hreflang` alternates. English pages redirect to
+their Dutch twin when the browser prefers Dutch (`navigator.languages`)
+unless the visitor explicitly chose English; the choice is stored in
+`localStorage` under `glossy-lang`, and Dutch pages never auto-redirect, so
+crawlers (which render as en-US) never bounce off the `nl/` tree.
+
+Copy rule: no em dashes anywhere in site copy, either language.
+
+To change content: edit `data/cases.json` AND `data/cases-nl.json` (same for
+news), then rerun the builders. The one-off translator merge that produced
+the `-nl` files lives in `scripts/merge-nl.py`, glossary included.
 
 ## How a case page is assembled
 

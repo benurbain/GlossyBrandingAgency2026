@@ -6,6 +6,9 @@
 <title>B-Hive • Glossy Branding Agency</title>
 <meta name="description" content="Glossy Branding Agency took on the exciting task of creating a comprehensive branding for B-Hive, a collaborative fintech platform in Europe. Through an intensive ideation process, Glossy Branding Agency developed a unique naming, a captivating baseline, and a compelling storytelling approach for the platform.">
 <link rel="canonical" href="https://glossybranding.com/cases/b-hive">
+<link rel="alternate" hreflang="en" href="https://glossybranding.com/cases/b-hive">
+<link rel="alternate" hreflang="nl" href="https://glossybranding.com/nl/cases/b-hive">
+<link rel="alternate" hreflang="x-default" href="https://glossybranding.com/cases/b-hive">
 <meta property="og:title" content="B-Hive • Glossy Branding Agency">
 <meta property="og:description" content="Glossy Branding Agency took on the exciting task of creating a comprehensive branding for B-Hive, a collaborative fintech platform in Europe. Through an intensive ideation process, Glossy Branding Agency developed a unique naming, a captivating baseline, and a compelling storytelling approach for the platform.">
 <meta property="og:type" content="article">
@@ -13,6 +16,17 @@
 <link rel="icon" href="../assets/img/favicon.png">
 <link rel="apple-touch-icon" href="../assets/img/webclip.png">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+(function () {
+  try {
+    var c = localStorage.getItem('glossy-lang');
+    var w = (navigator.languages || [navigator.language || '']).some(function (l) {
+      return String(l).toLowerCase().indexOf('nl') === 0;
+    });
+    if (c !== 'en' && (c === 'nl' || w)) location.replace('../nl/cases/b-hive.html');
+  } catch (e) {}
+})();
+</script>
 </head>
 <body class="has-hero">
 
@@ -35,6 +49,9 @@
         <li><a class="nav__link" href="../cases.html" aria-current="page">Cases</a></li>
         <li><a class="nav__link" href="../news.html">News</a></li>
         <li><a class="nav__link" href="../contact.html">Contact</a></li>
+        <li><a class="nav__link nav__link--lang" href="../nl/cases/b-hive.html" hreflang="nl" data-set-lang="nl" aria-label="Nederlandse versie">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/><path d="M3.2 9h17.6M3.2 15h17.6"/></svg>
+          NL</a></li>
       </ul>
     </nav>
   </div>
@@ -160,6 +177,13 @@
 </div>
 
 <script src="../assets/js/lottie.min.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="../assets/js/main.js?v=2"></script>
+<script>
+document.querySelectorAll('[data-set-lang]').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('glossy-lang', a.getAttribute('data-set-lang')); } catch (e) {}
+  });
+});
+</script>
 </body>
 </html>

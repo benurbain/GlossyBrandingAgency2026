@@ -6,6 +6,9 @@
 <title>De Verloren Kost - A place for experiments in work and pleasure | Glossy</title>
 <meta name="description" content="Glossy took charge of art direction, design, and website development for De Verloren Kost, a new society located in Ghent. This society is a haven for creative individuals seeking an inspiring work environment and an opportunity to actively contribute to our agenda.">
 <link rel="canonical" href="https://glossybranding.com/news/de-verloren-kost-a-place-for-experiments-in-work-and-pleasure">
+<link rel="alternate" hreflang="en" href="https://glossybranding.com/news/de-verloren-kost-a-place-for-experiments-in-work-and-pleasure">
+<link rel="alternate" hreflang="nl" href="https://glossybranding.com/nl/news/de-verloren-kost-a-place-for-experiments-in-work-and-pleasure">
+<link rel="alternate" hreflang="x-default" href="https://glossybranding.com/news/de-verloren-kost-a-place-for-experiments-in-work-and-pleasure">
 <meta property="og:title" content="De Verloren Kost - A place for experiments in work and pleasure | Glossy">
 <meta property="og:description" content="Glossy took charge of art direction, design, and website development for De Verloren Kost, a new society located in Ghent. This society is a haven for creative individuals seeking an inspiring work environment and an opportunity to actively contribute to our agenda.">
 <meta property="og:type" content="article">
@@ -13,6 +16,17 @@
 <link rel="icon" href="../assets/img/favicon.png">
 <link rel="apple-touch-icon" href="../assets/img/webclip.png">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+(function () {
+  try {
+    var c = localStorage.getItem('glossy-lang');
+    var w = (navigator.languages || [navigator.language || '']).some(function (l) {
+      return String(l).toLowerCase().indexOf('nl') === 0;
+    });
+    if (c !== 'en' && (c === 'nl' || w)) location.replace('../nl/news/de-verloren-kost-a-place-for-experiments-in-work-and-pleasure.html');
+  } catch (e) {}
+})();
+</script>
 </head>
 <body class="">
 
@@ -35,6 +49,9 @@
         <li><a class="nav__link" href="../cases.html">Cases</a></li>
         <li><a class="nav__link" href="../news.html" aria-current="page">News</a></li>
         <li><a class="nav__link" href="../contact.html">Contact</a></li>
+        <li><a class="nav__link nav__link--lang" href="../nl/news/de-verloren-kost-a-place-for-experiments-in-work-and-pleasure.html" hreflang="nl" data-set-lang="nl" aria-label="Nederlandse versie">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/><path d="M3.2 9h17.6M3.2 15h17.6"/></svg>
+          NL</a></li>
       </ul>
     </nav>
   </div>
@@ -125,6 +142,13 @@
 </div>
 
 <script src="../assets/js/lottie.min.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="../assets/js/main.js?v=2"></script>
+<script>
+document.querySelectorAll('[data-set-lang]').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('glossy-lang', a.getAttribute('data-set-lang')); } catch (e) {}
+  });
+});
+</script>
 </body>
 </html>

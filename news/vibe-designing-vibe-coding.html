@@ -6,6 +6,9 @@
 <title>Vibe Designing &amp; Vibe Coding | Glossy</title>
 <meta name="description" content="We love having ideas, and most of them sit in our “idea drawer.” But for the past two years, the AI wave has grabbed all our energy -&gt; in a good way. But for us, Generative Ai is more than making videos or images only, it is a powerful way to finally do what we always wanted to do. So we wanted a fast video generator to spin our brand assets into a smooth reel for clients and socials, so we sketched the flow in Figma, teamed up with our accounts on ChatGPT-4o, Claude, and Gemini, and iterated until version 43 (!) finally felt right.Our Video Bento Generator was born: a lightweight, fully responsive app built with plain HTML, CSS, and JS. • Drop any image, file, or video, hit Start, and watch the animation roll. • Bento instantly outputs a .webm clip you can convert to MP4 in seconds. • Runs locally, no installs or sign-ups, and feels at home on desktop, tablet, or phone.We’re giving it away for free because we believe the future is open source.Try it, remix it, and show us what you’ve built!">
 <link rel="canonical" href="https://glossybranding.com/news/vibe-designing-vibe-coding">
+<link rel="alternate" hreflang="en" href="https://glossybranding.com/news/vibe-designing-vibe-coding">
+<link rel="alternate" hreflang="nl" href="https://glossybranding.com/nl/news/vibe-designing-vibe-coding">
+<link rel="alternate" hreflang="x-default" href="https://glossybranding.com/news/vibe-designing-vibe-coding">
 <meta property="og:title" content="Vibe Designing &amp; Vibe Coding | Glossy">
 <meta property="og:description" content="We love having ideas, and most of them sit in our “idea drawer.” But for the past two years, the AI wave has grabbed all our energy -&gt; in a good way. But for us, Generative Ai is more than making videos or images only, it is a powerful way to finally do what we always wanted to do. So we wanted a fast video generator to spin our brand assets into a smooth reel for clients and socials, so we sketched the flow in Figma, teamed up with our accounts on ChatGPT-4o, Claude, and Gemini, and iterated until version 43 (!) finally felt right.Our Video Bento Generator was born: a lightweight, fully responsive app built with plain HTML, CSS, and JS. • Drop any image, file, or video, hit Start, and watch the animation roll. • Bento instantly outputs a .webm clip you can convert to MP4 in seconds. • Runs locally, no installs or sign-ups, and feels at home on desktop, tablet, or phone.We’re giving it away for free because we believe the future is open source.Try it, remix it, and show us what you’ve built!">
 <meta property="og:type" content="article">
@@ -13,6 +16,17 @@
 <link rel="icon" href="../assets/img/favicon.png">
 <link rel="apple-touch-icon" href="../assets/img/webclip.png">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+(function () {
+  try {
+    var c = localStorage.getItem('glossy-lang');
+    var w = (navigator.languages || [navigator.language || '']).some(function (l) {
+      return String(l).toLowerCase().indexOf('nl') === 0;
+    });
+    if (c !== 'en' && (c === 'nl' || w)) location.replace('../nl/news/vibe-designing-vibe-coding.html');
+  } catch (e) {}
+})();
+</script>
 </head>
 <body class="">
 
@@ -35,6 +49,9 @@
         <li><a class="nav__link" href="../cases.html">Cases</a></li>
         <li><a class="nav__link" href="../news.html" aria-current="page">News</a></li>
         <li><a class="nav__link" href="../contact.html">Contact</a></li>
+        <li><a class="nav__link nav__link--lang" href="../nl/news/vibe-designing-vibe-coding.html" hreflang="nl" data-set-lang="nl" aria-label="Nederlandse versie">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/><path d="M3.2 9h17.6M3.2 15h17.6"/></svg>
+          NL</a></li>
       </ul>
     </nav>
   </div>
@@ -125,6 +142,13 @@
 </div>
 
 <script src="../assets/js/lottie.min.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="../assets/js/main.js?v=2"></script>
+<script>
+document.querySelectorAll('[data-set-lang]').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('glossy-lang', a.getAttribute('data-set-lang')); } catch (e) {}
+  });
+});
+</script>
 </body>
 </html>

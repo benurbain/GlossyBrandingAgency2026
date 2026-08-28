@@ -6,6 +6,9 @@
 <title>Introducing Hybrid Blue: The Smart Active Suit Tailored for Every Occasion | Glossy</title>
 <meta name="description" content="We are thrilled to announce the launch of Hybrid Blue, the game-changing active suit with smart features tailored for all occasions. This innovative suit is weatherproof, wrinkleproof, and washproof, providing unparalleled convenience and durability.">
 <link rel="canonical" href="https://glossybranding.com/news/introducing-hybrid-blue-the-smart-active-suit-tailored-for-every-occasion">
+<link rel="alternate" hreflang="en" href="https://glossybranding.com/news/introducing-hybrid-blue-the-smart-active-suit-tailored-for-every-occasion">
+<link rel="alternate" hreflang="nl" href="https://glossybranding.com/nl/news/introducing-hybrid-blue-the-smart-active-suit-tailored-for-every-occasion">
+<link rel="alternate" hreflang="x-default" href="https://glossybranding.com/news/introducing-hybrid-blue-the-smart-active-suit-tailored-for-every-occasion">
 <meta property="og:title" content="Introducing Hybrid Blue: The Smart Active Suit Tailored for Every Occasion | Glossy">
 <meta property="og:description" content="We are thrilled to announce the launch of Hybrid Blue, the game-changing active suit with smart features tailored for all occasions. This innovative suit is weatherproof, wrinkleproof, and washproof, providing unparalleled convenience and durability.">
 <meta property="og:type" content="article">
@@ -13,6 +16,17 @@
 <link rel="icon" href="../assets/img/favicon.png">
 <link rel="apple-touch-icon" href="../assets/img/webclip.png">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+(function () {
+  try {
+    var c = localStorage.getItem('glossy-lang');
+    var w = (navigator.languages || [navigator.language || '']).some(function (l) {
+      return String(l).toLowerCase().indexOf('nl') === 0;
+    });
+    if (c !== 'en' && (c === 'nl' || w)) location.replace('../nl/news/introducing-hybrid-blue-the-smart-active-suit-tailored-for-every-occasion.html');
+  } catch (e) {}
+})();
+</script>
 </head>
 <body class="">
 
@@ -35,6 +49,9 @@
         <li><a class="nav__link" href="../cases.html">Cases</a></li>
         <li><a class="nav__link" href="../news.html" aria-current="page">News</a></li>
         <li><a class="nav__link" href="../contact.html">Contact</a></li>
+        <li><a class="nav__link nav__link--lang" href="../nl/news/introducing-hybrid-blue-the-smart-active-suit-tailored-for-every-occasion.html" hreflang="nl" data-set-lang="nl" aria-label="Nederlandse versie">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/><path d="M3.2 9h17.6M3.2 15h17.6"/></svg>
+          NL</a></li>
       </ul>
     </nav>
   </div>
@@ -120,6 +137,13 @@
 </div>
 
 <script src="../assets/js/lottie.min.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="../assets/js/main.js?v=2"></script>
+<script>
+document.querySelectorAll('[data-set-lang]').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('glossy-lang', a.getAttribute('data-set-lang')); } catch (e) {}
+  });
+});
+</script>
 </body>
 </html>

@@ -6,6 +6,9 @@
 <title>Our client MTM Group became a Trends Ambassador | Glossy</title>
 <meta name="description" content="We are very proud that our client MTM-Group became a Trends Ambassador! Congratulations to Jean-Michel Teerlinck, Julien Malingreau, Bart Meyskens &amp; the whole MTM team.">
 <link rel="canonical" href="https://glossybranding.com/news/our-client-mtm-group-became-a-trends-ambassador">
+<link rel="alternate" hreflang="en" href="https://glossybranding.com/news/our-client-mtm-group-became-a-trends-ambassador">
+<link rel="alternate" hreflang="nl" href="https://glossybranding.com/nl/news/our-client-mtm-group-became-a-trends-ambassador">
+<link rel="alternate" hreflang="x-default" href="https://glossybranding.com/news/our-client-mtm-group-became-a-trends-ambassador">
 <meta property="og:title" content="Our client MTM Group became a Trends Ambassador | Glossy">
 <meta property="og:description" content="We are very proud that our client MTM-Group became a Trends Ambassador! Congratulations to Jean-Michel Teerlinck, Julien Malingreau, Bart Meyskens &amp; the whole MTM team.">
 <meta property="og:type" content="article">
@@ -13,6 +16,17 @@
 <link rel="icon" href="../assets/img/favicon.png">
 <link rel="apple-touch-icon" href="../assets/img/webclip.png">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>
+(function () {
+  try {
+    var c = localStorage.getItem('glossy-lang');
+    var w = (navigator.languages || [navigator.language || '']).some(function (l) {
+      return String(l).toLowerCase().indexOf('nl') === 0;
+    });
+    if (c !== 'en' && (c === 'nl' || w)) location.replace('../nl/news/our-client-mtm-group-became-a-trends-ambassador.html');
+  } catch (e) {}
+})();
+</script>
 </head>
 <body class="">
 
@@ -35,6 +49,9 @@
         <li><a class="nav__link" href="../cases.html">Cases</a></li>
         <li><a class="nav__link" href="../news.html" aria-current="page">News</a></li>
         <li><a class="nav__link" href="../contact.html">Contact</a></li>
+        <li><a class="nav__link nav__link--lang" href="../nl/news/our-client-mtm-group-became-a-trends-ambassador.html" hreflang="nl" data-set-lang="nl" aria-label="Nederlandse versie">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/><path d="M3.2 9h17.6M3.2 15h17.6"/></svg>
+          NL</a></li>
       </ul>
     </nav>
   </div>
@@ -54,7 +71,7 @@
     </div>
 
     <div class="container section--tight">
-      <div class="prose case-intro"><p id="">We are very proud that our client MTM Group became a Trends Ambassador! Congratulations to Jean-Michel Teerlinck, Julien Malingreau, Bart Meyskens &amp; the whole MTM team.</p><p id="">Discover some of our work here: <a id="" href="/cases/dragon-belgian-beer-culture-at-its-finest" target="_blank">Dragòn</a>, <a id="" href="/cases/ray-a-city-garden" target="_blank">Ray</a>, <a id="" href="/cases/moris-the-perfect-bliss" target="_blank">Mòris</a>, <a id="" href="http://www.theserve.gent" target="_blank">The Serve</a>, <a id="" href="http://www.thepush.gent" target="_blank">The Push</a>.</p></div>
+      <div class="prose case-intro"><p id="">We are very proud that our client MTM Group became a Trends Ambassador! Congratulations to Jean-Michel Teerlinck, Julien Malingreau, Bart Meyskens &amp; the whole MTM team.</p><p id="">Discover some of our work here: <a id="" href="../cases/dragon.html" target="_blank">Dragòn</a>, <a id="" href="../cases/ray.html" target="_blank">Ray</a>, <a id="" href="../cases/moris.html" target="_blank">Mòris</a>, <a id="" href="http://www.theserve.gent" target="_blank">The Serve</a>, <a id="" href="http://www.thepush.gent" target="_blank">The Push</a>.</p></div>
       <p style="margin-top: var(--space-l);"><a class="btn" href="https://www.mtmgroup.be/" rel="noopener">Discover the venues →</a></p>
     </div>
 
@@ -125,6 +142,13 @@
 </div>
 
 <script src="../assets/js/lottie.min.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="../assets/js/main.js?v=2"></script>
+<script>
+document.querySelectorAll('[data-set-lang]').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('glossy-lang', a.getAttribute('data-set-lang')); } catch (e) {}
+  });
+});
+</script>
 </body>
 </html>
