@@ -130,7 +130,7 @@ def page(item, prev_item, next_item, t):
     </header>
 
     <div class="container section--tight">
-      <figure class="case-hero">{hero(item)}</figure>
+      <figure class="case-hero case-hero--ratio">{hero(item)}</figure>
     </div>
 
     <div class="container section--tight">
