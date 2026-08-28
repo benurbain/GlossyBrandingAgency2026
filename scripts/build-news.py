@@ -33,7 +33,7 @@ def nested_assets(markup):
 
 def hero(item):
     video = item.get("video")
-    if video and re.match(r"^https?://\S+\.(mp4|webm)(\?|$)", video):
+    if video and re.search(r"\.(mp4|webm)(\?|$)", video):
         poster = f' poster="{e(asset(item["image"]))}"' if item.get("image") else ""
         return (
             f'<video class="case-hero__media" src="{e(asset(video))}"{poster} '

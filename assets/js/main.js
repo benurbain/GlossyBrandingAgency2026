@@ -104,9 +104,9 @@ function newsCard(item) {
   // Like the case cards, news cards lead with the item's video where there is
   // one; the image stays as poster and as the fallback for image-only items.
   let media = '';
-  if (/^https?:\/\/\S+\.(mp4|webm)(\?|$)/.test(item.video || '')) {
+  if (/\.(mp4|webm)(\?|$)/.test(item.video || '')) {
     const poster = item.image ? ` poster="${escapeHtml(assetUrl(item.image))}"` : '';
-    media = `<video src="${escapeHtml(item.video)}"${poster}
+    media = `<video src="${escapeHtml(assetUrl(item.video))}"${poster}
           autoplay muted loop playsinline preload="metadata" aria-label="${escapeHtml(item.name)}"></video>`;
   } else if (item.image) {
     media = `<img src="${escapeHtml(assetUrl(item.image))}" alt="" loading="lazy" decoding="async">`;
