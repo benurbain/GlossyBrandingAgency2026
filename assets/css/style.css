@@ -1290,7 +1290,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
-  max-width: 75rem;
   padding-block: var(--space-2xl);
 }
 
@@ -1330,6 +1329,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .consultancy-body p + p { margin-top: 0.9em; }
 .consultancy-body li { font-size: inherit; }
+.consultancy-body:has(> .cols-2),
+.consultancy-body:has(> .cols-3) { max-width: none; }
+.consultancy-body:has(> .cols-3) > p,
+.consultancy-body:has(> .cols-2) > p { max-width: 62ch; }
 .consultancy-body a {
   text-decoration: underline;
   text-underline-offset: 0.22em;
