@@ -11,10 +11,10 @@
   /* Page-local styling for the documentation itself. Everything being
      documented is rendered with the real site classes, so specimens cannot
      drift away from the stylesheet they describe. */
-  .ds-wrap { max-width: 68rem; margin-inline: auto; padding: var(--space-xl) var(--gutter) var(--space-3xl); }
+  .ds-wrap { max-width: 68rem; margin-inline: auto; padding: var(--space-xl) var(--gutter) var(--space-2xl); }
   .ds-lede { max-width: 60ch; color: var(--ink-soft); }
   .ds-section { padding-block: var(--space-2xl); border-top: 1px solid var(--line); }
-  .ds-section > h2 { font-size: var(--step-2); font-weight: 400; margin-bottom: var(--space-s); }
+  .ds-section > h2 { font-size: var(--step-2); font-weight: var(--weight-heading-editorial); margin-bottom: var(--space-s); }
   .ds-section > p { max-width: 62ch; color: var(--ink-soft); margin-bottom: var(--space-l); }
   .ds-note { border-left: 2px solid var(--cream); background: color-mix(in srgb, var(--cream) 45%, transparent);
              padding: var(--space-s) var(--space-m); margin-top: var(--space-m); max-width: 62ch; font-size: var(--step--1); }
@@ -50,7 +50,7 @@
 
   <header>
     <p class="eyebrow">Internal reference · not linked from the site</p>
-    <h1 style="font-size: var(--step-3); font-weight: 400; margin-top: var(--space-s);">The design system, as actually built</h1>
+    <h1 style="font-size: var(--step-3); font-weight: var(--weight-heading-editorial); margin-top: var(--space-s);">The design system, as actually built</h1>
     <p class="ds-lede" style="margin-top: var(--space-m);">
       This documents what the stylesheet does today — not an intention. Every specimen below is rendered
       with the real site classes, and the measurements in the right-hand column are read from the browser's
@@ -140,19 +140,18 @@
         <thead><tr><th>Element</th><th>Size</th><th>Weight</th><th>Line height</th><th>Tracking</th></tr></thead>
         <tbody>
           <tr><td><code>body</code></td><td><code>--step-0</code></td><td>400</td><td>1.55</td><td>—</td></tr>
-          <tr><td><code>h1</code></td><td><code>--step-4</code></td><td>700</td><td>1.08</td><td>-0.02em</td></tr>
-          <tr><td><code>h2</code></td><td><code>--step-3</code></td><td>700</td><td>1.08</td><td>-0.02em</td></tr>
-          <tr><td><code>h3</code></td><td><code>--step-2</code></td><td>700</td><td>1.08</td><td>-0.02em</td></tr>
+          <tr><td><code>h1</code></td><td><code>--step-4</code></td><td><code>--weight-heading</code> (700)</td><td>1.08</td><td>-0.02em</td></tr>
+          <tr><td><code>h2</code></td><td><code>--step-3</code></td><td><code>--weight-heading</code> (700)</td><td>1.08</td><td>-0.02em</td></tr>
+          <tr><td><code>h3</code></td><td><code>--step-2</code></td><td><code>--weight-heading</code> (700)</td><td>1.08</td><td>-0.02em</td></tr>
           <tr><td><code>.eyebrow</code></td><td><code>--step--1</code></td><td>500</td><td>—</td><td>0.08em, uppercase, <code>--gray</code></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="ds-note">
-      <strong>Headings default to bold, but the two most important pages override that to 400.</strong>
-      About and AI Consultancy set their own regular-weight titles because that is what the original does.
-      The bold default survives on case pages, news and cards. It is the one real inconsistency in the system —
-      worth resolving one way or the other.
+      <strong>Two heading roles, deliberately.</strong> Display headings use <code>--weight-heading</code> (700).
+      About and AI Consultancy use <code>--weight-heading-editorial</code> (400), preserving the quieter scale
+      measured on the original. Both roles are tokens, so pages cannot drift through one-off weight values.
     </div>
   </section>
 
@@ -167,7 +166,7 @@
         <thead><tr><th>Role</th><th>Class</th><th>Target @1600px</th><th>Here</th><th>Weight</th><th>Measure</th></tr></thead>
         <tbody>
           <tr><td>Page title</td><td><code>.about-hero__title</code> / <code>.consultancy-section__title</code></td>
-              <td>44.16px</td><td class="ds-val" data-measure-el=".ds-probe-title"></td><td>400</td><td>22–24ch</td></tr>
+              <td>44.16px</td><td class="ds-val" data-measure-el=".ds-probe-title"></td><td><code>--weight-heading-editorial</code> (400)</td><td>22–24ch</td></tr>
           <tr><td>Lead</td><td><code>.about-hero__lead</code> / <code>.consultancy-lead</code></td>
               <td>28.8px</td><td class="ds-val" data-measure-el=".ds-probe-lead"></td><td>400</td><td>42–46ch</td></tr>
           <tr><td>Body</td><td><code>.about-hero__note</code> / <code>.consultancy-body</code></td>
@@ -207,13 +206,12 @@
         <thead><tr><th>Token</th><th>rem</th><th>px</th><th>Scale</th><th>Used for</th></tr></thead>
         <tbody>
           <tr><td><code>--space-2xs</code></td><td>0.5</td><td>8</td><td><div class="ds-bar" style="width: 8px"></div></td><td>tight gaps, list rows</td></tr>
-          <tr><td><code>--space-xs</code></td><td>0.75</td><td>12</td><td><div class="ds-bar" style="width: 12px"></div></td><td>rarely used</td></tr>
+          <tr><td><code>--space-xs</code></td><td>0.75</td><td>12</td><td><div class="ds-bar" style="width: 12px"></div></td><td>footer badge gap</td></tr>
           <tr><td><code>--space-s</code></td><td>1</td><td>16</td><td><div class="ds-bar" style="width: 16px"></div></td><td>grid gaps, tile padding</td></tr>
           <tr><td><code>--space-m</code></td><td>1.5</td><td>24</td><td><div class="ds-bar" style="width: 24px"></div></td><td>card padding, card grid gap</td></tr>
           <tr><td><code>--space-l</code></td><td>2.5</td><td>40</td><td><div class="ds-bar" style="width: 40px"></div></td><td>block separation</td></tr>
           <tr><td><code>--space-xl</code></td><td>4</td><td>64</td><td><div class="ds-bar" style="width: 64px"></div></td><td><code>.section--tight</code></td></tr>
           <tr><td><code>--space-2xl</code></td><td>6</td><td>96</td><td><div class="ds-bar" style="width: 96px"></div></td><td><code>.section</code>, step padding</td></tr>
-          <tr><td><code>--space-3xl</code></td><td>9</td><td>144</td><td><div class="ds-bar" style="width: 144px"></div></td><td>reserved, unused</td></tr>
         </tbody>
       </table>
     </div>
@@ -230,7 +228,7 @@
           <tr><td><code>--gutter</code></td><td><code>clamp(1.25rem, 0.55rem + 3.5vw, 5.5rem)</code></td>
               <td class="ds-val" data-measure="--gutter"></td><td>page inset, both sides</td></tr>
           <tr><td><code>--measure</code></td><td><code>62ch</code></td><td>—</td><td>prose line length ceiling</td></tr>
-          <tr><td><code>--radius</code></td><td><code>4px</code></td><td>—</td><td>panels, figures</td></tr>
+          <tr><td><code>--radius</code></td><td><code>5px</code></td><td>—</td><td>cards, panels, figures</td></tr>
           <tr><td><code>.container</code></td><td><code>max-width: 1760px</code> + gutter</td>
               <td class="ds-val" data-measure-width=".ds-probe-container"></td><td>every page section</td></tr>
           <tr><td><code>.consultancy-section</code></td><td><code>max-width: 75rem</code> (1200px)</td>
@@ -243,9 +241,8 @@
     <div class="container ds-probe-container" style="position:absolute; visibility:hidden; height:0;" aria-hidden="true"></div>
 
     <div class="ds-note">
-      <strong>Card radius is 5px, not <code>--radius</code>.</strong> Case cards use <code>border-radius: 5px</code>
-      because the original does. It is the single value that ignores the token — kept for fidelity, and flagged
-      here so it does not read as an accident.
+      <strong>One radius token.</strong> <code>--radius</code> is 5px, preserving the measured case-card radius
+      from the original while keeping cards, panels and figures on the same shared value.
     </div>
   </section>
 
@@ -417,15 +414,15 @@
     </div>
 
     <div class="ds-note" style="border-left-color: var(--gray); background: var(--smoke);">
-      <strong>Known open items.</strong> Heading weight is inconsistent (bold default vs 400 on the two editorial
-      pages). <code>--space-xs</code> and <code>--space-3xl</code> are defined but unused. Card radius bypasses the
-      radius token. None of these break anything; all three are decisions waiting to be made.
+      <strong>Resolved system decisions.</strong> Display and editorial headings now use explicit weight tokens.
+      <code>--space-xs</code> documents its footer use and the unused <code>--space-3xl</code> token has been removed.
+      Every card, panel and figure radius now resolves through the shared 5px <code>--radius</code> token.
     </div>
   </section>
 
   <footer style="padding-top: var(--space-xl); border-top: 1px solid var(--line); font-size: var(--step--1); color: var(--gray);">
-    <p>Generated from <code>assets/css/style.css</code> — 243 rules, 1075 lines. Measurements read live from the
-      browser, so this page cannot go stale on numbers. Prose notes are hand-written and can.</p>
+    <p>Generated from <code>assets/css/style.css</code>. Measurements read live from the browser, so this page
+      cannot go stale on numbers. Prose notes are hand-written and reviewed with system changes.</p>
   </footer>
 
 </div>

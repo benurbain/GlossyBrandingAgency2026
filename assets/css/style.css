@@ -45,6 +45,10 @@
   --step-3:  clamp(2rem, 1.48rem + 2.61vw, 3.5rem);
   --step-4:  clamp(2.5rem, 1.63rem + 4.35vw, 5rem);
 
+  /* Type roles */
+  --weight-heading: 700;
+  --weight-heading-editorial: 400;
+
   /* Space */
   --space-2xs: 0.5rem;
   --space-xs:  0.75rem;
@@ -53,12 +57,11 @@
   --space-l:   2.5rem;
   --space-xl:  4rem;
   --space-2xl: 6rem;
-  --space-3xl: 9rem;
 
   /* Layout */
   --gutter: clamp(1.25rem, 0.55rem + 3.5vw, 5.5rem);
   --measure: 62ch;
-  --radius: 4px;
+  --radius: 5px;
 
   /* Motion */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -87,7 +90,7 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4 {
   margin: 0;
-  font-weight: 700;
+  font-weight: var(--weight-heading);
   line-height: 1.08;
   letter-spacing: -0.02em;
   text-wrap: balance;
@@ -343,7 +346,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* The site sets the lead-in ("Hello, we are a") in regular and the
    proposition in bold, inside one heading. */
-.hero__title .light { font-weight: 400; }
+.hero__title .light { font-weight: var(--weight-heading-editorial); }
 
 .hero__lead {
   max-width: 58ch;
@@ -409,7 +412,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: var(--radius);
   background: var(--smoke);
 }
 
@@ -436,7 +439,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .case-card:hover .case-card__body,
 .case-card:focus-visible .case-card__body { opacity: 1; }
 
-.case-card__name { font-size: var(--step-1); font-weight: 700; }
+.case-card__name { font-size: var(--step-1); font-weight: var(--weight-heading); }
 .case-card__baseline { font-size: var(--step--1); opacity: 0.85; }
 
 .case-card__flag {
@@ -526,7 +529,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .case-overview__title {
   font-size: clamp(1.75rem, 1.2rem + 1.9vw, 2.76rem);
-  font-weight: 400;
+  font-weight: var(--weight-heading-editorial);
   letter-spacing: -0.01em;
 }
 
@@ -587,7 +590,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .case-block__title {
   font-size: clamp(1.25rem, 1rem + 1.08vw, 2.08rem);
-  font-weight: 400;
+  font-weight: var(--weight-heading-editorial);
   margin-bottom: var(--space-l);
 }
 
@@ -632,7 +635,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: var(--radius);
   margin-bottom: var(--space-s);
   transition: opacity var(--dur) var(--ease);
 }
@@ -754,7 +757,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .case-slogan {
   font-size: var(--step-2);
-  font-weight: 700;
+  font-weight: var(--weight-heading);
   line-height: 1.15;
   letter-spacing: -0.02em;
   text-wrap: balance;
@@ -805,7 +808,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .case-pager__link { display: grid; gap: 0.2em; }
 .case-pager__link:last-child { text-align: right; margin-left: auto; }
-.case-pager__name { font-size: var(--step-1); font-weight: 700; letter-spacing: -0.02em; }
+.case-pager__name { font-size: var(--step-1); font-weight: var(--weight-heading); letter-spacing: -0.02em; }
 .case-pager__link:hover .case-pager__name { color: var(--gray); }
 
 /* --- Marquee -------------------------------------------------------------- */
@@ -961,7 +964,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .about-hero__title {
   max-width: 22ch;
   font-size: clamp(1.75rem, 1.2rem + 1.9vw, 2.76rem);
-  font-weight: 400;
+  font-weight: var(--weight-heading-editorial);
   line-height: 1.15;
 }
 
@@ -991,13 +994,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .about-step__num {
   font-size: clamp(1.25rem, 1rem + 1.08vw, 2.08rem);
-  font-weight: 400;
+  font-weight: var(--weight-heading-editorial);
   margin-bottom: var(--space-l);
 }
 
 .about-step__baseline {
   font-size: clamp(1.25rem, 1rem + 1.08vw, 2.08rem);
-  font-weight: 400;
+  font-weight: var(--weight-heading-editorial);
   line-height: 1.2;
   text-wrap: balance;
 }
@@ -1009,7 +1012,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   padding-left: clamp(1.5rem, 0.8rem + 3.5vw, 5rem);
 }
 
-.about-step__body h3 { font-weight: 400; font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.5rem); }
+.about-step__body h3 { font-weight: var(--weight-heading-editorial); font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.5rem); }
 .about-step__body > p { margin-top: var(--space-m); max-width: 62ch; }
 
 /* Nine services read as a three-up index, uppercase and small. */
@@ -1067,7 +1070,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .consultancy-section__title {
   max-width: 24ch;
   font-size: clamp(1.75rem, 1.2rem + 1.9vw, 2.76rem);
-  font-weight: 400;
+  font-weight: var(--weight-heading-editorial);
   line-height: 1.15;
 }
 
