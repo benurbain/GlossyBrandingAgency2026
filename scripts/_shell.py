@@ -12,7 +12,7 @@ import re
 
 e = lambda s: html.escape(str(s or ""), quote=True)
 
-SITE = "https://glossybranding.com/"
+SITE = "https://glossy.tv/"
 
 LANG = "en"
 A = "../"  # asset prefix for the current language tree

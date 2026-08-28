@@ -3,7 +3,7 @@
 A hand-written static rebuild of [glossybranding.com](https://glossybranding.com) —
 semantic HTML, plain CSS, vanilla JS. No Webflow runtime, no jQuery, no build step.
 
-**Live:** https://benurbain.github.io/GlossyBrandingAgency2026/
+**Live:** https://glossy.tv/
 
 ## Why a rebuild and not an export
 
