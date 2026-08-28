@@ -61,7 +61,7 @@ def nav(current=""):
     return f"""
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="logo" href="../index.html" aria-label="Glossy Branding Agency — home">
+    <a class="logo" href="../index.html" aria-label="Glossy Branding Agency, home">
       <span class="logo__anim" data-lottie="assets/media/glossy-logo.json" data-lottie-white="assets/media/glossy-logo-white.json">
         <img class="lottie-fallback" src="../assets/img/logo.svg" alt="Glossy Branding Agency" width="154" height="58">
       </span>
@@ -82,7 +82,7 @@ def nav(current=""):
 FOOTER = """
 <footer class="site-footer">
   <div class="container">
-    <a class="logo" href="../index.html" aria-label="Glossy Branding Agency — home">
+    <a class="logo" href="../index.html" aria-label="Glossy Branding Agency, home">
       <img src="../assets/img/logo.svg" alt="" width="154" height="58">
     </a>
 

@@ -43,7 +43,7 @@ def section_html(sec, case_name):
     if media:
         cols = COLUMNS.get(sec.get("layout"), 1)
         tiles = "\n        ".join(
-            media_tag(m, alt=f"{case_name} — {sec.get('title') or 'case visual'}")
+            media_tag(m, alt=f"{case_name}, {sec.get('title') or 'case visual'}")
             for m in media
         )
         grid = (
@@ -147,7 +147,7 @@ def page(case, prev_case, next_case):
 
     testimonial = ""
     if case.get("testimonial"):
-        who = " — ".join(
+        who = " · ".join(
             filter(None, [case.get("testimonialPerson"), case.get("testimonialTitle")])
         )
         testimonial = f"""
