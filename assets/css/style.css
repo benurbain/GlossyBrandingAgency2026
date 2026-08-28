@@ -153,7 +153,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .eyebrow {
   font-size: var(--step--1);
   font-weight: 400;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gray);
 }
@@ -238,7 +237,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--paper);
   font-size: var(--step--1);
   font-weight: 400;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -371,7 +369,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--gray-on-dark);
   font-size: var(--step--1);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
 }
 
 .cookie-switch {
@@ -706,7 +703,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: color-mix(in srgb, var(--paper) 88%, transparent);
   color: var(--ink);
   font-size: var(--step--1);
-  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -761,7 +757,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .case-overview__date {
   margin: 0;
   font-size: var(--step--1);
-  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gray);
 }
@@ -785,7 +780,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .case-facts dt {
   font-size: var(--step--1);
-  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gray);
   margin-bottom: 0.4em;
@@ -830,7 +824,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .what-we-did__label {
-  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gray);
   margin-bottom: 0.6em;
@@ -896,7 +889,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .case-meta dt {
   font-size: var(--step--1);
   font-weight: 400;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gray);
 }
@@ -1018,7 +1010,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: var(--step--1);
   font-weight: 400;
   color: var(--gray);
-  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -1062,7 +1053,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   flex: none;
   font-size: var(--step--1);
   font-weight: 400;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gray);
 }
@@ -1134,8 +1124,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-radius: 100px;
   font-size: var(--step--1);
   font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
@@ -1273,7 +1261,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   gap: 0.35em var(--space-m);
   margin-top: var(--space-l);
   font-size: var(--step--1);
-  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 .about-step__services li { padding-left: 1em; text-indent: -1em; }
@@ -1313,7 +1300,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .consultancy-kicker {
   margin: 0;
   font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.83rem);
-  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink);
 }
@@ -1377,7 +1363,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .col-baseline {
   font-size: var(--step--1);
   font-weight: 400;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--gray);
 }
