@@ -489,6 +489,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: var(--step--1);
   font-weight: 400;
   isolation: isolate;
+  transition: color var(--dur) var(--ease);
   overflow: hidden;
   border-radius: var(--radius);
 }
@@ -498,13 +499,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--cream);
+  background: var(--ink);
   transform: translateY(101%);
   transition: transform var(--dur) var(--ease);
 }
 
 .nav__link:hover::before,
 .nav__link:focus-visible::before { transform: translateY(0); }
+
+.nav__link:hover,
+.nav__link:focus-visible { color: var(--paper); }
 
 .nav__link[aria-current="page"] { color: var(--gray); }
 
@@ -1130,7 +1134,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .btn:hover, .btn:focus-visible { background: var(--ink); color: var(--paper); }
 
 .btn--solid { background: var(--ink); color: var(--paper); }
-.btn--solid:hover, .btn--solid:focus-visible { background: var(--cream); color: var(--ink); }
+.btn--solid:hover, .btn--solid:focus-visible { background: var(--paper); color: var(--ink); }
 
 .btn[hidden] { display: none; }
 
