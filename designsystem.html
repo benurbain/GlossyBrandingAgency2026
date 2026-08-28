@@ -42,6 +42,14 @@
   .ds-toc a { display: block; padding: 0.15em 0; }
   .ds-toc a:hover { color: var(--gray); }
   @media (max-width: 600px) { .ds-toc { columns: 1; } }
+
+  /* Specimen rows: the live element on top, its meta line underneath. */
+  .ds-spec { display: grid; gap: var(--space-l); }
+  .ds-spec__row { border-top: 1px solid var(--line); padding-top: var(--space-s); display: grid; gap: var(--space-xs); }
+  .ds-spec__meta { font-size: 12px; color: var(--gray);
+                   font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .ds-dark { background: var(--ink); color: var(--paper); border-radius: var(--radius);
+             padding: var(--space-m); display: flex; flex-wrap: wrap; gap: var(--space-s); align-items: center; }
 </style>
 </head>
 <body>
@@ -65,6 +73,7 @@
     </div>
 
     <nav class="ds-toc" style="margin-top: var(--space-xl);" aria-label="Contents">
+      <a href="#specimen">00 · Specimen, live</a>
       <a href="#colour">01 · Colour</a>
       <a href="#type">02 · Type scale</a>
       <a href="#page-type">03 · Page type (measured)</a>
@@ -77,6 +86,118 @@
       <a href="#rules">10 · Conventions</a>
     </nav>
   </header>
+
+  <!-- 00 ------------------------------------------------------------------ -->
+  <section class="ds-section" id="specimen">
+    <h2>00 · Specimen, live</h2>
+    <p>Everything the site sets in type, links and buttons, rendered with the real classes at real size.
+      Point at a row and we tweak that rule; the change lands everywhere the class is used.</p>
+
+    <h3 style="font-size: var(--step-1); font-weight: 500; margin-bottom: var(--space-m);">Type</h3>
+    <div class="ds-spec">
+      <div class="ds-spec__row">
+        <h1><span class="light">Hallo, wij zijn een</span> Brand Transformation &amp; AI Consultancy</h1>
+        <p class="ds-spec__meta">h1 · --step-4 (2.5rem to 5rem) · weight 600 · lh 1.08 · ls -0.02em · span.light = 400</p>
+      </div>
+      <div class="ds-spec__row">
+        <h2>Strategie, systemen en smaak horen in dezelfde kamer.</h2>
+        <p class="ds-spec__meta">h2 · --step-3 (2rem to 3.5rem) · weight 600</p>
+      </div>
+      <div class="ds-spec__row">
+        <h3>AI Consultancy</h3>
+        <p class="ds-spec__meta">h3 · --step-2 (1.5rem to 2.25rem) · weight 600</p>
+      </div>
+      <div class="ds-spec__row">
+        <h4>Workflow &amp; Tool Build</h4>
+        <p class="ds-spec__meta">h4 · --step-1 (1.125rem to 1.5rem) · weight 600</p>
+      </div>
+      <div class="ds-spec__row">
+        <h2 class="consultancy-section__title">Een transformatie die je kunt checken.</h2>
+        <p class="ds-spec__meta">.consultancy-section__title · clamp(1.75rem to 2.76rem) · weight 400 · max 24ch · lh 1.15</p>
+      </div>
+      <div class="ds-spec__row">
+        <p class="consultancy-lead">Elke claim hieronder is gedateerd.</p>
+        <p class="ds-spec__meta">.consultancy-lead · clamp(1.15rem to 1.8rem) · max 42ch · lh 1.3</p>
+      </div>
+      <div class="ds-spec__row">
+        <p class="hero__lead" style="margin-top: 0;">Strategie, branding en AI consultancy uit Gent. Sinds 2004 bouwen we merken die kloppen; sinds 2023 bouwen we ook de AI-workflows, beeldmodellen en tools erachter.</p>
+        <p class="ds-spec__meta">.hero__lead · --step-0 · --ink-soft · max 58ch</p>
+      </div>
+      <div class="ds-spec__row">
+        <p style="max-width: 62ch;">Gewone bodytekst met <strong>strong op 600</strong>, <em>cursief</em> en een <a class="textlink" href="#specimen">inline tekstlink</a>. Zwaarder dan 600 bestaat niet meer op de site; de font-range klemt alles af.</p>
+        <p class="ds-spec__meta">body p · --step-0 (0.938rem to 1.063rem) · weight 400 · lh 1.55 · strong/b/th = 600</p>
+      </div>
+      <div class="ds-spec__row">
+        <div class="consultancy-body"><p>De consultancy-bodymaat, iets ruimer dan gewone tekst: agreed tools, shared prompts, clear review moments en één geschreven definitie van wat on-brand betekent.</p></div>
+        <p class="ds-spec__meta">.consultancy-body · clamp(0.95rem to 1.3rem) · max 62ch · lh 1.45</p>
+      </div>
+      <div class="ds-spec__row">
+        <p class="eyebrow">Wat we doen</p>
+        <p class="ds-spec__meta">.eyebrow / .consultancy-kicker · --step--1 · weight 500 · uppercase · ls 0.08em · --gray</p>
+      </div>
+      <div class="ds-spec__row">
+        <div><span class="fact-figure">54 cases</span><br><span class="col-note">Gedocumenteerd op deze site</span></div>
+        <p class="ds-spec__meta">.fact-figure · --step-2 · weight 600&nbsp;&nbsp;|&nbsp;&nbsp;.col-note / .col-num · --step--1 · --gray</p>
+      </div>
+      <div class="ds-spec__row">
+        <div><p class="step__num">02.</p><p class="col-baseline">From Curiosity To Authenticity</p></div>
+        <p class="ds-spec__meta">.step__num · --step--1 · --gray&nbsp;&nbsp;|&nbsp;&nbsp;.col-baseline · uppercase · ls 0.06em</p>
+      </div>
+      <div class="ds-spec__row">
+        <div><h2 class="news-item__title" style="margin: 0 0 0.2em;">Midjourney 8.2 is terug in onze workflow</h2><p class="news-item__more">Lees meer →</p></div>
+        <p class="ds-spec__meta">.news-item__title · --step-1 · weight 600&nbsp;&nbsp;|&nbsp;&nbsp;.news-item__more · --step--1 · underline --gray</p>
+      </div>
+      <div class="ds-spec__row">
+        <div class="site-footer__legal" style="margin-top: 0;"><a href="#specimen">Privacy- &amp; cookiebeleid</a><a href="#specimen">KMO-portefeuille</a><span>© 2004–2026 · Glossy Branding Agency</span></div>
+        <p class="ds-spec__meta">.site-footer__legal · 12px · --gray · geen uppercase · hover naar --ink</p>
+      </div>
+    </div>
+
+    <h3 style="font-size: var(--step-1); font-weight: 500; margin: var(--space-2xl) 0 var(--space-m);">Links</h3>
+    <div class="ds-spec">
+      <div class="ds-spec__row">
+        <div class="ds-row">
+          <a class="nav__link" href="#specimen">Over ons</a>
+          <a class="nav__link" href="#specimen" aria-current="page">AI Consultancy</a>
+          <a class="nav__link nav__link--lang" href="#specimen">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/><path d="M3.2 9h17.6M3.2 15h17.6"/></svg>
+            EN</a>
+        </div>
+        <p class="ds-spec__meta">.nav__link · --step--1 · weight 500 · hover = cream wipe · aria-current = --gray · .nav__link--lang met globe op de tekstbaseline</p>
+      </div>
+      <div class="ds-spec__row">
+        <p><a class="textlink" href="#specimen">Onze aanpak</a></p>
+        <p class="ds-spec__meta">.textlink · underline 1px --gray · hover underline --ink · zelfde patroon als .consultancy-body a en .hero__lead a</p>
+      </div>
+      <div class="ds-spec__row">
+        <div class="ds-row" style="font-size: var(--step--1);"><a href="#specimen">Werk</a><a href="#specimen">Nieuws</a><a href="#specimen">Contact</a></div>
+        <p class="ds-spec__meta">.site-footer a · --step--1 · geen underline · hover naar --gray</p>
+      </div>
+      <div class="ds-spec__row">
+        <div class="ds-dark"><a class="cookie-link" href="#specimen">Lees ons cookiebeleid</a><button class="cookie-settings-link" type="button" style="text-decoration: underline; text-underline-offset: 0.18em;">Voorkeuren beheren</button></div>
+        <p class="ds-spec__meta">.cookie-link (op --ink) · underline · hover --cream&nbsp;&nbsp;|&nbsp;&nbsp;.cookie-settings-link · erft de legal-rij, hover --ink</p>
+      </div>
+    </div>
+
+    <h3 style="font-size: var(--step-1); font-weight: 500; margin: var(--space-2xl) 0 var(--space-m);">Buttons</h3>
+    <div class="ds-spec">
+      <div class="ds-spec__row">
+        <div class="ds-row">
+          <a class="btn btn--solid" href="#specimen">Plan een gratis intakegesprek</a>
+          <a class="btn" href="#specimen">Bekijk alle 54 cases</a>
+          <a class="btn" href="#specimen">Volgende →</a>
+        </div>
+        <p class="ds-spec__meta">.btn--solid · --ink vlak · hover naar --cream&nbsp;&nbsp;|&nbsp;&nbsp;.btn · outline pill · hover vult --ink · --step--1 · weight 500 · uppercase · ls 0.06em · radius 100px</p>
+      </div>
+      <div class="ds-spec__row">
+        <div class="ds-dark">
+          <button class="btn cookie-btn" type="button">Accepteer cookies</button>
+          <button class="btn cookie-btn" type="button">Weiger</button>
+        </div>
+        <p class="ds-spec__meta">.btn.cookie-btn · op de --ink cookiebalk · witte outline · hover vult --paper</p>
+      </div>
+    </div>
+  </section>
 
   <!-- 01 ------------------------------------------------------------------ -->
   <section class="ds-section" id="colour">
