@@ -1374,7 +1374,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    keep only their top rules so rows never double up. */
 .cols-3:not(:has(> :nth-child(4))) > .rule-col {
   border-bottom: 1px solid var(--line);
-  padding-bottom: var(--space-m);
+  padding-bottom: var(--space-l);
 }
 .rule-col p, .rule-col li { font-size: var(--step-0); }
 
