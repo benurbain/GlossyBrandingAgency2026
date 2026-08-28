@@ -1,5 +1,11 @@
-"""Shared page furniture for the generators. Pages sit one level down
-(cases/, news/), so every internal link is prefixed with ../."""
+"""Shared page furniture for the generators, in both site languages.
+
+Generated pages sit one level down inside their language tree:
+    cases/x.html      nl/cases/x.html
+    news/x.html       nl/news/x.html
+
+Call set_lang() before rendering a batch; asset() then climbs the right
+number of levels (../ for the English tree, ../../ from inside nl/)."""
 
 import html
 
@@ -7,12 +13,21 @@ e = lambda s: html.escape(str(s or ""), quote=True)
 
 SITE = "https://glossybranding.com/"
 
+LANG = "en"
+A = "../"  # asset prefix for the current language tree
+
+
+def set_lang(lang):
+    global LANG, A
+    LANG = lang
+    A = "../" if lang == "en" else "../../"
+
 
 def asset(src):
     """data/*.json stores media repo-relative ("assets/media/x.webp") so the
-    root pages can use it as-is. Generated pages sit one level down."""
+    root pages can use it as-is. Generated pages prefix their own depth."""
     src = str(src or "")
-    return src if src.startswith(("http://", "https://", "../", "/")) else "../" + src
+    return src if src.startswith(("http://", "https://", "../", "/")) else A + src
 
 
 def absolute(src):
@@ -20,50 +35,147 @@ def absolute(src):
     src = str(src or "")
     return src if src.startswith(("http://", "https://")) else SITE + src.lstrip("./")
 
-NAV_LINKS = [
-    ("about.html", "About"),
-    ("brand-ai-consultancy.html", "AI Consultancy"),
-    ("cases.html", "Cases"),
-    ("news.html", "News"),
-    ("contact.html", "Contact"),
-]
+
+STR = {
+    "en": {
+        "skip": "Skip to content",
+        "nav": [
+            ("about.html", "About"),
+            ("brand-ai-consultancy.html", "AI Consultancy"),
+            ("cases.html", "Cases"),
+            ("news.html", "News"),
+            ("contact.html", "Contact"),
+        ],
+        "footer": [
+            ("about.html", "About"),
+            ("cases.html", "Work"),
+            ("news.html", "News"),
+            ("contact.html", "Contact"),
+        ],
+        "privacy": "Privacy &amp; cookie policy",
+        "kmo": "KMO Portefeuille",
+        "rights": "All rights reserved",
+        "cookie_label": "Cookie notice",
+        "cookie": "To make your website user experience as easy and personal as "
+                  "possible, we make use of cookies. Read more in our "
+                  '<a href="{p}privacy-policy.html">cookie policy</a>.',
+        "accept": "Accept cookies",
+        "close": "Dismiss",
+        "switch_label": "NL",
+        "switch_aria": "Nederlandse versie",
+        "switch_hreflang": "nl",
+    },
+    "nl": {
+        "skip": "Ga naar inhoud",
+        "nav": [
+            ("about.html", "Over ons"),
+            ("brand-ai-consultancy.html", "AI Consultancy"),
+            ("cases.html", "Cases"),
+            ("news.html", "Nieuws"),
+            ("contact.html", "Contact"),
+        ],
+        "footer": [
+            ("about.html", "Over ons"),
+            ("cases.html", "Werk"),
+            ("news.html", "Nieuws"),
+            ("contact.html", "Contact"),
+        ],
+        "privacy": "Privacy- &amp; cookiebeleid",
+        "kmo": "KMO-portefeuille",
+        "rights": "Alle rechten voorbehouden",
+        "cookie_label": "Cookiemelding",
+        "cookie": "Om jouw ervaring op deze website zo vlot en persoonlijk "
+                  "mogelijk te maken, gebruiken we cookies. Lees er meer over in ons "
+                  '<a href="{p}privacy-policy.html">cookiebeleid</a>.',
+        "accept": "Accepteer cookies",
+        "close": "Sluiten",
+        "switch_label": "EN",
+        "switch_aria": "English version",
+        "switch_hreflang": "en",
+    },
+}
+
+GLOBE = ('<svg viewBox="0 0 24 24" width="15" height="15" fill="none" '
+         'stroke="currentColor" stroke-width="1.6" aria-hidden="true">'
+         '<circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/>'
+         '<path d="M3.2 9h17.6M3.2 15h17.6"/></svg>')
 
 
-def head(title, description, canonical, image=None, body_class=""):
+def twin(path):
+    """Relative URL from the current generated page to its language twin."""
+    if LANG == "en":
+        return f"../nl/{path}.html"
+    return f"../../{path}.html"
+
+
+def head(title, description, path, image=None, body_class=""):
+    """path is language-neutral and extension-free, e.g. "cases/kaa-gent"."""
     og_image = f'\n<meta property="og:image" content="{e(image)}">' if image else ""
+    canon_en = f"{SITE}{path}"
+    canon_nl = f"{SITE}nl/{path}"
+    canonical = canon_nl if LANG == "nl" else canon_en
+
+    # Only English pages redirect: an explicit choice via the switch always
+    # wins, otherwise browsers that prefer Dutch get the NL version. Crawlers
+    # render with en-US, so they never bounce off the NL tree.
+    redirect = ""
+    if LANG == "en":
+        redirect = f"""
+<script>
+(function () {{
+  try {{
+    var c = localStorage.getItem('glossy-lang');
+    var w = (navigator.languages || [navigator.language || '']).some(function (l) {{
+      return String(l).toLowerCase().indexOf('nl') === 0;
+    }});
+    if (c !== 'en' && (c === 'nl' || w)) location.replace('{twin(path)}');
+  }} catch (e) {{}}
+}})();
+</script>"""
+
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="{LANG}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
 <meta name="description" content="{e(description)}">
 <link rel="canonical" href="{e(canonical)}">
+<link rel="alternate" hreflang="en" href="{e(canon_en)}">
+<link rel="alternate" hreflang="nl" href="{e(canon_nl)}">
+<link rel="alternate" hreflang="x-default" href="{e(canon_en)}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
 <meta property="og:type" content="article">{og_image}
-<link rel="icon" href="../assets/img/favicon.png">
-<link rel="apple-touch-icon" href="../assets/img/webclip.png">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" href="{A}assets/img/favicon.png">
+<link rel="apple-touch-icon" href="{A}assets/img/webclip.png">
+<link rel="stylesheet" href="{A}assets/css/style.css">{redirect}
 </head>
 <body class="{body_class}">
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">{STR[LANG]["skip"]}</a>
 """
 
 
-def nav(current=""):
+def nav(current="", path=""):
+    s = STR[LANG]
     items = "\n".join(
         f'        <li><a class="nav__link" href="../{href}"'
         f'{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>'
-        for href, label in NAV_LINKS
+        for href, label in s["nav"]
+    )
+    switch = (
+        f'        <li><a class="nav__link nav__link--lang" href="{e(twin(path))}" '
+        f'hreflang="{s["switch_hreflang"]}" data-set-lang="{s["switch_hreflang"]}" '
+        f'aria-label="{s["switch_aria"]}">\n          {GLOBE}\n          '
+        f'{s["switch_label"]}</a></li>'
     )
     return f"""
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="logo" href="../index.html" aria-label="Glossy Branding Agency, home">
       <span class="logo__anim" data-lottie="assets/media/glossy-logo.json" data-lottie-white="assets/media/glossy-logo-white.json">
-        <img class="lottie-fallback" src="../assets/img/logo.svg" alt="Glossy Branding Agency" width="154" height="58">
+        <img class="lottie-fallback" src="{A}assets/img/logo.svg" alt="Glossy Branding Agency" width="154" height="58">
       </span>
     </a>
     <nav class="nav" data-nav aria-label="Main">
@@ -72,6 +184,7 @@ def nav(current=""):
       </button>
       <ul class="nav__list">
 {items}
+{switch}
       </ul>
     </nav>
   </div>
@@ -79,20 +192,23 @@ def nav(current=""):
 """
 
 
-FOOTER = """
+def footer():
+    s = STR[LANG]
+    links = "\n".join(
+        f'          <li><a href="../{href}">{label}</a></li>'
+        for href, label in s["footer"]
+    )
+    return f"""
 <footer class="site-footer">
   <div class="container">
     <a class="logo" href="../index.html" aria-label="Glossy Branding Agency, home">
-      <img src="../assets/img/logo.svg" alt="" width="154" height="58">
+      <img src="{A}assets/img/logo.svg" alt="" width="154" height="58">
     </a>
 
     <div class="site-footer__grid">
       <nav aria-label="Footer">
         <ul>
-          <li><a href="../about.html">About</a></li>
-          <li><a href="../cases.html">Work</a></li>
-          <li><a href="../news.html">News</a></li>
-          <li><a href="../contact.html">Contact</a></li>
+{links}
         </ul>
       </nav>
 
@@ -106,25 +222,25 @@ FOOTER = """
       </nav>
 
       <div class="site-footer__badges">
-        <img src="../assets/img/badge-kmo.png" alt="Erkend dienstverlener KMO-portefeuille" loading="lazy">
-        <img src="../assets/img/badge-school.svg" alt="School of Branding" loading="lazy">
+        <img src="{A}assets/img/badge-kmo.png" alt="Erkend dienstverlener KMO-portefeuille" loading="lazy">
+        <img src="{A}assets/img/badge-school.svg" alt="School of Branding" loading="lazy">
       </div>
     </div>
 
     <div class="site-footer__legal">
-      <a href="../privacy-policy.html">Privacy &amp; cookie policy</a>
-      <a href="../kmo-portefeuille.html">KMO Portefeuille</a>
+      <a href="../privacy-policy.html">{s["privacy"]}</a>
+      <a href="../kmo-portefeuille.html">{s["kmo"]}</a>
       <span>© 2004–2026 · Glossy Branding Agency</span>
-      <span>All rights reserved</span>
+      <span>{s["rights"]}</span>
     </div>
   </div>
 </footer>
 
-<aside class="cookie-bar" data-cookie-bar aria-label="Cookie notice">
-  <p class="cookie-bar__text">To make your website user experience as easy and personal as possible, we make use of cookies. Read more in our <a href="../privacy-policy.html">cookie policy</a>.</p>
+<aside class="cookie-bar" data-cookie-bar aria-label="{s["cookie_label"]}">
+  <p class="cookie-bar__text">{s["cookie"].format(p="../")}</p>
   <div class="cookie-bar__actions">
-    <button class="btn" type="button" data-cookie-accept>Accept cookies</button>
-    <button class="cookie-bar__close" type="button" data-cookie-close aria-label="Dismiss">&times;</button>
+    <button class="btn" type="button" data-cookie-accept>{s["accept"]}</button>
+    <button class="cookie-bar__close" type="button" data-cookie-close aria-label="{s["close"]}">&times;</button>
   </div>
 </aside>
 
@@ -132,8 +248,15 @@ FOOTER = """
   <div class="transition__logo" data-lottie="assets/media/glossy-logo.json" data-lottie-white="assets/media/glossy-logo-white.json"></div>
 </div>
 
-<script src="../assets/js/lottie.min.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="{A}assets/js/lottie.min.js"></script>
+<script src="{A}assets/js/main.js?v=2"></script>
+<script>
+document.querySelectorAll('[data-set-lang]').forEach(function (a) {{
+  a.addEventListener('click', function () {{
+    try {{ localStorage.setItem('glossy-lang', a.getAttribute('data-set-lang')); }} catch (e) {{}}
+  }});
+}});
+</script>
 </body>
 </html>
 """

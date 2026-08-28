@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """
-Generate one static HTML page per news item from data/news.json.
+Generate one static HTML page per news item, in both languages.
+
+English pages come from data/news.json into news/; Dutch pages from
+data/news-nl.json into nl/news/.
 
     python3 scripts/export-cms.py    # refresh data/ from the raw exports
-    python3 scripts/build-news.py    # then regenerate news/
+    python3 scripts/build-news.py    # then regenerate news/ and nl/news/
 """
 
 import json
@@ -12,15 +15,20 @@ import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from _shell import FOOTER, absolute, asset, e, head, media_tag, nav  # noqa: E402
+import _shell  # noqa: E402
+from _shell import absolute, asset, e, head, media_tag, nav  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-OUT = ROOT / "news"
+
+T = {
+    "en": {"newer": "Newer", "older": "Older", "all": "All news", "read": "Read more"},
+    "nl": {"newer": "Nieuwer", "older": "Ouder", "all": "Al het nieuws", "read": "Lees meer"},
+}
 
 
 def nested_assets(markup):
-    """Make CMS-authored asset links work from pages inside news/."""
-    return re.sub(r'\b(src|href)=(["\'])assets/', r'\1=\2../assets/', markup)
+    """Make CMS-authored asset links work from pages inside the news trees."""
+    return re.sub(r'\b(src|href)=(["\'])assets/', rf'\1=\2{_shell.A}assets/', markup)
 
 
 def hero(item):
@@ -55,9 +63,10 @@ def gallery(item):
   </section>"""
 
 
-def page(item, prev_item, next_item):
+def page(item, prev_item, next_item, t):
     title = f'{item["name"]} | Glossy'
     desc = item.get("seo") or item.get("subtitle") or item.get("excerpt") or item["name"]
+    path = f"news/{item['slug']}"
 
     body = (
         f'<div class="prose case-intro">{nested_assets(item["body"])}</div>'
@@ -67,7 +76,7 @@ def page(item, prev_item, next_item):
 
     link = ""
     if item.get("link"):
-        label = item.get("linkText") or "Read more"
+        label = item.get("linkText") or t["read"]
         link = (
             f'<p style="margin-top: var(--space-l);">'
             f'<a class="btn" href="{e(item["link"])}" rel="noopener">{e(label)} →</a></p>'
@@ -77,7 +86,7 @@ def page(item, prev_item, next_item):
         f'<a class="case-pager__link" href="{e(n["slug"])}.html">'
         f'<span class="eyebrow">{label}</span>'
         f'<span class="case-pager__name">{e(n["name"])}</span></a>'
-        for n, label in ((prev_item, "Newer"), (next_item, "Older"))
+        for n, label in ((prev_item, t["newer"]), (next_item, t["older"]))
         if n
     )
 
@@ -87,8 +96,8 @@ def page(item, prev_item, next_item):
     )
 
     return (
-        head(title, desc, f"https://glossybranding.com/news/{item['slug']}", absolute(item.get("image")))
-        + nav("news.html")
+        head(title, desc, path, absolute(item.get("image")))
+        + nav("news.html", path)
         + f"""
 <main id="main">
 
@@ -112,18 +121,27 @@ def page(item, prev_item, next_item):
 
   <nav class="container section" aria-label="More news">
     <div class="case-pager">{pager}</div>
-    <p style="margin-top: var(--space-l);"><a class="btn" href="../news.html">All news</a></p>
+    <p style="margin-top: var(--space-l);"><a class="btn" href="../news.html">{t["all"]}</a></p>
   </nav>
 
 </main>
 """
-        + FOOTER
+        + _shell.footer()
     )
 
 
-def main():
-    items = json.loads((ROOT / "data" / "news.json").read_text())
-    OUT.mkdir(exist_ok=True)
+def build(lang):
+    data_file = "news.json" if lang == "en" else "news-nl.json"
+    out = ROOT / "news" if lang == "en" else ROOT / "nl" / "news"
+    src = ROOT / "data" / data_file
+    if not src.exists():
+        print(f"  ! {data_file} missing, skipped {lang}")
+        return
+
+    _shell.set_lang(lang)
+    items = json.loads(src.read_text())
+    out.mkdir(parents=True, exist_ok=True)
+    t = T[lang]
 
     written = 0
     for i, item in enumerate(items):
@@ -132,10 +150,15 @@ def main():
             continue
         prev_item = items[i - 1] if i > 0 else None
         next_item = items[i + 1] if i + 1 < len(items) else None
-        (OUT / f"{item['slug']}.html").write_text(page(item, prev_item, next_item))
+        (out / f"{item['slug']}.html").write_text(page(item, prev_item, next_item, t))
         written += 1
 
-    print(f"Wrote {written} news pages")
+    print(f"[{lang}] Wrote {written} news pages")
+
+
+def main():
+    for lang in ("en", "nl"):
+        build(lang)
 
 
 if __name__ == "__main__":

@@ -57,10 +57,14 @@ const escapeHtml = (s) =>
 // Links are built relative so the site works under a GitHub Pages subpath too.
 const basePath = () => (/\/(cases|news)\/[^/]*$/.test(location.pathname) ? '../' : '');
 
+// The Dutch tree mirrors the English one a level deeper (/nl/...), but assets
+// and data stay at the repo root, so those URLs climb one extra level there.
+const nlDepth = () => (/(^|\/)nl\//.test(location.pathname) ? '../' : '');
+
 // Media in data/*.json is stored repo-relative; Vimeo and other absolute URLs
 // are left alone.
 const assetUrl = (src) =>
-  /^(https?:)?\/\//.test(src || '') ? src : basePath() + (src || '');
+  /^(https?:)?\/\//.test(src || '') ? src : basePath() + nlDepth() + (src || '');
 
 async function loadJson(path) {
   const res = await fetch(path);
@@ -73,7 +77,7 @@ function caseCard(item) {
   // one, with the hero image behind it as poster/fallback. `item.image` is the
   // social-share asset — a different picture — so it is deliberately not used.
   const poster = item.hero ? ` poster="${escapeHtml(assetUrl(item.hero))}"` : '';
-  const alt = `${escapeHtml(item.name)} — ${escapeHtml(item.baseline || 'case')}`;
+  const alt = `${escapeHtml(item.name)}, ${escapeHtml(item.baseline || 'case')}`;
 
   let media = '';
   if (item.heroVideo) {

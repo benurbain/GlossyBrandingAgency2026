@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Generate one static HTML page per case from data/cases.json.
+Generate one static HTML page per case, in both languages.
 
-A case page is assembled from several CMS collections: the case record, its
-ordered Case Sections (each with its own Full/Half/Third layout and media),
-and the four service taxonomies flattened into tags.
+English pages come from data/cases.json into cases/; Dutch pages from
+data/cases-nl.json into nl/cases/. The two files share slugs, media and
+layout; only the copy differs.
 
     python3 scripts/export-cms.py     # refresh data/ from the raw exports
-    python3 scripts/build-cases.py    # then regenerate cases/
+    python3 scripts/build-cases.py    # then regenerate cases/ and nl/cases/
 """
 
 import json
@@ -16,13 +16,44 @@ import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from _shell import FOOTER, absolute, asset, e, head, media_tag, nav  # noqa: E402
+import _shell  # noqa: E402
+from _shell import absolute, asset, e, head, media_tag, nav  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-OUT = ROOT / "cases"
 
 # How many media items sit on one row for each CMS "Visual Type".
 COLUMNS = {"full": 1, "half": 2, "third": 3}
+
+T = {
+    "en": {
+        "founders": "Founders", "company": "Company", "industry": "Industry",
+        "location": "Location",
+        "what": "What we did",
+        "scroll": "Scroll down",
+        "website": "Visit the website here",
+        "inspired_title": "Inspired by this case?",
+        "inspired_lead": "Can your business, organisation or product benefit from a (re)branding?\n      Contact us to discover if we are the right partner for you. See you soon!",
+        "contact": "Contact us",
+        "also": "You might also like",
+        "new": "new",
+        "svc": {"consultancy": "Consultancy", "strategy": "Strategy",
+                "branding": "Branding", "experience": "Experience"},
+    },
+    "nl": {
+        "founders": "Oprichters", "company": "Bedrijf", "industry": "Sector",
+        "location": "Locatie",
+        "what": "Wat we deden",
+        "scroll": "Scroll",
+        "website": "Bekijk hier de website",
+        "inspired_title": "Geïnspireerd door deze case?",
+        "inspired_lead": "Kan jouw bedrijf, organisatie of product een (re)branding gebruiken?\n      Contacteer ons en ontdek of wij de juiste partner zijn. Tot binnenkort!",
+        "contact": "Contacteer ons",
+        "also": "Misschien ook iets voor jou",
+        "new": "nieuw",
+        "svc": {"consultancy": "Consultancy", "strategy": "Strategie",
+                "branding": "Branding", "experience": "Experience"},
+    },
+}
 
 
 def section_html(sec, case_name):
@@ -76,13 +107,13 @@ def hero_media(case):
     return ""
 
 
-def facts(case):
+def facts(case, t):
     """The overview strip: four labelled facts side by side, as on the original."""
     rows = [
-        ("Founders", case.get("founders")),
-        ("Company", case.get("company") or case.get("client") or case.get("name")),
-        ("Industry", case.get("industry")),
-        ("Location", case.get("location")),
+        (t["founders"], case.get("founders")),
+        (t["company"], case.get("company") or case.get("client") or case.get("name")),
+        (t["industry"], case.get("industry")),
+        (t["location"], case.get("location")),
     ]
     out = "".join(
         f'\n        <div class="case-facts__item"><dt>{e(k)}</dt><dd>{e(v)}</dd></div>'
@@ -92,37 +123,30 @@ def facts(case):
     return f'<dl class="case-facts">{out}\n      </dl>' if out else ""
 
 
-SERVICE_LABEL = {
-    "consultancy": "Consultancy",
-    "strategy": "Strategy",
-    "branding": "Branding",
-    "experience": "Experience",
-}
-
-
-def what_we_did(case):
-    """Services stay grouped by their taxonomy — four columns, not one tag soup."""
+def what_we_did(case, t):
+    """Services stay grouped by their taxonomy: four columns, not one tag soup."""
     groups = case.get("services") or {}
     cols = "".join(
         f'\n        <div class="what-we-did__col"><p class="what-we-did__label">{e(label)}</p>'
         + "".join(f"<p>{e(n)}</p>" for n in groups[key])
         + "</div>"
-        for key, label in SERVICE_LABEL.items()
+        for key, label in t["svc"].items()
         if groups.get(key)
     )
     if not cols:
         return ""
     return f"""
   <section class="container case-block">
-    <h2 class="case-block__title">What we did</h2>
+    <h2 class="case-block__title">{t["what"]}</h2>
     <div class="what-we-did">{cols}
     </div>
   </section>"""
 
 
-def page(case, prev_case, next_case):
+def page(case, prev_case, next_case, t):
     title = f'{case["name"]} • Glossy Branding Agency'
     desc = case.get("seo") or case.get("baseline") or case["name"]
+    path = f"cases/{case['slug']}"
 
     intro = (
         f'<div class="prose case-intro">{case["intro"]}</div>'
@@ -132,7 +156,7 @@ def page(case, prev_case, next_case):
     slogan = f'<p class="case-slogan">{e(case["slogan"])}</p>' if case.get("slogan") else ""
     website = (
         f'<div class="container case-website">'
-        f'<a class="btn" href="{e(case["website"])}" rel="noopener">Visit the website here</a></div>'
+        f'<a class="btn" href="{e(case["website"])}" rel="noopener">{t["website"]}</a></div>'
         if case.get("website")
         else ""
     )
@@ -167,19 +191,19 @@ def page(case, prev_case, next_case):
 
     pager = "".join(more_card(c) for c in (prev_case, next_case) if c)
 
-    flag = ' <span class="case-flag">new</span>' if case.get("isNew") else ""
+    flag = f' <span class="case-flag">{t["new"]}</span>' if case.get("isNew") else ""
 
     return (
-        head(title, desc, f"https://glossybranding.com/cases/{case['slug']}", absolute(case.get("image")),
+        head(title, desc, path, absolute(case.get("image")),
              body_class="has-hero nav-invert" if case.get("whiteNav") else "has-hero")
-        + nav("cases.html")
+        + nav("cases.html", path)
         + f"""
 <main id="main">
 
   <article>
     <div class="case-hero-wrap">
       <figure class="case-hero">{hero_media(case)}</figure>
-      <a class="case-hero__scroll" href="#case-body">Scroll down</a>
+      <a class="case-hero__scroll" href="#case-body">{t["scroll"]}</a>
     </div>
 
     <div class="container case-overview" id="case-body">
@@ -188,7 +212,7 @@ def page(case, prev_case, next_case):
         {f'<p class="case-overview__date">{e(case["when"])}</p>' if case.get("when") else ""}
       </div>
       {f'<p class="case-overview__baseline">{e(case["baseline"])}</p>' if case.get("baseline") else ""}
-      {facts(case)}
+      {facts(case, t)}
       {second}
       {intro}
     </div>
@@ -196,30 +220,38 @@ def page(case, prev_case, next_case):
     {website}
 {testimonial}
   </article>
-{what_we_did(case)}
+{what_we_did(case, t)}
   <section class="container case-block">
-    <h2 class="case-block__title">Inspired by this case?</h2>
-    <p class="case-block__lead">Can your business, organisation or product benefit from a (re)branding?
-      Contact us to discover if we are the right partner for you. See you soon!</p>
-    <p><a class="btn btn--solid" href="../contact.html">Contact us</a></p>
+    <h2 class="case-block__title">{t["inspired_title"]}</h2>
+    <p class="case-block__lead">{t["inspired_lead"]}</p>
+    <p><a class="btn btn--solid" href="../contact.html">{t["contact"]}</a></p>
   </section>
 
   <section class="more-cases">
     <div class="container">
-      <h2 class="case-block__title">You might also like</h2>
+      <h2 class="case-block__title">{t["also"]}</h2>
       <div class="more-cases__grid">{pager}</div>
     </div>
   </section>
 
 </main>
 """
-        + FOOTER
+        + _shell.footer()
     )
 
 
-def main():
-    cases = json.loads((ROOT / "data" / "cases.json").read_text())
-    OUT.mkdir(exist_ok=True)
+def build(lang):
+    data_file = "cases.json" if lang == "en" else "cases-nl.json"
+    out = ROOT / "cases" if lang == "en" else ROOT / "nl" / "cases"
+    src = ROOT / "data" / data_file
+    if not src.exists():
+        print(f"  ! {data_file} missing, skipped {lang}")
+        return
+
+    _shell.set_lang(lang)
+    cases = json.loads(src.read_text())
+    out.mkdir(parents=True, exist_ok=True)
+    t = T[lang]
 
     written = 0
     for i, case in enumerate(cases):
@@ -228,11 +260,16 @@ def main():
             continue
         prev_case = cases[i - 1] if i > 0 else None
         next_case = cases[i + 1] if i + 1 < len(cases) else None
-        (OUT / f"{case['slug']}.html").write_text(page(case, prev_case, next_case))
+        (out / f"{case['slug']}.html").write_text(page(case, prev_case, next_case, t))
         written += 1
 
     with_sections = sum(1 for c in cases if c.get("sections"))
-    print(f"Wrote {written} case pages ({with_sections} with CMS sections)")
+    print(f"[{lang}] Wrote {written} case pages ({with_sections} with CMS sections)")
+
+
+def main():
+    for lang in ("en", "nl"):
+        build(lang)
 
 
 if __name__ == "__main__":
