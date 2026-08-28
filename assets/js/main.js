@@ -101,13 +101,20 @@ function caseCard(item) {
 }
 
 function newsCard(item) {
-  const img = item.image
-    ? `<img src="${escapeHtml(assetUrl(item.image))}" alt="" loading="lazy" decoding="async">`
-    : '';
+  // Like the case cards, news cards lead with the item's video where there is
+  // one; the image stays as poster and as the fallback for image-only items.
+  let media = '';
+  if (/^https?:\/\/\S+\.(mp4|webm)(\?|$)/.test(item.video || '')) {
+    const poster = item.image ? ` poster="${escapeHtml(assetUrl(item.image))}"` : '';
+    media = `<video src="${escapeHtml(item.video)}"${poster}
+          autoplay muted loop playsinline preload="metadata" aria-label="${escapeHtml(item.name)}"></video>`;
+  } else if (item.image) {
+    media = `<img src="${escapeHtml(assetUrl(item.image))}" alt="" loading="lazy" decoding="async">`;
+  }
   return `
     <article class="news-item">
       <a class="news-item__link" href="${basePath()}news/${escapeHtml(item.slug)}.html">
-        <div class="news-item__media">${img}</div>
+        <div class="news-item__media">${media}</div>
         <p class="news-item__date">${escapeHtml(item.monthYear || item.published || '')}</p>
         <h2 class="news-item__title">${escapeHtml(item.name)}</h2>
         <p class="news-item__excerpt">${escapeHtml(item.excerpt || item.subtitle || '')}</p>
