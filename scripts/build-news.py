@@ -18,6 +18,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "news"
 
 
+def nested_assets(markup):
+    """Make CMS-authored asset links work from pages inside news/."""
+    return re.sub(r'\b(src|href)=(["\'])assets/', r'\1=\2../assets/', markup)
+
+
 def hero(item):
     video = item.get("video")
     if video and re.match(r"^https?://\S+\.(mp4|webm)(\?|$)", video):
@@ -55,7 +60,7 @@ def page(item, prev_item, next_item):
     desc = item.get("seo") or item.get("subtitle") or item.get("excerpt") or item["name"]
 
     body = (
-        f'<div class="prose case-intro">{item["body"]}</div>'
+        f'<div class="prose case-intro">{nested_assets(item["body"])}</div>'
         if (item.get("body") or "").strip()
         else ""
     )

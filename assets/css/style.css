@@ -30,7 +30,8 @@
   --paper:      #ffffff;
   --ink:        #111111;
   --ink-soft:   #333333;
-  --gray:       #b3b3b3;
+  --gray:       #737373;
+  --gray-on-dark: #b3b3b3;
   --smoke:      #f3f1f1;
   --cream:      #fffbe9;
   --line:       #e2e2e2;
@@ -72,10 +73,14 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--paper);
   color: var(--ink);
   font-family: "Rethink Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -299,6 +304,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .nav__link[aria-current="page"] { color: var(--gray); }
 
+.has-hero.nav-invert .site-header:not([data-past-hero="true"]) .nav__link[aria-current="page"] {
+  color: var(--gray-on-dark);
+}
+
 .nav__toggle {
   display: none;
   width: 44px; height: 44px;
@@ -324,9 +333,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     background: var(--paper);
     font-size: var(--step-2);
     transform: translateX(100%);
-    transition: transform var(--dur) var(--ease);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      transform var(--dur) var(--ease),
+      visibility 0s linear var(--dur);
   }
-  .nav[data-open="true"] .nav__list { transform: translateX(0); }
+  .nav[data-open="true"] .nav__list {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
   .nav__link { font-size: var(--step-2); }
 
   .nav[data-open="true"] .nav__toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -641,7 +659,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .more-cases__card:hover img { opacity: 0.75; }
 .more-cases__name { font-size: var(--step-1); }
-.more-cases__baseline { font-size: var(--step--1); color: var(--gray); }
+.more-cases__baseline { font-size: var(--step--1); color: var(--gray-on-dark); }
 
 @media (max-width: 700px) { .more-cases__grid { grid-template-columns: 1fr; } }
 
@@ -952,6 +970,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .prose ul { margin: var(--space-s) 0; }
 .prose li { padding-left: 1.2em; text-indent: -1.2em; }
 .prose li::before { content: "•"; color: var(--gray); padding-right: 0.6em; }
+.prose figure { margin: var(--space-l) 0; }
+.prose figure :where(img, video) { width: 100%; margin: 0; }
+.prose blockquote {
+  margin: var(--space-l) 0;
+  padding-left: var(--space-m);
+  border-left: 1px solid var(--ink);
+  font-size: var(--step-1);
+  line-height: 1.4;
+}
 
 .steps { counter-reset: step; display: grid; gap: var(--space-xl); }
 .step__num { font-size: var(--step-1); color: var(--gray); font-weight: 500; }
@@ -1045,7 +1072,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .consultancy-section {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--space-m);
   max-width: 75rem;
   padding-block: var(--space-2xl);
 }
@@ -1099,7 +1126,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .consultancy-cta {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--space-m);
   align-items: flex-start;
   border-radius: var(--radius);
   background: var(--smoke);
@@ -1212,7 +1239,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .skeleton {
   border-radius: var(--radius);
-  background: linear-gradient(90deg, var(--smoke) 25%, #ececec 50%, var(--smoke) 75%);
+  background: linear-gradient(
+    90deg,
+    var(--smoke) 25%,
+    color-mix(in srgb, var(--smoke) 94%, var(--ink)) 50%,
+    var(--smoke) 75%
+  );
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
 }

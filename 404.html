@@ -5,24 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Not Found • Glossy Branding Agency</title>
 <meta name="robots" content="noindex">
-<!-- A 404 can be served from any depth, so relative asset paths would break and
-     root-absolute ones break under a GitHub Pages project subpath. Styles are
-     inlined instead, which works everywhere. -->
+<!-- A 404 can be served from any depth. Styles stay inline and project-root
+     URLs keep fonts and links correct on this GitHub Pages deployment. -->
 <style>
   @font-face {
     font-family: "Rethink Sans";
-    src: url("/assets/fonts/RethinkSans-var.ttf") format("truetype");
+    src: url("/GlossyBrandingAgency2026/assets/fonts/RethinkSans-var.ttf") format("truetype");
     font-weight: 400 800;
     font-display: swap;
   }
-  :root { --ink: #111; --paper: #fff; --gray: #b3b3b3; }
+  :root {
+    --paper: #ffffff;
+    --ink: #111111;
+    --ink-soft: #333333;
+    --gray: #737373;
+    --cream: #fffbe9;
+    --space-xs: 0.75rem;
+    --space-m: 1.5rem;
+    --space-l: 2.5rem;
+    --radius: 5px;
+    --dur: 320ms;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
   * { box-sizing: border-box; }
   body {
     margin: 0;
     min-height: 100vh;
     display: grid;
     place-content: center;
-    gap: 1.5rem;
+    gap: var(--space-m);
     padding: clamp(1.25rem, 6vw, 5.5rem);
     background: var(--paper);
     color: var(--ink);
@@ -38,8 +49,8 @@
     line-height: 1.08;
     letter-spacing: -0.02em;
   }
-  p { margin: 0; max-width: 48ch; color: #333; }
-  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  p { margin: 0; max-width: 48ch; color: var(--ink-soft); }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
   a.btn {
     display: inline-block;
     padding: 0.7em 1.4em;
@@ -51,11 +62,12 @@
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    transition: background-color 320ms, color 320ms;
+    transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
   }
   a.btn:hover, a.btn:focus-visible { background: var(--ink); color: var(--paper); }
   a.solid { background: var(--ink); color: var(--paper); }
-  a.solid:hover, a.solid:focus-visible { background: #fffbe9; color: var(--ink); }
+  a.solid:hover, a.solid:focus-visible { background: var(--cream); color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   @media (prefers-reduced-motion: reduce) { * { transition-duration: 0.01ms !important; } }
 </style>
 </head>
@@ -63,10 +75,10 @@
 
 <main>
   <h1>This page took a branding detour.</h1>
-  <p style="margin-top: 1.5rem;">The page you are looking for does not exist. Head back to the homepage or explore our work.</p>
-  <div class="actions" style="margin-top: 2.5rem;">
-    <a class="btn solid" href="/">Homepage</a>
-    <a class="btn" href="/cases.html">Our cases</a>
+  <p style="margin-top: var(--space-m);">The page you are looking for does not exist. Head back to the homepage or explore our work.</p>
+  <div class="actions" style="margin-top: var(--space-l);">
+    <a class="btn solid" href="/GlossyBrandingAgency2026/">Homepage</a>
+    <a class="btn" href="/GlossyBrandingAgency2026/cases.html">Our cases</a>
   </div>
 </main>
 
