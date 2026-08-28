@@ -40,6 +40,7 @@ scripts/scrape-sections.py     Recovers Case Sections the MCP cannot reach
 scripts/localize-assets.py     Downloads Webflow media into assets/media/
 scripts/build-cases.py         data/cases(-nl).json -> cases/ and nl/cases/
 scripts/build-news.py          data/news(-nl).json  -> news/ and nl/news/
+scripts/build-sitemap.py       Both trees -> sitemap.xml with hreflang pairs
 scripts/merge-nl.py            Translator output + fixed glossary -> data/*-nl.json
 scripts/_shell.py              Shared nav/footer/media markup, per language
 scripts/raw/                   Raw CMS exports (input to export-cms.py)
@@ -92,7 +93,7 @@ Each Case Section carries a **Visual Type** (Full / Half / Third) which becomes
 the scraped sections and the localised asset paths**. Always run the full chain:
 
 ```bash
-python3 scripts/export-cms.py && python3 scripts/scrape-sections.py --cached && python3 scripts/localize-assets.py && python3 scripts/build-cases.py && python3 scripts/build-news.py
+python3 scripts/export-cms.py && python3 scripts/scrape-sections.py --cached && python3 scripts/localize-assets.py && python3 scripts/build-cases.py && python3 scripts/build-news.py && python3 scripts/build-sitemap.py
 ```
 
 ### Card media
@@ -140,6 +141,18 @@ To refresh the content, re-export from Webflow and overwrite the JSON files.
 Type scales fluidly with `clamp()` rather than the original's `font-size: 1vw`,
 which broke under browser zoom. Tokens live at the top of `assets/css/style.css`:
 `--ink`, `--paper`, `--smoke`, `--cream`, `--step-0`…`--step-4`, `--space-*`.
+
+## SEO
+
+Every page carries the full head Webflow offered per page and more: title,
+meta description, canonical, hreflang alternates, Open Graph (url,
+site_name, locale plus alternate, image with `assets/img/og-default.png`
+as the fallback), Twitter cards and JSON-LD. The generators emit
+CreativeWork schema per case and NewsArticle per news item; the root pages
+carry Organization, WebSite, Service (AI Consultancy), ContactPage,
+AboutPage and CollectionPage blocks. `sitemap.xml` lists all 199 indexable
+URLs with their language twins; `robots.txt` points at it. Noindex pages
+(careers, the design-system reference) stay out of the sitemap.
 
 ## Consent management
 

@@ -16,7 +16,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import _shell  # noqa: E402
-from _shell import absolute, asset, e, head, media_tag, nav  # noqa: E402
+from _shell import ORG, SITE, absolute, asset, e, head, iso_month, media_tag, nav  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -95,8 +95,29 @@ def page(item, prev_item, next_item, t):
         f'<p class="hero__lead">{e(item["subtitle"])}</p>' if item.get("subtitle") else ""
     )
 
+    lang = _shell.LANG
+    canonical = f"{SITE}nl/{path}" if lang == "nl" else f"{SITE}{path}"
+    short_desc = (item.get("subtitle") or item.get("excerpt") or item["name"]).strip()[:250]
+    jsonld = {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": item["name"],
+        "url": canonical,
+        "mainEntityOfPage": canonical,
+        "inLanguage": lang,
+        "description": short_desc,
+        "publisher": ORG,
+        "author": ORG,
+    }
+    if item.get("image"):
+        jsonld["image"] = absolute(item["image"])
+    if item.get("published"):
+        jsonld["datePublished"] = item["published"]
+    elif iso_month(item.get("monthYear")):
+        jsonld["datePublished"] = iso_month(item.get("monthYear"))
+
     return (
-        head(title, desc, path, absolute(item.get("image")))
+        head(title, desc, path, absolute(item.get("image")), jsonld=jsonld)
         + nav("news.html", path)
         + f"""
 <main id="main">

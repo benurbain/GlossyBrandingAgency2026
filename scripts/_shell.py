@@ -8,6 +8,7 @@ Call set_lang() before rendering a batch; asset() then climbs the right
 number of levels (../ for the English tree, ../../ from inside nl/)."""
 
 import html
+import json
 import re
 
 e = lambda s: html.escape(str(s or ""), quote=True)
@@ -106,6 +107,43 @@ GLOBE = ('<svg viewBox="0 0 24 24" width="15" height="15" fill="none" '
          '<path d="M3.2 9h17.6M3.2 15h17.6"/></svg>')
 
 
+ORG = {
+    "@type": "Organization",
+    "name": "Glossy Branding Agency",
+    "url": SITE,
+    "logo": SITE + "assets/img/webclip.png",
+    "sameAs": [
+        "https://www.linkedin.com/company/glossy-branding-agency/",
+        "https://www.instagram.com/glossybrandingagency/",
+        "https://www.facebook.com/glossybrandingagency",
+        "https://x.com/glossybranding",
+    ],
+}
+
+_MONTHS = {
+    "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+    "july": 7, "august": 8, "september": 9, "october": 10, "november": 11,
+    "december": 12,
+    "januari": 1, "februari": 2, "maart": 3, "mei": 5, "juni": 6, "juli": 7,
+    "augustus": 8, "oktober": 10,
+}
+
+
+def iso_month(s):
+    """'August 2025' or 'augustus 2025' -> '2025-08'; anything else -> None."""
+    parts = str(s or "").split()
+    if len(parts) == 2 and parts[0].lower() in _MONTHS and parts[1].isdigit():
+        return f"{parts[1]}-{_MONTHS[parts[0].lower()]:02d}"
+    return None
+
+
+def jsonld_tag(data):
+    if not data:
+        return ""
+    blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    return f'\n<script type="application/ld+json">{blob}</script>'
+
+
 def twin(path):
     """Relative URL from the current generated page to its language twin."""
     if LANG == "en":
@@ -113,9 +151,8 @@ def twin(path):
     return f"../../{path}.html"
 
 
-def head(title, description, path, image=None, body_class=""):
+def head(title, description, path, image=None, body_class="", jsonld=None):
     """path is language-neutral and extension-free, e.g. "cases/kaa-gent"."""
-    og_image = f'\n<meta property="og:image" content="{e(image)}">' if image else ""
     canon_en = f"{SITE}{path}"
     canon_nl = f"{SITE}nl/{path}"
     canonical = canon_nl if LANG == "nl" else canon_en
@@ -138,6 +175,9 @@ def head(title, description, path, image=None, body_class=""):
 }})();
 </script>"""
 
+    og_img_url = image or f"{SITE}assets/img/og-default.png"
+    locale = "nl_BE" if LANG == "nl" else "en_US"
+    locale_alt = "en_US" if LANG == "nl" else "nl_BE"
     return f"""<!DOCTYPE html>
 <html lang="{LANG}">
 <head>
@@ -151,10 +191,19 @@ def head(title, description, path, image=None, body_class=""):
 <link rel="alternate" hreflang="x-default" href="{e(canon_en)}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
-<meta property="og:type" content="article">{og_image}
+<meta property="og:type" content="article">
+<meta property="og:url" content="{e(canonical)}">
+<meta property="og:site_name" content="Glossy Branding Agency">
+<meta property="og:locale" content="{locale}">
+<meta property="og:locale:alternate" content="{locale_alt}">
+<meta property="og:image" content="{e(og_img_url)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(title)}">
+<meta name="twitter:description" content="{e(description)}">
+<meta name="twitter:image" content="{e(og_img_url)}">
 <link rel="icon" href="{A}assets/img/favicon.png">
 <link rel="apple-touch-icon" href="{A}assets/img/webclip.png">
-<link rel="stylesheet" href="{A}assets/css/style.css?v=15">{redirect}
+<link rel="stylesheet" href="{A}assets/css/style.css?v=15">{jsonld_tag(jsonld)}{redirect}
 </head>
 <body class="{body_class}">
 

@@ -17,7 +17,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import _shell  # noqa: E402
-from _shell import absolute, asset, e, head, media_tag, nav  # noqa: E402
+from _shell import ORG, SITE, absolute, asset, e, head, iso_month, media_tag, nav  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -193,9 +193,26 @@ def page(case, prev_case, next_case, t):
 
     flag = f' <span class="case-flag">{t["new"]}</span>' if case.get("isNew") else ""
 
+    lang = _shell.LANG
+    canonical = f"{SITE}nl/{path}" if lang == "nl" else f"{SITE}{path}"
+    jsonld = {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": case["name"],
+        "url": canonical,
+        "inLanguage": lang,
+        "description": desc,
+        "publisher": ORG,
+    }
+    if case.get("image"):
+        jsonld["image"] = absolute(case["image"])
+    if iso_month(case.get("when")):
+        jsonld["dateCreated"] = iso_month(case.get("when"))
+
     return (
         head(title, desc, path, absolute(case.get("image")),
-             body_class="has-hero nav-invert" if case.get("whiteNav") else "has-hero")
+             body_class="has-hero nav-invert" if case.get("whiteNav") else "has-hero",
+             jsonld=jsonld)
         + nav("cases.html", path)
         + f"""
 <main id="main">
