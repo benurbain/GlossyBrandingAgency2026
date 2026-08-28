@@ -1369,6 +1369,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .rule-col--ink { border-top-color: var(--ink); }
 .rule-col h3, .rule-col p { margin: 0; }
 .rule-col h3 { font-size: var(--step-1); }
+
+/* A single-row trio closes with a bottom hairline too; multi-row grids
+   keep only their top rules so rows never double up. */
+.cols-3:not(:has(> :nth-child(4))) > .rule-col {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: var(--space-m);
+}
 .rule-col p, .rule-col li { font-size: var(--step-0); }
 
 .col-num, .col-note { font-size: var(--step--1); color: var(--gray); }
