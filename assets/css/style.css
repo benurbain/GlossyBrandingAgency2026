@@ -1122,6 +1122,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: text-decoration-color var(--dur) var(--ease);
 }
 .consultancy-body a:hover { text-decoration-color: currentColor; }
+.consultancy-kicker a {
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: 1px;
+}
 
 /* One section sits on a tinted panel on the original. */
 .consultancy-section--highlight {
