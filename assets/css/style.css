@@ -1122,11 +1122,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: text-decoration-color var(--dur) var(--ease);
 }
 .consultancy-body a:hover { text-decoration-color: currentColor; }
-.consultancy-kicker a {
-  text-decoration: underline;
-  text-underline-offset: 0.16em;
-  text-decoration-thickness: 1px;
+
+/* Language switch: a nav link with a small globe, EN and NL versions only. */
+.nav__link--lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
 }
+.nav__link--lang svg { display: block; flex-shrink: 0; }
 
 /* One section sits on a tinted panel on the original. */
 .consultancy-section--highlight {

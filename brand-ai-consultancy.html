@@ -15,6 +15,20 @@
 <link rel="icon" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/webclip.png">
 <link rel="stylesheet" href="assets/css/style.css">
+<script>
+/* Language routing: an explicit choice via the switch always wins; otherwise
+   browsers that prefer Dutch get the NL version. Only this EN page redirects,
+   so crawlers rendering with en-US never bounce off the NL page. */
+(function () {
+  try {
+    var choice = localStorage.getItem('glossy-lang');
+    var wantsNl = (navigator.languages || [navigator.language || '']).some(function (l) {
+      return String(l).toLowerCase().indexOf('nl') === 0;
+    });
+    if (choice !== 'en' && (choice === 'nl' || wantsNl)) location.replace('brand-ai-consultancy-nl.html');
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 
@@ -37,6 +51,9 @@
         <li><a class="nav__link" href="cases.html">Cases</a></li>
         <li><a class="nav__link" href="news.html">News</a></li>
         <li><a class="nav__link" href="contact.html">Contact</a></li>
+        <li><a class="nav__link nav__link--lang" href="brand-ai-consultancy-nl.html" hreflang="nl" data-set-lang="nl" aria-label="Nederlandse versie">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/><path d="M3.2 9h17.6M3.2 15h17.6"/></svg>
+          NL</a></li>
       </ul>
     </nav>
   </div>
@@ -54,7 +71,6 @@
         <p>Glossy has spent more than twenty years making that call for brands like <a href="cases/kaa-gent.html">KAA Gent</a>, <a href="cases/pukkelpop-2018.html">Pukkelpop</a> and <a href="cases/quick-step-floors-pro-cycling-team-2017.html">Quick-Step</a>. Since 2023 we have rebuilt our own studio around AI: we design the strategy, build the workflows and tools, train image models on brand identities and code the websites we ship. Now we help marketing teams in Belgium do the same, hands-on and directly with founder Ben Urbain.</p>
       </div>
       <p><a class="btn btn--solid" href="contact.html">Book a free intake meeting</a></p>
-      <p class="consultancy-kicker"><a href="brand-ai-consultancy-nl.html">Lees deze pagina in het Nederlands</a></p>
     </div>
 
     <div class="consultancy-section">
@@ -257,5 +273,12 @@
 
 <script src="assets/js/lottie.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+document.querySelectorAll('[data-set-lang]').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('glossy-lang', a.getAttribute('data-set-lang')); } catch (e) {}
+  });
+});
+</script>
 </body>
 </html>

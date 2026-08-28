@@ -37,6 +37,9 @@
         <li><a class="nav__link" href="cases.html">Cases</a></li>
         <li><a class="nav__link" href="news.html">News</a></li>
         <li><a class="nav__link" href="contact.html">Contact</a></li>
+        <li><a class="nav__link nav__link--lang" href="brand-ai-consultancy.html" hreflang="en" data-set-lang="en" aria-label="English version">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4.2" ry="9.2"/><path d="M3.2 9h17.6M3.2 15h17.6"/></svg>
+          EN</a></li>
       </ul>
     </nav>
   </div>
@@ -54,7 +57,6 @@
         <p>Glossy maakt die afweging al meer dan twintig jaar voor merken als <a href="cases/kaa-gent.html">KAA Gent</a>, <a href="cases/pukkelpop-2018.html">Pukkelpop</a> en <a href="cases/quick-step-floors-pro-cycling-team-2017.html">Quick-Step</a>. Sinds 2023 hebben we onze eigen studio rond AI herbouwd: we ontwerpen de strategie, bouwen de workflows en tools, trainen beeldmodellen op merkidentiteiten en schrijven de code van de websites die we opleveren. Vandaag helpen we marketingteams in België hetzelfde te doen, hands-on en rechtstreeks met oprichter Ben Urbain.</p>
       </div>
       <p><a class="btn btn--solid" href="contact.html">Plan een gratis intakegesprek</a></p>
-      <p class="consultancy-kicker"><a href="brand-ai-consultancy.html">Read this page in English</a></p>
     </div>
 
     <div class="consultancy-section">
@@ -257,5 +259,12 @@
 
 <script src="assets/js/lottie.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+document.querySelectorAll('[data-set-lang]').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('glossy-lang', a.getAttribute('data-set-lang')); } catch (e) {}
+  });
+});
+</script>
 </body>
 </html>
