@@ -655,6 +655,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .case-card__body {
   position: absolute;
   inset: auto 0 0 0;
+  display: grid;
+  gap: 0.15em;
   padding: var(--space-m);
   color: var(--paper);
   background: linear-gradient(to top, rgb(0 0 0 / 0.62), transparent);
@@ -862,8 +864,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: opacity var(--dur) var(--ease);
 }
 .more-cases__card:hover img { opacity: 0.75; }
-.more-cases__name { font-size: var(--step-1); }
-.more-cases__baseline { font-size: var(--step--1); color: var(--gray-on-dark); }
+.more-cases__name { display: block; font-size: var(--step-1); }
+.more-cases__baseline { display: block; font-size: var(--step--1); color: var(--gray-on-dark); }
 
 @media (max-width: 700px) { .more-cases__grid { grid-template-columns: 1fr; } }
 
