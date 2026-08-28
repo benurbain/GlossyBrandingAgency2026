@@ -248,7 +248,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: color-mix(in srgb, var(--paper) 78%, var(--gray-on-dark));
 }
 .cookie-bar__text a,
-.cookie-link { text-decoration: underline; text-underline-offset: 0.18em; }
+.cookie-link { text-decoration: underline; text-underline-offset: 0.5em; }
 
 .cookie-bar__actions {
   display: flex;
@@ -1179,7 +1179,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .news-item__more {
   font-size: var(--step--1);
   text-decoration: underline;
-  text-underline-offset: 0.16em;
+  text-underline-offset: 0.5em;
   text-decoration-thickness: 1px;
   text-decoration-color: var(--gray);
   transition: text-decoration-color var(--dur) var(--ease);
@@ -1340,7 +1340,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .consultancy-body li { font-size: inherit; }
 .consultancy-body a {
   text-decoration: underline;
-  text-underline-offset: 0.16em;
+  text-underline-offset: 0.5em;
   text-decoration-thickness: 1px;
   text-decoration-color: var(--gray);
   transition: text-decoration-color var(--dur) var(--ease);
@@ -1348,7 +1348,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .consultancy-body a:hover { text-decoration-color: currentColor; }
 .hero__lead a {
   text-decoration: underline;
-  text-underline-offset: 0.16em;
+  text-underline-offset: 0.5em;
   text-decoration-thickness: 1px;
   text-decoration-color: var(--gray);
   transition: text-decoration-color var(--dur) var(--ease);
@@ -1385,7 +1385,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .textlink {
   text-decoration: underline;
-  text-underline-offset: 0.16em;
+  text-underline-offset: 0.5em;
   text-decoration-thickness: 1px;
   text-decoration-color: var(--gray);
   transition: text-decoration-color var(--dur) var(--ease);
