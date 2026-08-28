@@ -154,7 +154,7 @@ def head(title, description, path, image=None, body_class=""):
 <meta property="og:type" content="article">{og_image}
 <link rel="icon" href="{A}assets/img/favicon.png">
 <link rel="apple-touch-icon" href="{A}assets/img/webclip.png">
-<link rel="stylesheet" href="{A}assets/css/style.css?v=5">{redirect}
+<link rel="stylesheet" href="{A}assets/css/style.css?v=6">{redirect}
 </head>
 <body class="{body_class}">
 
@@ -254,7 +254,7 @@ def footer():
 </div>
 
 <script src="{A}assets/js/lottie.min.js"></script>
-<script src="{A}assets/js/main.js?v=4"></script>
+<script src="{A}assets/js/main.js?v=5"></script>
 <script>
 document.querySelectorAll('[data-set-lang]').forEach(function (a) {{
   a.addEventListener('click', function () {{

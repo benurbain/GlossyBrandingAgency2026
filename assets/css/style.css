@@ -1148,8 +1148,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .news-item__link { display: block; }
 .news-item__link:hover .news-item__title { color: var(--gray); }
-.news-item__link:hover img { transform: scale(1.03); }
-.news-item__link img { transition: transform 600ms var(--ease); }
+
+/* The original's click cue: the card media flips to its negative on hover. */
+.news-item__media img,
+.news-item__media video { transition: filter var(--dur) var(--ease); }
+.news-item__link:hover .news-item__media img,
+.news-item__link:hover .news-item__media video { filter: invert(1); }
 
 .news-item__media {
   aspect-ratio: 16 / 9;
@@ -1164,6 +1168,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .news-item__date { font-size: var(--step--1); color: var(--gray); }
 .news-item__title { margin: 0.2em 0 0.4em; font-size: var(--step-1); }
 .news-item__excerpt { font-size: var(--step--1); color: var(--ink-soft); }
+.news-item__more {
+  font-size: var(--step--1);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--gray);
+  transition: text-decoration-color var(--dur) var(--ease);
+}
+.news-item__link:hover .news-item__more { text-decoration-color: currentColor; }
 
 /* --- Editorial / prose ---------------------------------------------------- */
 
@@ -1472,9 +1485,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .site-footer__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-l);
   margin-top: var(--space-l);
+}
+@media (max-width: 860px) {
+  .site-footer__grid { grid-template-columns: 1fr; }
 }
 
 .site-footer li + li { margin-top: 0.35em; }
@@ -1493,13 +1509,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .site-footer__legal {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: var(--space-s);
+  gap: var(--space-2xs) var(--space-l);
   margin-top: var(--space-xl);
   color: var(--gray);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.75rem;
 }
+.site-footer__legal a:hover { color: var(--ink); }
 
 /* --- Loading / empty states ---------------------------------------------- */
 
