@@ -1123,6 +1123,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: text-decoration-color var(--dur) var(--ease);
 }
 .consultancy-body a:hover { text-decoration-color: currentColor; }
+.hero__lead a {
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--gray);
+  transition: text-decoration-color var(--dur) var(--ease);
+}
+.hero__lead a:hover { text-decoration-color: currentColor; }
 
 /* Language switch: a nav link with a small globe. Same box model as its
    siblings (inline-block, text baseline) so it lines up with them; the globe
