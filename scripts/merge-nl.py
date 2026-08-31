@@ -28,7 +28,7 @@ MONTHS = {
 GLOSSARY = {
     "3D visualizations": "3D-visualisaties",
     "Advertising": "Advertising",
-    "Art direction": "Artdirection",
+    "Art direction": "Art Direction",
     "Brand analysis": "Merkanalyse",
     "Brand curation": "Merkcuratie",
     "Brand definition": "Merkdefinitie",
