@@ -212,8 +212,9 @@ Vimeo players are consent-gated before their iframe is requested.
 - **`assets/media/` is 324 MB.** Fine for GitHub (largest file is 4 MB, well
   under the 100 MB limit) but it makes clones heavy, and these are full-size
   originals rather than web-optimised derivatives.
-- **Forms have no backend.** Both the contact and newsletter forms post to `#` —
-  point them at a form handler.
+- **The contact form uses FormSubmit.** Its first real submission triggers a
+  one-time activation email to `info@glossy.tv`; the recipient must approve it
+  before later intake requests are forwarded.
 - **Only one case carries a testimonial** in the CMS.
 - **The homepage Lottie logo is a static SVG here**, to avoid pulling in a
   Lottie player.

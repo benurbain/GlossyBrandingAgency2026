@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://glossy.tv/assets/img/og-default.png">
 <link rel="icon" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/webclip.png">
-<link rel="stylesheet" href="assets/css/style.css?v=26">
+<link rel="stylesheet" href="assets/css/style.css?v=27">
 <script>
 (function () {
   try {
@@ -74,14 +74,92 @@
   </section>
 
   <section class="container section--tight">
-    <div class="split">
-      <address class="contact-details" style="font-style: normal;">
-        <strong>Glossy Branding Agency</strong><br>
-        Uilkensstraat 97 · 9000 Gent | Belgium<br>
-        <a href="tel:+32472796975">+32 472 79 69 75</a><br>
-        <a href="mailto:info@glossy.tv">info@glossy.tv</a>
-      </address>
+    <div class="contact-layout">
+      <div class="contact-intro">
+        <p class="eyebrow">Free intake</p>
+        <h2>Tell us what you want to move forward.</h2>
+        <p>A few details are enough. You talk directly to Ben and get an honest first assessment.</p>
+        <address class="contact-details">
+          <strong>Glossy Branding Agency</strong><br>
+          Uilkensstraat 97 · 9000 Gent | Belgium<br>
+          <a href="tel:+32472796975">+32 472 79 69 75</a><br>
+          <a href="mailto:info@glossy.tv">info@glossy.tv</a>
+        </address>
+      </div>
 
+      <div class="contact-form-wrap" id="intake">
+        <div class="contact-form-status" id="sent" role="status" tabindex="-1">
+          <p class="eyebrow">Message sent</p>
+          <h2>Thank you. We will be in touch.</h2>
+          <p>Your request has reached <a href="mailto:info@glossy.tv">info@glossy.tv</a>.</p>
+        </div>
+
+        <form class="contact-form" action="https://formsubmit.co/info@glossy.tv" method="post" accept-charset="UTF-8">
+          <input type="hidden" name="_subject" value="New intake request via glossy.tv">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://glossy.tv/contact.html#sent">
+          <input type="hidden" name="Source page" value="https://glossy.tv/contact.html">
+          <input type="hidden" name="Language" value="English">
+
+          <input class="form-honey" name="_honey" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="contact-name">Name <span aria-hidden="true">*</span></label>
+              <input id="contact-name" name="Name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="contact-email">Work email <span aria-hidden="true">*</span></label>
+              <input id="contact-email" name="email" type="email" inputmode="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="contact-company">Company or organisation</label>
+              <input id="contact-company" name="Company" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="contact-phone">Phone</label>
+              <input id="contact-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="contact-service">What can we help with? <span aria-hidden="true">*</span></label>
+              <select id="contact-service" name="Service" required>
+                <option value="" selected disabled>Select one</option>
+                <option>Brand strategy</option>
+                <option>Branding or rebrand</option>
+                <option>Website or digital experience</option>
+                <option>Brand &amp; AI consultancy</option>
+                <option>AI workflow or tool</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="contact-budget">Approximate investment</label>
+              <select id="contact-budget" name="Approximate investment">
+                <option value="" selected>Not sure yet</option>
+                <option>€15,000–€30,000</option>
+                <option>€30,000–€60,000</option>
+                <option>€60,000+</option>
+                <option>AI consultancy — day-based</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="contact-message">Tell us briefly what is going on <span aria-hidden="true">*</span></label>
+            <textarea id="contact-message" name="Message" rows="5" required></textarea>
+          </div>
+
+          <label class="form-check" for="contact-privacy">
+            <input id="contact-privacy" name="Privacy notice read" type="checkbox" value="Yes" required>
+            <span>I have read how Glossy uses these details to answer my request in the <a href="privacy-policy.html" target="_blank" rel="noopener">privacy policy</a>.</span>
+          </label>
+
+          <div class="form-submit">
+            <button class="btn btn--solid" type="submit">Request a free intake</button>
+            <p>Do not include passwords or confidential client data.</p>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 
