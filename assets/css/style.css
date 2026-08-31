@@ -91,6 +91,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+html.nav-open,
+html.nav-open body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 img, video, svg { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4 {
@@ -534,10 +540,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
   .nav__list {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
     flex-direction: column;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
     gap: var(--space-s);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding:
+      max(calc(var(--space-xl) + 44px), calc(env(safe-area-inset-top) + 5.5rem))
+      var(--gutter)
+      max(var(--space-l), env(safe-area-inset-bottom));
     background: var(--paper);
     font-size: var(--step-2);
     transform: translateX(100%);
@@ -547,13 +565,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
       transform var(--dur) var(--ease),
       visibility 0s linear var(--dur);
   }
+  .nav__list > li { width: 100%; }
   .nav[data-open="true"] .nav__list {
     transform: translateX(0);
     visibility: visible;
     pointer-events: auto;
     transition-delay: 0s;
   }
-  .nav__link { font-size: var(--step-2); }
+  .nav__link {
+    display: block;
+    width: 100%;
+    font-size: var(--step-2);
+  }
 
   .nav[data-open="true"] .nav__toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .nav[data-open="true"] .nav__toggle span:nth-child(2) { opacity: 0; }

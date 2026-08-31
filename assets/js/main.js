@@ -11,11 +11,28 @@ function initNav() {
   if (!nav) return;
 
   const toggle = nav.querySelector('.nav__toggle');
-  const setOpen = (open) => {
+  const menu = nav.querySelector('.nav__list');
+  if (!toggle || !menu) return;
+
+  if (!menu.id) menu.id = 'site-menu';
+  toggle.setAttribute('aria-controls', menu.id);
+  menu.setAttribute('aria-hidden', 'true');
+
+  const closeLabel = document.documentElement.lang === 'nl' ? 'Menu sluiten' : 'Close menu';
+  let previousOverflow = '';
+  const setOpen = (open, { moveFocus = true } = {}) => {
+    if (open) previousOverflow = document.body.style.overflow;
     nav.dataset.open = String(open);
     toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? closeLabel : 'Menu');
+    menu.setAttribute('aria-hidden', String(!open));
+    document.documentElement.classList.toggle('nav-open', open);
     // Stop the page scrolling behind the full-screen panel.
-    document.body.style.overflow = open ? 'hidden' : '';
+    document.body.style.overflow = open ? 'hidden' : previousOverflow;
+
+    if (open && moveFocus) {
+      requestAnimationFrame(() => menu.querySelector('a')?.focus());
+    }
   };
 
   toggle.addEventListener('click', () => setOpen(nav.dataset.open !== 'true'));
@@ -25,9 +42,33 @@ function initNav() {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav.dataset.open === 'true') {
+    if (nav.dataset.open !== 'true') return;
+
+    if (e.key === 'Escape') {
       setOpen(false);
       toggle.focus();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusable = [toggle, ...menu.querySelectorAll('a[href]')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  const mobile = window.matchMedia('(max-width: 860px)');
+  mobile.addEventListener?.('change', (event) => {
+    if (!event.matches && nav.dataset.open === 'true') {
+      setOpen(false, { moveFocus: false });
     }
   });
 }
