@@ -303,7 +303,7 @@ def footer():
 </div>
 
 <script src="{A}assets/js/lottie.min.js"></script>
-<script src="{A}assets/js/main.js?v=7"></script>
+<script src="{A}assets/js/main.js?v=8"></script>
 <script>
 document.querySelectorAll('[data-set-lang]').forEach(function (a) {{
   a.addEventListener('click', function () {{

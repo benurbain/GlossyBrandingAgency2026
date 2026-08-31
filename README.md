@@ -161,6 +161,12 @@ but consent is explicit by category: Necessary, Analytics, Marketing and
 External media. Accept and reject have equal prominence, preferences expire
 after six months and the footer always offers a way to revise the choice.
 
+Google Analytics 4 uses the measurement ID recovered from the Webflow export,
+`G-NPJVJ2CEFQ`, and follows basic consent mode: the Google tag is not requested
+and no data is sent until Analytics is enabled. Revocation disables further
+collection and removes accessible first-party `_ga` cookies; advertising
+storage, user data and personalisation remain denied.
+
 Optional scripts must be inert in source and declare their category:
 
 ```html

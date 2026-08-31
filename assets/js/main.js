@@ -281,9 +281,10 @@ function initCookieConsent() {
   const bar = document.querySelector('[data-cookie-bar]');
   if (!bar) return;
 
-  const KEY = 'glossy.consent.v1';
-  const VERSION = 1;
+  const KEY = 'glossy.consent.v2';
+  const VERSION = 2;
   const MAX_AGE = 1000 * 60 * 60 * 24 * 183;
+  const GA_MEASUREMENT_ID = 'G-NPJVJ2CEFQ';
   const isNl = document.documentElement.lang.toLowerCase().startsWith('nl');
   const originalPolicy = bar.querySelector('a[href]')?.getAttribute('href');
   const nested = /\/(?:cases|news)\//.test(location.pathname);
@@ -304,7 +305,7 @@ function initCookieConsent() {
     necessaryDescription: 'Onthoudt je taal- en privacykeuzes. Deze opslag is nodig en staat altijd aan.',
     always: 'Altijd actief',
     analytics: 'Analytics',
-    analyticsDescription: 'Helpt ons begrijpen hoe de website presteert. Er is momenteel geen analyticsdienst actief.',
+    analyticsDescription: 'Laadt Google Analytics pas na je toestemming om bezoeken en websiteprestaties te meten.',
     marketing: 'Marketing',
     marketingDescription: 'Kan worden gebruikt om campagnes te meten en relevanter te maken. Er is momenteel geen marketingpixel actief.',
     externalMedia: 'Externe media',
@@ -325,7 +326,7 @@ function initCookieConsent() {
     necessaryDescription: 'Remembers your language and privacy choices. This storage is required and always active.',
     always: 'Always active',
     analytics: 'Analytics',
-    analyticsDescription: 'Helps us understand how the website performs. No analytics service is currently active.',
+    analyticsDescription: 'Loads Google Analytics only after your permission to measure visits and website performance.',
     marketing: 'Marketing',
     marketingDescription: 'May be used to measure campaigns and make them more relevant. No marketing pixel is currently active.',
     externalMedia: 'External media',
@@ -353,6 +354,89 @@ function initCookieConsent() {
       return { ...emptyChoice(), ...value, necessary: true };
     } catch {
       return null;
+    }
+  };
+
+  let googleAnalyticsActive = false;
+  let googleAnalyticsConfigured = false;
+
+  const clearGoogleAnalyticsCookies = () => {
+    const hostname = location.hostname.replace(/^www\./, '');
+    const domains = hostname.includes('.') ? [hostname, `.${hostname}`] : [];
+
+    document.cookie.split(';').forEach((part) => {
+      const name = part.split('=')[0].trim();
+      if (!name.startsWith('_ga')) return;
+
+      const expired = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0; path=/`;
+      document.cookie = expired;
+      domains.forEach((domain) => {
+        document.cookie = `${expired}; domain=${domain}`;
+      });
+    });
+  };
+
+  const setGoogleAnalytics = (allowed) => {
+    const disableKey = `ga-disable-${GA_MEASUREMENT_ID}`;
+    const wasActive = googleAnalyticsActive;
+    googleAnalyticsActive = Boolean(allowed);
+    window[disableKey] = !googleAnalyticsActive;
+
+    if (!googleAnalyticsActive) {
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
+      }
+      clearGoogleAnalyticsCookies();
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+
+    if (!googleAnalyticsConfigured) {
+      window.gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+      window.gtag('consent', 'update', {
+        analytics_storage: 'granted',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+      window.gtag('js', new Date());
+      window.gtag('config', GA_MEASUREMENT_ID, {
+        anonymize_ip: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+      });
+
+      const tag = document.createElement('script');
+      tag.async = true;
+      tag.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+      tag.dataset.googleAnalytics = GA_MEASUREMENT_ID;
+      document.head.append(tag);
+      googleAnalyticsConfigured = true;
+    } else {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'granted',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+      if (!wasActive) {
+        window.gtag('event', 'page_view', {
+          page_location: location.href,
+          page_title: document.title,
+        });
+      }
     }
   };
 
@@ -402,6 +486,7 @@ function initCookieConsent() {
   };
 
   const applyChoice = (consent) => {
+    setGoogleAnalytics(consent.analytics);
     renderEmbeds(consent);
     activateScripts(consent);
     document.dispatchEvent(new CustomEvent('glossy:consentchange', { detail: consent }));
@@ -475,6 +560,7 @@ function initCookieConsent() {
 
   const form = modal.querySelector('[data-consent-form]');
   const dialog = modal.querySelector('.cookie-preferences__dialog');
+  try { localStorage.removeItem('glossy.consent.v1'); } catch { /* Storage may be unavailable. */ }
   let choice = readChoice();
   let returnFocus = null;
   let previousOverflow = '';
@@ -519,6 +605,7 @@ function initCookieConsent() {
     try {
       localStorage.setItem(KEY, JSON.stringify(choice));
       localStorage.removeItem('glossy.cookie-choice');
+      localStorage.removeItem('glossy.consent.v1');
     } catch { /* Privacy mode: keep the choice for this page only. */ }
     applyChoice(choice);
     hideBar();
