@@ -714,13 +714,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   gap: 0.15em;
   padding: var(--space-m);
   color: var(--paper);
-  background: linear-gradient(to top, rgb(0 0 0 / 0.62), transparent);
-  opacity: 0;
+  background: linear-gradient(to top, rgb(0 0 0 / 0.76), rgb(0 0 0 / 0));
+  opacity: 1;
   transition: opacity var(--dur) var(--ease);
 }
-
-.case-card:hover .case-card__body,
-.case-card:focus-visible .case-card__body { opacity: 1; }
 
 .case-card__name { font-size: var(--step-1); font-weight: var(--weight-heading); }
 .case-card__baseline { font-size: var(--step--1); opacity: 0.85; }
@@ -1231,7 +1228,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .news-item__date { font-size: var(--step--1); color: var(--gray); }
 .news-item__title { margin: 0.2em 0 0.4em; font-size: var(--step-1); }
-.news-item__excerpt { font-size: var(--step--1); color: var(--ink-soft); }
+.news-item__excerpt {
+  margin-bottom: var(--space-s);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .news-item__more {
   font-size: var(--step--1);
   text-decoration: underline;

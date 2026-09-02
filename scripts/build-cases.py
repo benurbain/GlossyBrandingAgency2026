@@ -31,13 +31,13 @@ T = {
         "what": "What we did",
         "scroll": "Scroll down",
         "website": "Visit the website here",
-        "inspired_title": "Inspired by this case?",
-        "inspired_lead": "Can your business, organisation or product benefit from a (re)branding?\n      Contact us to discover if we are the right partner for you. See you soon!",
-        "contact": "Contact us",
+        "inspired_title": "Facing a similar challenge?",
+        "inspired_lead": "Tell us what you want to change. In a free intake meeting, we will assess whether a similar approach could work for your organisation.",
+        "contact": "Discuss a similar project",
         "also": "You might also like",
         "new": "new",
-        "svc": {"consultancy": "Consultancy", "strategy": "Strategy",
-                "branding": "Branding", "experience": "Experience"},
+        "svc": {"consultancy": "Research & advisory", "strategy": "Brand strategy",
+                "branding": "Identity & design", "experience": "Activation & digital"},
     },
     "nl": {
         "founders": "Oprichters", "company": "Bedrijf", "industry": "Sector",
@@ -45,15 +45,20 @@ T = {
         "what": "Wat we deden",
         "scroll": "Scroll",
         "website": "Bekijk hier de website",
-        "inspired_title": "Geïnspireerd door deze case?",
-        "inspired_lead": "Kan jouw bedrijf, organisatie of product een (re)branding gebruiken?\n      Contacteer ons en ontdek of wij de juiste partner zijn. Tot binnenkort!",
-        "contact": "Contacteer ons",
+        "inspired_title": "Een vergelijkbare uitdaging?",
+        "inspired_lead": "Vertel ons wat je wilt veranderen. In een gratis intake bekijken we of een vergelijkbare aanpak voor jouw organisatie kan werken.",
+        "contact": "Bespreek een vergelijkbaar traject",
         "also": "Misschien ook iets voor jou",
         "new": "nieuw",
-        "svc": {"consultancy": "Consultancy", "strategy": "Strategie",
-                "branding": "Branding", "experience": "Experience"},
+        "svc": {"consultancy": "Onderzoek & advies", "strategy": "Merkstrategie",
+                "branding": "Identiteit & design", "experience": "Activatie & digitaal"},
     },
 }
+
+
+def clean_markup(markup):
+    """Remove empty CMS attributes without altering authored content."""
+    return re.sub(r"\s+id=([\"'])\1", "", markup or "")
 
 
 def section_html(sec, case_name):
@@ -62,7 +67,7 @@ def section_html(sec, case_name):
     if sec.get("title"):
         head_parts.append(f'<h2 class="case-section__title">{e(sec["title"])}</h2>')
     if (sec.get("description") or "").strip():
-        head_parts.append(f'<div class="prose">{sec["description"]}</div>')
+        head_parts.append(f'<div class="prose">{clean_markup(sec["description"])}</div>')
     header = (
         f'<header class="case-section__head">{"".join(head_parts)}</header>'
         if head_parts
@@ -149,7 +154,7 @@ def page(case, prev_case, next_case, t):
     path = f"cases/{case['slug']}"
 
     intro = (
-        f'<div class="prose case-intro">{case["intro"]}</div>'
+        f'<div class="prose case-intro">{clean_markup(case["intro"])}</div>'
         if (case.get("intro") or "").strip()
         else ""
     )

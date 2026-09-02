@@ -21,13 +21,14 @@ from _shell import ORG, SITE, absolute, asset, e, head, iso_month, media_tag, na
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 T = {
-    "en": {"newer": "Newer", "older": "Older", "all": "All news", "read": "Read more"},
-    "nl": {"newer": "Nieuwer", "older": "Ouder", "all": "Al het nieuws", "read": "Lees meer"},
+    "en": {"newer": "Newer", "older": "Older", "all": "All insights & updates", "read": "Read more"},
+    "nl": {"newer": "Nieuwer", "older": "Ouder", "all": "Alle inzichten & updates", "read": "Lees meer"},
 }
 
 
 def nested_assets(markup):
     """Make CMS-authored asset links work from pages inside the news trees."""
+    markup = re.sub(r"\s+id=([\"'])\1", "", markup or "")
     return re.sub(r'\b(src|href)=(["\'])assets/', rf'\1=\2{_shell.A}assets/', markup)
 
 
@@ -140,7 +141,7 @@ def page(item, prev_item, next_item, t):
 {gallery(item)}
   </article>
 
-  <nav class="container section" aria-label="More news">
+  <nav class="container section" aria-label="More insights and updates">
     <div class="case-pager">{pager}</div>
     <p style="margin-top: var(--space-l);"><a class="btn" href="../news.html">{t["all"]}</a></p>
   </nav>

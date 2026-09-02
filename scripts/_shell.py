@@ -42,14 +42,14 @@ STR = {
     "en": {
         "skip": "Skip to content",
         "nav": [
-            ("about.html", "About"),
+            ("about.html", "Services & approach"),
             ("brand-ai-consultancy.html", "AI Consultancy"),
             ("cases.html", "Cases"),
             ("news.html", "News"),
             ("contact.html", "Contact"),
         ],
         "footer": [
-            ("about.html", "About"),
+            ("about.html", "Services & approach"),
             ("cases.html", "Work"),
             ("news.html", "News"),
             ("contact.html", "Contact"),
@@ -72,19 +72,19 @@ STR = {
     "nl": {
         "skip": "Ga naar inhoud",
         "nav": [
-            ("about.html", "Over ons"),
+            ("about.html", "Diensten & aanpak"),
             ("brand-ai-consultancy.html", "AI Consultancy"),
             ("cases.html", "Cases"),
             ("news.html", "Nieuws"),
             ("contact.html", "Contact"),
         ],
         "footer": [
-            ("about.html", "Over ons"),
+            ("about.html", "Diensten & aanpak"),
             ("cases.html", "Werk"),
             ("news.html", "Nieuws"),
             ("contact.html", "Contact"),
         ],
-        "privacy": "Privacy- &amp; cookiebeleid",
+        "privacy": "Privacy- en cookiebeleid",
         "kmo": "KMO-portefeuille",
         "rights": "Alle rechten voorbehouden",
         "cookie_label": "Cookiemelding",
@@ -203,7 +203,7 @@ def head(title, description, path, image=None, body_class="", jsonld=None):
 <meta name="twitter:image" content="{e(og_img_url)}">
 <link rel="icon" href="{A}assets/img/favicon.png">
 <link rel="apple-touch-icon" href="{A}assets/img/webclip.png">
-<link rel="stylesheet" href="{A}assets/css/style.css?v=29">{jsonld_tag(jsonld)}{redirect}
+<link rel="stylesheet" href="{A}assets/css/style.css?v=31">{jsonld_tag(jsonld)}{redirect}
 </head>
 <body class="{body_class}">
 
@@ -303,7 +303,7 @@ def footer():
 </div>
 
 <script src="{A}assets/js/lottie.min.js"></script>
-<script src="{A}assets/js/main.js?v=11"></script>
+<script src="{A}assets/js/main.js?v=12"></script>
 <script>
 document.querySelectorAll('[data-set-lang]').forEach(function (a) {{
   a.addEventListener('click', function () {{
