@@ -152,16 +152,14 @@ function newsCard(item) {
   } else if (item.image) {
     media = `<img src="${escapeHtml(assetUrl(item.image))}" alt="" loading="lazy" decoding="async">`;
   }
-  // Like the original overview: just the image, the title and a read-more cue.
+  // Keep overview cards concise: media, date, title and a read-more cue.
   const readMore = document.documentElement.lang === 'nl' ? 'Lees meer' : 'Read more';
-  const excerpt = String(item.excerpt || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   return `
     <article class="news-item">
       <a class="news-item__link" href="${basePath()}news/${escapeHtml(item.slug)}.html">
         <div class="news-item__media">${media}</div>
         <p class="news-item__date">${escapeHtml(item.monthYear || item.published || '')}</p>
         <h2 class="news-item__title">${escapeHtml(item.name)}</h2>
-        ${excerpt ? `<p class="news-item__excerpt">${escapeHtml(excerpt)}</p>` : ''}
         <p class="news-item__more">${readMore}</p>
       </a>
     </article>`;
