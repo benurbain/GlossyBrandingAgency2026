@@ -1213,8 +1213,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* The original's click cue: the card media flips to its negative on hover. */
 .news-item__media img,
 .news-item__media video { transition: filter var(--dur) var(--ease); }
-.news-item__link:hover .news-item__media img,
-.news-item__link:hover .news-item__media video { filter: invert(1); }
+.news-item__media video { filter: grayscale(1); }
+.news-item__link:hover .news-item__media img { filter: invert(1); }
+.news-item__link:hover .news-item__media video { filter: grayscale(1) invert(1); }
 
 .news-item__media {
   aspect-ratio: 16 / 9;
