@@ -716,6 +716,99 @@ function initCookieConsent() {
   if (!choice) showBar();
 }
 
+/* --- Contact form --------------------------------------------------------- */
+
+function initContactForm() {
+  const form = document.querySelector('[data-contact-form]');
+  if (!form) return;
+
+  const feedback = form.querySelector('[data-form-feedback]');
+  const submit = form.querySelector('[data-contact-submit]');
+  if (!feedback || !submit) return;
+
+  const isDutch = document.documentElement.lang === 'nl';
+  const labels = isDutch
+    ? {
+        sending: 'Bezig met verzenden...',
+        error: 'Het bericht kon niet worden verzonden. Probeer opnieuw of mail naar info@glossy.tv.',
+        invalid: 'Controleer de aangeduide velden en probeer opnieuw.',
+        rateLimit: 'Je hebt te snel meerdere berichten verstuurd. Probeer over 15 minuten opnieuw.',
+      }
+    : {
+        sending: 'Sending...',
+        error: 'The message could not be sent. Please try again or email info@glossy.tv.',
+        invalid: 'Please check the highlighted fields and try again.',
+        rateLimit: 'You have sent several messages in quick succession. Please try again in 15 minutes.',
+      };
+  const idleLabel = submit.textContent;
+
+  const showFeedback = (message) => {
+    feedback.textContent = message;
+    feedback.hidden = false;
+    feedback.focus();
+  };
+
+  form.addEventListener('input', (event) => {
+    const field = event.target.closest('input, select, textarea');
+    if (!field) return;
+    field.removeAttribute('aria-invalid');
+  });
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    feedback.hidden = true;
+    form.setAttribute('aria-busy', 'true');
+    submit.disabled = true;
+    submit.textContent = labels.sending;
+
+    const body = Object.fromEntries(new FormData(form).entries());
+    body.privacy = form.querySelector('[name="privacy"]').checked;
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+
+      let payload = {};
+      try {
+        payload = await response.json();
+      } catch { /* A generic message below handles a malformed server response. */ }
+
+      if (!response.ok || payload.ok !== true) {
+        const firstInvalid = Object.keys(payload.errors || {})[0];
+        const invalidField = firstInvalid ? form.elements.namedItem(firstInvalid) : null;
+        if (invalidField) invalidField.setAttribute('aria-invalid', 'true');
+
+        const message = response.status === 422
+          ? labels.invalid
+          : response.status === 429
+            ? labels.rateLimit
+            : labels.error;
+        showFeedback(message);
+        invalidField?.focus();
+        return;
+      }
+
+      form.reset();
+      window.location.hash = 'sent';
+      requestAnimationFrame(() => document.getElementById('sent')?.focus());
+    } catch {
+      showFeedback(labels.error);
+    } finally {
+      form.removeAttribute('aria-busy');
+      submit.disabled = false;
+      submit.textContent = idleLabel;
+    }
+  });
+}
+
 /* --- Boot ----------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -725,5 +818,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTransition();
   initHeroHeader();
   initCookieConsent();
+  initContactForm();
   document.querySelectorAll('[data-collection]').forEach(initCollection);
 });

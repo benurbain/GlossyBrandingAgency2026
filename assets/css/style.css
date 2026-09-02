@@ -1682,6 +1682,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .form-submit p { max-width: 22rem; font-size: var(--step--1); color: var(--gray); }
 .form-submit .btn { cursor: pointer; }
+.form-submit .btn:disabled { cursor: wait; opacity: 0.65; }
+
+.form-feedback {
+  margin-top: var(--space-m);
+  padding-left: var(--space-s);
+  border-left: 2px solid var(--ink);
+  font-size: var(--step--1);
+  line-height: 1.55;
+}
+.form-feedback[hidden] { display: none; }
+.field [aria-invalid="true"] { border-bottom-color: currentColor; }
 
 .form-honey {
   display: none;
