@@ -588,12 +588,31 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .hero { padding-block: var(--space-xl) var(--space-l); }
 
-/* Test: the homepage hero on a soft-cornered image panel. */
+/* The homepage hero uses a quiet, looping film behind the proposition. */
 .hero-panel {
-  background: var(--smoke) url("../img/hero-bg.jpg") center / cover no-repeat;
+  position: relative;
+  background: var(--smoke) url("../media/glossy-header-poster.jpg") center / cover no-repeat;
   border-radius: var(--radius);
   padding: clamp(2rem, 1rem + 4vw, 5rem);
   overflow: hidden;
+}
+
+.hero-panel__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.hero-panel > :not(.hero-panel__video) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-panel__video { display: none; }
 }
 
 .hero__title {
