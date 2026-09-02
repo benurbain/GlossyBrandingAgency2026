@@ -69,6 +69,14 @@
   --dur: 320ms;
 }
 
+/* Mobile uses a deliberately tighter rhythm than the desktop canvas. */
+@media (max-width: 700px) {
+  :root {
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+  }
+}
+
 /* --- Reset ---------------------------------------------------------------- */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -490,7 +498,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    Pure CSS — the original used a Webflow interaction. */
 .nav__link {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   padding: 0.45em 0.85em;
   font-size: var(--step--1);
   font-weight: 400;
@@ -719,6 +729,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: opacity var(--dur) var(--ease);
 }
 
+/* Reveal project context on hover for precise pointers. Touch devices keep the
+   labels visible because they do not have a dependable hover interaction. */
+@media (hover: hover) and (pointer: fine) {
+  .case-card__body { opacity: 0; }
+  .case-card:hover .case-card__body,
+  .case-card:focus-visible .case-card__body { opacity: 1; }
+}
+
 .case-card__name { font-size: var(--step-1); font-weight: var(--weight-heading); }
 .case-card__baseline { font-size: var(--step--1); opacity: 0.85; }
 
@@ -740,8 +758,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin: 0;
   overflow: hidden;
   background: var(--smoke);
-  height: 100svh;
-  min-height: 32rem;
+  height: 78svh;
+  min-height: 34rem;
 }
 
 /* News detail heroes sit in a fixed 16:9 frame; non-16:9 sources cover-crop. */
@@ -763,12 +781,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   bottom: var(--space-l);
   transform: translateX(-50%);
   z-index: 3;
-  padding: 0.5em 1.2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.65em 1.35em;
   border-radius: 100px;
   background: color-mix(in srgb, var(--paper) 88%, transparent);
   color: var(--ink);
   font-size: var(--step--1);
   text-transform: uppercase;
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.12);
+  backdrop-filter: blur(10px);
 }
 
 .case-hero-wrap { position: relative; }
@@ -777,12 +801,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .has-hero .site-header {
   position: absolute;
   inset: 0 0 auto;
-  background: none;
+  background: linear-gradient(to bottom, rgb(255 255 255 / 0.82), rgb(255 255 255 / 0));
   backdrop-filter: none;
 }
 
 /* The CMS "White Nav Text" switch: light type over a dark opening frame. */
-.has-hero.nav-invert .site-header { color: var(--paper); }
+.has-hero.nav-invert .site-header {
+  color: var(--paper);
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0.58), rgb(0 0 0 / 0));
+}
 .has-hero.nav-invert .nav__toggle span { background: var(--paper); }
 .has-hero.nav-invert .lottie-fallback { filter: invert(1) brightness(2); }
 
@@ -795,6 +822,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .has-hero.nav-invert .site-header[data-past-hero="true"] .nav__toggle span { background: var(--ink); }
 .has-hero.nav-invert .site-header[data-past-hero="true"] .lottie-fallback { filter: none; }
+.has-hero.nav-invert .site-header[data-past-hero="true"] .logo__anim[data-ready="true"] { filter: invert(1); }
+
+@media (max-width: 700px) {
+  .case-hero {
+    height: 70svh;
+    min-height: 30rem;
+  }
+
+  .case-hero__scroll { bottom: var(--space-m); }
+}
 
 @media (max-width: 860px) {
   /* The full-screen menu panel is opaque, so keep its links readable. */
@@ -1183,6 +1220,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-height: 44px;
   gap: 0.6em;
   padding: 0.7em 1.4em;
   border: 1px solid var(--ink);
@@ -1348,7 +1387,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .about-step__services { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px) {
-  .about-step__services { grid-template-columns: 1fr; }
+  .about-step { padding-block: var(--space-xl); }
+  .about-step__services { gap: 0.55em var(--space-s); }
 }
 
 /* --- Consultancy sections ------------------------------------------------- */
@@ -1383,6 +1423,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: clamp(1.75rem, 1.2rem + 1.9vw, 2.76rem);
   font-weight: var(--weight-heading-editorial);
   line-height: 1.15;
+}
+
+/* Commercial page openers carry page-level visual importance. */
+.consultancy-section:first-child .consultancy-section__title {
+  max-width: 20ch;
+  font-size: clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
+  line-height: 1.08;
 }
 
 .consultancy-lead {
@@ -1487,6 +1534,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .cols-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl); }
 .cols-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-l); }
 @media (max-width: 980px) {
+  .cols-3, .cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
   .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; }
 }
 
@@ -1692,8 +1742,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   cursor: pointer;
 }
 .form-check input {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 1.375rem;
+  height: 1.375rem;
   margin-top: 0.15em;
   accent-color: var(--ink);
 }
@@ -1769,6 +1819,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 860px) {
   .site-footer .container { grid-template-columns: 1fr; }
   .site-footer__grid { flex-direction: column; gap: var(--space-l); margin-top: var(--space-l); }
+  .site-footer a,
+  .site-footer button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
 
 .site-footer li + li { margin-top: 0.35em; }
