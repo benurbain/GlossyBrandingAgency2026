@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="media-upload-row">
         <input type="file" id="card${String(i).padStart(2,'0')}-file" accept="image/*,video/*,.gif" style="display:none">
         <button class="button upload-btn" onclick="document.getElementById('card${String(i).padStart(2,'0')}-file').click()">→ Upload File</button>
-        <img class="media-thumbnail" id="thumb${String(i).padStart(2,'0')}">
+        <img class="media-thumbnail" id="thumb${String(i).padStart(2,'0')}" alt="">
       </div>
       <div class="upload-progress"><div class="upload-progress-bar"></div></div>
       <span class="media-status" id="status${String(i).padStart(2,'0')}"></span>`;
@@ -141,10 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const file=uploadedFiles[i], url=uploadedBlobURLs[i];
       const thumb=qs(`#thumb${String(i+1).padStart(2,'0')}`);
       if(file&&url){
-        thumb.src=url; thumb.style.display='block';
+        const video=loadedVideos.get(url);
+        if(isVideo(file)){
+          if(video?.readyState>=2)setVideoThumbnail(video,thumb);else clearThumbnail(thumb);
+        }else setImageThumbnail(thumb,url);
         setStatus(i,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success');
       }else{
-        thumb.removeAttribute('src'); thumb.style.display='none'; setStatus(i,'');
+        clearThumbnail(thumb); setStatus(i,'');
       }
     }
   }
@@ -261,10 +264,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const fs=Math.max(Math.min(w*.15,30),12);
       ctx.font=`400 ${fs}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
       ctx.fillText(String(n).padStart(2,'0')+'.',x+w*.1,y+h*.25);
-      ctx.fillStyle='#8B8B8B'; ctx.beginPath(); ctx.arc(x+w*.1,y+h*.85,Math.max(w*.015,2),0,Math.PI*2); ctx.fill();
       const tfs=Math.max(Math.min(w*.04,22),8);
+      const dotRadius=Math.max(Math.min(tfs*.22,4),2);
+      const dotX=x+w*.1, dotY=y+h*.85;
+      ctx.fillStyle='#8B8B8B'; ctx.beginPath(); ctx.arc(dotX,dotY,dotRadius,0,Math.PI*2); ctx.fill();
       ctx.font=`${tfs}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
-      ctx.fillText(`Card ${n} Content`,x+w*.1+7,y+h*.85+tfs/3);
+      ctx.fillText(`Card ${n} Content`,dotX+dotRadius*2+tfs*.35,dotY+tfs/3);
     }
     ctx.restore();
   }
@@ -311,11 +316,38 @@ document.addEventListener('DOMContentLoaded', () => {
     qs('#totalFileSize').style.color=totalFileSize>200*1024*1024?'#ff4444':(totalFileSize>150*1024*1024?'#ffaa00':'');
   }
   function setStatus(idx,msg,type='info'){
-    qs(`#status${String(idx+1).padStart(2,'0')}`).textContent=msg;
-    qs(`#status${String(idx+1).padStart(2,'0')}`).className=`media-status ${type}`;
+    const status=qs(`#status${String(idx+1).padStart(2,'0')}`);
+    status.textContent=msg;
+    status.className=`media-status ${type}`;
+    if(msg)status.title=msg;else status.removeAttribute('title');
   }
   function isVideo(f){return f && f.type.startsWith('video/')}
   function isGIF(f){return f && f.type==='image/gif'}
+  function clearThumbnail(thumb){
+    thumb.removeAttribute('src');
+    thumb.style.display='none';
+  }
+  function setImageThumbnail(thumb,url){
+    thumb.src=url;
+    thumb.style.display='block';
+  }
+  function setVideoThumbnail(video,thumb){
+    if(!video.videoWidth||!video.videoHeight){clearThumbnail(thumb);return;}
+    try{
+      const preview=document.createElement('canvas');
+      preview.width=96; preview.height=96;
+      const previewCtx=preview.getContext('2d');
+      const sourceRatio=video.videoWidth/video.videoHeight;
+      let sx=0,sy=0,sw=video.videoWidth,sh=video.videoHeight;
+      if(sourceRatio>1){sw=video.videoHeight;sx=(video.videoWidth-sw)/2;}
+      else{sh=video.videoWidth;sy=(video.videoHeight-sh)/2;}
+      previewCtx.drawImage(video,sx,sy,sw,sh,0,0,preview.width,preview.height);
+      setImageThumbnail(thumb,preview.toDataURL('image/jpeg',.82));
+    }catch(error){
+      console.warn('Could not create video thumbnail',error);
+      clearThumbnail(thumb);
+    }
+  }
   async function handleFileUpload(idx,file){
     if(!file)return;
     if(!file.type.startsWith('image/')&&!file.type.startsWith('video/')){setStatus(idx,'Unsupported file type','error');return;}
@@ -336,19 +368,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let p=0; const iv=setInterval(()=>{p+=10; bar.style.width=p+'%'; if(p>=100){clearInterval(iv);bar.style.width='0%'}},50);
 
     const thumb=qs(`#thumb${String(idx+1).padStart(2,'0')}`);
+    clearThumbnail(thumb);
     if(isVideo(file)){
       const v=document.createElement('video'); v.src=url; v.loop=v.muted=v.playsInline=true;
-      v.addEventListener('loadeddata',()=>{v.play().catch(()=>0);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')});
+      v.addEventListener('loadeddata',()=>{setVideoThumbnail(v,thumb);v.play().catch(()=>0);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')});
       v.addEventListener('error',()=>setStatus(idx,'Video error','error'));
       loadedVideos.set(url,v); v.load();
     }else if(isGIF(file)){
-      const img=new Image(); img.src=url; img.onload=()=>{loadedGIFs.set(url,img);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')};
+      const img=new Image(); img.src=url; img.onload=()=>{loadedGIFs.set(url,img);setImageThumbnail(thumb,url);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')};
       img.onerror=()=>setStatus(idx,'GIF error','error');
     }else{
-      const img=new Image(); img.src=url; img.onload=()=>{loadedImages.set(url,img);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')};
+      const img=new Image(); img.src=url; img.onload=()=>{loadedImages.set(url,img);setImageThumbnail(thumb,url);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')};
       img.onerror=()=>setStatus(idx,'Image error','error');
     }
-    thumb.src=url; thumb.style.display='block';
     updateTotal();
     const mb=(file.size/1024/1024).toFixed(1);
     setStatus(idx,`✓ ${file.name} (${mb}MB)`,'success');
@@ -361,10 +393,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if(!url){cardMedia[i]=null;continue}
       cardMedia[i]=url;
       const file=uploadedFiles[i];
+      const thumb=qs(`#thumb${String(i+1).padStart(2,'0')}`);
       if(isVideo(file)){
-        const v=document.createElement('video'); v.src=url; v.loop=v.muted=v.playsInline=true; v.addEventListener('loadeddata',()=>v.play().catch(()=>0)); v.load(); loadedVideos.set(url,v);
+        clearThumbnail(thumb);
+        const v=document.createElement('video'); v.src=url; v.loop=v.muted=v.playsInline=true; v.addEventListener('loadeddata',()=>{setVideoThumbnail(v,thumb);v.play().catch(()=>0)}); v.load(); loadedVideos.set(url,v);
       }else{
-        const img=new Image(); img.src=url; isGIF(file)?loadedGIFs.set(url,img):loadedImages.set(url,img);
+        const img=new Image(); img.src=url; img.addEventListener('load',()=>setImageThumbnail(thumb,url)); isGIF(file)?loadedGIFs.set(url,img):loadedImages.set(url,img);
       }
     }
   }
