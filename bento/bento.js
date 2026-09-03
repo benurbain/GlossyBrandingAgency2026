@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* STATE */
   let isAnimating=false, isRecording=false, animationProgress=0, lastTimestamp=0;
-  let animationSpeed=1, animationDuration=10000, cornerRadius=8, canvasBgColor='#5D5D5D';
+  let animationSpeed=1, animationDuration=10000, cornerRadius=8, canvasBgColor='#000000';
   let cardSpacing=18, cardWidthScale=1, aspectRatio='16-9', orientation='horizontal';
   let mediaRecorder, recordingStream, recordedChunks=[], animationFrameId;
   let isPreparingRecording=false;
