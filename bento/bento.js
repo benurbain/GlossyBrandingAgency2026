@@ -1,21 +1,30 @@
-/* ----------  ENHANCED JAVASCRIPT WITH RECORDING FIXES  ---------- */
+/* ---------- VIDEO BENTO GENERATOR ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   /* Canvas */
   const canvas = document.getElementById('renderCanvas');
   const ctx = canvas.getContext('2d');
   const viewportContainer = document.querySelector('.viewport-container');
 
-  /* CONSTANTS (60 fps recording) */
+  /* CONSTANTS */
   const CARDS_PER_ROW = 3, ROWS = 3;
-  const FPS = 60;
-  const RECORDING_FPS = 30; // Reduced for better compatibility
-  const REC_BITRATE = 5_000_000; // Reduced bitrate for stability
+  const RECORDING_FPS = 30;
+  const REC_BITRATE = 8_000_000;
+  const MAX_FILE_SIZE = 25 * 1024 * 1024;
+  const MAX_TOTAL_SIZE = 200 * 1024 * 1024;
+  const MP4_MIME_TYPES = [
+    'video/mp4;codecs=avc1.42E01E',
+    'video/mp4;codecs=avc1.424028',
+    'video/mp4;codecs=avc1',
+    'video/mp4'
+  ];
 
   /* STATE */
   let isAnimating=false, isRecording=false, animationProgress=0, lastTimestamp=0;
   let animationSpeed=1, animationDuration=10000, cornerRadius=8, canvasBgColor='#5D5D5D';
-  let cardSpacing=18, cardWidthScale=1, aspectRatio=null, orientation='horizontal';
-  let mediaRecorder, recordedChunks=[], animationFrameId;
+  let cardSpacing=18, cardWidthScale=1, aspectRatio='16-9', orientation='horizontal';
+  let mediaRecorder, recordingStream, recordedChunks=[], animationFrameId;
+  let isPreparingRecording=false;
+  let recordingAvailable=false;
   const cardMedia = new Array(9).fill(null);
   const uploadedFiles = new Array(9).fill(null);
   const uploadedBlobURLs = new Array(9).fill(null);
@@ -33,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateMediaBtn = qs('#updateMediaBtn');
   const toggleAnimationBtn = qs('#toggleAnimationBtn');
   const toggleRecordingBtn = qs('#toggleRecordingBtn');
+  const recordingStatus = qs('#recordingStatus');
   const panel = qs('.control-panel');
   const toggle = qs('#panelToggle');
 
@@ -41,16 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const results = {
       captureStream: !!HTMLCanvasElement.prototype.captureStream,
       mediaRecorder: !!window.MediaRecorder,
-      vp9: false,
-      vp8: false,
-      webm: false,
+      mp4: false,
+      mp4MimeType: '',
       https: location.protocol === 'https:'
     };
 
     if (window.MediaRecorder) {
-      results.vp9 = MediaRecorder.isTypeSupported('video/webm;codecs=vp9');
-      results.vp8 = MediaRecorder.isTypeSupported('video/webm;codecs=vp8');
-      results.webm = MediaRecorder.isTypeSupported('video/webm');
+      results.mp4MimeType = getSupportedMp4MimeType();
+      results.mp4 = Boolean(results.mp4MimeType);
     }
 
     console.log('Recording Support Check:', results);
@@ -76,9 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function logError(message, error) {
     console.error(message, error);
-    // Show user-friendly error message
-    const userMsg = `${message}: ${error?.message || error}`;
-    alert(userMsg);
+    setRecordingStatus(`${message}: ${error?.message || error}`, 'error');
+  }
+
+  function setRecordingStatus(message, type='') {
+    recordingStatus.textContent = message;
+    recordingStatus.className = `recording-status ${type}`.trim();
+  }
+
+  function getSupportedMp4MimeType() {
+    if (!window.MediaRecorder || typeof MediaRecorder.isTypeSupported !== 'function') return '';
+    return MP4_MIME_TYPES.find(type => MediaRecorder.isTypeSupported(type)) || '';
   }
 
   /* ---------- BUILD FILE INPUTS WITH DRAG & REORDER ---------- */
@@ -112,10 +128,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function reorderCards(from,to){
+    if (from === to || from < 0 || to < 0 || from > 8 || to > 8) return;
     [uploadedFiles[from], uploadedFiles[to]]=[uploadedFiles[to], uploadedFiles[from]];
     [uploadedBlobURLs[from], uploadedBlobURLs[to]]=[uploadedBlobURLs[to], uploadedBlobURLs[from]];
     [cardMedia[from], cardMedia[to]]=[cardMedia[to], cardMedia[from]];
     reloadMedia();
+    refreshUploadUI();
+  }
+
+  function refreshUploadUI(){
+    for(let i=0;i<9;i++){
+      const file=uploadedFiles[i], url=uploadedBlobURLs[i];
+      const thumb=qs(`#thumb${String(i+1).padStart(2,'0')}`);
+      if(file&&url){
+        thumb.src=url; thumb.style.display='block';
+        setStatus(i,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success');
+      }else{
+        thumb.removeAttribute('src'); thumb.style.display='none'; setStatus(i,'');
+      }
+    }
   }
 
   /* ---------- CANVAS SIZE ---------- */
@@ -174,8 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Set internal canvas dimensions (this determines video resolution)
-    canvas.width = Math.floor(canvasW);
-    canvas.height = Math.floor(canvasH);
+    canvas.width = Math.max(2, Math.floor(canvasW / 2) * 2);
+    canvas.height = Math.max(2, Math.floor(canvasH / 2) * 2);
 
     // Set visual display size (this determines how it looks in browser)
     canvas.style.width = displayW + 'px';
@@ -200,6 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- DRAW HELPERS ---------- */
   function drawRoundedRect(x,y,w,h,r){
+    r=Math.max(0,Math.min(r,w/2,h/2));
     ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);
     ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);
     ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);
@@ -227,11 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if(!ok){
       ctx.fillStyle='#5D5D5D';
       const fs=Math.max(Math.min(w*.15,30),12);
-      ctx.font=`400 ${fs}px var(--font-main)`;
+      ctx.font=`400 ${fs}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
       ctx.fillText(String(n).padStart(2,'0')+'.',x+w*.1,y+h*.25);
       ctx.fillStyle='#8B8B8B'; ctx.beginPath(); ctx.arc(x+w*.1,y+h*.85,Math.max(w*.015,2),0,Math.PI*2); ctx.fill();
       const tfs=Math.max(w*.08,8);
-      ctx.font=`${tfs}px var(--font-main)`;
+      ctx.font=`${tfs}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
       ctx.fillText(`Card ${n} Content`,x+w*.1+7,y+h*.85+tfs/3);
     }
     ctx.restore();
@@ -285,12 +317,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function isVideo(f){return f && f.type.startsWith('video/')}
   function isGIF(f){return f && f.type==='image/gif'}
   async function handleFileUpload(idx,file){
-    const MAX=25*1024*1024, MAXTOT=200*1024*1024;
     if(!file)return;
-    if(file.size>MAX){setStatus(idx,'>25 MB','error');return;}
+    if(!file.type.startsWith('image/')&&!file.type.startsWith('video/')){setStatus(idx,'Unsupported file type','error');return;}
+    if(file.size>MAX_FILE_SIZE){setStatus(idx,'>25 MB','error');return;}
     const newTot=totalFileSize-(uploadedFiles[idx]?.size||0)+file.size;
-    if(newTot>MAXTOT){setStatus(idx,'>200 MB total','error');return;}
-    if(uploadedBlobURLs[idx])URL.revokeObjectURL(uploadedBlobURLs[idx]);
+    if(newTot>MAX_TOTAL_SIZE){setStatus(idx,'>200 MB total','error');return;}
+    if(uploadedBlobURLs[idx]){
+      loadedVideos.get(uploadedBlobURLs[idx])?.pause();
+      loadedVideos.delete(uploadedBlobURLs[idx]); loadedImages.delete(uploadedBlobURLs[idx]); loadedGIFs.delete(uploadedBlobURLs[idx]);
+      URL.revokeObjectURL(uploadedBlobURLs[idx]);
+    }
     uploadedFiles[idx]=file; const url=URL.createObjectURL(file); uploadedBlobURLs[idx]=url;
     cardMedia[idx]=url;
 
@@ -302,14 +338,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const thumb=qs(`#thumb${String(idx+1).padStart(2,'0')}`);
     if(isVideo(file)){
       const v=document.createElement('video'); v.src=url; v.loop=v.muted=v.playsInline=true;
-      v.addEventListener('loadeddata',()=>{v.play().catch(()=>0);setStatus(idx,'✓ Video ready','success')});
+      v.addEventListener('loadeddata',()=>{v.play().catch(()=>0);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')});
       v.addEventListener('error',()=>setStatus(idx,'Video error','error'));
       loadedVideos.set(url,v); v.load();
     }else if(isGIF(file)){
-      const img=new Image(); img.src=url; img.onload=()=>{loadedGIFs.set(url,img);setStatus(idx,'✓ GIF ready','success')};
+      const img=new Image(); img.src=url; img.onload=()=>{loadedGIFs.set(url,img);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')};
       img.onerror=()=>setStatus(idx,'GIF error','error');
     }else{
-      const img=new Image(); img.src=url; img.onload=()=>{loadedImages.set(url,img);setStatus(idx,'✓ Image ready','success')};
+      const img=new Image(); img.src=url; img.onload=()=>{loadedImages.set(url,img);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')};
       img.onerror=()=>setStatus(idx,'Image error','error');
     }
     thumb.src=url; thumb.style.display='block';
@@ -318,6 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setStatus(idx,`✓ ${file.name} (${mb}MB)`,'success');
   }
   function reloadMedia(){
+    loadedVideos.forEach(video=>video.pause());
     loadedImages.clear(); loadedVideos.clear(); loadedGIFs.clear();
     for(let i=0;i<9;i++){
       const url=uploadedBlobURLs[i];
@@ -325,37 +362,82 @@ document.addEventListener('DOMContentLoaded', () => {
       cardMedia[i]=url;
       const file=uploadedFiles[i];
       if(isVideo(file)){
-        const v=document.createElement('video'); v.src=url; v.loop=v.muted=v.playsInline=true; v.play().catch(()=>0); loadedVideos.set(url,v);
+        const v=document.createElement('video'); v.src=url; v.loop=v.muted=v.playsInline=true; v.addEventListener('loadeddata',()=>v.play().catch(()=>0)); v.load(); loadedVideos.set(url,v);
       }else{
         const img=new Image(); img.src=url; isGIF(file)?loadedGIFs.set(url,img):loadedImages.set(url,img);
       }
     }
   }
 
-  /* ---------- ENHANCED RECORDING WITH FIXES ---------- */
+  function resetUploadedVideos(){
+    loadedVideos.forEach(video=>{
+      try{video.currentTime=0;}catch(error){console.warn('Could not rewind uploaded video',error)}
+      video.play().catch(()=>0);
+    });
+  }
+
+  async function isMp4Blob(blob){
+    if(blob.size<12)return false;
+    const header=new Uint8Array(await blob.slice(0,12).arrayBuffer());
+    return String.fromCharCode(...header.slice(4,8))==='ftyp';
+  }
+
+  function downloadBlob(blob,filename){
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.style.display='none'; a.href=url; a.download=filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+  }
+
+  function setControlsLocked(locked){
+    qsa('.control-panel input, .control-panel button').forEach(control=>{
+      if(control!==toggleRecordingBtn)control.disabled=locked;
+    });
+  }
+
+  function resetRecordingUI(){
+    isRecording=false; isPreparingRecording=false;
+    mediaRecorder=null;
+    setControlsLocked(false);
+    toggleRecordingBtn.disabled=!recordingAvailable;
+    toggleRecordingBtn.textContent=recordingAvailable?'Start MP4 Recording':'MP4 Export Not Supported';
+    toggleRecordingBtn.style.background='';
+  }
+
+  /* ---------- MP4 RECORDING ---------- */
   async function startRecording() {
+    if(isRecording||isPreparingRecording)return;
+    isPreparingRecording=true;
+    toggleRecordingBtn.disabled=true;
+    toggleRecordingBtn.textContent='Preparing MP4…';
+    setRecordingStatus('Preparing MP4 recording…');
     try {
       console.log('🎬 Starting recording process...');
 
       // Check browser support first
       const support = checkRecordingSupport();
+      recordingAvailable=support.captureStream&&support.mediaRecorder&&support.mp4;
       if (!support.captureStream) {
         logError('Recording failed', 'Canvas recording not supported in this browser');
+        resetRecordingUI();
         return;
       }
       if (!support.mediaRecorder) {
         logError('Recording failed', 'MediaRecorder not supported in this browser');
+        resetRecordingUI();
         return;
       }
-      if (!support.https && location.hostname !== 'localhost') {
-        logError('Recording failed', 'HTTPS required for recording (except localhost)');
+      if (!support.mp4) {
+        logError('MP4 export unavailable', 'Use a current version of Chrome, Edge, or Safari');
+        resetRecordingUI();
         return;
       }
-
       // Validate canvas state
       const canvasInfo = debugCanvasState();
       if (canvasInfo.canvasWidth === 0 || canvasInfo.canvasHeight === 0) {
         logError('Recording failed', 'Canvas has invalid dimensions');
+        resetRecordingUI();
         return;
       }
 
@@ -367,13 +449,18 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleAnimationBtn.textContent = 'Pause Animation';
         console.log('✅ Animation started for recording');
       }
+      animationProgress = 0;
+      lastTimestamp = 0;
+      resetUploadedVideos();
 
       // Create canvas stream
       console.log('🎥 Creating canvas stream...');
       const stream = canvas.captureStream(RECORDING_FPS);
+      recordingStream = stream;
 
       if (!stream || stream.getVideoTracks().length === 0) {
         logError('Recording failed', 'Could not create video stream from canvas');
+        resetRecordingUI();
         return;
       }
 
@@ -381,31 +468,11 @@ document.addEventListener('DOMContentLoaded', () => {
       videoTrack.contentHint = 'motion';
       console.log('✅ Canvas stream created with', stream.getVideoTracks().length, 'video track(s)');
 
-      // Try different MediaRecorder configurations
-      let recorder;
-      const configurations = [
-        { mimeType: 'video/webm;codecs=vp9', videoBitsPerSecond: REC_BITRATE },
-        { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: REC_BITRATE },
-        { mimeType: 'video/webm', videoBitsPerSecond: REC_BITRATE },
-        { videoBitsPerSecond: REC_BITRATE },
-        {} // No options as last resort
-      ];
-
-      for (let i = 0; i < configurations.length; i++) {
-        try {
-          const config = configurations[i];
-          console.log(`🔧 Trying MediaRecorder config ${i + 1}:`, config);
-          recorder = new MediaRecorder(stream, config);
-          console.log('✅ MediaRecorder created successfully with config:', config);
-          break;
-        } catch (error) {
-          console.warn(`❌ Config ${i + 1} failed:`, error.message);
-          if (i === configurations.length - 1) {
-            logError('Recording failed', 'No supported MediaRecorder configuration found');
-            return;
-          }
-        }
-      }
+      const recorder = new MediaRecorder(stream, {
+        mimeType: support.mp4MimeType,
+        videoBitsPerSecond: REC_BITRATE
+      });
+      console.log('✅ MP4 MediaRecorder created with',support.mp4MimeType);
 
       // Set up event handlers
       recorder.ondataavailable = (event) => {
@@ -415,11 +482,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
 
-      recorder.onstop = () => {
+      recorder.onstop = async () => {
         console.log('🛑 Recording stopped. Total chunks:', recordedChunks.length);
+        recordingStream?.getTracks().forEach(track=>track.stop());
+        recordingStream=null;
 
         if (recordedChunks.length === 0) {
           logError('Recording failed', 'No video data was recorded');
+          resetRecordingUI();
           return;
         }
 
@@ -427,69 +497,38 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('📊 Total recorded data:', totalSize, 'bytes');
 
         try {
-          const blob = new Blob(recordedChunks, { type: 'video/webm' });
-          const url = URL.createObjectURL(blob);
-
-          // Create and trigger download
-          const a = document.createElement('a');
-          a.style.display = 'none';
-          a.href = url;
-          a.download = `bento-animation-${Date.now()}.webm`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-
-          // Clean up
-          setTimeout(() => URL.revokeObjectURL(url), 1000);
-
+          const blob = new Blob(recordedChunks, { type: recorder.mimeType || support.mp4MimeType });
+          if(!await isMp4Blob(blob))throw new Error('The browser did not produce a valid MP4 container');
+          downloadBlob(blob,`bento-animation-${Date.now()}.mp4`);
           console.log('✅ Recording saved successfully');
-          alert('Recording saved successfully!');
+          setRecordingStatus(`MP4 saved (${(blob.size/1024/1024).toFixed(1)} MB).`,'success');
 
         } catch (error) {
           logError('Download failed', error);
+        } finally {
+          resetRecordingUI();
         }
       };
 
       recorder.onerror = (event) => {
         console.error('🚨 Recording error:', event.error);
         logError('Recording error occurred', event.error);
-        stopRecording();
+        recordingStream?.getTracks().forEach(track=>track.stop());
+        recordingStream=null;
+        resetRecordingUI();
       };
 
       // Start recording
       console.log('🚀 Starting MediaRecorder...');
-      recorder.start(1000); // Record in 1-second chunks
-
-      // Wait for first data to ensure recording actually started
-      await new Promise((resolve, reject) => {
-        let resolved = false;
-        const timeout = setTimeout(() => {
-          if (!resolved) {
-            resolved = true;
-            reject(new Error('Recording failed to start within 3 seconds'));
-          }
-        }, 3000);
-
-        const originalHandler = recorder.ondataavailable;
-        recorder.ondataavailable = (event) => {
-          originalHandler(event);
-          if (!resolved && event.data && event.data.size > 0) {
-            resolved = true;
-            clearTimeout(timeout);
-            recorder.ondataavailable = originalHandler;
-            resolve();
-          }
-        };
-      });
-
-      // Reset animation progress for clean start
-      animationProgress = 0;
-
-      // Update UI and state
       mediaRecorder = recorder;
       isRecording = true;
-      toggleRecordingBtn.textContent = 'Stop Recording';
+      isPreparingRecording = false;
+      setControlsLocked(true);
+      toggleRecordingBtn.disabled = false;
+      toggleRecordingBtn.textContent = 'Stop & Export MP4';
       toggleRecordingBtn.style.background = '#ff4444';
+      setRecordingStatus(`Recording MP4 at ${RECORDING_FPS} fps…`);
+      recorder.start(1000);
 
       console.log('✅ Recording started successfully!');
 
@@ -498,9 +537,9 @@ document.addEventListener('DOMContentLoaded', () => {
       logError('Failed to start recording', error);
 
       // Reset state on failure
-      isRecording = false;
-      toggleRecordingBtn.textContent = 'Start Recording';
-      toggleRecordingBtn.style.background = '';
+      recordingStream?.getTracks().forEach(track=>track.stop());
+      recordingStream=null;
+      resetRecordingUI();
     }
   }
 
@@ -515,10 +554,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Reset UI state
     isRecording = false;
-    toggleRecordingBtn.textContent = 'Start Recording';
-    toggleRecordingBtn.style.background = '';
+    toggleRecordingBtn.disabled = true;
+    toggleRecordingBtn.textContent = 'Finishing MP4…';
+    setRecordingStatus('Finalizing and validating MP4…');
 
     console.log('✅ Recording stopped');
   }
@@ -561,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleAnimationBtn.addEventListener('click', () => {
     isAnimating = !isAnimating;
     toggleAnimationBtn.textContent = isAnimating ? 'Pause Animation' : 'Start Animation';
-    if (!isAnimating) animationProgress = 0;
+    lastTimestamp = 0;
   });
 
   toggleRecordingBtn.addEventListener('click', () => {
@@ -620,8 +659,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- KEYBOARD SHORTCUTS ---------- */
   window.addEventListener('keydown', e=>{
+    if(e.repeat||/^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(e.target.tagName))return;
     if(e.code==='Space'){e.preventDefault(); toggleAnimationBtn.click()}
-    if(e.code==='KeyR'){e.preventDefault(); toggleRecordingBtn.click()}
+    if(e.code==='KeyR'&&!toggleRecordingBtn.disabled){e.preventDefault(); toggleRecordingBtn.click()}
   });
 
   /* ---------- INIT ---------- */
@@ -630,15 +670,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Check recording support on load
   const support = checkRecordingSupport();
-  if (!support.captureStream || !support.mediaRecorder) {
-    console.warn('⚠️ Recording not fully supported in this browser');
+  recordingAvailable=support.captureStream&&support.mediaRecorder&&support.mp4;
+  if (!recordingAvailable) {
+    console.warn('⚠️ Native MP4 recording is not supported in this browser');
     toggleRecordingBtn.disabled = true;
-    toggleRecordingBtn.textContent = 'Recording Not Supported';
-    toggleRecordingBtn.style.opacity = '0.5';
+    toggleRecordingBtn.textContent = 'MP4 Export Not Supported';
+    setRecordingStatus('Use a current version of Chrome, Edge, or Safari for MP4 export.','error');
   }
 
   viewportBgColorPicker.value=canvasBgColor;
   qs('.orientation-buttons .button[data-orientation=horizontal]').classList.add('active');
   updateTotal();
   animate(0);
+
+  window.addEventListener('beforeunload',()=>{
+    uploadedBlobURLs.forEach(url=>{if(url)URL.revokeObjectURL(url)});
+    recordingStream?.getTracks().forEach(track=>track.stop());
+    cancelAnimationFrame(animationFrameId);
+  });
 });
