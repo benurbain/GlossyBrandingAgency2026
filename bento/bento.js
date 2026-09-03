@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const CARDS_PER_ROW = 3, ROWS = 3;
   const RECORDING_FPS = 30;
   const REC_BITRATE = 8_000_000;
+  const PERFECT_LOOP_COUNT = 3;
   const MAX_IMAGE_SIZE = 25 * 1024 * 1024;
   const MAX_VIDEO_SIZE = 50 * 1024 * 1024;
   const MAX_TOTAL_SIZE = 200 * 1024 * 1024;
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let animationSpeed=1, animationDuration=10000, cornerRadius=8, canvasBgColor='#000000';
   let cardSpacing=18, cardWidthScale=1, aspectRatio='16-9', orientation='horizontal';
   let mediaRecorder, recordingStream, recordedChunks=[], animationFrameId;
+  let recordingStartedAt=0, recordingTargetDuration=0, recordingAutoStopTimer=null;
+  let recordingStopRequested=false;
   let isPreparingRecording=false;
   let recordingAvailable=false;
   const cardMedia = new Array(9).fill(null);
@@ -434,16 +437,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------- ANIMATION LOOP ---------- */
-  function animate(ts){
-    if(!lastTimestamp)lastTimestamp=ts;
-    const dt=ts-lastTimestamp; lastTimestamp=ts;
-    if(isAnimating){animationProgress=(animationProgress+(dt*animationSpeed)/animationDuration)%1;}
+  function renderScene(){
     ctx.fillStyle=canvasBgColor;ctx.fillRect(0,0,canvas.width,canvas.height);
     renderedCards=[];
     if(orientation==='creative'){
       drawCreativeLayout(animationProgress);
       syncCardHitTargets();
-      animationFrameId=requestAnimationFrame(animate);
       return;
     }
     const {pad,cardGap,cardWidth,cardHeight}=calcLayout();
@@ -474,6 +473,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     syncCardHitTargets();
+  }
+  function animate(ts){
+    if(!lastTimestamp)lastTimestamp=ts;
+    const dt=ts-lastTimestamp; lastTimestamp=ts;
+    if(isRecording&&!recordingStopRequested){
+      const elapsed=Math.max(0,ts-recordingStartedAt);
+      if(elapsed>=recordingTargetDuration){
+        updateRecordingTimer(recordingTargetDuration);
+        stopRecording(true);
+      }else{
+        animationProgress=(elapsed*animationSpeed/animationDuration)%1;
+        updateRecordingTimer(elapsed);
+      }
+    }else if(isAnimating&&!recordingStopRequested){
+      animationProgress=(animationProgress+(dt*animationSpeed)/animationDuration)%1;
+    }
+    renderScene();
     animationFrameId=requestAnimationFrame(animate);
   }
 
@@ -631,13 +647,33 @@ document.addEventListener('DOMContentLoaded', () => {
     canvasHitLayer.classList.toggle('disabled',locked);
   }
 
+  function formatRecordingTime(milliseconds){
+    const totalSeconds=Math.max(0,Math.floor(milliseconds/1000));
+    const minutes=Math.floor(totalSeconds/60);
+    const seconds=totalSeconds%60;
+    return `${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+  }
+  function updateRecordingTimer(elapsed){
+    const label=`Recording ${formatRecordingTime(elapsed)} / ${formatRecordingTime(recordingTargetDuration)}`;
+    if(toggleRecordingBtn.textContent!==label)toggleRecordingBtn.textContent=label;
+  }
+
   function resetRecordingUI(){
     isRecording=false; isPreparingRecording=false;
+    recordingStopRequested=false;
+    recordingStartedAt=0;
+    recordingTargetDuration=0;
+    clearTimeout(recordingAutoStopTimer);
+    recordingAutoStopTimer=null;
     mediaRecorder=null;
     setControlsLocked(false);
     toggleRecordingBtn.disabled=!recordingAvailable;
     toggleRecordingBtn.textContent=recordingAvailable?'Start MP4 Recording':'MP4 Export Not Supported';
     toggleRecordingBtn.style.background='';
+    toggleRecordingBtn.classList.remove('recording-active');
+    animationProgress=0;
+    lastTimestamp=0;
+    renderScene();
   }
 
   /* ---------- MP4 RECORDING ---------- */
@@ -687,6 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
       animationProgress = 0;
       lastTimestamp = 0;
       resetUploadedVideos();
+      renderScene();
 
       // Create canvas stream
       console.log('🎥 Creating canvas stream...');
@@ -758,14 +795,19 @@ document.addEventListener('DOMContentLoaded', () => {
       mediaRecorder = recorder;
       isRecording = true;
       isPreparingRecording = false;
+      recordingStopRequested = false;
+      recordingTargetDuration = animationDuration * PERFECT_LOOP_COUNT / animationSpeed;
       setControlsLocked(true);
       toggleRecordingBtn.disabled = false;
-      toggleRecordingBtn.textContent = 'Stop & Export MP4';
       toggleRecordingBtn.style.background = '#ff4444';
-      setRecordingStatus(`Recording MP4 at ${RECORDING_FPS} fps…`);
+      toggleRecordingBtn.classList.add('recording-active');
       recorder.start(1000);
+      recordingStartedAt = performance.now();
+      updateRecordingTimer(0);
+      setRecordingStatus(`Recording ${PERFECT_LOOP_COUNT} complete loops at ${RECORDING_FPS} fps…`);
+      recordingAutoStopTimer=setTimeout(()=>stopRecording(true),recordingTargetDuration);
 
-      console.log('✅ Recording started successfully!');
+      console.log('✅ Perfect-loop recording started for',recordingTargetDuration,'ms');
 
     } catch (error) {
       console.error('🚨 Recording failed:', error);
@@ -778,7 +820,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function stopRecording() {
+  function stopRecording(automatic=false) {
+    if(recordingStopRequested)return;
+    recordingStopRequested=true;
+    clearTimeout(recordingAutoStopTimer);
+    recordingAutoStopTimer=null;
     console.log('🛑 Stopping recording...');
 
     if (mediaRecorder && mediaRecorder.state !== 'inactive') {
@@ -792,7 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isRecording = false;
     toggleRecordingBtn.disabled = true;
     toggleRecordingBtn.textContent = 'Finishing MP4…';
-    setRecordingStatus('Finalizing and validating MP4…');
+    setRecordingStatus(automatic?'Perfect loop complete. Finalizing MP4…':'Finalizing and validating MP4…');
 
     console.log('✅ Recording stopped');
   }
