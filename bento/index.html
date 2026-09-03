@@ -26,6 +26,13 @@
     .control-panel{width:300px;min-width:200px;flex-shrink:0;height:100%;background:var(--color-control-panel-bg);border-radius:10px;padding:var(--padding-control-panel);display:flex;flex-direction:column;justify-content:space-between;color:var(--color-text-on-dark);overflow-y:auto}
     .control-section{background:var(--color-section-bg);padding:var(--padding-section-internal);border-radius:var(--border-radius-small);margin-bottom:var(--section-bottom-margin)}
     .control-section-title{background:var(--color-title-section-bg);color:var(--color-title-text-dark);padding:12px}
+    .generator-brand{display:flex;align-items:center;gap:12px}
+    .generator-brand__mark{display:block;flex:0 0 52px;width:52px;height:52px;overflow:hidden}
+    .generator-brand__mark img{display:block;width:auto;max-width:none;height:52px}
+    .generator-brand__copy{min-width:0;line-height:1.15}
+    .generator-brand__site{display:block;color:inherit;font-size:.78rem;font-weight:650;text-decoration:none;white-space:nowrap}
+    .generator-brand__site:hover{text-decoration:underline}
+    .generator-brand__product{display:block;margin-top:3px;font-size:.95rem;font-weight:650}
     .control-section h3{font-size:1em;font-weight:600;margin-bottom:8px;border-bottom:1px solid var(--color-border-medium);padding-bottom:8px}
     .control-panel label{display:block;margin-bottom:6px;font-size:.9em}
     .control-panel input[type=text],.control-panel input[type=url]{width:100%;padding:8px;border:1px solid var(--color-border-medium);background:var(--color-input-bg);color:var(--color-input-text);border-radius:3px;font-family:var(--font-main);font-size:.9em;margin-bottom:6px}
@@ -47,7 +54,7 @@
     #renderCanvas{max-width:100%;max-height:100%;display:block}
     @media(max-width:992px){.control-panel{width:250px;min-width:180px}}
     @media(max-width:768px){.control-panel{width:220px;min-width:150px;font-size:.9rem}}
-    @media(max-width:480px){:root{--padding-global:10px;--padding-control-panel:10px;--padding-section-internal:8px;--section-bottom-margin:4px;--card-row-gap:10px;--card-internal-gap:10px;--padding-viewport-internal:10px;--padding-card-grid-actual:10px}.control-panel{width:40%;min-width:130px;font-size:.8rem}.viewport-container{margin-left:10px;border-radius:15px}}
+    @media(max-width:480px){:root{--padding-global:10px;--padding-control-panel:10px;--padding-section-internal:8px;--section-bottom-margin:4px;--card-row-gap:10px;--card-internal-gap:10px;--padding-viewport-internal:10px;--padding-card-grid-actual:10px}.control-panel{width:40%;min-width:130px;font-size:.8rem}.viewport-container{margin-left:10px;border-radius:15px}.generator-brand{gap:9px}.generator-brand__mark{flex-basis:44px;width:44px;height:44px}.generator-brand__mark img{height:44px}.generator-brand__site{font-size:.68rem}.generator-brand__product{font-size:.8rem}}
     .media-inputs-container{display:flex;flex-direction:column;gap:15px}
     .media-input-group{display:flex;flex-direction:column;gap:5px;padding:10px;background:rgba(0,0,0,.2);border-radius:5px}
     .media-upload-row{display:flex;align-items:center;gap:8px}
@@ -91,8 +98,14 @@
         <div class="inner-wrapper">
           <div class="control-panel">
             <div class="control-section control-section-title">
-              <h2 class="logo-title">
-                <a href="https://glossy.tv" target="_blank">Glossybranding.com</a><br>Video Bento Generator
+              <h2 class="logo-title generator-brand">
+                <a class="generator-brand__mark" href="https://glossy.tv" target="_blank" rel="noopener" aria-label="Glossy Branding Agency">
+                  <img src="../assets/img/logo.svg" alt="">
+                </a>
+                <span class="generator-brand__copy">
+                  <a class="generator-brand__site" href="https://glossy.tv" target="_blank" rel="noopener">GlossyBranding.com</a>
+                  <span class="generator-brand__product">Video Bento Generator</span>
+                </span>
               </h2>
             </div>
 
