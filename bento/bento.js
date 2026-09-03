@@ -364,17 +364,91 @@ document.addEventListener('DOMContentLoaded', () => {
     for(let i=interactiveCards.length;i<cardHitTargets.length;i++)cardHitTargets[i].style.display='none';
   }
 
+  const CREATIVE_CARD_LAYOUT=[
+    {col:0,row:0,cols:2,rows:2},
+    {col:2,row:0,cols:1,rows:1},
+    {col:3,row:0,cols:1,rows:1},
+    {col:2,row:1,cols:2,rows:1},
+    {col:0,row:2,cols:1,rows:1},
+    {col:1,row:2,cols:2,rows:1},
+    {col:3,row:2,cols:1,rows:2},
+    {col:0,row:3,cols:2,rows:1},
+    {col:2,row:3,cols:1,rows:1}
+  ];
+  const CREATIVE_CAMERA_KEYFRAMES=[
+    {at:0,zoom:1,focusX:.5,focusY:.5},
+    {at:.12,zoom:1,focusX:.5,focusY:.5},
+    {at:.29,zoom:1.95,focusX:.25,focusY:.25},
+    {at:.41,zoom:1.95,focusX:.25,focusY:.25},
+    {at:.57,zoom:2.45,focusX:.5,focusY:.625},
+    {at:.68,zoom:2.45,focusX:.5,focusY:.625},
+    {at:.81,zoom:2.05,focusX:.875,focusY:.75},
+    {at:.88,zoom:2.05,focusX:.875,focusY:.75},
+    {at:1,zoom:1,focusX:.5,focusY:.5}
+  ];
+  function easeInOutCubic(value){
+    return value<.5?4*value*value*value:1-Math.pow(-2*value+2,3)/2;
+  }
+  function creativeCameraAt(progress){
+    for(let i=1;i<CREATIVE_CAMERA_KEYFRAMES.length;i++){
+      const next=CREATIVE_CAMERA_KEYFRAMES[i];
+      if(progress>next.at)continue;
+      const previous=CREATIVE_CAMERA_KEYFRAMES[i-1];
+      const span=next.at-previous.at;
+      const amount=easeInOutCubic(span?(progress-previous.at)/span:1);
+      return {
+        zoom:previous.zoom+(next.zoom-previous.zoom)*amount,
+        focusX:previous.focusX+(next.focusX-previous.focusX)*amount,
+        focusY:previous.focusY+(next.focusY-previous.focusY)*amount
+      };
+    }
+    return CREATIVE_CAMERA_KEYFRAMES[CREATIVE_CAMERA_KEYFRAMES.length-1];
+  }
+  function drawCreativeLayout(progress){
+    const gap=cardSpacing;
+    const pad=cardSpacing;
+    const cellWidth=(canvas.width-pad*2-gap*3)/4;
+    const cellHeight=(canvas.height-pad*2-gap*3)/4;
+    const camera=creativeCameraAt(progress);
+    const worldWidth=canvas.width-pad*2;
+    const worldHeight=canvas.height-pad*2;
+    const focusX=pad+worldWidth*camera.focusX;
+    const focusY=pad+worldHeight*camera.focusY;
+
+    CREATIVE_CARD_LAYOUT.forEach((spec,index)=>{
+      const baseX=pad+spec.col*(cellWidth+gap);
+      const baseY=pad+spec.row*(cellHeight+gap);
+      const baseWidth=spec.cols*cellWidth+(spec.cols-1)*gap;
+      const baseHeight=spec.rows*cellHeight+(spec.rows-1)*gap;
+      const centerX=(baseX+baseWidth/2-focusX)*camera.zoom+canvas.width/2;
+      const centerY=(baseY+baseHeight/2-focusY)*camera.zoom+canvas.height/2;
+      const width=baseWidth*camera.zoom*cardWidthScale;
+      const height=baseHeight*camera.zoom;
+      const x=centerX-width/2;
+      const y=centerY-height/2;
+      if(x+width<=0||x>=canvas.width||y+height<=0||y>=canvas.height)return;
+      const cardNo=index+1;
+      drawCard(x,y,width,height,cardNo,cardMedia[index]);
+      renderedCards.push({x,y,w:width,h:height,cardNo});
+    });
+  }
+
   /* ---------- ANIMATION LOOP ---------- */
   function animate(ts){
     if(!lastTimestamp)lastTimestamp=ts;
     const dt=ts-lastTimestamp; lastTimestamp=ts;
     if(isAnimating){animationProgress=(animationProgress+(dt*animationSpeed)/animationDuration)%1;}
     ctx.fillStyle=canvasBgColor;ctx.fillRect(0,0,canvas.width,canvas.height);
+    renderedCards=[];
+    if(orientation==='creative'){
+      drawCreativeLayout(animationProgress);
+      syncCardHitTargets();
+      animationFrameId=requestAnimationFrame(animate);
+      return;
+    }
     const {pad,cardGap,cardWidth,cardHeight}=calcLayout();
-    const axis=orientation==='horizontal'?'x':'y';
     const span=orientation==='horizontal'?canvas.width:canvas.height;
     const cardSize=orientation==='horizontal'?cardWidth:cardHeight;
-    renderedCards=[];
     for(let row=0;row<ROWS;row++){
       const dir=(row%2?-1:1);
       const progress=dir>0?animationProgress:(1-animationProgress);
