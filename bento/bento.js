@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* STATE */
   let isAnimating=false, isRecording=false, animationProgress=0, lastTimestamp=0;
   let animationSpeed=1, animationDuration=10000, cornerRadius=8, canvasBgColor='#000000';
-  let cardSpacing=18, cardWidthScale=1, aspectRatio='16-9', orientation='horizontal';
+  let cardSpacing=18, cardWidthScale=1, aspectRatio='16-9', orientation='horizontal', creativeMode=1;
   let mediaRecorder, recordingStream, recordedChunks=[], animationFrameId;
   let recordingStartedAt=0, recordingTargetDuration=0, recordingAutoStopTimer=null;
   let recordingStopRequested=false;
@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleAnimationBtn = qs('#toggleAnimationBtn');
   const toggleRecordingBtn = qs('#toggleRecordingBtn');
   const recordingStatus = qs('#recordingStatus');
+  const creativeModeControl = qs('#creativeModeControl');
+  const creativeModeDescription = qs('#creativeModeDescription');
   const panel = qs('.control-panel');
   const toggle = qs('#panelToggle');
 
@@ -344,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.restore();
   }
   function syncCardHitTargets(){
-    const interactiveCards=renderedCards.filter(card=>cardMedia[card.cardNo-1]);
+    const interactiveCards=renderedCards;
     const displayScale=canvasStage.clientWidth/canvas.width;
     for(let i=0;i<interactiveCards.length;i++){
       const card=interactiveCards[i];
@@ -357,8 +359,10 @@ document.addEventListener('DOMContentLoaded', () => {
         cardHitTargets.push(target);
       }
       const cardLabel=String(card.cardNo).padStart(2,'0');
+      const hasContent=Boolean(cardMedia[card.cardNo-1]);
       target.htmlFor=`card${cardLabel}-file`;
-      target.setAttribute('aria-label',`Change content for Card ${cardLabel}`);
+      target.textContent=hasContent?'Change content':'Upload content';
+      target.setAttribute('aria-label',`${hasContent?'Change':'Upload'} content for Card ${cardLabel}`);
       target.style.display='flex';
       target.style.left=`${card.x/canvas.width*100}%`;
       target.style.top=`${card.y/canvas.height*100}%`;
@@ -410,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return CREATIVE_CAMERA_KEYFRAMES[CREATIVE_CAMERA_KEYFRAMES.length-1];
   }
-  function drawCreativeLayout(progress){
+  function drawCreativeMode1(progress){
     const gap=cardSpacing;
     const pad=cardSpacing;
     const cellWidth=(canvas.width-pad*2-gap*3)/4;
@@ -437,6 +441,209 @@ document.addEventListener('DOMContentLoaded', () => {
       drawCard(x,y,width,height,cardNo,cardMedia[index]);
       renderedCards.push({x,y,w:width,h:height,cardNo});
     });
+  }
+
+  const GRID_LAYOUT=Array.from({length:9},(_,index)=>({
+    x:(index%3)/3,
+    y:Math.floor(index/3)/3,
+    w:1/3,
+    h:1/3
+  }));
+  const REFLOW_LAYOUT_A=[
+    {x:0,y:0,w:.5,h:.5},{x:.5,y:0,w:.25,h:.25},{x:.75,y:0,w:.25,h:.25},
+    {x:.5,y:.25,w:.5,h:.25},{x:0,y:.5,w:.25,h:.25},{x:.25,y:.5,w:.5,h:.25},
+    {x:.75,y:.5,w:.25,h:.5},{x:0,y:.75,w:.5,h:.25},{x:.5,y:.75,w:.25,h:.25}
+  ];
+  const REFLOW_LAYOUT_B=[
+    {x:0,y:0,w:.25,h:.5},{x:.25,y:0,w:.5,h:.25},{x:.75,y:0,w:.25,h:.25},
+    {x:.25,y:.25,w:.25,h:.25},{x:.5,y:.25,w:.5,h:.5},{x:0,y:.5,w:.25,h:.25},
+    {x:.25,y:.5,w:.25,h:.5},{x:0,y:.75,w:.25,h:.25},{x:.5,y:.75,w:.5,h:.25}
+  ];
+  const REFLOW_LAYOUT_C=[
+    {x:0,y:0,w:.5,h:.25},{x:.5,y:0,w:.25,h:.5},{x:.75,y:0,w:.25,h:.25},
+    {x:0,y:.25,w:.25,h:.5},{x:.25,y:.25,w:.25,h:.25},{x:.25,y:.5,w:.5,h:.5},
+    {x:.75,y:.25,w:.25,h:.5},{x:0,y:.75,w:.25,h:.25},{x:.75,y:.75,w:.25,h:.25}
+  ];
+  const REFLOW_LAYOUT_D=[
+    {x:0,y:0,w:.25,h:.25},{x:.25,y:0,w:.25,h:.5},{x:.5,y:0,w:.5,h:.25},
+    {x:0,y:.25,w:.25,h:.5},{x:.5,y:.25,w:.25,h:.25},{x:.75,y:.25,w:.25,h:.5},
+    {x:.25,y:.5,w:.5,h:.25},{x:0,y:.75,w:.5,h:.25},{x:.5,y:.75,w:.5,h:.25}
+  ];
+  const HERO_LAYOUT_LEFT=[
+    {x:0,y:0,w:.52,h:1},{x:.52,y:0,w:.24,h:.33},{x:.76,y:0,w:.24,h:.33},
+    {x:.52,y:.33,w:.48,h:.34},{x:.52,y:.67,w:.24,h:.33},{x:.76,y:.67,w:.24,h:.33},
+    {x:1.02,y:0,w:.2,h:.33},{x:1.02,y:.33,w:.2,h:.34},{x:1.02,y:.67,w:.2,h:.33}
+  ];
+  const HERO_LAYOUT_CENTER=[
+    {x:0,y:0,w:.2,h:.5},{x:0,y:.5,w:.2,h:.5},{x:.2,y:0,w:.18,h:.33},
+    {x:.2,y:.33,w:.18,h:.34},{x:.38,y:0,w:.42,h:1},{x:.2,y:.67,w:.18,h:.33},
+    {x:.8,y:0,w:.2,h:.33},{x:.8,y:.33,w:.2,h:.34},{x:.8,y:.67,w:.2,h:.33}
+  ];
+  const HERO_LAYOUT_RIGHT=[
+    {x:-.22,y:0,w:.2,h:.33},{x:-.22,y:.33,w:.2,h:.34},{x:-.22,y:.67,w:.2,h:.33},
+    {x:0,y:0,w:.24,h:.33},{x:.24,y:0,w:.24,h:.33},{x:0,y:.33,w:.48,h:.34},
+    {x:0,y:.67,w:.24,h:.33},{x:.24,y:.67,w:.24,h:.33},{x:.48,y:0,w:.52,h:1}
+  ];
+
+  function mix(from,to,amount){return from+(to-from)*amount}
+  function mixSpec(from,to,amount){
+    return {x:mix(from.x,to.x,amount),y:mix(from.y,to.y,amount),w:mix(from.w,to.w,amount),h:mix(from.h,to.h,amount)};
+  }
+  function normalizedCardRect(spec){
+    const pad=cardSpacing, gap=cardSpacing;
+    const availableWidth=canvas.width-pad*2, availableHeight=canvas.height-pad*2;
+    const naturalWidth=Math.max(2,spec.w*availableWidth-gap*.7);
+    const width=naturalWidth*cardWidthScale;
+    const height=Math.max(2,spec.h*availableHeight-gap*.7);
+    return {
+      x:pad+spec.x*availableWidth+gap*.35+(naturalWidth-width)/2,
+      y:pad+spec.y*availableHeight+gap*.35,
+      w:width,
+      h:height
+    };
+  }
+  function drawNormalizedCard(spec,index,scaleX=1){
+    const rect=normalizedCardRect(spec);
+    if(rect.x+rect.w<=0||rect.x>=canvas.width||rect.y+rect.h<=0||rect.y>=canvas.height)return;
+    const safeScaleX=Math.max(.025,Math.abs(scaleX));
+    if(safeScaleX>.999){
+      drawCard(rect.x,rect.y,rect.w,rect.h,index+1,cardMedia[index]);
+    }else{
+      ctx.save();
+      ctx.translate(rect.x+rect.w/2,rect.y+rect.h/2);
+      ctx.scale(safeScaleX,1);
+      drawCard(-rect.w/2,-rect.h/2,rect.w,rect.h,index+1,cardMedia[index]);
+      ctx.restore();
+    }
+    const visibleWidth=rect.w*safeScaleX;
+    renderedCards.push({x:rect.x+(rect.w-visibleWidth)/2,y:rect.y,w:visibleWidth,h:rect.h,cardNo:index+1});
+  }
+  function cyclicLayoutState(progress,layouts,hold=.12){
+    const phase=((progress%1)+1)%1*layouts.length;
+    const current=Math.floor(phase)%layouts.length;
+    const next=(current+1)%layouts.length;
+    const raw=phase-Math.floor(phase);
+    const travel=Math.max(.001,1-hold*2);
+    const amount=easeInOutCubic(Math.max(0,Math.min(1,(raw-hold)/travel)));
+    return {from:layouts[current],to:layouts[next],amount};
+  }
+  function drawMorphingLayouts(progress,layouts,hold=.12){
+    const state=cyclicLayoutState(progress,layouts,hold);
+    for(let index=0;index<9;index++)drawNormalizedCard(mixSpec(state.from[index],state.to[index],state.amount),index);
+  }
+
+  function drawCreativeMode2(progress){
+    const gathered=GRID_LAYOUT.map((spec,index)=>{
+      const angle=index/9*Math.PI*2;
+      return {x:.475+Math.cos(angle)*.075,y:.475+Math.sin(angle)*.075,w:.05,h:.05};
+    });
+    drawMorphingLayouts(progress,[GRID_LAYOUT,gathered,REFLOW_LAYOUT_A,gathered],.08);
+  }
+  function drawCreativeMode3(progress){
+    drawMorphingLayouts(progress,[REFLOW_LAYOUT_A,REFLOW_LAYOUT_B,REFLOW_LAYOUT_C],.2);
+  }
+  function drawCreativeMode4(progress){
+    const scattered=GRID_LAYOUT.map((spec,index)=>{
+      const side=index%4;
+      if(side===0)return {x:-.42,y:spec.y,w:spec.w,h:spec.h};
+      if(side===1)return {x:spec.x,y:-.48,w:spec.w,h:spec.h};
+      if(side===2)return {x:1.1,y:spec.y,w:spec.w,h:spec.h};
+      return {x:spec.x,y:1.12,w:spec.w,h:spec.h};
+    });
+    for(let index=0;index<9;index++){
+      const local=(progress+index*.027)%1;
+      const state=cyclicLayoutState(local,[
+        [REFLOW_LAYOUT_A[index]],[scattered[index]],[REFLOW_LAYOUT_B[index]],[scattered[(index+3)%9]]
+      ],.08);
+      drawNormalizedCard(mixSpec(state.from[0],state.to[0],state.amount),index);
+    }
+  }
+  function drawCreativeMode5(progress){
+    const layoutBlend=.5-.5*Math.cos(progress*Math.PI*2);
+    for(let index=0;index<9;index++){
+      const spec=mixSpec(REFLOW_LAYOUT_A[index],REFLOW_LAYOUT_B[index],easeInOutCubic(layoutBlend));
+      const flip=Math.abs(Math.cos(progress*Math.PI*2+index*.43));
+      drawNormalizedCard(spec,index,.035+flip*.965);
+    }
+  }
+  function drawCreativeMode6(progress){
+    const widths=[.29,.42,.29];
+    const heights=[[.34,.42,.24],[.55,.25,.2],[.28,.32,.4]];
+    let x=0;
+    for(let column=0;column<3;column++){
+      const lane=heights[column];
+      const motion=((column%2?progress:-progress)+column*.19+2)%1;
+      let y=0;
+      for(let row=0;row<3;row++){
+        for(let copy=-1;copy<=1;copy++){
+          drawNormalizedCard({x,y:y-motion+copy,w:widths[column],h:lane[row]},column+row*3);
+        }
+        y+=lane[row];
+      }
+      x+=widths[column];
+    }
+  }
+  function drawCreativeMode7(progress){
+    drawMorphingLayouts(progress,[HERO_LAYOUT_LEFT,HERO_LAYOUT_CENTER,HERO_LAYOUT_RIGHT],.18);
+  }
+  function drawCreativeMode8(progress){
+    const state=cyclicLayoutState(progress,[REFLOW_LAYOUT_A,REFLOW_LAYOUT_D,REFLOW_LAYOUT_B,REFLOW_LAYOUT_C],.02);
+    for(let index=0;index<9;index++){
+      const spec=mixSpec(state.from[index],state.to[index],state.amount);
+      const breathe=Math.sin(progress*Math.PI*2+index*.7)*.006;
+      drawNormalizedCard({x:spec.x+breathe,y:spec.y-breathe,w:spec.w-breathe*2,h:spec.h+breathe*2},index);
+    }
+  }
+  function drawCreativeMode9(progress){
+    const columns=5, rows=3, cellWidth=1/columns, cellHeight=1/rows;
+    for(let row=0;row<rows;row++){
+      const direction=row%2?-1:1;
+      const travel=progress*9*cellWidth*direction;
+      for(let column=-11;column<16;column++){
+        const x=column*cellWidth-travel;
+        const sequence=((column%9)+9)%9;
+        const cardIndex=(row*3+sequence)%9;
+        drawNormalizedCard({x,y:row*cellHeight,w:cellWidth,h:cellHeight},cardIndex);
+      }
+    }
+  }
+  function accordionLayout(focusColumn){
+    const widths=[.24,.24,.24];
+    widths[focusColumn]=.52;
+    const layout=new Array(9);
+    let x=0;
+    for(let column=0;column<3;column++){
+      const w=widths[column], first=column*3;
+      if(column===focusColumn){
+        layout[first]={x,y:0,w,h:.65};
+        layout[first+1]={x,y:.65,w:w/2,h:.35};
+        layout[first+2]={x:x+w/2,y:.65,w:w/2,h:.35};
+      }else{
+        layout[first]={x,y:0,w,h:.5};
+        layout[first+1]={x,y:.5,w,h:.25};
+        layout[first+2]={x,y:.75,w,h:.25};
+      }
+      x+=w;
+    }
+    return layout;
+  }
+  const ACCORDION_LAYOUTS=[accordionLayout(0),accordionLayout(1),accordionLayout(2)];
+  function drawCreativeMode10(progress){
+    drawMorphingLayouts(progress,ACCORDION_LAYOUTS,.1);
+  }
+  function drawCreativeLayout(progress){
+    switch(creativeMode){
+      case 2:drawCreativeMode2(progress);break;
+      case 3:drawCreativeMode3(progress);break;
+      case 4:drawCreativeMode4(progress);break;
+      case 5:drawCreativeMode5(progress);break;
+      case 6:drawCreativeMode6(progress);break;
+      case 7:drawCreativeMode7(progress);break;
+      case 8:drawCreativeMode8(progress);break;
+      case 9:drawCreativeMode9(progress);break;
+      case 10:drawCreativeMode10(progress);break;
+      default:drawCreativeMode1(progress);
+    }
   }
 
   /* ---------- ANIMATION LOOP ---------- */
@@ -891,7 +1098,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }));
   qsa('.orientation-buttons .button').forEach(b => b.addEventListener('click', e => {
     qsa('.orientation-buttons .button').forEach(x => x.classList.remove('active'));
-    e.target.classList.add('active'); orientation = e.target.dataset.orientation; animationProgress = 0;
+    e.currentTarget.classList.add('active'); orientation = e.currentTarget.dataset.orientation; animationProgress = 0;
+    creativeModeControl.hidden=orientation!=='creative';
+  }));
+  const creativeModeNames={
+    1:'Focus Zoom',2:'Gather / Explode',3:'Fluid Reflow',4:'Scatter',5:'3D Flip',
+    6:'Column Flow',7:'Hero Swap',8:'Liquid Masonry',9:'Grid Conveyor',10:'Nested Accordion'
+  };
+  qsa('.creative-mode-buttons .button').forEach(button=>button.addEventListener('click',event=>{
+    qsa('.creative-mode-buttons .button').forEach(item=>item.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    creativeMode=Number(event.currentTarget.dataset.creativeMode)||1;
+    creativeModeDescription.textContent=`${String(creativeMode).padStart(2,'0')} · ${creativeModeNames[creativeMode]}`;
+    animationProgress=0;
+    renderScene();
   }));
   viewportBgColorPicker.addEventListener('input', e => canvasBgColor = e.target.value);
 

@@ -50,6 +50,11 @@
     .aspect-ratio-buttons,.orientation-buttons{display:flex}
     .aspect-ratio-buttons .button,.orientation-buttons .button{flex-grow:1;background:var(--color-button-secondary-bg);color:var(--color-text-on-dark);font-size:.9em;padding:8px 5px;border:1px solid var(--color-aspect-button-border);border-radius:0;text-align:center}
     .aspect-ratio-buttons .button.active,.orientation-buttons .button.active{background:var(--color-blue-primary);color:var(--color-white);border-color:var(--color-blue-primary)}
+    .creative-mode-control[hidden]{display:none}
+    .creative-mode-buttons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+    .creative-mode-buttons .button{min-width:0;padding:8px 4px;border:1px solid var(--color-aspect-button-border);border-radius:4px;font-size:.82em;text-align:center}
+    .creative-mode-buttons .button.active{background:var(--color-blue-primary);color:var(--color-white);border-color:var(--color-blue-primary)}
+    .creative-mode-description{margin-top:8px;min-height:1.25em;font-size:.78em;line-height:1.25;color:var(--color-text-on-dark);opacity:.9}
     .viewport-container{flex-grow:1;height:100%;display:flex;justify-content:center;align-items:center;min-width:0;margin-left:20px;background:var(--color-viewport-bg);border-radius:var(--border-radius-viewport);overflow:hidden;padding:var(--padding-viewport-internal);position:relative}
     .canvas-stage{position:relative;flex:0 0 auto;max-width:100%;max-height:100%;overflow:hidden}
     #renderCanvas{display:block;width:100%;height:100%}
@@ -145,6 +150,23 @@
 
             <div class="control-section"><h3>Animation Orientation</h3><div class="orientation-buttons"><button class="button active" data-orientation="horizontal">Horizontal</button><button class="button" data-orientation="vertical">Vertical</button><button class="button" data-orientation="creative">Creative</button></div></div>
 
+            <div class="control-section creative-mode-control" id="creativeModeControl" hidden>
+              <h3>Creative Mode</h3>
+              <div class="creative-mode-buttons" aria-label="Creative animation mode">
+                <button class="button active" type="button" data-creative-mode="1" title="Focus Zoom">01</button>
+                <button class="button" type="button" data-creative-mode="2" title="Gather / Explode">02</button>
+                <button class="button" type="button" data-creative-mode="3" title="Fluid Reflow">03</button>
+                <button class="button" type="button" data-creative-mode="4" title="Scatter">04</button>
+                <button class="button" type="button" data-creative-mode="5" title="3D Flip">05</button>
+                <button class="button" type="button" data-creative-mode="6" title="Column Flow">06</button>
+                <button class="button" type="button" data-creative-mode="7" title="Hero Swap">07</button>
+                <button class="button" type="button" data-creative-mode="8" title="Liquid Masonry">08</button>
+                <button class="button" type="button" data-creative-mode="9" title="Grid Conveyor">09</button>
+                <button class="button" type="button" data-creative-mode="10" title="Nested Accordion">10</button>
+              </div>
+              <p class="creative-mode-description" id="creativeModeDescription">01 · Focus Zoom</p>
+            </div>
+
             <div class="control-section"><h3>Grid Aspect Ratio</h3><div class="aspect-ratio-buttons"><button class="button active" data-aspect="16-9">16:9</button><button class="button" data-aspect="1-1">1:1</button><button class="button" data-aspect="9-16">9:16</button></div></div>
 
             <div class="control-section control-section-no-bg">
@@ -166,7 +188,7 @@
     </div>
   </div>
 
-  <script src="bento.js?v=20260903-13"></script>
+  <script src="bento.js?v=20260903-14"></script>
 
 </body>
 </html>
