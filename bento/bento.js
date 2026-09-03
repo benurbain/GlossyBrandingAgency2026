@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.font=`400 ${fs}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
       ctx.fillText(String(n).padStart(2,'0')+'.',x+w*.1,y+h*.25);
       ctx.fillStyle='#8B8B8B'; ctx.beginPath(); ctx.arc(x+w*.1,y+h*.85,Math.max(w*.015,2),0,Math.PI*2); ctx.fill();
-      const tfs=Math.max(w*.08,8);
+      const tfs=Math.max(Math.min(w*.04,22),8);
       ctx.font=`${tfs}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
       ctx.fillText(`Card ${n} Content`,x+w*.1+7,y+h*.85+tfs/3);
     }
