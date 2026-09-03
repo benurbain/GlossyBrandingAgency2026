@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const CARDS_PER_ROW = 3, ROWS = 3;
   const RECORDING_FPS = 30;
   const REC_BITRATE = 8_000_000;
-  const MAX_FILE_SIZE = 25 * 1024 * 1024;
+  const MAX_IMAGE_SIZE = 25 * 1024 * 1024;
+  const MAX_VIDEO_SIZE = 50 * 1024 * 1024;
   const MAX_TOTAL_SIZE = 200 * 1024 * 1024;
   const MP4_MIME_TYPES = [
     'video/mp4;codecs=avc1.42E01E',
@@ -422,6 +423,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function isVideo(f){return f && f.type.startsWith('video/')}
   function isGIF(f){return f && f.type==='image/gif'}
   function isSupportedMedia(f){return f&&(f.type.startsWith('image/')||f.type.startsWith('video/'))}
+  function maxFileSizeFor(file){return isVideo(file)?MAX_VIDEO_SIZE:MAX_IMAGE_SIZE}
+  function maxFileSizeLabel(file){return isVideo(file)?'50 MB video':'25 MB image/GIF'}
   function clearThumbnail(thumb){
     thumb.removeAttribute('src');
     thumb.style.display='none';
@@ -450,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function handleFileUpload(idx,file){
     if(!file)return;
     if(!isSupportedMedia(file)){setStatus(idx,'Unsupported file type','error');return;}
-    if(file.size>MAX_FILE_SIZE){setStatus(idx,'>25 MB','error');return;}
+    if(file.size>maxFileSizeFor(file)){setStatus(idx,`>${maxFileSizeLabel(file)}`,'error');return;}
     const newTot=totalFileSize-(uploadedFiles[idx]?.size||0)+file.size;
     if(newTot>MAX_TOTAL_SIZE){setStatus(idx,'>200 MB total','error');return;}
     if(uploadedBlobURLs[idx]){
@@ -494,8 +497,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const invalidFile=files.find(file=>!isSupportedMedia(file));
     if(invalidFile){setBatchStatus(`Unsupported file: ${invalidFile.name}`,'error');return;}
-    const oversizedFile=files.find(file=>file.size>MAX_FILE_SIZE);
-    if(oversizedFile){setBatchStatus(`${oversizedFile.name} exceeds 25 MB.`,'error');return;}
+    const oversizedFile=files.find(file=>file.size>maxFileSizeFor(file));
+    if(oversizedFile){setBatchStatus(`${oversizedFile.name} exceeds the ${maxFileSizeLabel(oversizedFile)} limit.`,'error');return;}
 
     const filenameCollator=new Intl.Collator(undefined,{numeric:true,sensitivity:'base'});
     files.sort((a,b)=>filenameCollator.compare(a.name,b.name));
