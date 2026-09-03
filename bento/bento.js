@@ -109,14 +109,18 @@ document.addEventListener('DOMContentLoaded', () => {
     grp.innerHTML=`
       <label>Card ${String(i).padStart(2,'0')}</label>
       <div class="media-upload-row">
-        <input type="file" id="card${String(i).padStart(2,'0')}-file" accept="image/*,video/*,.gif" style="display:none">
+        <input type="file" id="card${String(i).padStart(2,'0')}-file" accept="image/*,video/*,.gif" multiple style="display:none">
         <button class="button upload-btn" onclick="document.getElementById('card${String(i).padStart(2,'0')}-file').click()">→ Upload File</button>
         <img class="media-thumbnail" id="thumb${String(i).padStart(2,'0')}" alt="">
       </div>
       <div class="upload-progress"><div class="upload-progress-bar"></div></div>
       <span class="media-status" id="status${String(i).padStart(2,'0')}"></span>`;
     mediaInputs.appendChild(grp);
-    grp.querySelector('input[type=file]').addEventListener('change', e=>handleFileUpload(idx, e.target.files[0]));
+    grp.querySelector('input[type=file]').addEventListener('change',async e=>{
+      if(e.target.files.length>1)await handleBatchUpload(e.target.files);
+      else await handleFileUpload(idx,e.target.files[0]);
+      e.target.value='';
+    });
     /* drag & drop reorder */
     grp.addEventListener('dragstart', e=>{e.dataTransfer.setData('text/plain', idx); grp.classList.add('dragging')});
     grp.addEventListener('dragend', ()=>grp.classList.remove('dragging'));
