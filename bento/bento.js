@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadedImages = new Map(), loadedVideos = new Map(), loadedGIFs = new Map();
   const videoFrameCaches = new Map();
   let totalFileSize = 0;
+  let renderedCards = [], hoveredCard = null;
+  const canvasPointer = {x:0,y:0,inside:false};
 
   /* DOM SHORTCUTS */
   const qs=s=>document.querySelector(s), qsa=s=>[...document.querySelectorAll(s)];
@@ -332,6 +334,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     ctx.restore();
   }
+  function drawChangeContentOverlay(card){
+    ctx.save();
+    drawRoundedRect(card.x,card.y,card.w,card.h,cornerRadius);
+    ctx.clip();
+    ctx.fillStyle='rgba(93,93,93,.88)';
+    ctx.fillRect(card.x,card.y,card.w,card.h);
+    const fontSize=Math.max(16,Math.min(card.w*.065,40));
+    ctx.fillStyle='#fff';
+    ctx.font=`600 ${fontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.fillText('Change content',card.x+card.w/2,card.y+card.h/2);
+    ctx.restore();
+  }
+  function findCardAtPointer(){
+    for(let i=renderedCards.length-1;i>=0;i--){
+      const card=renderedCards[i];
+      if(!cardMedia[card.cardNo-1])continue;
+      if(canvasPointer.x>=card.x&&canvasPointer.x<=card.x+card.w&&canvasPointer.y>=card.y&&canvasPointer.y<=card.y+card.h)return card;
+    }
+    return null;
+  }
+  function updateCanvasPointer(event){
+    const bounds=canvas.getBoundingClientRect();
+    canvasPointer.x=(event.clientX-bounds.left)*(canvas.width/bounds.width);
+    canvasPointer.y=(event.clientY-bounds.top)*(canvas.height/bounds.height);
+    canvasPointer.inside=true;
+  }
 
   /* ---------- ANIMATION LOOP ---------- */
   function animate(ts){
@@ -343,6 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const axis=orientation==='horizontal'?'x':'y';
     const span=orientation==='horizontal'?canvas.width:canvas.height;
     const cardSize=orientation==='horizontal'?cardWidth:cardHeight;
+    renderedCards=[];
     for(let row=0;row<ROWS;row++){
       const dir=(row%2?-1:1);
       const progress=dir>0?animationProgress:(1-animationProgress);
@@ -360,10 +391,16 @@ document.addEventListener('DOMContentLoaded', () => {
             y=pad+i*(cardHeight+cardGap)+(-progress*totalSpan+set*totalSpan);
           }
           const visible=orientation==='horizontal'?(x+cardWidth>0&&x<canvas.width):(y+cardHeight>0&&y<canvas.height);
-          if(visible) drawCard(x,y,cardWidth,cardHeight,cardNo,cardMedia[cardNo-1]);
+          if(visible){
+            drawCard(x,y,cardWidth,cardHeight,cardNo,cardMedia[cardNo-1]);
+            renderedCards.push({x,y,w:cardWidth,h:cardHeight,cardNo});
+          }
         }
       }
     }
+    hoveredCard=canvasPointer.inside?findCardAtPointer():null;
+    if(hoveredCard)drawChangeContentOverlay(hoveredCard);
+    canvas.style.cursor=hoveredCard?'pointer':'default';
     animationFrameId=requestAnimationFrame(animate);
   }
 
@@ -722,6 +759,18 @@ document.addEventListener('DOMContentLoaded', () => {
   batchMediaInput.addEventListener('change',async e=>{
     await handleBatchUpload(e.target.files);
     e.target.value='';
+  });
+
+  canvas.addEventListener('mousemove',updateCanvasPointer);
+  canvas.addEventListener('mouseleave',()=>{
+    canvasPointer.inside=false;
+    hoveredCard=null;
+    canvas.style.cursor='default';
+  });
+  canvas.addEventListener('click',event=>{
+    updateCanvasPointer(event);
+    const card=findCardAtPointer();
+    if(card)qs(`#card${String(card.cardNo).padStart(2,'0')}-file`).click();
   });
 
   toggleAnimationBtn.addEventListener('click', () => {
