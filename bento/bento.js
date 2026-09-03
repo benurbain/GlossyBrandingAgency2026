@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const uploadedFiles = new Array(9).fill(null);
   const uploadedBlobURLs = new Array(9).fill(null);
   const loadedImages = new Map(), loadedVideos = new Map(), loadedGIFs = new Map();
+  const videoFrameCaches = new Map();
   let totalFileSize = 0;
 
   /* DOM SHORTCUTS */
@@ -252,13 +253,64 @@ document.addEventListener('DOMContentLoaded', () => {
     if(sr>dr){ssw=sh*dr;sx=(sw-ssw)/2;}else{ssh=sw/dr;sy=(sh-ssh)/2;}
     ctx.drawImage(src,sx,sy,ssw,ssh,dx,dy,dw,dh);
   }
+  function captureVideoFrame(cache){
+    const {video,canvas:frameCanvas,context:frameContext}=cache;
+    if(cache.stopped||video.seeking||video.readyState<2||!video.videoWidth||!video.videoHeight)return;
+    try{
+      const scale=Math.min(1,1280/video.videoWidth,1280/video.videoHeight);
+      const frameWidth=Math.max(1,Math.round(video.videoWidth*scale));
+      const frameHeight=Math.max(1,Math.round(video.videoHeight*scale));
+      if(frameCanvas.width!==frameWidth||frameCanvas.height!==frameHeight){
+        frameCanvas.width=frameWidth;
+        frameCanvas.height=frameHeight;
+      }
+      frameContext.drawImage(video,0,0,frameCanvas.width,frameCanvas.height);
+      cache.hasFrame=true;
+    }catch(error){
+      console.warn('Could not buffer video frame',error);
+    }
+  }
+  function startVideoFrameCache(url,video){
+    const frameCanvas=document.createElement('canvas');
+    const usesVideoFrameCallback=typeof video.requestVideoFrameCallback==='function';
+    const cache={video,canvas:frameCanvas,context:frameCanvas.getContext('2d'),hasFrame:false,stopped:false,callbackId:null,usesVideoFrameCallback};
+    videoFrameCaches.set(url,cache);
+
+    const captureNextFrame=()=>{
+      if(cache.stopped)return;
+      captureVideoFrame(cache);
+      cache.callbackId=video.requestVideoFrameCallback(captureNextFrame);
+    };
+    video.addEventListener('loadeddata',()=>captureVideoFrame(cache));
+    video.addEventListener('seeked',()=>captureVideoFrame(cache));
+    if(usesVideoFrameCallback){
+      cache.callbackId=video.requestVideoFrameCallback(captureNextFrame);
+    }else{
+      video.addEventListener('timeupdate',()=>captureVideoFrame(cache));
+    }
+  }
+  function stopVideoFrameCache(url){
+    const cache=videoFrameCaches.get(url);
+    if(!cache)return;
+    cache.stopped=true;
+    if(cache.callbackId!==null&&typeof cache.video.cancelVideoFrameCallback==='function'){
+      cache.video.cancelVideoFrameCallback(cache.callbackId);
+    }
+    videoFrameCaches.delete(url);
+  }
   function drawCard(x,y,w,h,n,url){
     ctx.save();
     drawRoundedRect(x,y,w,h,cornerRadius);ctx.clip();
     ctx.fillStyle='#fff';ctx.fillRect(x,y,w,h);
     let ok=false;
     if(url){
-      if(loadedVideos.has(url)){const v=loadedVideos.get(url);if(v.readyState>=2){drawImageCover(v,x,y,w,h);ok=true;}else v.play().catch(()=>0);}
+      if(loadedVideos.has(url)){
+        const v=loadedVideos.get(url), cache=videoFrameCaches.get(url);
+        if(cache&&!cache.usesVideoFrameCallback)captureVideoFrame(cache);
+        if(cache?.hasFrame){drawImageCover(cache.canvas,x,y,w,h);ok=true;}
+        else if(v.readyState>=2&&!v.seeking){drawImageCover(v,x,y,w,h);ok=true;}
+        else v.play().catch(()=>0);
+      }
       else if(loadedImages.has(url)){const img=loadedImages.get(url);if(img.complete&&img.naturalWidth){drawImageCover(img,x,y,w,h);ok=true;}}
       else if(loadedGIFs.has(url)){const img=loadedGIFs.get(url);if(img.complete&&img.naturalWidth){drawImageCover(img,x,y,w,h);ok=true;}}
     }
@@ -364,6 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(newTot>MAX_TOTAL_SIZE){setStatus(idx,'>200 MB total','error');return;}
     if(uploadedBlobURLs[idx]){
       loadedVideos.get(uploadedBlobURLs[idx])?.pause();
+      stopVideoFrameCache(uploadedBlobURLs[idx]);
       loadedVideos.delete(uploadedBlobURLs[idx]); loadedImages.delete(uploadedBlobURLs[idx]); loadedGIFs.delete(uploadedBlobURLs[idx]);
       URL.revokeObjectURL(uploadedBlobURLs[idx]);
     }
@@ -379,6 +432,8 @@ document.addEventListener('DOMContentLoaded', () => {
     clearThumbnail(thumb);
     if(isVideo(file)){
       const v=document.createElement('video'); v.src=url; v.loop=v.muted=v.playsInline=true;
+      v.preload='auto';
+      startVideoFrameCache(url,v);
       v.addEventListener('loadeddata',()=>{setVideoThumbnail(v,thumb);v.play().catch(()=>0);setStatus(idx,`✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`,'success')});
       v.addEventListener('error',()=>setStatus(idx,'Video error','error'));
       loadedVideos.set(url,v); v.load();
@@ -415,6 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function reloadMedia(){
     loadedVideos.forEach(video=>video.pause());
+    [...videoFrameCaches.keys()].forEach(stopVideoFrameCache);
     loadedImages.clear(); loadedVideos.clear(); loadedGIFs.clear();
     for(let i=0;i<9;i++){
       const url=uploadedBlobURLs[i];
@@ -424,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const thumb=qs(`#thumb${String(i+1).padStart(2,'0')}`);
       if(isVideo(file)){
         clearThumbnail(thumb);
-        const v=document.createElement('video'); v.src=url; v.loop=v.muted=v.playsInline=true; v.addEventListener('loadeddata',()=>{setVideoThumbnail(v,thumb);v.play().catch(()=>0)}); v.load(); loadedVideos.set(url,v);
+        const v=document.createElement('video'); v.src=url; v.loop=v.muted=v.playsInline=true; v.preload='auto'; startVideoFrameCache(url,v); v.addEventListener('loadeddata',()=>{setVideoThumbnail(v,thumb);v.play().catch(()=>0)}); v.load(); loadedVideos.set(url,v);
       }else{
         const img=new Image(); img.src=url; img.addEventListener('load',()=>setImageThumbnail(thumb,url)); isGIF(file)?loadedGIFs.set(url,img):loadedImages.set(url,img);
       }
