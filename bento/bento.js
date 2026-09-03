@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('renderCanvas');
   const ctx = canvas.getContext('2d');
   const viewportContainer = document.querySelector('.viewport-container');
+  const canvasStage = document.getElementById('canvasStage');
+  const canvasHitLayer = document.getElementById('canvasHitLayer');
 
   /* CONSTANTS */
   const CARDS_PER_ROW = 3, ROWS = 3;
@@ -31,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadedImages = new Map(), loadedVideos = new Map(), loadedGIFs = new Map();
   const videoFrameCaches = new Map();
   let totalFileSize = 0;
-  let renderedCards = [], hoveredCard = null;
-  const canvasPointer = {x:0,y:0,inside:false};
+  let renderedCards = [];
+  const cardHitTargets = [];
 
   /* DOM SHORTCUTS */
   const qs=s=>document.querySelector(s), qsa=s=>[...document.querySelectorAll(s)];
@@ -222,8 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.height = Math.max(2, Math.floor(canvasH / 2) * 2);
 
     // Set visual display size (this determines how it looks in browser)
-    canvas.style.width = displayW + 'px';
-    canvas.style.height = displayH + 'px';
+    canvasStage.style.width = displayW + 'px';
+    canvasStage.style.height = displayH + 'px';
 
     console.log('📐 Canvas internal size (video resolution):', canvas.width, 'x', canvas.height);
     console.log('🖥️ Canvas display size (visual):', displayW, 'x', displayH);
@@ -334,33 +336,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     ctx.restore();
   }
-  function drawChangeContentOverlay(card){
-    ctx.save();
-    drawRoundedRect(card.x,card.y,card.w,card.h,cornerRadius);
-    ctx.clip();
-    ctx.fillStyle='rgba(93,93,93,.88)';
-    ctx.fillRect(card.x,card.y,card.w,card.h);
-    const fontSize=Math.max(16,Math.min(card.w*.065,40));
-    ctx.fillStyle='#fff';
-    ctx.font=`600 ${fontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
-    ctx.textAlign='center';
-    ctx.textBaseline='middle';
-    ctx.fillText('Change content',card.x+card.w/2,card.y+card.h/2);
-    ctx.restore();
-  }
-  function findCardAtPointer(){
-    for(let i=renderedCards.length-1;i>=0;i--){
-      const card=renderedCards[i];
-      if(!cardMedia[card.cardNo-1])continue;
-      if(canvasPointer.x>=card.x&&canvasPointer.x<=card.x+card.w&&canvasPointer.y>=card.y&&canvasPointer.y<=card.y+card.h)return card;
+  function syncCardHitTargets(){
+    const interactiveCards=renderedCards.filter(card=>cardMedia[card.cardNo-1]);
+    const displayScale=canvasStage.clientWidth/canvas.width;
+    for(let i=0;i<interactiveCards.length;i++){
+      const card=interactiveCards[i];
+      let target=cardHitTargets[i];
+      if(!target){
+        target=document.createElement('label');
+        target.className='canvas-card-hit';
+        target.textContent='Change content';
+        canvasHitLayer.appendChild(target);
+        cardHitTargets.push(target);
+      }
+      const cardLabel=String(card.cardNo).padStart(2,'0');
+      target.htmlFor=`card${cardLabel}-file`;
+      target.setAttribute('aria-label',`Change content for Card ${cardLabel}`);
+      target.style.display='flex';
+      target.style.left=`${card.x/canvas.width*100}%`;
+      target.style.top=`${card.y/canvas.height*100}%`;
+      target.style.width=`${card.w/canvas.width*100}%`;
+      target.style.height=`${card.h/canvas.height*100}%`;
+      target.style.borderRadius=`${Math.max(0,cornerRadius*displayScale)}px`;
+      target.style.fontSize=`${Math.max(12,Math.min(28,card.w*displayScale*.065))}px`;
     }
-    return null;
-  }
-  function updateCanvasPointer(event){
-    const bounds=canvas.getBoundingClientRect();
-    canvasPointer.x=(event.clientX-bounds.left)*(canvas.width/bounds.width);
-    canvasPointer.y=(event.clientY-bounds.top)*(canvas.height/bounds.height);
-    canvasPointer.inside=true;
+    for(let i=interactiveCards.length;i<cardHitTargets.length;i++)cardHitTargets[i].style.display='none';
   }
 
   /* ---------- ANIMATION LOOP ---------- */
@@ -398,9 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
-    hoveredCard=canvasPointer.inside?findCardAtPointer():null;
-    if(hoveredCard)drawChangeContentOverlay(hoveredCard);
-    canvas.style.cursor=hoveredCard?'pointer':'default';
+    syncCardHitTargets();
     animationFrameId=requestAnimationFrame(animate);
   }
 
@@ -553,6 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
     qsa('.control-panel input, .control-panel button').forEach(control=>{
       if(control!==toggleRecordingBtn)control.disabled=locked;
     });
+    canvasHitLayer.classList.toggle('disabled',locked);
   }
 
   function resetRecordingUI(){
@@ -759,18 +758,6 @@ document.addEventListener('DOMContentLoaded', () => {
   batchMediaInput.addEventListener('change',async e=>{
     await handleBatchUpload(e.target.files);
     e.target.value='';
-  });
-
-  canvas.addEventListener('mousemove',updateCanvasPointer);
-  canvas.addEventListener('mouseleave',()=>{
-    canvasPointer.inside=false;
-    hoveredCard=null;
-    canvas.style.cursor='default';
-  });
-  canvas.addEventListener('click',event=>{
-    updateCanvasPointer(event);
-    const card=findCardAtPointer();
-    if(card)qs(`#card${String(card.cardNo).padStart(2,'0')}-file`).click();
   });
 
   toggleAnimationBtn.addEventListener('click', () => {
