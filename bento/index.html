@@ -64,6 +64,9 @@
     .media-status.success{color:#4CAF50}
     .media-status.error{color:#ff4444}
     .media-status.warning{color:#ffaa00}
+    .batch-upload{margin:10px 0}
+    .batch-upload .button{margin-bottom:6px}
+    .batch-upload .media-status{white-space:normal}
     .recording-status{font-size:.8em;line-height:1.35;margin-top:8px;min-height:1.35em;text-align:center}
     .recording-status.error{color:#ffb0b0}
     .recording-status.success{color:#b7ffba}
@@ -121,6 +124,11 @@
             <div class="control-section"><h3>Animation speed settings</h3><div class="slider-container"><span class="slider-value">1.0x</span><input type="range" id="anim-speed" min="0.1" max="5" value="1" step="0.1"><span class="slider-value">x5</span></div></div>
 
             <div class="control-section"><h3>Media Upload</h3><p style="font-size:.85em;opacity:.9">Upload files (max 25 MB each)<br><span style="font-size:.8em">Supports images, GIFs & videos</span></p>
+              <div class="batch-upload">
+                <input type="file" id="batchMediaInput" accept="image/*,video/*,.gif" multiple hidden>
+                <button class="button" id="batchUploadBtn" type="button">→ Upload up to 9 files</button>
+                <span class="media-status" id="batchUploadStatus">Placed in filename order (01 → 09).</span>
+              </div>
               <div class="media-inputs-container" id="mediaInputs"></div>
               <div style="margin-top:10px;font-size:.8em;opacity:.8">Total: <span id="totalFileSize">0 MB</span>/200 MB</div>
             </div>
@@ -147,7 +155,7 @@
     </div>
   </div>
 
-  <script src="bento.js?v=20260903-3"></script>
+  <script src="bento.js?v=20260903-4"></script>
 
 </body>
 </html>

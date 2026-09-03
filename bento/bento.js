@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const animSpeedSlider = qs('#anim-speed');
   const animDurationSlider = qs('#anim-duration');
   const updateMediaBtn = qs('#updateMediaBtn');
+  const batchMediaInput = qs('#batchMediaInput');
+  const batchUploadBtn = qs('#batchUploadBtn');
+  const batchUploadStatus = qs('#batchUploadStatus');
   const toggleAnimationBtn = qs('#toggleAnimationBtn');
   const toggleRecordingBtn = qs('#toggleRecordingBtn');
   const recordingStatus = qs('#recordingStatus');
@@ -321,8 +324,13 @@ document.addEventListener('DOMContentLoaded', () => {
     status.className=`media-status ${type}`;
     if(msg)status.title=msg;else status.removeAttribute('title');
   }
+  function setBatchStatus(msg,type=''){
+    batchUploadStatus.textContent=msg;
+    batchUploadStatus.className=`media-status ${type}`.trim();
+  }
   function isVideo(f){return f && f.type.startsWith('video/')}
   function isGIF(f){return f && f.type==='image/gif'}
+  function isSupportedMedia(f){return f&&(f.type.startsWith('image/')||f.type.startsWith('video/'))}
   function clearThumbnail(thumb){
     thumb.removeAttribute('src');
     thumb.style.display='none';
@@ -350,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   async function handleFileUpload(idx,file){
     if(!file)return;
-    if(!file.type.startsWith('image/')&&!file.type.startsWith('video/')){setStatus(idx,'Unsupported file type','error');return;}
+    if(!isSupportedMedia(file)){setStatus(idx,'Unsupported file type','error');return;}
     if(file.size>MAX_FILE_SIZE){setStatus(idx,'>25 MB','error');return;}
     const newTot=totalFileSize-(uploadedFiles[idx]?.size||0)+file.size;
     if(newTot>MAX_TOTAL_SIZE){setStatus(idx,'>200 MB total','error');return;}
@@ -384,6 +392,26 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTotal();
     const mb=(file.size/1024/1024).toFixed(1);
     setStatus(idx,`✓ ${file.name} (${mb}MB)`,'success');
+  }
+  async function handleBatchUpload(fileList){
+    const files=[...fileList];
+    if(!files.length)return;
+    if(files.length>9){setBatchStatus('Select a maximum of 9 files.','error');return;}
+
+    const invalidFile=files.find(file=>!isSupportedMedia(file));
+    if(invalidFile){setBatchStatus(`Unsupported file: ${invalidFile.name}`,'error');return;}
+    const oversizedFile=files.find(file=>file.size>MAX_FILE_SIZE);
+    if(oversizedFile){setBatchStatus(`${oversizedFile.name} exceeds 25 MB.`,'error');return;}
+
+    const filenameCollator=new Intl.Collator(undefined,{numeric:true,sensitivity:'base'});
+    files.sort((a,b)=>filenameCollator.compare(a.name,b.name));
+    const replacedSize=files.reduce((sum,file,index)=>sum+(uploadedFiles[index]?.size||0),0);
+    const incomingSize=files.reduce((sum,file)=>sum+file.size,0);
+    if(totalFileSize-replacedSize+incomingSize>MAX_TOTAL_SIZE){setBatchStatus('These files exceed the 200 MB total.','error');return;}
+
+    setBatchStatus(`Loading ${files.length} files…`);
+    for(let i=0;i<files.length;i++)await handleFileUpload(i,files[i]);
+    setBatchStatus(`✓ ${files.length} files placed in filename order.`,'success');
   }
   function reloadMedia(){
     loadedVideos.forEach(video=>video.pause());
@@ -630,6 +658,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   updateMediaBtn.addEventListener('click', reloadMedia);
+  batchUploadBtn.addEventListener('click',()=>batchMediaInput.click());
+  batchMediaInput.addEventListener('change',async e=>{
+    await handleBatchUpload(e.target.files);
+    e.target.value='';
+  });
 
   toggleAnimationBtn.addEventListener('click', () => {
     isAnimating = !isAnimating;
