@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let mediaRecorder, recordingStream, recordedChunks=[], animationFrameId;
   let recordingStartedAt=0, recordingTargetDuration=0, recordingAutoStopTimer=null;
   let recordingStopRequested=false;
+  let recordingVideoTrack=null, recordingUsesManualFrames=false;
+  let recordingFrameIndex=0, recordingTotalFrames=0, recordingNextFrameAt=0;
+  let recordingFrameTimer=null;
   let isPreparingRecording=false;
   let recordingAvailable=false;
   const cardMedia = new Array(9).fill(null);
@@ -437,12 +440,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------- ANIMATION LOOP ---------- */
-  function renderScene(){
+  function renderScene(syncInteractions=true){
     ctx.fillStyle=canvasBgColor;ctx.fillRect(0,0,canvas.width,canvas.height);
     renderedCards=[];
     if(orientation==='creative'){
       drawCreativeLayout(animationProgress);
-      syncCardHitTargets();
+      if(syncInteractions)syncCardHitTargets();
       return;
     }
     const {pad,cardGap,cardWidth,cardHeight}=calcLayout();
@@ -472,12 +475,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
-    syncCardHitTargets();
+    if(syncInteractions)syncCardHitTargets();
+  }
+  function captureNextRecordingFrame(){
+    if(!isRecording||recordingStopRequested||recordingFrameIndex>=recordingTotalFrames)return;
+    animationProgress=(recordingFrameIndex*PERFECT_LOOP_COUNT/recordingTotalFrames)%1;
+    renderScene(false);
+    recordingVideoTrack.requestFrame();
+    recordingFrameIndex++;
+    updateRecordingTimer(recordingFrameIndex/RECORDING_FPS*1000);
+    if(recordingFrameIndex>=recordingTotalFrames){
+      recordingAutoStopTimer=setTimeout(()=>stopRecording(true),1000/RECORDING_FPS);
+      return;
+    }
+    recordingNextFrameAt+=1000/RECORDING_FPS;
+    recordingFrameTimer=setTimeout(captureNextRecordingFrame,Math.max(0,recordingNextFrameAt-performance.now()));
   }
   function animate(ts){
     if(!lastTimestamp)lastTimestamp=ts;
     const dt=ts-lastTimestamp; lastTimestamp=ts;
-    if(isRecording&&!recordingStopRequested){
+    if(isRecording&&!recordingStopRequested&&recordingUsesManualFrames){
+      animationFrameId=requestAnimationFrame(animate);
+      return;
+    }else if(isRecording&&!recordingStopRequested){
       const elapsed=Math.max(0,ts-recordingStartedAt);
       if(elapsed>=recordingTargetDuration){
         updateRecordingTimer(recordingTargetDuration);
@@ -489,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }else if(isAnimating&&!recordingStopRequested){
       animationProgress=(animationProgress+(dt*animationSpeed)/animationDuration)%1;
     }
-    renderScene();
+    renderScene(!isRecording);
     animationFrameId=requestAnimationFrame(animate);
   }
 
@@ -663,6 +683,13 @@ document.addEventListener('DOMContentLoaded', () => {
     recordingStopRequested=false;
     recordingStartedAt=0;
     recordingTargetDuration=0;
+    recordingVideoTrack=null;
+    recordingUsesManualFrames=false;
+    recordingFrameIndex=0;
+    recordingTotalFrames=0;
+    recordingNextFrameAt=0;
+    clearTimeout(recordingFrameTimer);
+    recordingFrameTimer=null;
     clearTimeout(recordingAutoStopTimer);
     recordingAutoStopTimer=null;
     mediaRecorder=null;
@@ -727,8 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Create canvas stream
       console.log('🎥 Creating canvas stream...');
-      const stream = canvas.captureStream(RECORDING_FPS);
-      recordingStream = stream;
+      let stream = canvas.captureStream(0);
 
       if (!stream || stream.getVideoTracks().length === 0) {
         logError('Recording failed', 'Could not create video stream from canvas');
@@ -736,9 +762,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const videoTrack = stream.getVideoTracks()[0];
+      let videoTrack = stream.getVideoTracks()[0];
+      recordingUsesManualFrames=typeof videoTrack.requestFrame==='function';
+      if(!recordingUsesManualFrames){
+        stream.getTracks().forEach(track=>track.stop());
+        stream=canvas.captureStream(RECORDING_FPS);
+        videoTrack=stream.getVideoTracks()[0];
+      }
+      recordingStream = stream;
+      recordingVideoTrack = videoTrack;
       videoTrack.contentHint = 'motion';
-      console.log('✅ Canvas stream created with', stream.getVideoTracks().length, 'video track(s)');
+      console.log('✅ Canvas stream created with',stream.getVideoTracks().length,'video track(s); manual frames:',recordingUsesManualFrames);
 
       const recorder = new MediaRecorder(stream, {
         mimeType: support.mp4MimeType,
@@ -797,15 +831,20 @@ document.addEventListener('DOMContentLoaded', () => {
       isPreparingRecording = false;
       recordingStopRequested = false;
       recordingTargetDuration = animationDuration * PERFECT_LOOP_COUNT / animationSpeed;
+      recordingTotalFrames = Math.max(PERFECT_LOOP_COUNT,Math.round(recordingTargetDuration/1000*RECORDING_FPS));
+      recordingTargetDuration = recordingTotalFrames/RECORDING_FPS*1000;
+      recordingFrameIndex = 0;
       setControlsLocked(true);
       toggleRecordingBtn.disabled = false;
       toggleRecordingBtn.style.background = '#ff4444';
       toggleRecordingBtn.classList.add('recording-active');
       recorder.start(1000);
       recordingStartedAt = performance.now();
+      recordingNextFrameAt = recordingStartedAt;
       updateRecordingTimer(0);
       setRecordingStatus(`Recording ${PERFECT_LOOP_COUNT} complete loops at ${RECORDING_FPS} fps…`);
-      recordingAutoStopTimer=setTimeout(()=>stopRecording(true),recordingTargetDuration);
+      if(recordingUsesManualFrames)captureNextRecordingFrame();
+      else recordingAutoStopTimer=setTimeout(()=>stopRecording(true),recordingTargetDuration);
 
       console.log('✅ Perfect-loop recording started for',recordingTargetDuration,'ms');
 
@@ -825,6 +864,8 @@ document.addEventListener('DOMContentLoaded', () => {
     recordingStopRequested=true;
     clearTimeout(recordingAutoStopTimer);
     recordingAutoStopTimer=null;
+    clearTimeout(recordingFrameTimer);
+    recordingFrameTimer=null;
     console.log('🛑 Stopping recording...');
 
     if (mediaRecorder && mediaRecorder.state !== 'inactive') {
