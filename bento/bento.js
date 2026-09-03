@@ -415,25 +415,20 @@ document.addEventListener('DOMContentLoaded', () => {
     return CREATIVE_CAMERA_KEYFRAMES[CREATIVE_CAMERA_KEYFRAMES.length-1];
   }
   function drawCreativeMode1(progress){
-    const gap=cardSpacing;
     const pad=cardSpacing;
-    const cellWidth=(canvas.width-pad*2-gap*3)/4;
-    const cellHeight=(canvas.height-pad*2-gap*3)/4;
     const camera=creativeCameraAt(progress);
     const worldWidth=canvas.width-pad*2;
     const worldHeight=canvas.height-pad*2;
-    const focusX=pad+worldWidth*camera.focusX;
+    const naturalFocusX=pad+worldWidth*camera.focusX;
+    const focusX=canvas.width/2+(naturalFocusX-canvas.width/2)*cardWidthScale;
     const focusY=pad+worldHeight*camera.focusY;
 
     CREATIVE_CARD_LAYOUT.forEach((spec,index)=>{
-      const baseX=pad+spec.col*(cellWidth+gap);
-      const baseY=pad+spec.row*(cellHeight+gap);
-      const baseWidth=spec.cols*cellWidth+(spec.cols-1)*gap;
-      const baseHeight=spec.rows*cellHeight+(spec.rows-1)*gap;
-      const centerX=(baseX+baseWidth/2-focusX)*camera.zoom+canvas.width/2;
-      const centerY=(baseY+baseHeight/2-focusY)*camera.zoom+canvas.height/2;
-      const width=baseWidth*camera.zoom*cardWidthScale;
-      const height=baseHeight*camera.zoom;
+      const baseRect=normalizedCardRect({x:spec.col/4,y:spec.row/4,w:spec.cols/4,h:spec.rows/4});
+      const centerX=(baseRect.x+baseRect.w/2-focusX)*camera.zoom+canvas.width/2;
+      const centerY=(baseRect.y+baseRect.h/2-focusY)*camera.zoom+canvas.height/2;
+      const width=baseRect.w*camera.zoom;
+      const height=baseRect.h*camera.zoom;
       const x=centerX-width/2;
       const y=centerY-height/2;
       if(x+width<=0||x>=canvas.width||y+height<=0||y>=canvas.height)return;
@@ -492,12 +487,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function normalizedCardRect(spec){
     const pad=cardSpacing, gap=cardSpacing;
     const availableWidth=canvas.width-pad*2, availableHeight=canvas.height-pad*2;
-    const naturalWidth=Math.max(2,spec.w*availableWidth-gap*.7);
-    const width=naturalWidth*cardWidthScale;
-    const height=Math.max(2,spec.h*availableHeight-gap*.7);
+    const naturalLeft=pad+spec.x*availableWidth;
+    const scaledLeft=canvas.width/2+(naturalLeft-canvas.width/2)*cardWidthScale;
+    const width=Math.max(2,spec.w*availableWidth*cardWidthScale-gap);
+    const height=Math.max(2,spec.h*availableHeight-gap);
     return {
-      x:pad+spec.x*availableWidth+gap*.35+(naturalWidth-width)/2,
-      y:pad+spec.y*availableHeight+gap*.35,
+      x:scaledLeft+gap/2,
+      y:pad+spec.y*availableHeight+gap/2,
       w:width,
       h:height
     };
