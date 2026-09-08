@@ -616,6 +616,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   object-fit: cover;
   z-index: 0;
   pointer-events: none;
+  filter: grayscale(1) contrast(.135) brightness(1.73);
 }
 
 .hero-panel::after {
@@ -623,7 +624,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgb(255 255 255 / 25%);
+  background: transparent;
   pointer-events: none;
 }
 
