@@ -601,7 +601,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* The homepage hero uses a quiet, looping film behind the proposition. */
 .hero-panel {
   position: relative;
-  background: var(--smoke) url("../media/glossy-header-poster.jpg") center / cover no-repeat;
+  background: var(--smoke) url("../media/glossy-header-bw-loop-poster.jpg") center / cover no-repeat;
   border-radius: var(--radius);
   padding: clamp(2rem, 1rem + 4vw, 5rem);
   overflow: hidden;
