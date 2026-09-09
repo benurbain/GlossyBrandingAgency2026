@@ -129,6 +129,8 @@
 .lab-system .contact-visual video[hidden]{display:none}
 .lab-system .media-fallback{font-size:var(--type-meta);margin-block-start:.75rem;color:var(--ink-soft)}
 @media(max-width:1100px) and (min-width:681px){
+  .lab-system .contact-content>p:not(.kicker){grid-column:1/span 9}
+  .lab-system .contact-content>.button{grid-column:1/-1}
   .lab-system .section-head>.section-summary{grid-column:1/span 8}
   .lab-system .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }

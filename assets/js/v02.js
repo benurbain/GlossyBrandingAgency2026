@@ -1,5 +1,32 @@
 /* Shared V02 enhancements; all overview content exists in the static HTML. */
 (function(){
+  // Assign video sources only near the viewport. Once loaded, keep the owner's
+  // uninterrupted muted loop: no scroll-out pausing and no new controls.
+  const pending=new Set();
+  let observer;
+  function loadVideo(video){
+    if(video.closest('[hidden]'))return;
+    const sources=[video,...video.querySelectorAll('source')];
+    let assigned=false;
+    sources.forEach(source=>{
+      const src=source.dataset.lazySrc||source.dataset.v02Src;
+      if(!src)return;
+      source.src=src;delete source.dataset.lazySrc;delete source.dataset.v02Src;assigned=true;
+    });
+    if(!assigned)return;
+    pending.delete(video);observer?.unobserve(video);
+    video.dataset.videoLoaded='true';video.muted=true;
+    video.load();video.play().catch(()=>{});
+  }
+  if('IntersectionObserver' in window)observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{if(entry.isIntersecting)loadVideo(entry.target);});
+  },{rootMargin:'250px 0px',threshold:0});
+  function watchVideo(video){
+    if(video.dataset.videoLoaded)return;
+    if(!observer){loadVideo(video);return;}
+    if(!pending.has(video)){pending.add(video);observer.observe(video);}
+  }
+  document.querySelectorAll('video[data-lazy-video]').forEach(watchVideo);
   document.querySelectorAll('[data-set-lang]').forEach(a=>a.addEventListener('click',()=>{
     try{localStorage.setItem('glossy-lang',a.dataset.setLang);}catch{}
   }));
@@ -17,9 +44,7 @@
         if(!c.hidden)c.querySelectorAll('img[data-v02-src]').forEach(img=>{
           img.src=img.dataset.v02Src;delete img.dataset.v02Src;
         });
-        if(!c.hidden)c.querySelectorAll('video[data-v02-src]').forEach(v=>{
-          v.src=v.dataset.v02Src;delete v.dataset.v02Src;v.play().catch(()=>{});
-        });
+        if(!c.hidden)c.querySelectorAll('video[data-lazy-video],video[data-v02-src]').forEach(watchVideo);
       });
       more.hidden=count>=cards.length;
       if(status)status.textContent=`${count} / ${cards.length}`;

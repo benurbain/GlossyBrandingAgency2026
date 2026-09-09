@@ -129,7 +129,7 @@ main,
 /* Closing CTA: one grid-contained video module, never viewport bleed.
    Grid min-size allows longer copy to grow the panel without clipping. */
 .contact{display:block;min-height:0}
-.contact-panel{--contact-inset:clamp(1.25rem,2.4vw,2.5rem);position:relative;isolation:isolate;display:grid;background:var(--paper)}
+.contact-panel{--contact-inset:clamp(1.25rem,2.4vw,2.5rem);position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr);min-width:0;background:var(--paper)}
 .contact-panel::before{content:"";grid-area:1/1;aspect-ratio:16/9;pointer-events:none}
 .contact-visual{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .contact-visual img,.contact-visual video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--paper);filter:grayscale(1)}
