@@ -62,7 +62,8 @@ button{cursor:pointer}
 .article-copy{width:100%;max-width:var(--copy-measure);margin-inline:auto;font-size:var(--type-lead)}
 .article-media{margin:0}
 /* Only news preview cards are monochrome; article media keeps its original colour. */
-.article-media img,.article-media video,.case-hero>img,.case-media>img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--smoke)}
+.article-media img,.article-media video{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--smoke)}
+.case-hero>img,.case-media>img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;background:var(--smoke)}
 .v02-article .article-copy img{margin-block:var(--space-card);height:auto}
 .case-section__grid{display:grid;gap:var(--space-row) var(--gap);grid-template-columns:repeat(2,minmax(0,1fr))}
 .case-media-grid[data-cols="1"]{grid-template-columns:minmax(0,1fr)}

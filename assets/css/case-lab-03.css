@@ -9,6 +9,9 @@
 .arrow-icon--back{transform:rotate(180deg)}
 .case-hero,.case-media{margin-block:0}
 .case-hero video,.case-media>video,.case-media-grid img,.case-media-grid video{display:block;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;background:var(--smoke);border-radius:var(--radius)}
+/* Case storytelling preserves each original ratio; preview cards keep 16:9. */
+.v02-case :is(.case-hero,.case-media,.case-media-grid) :is(img,video){height:auto;aspect-ratio:auto;object-fit:contain}
+.v02-case :is(.case-hero,.case-media,.case-media-grid) video{aspect-ratio:auto var(--case-media-ratio,16/9)}
 .case-media{padding-block-end:var(--space-media)}
 .case-rule{position:relative;padding-block:var(--section)}
 .case-rule::before{content:"";position:absolute;inset-block-start:0;inset-inline:var(--gutter);height:1px;background:var(--line);pointer-events:none}
@@ -25,6 +28,10 @@
 .case-chapter__copy{grid-column:7/span 5;align-self:end;max-width:var(--copy-measure);color:var(--ink-soft);font-size:var(--case-copy)}
 .case-media-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-row) var(--gap);margin:0;align-items:start}
 .case-media-grid figure{margin:0;min-width:0}
+.v02-case .case-media-grid[data-natural-media]{grid-template-columns:repeat(12,minmax(0,1fr));align-items:start}
+.v02-case .case-media-grid[data-natural-media]>figure{grid-column:span 6;align-self:start}
+.v02-case .case-media-grid[data-natural-media]>[data-media-span="4"]{grid-column:span 4}
+.v02-case .case-media-grid[data-natural-media]>[data-media-span="12"]{grid-column:span 12}
 .case-result__head{grid-column:1/-1;display:grid;gap:var(--space-label)}
 .case-result__stat{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-card);font-size:var(--type-stat);line-height:1;letter-spacing:-.065em;margin:0}
 .case-result__stat>span{white-space:nowrap}
@@ -83,6 +90,7 @@
 
 
 @media(max-width:1100px) and (min-width:681px){
+  .v02-case .case-media-grid[data-natural-media]>[data-media-span="4"]{grid-column:span 6}
   .case-facts{grid-column:8/-1}
   .case-chapter__copy{grid-column:7/-1}
   .case-result__copy{grid-column:1/span 7}
@@ -90,6 +98,7 @@
   .lab-system .case-deliverables__grid{--info-span:6}
 }
 @media(max-width:680px){
+  .v02-case .case-media-grid[data-natural-media]>figure[data-media-span]{grid-column:1/-1}
   .case-intro,.case-overview,.case-chapter,.case-result{grid-template-columns:repeat(4,minmax(0,1fr))}
   .case-intro{min-height:360px;grid-template-rows:auto 1fr auto auto}
   .case-intro>.kicker,.case-intro>h1,.case-baseline{grid-column:1/-1}
