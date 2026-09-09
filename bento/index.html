@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
   <title>Glossy Video Bento Generator – MP4 Export</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root{
       --color-white:#FFFFFF;--color-text-on-dark:#F0F0F0;--color-title-text-dark:#3E3E3E;
@@ -103,7 +102,7 @@
     }
     @media(min-width:993px){#panelToggle{display:none}}
   </style>
-</head>
+<meta name="glossy-build" content="V02-LAB03-20260909"></head>
 <body>
   <button id="panelToggle" aria-label="Toggle panel">☰</button>
 
@@ -134,9 +133,9 @@
 
             <div class="control-section"><h3>Animation speed settings</h3><div class="slider-container"><span class="slider-value">1.0x</span><input type="range" id="anim-speed" min="0.1" max="5" value="1" step="0.1"><span class="slider-value">x5</span></div></div>
 
-            <div class="control-section"><h3>Media Upload</h3><p style="font-size:.85em;opacity:.9">Images & GIFs: max 25 MB<br><span style="font-size:.8em">Videos: max 50 MB</span></p>
+            <div class="control-section"><h3>Media Upload</h3><p style="font-size:.85em;opacity:.9">Images &amp; GIFs: max 25 MB<br><span style="font-size:.8em">Videos: max 50 MB</span></p>
               <div class="batch-upload">
-                <input type="file" id="batchMediaInput" accept="image/*,video/*,.gif" multiple hidden>
+                <input type="file" id="batchMediaInput" accept="image/*,video/*,.gif" multiple="" hidden="">
                 <button class="button" id="batchUploadBtn" type="button">→ Upload 1–9 files at once</button>
                 <span class="media-status" id="batchUploadStatus">Select multiple files in Finder; placed in filename order (01 → 09).</span>
               </div>
@@ -150,7 +149,7 @@
 
             <div class="control-section"><h3>Animation Orientation</h3><div class="orientation-buttons"><button class="button active" data-orientation="horizontal">Horizontal</button><button class="button" data-orientation="vertical">Vertical</button><button class="button" data-orientation="creative">Creative</button></div></div>
 
-            <div class="control-section creative-mode-control" id="creativeModeControl" hidden>
+            <div class="control-section creative-mode-control" id="creativeModeControl" hidden="">
               <h3>Creative Mode</h3>
               <div class="creative-mode-buttons" aria-label="Creative animation mode">
                 <button class="button active" type="button" data-creative-mode="1" title="Focus Zoom">01</button>
@@ -188,7 +187,8 @@
     </div>
   </div>
 
-  <script src="bento.js?v=20260903-14"></script>
+  <script src="bento.js?v=v02-20260909"></script>
 
-</body>
-</html>
+
+
+</body></html>

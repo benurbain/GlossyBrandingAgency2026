@@ -1,0 +1,101 @@
+/* Dutch contact / V02. Existing LAB tokens; no production or consent overrides. */
+.lab-system .contact-refined .contact-entry {
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:var(--space-row) var(--gap);
+  align-items:start;
+  padding-block:var(--space-hero) var(--section);
+}
+.contact-refined .contact-heading {grid-column:1 / span 5;grid-row:1}
+.contact-refined .contact-heading h1 {
+  font-size:var(--type-section-heading);
+  line-height:1.04;
+  letter-spacing:-.055em;
+  margin-block:var(--space-label) var(--space-title-copy);
+  text-wrap:pretty;
+}
+.contact-refined .hero__lead {font-size:var(--type-lead);line-height:1.5;max-width:40ch}
+.contact-refined .contact-direct {grid-column:1 / span 5;grid-row:2;max-width:40ch}
+.contact-refined .contact-direct h2 {font-size:var(--type-small-heading);line-height:1.2;letter-spacing:-.025em}
+.contact-refined .contact-direct>p {margin-top:var(--space-s);color:var(--ink-soft);line-height:1.6}
+.contact-refined .contact-details {
+  margin-top:var(--space-row);
+  padding-top:var(--space-card);
+  border-top:1px solid var(--line);
+  font-size:1rem;
+  line-height:1.8;
+}
+.contact-refined .contact-details strong {font-weight:500}
+.contact-refined .contact-details a {display:inline-block;min-height:32px;text-underline-offset:.2em}
+.lab-system .contact-refined .contact-form-wrap {grid-column:7 / -1;grid-row:1 / span 2;min-width:0}
+.contact-refined .contact-fieldset {min-width:0;padding:0;margin:0 0 var(--space-row);border:0}
+.contact-refined .contact-fieldset legend {
+  width:100%;
+  padding:0 0 var(--space-card);
+  margin-bottom:var(--space-card);
+  border-bottom:1px solid var(--ink);
+  font-size:var(--type-small-heading);
+  line-height:1.2;
+  letter-spacing:-.025em;
+}
+.contact-refined .form-grid {gap:var(--space-card) var(--gap)}
+.contact-refined .field {min-width:0;margin:0;gap:var(--space-2xs)}
+.contact-refined .field label {font-size:.875rem;line-height:1.5;color:var(--ink)}
+.contact-refined .field :is(input,select,textarea) {
+  min-width:0;
+  min-height:var(--button-height);
+  padding:.85rem 1rem;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background-color:var(--paper);
+  color:var(--ink);
+  font-size:1rem;
+  line-height:1.5;
+  transition:border-color 160ms var(--ease-out),background-color 160ms var(--ease-out);
+}
+.contact-refined .field select {
+  padding-right:2.5rem;
+  background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 1.1rem) 50%,calc(100% - .75rem) 50%;
+  background-size:.35rem .35rem,.35rem .35rem;
+  background-repeat:no-repeat;
+}
+.contact-refined .field :is(input,select,textarea):hover {border-color:var(--gray)}
+.contact-refined .field :is(input,select,textarea):focus-visible {outline:2px solid var(--ink);outline-offset:3px;border-color:var(--ink)}
+.contact-refined .contact-fieldset>.field {margin-top:var(--space-card)}
+.contact-refined .field textarea {min-height:10rem;resize:vertical}
+.contact-refined .form-check {max-width:none;gap:var(--space-xs);align-items:start}
+.contact-refined .form-submit {display:grid;justify-items:start;gap:var(--space-s);margin-top:var(--space-card)}
+.contact-refined .form-submit p {max-width:46ch;font-size:var(--type-meta);line-height:1.5}
+.contact-refined .form-submit .button:disabled {opacity:.65;cursor:wait}
+.contact-refined .contact-form-status:target {padding:var(--space-card);border:1px solid var(--line);border-radius:var(--radius)}
+.contact-refined .contact-faq {padding-block:var(--space-row) var(--section)}
+.contact-refined .contact-faq .faq {margin-top:var(--space-heading-content)}
+.contact-refined .faq__q {
+  font-size:var(--type-lead);
+  line-height:1.4;
+  letter-spacing:-.015em;
+  padding-block:var(--space-card);
+  text-align:left;
+}
+.contact-refined .faq__q::after {font-size:1.5rem;flex:0 0 1.5rem;text-align:center}
+.contact-refined .faq__a p {font-size:1rem;line-height:1.65;max-width:var(--copy-measure)}
+@media (max-width:1000px) {
+  .lab-system .contact-refined .contact-entry {gap:var(--space-row) var(--gap)}
+  .contact-refined .contact-heading {grid-column:1 / -1;grid-row:auto;max-width:50rem}
+  .contact-refined .contact-heading h1 {max-width:18ch}
+  .contact-refined .hero__lead {max-width:55ch}
+  .contact-refined .contact-direct {grid-column:1 / span 4;grid-row:2}
+  .lab-system .contact-refined .contact-form-wrap {grid-column:6 / -1;grid-row:2}
+  .contact-refined .form-grid {grid-template-columns:1fr}
+}
+@media (max-width:700px) {
+  .lab-system .contact-refined .contact-entry {grid-template-columns:repeat(4,minmax(0,1fr))}
+  .contact-refined .contact-direct {grid-column:1 / -1;grid-row:3;max-width:none}
+  .lab-system .contact-refined .contact-form-wrap {grid-column:1 / -1;grid-row:2}
+  .contact-refined .contact-heading h1 {font-size:var(--type-section-heading)}
+  .contact-refined .contact-details {margin-top:var(--space-card)}
+}
+@media (prefers-reduced-motion:reduce) {
+  .contact-refined .field :is(input,select,textarea) {transition:none}
+}

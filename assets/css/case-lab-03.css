@@ -1,0 +1,105 @@
+/* BattMobility composition. Shared LAB rules own type roles, spacing and states. */
+.case-lab-03{--case-copy:var(--type-lead)}
+.case-lab-03 strong{font-weight:500}
+.case-intro{min-height:clamp(420px,48vw,680px);padding-block:var(--space-hero) var(--space-heading-content);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto 1fr auto;gap:var(--space-label) var(--gap);align-items:end}
+.case-intro>.kicker{grid-column:1/span 6;grid-row:1;align-self:start}
+.case-intro>h1{grid-column:1/-1;grid-row:2;font-size:var(--type-case-heading);letter-spacing:-.055em;max-width:none;line-height:var(--leading-display)}
+.case-baseline{grid-column:1/span 7;grid-row:3;font-size:var(--type-case-baseline);line-height:var(--leading-card)}
+.case-back{grid-column:10/-1;grid-row:3;justify-self:end;font-size:var(--type-meta)}
+.arrow-icon--back{transform:rotate(180deg)}
+.case-hero,.case-media{margin-block:0}
+.case-hero video,.case-media>video,.case-media-grid img,.case-media-grid video{display:block;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;background:var(--smoke);border-radius:var(--radius)}
+.case-media{padding-block-end:var(--space-media)}
+.case-rule{position:relative;padding-block:var(--section)}
+.case-rule::before{content:"";position:absolute;inset-block-start:0;inset-inline:var(--gutter);height:1px;background:var(--line);pointer-events:none}
+.case-overview,.case-chapter,.case-result{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--space-heading-content)}
+.case-overview__statement{grid-column:1/span 7;display:grid;gap:var(--space-label);align-content:start}
+.case-overview__statement h2,.case-chapter h2,.case-result h2{font-size:var(--type-section-heading);max-width:none;margin:0}
+.case-lead{max-width:var(--copy-measure);color:var(--ink-soft);font-size:var(--case-copy)}
+.case-facts{grid-column:9/-1;margin:0;align-self:end}
+.case-facts>div{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--gap);padding-block:1rem;border-top:1px solid var(--line)}
+.case-facts>div:last-child{border-bottom:1px solid var(--line)}
+.case-facts dt{font-size:var(--type-label);color:var(--gray);text-transform:uppercase;letter-spacing:.055em}
+.case-facts dd{margin:0;font-size:var(--type-meta);line-height:var(--leading-copy);overflow-wrap:anywhere}
+.case-chapter__head{grid-column:1/span 6;display:grid;gap:var(--space-label);align-content:start}
+.case-chapter__copy{grid-column:7/span 5;align-self:end;max-width:var(--copy-measure);color:var(--ink-soft);font-size:var(--case-copy)}
+.case-media-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-row) var(--gap);margin:0;align-items:start}
+.case-media-grid figure{margin:0;min-width:0}
+.case-result__head{grid-column:1/-1;display:grid;gap:var(--space-label)}
+.case-result__stat{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-card);font-size:var(--type-stat);line-height:1;letter-spacing:-.065em;margin:0}
+.case-result__stat>span{white-space:nowrap}
+.case-result__stat .arrow-icon{width:.6em;height:.4em;stroke-width:.7;align-self:center}
+.case-result__stat small{color:var(--gray);font-size:var(--type-meta);letter-spacing:.02em;text-transform:uppercase}
+.case-result__copy{grid-column:1/span 6;max-width:var(--copy-measure);color:var(--ink-soft);font-size:var(--case-copy)}
+.case-result>.button{grid-column:9/-1;justify-self:end;align-self:end}
+.lab-system .case-deliverables__grid{--info-span:3;--info-rows:2}
+.case-carousel__controls{display:flex;align-items:center;justify-content:space-between;margin-block-end:1rem}
+.case-carousel__controls[hidden]{display:none}
+.case-carousel__controls .kicker{font-variant-numeric:tabular-nums}
+.case-carousel__arrow{
+  display:grid;place-items:center;width:44px;height:44px;padding:0;
+  border:1px solid var(--line);border-radius:var(--radius);
+  color:var(--ink);background:var(--paper);cursor:pointer;
+  transition:background 180ms ease,color 180ms ease;
+}
+.case-carousel__arrow .arrow-icon{width:19px;height:12px}
+.case-carousel__arrow--previous .arrow-icon{transform:rotate(180deg)}
+.case-carousel__track{
+  --carousel-visible:2;
+  display:grid;grid-auto-flow:column;
+  grid-auto-columns:calc((100% - var(--gap)) / 2);
+  gap:var(--gap);align-items:start;
+  overflow-x:auto;overscroll-behavior-inline:contain;
+  scroll-snap-type:x mandatory;scrollbar-width:none;
+}
+.case-carousel__track::-webkit-scrollbar{display:none}
+.case-carousel__track>.project{
+  scroll-snap-align:start;display:block;min-width:0;
+}
+.case-carousel__arrow:active{background:var(--ink);color:var(--paper)}
+.case-carousel__arrow:focus-visible,
+.case-carousel__track:focus-visible,
+.case-carousel__track .project:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+@media(hover:hover) and (pointer:fine){
+  .case-carousel__arrow:hover{background:var(--ink);color:var(--paper)}
+}
+@media(max-width:680px){
+  .case-carousel__track{--carousel-visible:1;grid-auto-columns:100%}
+}
+
+
+
+/* Scroll reveals are occasional marketing motion. They explain reading order,
+   run once and only touch compositor-friendly opacity and transform. */
+.case-motion-ready [data-reveal]{
+  opacity:.12;
+  transform:translate3d(0,12px,0);
+  transition:
+    opacity var(--reveal-duration,760ms) var(--ease-out),
+    transform var(--reveal-duration,760ms) var(--ease-out);
+  transition-delay:var(--reveal-delay,0ms);
+}
+.case-motion-ready [data-reveal][data-visible="true"]{opacity:1;transform:translate3d(0,0,0)}
+
+
+@media(max-width:1100px) and (min-width:681px){
+  .case-facts{grid-column:8/-1}
+  .case-chapter__copy{grid-column:7/-1}
+  .case-result__copy{grid-column:1/span 7}
+  .case-result>.button{grid-column:8/-1}
+  .lab-system .case-deliverables__grid{--info-span:6}
+}
+@media(max-width:680px){
+  .case-intro,.case-overview,.case-chapter,.case-result{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .case-intro{min-height:360px;grid-template-rows:auto 1fr auto auto}
+  .case-intro>.kicker,.case-intro>h1,.case-baseline{grid-column:1/-1}
+  .case-back{grid-column:1/-1;grid-row:4;justify-self:start}
+  .case-overview__statement,.case-facts,.case-chapter__head,.case-chapter__copy,.case-result__head,.case-result__stat,.case-result__copy,.case-result>.button{grid-column:1/-1}
+  .case-result>.button{justify-self:start}
+  .case-result__stat{gap:.5rem}
+  .case-media-grid{grid-template-columns:1fr}
+  .lab-system .case-deliverables__grid{--info-span:4}
+}
+@media(prefers-reduced-motion:reduce){
+  .case-motion-ready [data-reveal]{opacity:1;transform:none;transition:none}
+}

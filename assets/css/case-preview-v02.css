@@ -1,0 +1,22 @@
+/* A preview stays inside the existing 16:9 figure; never changes the hit area. */
+.project figure>.case-preview-frame {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border:0;
+  pointer-events:none;
+  opacity:0;
+  /* Direct cuts: twelve distinct previews per second, no overlapping fades. */
+  transition:none;
+}
+.project figure>.case-preview-frame.is-visible {opacity:1}
+.project figure>:is(img,video):not(.case-preview-frame) {filter:grayscale(1)}
+.project:is(:active,:focus-visible) figure>:is(img,video) {filter:none}
+@media (hover:hover) and (pointer:fine) {
+  .project:hover figure>:is(img,video) {filter:none}
+}
+@media (prefers-reduced-motion:reduce) {
+  .project figure>.case-preview-frame {display:none;transition:none}
+}

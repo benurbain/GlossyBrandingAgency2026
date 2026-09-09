@@ -1,0 +1,151 @@
+/* Approved LAB-03 rules, enabled only on .lab-system pages.
+   Shared role layer → page files contain composition, not alternate type scales. */
+.lab-system{
+  --type-list-heading:var(--type-card-heading);--type-proof-heading:var(--type-card-heading);
+  --type-label:.75rem;--type-meta:.8125rem;
+  --icon-support:clamp(1.25rem,2vw,2rem);
+  --type-lead:clamp(1.1rem,1rem + .45vw,1.5rem);
+  --leading-display:1;--leading-section:1.04;--leading-card:1.1;--leading-copy:1.5;
+  --space-label:clamp(1.5rem,2.5vw,2rem);
+  --section-marker:clamp(2.5rem,4vw,4rem);
+  --space-title-copy:clamp(1.5rem,2.5vw,2rem);
+  --space-heading-content:clamp(3rem,5vw,5rem);
+  --space-card:clamp(1.25rem,2vw,2rem);
+  --space-row:clamp(3rem,5vw,5rem);
+  --space-hero:clamp(4rem,7vw,7rem);
+  --space-media:var(--space-heading-content);
+  --space-note:var(--space-heading-content);
+  --copy-measure:60ch;
+  font-size:clamp(1rem,.94rem + .2vw,1.125rem);
+}
+
+/* Information cards share anatomy. Numbers, icons and lists are content slots,
+   not alternate type systems. Row spans align long headings without fixed heights. */
+.lab-system .lab-info-grid{
+  --info-span:4;--info-rows:3;
+  --info-heading:var(--type-small-heading);
+  display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+  column-gap:var(--gap);row-gap:var(--space-row);align-items:stretch;
+}
+.lab-system .lab-info-grid> :is(article,div){
+  grid-column:span var(--info-span);grid-row:span var(--info-rows);
+  display:grid;grid-template-rows:subgrid;row-gap:var(--space-card);
+  min-width:0;padding-block-start:1rem;border-top:1px solid var(--ink);align-content:start;
+}
+.lab-system .lab-info-grid h3{font-size:var(--info-heading);line-height:1.2;letter-spacing:var(--tracking-compact);margin:0;min-height:0}
+.lab-system .lab-info-grid p{max-width:42ch;color:var(--ink-soft);margin:0}
+.lab-system .lab-info-grid article>span{font-size:var(--type-label);color:var(--gray)}
+.lab-system .lab-info-grid article>img{width:clamp(2.5rem,4vw,4rem);height:4rem;object-fit:contain;object-position:left center}
+.lab-system .lab-info-grid ul{margin:0;padding:0;list-style:none;color:var(--ink-soft)}
+.lab-system .lab-info-grid li{padding-block:.3rem}
+
+/* Supporting information: a compact density of the existing information
+   family, not another card type. Section headings keep their shared scale. */
+.lab-system .lab-section--compact{
+  --section:clamp(4rem,7vw,7rem);
+  --section-marker:0px;
+  --space-label:clamp(1rem,1.6vw,1.5rem);
+  --space-heading-content:clamp(2rem,3vw,3rem);
+  --space-note:var(--space-heading-content);
+}
+.lab-system .lab-info-grid--compact{
+  --info-heading:var(--type-small-heading);
+  --space-card:clamp(.75rem,1.2vw,1rem);
+  --space-row:clamp(2rem,3vw,3rem);
+}
+.lab-system .lab-info-grid--compact>:is(article,div){border-top-color:var(--line)}
+.lab-system .lab-info-grid--compact article>img{width:var(--icon-support);height:var(--icon-support)}
+@supports not (grid-template-rows:subgrid){
+  .lab-system .lab-info-grid>:is(article,div){grid-template-rows:repeat(var(--info-rows),auto)}
+}
+@media(max-width:1100px) and (min-width:681px){.lab-system .lab-info-grid{--info-span:6}}
+@media(max-width:680px){
+  .lab-system .lab-info-grid{grid-template-columns:repeat(4,minmax(0,1fr));--info-span:4}
+}
+.lab-system h1{line-height:var(--leading-display);overflow-wrap:anywhere}
+.lab-system h2{line-height:var(--leading-section);overflow-wrap:anywhere}
+.lab-system h3{line-height:var(--leading-card);overflow-wrap:anywhere}
+.lab-system .service-grid h3{line-height:1.2}
+.lab-system p,.lab-system li{line-height:var(--leading-copy)}
+.lab-system .kicker{font-size:var(--type-label)}
+.lab-system :is(.section-head,.case-section-head){
+  display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);
+  row-gap:var(--space-label);align-items:start;margin-block-end:var(--space-heading-content);
+}
+.lab-system :is(.section-head,.case-section-head)>.kicker{grid-column:1/span 6;grid-row:1}
+.lab-system :is(.section-head,.case-section-head,.case-chapter__head,.case-overview__statement,.case-result__head,.contact-content)>.kicker{min-block-size:var(--section-marker)}
+.lab-system :is(.section-head,.case-section-head)>h2{grid-column:1/-1;grid-row:2;font-size:var(--type-section-heading);max-width:none;margin:0}
+.lab-system .section-head>.section-summary{grid-column:1/span 6;grid-row:3;max-width:var(--copy-measure);font-size:var(--type-lead);margin:0}
+.lab-system .section-head>.section-link{grid-column:9/-1;grid-row:1}
+.lab-system .section-head>.section-mark{grid-column:12;grid-row:1;width:clamp(2.5rem,4vw,4rem);height:auto;justify-self:end;object-fit:contain}
+.lab-system .nav__link[aria-current="page"]{text-decoration:underline;text-underline-offset:.25em}
+.lab-system .project h3{font-size:var(--type-project-heading);line-height:var(--leading-card)}
+.lab-system .project p{font-size:var(--type-meta)}
+.lab-system .button{max-width:100%;min-width:0}
+.lab-system .button__surface{min-width:0;max-width:100%;grid-template-columns:52px minmax(0,1fr)}
+.lab-system .button__label{overflow-wrap:anywhere}
+.lab-system .text-link{min-height:44px}
+.lab-system .text-action{min-height:0}
+.lab-system .text-action__surface{min-height:44px}
+.lab-system .footer-group nav a{min-height:44px}
+.lab-system .footer-legal{font-size:var(--type-label)}
+.lab-system [data-reveal]:focus-within{opacity:1!important;transform:none!important}
+.lab-system .v0{position:static;display:block;width:max-content;max-width:100%;margin:0 auto 1rem;font-size:var(--type-label)}
+.lab-system [id]{scroll-margin-block-start:110px}
+
+/* One native link per service card: the complete stable hit area responds.
+   The footprint uses the existing shared card measurement utility. */
+.lab-system .lab-service-card{
+  position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:flex-start;
+  min-width:0;min-height:360px;padding-block-start:1rem;border-top:1px solid var(--ink);
+  background:var(--paper);color:var(--ink);overflow:hidden;transition:filter 180ms var(--ease-out);
+}
+.lab-system .lab-service-card>span:first-child{font-size:var(--type-label);color:var(--gray)}
+.lab-system .lab-service-card h3{margin-block:var(--space-heading-content) var(--space-title-copy);font-size:var(--type-small-heading);line-height:1.2;letter-spacing:var(--tracking-compact)}
+.lab-system .lab-service-card>p{max-width:42ch;margin:0 0 var(--space-card);color:var(--ink-soft)}
+.lab-system .lab-service-card>.text-link{margin-block-start:auto;font-size:var(--type-meta)}
+.lab-system .lab-service-card:is(:active,:focus-visible){border-radius:var(--radius);filter:invert(1)}
+.lab-system .lab-service-card[data-card-ready]:is(:active,:focus-visible){padding:var(--card-inset)}
+.lab-system .lab-service-card:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
+.lab-system .lab-service-card.card-measuring{padding-block-start:1rem!important}
+.lab-system .lab-service-card.card-measuring-inset{padding:var(--card-inset)!important}
+@media(hover:hover) and (pointer:fine){
+  .lab-system .lab-service-card:hover{border-radius:var(--radius);filter:invert(1)}
+  .lab-system .lab-service-card[data-card-ready]:hover{padding:var(--card-inset)}
+}
+
+/* Identical CTA hierarchy and inset for all three pages; the video may crop
+   as the panel grows for copy, never the text. */
+.lab-system .contact-content{
+  padding:var(--contact-inset);grid-template-rows:auto minmax(var(--space-heading-content),1fr) auto auto;
+  row-gap:var(--space-label);
+}
+.lab-system .contact-content>.kicker{grid-column:1/span 8;grid-row:1;margin:0}
+.lab-system .contact-content>h2{grid-column:1/-1;grid-row:2;margin:0;align-self:end}
+.lab-system .contact-content>p:not(.kicker){grid-column:1/span 6;grid-row:3;max-width:var(--copy-measure);margin:0;font-size:var(--type-lead)}
+.lab-system .contact-content>.button{grid-column:1/span 6;grid-row:4;margin:0;justify-self:start}
+.lab-system .contact-panel{padding-bottom:0}
+.lab-system .contact-visual video{display:block}
+.lab-system .contact-visual video[hidden]{display:none}
+.lab-system .media-fallback{font-size:var(--type-meta);margin-block-start:.75rem;color:var(--ink-soft)}
+@media(max-width:1100px) and (min-width:681px){
+  .lab-system .section-head>.section-summary{grid-column:1/span 8}
+  .lab-system .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:680px){
+  .lab-system{--space-hero:3rem;--space-row:3rem;--type-case-heading:clamp(2.75rem,11vw,5rem);--type-stat:clamp(2.5rem,9vw,4rem)}
+  .lab-system :is(.section-head,.case-section-head){grid-template-columns:repeat(4,minmax(0,1fr))}
+  .lab-system :is(.section-head,.case-section-head)>.kicker{grid-column:1/span 3}
+  .lab-system .section-head>.section-summary{grid-column:1/-1}
+  .lab-system .section-head>.section-mark{grid-column:4}
+  .lab-system .section-head>.section-link{grid-column:1/-1;grid-row:3;justify-self:start}
+  .lab-system .section-head:has(.section-link)>.section-summary{grid-row:4}
+  .lab-system .contact-content{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto minmax(var(--space-heading-content),1fr) auto auto;padding-block-start:var(--contact-inset)}
+  .lab-system .contact-content>:is(.kicker,h2,p:not(.kicker),.button){grid-column:1/-1}
+  .lab-system [id]{scroll-margin-block-start:92px}
+}
+@media(prefers-reduced-motion:reduce){
+  .lab-system *, .lab-system *::before,.lab-system *::after{scroll-behavior:auto!important;transition:none!important}
+  .lab-system :is(.button__surface,.button__icon .arrow-icon,.text-action__surface,.text-action__content){transform:none!important}
+  .lab-system [data-reveal]{opacity:1!important;transform:none!important}
+}
