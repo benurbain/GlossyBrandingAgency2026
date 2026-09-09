@@ -1,0 +1,8 @@
+/* SUBITO article extension: inherited LAB-03 tokens, no global overrides. */
+.subito-news .article-media :is(img,video){display:block;aspect-ratio:auto;filter:none}
+.subito-news figcaption{margin-block-start:var(--space-label);font-size:var(--type-meta);line-height:1.5;color:var(--ink-soft);max-width:65ch}
+.subito-news .prose>h2{letter-spacing:var(--tracking-compact)}
+.subito-news .subito-credits{margin:0;font-size:var(--type-detail-heading)}
+.subito-news .subito-credits>div{padding-block:var(--space-card);border-top:1px solid var(--line)}
+.subito-news .subito-credits dt{color:var(--ink-soft);font-weight:400}
+.subito-news .subito-credits dd{margin:.35em 0 0;color:var(--ink);font-weight:500}
