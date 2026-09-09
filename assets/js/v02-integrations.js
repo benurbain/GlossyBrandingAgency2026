@@ -33,7 +33,7 @@ function initCookieConsent() {
   const copy = isNl ? {
     label: 'Cookievoorkeuren',
     eyebrow: 'Privacy, jouw keuze',
-    banner: 'We gebruiken noodzakelijke browseropslag om je taal- en privacykeuzes te onthouden. Met jouw toestemming kunnen we ook analytics, marketingtools en externe media laden.',
+    banner: 'We gebruiken noodzakelijke browseropslag om je taal- en privacykeuzes te onthouden. Met jouw toestemming kunnen we ook analytics, marketingtools en ingesloten externe spelers laden.',
     policy: 'Lees ons cookiebeleid',
     accept: 'Alles accepteren',
     reject: 'Alles weigeren',
@@ -48,13 +48,13 @@ function initCookieConsent() {
     analyticsDescription: 'Laadt Google Analytics pas na je toestemming om bezoeken en websiteprestaties te meten.',
     marketing: 'Marketing',
     marketingDescription: 'Kan worden gebruikt om campagnes te meten en relevanter te maken. Er is momenteel geen marketingpixel actief.',
-    externalMedia: 'Externe media',
-    externalMediaDescription: 'Laadt spelers van derden, zoals Vimeo. Die aanbieders kunnen daarbij gegevens verwerken.',
+    externalMedia: 'Ingesloten externe spelers',
+    externalMediaDescription: 'Voor ingesloten spelers, zoals Vimeo. Direct gestreamde video’s kunnen ook laden als deze keuze uitstaat.',
     save: 'Keuze bewaren',
   } : {
     label: 'Cookie preferences',
     eyebrow: 'Privacy, your choice',
-    banner: 'We use necessary browser storage to remember your language and privacy choices. With your permission, we may also load analytics, marketing tools and external media.',
+    banner: 'We use necessary browser storage to remember your language and privacy choices. With your permission, we may also load analytics, marketing tools and embedded third-party players.',
     policy: 'Read our cookie policy',
     accept: 'Accept all',
     reject: 'Reject all',
@@ -69,8 +69,8 @@ function initCookieConsent() {
     analyticsDescription: 'Loads Google Analytics only after your permission to measure visits and website performance.',
     marketing: 'Marketing',
     marketingDescription: 'May be used to measure campaigns and make them more relevant. No marketing pixel is currently active.',
-    externalMedia: 'External media',
-    externalMediaDescription: 'Loads third-party players such as Vimeo. Those providers may process data.',
+    externalMedia: 'Embedded third-party players',
+    externalMediaDescription: 'For embedded players, such as Vimeo. Directly streamed videos may still load when this option is off.',
     save: 'Save choice',
   };
 
