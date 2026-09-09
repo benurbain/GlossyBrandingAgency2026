@@ -1,4 +1,4 @@
-/* Structural atlas: SVG coordinates are original CSS pixels at 1440px.
+/* Refined structural atlas: SVG coordinates are original CSS pixels at 1440px.
    Rendered width and height are exactly 25%; labels live outside the scale. */
 (function () {
   var atlas = document.getElementById('wireframe-atlas');
@@ -20,7 +20,7 @@
   }
   function icon(a,b,file) { return '<image href="assets/img/'+file+'.svg" x="'+a+'" y="'+b+'" width="64" height="64"/>'; }
   function button(a,b,w) { return rect(a,b,w||260,52,'#eee')+line(a+52,b,a+52)+text(a+18,b+34,'→',26)+text(a+70,b+32,'Button',22); }
-  function head(title) { return text(G,62,'KICKER / SECTIELABEL',20)+text(G,156,title||'Section heading',80); }
+  function head(title) { return text(G,40,'KICKER / SECTIELABEL',12)+text(G,110,title||'Section heading',52); }
   function grid(height) {
     return Array.from({length:12},function(_,i){return rect(x(i),0,col(1),height,'none','#ededed');}).join('');
   }
@@ -33,17 +33,17 @@
       line(a,b+w*9/16+64,a+w);
   }
   function news(a,b,w) { return media(a,b,w,'16:9 / news')+text(a,b+w*9/16+36,'DATE / LABEL',20)+lines(a,b+w*9/16+62,w,2)+line(a,b+w*9/16+110,a+w); }
-  function service(a,b,w) { return line(a,b,a+w,'#111')+text(a,b+40,'01',20)+text(a,b+150,'Service title',40)+lines(a,b+190,w,4)+text(a,b+345,'→  See our approach',22); }
+  function service(a,b,w) { return line(a,b,a+w,'#111')+text(a,b+32,'01',12)+text(a,b+100,'Service title',28.8)+lines(a,b+130,w,4)+text(a,b+255,'→  See our approach',14); }
   function step(a,b,w,label) { return line(a,b,a+w,'#111')+text(a,b+42,'01 / '+(label||'STEP'),20)+text(a,b+115,'Heading',40)+line(a,b+156,a+w)+text(a,b+196,'Baseline',22)+lines(a,b+235,w,5); }
   function list(a,b,w,label) { return line(a,b,a+w,'#111')+text(a,b+75,label||'Heading',40)+lines(a,b+115,w,4)+Array.from({length:3},function(_,i){return line(a,b+232+i*58,a+w)+text(a,b+268+i*58,'List item',24);}).join(''); }
   function columns(count,draw,y) { return Array.from({length:count},function(_,i){return draw(x(i*12/count),y,col(12/count),i);}).join(''); }
   var specs = [
-    {name:'Hero',height:810,grid:'Opening / 12 kolommen',source:'.hero · .about-hero · .consultancy-hero',anatomy:'Eén dominante titel, een heldere introductie en één primaire actie. Video is een variant, geen apart sectietype.',draw:function(){return grid(810)+text(G,100,'KICKER / POSITIONING',20)+text(G,300,'Sharper brand',106)+text(G,412,'decisions.',106)+lines(G,610,col(6),5)+button(x(7),675,320);}},
-    {name:'Kaartgrid',height:660,grid:'Vergelijken / 4 + 4 + 4',source:'.section-head + .service-grid / .news-grid / .work-grid',anatomy:'Eén sectiekop, daarna gelijkwaardige items. Services en nieuws gebruiken drie kolommen; projecten meestal twee.',draw:function(){return grid(660)+head('What we do.')+columns(3,service,270);}},
-    {name:'Tekst & context',height:660,grid:'Uitleg / 6 + 5 kolommen',source:'.why-copy · .audience-grid · .case-chapter',anatomy:'Titel of hoofdgedachte links, verdieping ernaast. Een lijst, icoon of bewijs vervangt inhoud — niet de basisstructuur.',draw:function(){return grid(660)+text(G,65,'CHAPTER / 01',20)+text(G,190,'The idea.',80)+lines(x(6),135,col(5),9)+line(G,435,W-G)+text(G,500,'SUPPORTING CONTEXT',20)+lines(x(6),480,col(5),5);}},
-    {name:'Media',height:810,grid:'Tonen / 12 of 6 + 6',source:'.case-hero · .case-media · .case-chapter',anatomy:'Een ingekaderd beeld op 16:9, of twee beelden naast elkaar. Geen tekstvak erover tenzij het een bewuste CTA is.',draw:function(){return grid(810)+media(G,30,INNER,'16:9 / original project media');}},
-    {name:'Video-CTA',height:850,grid:'Converteren / binnen de shell',source:'.contact-panel + .contact-content',anatomy:'Kicker, H2, korte intro en één button op de lichte video. Alles blijft binnen het grid met een eigen binnenmarge.',draw:function(){return grid(850)+rect(G,45,INNER,INNER*9/16,'#f7f7f7')+text(G+35,115,'START A CONVERSATION',20)+text(G+35,405,'What do you want',80)+text(G+35,488,'to change?',80)+lines(G+35,555,col(5),4)+button(G+35,685,320);}},
-    {name:'Footer',height:565,grid:'Afsluiten / vier groepen',source:'.footer + .footer-legal',anatomy:'Merk, navigatie, social en erkenningen. De twee logo’s staan onder elkaar. Juridische informatie vormt één rustige onderregel.',draw:function(){return grid(565)+line(G,0,W-G)+text(G,165,'Glossy',42)+text(x(3),105,'EXPLORE',20)+lines(x(3),155,col(2),7)+text(x(6),105,'FOLLOW',20)+lines(x(6),155,col(2),5)+text(x(9),105,'RECOGNISED BY',20)+rect(x(9),150,150,44,'#eee')+rect(x(9),220,145,44,'#eee')+line(G,445,W-G)+text(G,505,'Privacy / KMO',22)+text(x(6),505,'© Glossy Branding',22)+text(x(10),505,'Back to top ↑',20);}}
+    {name:'Hero',height:520,grid:'Binnenpagina / 12 kolommen',source:'.about-hero · .consultancy-hero · .page-intro',anatomy:'Inhoud bepaalt de hoogte. Paginatitel, intro met primaire actie links en bewijs rechts. Alleen de homepage behoudt een full-bleed opening met de grotere Home-rol.',draw:function(){return grid(520)+text(G,65,'KICKER / POSITIONING',12)+text(G,165,'Sharper brand decisions.',69)+lines(G,240,col(5),4)+button(G,355,320)+lines(x(6),240,col(6),9);}},
+    {name:'Kaartgrid',height:510,grid:'Vergelijken / 4 + 4 + 4',source:'.section-head + .service-grid / .news-grid / .work-grid',anatomy:'Eén sectiekop met 28–48px afstand tot de inhoud. H4 voor services en subgrids; geen geforceerde lege kaarthoogte. De stabiele hover-buitenmaat blijft behouden.',draw:function(){return grid(510)+head('What we do.')+columns(3,service,170);}},
+    {name:'Tekst & context',height:450,grid:'Uitleg / 6 + 5 kolommen',source:'.why-copy · .audience-grid · .case-chapter',anatomy:'Hoofdgedachte en verdieping horen visueel samen. Sectieruimte 64–128px; ondersteunende secties 48–80px. Leesbreedte en grid blijven behouden.',draw:function(){return grid(450)+text(G,40,'CHAPTER / 01',12)+text(G,115,'The idea.',52)+lines(x(6),75,col(5),7)+line(G,270,W-G)+text(G,315,'SUPPORTING CONTEXT',12)+lines(x(6),305,col(5),5);}},
+    {name:'Media',height:810,grid:'Tonen / 12, 6 + 6 of 4 + 4 + 4',source:'.case-hero · .case-media · .case-chapter',anatomy:'Case-inhoud behoudt de originele beeldverhouding: breedte op het grid, hoogte naar het beeld. Twee of drie beelden kunnen naast elkaar. Alleen previewkaarten zijn vast 16:9.',draw:function(){return grid(810)+media(G,30,INNER,'Voorbeeld 16:9 / natuurlijke verhouding');}},
+    {name:'Video-CTA',height:470,grid:'Converteren / binnen de shell',source:'.contact-panel + .contact-content',anatomy:'Label, H2, korte intro en één button op de lichte video. Hoogte volgt inhoud en 32–64px verticale padding, niet een verplicht 16:9 vlak.',draw:function(){return grid(470)+rect(G,20,INNER,425,'#f7f7f7')+text(G+35,85,'START A CONVERSATION',12)+text(G+35,163,'What do you want to change?',52)+lines(G+35,212,col(6),4)+button(G+35,332,320);}},
+    {name:'Footer',height:400,grid:'Afsluiten / vier groepen',source:'.footer + .footer-legal',anatomy:'Merk, navigatie, social en erkenningen. Beide logo’s onder elkaar. 48–80px bovenruimte, met een compacte juridische onderregel.',draw:function(){return grid(400)+line(G,0,W-G)+text(G,100,'Glossy',42)+text(x(3),70,'EXPLORE',12)+lines(x(3),110,col(2),7)+text(x(6),70,'FOLLOW',12)+lines(x(6),110,col(2),5)+text(x(9),70,'RECOGNISED BY',12)+rect(x(9),105,145,28,'#eee')+rect(x(9),158,145,28,'#eee')+line(G,310,W-G)+text(G,365,'Privacy / KMO',12)+text(x(6),365,'© Glossy Branding',12)+text(x(10),365,'Back to top ↑',12);}}
   ];
   function svg(s,scale) {
     return '<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+s.name+' — schematische opbouw op '+(scale*100)+' procent" width="'+(W*scale)+'" height="'+(s.height*scale)+'" viewBox="0 0 '+W+' '+s.height+'">'+s.draw()+'</svg>';

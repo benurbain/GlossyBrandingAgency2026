@@ -1,9 +1,10 @@
+/* Refined LAB-03 · 2026-09-09 */
 /* BattMobility composition. Shared LAB rules own type roles, spacing and states. */
 .case-lab-03{--case-copy:var(--type-lead)}
 .case-lab-03 strong{font-weight:500}
-.case-intro{min-height:clamp(420px,48vw,680px);padding-block:var(--space-hero) var(--space-heading-content);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto 1fr auto;gap:var(--space-label) var(--gap);align-items:end}
+.case-intro{min-height:0;padding-block:var(--space-hero) var(--space-heading-content);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto auto auto;gap:var(--space-label) var(--gap);align-items:end}
 .case-intro>.kicker{grid-column:1/span 6;grid-row:1;align-self:start}
-.case-intro>h1{grid-column:1/-1;grid-row:2;font-size:var(--type-case-heading);letter-spacing:-.055em;max-width:none;line-height:var(--leading-display)}
+.case-intro>h1{grid-column:1/-1;grid-row:2;font-size:var(--type-case-heading);letter-spacing:-.035em;max-width:none;line-height:var(--leading-display)}
 .case-baseline{grid-column:1/span 7;grid-row:3;font-size:var(--type-case-baseline);line-height:var(--leading-card)}
 .case-back{grid-column:10/-1;grid-row:3;justify-self:end;font-size:var(--type-meta)}
 .arrow-icon--back{transform:rotate(180deg)}
@@ -33,7 +34,7 @@
 .v02-case .case-media-grid[data-natural-media]>[data-media-span="4"]{grid-column:span 4}
 .v02-case .case-media-grid[data-natural-media]>[data-media-span="12"]{grid-column:span 12}
 .case-result__head{grid-column:1/-1;display:grid;gap:var(--space-label)}
-.case-result__stat{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-card);font-size:var(--type-stat);line-height:1;letter-spacing:-.065em;margin:0}
+.case-result__stat{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-card);font-size:var(--type-stat);line-height:1;letter-spacing:-.035em;margin:0}
 .case-result__stat>span{white-space:nowrap}
 .case-result__stat .arrow-icon{width:.6em;height:.4em;stroke-width:.7;align-self:center}
 .case-result__stat small{color:var(--gray);font-size:var(--type-meta);letter-spacing:.02em;text-transform:uppercase}
@@ -100,7 +101,7 @@
 @media(max-width:680px){
   .v02-case .case-media-grid[data-natural-media]>figure[data-media-span]{grid-column:1/-1}
   .case-intro,.case-overview,.case-chapter,.case-result{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .case-intro{min-height:360px;grid-template-rows:auto 1fr auto auto}
+  .case-intro{min-height:0;grid-template-rows:auto auto auto auto}
   .case-intro>.kicker,.case-intro>h1,.case-baseline{grid-column:1/-1}
   .case-back{grid-column:1/-1;grid-row:4;justify-self:start}
   .case-overview__statement,.case-facts,.case-chapter__head,.case-chapter__copy,.case-result__head,.case-result__stat,.case-result__copy,.case-result>.button{grid-column:1/-1}

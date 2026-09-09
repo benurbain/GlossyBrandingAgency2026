@@ -1,14 +1,16 @@
+/* Refined LAB-03 · 2026-09-09 */
 /* LAB-03 shared foundation. Order: tokens → layout → components → states.
-   Only the LAB pages import this file; live V.01 remains untouched. */
+   Shared by the EN/NL V02 pages. Deployment remains a separate approval. */
 @font-face{font-family:"Rethink Sans";src:url("../fonts/RethinkSans-var.ttf") format("truetype");font-weight:400 500;font-style:normal;font-display:swap}
 @font-face{font-family:"Rethink Sans";src:url("../fonts/RethinkSans-Italic-var.ttf") format("truetype");font-weight:400 500;font-style:italic;font-display:swap}
 
 :root{
   --paper:#fff;--ink:#111;--ink-soft:#333;--gray:#737373;--smoke:#f3f1f1;--line:#e2e2e2;
-  --gutter:clamp(1.25rem,4.3vw,5.5rem);--section:clamp(6rem,12vw,12rem);--gap:clamp(1rem,2vw,2rem);
+  --gutter:clamp(1.25rem,4.3vw,5.5rem);--section:clamp(4rem,8vw,8rem);--gap:clamp(1rem,2vw,2rem);
   --radius:5px;--card-inset:20px;--button-height:52px;
-  --type-hero-heading:clamp(4rem,7.4vw,8rem);
-  --type-section-heading:clamp(3rem,6.25vw,5rem);
+  --type-home-heading:clamp(3rem,1.5rem + 4.8vw,6.5rem);
+  --type-hero-heading:clamp(2.25rem,1.25rem + 3.4vw,4.5rem);
+  --type-section-heading:clamp(1.75rem,1rem + 2.5vw,3.5rem);
   --type-card-heading:clamp(1.75rem,3.125vw,2.5rem);
   --type-small-heading:clamp(1.35rem,2vw,2rem);
   --type-detail-heading:clamp(1.125rem,1.4vw,1.25rem);
@@ -16,9 +18,9 @@
   --type-list-heading:clamp(1.7rem,2.3vw,2.5rem);
   --type-proof-heading:clamp(1.7rem,2.5vw,2.75rem);
   --type-project-heading:1.1rem;
-  --type-case-heading:clamp(5rem,11.2vw,12.5rem);
-  --type-case-baseline:clamp(1.5rem,2.6vw,2.8rem);
-  --type-stat:clamp(4.5rem,11vw,12rem);
+  --type-case-heading:var(--type-hero-heading);
+  --type-case-baseline:clamp(1.25rem,1rem + 1vw,2rem);
+  --type-stat:var(--type-home-heading);
   --ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);
 }
 *{box-sizing:border-box}
@@ -85,7 +87,7 @@ main,
 .hero-video{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;pointer-events:none;filter:grayscale(1) contrast(.135) brightness(1.73)}
 .hero-content{position:relative;z-index:2;width:100%;max-width:1760px;min-height:inherit;margin-inline:auto;padding:clamp(2rem,4.5vw,5rem) var(--gutter);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto auto 1fr;column-gap:var(--gap)}
 .hero-content>.kicker{grid-column:1/span 3;grid-row:1}
-.hero h1{font-size:var(--type-hero-heading);margin-block:clamp(2rem,5vw,5rem)}
+.hero h1{font-size:var(--type-home-heading);margin-block:var(--space-heading-content)}
 .hero-content>h1{grid-column:1/span 10;grid-row:2;max-width:none}
 .hero-intro{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:end;padding-block-end:1.5rem}
 .hero-content>.hero-intro{grid-column:1/-1;grid-row:3;align-self:end;width:100%}
@@ -95,7 +97,7 @@ main,
 /* Section headers and content rhythms */
 .section{position:relative;padding-block:var(--section)}
 .section+.section::before,.footer::before{content:"";position:absolute;inset-block-start:0;inset-inline:var(--gutter);height:1px;background:var(--line);pointer-events:none}
-.section-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:start;margin-block-end:clamp(3.5rem,7vw,7rem)}
+.section-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:start;margin-block-end:var(--space-heading-content)}
 .section-head>.kicker{grid-column:1/span 2;grid-row:1}
 .section-head h2{grid-column:1/-1;grid-row:2;max-width:none}
 .section-head h2,.contact h2,.why h2{font-size:var(--type-section-heading)}
@@ -105,13 +107,13 @@ main,
 .section-link{font-size:inherit}
 
 /* Cards: shared media, metadata and three-column editorial grids. */
-.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(2.5rem,5vw,6rem) var(--gap)}
-.service-grid article{display:flex;flex-direction:column;align-items:flex-start;min-height:360px;padding-block-start:1rem;border-top:1px solid var(--ink);background:var(--paper)}
+.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-row) var(--gap)}
+.service-grid article{display:flex;flex-direction:column;align-items:flex-start;min-height:0;padding-block-start:1rem;border-top:1px solid var(--ink);background:var(--paper)}
 .service-grid article>span{font-size:.72rem;color:var(--gray)}
 .service-grid h3{margin-block:auto 1.2rem;font-size:var(--type-small-heading);line-height:1.2;letter-spacing:var(--tracking-compact)}
 .service-grid p{max-width:42ch;margin-block-end:2rem;color:var(--ink-soft)}
 .service-grid .text-link{margin-block-start:auto;font-size:.82rem}
-.work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(3rem,6vw,7rem) var(--gap);align-items:start}
+.work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-row) var(--gap);align-items:start}
 .project--wide{grid-column:1/-1}
 .project{display:block;min-width:0;position:relative;isolation:isolate;border-radius:var(--radius)}
 .project figure{aspect-ratio:16/9;overflow:hidden;border-radius:var(--radius);background:var(--smoke)}
@@ -130,11 +132,11 @@ main,
    Grid min-size allows longer copy to grow the panel without clipping. */
 .contact{display:block;min-height:0}
 .contact-panel{--contact-inset:clamp(1.25rem,2.4vw,2.5rem);position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr);min-width:0;background:var(--paper)}
-.contact-panel::before{content:"";grid-area:1/1;aspect-ratio:16/9;pointer-events:none}
+.contact-panel::before{display:none}
 .contact-visual{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .contact-visual img,.contact-visual video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--paper);filter:grayscale(1)}
 .contact-visual video{z-index:1}
-.contact-content{position:relative;z-index:1;grid-area:1/1;width:100%;min-width:0;padding:var(--contact-inset);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto minmax(3rem,1fr) auto auto;gap:var(--gap)}
+.contact-content{position:relative;z-index:1;grid-area:1/1;width:100%;min-width:0;padding:var(--contact-inset);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto auto auto auto;gap:var(--gap)}
 .contact-content>.kicker{grid-column:1/span 2;grid-row:1}
 .contact-content>h2{grid-column:1/span 10;grid-row:2;align-self:end;max-width:none;margin-block:0 2rem}
 .contact-content>p:not(.kicker){grid-column:1/span 5;grid-row:3;max-width:55ch;margin-block-end:2rem;font-size:clamp(1.1rem,1.5vw,1.5rem)}
@@ -150,7 +152,7 @@ main,
   .project p{grid-column:2}
 }
 @media(max-width:900px) and (min-width:681px){
-  :root{--type-case-heading:clamp(5rem,13vw,8rem)}
+  /* Case titles inherit the page-heading scale at tablet widths. */
   .site-header__inner>.nav{grid-column:4/-1}
   .hero-content>h1{grid-column:1/-1}
   .hero-intro>p{grid-column:1/span 7}
@@ -163,30 +165,32 @@ main,
 @media(max-width:860px){
   .site-header__inner{min-height:76px}
   .nav__toggle{position:relative;z-index:2;display:block}
-  .nav__list{position:fixed;inset:0;z-index:1;width:100%;height:100svh;display:none;overflow-y:auto;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:1rem;padding:max(6rem,calc(env(safe-area-inset-top) + 5rem)) var(--gutter) max(2.5rem,env(safe-area-inset-bottom));background:var(--paper);visibility:hidden;pointer-events:none}
+  .nav__list{position:absolute;inset:auto 0 auto;inset-block-start:100%;z-index:1;width:100%;height:auto;max-height:calc(100svh - 76px);display:none;overflow-y:auto;overscroll-behavior:contain;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:1rem var(--gutter) max(1rem,env(safe-area-inset-bottom));border-block-end:1px solid var(--line);background:var(--paper);visibility:hidden;pointer-events:none}
   .nav[data-open="true"] .nav__list{display:flex;visibility:visible;pointer-events:auto}
-  .nav a.nav__link{width:100%;font-size:clamp(1.8rem,7vw,3rem)}
+  .nav a.nav__link{width:calc(100% + 1rem);min-height:48px;padding:.45rem .5rem;margin-inline:-.5rem;font-size:clamp(1.25rem,3vw,1.5rem);line-height:1.3;letter-spacing:-.01em}
+  .nav__list>li:last-child{margin-block-start:.75rem;padding-block-start:.5rem;border-block-start:1px solid var(--line)}
+  .nav a.nav__link--lang{font-size:.875rem;width:auto;min-width:64px;letter-spacing:0}
   .nav[data-open="true"] .nav__toggle span:nth-child(1){transform:translateY(8px) rotate(45deg)}
   .nav[data-open="true"] .nav__toggle span:nth-child(2){opacity:0}
   .nav[data-open="true"] .nav__toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
   .hero-panel{min-height:calc(100svh - 76px)}
 }
 @media(max-width:680px){
-  :root{--section:6rem;--type-hero-heading:clamp(3.5rem,16vw,5.4rem);--type-case-heading:clamp(4.2rem,22vw,7rem);--type-case-baseline:1.45rem;--type-stat:clamp(3.5rem,18vw,6rem)}
+  :root{--section:4rem;--type-home-heading:clamp(2.75rem,1.5rem + 5.5vw,3.5rem);--type-hero-heading:clamp(2.25rem,1rem + 5.5vw,2.75rem);--type-section-heading:clamp(1.75rem,1rem + 3.5vw,2.25rem);--type-case-baseline:1.45rem}
   .site-header__inner,.hero-content,.hero-intro,.section-head,.footer{grid-template-columns:repeat(4,minmax(0,1fr))}
   .site-header__inner>.nav{grid-column:4}
   .hero-content{padding:1.5rem var(--gutter)}
   .hero-content>.kicker,.hero-content>h1,.hero-content>.hero-intro,.hero-intro>p,.hero-intro>.actions{grid-column:1/-1}
-  .hero h1{line-height:.9}
+  .hero h1{line-height:1.06}
   .hero-intro>p{margin-block-end:2rem}
   .actions{flex-direction:column;align-items:flex-start;justify-content:flex-start}
   .section-head>.section-link{grid-column:3/-1}
   .section-head h2{margin-block:2.5rem 2rem}
   .section-head>.section-summary{grid-column:1/-1}
   .service-grid,.work-grid,.news-grid,.why-copy{grid-template-columns:1fr}
-  .service-grid article{min-height:300px}
+  .service-grid article{min-height:0}
   .project--wide{grid-column:auto}
-  .contact-panel{min-height:650px}
+  .contact-panel{min-height:0}
   .contact-panel::before{display:none}
   .contact-content{grid-template-columns:repeat(4,minmax(0,1fr))}
   .contact-content>h2,.contact-content>p:not(.kicker),.contact-content>.button{grid-column:1/-1}
@@ -348,7 +352,7 @@ main,
 
 /* Footer study: a quiet, structured index on the same twelve-column grid.
    Hierarchy comes from grouping and spacing; the palette remains untouched. */
-.footer{min-height:0;padding-block:clamp(4rem,8vw,7rem) 2rem;align-items:start;row-gap:clamp(4rem,7vw,7rem)}
+.footer{min-height:0;padding-block:clamp(3rem,5vw,5rem) 2rem;align-items:start;row-gap:clamp(2rem,4vw,4rem)}
 .footer>.logo{grid-column:1/span 2;grid-row:1;justify-self:start}
 .footer-group--explore{grid-column:4/span 2;grid-row:1}
 .footer-group--follow{grid-column:7/span 2;grid-row:1}
@@ -371,7 +375,7 @@ main,
 .footer-top .arrow-icon{transform:rotate(-90deg)}
 
 @media(max-width:680px){
-  .footer{min-height:0;row-gap:3.5rem}
+  .footer{min-height:0;row-gap:2rem}
   .footer>.logo{grid-column:1/span 2;grid-row:1}
   .footer-group--explore{grid-column:1/span 2;grid-row:2}
   .footer-group--follow{grid-column:3/-1;grid-row:2}

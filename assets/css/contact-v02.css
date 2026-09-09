@@ -1,3 +1,4 @@
+/* Refined LAB-03 · 2026-09-09 */
 /* Dutch contact / V02. Existing LAB tokens; no production or consent overrides. */
 .lab-system .contact-refined .contact-entry {
   display:grid;
@@ -8,9 +9,9 @@
 }
 .contact-refined .contact-heading {grid-column:1 / span 5;grid-row:1}
 .contact-refined .contact-heading h1 {
-  font-size:var(--type-section-heading);
-  line-height:1.04;
-  letter-spacing:-.055em;
+  font-size:var(--type-hero-heading);
+  line-height:var(--leading-display);
+  letter-spacing:-.035em;
   margin-block:var(--space-label) var(--space-title-copy);
   text-wrap:pretty;
 }
@@ -93,7 +94,7 @@
   .lab-system .contact-refined .contact-entry {grid-template-columns:repeat(4,minmax(0,1fr))}
   .contact-refined .contact-direct {grid-column:1 / -1;grid-row:3;max-width:none}
   .lab-system .contact-refined .contact-form-wrap {grid-column:1 / -1;grid-row:2}
-  .contact-refined .contact-heading h1 {font-size:var(--type-section-heading)}
+  .contact-refined .contact-heading h1 {font-size:var(--type-hero-heading)}
   .contact-refined .contact-details {margin-top:var(--space-card)}
 }
 @media (prefers-reduced-motion:reduce) {

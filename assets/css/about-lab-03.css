@@ -1,8 +1,9 @@
+/* Refined LAB-03 · 2026-09-09 */
 /* Services & Approach composition. Type, cards and section rhythm are shared. */
-.about-hero{min-height:calc(100svh - 92px);padding-block:var(--space-hero);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto auto 1fr;column-gap:var(--gap);row-gap:var(--space-label)}
+.about-hero{min-height:0;padding-block:var(--space-hero);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto auto auto;column-gap:var(--gap);row-gap:var(--space-label)}
 .about-hero>.kicker{grid-column:1/span 6;grid-row:1}
 .about-hero h1{grid-column:1/-1;grid-row:2;font-size:var(--type-hero-heading);max-width:none}
-.about-hero__lead{grid-column:1/span 6;grid-row:3;align-self:end;margin-block-start:var(--space-heading-content);max-width:var(--copy-measure);font-size:var(--type-lead);color:var(--ink-soft)}
+.about-hero__lead{grid-column:1/span 6;grid-row:3;align-self:end;margin-block-start:var(--space-title-copy);max-width:var(--copy-measure);font-size:var(--type-lead);color:var(--ink-soft)}
 .facts{padding-block:var(--space-heading-content)}
 .facts-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-row) var(--gap)}
 .facts-grid article{grid-column:span 3;padding-block-start:1rem;border-top:1px solid var(--ink)}
@@ -25,7 +26,7 @@ a.client-mark:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
   .lab-system :is(.approach-grid,.services-index){--info-span:6}
 }
 @media(max-width:680px){
-  .about-hero{min-height:calc(100svh - 76px);grid-template-columns:repeat(4,minmax(0,1fr))}
+  .about-hero{min-height:0;grid-template-columns:repeat(4,minmax(0,1fr))}
   .about-hero>.kicker,.about-hero h1,.about-hero__lead{grid-column:1/-1}
   .facts-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
   .facts-grid article{grid-column:1/-1}

@@ -1,3 +1,4 @@
+/* Refined LAB-03 · 2026-09-09 */
 /* V02 composition layer. LAB-03 foundations own colour, type and interactions. */
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
@@ -57,7 +58,7 @@ button{cursor:pointer}
 .steps>li{border-top:1px solid var(--line);padding-block:var(--space-card)}
 .steps h3{font-size:var(--type-small-heading);line-height:1.2;letter-spacing:var(--tracking-compact);margin-block-start:var(--space-label)}
 .v02-article .page-intro{min-height:0;padding-block-end:var(--space-heading-content)}
-.v02-article .page-intro h1{font-size:var(--type-section-heading)}
+.v02-article .page-intro h1{font-size:var(--type-hero-heading)}
 .v02-article .page-intro>.hero__lead{grid-column:1/span 8}
 .article-copy{width:100%;max-width:var(--copy-measure);margin-inline:auto;font-size:var(--type-lead)}
 .article-media{margin:0}
@@ -110,7 +111,7 @@ button{cursor:pointer}
 }
 @media(max-width:680px){
   .page-intro{grid-template-columns:repeat(4,minmax(0,1fr));min-height:0}
-  .page-intro>h1{font-size:clamp(2.75rem,10.5vw,4rem)}
+  .page-intro>h1{font-size:var(--type-hero-heading)}
   .page-intro>.hero__lead,.v02-article .page-intro>.hero__lead{grid-column:1/-1}
   .lab-system :is(.v02-info-4,.v02-info-3,.v02-info-2){--info-span:4}
   .lab-system .facts-grid>div{grid-column:1/-1}
