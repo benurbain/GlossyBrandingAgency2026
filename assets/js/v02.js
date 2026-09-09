@@ -9,10 +9,14 @@
     if(!more)return;
     let count=Math.min(size,cards.length);
     more.parentElement.classList.add('v02-collection-controls');
+    more.parentElement.hidden=false;
     function update(focus=false){
       const first=count-size;
       cards.forEach((c,i)=>{
         c.hidden=i>=count;
+        if(!c.hidden)c.querySelectorAll('img[data-v02-src]').forEach(img=>{
+          img.src=img.dataset.v02Src;delete img.dataset.v02Src;
+        });
         if(!c.hidden)c.querySelectorAll('video[data-v02-src]').forEach(v=>{
           v.src=v.dataset.v02Src;delete v.dataset.v02Src;v.play().catch(()=>{});
         });
