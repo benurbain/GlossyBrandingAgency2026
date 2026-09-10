@@ -1,0 +1,532 @@
+[
+  {
+    "page": "cases/battmobility.html",
+    "field": "dateCreated",
+    "known": "2025-08"
+  },
+  {
+    "page": "nl/cases/battmobility.html",
+    "field": "dateCreated",
+    "known": "2025-08"
+  },
+  {
+    "page": "cases/fanfinity.html",
+    "field": "dateCreated",
+    "known": "2024-04"
+  },
+  {
+    "page": "nl/cases/fanfinity.html",
+    "field": "dateCreated",
+    "known": "2024-04"
+  },
+  {
+    "page": "cases/the-smiles.html",
+    "field": "dateCreated",
+    "known": "2024-01"
+  },
+  {
+    "page": "nl/cases/the-smiles.html",
+    "field": "dateCreated",
+    "known": "2024-01"
+  },
+  {
+    "page": "cases/madison-partners.html",
+    "field": "dateCreated",
+    "known": "2023-02"
+  },
+  {
+    "page": "nl/cases/madison-partners.html",
+    "field": "dateCreated",
+    "known": "2023-02"
+  },
+  {
+    "page": "cases/bravosix.html",
+    "field": "dateCreated",
+    "known": "2022-01"
+  },
+  {
+    "page": "nl/cases/bravosix.html",
+    "field": "dateCreated",
+    "known": "2022-01"
+  },
+  {
+    "page": "cases/the-payroll-office.html",
+    "field": "dateCreated",
+    "known": "2022-02"
+  },
+  {
+    "page": "nl/cases/the-payroll-office.html",
+    "field": "dateCreated",
+    "known": "2022-02"
+  },
+  {
+    "page": "cases/buddybites.html",
+    "field": "dateCreated",
+    "known": "2019-10"
+  },
+  {
+    "page": "nl/cases/buddybites.html",
+    "field": "dateCreated",
+    "known": "2019-10"
+  },
+  {
+    "page": "cases/miles-ahead.html",
+    "field": "dateCreated",
+    "known": "2022-04"
+  },
+  {
+    "page": "nl/cases/miles-ahead.html",
+    "field": "dateCreated",
+    "known": "2022-04"
+  },
+  {
+    "page": "cases/the-leaf.html",
+    "field": "dateCreated",
+    "known": "2018-11"
+  },
+  {
+    "page": "nl/cases/the-leaf.html",
+    "field": "dateCreated",
+    "known": "2018-11"
+  },
+  {
+    "page": "cases/the-growcery.html",
+    "field": "dateCreated",
+    "known": "2018-09"
+  },
+  {
+    "page": "nl/cases/the-growcery.html",
+    "field": "dateCreated",
+    "known": "2018-09"
+  },
+  {
+    "page": "cases/kaa-gent.html",
+    "field": "dateCreated",
+    "known": "2013-03"
+  },
+  {
+    "page": "nl/cases/kaa-gent.html",
+    "field": "dateCreated",
+    "known": "2013-03"
+  },
+  {
+    "page": "cases/pukkelpop-2018.html",
+    "field": "dateCreated",
+    "known": "2017-12"
+  },
+  {
+    "page": "nl/cases/pukkelpop-2018.html",
+    "field": "dateCreated",
+    "known": "2017-12"
+  },
+  {
+    "page": "cases/scale-ups-eu.html",
+    "field": "dateCreated",
+    "known": "2018-03"
+  },
+  {
+    "page": "nl/cases/scale-ups-eu.html",
+    "field": "dateCreated",
+    "known": "2018-03"
+  },
+  {
+    "page": "cases/the-potato-bar.html",
+    "field": "dateCreated",
+    "known": "2016-01"
+  },
+  {
+    "page": "nl/cases/the-potato-bar.html",
+    "field": "dateCreated",
+    "known": "2016-01"
+  },
+  {
+    "page": "cases/la-vie.html",
+    "field": "dateCreated",
+    "known": "2018-05"
+  },
+  {
+    "page": "nl/cases/la-vie.html",
+    "field": "dateCreated",
+    "known": "2018-05"
+  },
+  {
+    "page": "cases/quick-step-floors-pro-cycling-team-2017.html",
+    "field": "dateCreated",
+    "known": "2016-12"
+  },
+  {
+    "page": "nl/cases/quick-step-floors-pro-cycling-team-2017.html",
+    "field": "dateCreated",
+    "known": "2016-12"
+  },
+  {
+    "page": "cases/b-hive.html",
+    "field": "dateCreated",
+    "known": "2017-05"
+  },
+  {
+    "page": "nl/cases/b-hive.html",
+    "field": "dateCreated",
+    "known": "2017-05"
+  },
+  {
+    "page": "cases/element-architecten.html",
+    "field": "dateCreated",
+    "known": "2016-01"
+  },
+  {
+    "page": "nl/cases/element-architecten.html",
+    "field": "dateCreated",
+    "known": "2016-01"
+  },
+  {
+    "page": "cases/iminds.html",
+    "field": "dateCreated",
+    "known": "2012-09"
+  },
+  {
+    "page": "nl/cases/iminds.html",
+    "field": "dateCreated",
+    "known": "2012-09"
+  },
+  {
+    "page": "cases/filliers-dry-gin-28.html",
+    "field": "dateCreated",
+    "known": "2012-01"
+  },
+  {
+    "page": "nl/cases/filliers-dry-gin-28.html",
+    "field": "dateCreated",
+    "known": "2012-01"
+  },
+  {
+    "page": "cases/pukkelpop-2017.html",
+    "field": "dateCreated",
+    "known": "2017-08"
+  },
+  {
+    "page": "nl/cases/pukkelpop-2017.html",
+    "field": "dateCreated",
+    "known": "2017-08"
+  },
+  {
+    "page": "cases/cafe-costume-booth-2017.html",
+    "field": "dateCreated",
+    "known": "2017-02"
+  },
+  {
+    "page": "nl/cases/cafe-costume-booth-2017.html",
+    "field": "dateCreated",
+    "known": "2017-02"
+  },
+  {
+    "page": "cases/night-shift-2018.html",
+    "field": "dateCreated",
+    "known": "2017-12"
+  },
+  {
+    "page": "nl/cases/night-shift-2018.html",
+    "field": "dateCreated",
+    "known": "2017-12"
+  },
+  {
+    "page": "cases/orbit-frankfurt.html",
+    "field": "dateCreated",
+    "known": "2016-04"
+  },
+  {
+    "page": "nl/cases/orbit-frankfurt.html",
+    "field": "dateCreated",
+    "known": "2016-04"
+  },
+  {
+    "page": "cases/barbaro.html",
+    "field": "dateCreated",
+    "known": "2016-12"
+  },
+  {
+    "page": "nl/cases/barbaro.html",
+    "field": "dateCreated",
+    "known": "2016-12"
+  },
+  {
+    "page": "cases/moovly.html",
+    "field": "dateCreated",
+    "known": "2017-01"
+  },
+  {
+    "page": "nl/cases/moovly.html",
+    "field": "dateCreated",
+    "known": "2017-01"
+  },
+  {
+    "page": "cases/svnty.html",
+    "field": "dateCreated",
+    "known": "2016-11"
+  },
+  {
+    "page": "nl/cases/svnty.html",
+    "field": "dateCreated",
+    "known": "2016-11"
+  },
+  {
+    "page": "cases/cafe-costume-x-glossy.html",
+    "field": "dateCreated",
+    "known": "2016-05"
+  },
+  {
+    "page": "nl/cases/cafe-costume-x-glossy.html",
+    "field": "dateCreated",
+    "known": "2016-05"
+  },
+  {
+    "page": "cases/fetch.html",
+    "field": "dateCreated",
+    "known": "2016-03"
+  },
+  {
+    "page": "nl/cases/fetch.html",
+    "field": "dateCreated",
+    "known": "2016-03"
+  },
+  {
+    "page": "cases/the-bar-by-cafe-costume.html",
+    "field": "dateCreated",
+    "known": "2016-05"
+  },
+  {
+    "page": "nl/cases/the-bar-by-cafe-costume.html",
+    "field": "dateCreated",
+    "known": "2016-05"
+  },
+  {
+    "page": "cases/miia.html",
+    "field": "dateCreated",
+    "known": "2016-04"
+  },
+  {
+    "page": "nl/cases/miia.html",
+    "field": "dateCreated",
+    "known": "2016-04"
+  },
+  {
+    "page": "cases/the-breakfast-club.html",
+    "field": "dateCreated",
+    "known": "2015-06"
+  },
+  {
+    "page": "nl/cases/the-breakfast-club.html",
+    "field": "dateCreated",
+    "known": "2015-06"
+  },
+  {
+    "page": "cases/night-shift-2017.html",
+    "field": "dateCreated",
+    "known": "2017-01"
+  },
+  {
+    "page": "nl/cases/night-shift-2017.html",
+    "field": "dateCreated",
+    "known": "2017-01"
+  },
+  {
+    "page": "cases/pukkelpop-2016.html",
+    "field": "dateCreated",
+    "known": "2016-08"
+  },
+  {
+    "page": "nl/cases/pukkelpop-2016.html",
+    "field": "dateCreated",
+    "known": "2016-08"
+  },
+  {
+    "page": "cases/dominique-peeters.html",
+    "field": "dateCreated",
+    "known": "2016-08"
+  },
+  {
+    "page": "nl/cases/dominique-peeters.html",
+    "field": "dateCreated",
+    "known": "2016-08"
+  },
+  {
+    "page": "cases/juma-architects.html",
+    "field": "dateCreated",
+    "known": "2016-03"
+  },
+  {
+    "page": "nl/cases/juma-architects.html",
+    "field": "dateCreated",
+    "known": "2016-03"
+  },
+  {
+    "page": "cases/venice-beach.html",
+    "field": "dateCreated",
+    "known": "2014-09"
+  },
+  {
+    "page": "nl/cases/venice-beach.html",
+    "field": "dateCreated",
+    "known": "2014-09"
+  },
+  {
+    "page": "cases/the-makers.html",
+    "field": "dateCreated",
+    "known": "2016-04"
+  },
+  {
+    "page": "nl/cases/the-makers.html",
+    "field": "dateCreated",
+    "known": "2016-04"
+  },
+  {
+    "page": "cases/night-shift-2016.html",
+    "field": "dateCreated",
+    "known": "2016-01"
+  },
+  {
+    "page": "nl/cases/night-shift-2016.html",
+    "field": "dateCreated",
+    "known": "2016-01"
+  },
+  {
+    "page": "cases/eggsplore.html",
+    "field": "dateCreated",
+    "known": "2015-12"
+  },
+  {
+    "page": "nl/cases/eggsplore.html",
+    "field": "dateCreated",
+    "known": "2015-12"
+  },
+  {
+    "page": "cases/the-glue.html",
+    "field": "dateCreated",
+    "known": "2016-06"
+  },
+  {
+    "page": "nl/cases/the-glue.html",
+    "field": "dateCreated",
+    "known": "2016-06"
+  },
+  {
+    "page": "cases/foodsie.html",
+    "field": "dateCreated",
+    "known": "2015-11"
+  },
+  {
+    "page": "nl/cases/foodsie.html",
+    "field": "dateCreated",
+    "known": "2015-11"
+  },
+  {
+    "page": "cases/quatre-mains.html",
+    "field": "dateCreated",
+    "known": "2015-09"
+  },
+  {
+    "page": "nl/cases/quatre-mains.html",
+    "field": "dateCreated",
+    "known": "2015-09"
+  },
+  {
+    "page": "cases/prezenta.html",
+    "field": "dateCreated",
+    "known": "2015-10"
+  },
+  {
+    "page": "nl/cases/prezenta.html",
+    "field": "dateCreated",
+    "known": "2015-10"
+  },
+  {
+    "page": "cases/nightingale-level-up.html",
+    "field": "dateCreated",
+    "known": "2015-11"
+  },
+  {
+    "page": "nl/cases/nightingale-level-up.html",
+    "field": "dateCreated",
+    "known": "2015-11"
+  },
+  {
+    "page": "cases/nightingale-adding-gold.html",
+    "field": "dateCreated",
+    "known": "2014-11"
+  },
+  {
+    "page": "nl/cases/nightingale-adding-gold.html",
+    "field": "dateCreated",
+    "known": "2014-11"
+  },
+  {
+    "page": "cases/pukkelpop-2015.html",
+    "field": "dateCreated",
+    "known": "2015-08"
+  },
+  {
+    "page": "nl/cases/pukkelpop-2015.html",
+    "field": "dateCreated",
+    "known": "2015-08"
+  },
+  {
+    "page": "cases/night-shift-2015.html",
+    "field": "dateCreated",
+    "known": "2015-01"
+  },
+  {
+    "page": "nl/cases/night-shift-2015.html",
+    "field": "dateCreated",
+    "known": "2015-01"
+  },
+  {
+    "page": "cases/frituur-zorro.html",
+    "field": "dateCreated",
+    "known": "2015-03"
+  },
+  {
+    "page": "nl/cases/frituur-zorro.html",
+    "field": "dateCreated",
+    "known": "2015-03"
+  },
+  {
+    "page": "cases/moris.html",
+    "field": "dateCreated",
+    "known": "2015-04"
+  },
+  {
+    "page": "nl/cases/moris.html",
+    "field": "dateCreated",
+    "known": "2015-04"
+  },
+  {
+    "page": "cases/cafe-costume-limited-edition-linings.html",
+    "field": "dateCreated",
+    "known": "2010-05"
+  },
+  {
+    "page": "nl/cases/cafe-costume-limited-edition-linings.html",
+    "field": "dateCreated",
+    "known": "2010-05"
+  },
+  {
+    "page": "cases/culture-club.html",
+    "field": "dateCreated",
+    "known": "2007-06"
+  },
+  {
+    "page": "nl/cases/culture-club.html",
+    "field": "dateCreated",
+    "known": "2007-06"
+  },
+  {
+    "page": "news/gen-ai-workshop-mediafin.html",
+    "field": "datePublished",
+    "known": "2025-11"
+  },
+  {
+    "page": "nl/news/gen-ai-workshop-mediafin.html",
+    "field": "datePublished",
+    "known": "2025-11"
+  }
+]

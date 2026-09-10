@@ -1,0 +1,974 @@
+{
+  "index.html": {
+    "fingerprint": "1f3f75ab752fbda4eb1a4c7369b9d5228b6a7f565eaf67e6588d6a467864933d",
+    "lastmod": "2026-09-10"
+  },
+  "nl/index.html": {
+    "fingerprint": "48b7587e5f8a56a36069fef18f7eb7e8660d2dcab8ce4daaeaded5d98111c4ed",
+    "lastmod": "2026-09-10"
+  },
+  "about.html": {
+    "fingerprint": "db524d45ba0c4eb7fd832e7bc04d6a2e38c47762e8e7ef4c1f7141a300cb55a6",
+    "lastmod": "2026-09-09"
+  },
+  "nl/about.html": {
+    "fingerprint": "a04b0deb40c65f0abdd2c293f2db7a64ac464828e0b5f9223b2a94b87dda2ae9",
+    "lastmod": "2026-09-09"
+  },
+  "brand-ai-consultancy.html": {
+    "fingerprint": "9fd06c743f890775cd9f9f545dc4a4d0538fde9e265a6c20d25b9d8b66068bda",
+    "lastmod": "2026-09-10"
+  },
+  "nl/brand-ai-consultancy.html": {
+    "fingerprint": "f7b14c9ff66aafdf78f32ecbabad4cd0dc10a4b966af6f10f4b500eef96503b4",
+    "lastmod": "2026-09-10"
+  },
+  "cases.html": {
+    "fingerprint": "6d09775b01f6354710a18e3abc3241db10e18c1715c8aca78e8cbdcabf6403be",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases.html": {
+    "fingerprint": "18b08aa8035c1f2552daa59d011dc4ebab6d9af3388c52a149027c69f60e3ffe",
+    "lastmod": "2026-09-10"
+  },
+  "news.html": {
+    "fingerprint": "c89657313acb9449380e1558637974758e7551d9b5245adf951263b49f5ef13f",
+    "lastmod": "2026-09-09"
+  },
+  "nl/news.html": {
+    "fingerprint": "74e6235275d1b0c96ea7c17a6136565037f15854a962f59be888ae964f65f99b",
+    "lastmod": "2026-09-09"
+  },
+  "contact.html": {
+    "fingerprint": "769641762079578b09ffa5bf89e14a5f3289091ec0f6db8de8576e15dee520a5",
+    "lastmod": "2026-09-10"
+  },
+  "nl/contact.html": {
+    "fingerprint": "6f174663dd407364af6bb524971cb5c700369ad057e0018b36f10f5e61696d64",
+    "lastmod": "2026-09-10"
+  },
+  "kmo-portefeuille.html": {
+    "fingerprint": "1764f8b89d8ba471f52d9ca6550950c2436acba181cfcec24fd5a2bcec5b88e7",
+    "lastmod": "2026-09-09"
+  },
+  "nl/kmo-portefeuille.html": {
+    "fingerprint": "75cbb804480d234adf99acc5ba857b4b3674cab857612fa4f68b1e869d98a138",
+    "lastmod": "2026-09-09"
+  },
+  "privacy-policy.html": {
+    "fingerprint": "76c6993735630b655e9aa418fb19b4abb7dbd4e46b9b4f52d958bc1ba48c97eb",
+    "lastmod": "2026-09-09"
+  },
+  "nl/privacy-policy.html": {
+    "fingerprint": "01ed0839550929c3fc41518f7d8d1f2f6ffac28b4ec84d948366127c13f80ff0",
+    "lastmod": "2026-09-09"
+  },
+  "ai-driven-brand-innovation.html": {
+    "fingerprint": "6f00df377b4d295f5f87edcfd5b278756c8221554564b8d0021e9cd48ed47f37",
+    "lastmod": "2026-09-09"
+  },
+  "nl/ai-driven-brand-innovation.html": {
+    "fingerprint": "219ed4e7135507ea013537e6f32ac0b4cb8e1cbab58477c697a7874173ee569a",
+    "lastmod": "2026-09-09"
+  },
+  "cases/battmobility.html": {
+    "fingerprint": "a87341d18d8a45d4b7e38b5edb991960362036155c913ac2bdcc271644fc675f",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/battmobility.html": {
+    "fingerprint": "94dc2f9644d570b8abf5619645b5b769bac464eb0056ce165d3ba487c55d34b1",
+    "lastmod": "2026-09-10"
+  },
+  "cases/fanfinity.html": {
+    "fingerprint": "5f4200d91483d13768f8ad3aa7a79a2a5eda91c18f3be20dd26ac93a443bc93c",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/fanfinity.html": {
+    "fingerprint": "f7b3be3aa6c2b1f773725ffc00d5424dd922981911781347756a5b84c76210e9",
+    "lastmod": "2026-09-10"
+  },
+  "cases/the-smiles.html": {
+    "fingerprint": "969dd4d82c93e9d19e3fab68fffdd584935c07a1fc2a2720b0c47a681d2b866b",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/the-smiles.html": {
+    "fingerprint": "81c5209c43a9fe54b9de9ffc3bb1a02779ed918e1b3648f596303f93f9922044",
+    "lastmod": "2026-09-10"
+  },
+  "cases/madison-partners.html": {
+    "fingerprint": "f02dd0df3db9ad8683a8ac5167ab46d6099f743e5b5862f09628440d3b802d61",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/madison-partners.html": {
+    "fingerprint": "28e0f18ecba015da9f467149d2f6b70d1246225c22f3b1f450bd1a22aa577803",
+    "lastmod": "2026-09-10"
+  },
+  "cases/bravosix.html": {
+    "fingerprint": "b5966c776dce0e967e075ce7508a272993753180ee9f221f46c01d79e61fe37f",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/bravosix.html": {
+    "fingerprint": "5fce72cdfb59b8d632b82f0d4a3663b6c7795f7271c1e6ea4bccf6a0ff9e212c",
+    "lastmod": "2026-09-10"
+  },
+  "cases/the-payroll-office.html": {
+    "fingerprint": "faf4d71d4e17c14ded503b36da0cd64ac96f6670e0f9d396c3f68e6c1670899d",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/the-payroll-office.html": {
+    "fingerprint": "64695607b038cdf526320d2c1ef8cd23d7d35f5119c91ffeb7a2723a70f545a3",
+    "lastmod": "2026-09-10"
+  },
+  "cases/buddybites.html": {
+    "fingerprint": "54b9e93d5b4e28ddcb3ca00c202ca6f5e0c21fe4088fd8191403cc9de348df5c",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/buddybites.html": {
+    "fingerprint": "4a0cfa742f27e98009a75ca8d4e0ebdc450058020c2702a72d662aa37e98b30f",
+    "lastmod": "2026-09-10"
+  },
+  "cases/miles-ahead.html": {
+    "fingerprint": "fb8d4529b4b4cc98328342e12a605faa41c0023f024dd637ac5450c33fde4eeb",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/miles-ahead.html": {
+    "fingerprint": "307db7836d4cac537d445551d6f5ad56db0cca9962a78352bcff9b52f0c5a643",
+    "lastmod": "2026-09-10"
+  },
+  "cases/dragon.html": {
+    "fingerprint": "f90eabf64dcc06d3c113dc8fd90ae42928f46eab3d3cd16746ebdc090448eb92",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/dragon.html": {
+    "fingerprint": "0c32a8f4bc1cbd43050c307e3de89048b88c82e4952160e13619ac1507f11997",
+    "lastmod": "2026-09-10"
+  },
+  "cases/the-leaf.html": {
+    "fingerprint": "93078c8c4a4bda48822009b43fff25223462dc7f75ff7d7e387bdafa4ebf5213",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/the-leaf.html": {
+    "fingerprint": "a32ed96456a95eb54063efd3ddf2923d0f44e436394f47126fa1ba54e0db14d3",
+    "lastmod": "2026-09-10"
+  },
+  "cases/the-growcery.html": {
+    "fingerprint": "710cf75be3283a2132f1f4ba1721a00f736ea4a7be0e6842df4906d0f9c02090",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/the-growcery.html": {
+    "fingerprint": "b477ef835319a8aec24d621ec3f6be29731955de615f7e3c41ebbd3fc8c6e2e8",
+    "lastmod": "2026-09-10"
+  },
+  "cases/kaa-gent.html": {
+    "fingerprint": "1edcc183e75f2ed39f5eb642b2f5899a0241da1514ae5ee0f68b21c05f7caf1f",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/kaa-gent.html": {
+    "fingerprint": "8a85eb06edb16575d89977685cd3b6d04d725c61d0690458a98d4dcae98467d4",
+    "lastmod": "2026-09-10"
+  },
+  "cases/pukkelpop-2018.html": {
+    "fingerprint": "41ce302ad7424e1b4b35388e202456f43d622269d7d9211fd7807e0ad4aa0b58",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/pukkelpop-2018.html": {
+    "fingerprint": "95a1938017f3847ec4cd12f95706bbc34fbab28e4fd179250a86e2cbaa566a21",
+    "lastmod": "2026-09-10"
+  },
+  "cases/scale-ups-eu.html": {
+    "fingerprint": "7ca61401f3d1d5ff32f511a264ef441f7a9bb3dde73bad3f31ee0fc83d93c648",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/scale-ups-eu.html": {
+    "fingerprint": "a53eca7aaa792de1657db5652672e3f167d180079e6d0580608cf81808d4e2cb",
+    "lastmod": "2026-09-10"
+  },
+  "cases/the-potato-bar.html": {
+    "fingerprint": "971976acc8e0925bb66be13577d25caa4e461e209711a7302a8acf6b60a5900a",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/the-potato-bar.html": {
+    "fingerprint": "4f25714aceb6f2d4dbf9aba4fdd2f6578fb7a2fda58578c4313436165cad174c",
+    "lastmod": "2026-09-10"
+  },
+  "cases/la-vie.html": {
+    "fingerprint": "7a88e07b6775f15d82dcea7dcc66055e03ca5937e8fd8708c49b1d13e9d2ba1e",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/la-vie.html": {
+    "fingerprint": "494b0e36f22af8539ece96b616a95962d75774ccd2e070fba2cca25c1bfcf8e5",
+    "lastmod": "2026-09-10"
+  },
+  "cases/quick-step-floors-pro-cycling-team-2017.html": {
+    "fingerprint": "fb92620053fb12a2a982a8865e979ccc3f583fd10b1f450b33521b17ae325b15",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/quick-step-floors-pro-cycling-team-2017.html": {
+    "fingerprint": "2571655f83ba8012a3c99f07ad326effa1b779d012c4ca54ffa1effcbfd3ccb8",
+    "lastmod": "2026-09-10"
+  },
+  "cases/b-hive.html": {
+    "fingerprint": "e67237a85e45920dd0ff0c56e9757fcaae2bb895ff9c0f9256243d7800092192",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/b-hive.html": {
+    "fingerprint": "bef3348a45560187242a5f937ee23161b511c3f278c5337376d93c144d19bf5f",
+    "lastmod": "2026-09-10"
+  },
+  "cases/element-architecten.html": {
+    "fingerprint": "550d820352e762e0519a7b25f3364fa08b0e07b12f50679e8936915ab5b2d044",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/element-architecten.html": {
+    "fingerprint": "615b0cef3690356beaeaa2798185a508e4347f6056b217db89923c9864ce3099",
+    "lastmod": "2026-09-10"
+  },
+  "cases/iminds.html": {
+    "fingerprint": "d9ca090d96251449b7cd713cde73273b7029b22dbace7be785587d5e9112d9e8",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/iminds.html": {
+    "fingerprint": "5dae6134004eda9cd7bcb7dc176b176aaafc5834d965bd8898f3649337c0e1eb",
+    "lastmod": "2026-09-10"
+  },
+  "cases/filliers-dry-gin-28.html": {
+    "fingerprint": "befbb13ff5318dfaa8b79e5fbe33d540ad5bfe1db548931f22e12d1fb9290fb9",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/filliers-dry-gin-28.html": {
+    "fingerprint": "61882a1ba2fa728611a42d3ff09254b0d26a1a8e4f8448276eff8ae65a27f205",
+    "lastmod": "2026-09-10"
+  },
+  "cases/pukkelpop-2017.html": {
+    "fingerprint": "d1a29ef673ca53e1c88986ad293dfaea4ffb31eb272c1051278135228ffac31a",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/pukkelpop-2017.html": {
+    "fingerprint": "f84b563038d9498a28d689038d9f4958f6a6902f13eeea74ad9b6754d5d977c1",
+    "lastmod": "2026-09-10"
+  },
+  "cases/cafe-costume-booth-2017.html": {
+    "fingerprint": "41c71b93c9909bf25fbb0980c61b7c83eeeb904eaa264e16fe2e64908b9f95bb",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/cafe-costume-booth-2017.html": {
+    "fingerprint": "0bae8c15775cf385985c869d6f86a67c8ebab760a88b6b68d1c4a0f20d31225b",
+    "lastmod": "2026-09-10"
+  },
+  "cases/night-shift-2018.html": {
+    "fingerprint": "eca40a2de8ae397ffc64d0e676fd53445ceb50659da57a338d0fced341e680da",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/night-shift-2018.html": {
+    "fingerprint": "b75f3ab8dee85fc15f6d1172b92a1d09870020238514773e86bef8ce71d07ecb",
+    "lastmod": "2026-09-10"
+  },
+  "cases/orbit-frankfurt.html": {
+    "fingerprint": "dfd24c9f1147855ca1f1d6a0479b3626a2c6067b7cefd97a9d98cc4c930163be",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/orbit-frankfurt.html": {
+    "fingerprint": "b53488f29115ce9c05539ffc4d4d0b230f081d9931b326ab5f12028283583fd3",
+    "lastmod": "2026-09-10"
+  },
+  "cases/barbaro.html": {
+    "fingerprint": "6e4b1f02cd91edc32bea4f781c889119a4df053f30f4af15094debc00990a464",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/barbaro.html": {
+    "fingerprint": "f4ab6773fe1a50c661f298fdfd610c9bd167cc8b1e89a72d9123e79665db0fef",
+    "lastmod": "2026-09-10"
+  },
+  "cases/moovly.html": {
+    "fingerprint": "400efa5dfb57592e18f0551f880b9daf21e6948bb48b90f6ac1fc26db55f143c",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/moovly.html": {
+    "fingerprint": "dbce8581f0e7eb22fc1e687c4c2e4e81e54649ae6bb47472d9c0ce94308e361f",
+    "lastmod": "2026-09-10"
+  },
+  "cases/svnty.html": {
+    "fingerprint": "ce2e0f6398d89b1d794f85af1d357ee98d72607a9d8930b49b11bb1fb1a0cd6e",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/svnty.html": {
+    "fingerprint": "70b0d22ad0d95927a9439f038e7739e25360d31eea268dba650a02326204bd6d",
+    "lastmod": "2026-09-10"
+  },
+  "cases/ray.html": {
+    "fingerprint": "7528aadb00088e0a3787d8dfb3d9d2dbd894260bf85dcdac69473cf55e921f55",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/ray.html": {
+    "fingerprint": "811a13865e931e34b4993919e677c5e8de3d5e869f2c7b0895136e9726680376",
+    "lastmod": "2026-09-10"
+  },
+  "cases/cafe-costume-x-glossy.html": {
+    "fingerprint": "69e999b0c222935865c2bc0f718fba5b98f81bf8be51705c7f2029c99eaac605",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/cafe-costume-x-glossy.html": {
+    "fingerprint": "7f04546b94e6ff0615e59168850ced8c2f2421c51e41e516b4246f4b5de68b0d",
+    "lastmod": "2026-09-10"
+  },
+  "cases/fetch.html": {
+    "fingerprint": "48734229c6fa665ecf8383df985bdec12758c416801b3729beefb451ebda7992",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/fetch.html": {
+    "fingerprint": "125bb0a63590d45c49de84b102645cb41c0796ab7f58fa8c43e10e360aff2da3",
+    "lastmod": "2026-09-10"
+  },
+  "cases/the-bar-by-cafe-costume.html": {
+    "fingerprint": "ec36aee474d582d72bb22787fdac0124d08f6cf5ae10913157aaf65ec00db20a",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/the-bar-by-cafe-costume.html": {
+    "fingerprint": "3d8af475f99e42d2d6559ade404de7f2f6e1d9783c90d6ddd60bbe6e0420784f",
+    "lastmod": "2026-09-10"
+  },
+  "cases/miia.html": {
+    "fingerprint": "63bf91616319dceec83f0fc1f73a057a1dceebb8c0805405831ca4975d62812e",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/miia.html": {
+    "fingerprint": "77acec8231ffc0673bd4ff06b9d48a3b15f95d44bbf167b34afbac7566544e51",
+    "lastmod": "2026-09-10"
+  },
+  "cases/the-breakfast-club.html": {
+    "fingerprint": "40164005c5a22df7bd1499a22bbe4e76d01bac8b4a582aa1e70680ced4fb0ac7",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/the-breakfast-club.html": {
+    "fingerprint": "29137c7d5c95fa101a2b582e39885d8f7e2930a14a8c8243464fc26c65adf853",
+    "lastmod": "2026-09-10"
+  },
+  "cases/night-shift-2017.html": {
+    "fingerprint": "1ca66903d185fa988e2bbc79dd0a9047dc60b32d101eeee10dbb9f92645070d4",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/night-shift-2017.html": {
+    "fingerprint": "8daffb2a84563fc37a5286fa6fc75643db04b50394e36c0c707169274f401f52",
+    "lastmod": "2026-09-10"
+  },
+  "cases/pukkelpop-2016.html": {
+    "fingerprint": "6e8bc76b93265ed0b8b084fb1ad8a42f313dc3bbb3a482f7c5da0d3cc155eec5",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/pukkelpop-2016.html": {
+    "fingerprint": "a086c0fd277fb7a084e7523084ba37adb6c21b1d494275a366d6f48499aae451",
+    "lastmod": "2026-09-10"
+  },
+  "cases/dominique-peeters.html": {
+    "fingerprint": "80d5e4470cf47aa2c5a9a0e871059f7a38c26c2a87b6fe62cd70dbdc5be9976d",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/dominique-peeters.html": {
+    "fingerprint": "7c71255c16ff072eae7d48ab36fa64731daf36e0ad6789ff47b9ee0799df1798",
+    "lastmod": "2026-09-10"
+  },
+  "cases/juma-architects.html": {
+    "fingerprint": "7cd54a8842dd160f1bcb548b9bfe3e8017e3cec8175a8df70e0ceb9e832a0bb6",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/juma-architects.html": {
+    "fingerprint": "edb9d96604b48e40b3a2aa78105b91b49a3793802f6d51bb5dbf321c3f0d9ec4",
+    "lastmod": "2026-09-10"
+  },
+  "cases/venice-beach.html": {
+    "fingerprint": "9ccf35ce396d905ab6362f39924b89bb0ac223577a2b79a6800ea60899adf98a",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/venice-beach.html": {
+    "fingerprint": "7d4e410de090c63357a2318a3d08c03aae5eeb64068808888cc8e87a9a1ff820",
+    "lastmod": "2026-09-10"
+  },
+  "cases/the-makers.html": {
+    "fingerprint": "ecce35322ccbfe84035df5d4dbc4f7a4d4b89e01e0c945a28fe7cef7d4ea3981",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/the-makers.html": {
+    "fingerprint": "bdd3afd9b2af3778314adbd8f87999e4008baa6ca49a2c232e60fe8ac9358392",
+    "lastmod": "2026-09-10"
+  },
+  "cases/night-shift-2016.html": {
+    "fingerprint": "31e3a4a3a3c4e79d442ead9a00f6f3070ec3ff45b740eda412b7911e29aeae7f",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/night-shift-2016.html": {
+    "fingerprint": "c7d45eb073a4159df88c9266bbcd7512b0dfb130c491fc0c740b8879ac156cb3",
+    "lastmod": "2026-09-10"
+  },
+  "cases/eggsplore.html": {
+    "fingerprint": "eca333f48db949d1c8336e3c0eb5bf7ee58c2ff660eb95676ed841805147c279",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/eggsplore.html": {
+    "fingerprint": "d020fa8916a1d0f3ac5a2129a099c58597f59ae05e061766577dfcd612158b66",
+    "lastmod": "2026-09-10"
+  },
+  "cases/the-glue.html": {
+    "fingerprint": "7ee15695b21512c9ef9fbf1c6b694704afec7da3e86c422677876848ca2f05b1",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/the-glue.html": {
+    "fingerprint": "3c5c0be8d79c5e4b2971902831923b93e5a4a281b8d93f5744399df8c4bc601e",
+    "lastmod": "2026-09-10"
+  },
+  "cases/foodsie.html": {
+    "fingerprint": "5e22f7339ae2b95d19a94347f437905ef4cc9163d6d86d128442b4dde09aeb2f",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/foodsie.html": {
+    "fingerprint": "177244b3f8285bf19ab3d75ecd6ad0dd27396bf29bf6fe2275ccdfa595791bfd",
+    "lastmod": "2026-09-10"
+  },
+  "cases/quatre-mains.html": {
+    "fingerprint": "308f56770a297c868f8d681dcd57035e0fe35d1a68fdca7a96be3e72c4653a62",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/quatre-mains.html": {
+    "fingerprint": "b0d3c87f72bac4a8849756234fadf66444d9e364a8dd6bdba051c75a90bd2c83",
+    "lastmod": "2026-09-10"
+  },
+  "cases/prezenta.html": {
+    "fingerprint": "2b1edf6d8380640a7bcbe7bc8bbc1477feb0d4894f1cb4f4947dd184e18e9bef",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/prezenta.html": {
+    "fingerprint": "3100bc9451b0bf006510c64a30b608620a47fe507a35a866ba685a62e427d5bc",
+    "lastmod": "2026-09-10"
+  },
+  "cases/nightingale-level-up.html": {
+    "fingerprint": "89955825040d49997db019440c718a344a4a7804ab02e1076f423c29dd967ba8",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/nightingale-level-up.html": {
+    "fingerprint": "eac57a8f632cea965ad36d587687409e988051e986c08eed3f1364447af52dfe",
+    "lastmod": "2026-09-10"
+  },
+  "cases/nightingale-adding-gold.html": {
+    "fingerprint": "fa7b21e25bbf5184503b4d3125a8aaa7b3cb061bd4ac3fe983aebebf995dad2a",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/nightingale-adding-gold.html": {
+    "fingerprint": "fa6b1c1b414fa42464e4f4476ebade565640fa4220bb46eb179e84b3cd4e5bcd",
+    "lastmod": "2026-09-10"
+  },
+  "cases/pukkelpop-2015.html": {
+    "fingerprint": "ff8c0924ab84733b148d1708c773e2e888f989d5e880c514a167978fe6316588",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/pukkelpop-2015.html": {
+    "fingerprint": "b3caecc9c4e1bf6f1fd5ee363ce54a2aa04c5b01ca32efa49214f354911e9884",
+    "lastmod": "2026-09-10"
+  },
+  "cases/night-shift-2015.html": {
+    "fingerprint": "7ec2bad29fb668c545f6fb869bf7fcfa8b2ea9a308a675026a28ec5e6e19b01f",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/night-shift-2015.html": {
+    "fingerprint": "3f2dbd0b32d0dbfe73af34cfaaa32fe1067c00916c1b7ea005258525e6ac8d46",
+    "lastmod": "2026-09-10"
+  },
+  "cases/frituur-zorro.html": {
+    "fingerprint": "81bde890c647510f49a3af3f5fa87a3dd148ac7999390279893bf302f9a25b6a",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/frituur-zorro.html": {
+    "fingerprint": "a155305c288f45732e1a6df5b3a161ed8ecbc4be6ffdbb7ca066ebc2592084f5",
+    "lastmod": "2026-09-10"
+  },
+  "cases/moris.html": {
+    "fingerprint": "cabe5f3fd519c15aadd63fc0ea2f820204012daeec3df84574e3bbbac1963046",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/moris.html": {
+    "fingerprint": "c09ca280c7f383af9a766aa9d24fb7eacdae6bbf8df894bc0fc61e13cb6ade91",
+    "lastmod": "2026-09-10"
+  },
+  "cases/cafe-costume-limited-edition-linings.html": {
+    "fingerprint": "d5907a5f04d86529fdf0f3ffafb49de6a736f6569a57369ba7febaaf3bb18705",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/cafe-costume-limited-edition-linings.html": {
+    "fingerprint": "e22f4090e8655e851031ceee0844625ddcc4d1368be0d1fb4a8b62c6127836d9",
+    "lastmod": "2026-09-10"
+  },
+  "cases/culture-club.html": {
+    "fingerprint": "a19fde3f61911b2e6ee276157ced5c968133b7f28eccd61fe6cd6b02cbb8f99b",
+    "lastmod": "2026-09-10"
+  },
+  "nl/cases/culture-club.html": {
+    "fingerprint": "dfa221cf007710bb686378dd58f26174172ee9f69929f7bda9d02445092ce110",
+    "lastmod": "2026-09-10"
+  },
+  "news/gen-ai-workshop-mediafin.html": {
+    "fingerprint": "b162a6df4b9d219cebc9f873bb40a72bf597abb3c096da5bd1f324bbcc7d37c2",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "f115d766531c6cb8b8ee2fb698738a24e6634fc3843bd6623a112034b8402f30",
+    "article_modified": "2026-08-28"
+  },
+  "nl/news/gen-ai-workshop-mediafin.html": {
+    "fingerprint": "2458c28bb0f499a80cdacefdaa94a6fbf184a6f1b7326784fcc8ad36b2d533a0",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "938e3197e29f90f39ee225273aa58064d67e13f707b6058cd3dbbd32114f8f90",
+    "article_modified": "2026-09-09"
+  },
+  "news/midjourney-8-2-back-in-our-workflow.html": {
+    "fingerprint": "16f9d905e7ef1806a703e471bc63b7bb11a5c7db9b3cdc3878aa47571ef4c5e9",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "4a65f1b62ef2cf3679b076a02f6c2cd6a88eb8ed47580fdd702ba34e2451521e",
+    "article_modified": "2026-08-16"
+  },
+  "nl/news/midjourney-8-2-back-in-our-workflow.html": {
+    "fingerprint": "d012dc206b8b2a444dbc63a118daffc3f3b20de043f5dc35ddd59bc587cc1dd2",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "a024018c1ea02f7746e011a8502b406a7c4e632f76ae21164bf85af532d23734",
+    "article_modified": "2026-09-09"
+  },
+  "news/open-coaching-breakfast-wintercircus.html": {
+    "fingerprint": "5fa09b7973a36f244ba867ad051bd16617d9ce6d59e745b1eb72d885caf7791f",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "f73bf6eb150ce02cdb818f3cdf9bf11c3a05118818a6dfcce671e9ad3707891c",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/open-coaching-breakfast-wintercircus.html": {
+    "fingerprint": "8b5c06bec736bb6c1f636f8295b80afebfb3f1bc0af464667261c055aaff52e0",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "e5a6b714affd2816c48ee67f05dc8fa13e7610f9412a7d3c41777b28efd1749c",
+    "article_modified": "2026-09-09"
+  },
+  "news/summer-break-2025.html": {
+    "fingerprint": "e727ef1a5d31e1573e355e0acdb33be7c51dd9bfdc8ed26059d2527e59b252f6",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "187c499cd5d17b2aa88d672c424786757e8fc126faf077eb95671c22af63ccd9",
+    "article_modified": "2026-08-16"
+  },
+  "nl/news/summer-break-2025.html": {
+    "fingerprint": "77cfd43434c6bedc253225d8b51f77fcbc30a6f7b37ad7922330b523244d8497",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "215f6ced1be6a4992a3353d3c788cb0d97ea611b83184ca167197ef835fcab24",
+    "article_modified": "2026-08-28"
+  },
+  "news/vibe-designing-vibe-coding.html": {
+    "fingerprint": "3beb6e4a26e7508566be08a1220dba323031d10576b4c3636e0209a597d32c4e",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "9bb3226cae8cfd4d163568b64961de3b736f0f812fa89839f73cf8e7373435e3",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/vibe-designing-vibe-coding.html": {
+    "fingerprint": "b6c13f3de91a4c0628ea51fdc0b400d89bcdc44cf4c5fece1743e2a378412990",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "6cdbc71a4e22dc38296b7b2cc63f40126bf840e4d4b16720c9d49d860dc4e6a9",
+    "article_modified": "2026-09-09"
+  },
+  "news/the-future-open-source.html": {
+    "fingerprint": "6ceb1af2c48a6ae7ab2b91b62c17de4270aea56683bbf8b28ef0a106badf1663",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "1c89e3eaf671d5c6c002ae6733d11bb40c94cc650895bdc4f8dd677f5b513020",
+    "article_modified": "2026-08-28"
+  },
+  "nl/news/the-future-open-source.html": {
+    "fingerprint": "5a95f45dd912c67481b6d9dd28d676ec5b2871870e69b8b0a08f04466a24f523",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "c26a4fb8e5a776d94ffc5ede8be2643a6281b4cc965b2c06a3137102339ca4a3",
+    "article_modified": "2026-08-28"
+  },
+  "news/masterclass-generative-ai.html": {
+    "fingerprint": "eac7c5393074d72e9689688d9fb23b637778f8c5c8e89e0a9130fe5d4ab9f8fb",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "9aed00d6461b38f528f1372be9d9be0352940e2edafc2e9a877ccbcff5ce2d10",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/masterclass-generative-ai.html": {
+    "fingerprint": "93fa962029dbe85ba3a109b256d45a3773507e92b223f6f96f9f54f29c61855f",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "6d41c33f61fb0072866c1d43fc7e66b3b922693cd882e620eb3e17b749cfb719",
+    "article_modified": "2026-09-09"
+  },
+  "news/unlocking-the-potential-of-ai-creativity-a-talk-by-ben-urbain.html": {
+    "fingerprint": "f4f63ebf42c64acd167c5394bf568cef93eaebf15592a84bd533c1c551c997a9",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "e9c58f6e3f9f0c6d208baf0d2e2e0e3330f46310de73bb8f91eb52be54a91f1a",
+    "article_modified": "2026-08-28"
+  },
+  "nl/news/unlocking-the-potential-of-ai-creativity-a-talk-by-ben-urbain.html": {
+    "fingerprint": "257c29aceda807311c91bfb0828ccd0304cf275def07a8019cc1675dc6a143b9",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "1ab386aa253549441d817e1eb356b55b4b88a4f42dc94933e00a42e3c789d902",
+    "article_modified": "2026-08-28"
+  },
+  "news/school-of-branding-204-2025.html": {
+    "fingerprint": "56ce2640c07d8fef73e0b2aa3462fd9080ca46011f58add4ce026eacfa2185ac",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "fbafdbe2c4207005d8a017b16222938889174970618b6ff9b53591c27f2411c4",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/school-of-branding-204-2025.html": {
+    "fingerprint": "f8974c7d3c2933538487d1e14f8079958c6628ed4a0dbb9b1f50050d4cced1fa",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "5c8f611016363cc32b940f468e03698f70b993b58cdd255ce6a827bc2646fa8c",
+    "article_modified": "2026-09-09"
+  },
+  "news/prompt-up-the-jam-tm.html": {
+    "fingerprint": "da7b2469ab09f14f0bbd4b25996501f37608f0f7247220f5bacd332e5d39ab3b",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "46d8ebc89c636feaaec295bc0bf9e5eabdbe8aab4462a0c31adb9f82f990e41a",
+    "article_modified": "2026-08-28"
+  },
+  "nl/news/prompt-up-the-jam-tm.html": {
+    "fingerprint": "54b2e1c214e1dde9521adc9ed0f1893022401f2b36f585dfc8b3db2a04babd66",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "85ee697f8585ee7e2b85dee7ba7ca8855861359dfb78dac0f3897fbddc0b2998",
+    "article_modified": "2026-08-28"
+  },
+  "news/meet-fanfinity-empowering-gaming-culture.html": {
+    "fingerprint": "edbdef6a395dd4fdaff777febebfdeb102290f6ebbceaec88884f64d794bd195",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "da7db9bce2245968291560b7fcbb9a1dd9b5c11b86526da688284a811449c377",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/meet-fanfinity-empowering-gaming-culture.html": {
+    "fingerprint": "60846660fc9f2f5a6e0e2e8433db1cf829e994d4674a904982a434f33676a93e",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "373ac37541e526f55c99de2e0693188dca2c00d4b89cece13154cbabeaff6267",
+    "article_modified": "2026-09-09"
+  },
+  "news/welcome-sarah-and-armani.html": {
+    "fingerprint": "fb3a649bbf02dffe780695bd569b859b47c9dbd6cc630025a8575295ca4e9d0b",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "7fdad0d88dd3fd9ccce34064dd31b666a451aaaf3ed1aaeb2536a6ac12c1f43a",
+    "article_modified": "2026-08-16"
+  },
+  "nl/news/welcome-sarah-and-armani.html": {
+    "fingerprint": "554a0ddb02e5798ede9c71867ba04890e1d7bef0151b1c2a67cbf2bae87c72f2",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "562e13c77259cbac89626381020cb86387208d30736eaed4622b363c200cf262",
+    "article_modified": "2026-08-28"
+  },
+  "news/unveiling-the-new-face-of-histoires-do.html": {
+    "fingerprint": "c2561472b0b13882613329e7bbd7499a7139af2f374d287b06b092859c0d431c",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "8f8f1e0756d5e6d4cef9a386bd4f951b079399a6bed0ebf58a833ebcba09eac1",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/unveiling-the-new-face-of-histoires-do.html": {
+    "fingerprint": "3d87795858cabaab26c6ec1a030cd2d95a6709e613c4f3f09210d25cabbc914c",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "5368c63da784b86f256f57be9cc21e800323fc57b77c655c2245e984351b7102",
+    "article_modified": "2026-09-09"
+  },
+  "news/new-work-for-live-is-live-an-antwerp-city-music-festival.html": {
+    "fingerprint": "69fef57bdcc28d0e99f558beb72ba65109e14a82bfdc634a0d851e9ee3752938",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "cf2afefdc3a56bb9bd948c8dd37c39e96facd6634e76ddca10af6eeefe92be33",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/new-work-for-live-is-live-an-antwerp-city-music-festival.html": {
+    "fingerprint": "db448da7d46c3e2cb7b343dcfd53db979e6a9cbce535a80dd9f0557c5ab99685",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "291381a31070b606e61145378b67db5ca9cc3096e97e7df4196277ed77462758",
+    "article_modified": "2026-09-09"
+  },
+  "news/tanx-loving-healthy-hair.html": {
+    "fingerprint": "7aa504272c42f0295bf71a7cc3ab48afe59e7dc374dad3a0ebb349a72f621db0",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "a55e0324311331c151a09eedb80e4c8f9cf1ef6b5eb57cc83c4c5dbdb814a607",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/tanx-loving-healthy-hair.html": {
+    "fingerprint": "a833611dfb6e7b8e70078691aa826d2d96fbe9c980ff949ff2155a05182d1bb3",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "03b2d076526765bcdca60819600a2d5217693cea1cd7a2e1e451f70926d9ef78",
+    "article_modified": "2026-09-09"
+  },
+  "news/online-identity-for-febelhair.html": {
+    "fingerprint": "c0cc6115f0f67d486f520a0e3b10fcf12a64ba0ac06b7d24e3d64fb1f5a71ded",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "d30449dda1b0f93be16ffcee7e00a1f61b9fee7de7ca2b72ccb0bbfa37f49ebb",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/online-identity-for-febelhair.html": {
+    "fingerprint": "b0d49e70abb823c65695427ddb5fe4e8d89238e7f4676130bebd97ae23d2a3ad",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "85e160681b501288d1eb9470944257db7508df2ba59db7a86745937ccb129a6c",
+    "article_modified": "2026-09-09"
+  },
+  "news/introducing-prompt-engineering-as-a-new-service.html": {
+    "fingerprint": "a58a2e15afe58b841bbb05071c0fd9e37037d7e93e33b531bd1aacca1c027f22",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "a4817d727f97a6213af2f75ea526169fa8a19c6aa167d87bde7d17c0c62755b5",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/introducing-prompt-engineering-as-a-new-service.html": {
+    "fingerprint": "0de8e22e9678b6c55e7458391f749418b4277bac45cdbc37a5a068cb97782df5",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "544c942bc6b43ccfa21f6b7318537b48f49d56b0b0ebc8e5006562a044c2a965",
+    "article_modified": "2026-09-09"
+  },
+  "news/brand-strategy-for-hotel-du-parc.html": {
+    "fingerprint": "996508df40b7d8de353423dcc8ec97fb0d6d295c217e8909726da90f6955fe0c",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "844fde5d748673754fb6276e7cb3e6420d7d1788885e155881f07be91f72f272",
+    "article_modified": "2026-08-16"
+  },
+  "nl/news/brand-strategy-for-hotel-du-parc.html": {
+    "fingerprint": "e56a4af31d086db0454e2cd00c7c827d0bea92e5ab7869ade178d23f5dee9643",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "81c37a0f486b9d69e6d71ff54da7a3dde89d4dbdf46559bb7388f43d109a5003",
+    "article_modified": "2026-08-28"
+  },
+  "news/miles-ahead-raises-20-million.html": {
+    "fingerprint": "c13a4e6d747297e672c966afdba0b9fbc45e64a856e031ddf23ece3bd33a147c",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "68848558c2a39e5dbd96639e06a44961f699b2e6a261b3dca14eb6a585b368cc",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/miles-ahead-raises-20-million.html": {
+    "fingerprint": "92ab53df728d7f638600bfc3f4fa7bf4956c89e1a96cc7c9e2ebf77ac07e8d0d",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "b6732d5489ef34ab665d0dfa017d419bb099860c440eaea361a4d261a1a35e46",
+    "article_modified": "2026-09-09"
+  },
+  "news/kampingkitschclub.html": {
+    "fingerprint": "8ab020085f23761d709eb4856d146b63f26e8c5dc7a09a837877949d13f83680",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "bab2cf0eb33ed01c34318ab5a9d9b83ab1b29d367073cf8cd577c0d042e306e0",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/kampingkitschclub.html": {
+    "fingerprint": "d7812f5428232f5596f3a31f0f1d0275ab5929d233c60255617d53522b00e324",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "be3632da71f0b354cf81f094eff826d9e287d045b77274cf44be71bb286c8f55",
+    "article_modified": "2026-09-09"
+  },
+  "news/introducing-hybrid-blue-the-smart-active-suit-tailored-for-every-occasion.html": {
+    "fingerprint": "e6845323ca5d9469dd6a06c4068dac8d5e6f4bdcb4dccd2ec881bdd74da3f348",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "3e87c49b1c75662563c1fbabdea599cb4bc2ce620333af18daabbea95ab48087",
+    "article_modified": "2026-08-16"
+  },
+  "nl/news/introducing-hybrid-blue-the-smart-active-suit-tailored-for-every-occasion.html": {
+    "fingerprint": "54df1206706a1000efb3c25deb27f2ef0176d1ee45a9c262fd00d9543a0461d1",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "2a3968e8976d03d97e0905bba8165fb514fe29a5275158755fd4e6caa8b2c909",
+    "article_modified": "2026-08-28"
+  },
+  "news/new-work-for-seastorm-exceptional-ingredients.html": {
+    "fingerprint": "aace70ed779ec6740f010101537ba00280dcb6daa6242bf24f4f39a90d34d105",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "98c03df638255825a1838f4a70b90543aa5838d7fdba27adbfc22921f353ab41",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/new-work-for-seastorm-exceptional-ingredients.html": {
+    "fingerprint": "5420b1a94ad9b06dbf7e2ff1ce4418b1cef7e70168d29c9e4be2106afcdc0257",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "60a800667481edc1e42ae4b1ee18b59ea719ca7718ea083f60a08c76219b327c",
+    "article_modified": "2026-09-09"
+  },
+  "news/new-work-for-maisonrouge.html": {
+    "fingerprint": "d81909039e98f60e238b743a0f407ab516855cca7bb2108568e8f9abe93a90b7",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "c5ffb3ae6b710e3383b097dbae6e23c6f7cd84a8f2b85737bca23250cb2ed1c3",
+    "article_modified": "2026-08-16"
+  },
+  "nl/news/new-work-for-maisonrouge.html": {
+    "fingerprint": "3d389cb3d9776bce587b4fbae51954dd0b4df8d7a3b09cc8282c79f5a25c9c9f",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "5224049398504a972523f238aede74534fa7b4cb9429f1215203657e945803af",
+    "article_modified": "2026-08-28"
+  },
+  "news/we-spoke-at-night-shift-where-business-and-pleasure-collide.html": {
+    "fingerprint": "f2c59db6c41b9d21ea257106dd4a20894b4f7d5be2a979ca8f70af9eacdcf755",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "97ec640d098cafe549ae1588d87a5e4d432803ac13f4c413a8876584a5c93d79",
+    "article_modified": "2026-08-16"
+  },
+  "nl/news/we-spoke-at-night-shift-where-business-and-pleasure-collide.html": {
+    "fingerprint": "60f9f947699f134d18dbea676769b328b1fc725f67a2c290557b571d9b3f3556",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "90d2311927643008539380aca9c952b211932e4450398357aa0054bf2f7e3b64",
+    "article_modified": "2026-08-28"
+  },
+  "news/we-got-to-talk-at-lets-talk-design-by-creative-network.html": {
+    "fingerprint": "4d2aff47b68016ee23f6dc8f15af99d950beeb505e682fc6b299e2c243c65b80",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "6e6952a3145861f6168bf5c10d03a788d9f07d4d333c521f42aab8dbbbe229dd",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/we-got-to-talk-at-lets-talk-design-by-creative-network.html": {
+    "fingerprint": "e58c9cfe74429e322a4286e15f7fccb33921a650c7390901b3c2c160992cddb2",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "4afad2ec361da74a30c6b711314ded3e2cdd471d90e9a33d84adba1ae5bbe8ff",
+    "article_modified": "2026-09-09"
+  },
+  "news/de-verloren-kost-a-place-for-experiments-in-work-and-pleasure.html": {
+    "fingerprint": "9e15858e1c04e1ed6f0a8d6fbaf4e99691902c463f6961c9fd5cd5d2f4c8ab4f",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "2c53666131e98147d3dfacbf4bff2062c7acea014390f401d41ac8f8d2f17291",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/de-verloren-kost-a-place-for-experiments-in-work-and-pleasure.html": {
+    "fingerprint": "2d0df6207f6dc866145bab9f93cdb0fb76d8bb3dd96f14ac71237c37ce6eb336",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "a58f58bd9bb8df272af3d5ba94c6b23f8f970c49e73ee221b8ed91c371f4616c",
+    "article_modified": "2026-09-09"
+  },
+  "news/mtm-group-creates-stylish-dining-and-drinks-concepts-for-gantoise.html": {
+    "fingerprint": "d867d614a0e8a45136056970047d651aec5d1f56faf340d784793fcc7ec64cd8",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "713030d0e7fb9d22811bbad631b0e322d062568cbbe23645227d79799820d70d",
+    "article_modified": "2026-08-16"
+  },
+  "nl/news/mtm-group-creates-stylish-dining-and-drinks-concepts-for-gantoise.html": {
+    "fingerprint": "b46f7eefa58bf997ee7d76a896c2b6c1d8f2349f71e51d595126577657c22caa",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "0e6838f92de166049e7b1d3b38d4a0890092f3d9439de26648c19dc4f88616e3",
+    "article_modified": "2026-08-28"
+  },
+  "news/embrace-the-holiday-season-with-glossys-free-seasonal-gift-wrap-super-bundle.html": {
+    "fingerprint": "921fe73ef5e865f34a265856e86e6fb8e26c0d1e5254f03bf9bfacabff3bdd7f",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "a1239b3e55b0c212254053de97a3487b8f290b8f207d6efa82d75aaab23c926c",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/embrace-the-holiday-season-with-glossys-free-seasonal-gift-wrap-super-bundle.html": {
+    "fingerprint": "085b524908540dda8976d2d313748b947657ead8d55235c083f789de14eeede6",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "25a16a07f5fe384b71b8cedb6c6d03a98c9ef1445ab2c897b3fa5a3223dcce1c",
+    "article_modified": "2026-09-09"
+  },
+  "news/we-provided-the-visual-identity-for-the-media-fast-forward-event-2019.html": {
+    "fingerprint": "e6a098d8300bcc34748a50c4948ed33064de07462d1ae55fc6ed274d86f81c56",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "54ada149172e548dba99f764284b33f3a38c796cac8c3b5c3217d812507a63fb",
+    "article_modified": "2026-08-28"
+  },
+  "nl/news/we-provided-the-visual-identity-for-the-media-fast-forward-event-2019.html": {
+    "fingerprint": "b3b07cd69e178da67f19d678ef9aa829a992c3ce3ffff338950fe47291546e08",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "0b4ffb6b0c9046173162daefefa11bdd4bf907827ae0ffe82568a4136cd60c94",
+    "article_modified": "2026-08-28"
+  },
+  "news/the-data-tank-launches-nonprofit-that-serves-the-common-good.html": {
+    "fingerprint": "e8bf655e359a6bfb8f62c5427de19c3726cf05a58b4a33d742739168660af8ba",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "2f80e74950ff3382f09cffed34a7ad5f8596a4e32ed9b2018195a3da501f3eb3",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/the-data-tank-launches-nonprofit-that-serves-the-common-good.html": {
+    "fingerprint": "01c26e68dcaaa58c4235b5256508477ef2ad2a21374b94e6b5149a16bb395c27",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "7aee938ba87f00e4769527c8959324294fdf566467c5a0170bb1e53fa8150e0b",
+    "article_modified": "2026-09-09"
+  },
+  "news/inspiring-young-marketing-potentials-artevelde-academy.html": {
+    "fingerprint": "1f93196d7edd36c94cd0fb827ca770cf9b8b5bd3e06346bf875716688810aaf6",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "d3854560c7ada0daa72cccc8b45b6fe2213b027eb5c2f8378a195e7eb0748f88",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/inspiring-young-marketing-potentials-artevelde-academy.html": {
+    "fingerprint": "7d4018877f734ee2eaeb3a882f359b089ec48c2a78f6951b8f913aad35589455",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "52fd17fb047297f47f4cbdb8fb15aa09049bddbd99a634789afc330333a16e4b",
+    "article_modified": "2026-09-09"
+  },
+  "news/we-got-featured-on-the-infamous-fonts-in-use-blog.html": {
+    "fingerprint": "44ee3c5b00c1e757f5955f35d2d20e2d8a5e8fcb41150f744bd5772c3c5df911",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "ab1bbbb1bf0f0a43a448184dbee5a666a9ed29d8fd8fdd1623e952632fb1cebf",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/we-got-featured-on-the-infamous-fonts-in-use-blog.html": {
+    "fingerprint": "193904a808239eb560e631b7e2d57ec84258e74167d432d0b8b92f790717e98e",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "c240dc816d20926ca57afd44e285fc821d9ce6f9943b765c0e93b37ab0adc4c6",
+    "article_modified": "2026-09-09"
+  },
+  "news/we-contribute-to-school-of-branding-by-artevelde-academy.html": {
+    "fingerprint": "7a9f282a45299e41912a03d81df89359aeb1deaebcb03037d36b6b455f331e42",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "5b8eda717e5d1a7db202b0910629bcf77bc5c8a644d2a12a9aface2cf1b71b17",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/we-contribute-to-school-of-branding-by-artevelde-academy.html": {
+    "fingerprint": "11eed81638c750af80c164f3c568f6cb6f8d4df323280d11c4add5ccd213f69f",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "3dfd05b1509d397b80138fe959574a4383f3f742db1e9b4e6b9fb21d98824557",
+    "article_modified": "2026-09-09"
+  },
+  "news/vyncke-daels-launches-rhum-cinq.html": {
+    "fingerprint": "425cc35ebe6692a072569581cbc3748501072e03ebb7bbda79ce35c78b4638c9",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "fe08c3e65ebcaf1755c838522a4e2d845bfe006785ed309c3969bc6ba6688a60",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/vyncke-daels-launches-rhum-cinq.html": {
+    "fingerprint": "af996bda22b6ee82558827950e6d7d94aff8b656e9203f946ccf677b2117f5f6",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "1f08362b26e0aa1db2d93ac2724a29003a91f7ecb6fd08dbc492be52dd5149b8",
+    "article_modified": "2026-09-09"
+  },
+  "news/hype-empire-has-launched-its-new-website.html": {
+    "fingerprint": "1e408f4e9b3438c6a2cdb0d5f0786243ec0251665d6035c535a0f1522d99f6ba",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "bbb8cd8b4c582c5d6f2a0b6184c83fb88eaec7e591fa7bbb3a947a9ab963a6dc",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/hype-empire-has-launched-its-new-website.html": {
+    "fingerprint": "ded7ab7b5bd8f9726812ece0b2ce6f8c4ab4e8983623ca6f5c13d7854a052ac0",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "bbb776511da5c43257e04595b6334c43e6845461bb2ee63f00168b24847c7a7e",
+    "article_modified": "2026-09-09"
+  },
+  "news/meet-street-league-9000-ghents-neighbourhood-football-network.html": {
+    "fingerprint": "2d4f8877e811ebf2492ead78c392e5faa5bf0d91779e2fb5bfc6f99d96e88dd1",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "285a28e8d4a5d9885e1eefb0c03f4fb404cb0f3cf496b07638da21e83f2a20d3",
+    "article_modified": "2026-08-16"
+  },
+  "nl/news/meet-street-league-9000-ghents-neighbourhood-football-network.html": {
+    "fingerprint": "682cc6fb015cfeefabfdd43e5bd59cc8dcacc362f314bdece4242ac22020ce22",
+    "lastmod": "2026-09-02",
+    "article_fingerprint": "2ad765bbbc46f59a1e6128db8a5a8689163455e4776849bfb85fdb0e2ecc1c90",
+    "article_modified": "2026-08-28"
+  },
+  "news/our-client-mtm-group-became-a-trends-ambassador.html": {
+    "fingerprint": "9e4c93a2e5b569e51ee351f2713ca04851b923fb86ae7df051d1a06632b96487",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "37501206ec418f670a6596f9082478652b7dbb1f7a3e84762066193869ed0846",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/our-client-mtm-group-became-a-trends-ambassador.html": {
+    "fingerprint": "ae8b00dafb7b4623e8d634ac945a60be73b6ca6364c07555646b290e447036a8",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "5cd1a2ad77fb2ab375d546936cba3b8ffaf9504c876123e44aa97366c2250203",
+    "article_modified": "2026-09-09"
+  },
+  "news/we-became-a-part-of-the-expert-center-brand-consultants-by-acc.html": {
+    "fingerprint": "e49fa58457882b64f1fdc3ff719107b80d495c2fbb08a6a6e245553587633379",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "c2606b84f923c29f5c4d3745d31628c7e17c57f7ec8a64c1d46b921aa4ffcd6c",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/we-became-a-part-of-the-expert-center-brand-consultants-by-acc.html": {
+    "fingerprint": "496e582154827940a573a1b148fe0ff600f47bafb6f36be9d6325cfdb3a5f7f1",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "c6d8789b9debd4af7f2b7461d4bb4c6ea049ed6920ba93d25765f4096a3dc332",
+    "article_modified": "2026-09-09"
+  },
+  "nl/news/subito-ai-consultancy-de-kwekerij.html": {
+    "fingerprint": "fd3c438ec0ba4ec16ab2d9adc0c6818c3115be06ebc7ba77f7ee583ecddc5921",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "76462db61199ba485da05b03dd314336608485dad1ac60abeb2c4263f71a0764",
+    "article_modified": "2026-09-09"
+  },
+  "news/subito-ai-consultancy-de-kwekerij.html": {
+    "fingerprint": "a274f67c55e5ef5ac3fe6d4e6b99578f9ad750bfe58cd4096ae37e4964b0d3c1",
+    "lastmod": "2026-09-09",
+    "article_fingerprint": "d05f771e62f2556d20ea1c98749374f9bf3a835df40af725884047625149217e",
+    "article_modified": "2026-09-09"
+  }
+}
