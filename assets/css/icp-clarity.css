@@ -1,0 +1,10 @@
+/* Same LAB-03 grid, type, media and interaction language; client proof first. */
+.consultancy-proof-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-row) var(--gap)}
+.consultancy-proof-grid>article{min-width:0}
+.consultancy-proof-grid .work-grid{display:block}
+.consultancy-proof-grid .project{display:block;width:100%}
+.consultancy-proof-grid dl{margin:var(--space-title-copy) 0 0;display:grid;gap:var(--space-title-copy)}
+.consultancy-proof-grid dl>div{max-width:var(--copy-measure)}
+.consultancy-proof-grid dt{font-weight:600;margin-block-end:.4rem}
+.consultancy-proof-grid dd{margin:0;color:var(--ink-soft);text-wrap:pretty}
+@media(max-width:680px){.consultancy-proof-grid{grid-template-columns:minmax(0,1fr)}}
