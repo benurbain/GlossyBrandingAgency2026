@@ -114,7 +114,7 @@ ORG = {
     "logo": SITE + "assets/img/webclip.png",
     "sameAs": [
         "https://www.linkedin.com/company/glossy-branding-agency/",
-        "https://www.instagram.com/glossybrandingagency/",
+        "https://www.instagram.com/glossy_branding_agency/",
         "https://www.facebook.com/glossybrandingagency",
         "https://x.com/glossybranding",
     ],
@@ -269,7 +269,7 @@ def footer():
       <nav aria-label="Social">
         <ul>
           <li><a href="https://www.linkedin.com/company/glossy-branding-agency/" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.instagram.com/glossybrandingagency/" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.instagram.com/glossy_branding_agency/" rel="noopener">Instagram</a></li>
           <li><a href="https://www.facebook.com/glossybrandingagency" rel="noopener">Facebook</a></li>
           <li><a href="https://x.com/glossybranding" rel="noopener">X (ex-Twitter)</a></li>
         </ul>
