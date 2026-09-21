@@ -1,5 +1,20 @@
 [
   {
+    "name": "AI Agents Are Only as Good as Their Brief",
+    "slug": "ai-agents-are-only-as-good-as-their-brief",
+    "monthYear": "September 2026",
+    "subtitle": "As AI agents gain access and autonomy, the quality of their instructions becomes a management question.",
+    "excerpt": "AI agents do not remove ambiguity. They scale it. The more access and autonomy we give them, the more important it becomes to brief them clearly, set trustworthy sources and define when they should stop and ask.",
+    "body": "<p><strong>AI agents do not remove ambiguity. They scale it.</strong></p><p>We are all talking about AI agents, and some of us are already using them every day. I am too. The more I work with them, the more they remind me of a Belgian Rijkswachter in 1991: always ready, dutiful and perfectly willing to execute a bad instruction thoroughly and completely blindly. Orders are orders.</p><p>Give a contained LLM coding session a vague, hastily written assignment and you get a strange analysis or half-baked code that tries to say and do everything, yet achieves none of what you had in mind.</p><h2>Autonomy makes the brief matter more.</h2><p>Now give that same assignment to an agent, connect it to memory, a mailbox, CRM and company files, then give it permission to act independently. By lunchtime, half the organisation could be administratively detained.</p><p>That is the point. Autonomy does not turn an unclear request into a clear one. It increases the reach of the unclear request.</p><h2>From model choice to instruction management.</h2><p>That is why the model race over who has the most parameters is becoming less interesting to me. The more useful questions are practical ones: which sources can an agent trust? What may it do independently? When should it stop? And when should it simply ask: “Chief?”</p><p>Instruction management will become an important part of good management. Good agents are not only a matter of choosing a powerful model. They are the result of clear context, defined permissions, useful guardrails and a brief that gives the agent a real chance of doing the right thing.</p><p>So yes, my AI agents are better than yours. Or at least better briefed.</p>",
+    "image": "assets/media/ai-agents-instruction-management/agents-briefed-poster.jpg",
+    "video": "assets/media/ai-agents-instruction-management/agents-briefed.mp4",
+    "gallery": [], "videos": [],
+    "link": "https://www.linkedin.com/posts/benurbain_aiagents-agenticai-instructionmanagement-ugcPost-7507743242059202560-EqtG/",
+    "linkText": "Read the original post on LinkedIn",
+    "seo": "AI agents do not remove ambiguity. They scale it. Why clear instructions, trustworthy sources, permissions and stopping points matter more as agents gain autonomy.",
+    "published": "2026-09-21"
+  },
+  {
     "name": "From AI experiment to campaign imagery.",
     "slug": "subito-ai-consultancy-de-kwekerij",
     "monthYear": "September 2026",

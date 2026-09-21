@@ -1,5 +1,20 @@
 [
   {
+    "name": "AI-agents zijn slechts zo goed als hun briefing",
+    "slug": "ai-agents-are-only-as-good-as-their-brief",
+    "monthYear": "september 2026",
+    "subtitle": "Naarmate AI-agents meer toegang en autonomie krijgen, wordt de kwaliteit van hun instructies een managementvraagstuk.",
+    "excerpt": "AI-agents nemen ambiguïteit niet weg. Ze schalen ze op. Hoe meer toegang en autonomie we ze geven, hoe belangrijker het wordt om duidelijk te briefen, betrouwbare bronnen af te bakenen en vast te leggen wanneer ze moeten stoppen en vragen stellen.",
+    "body": "<p><strong>AI-agents nemen ambiguïteit niet weg. Ze schalen ze op.</strong></p><p>We hebben het allemaal over AI-agents en sommigen onder ons gebruiken ze al elke dag. Ik ook. Hoe meer ik ermee werk, hoe meer ze me doen denken aan een Belgische Rijkswachter in 1991: altijd bereid, plichtsbewust en perfect bereid om een slechte instructie grondig en volledig blind uit te voeren. Bevel is bevel.</p><p>Geef een afgebakende LLM-codesessie een vage, haastig geschreven opdracht en je krijgt een vreemde analyse of halfbakken code die alles probeert te zeggen en te doen, maar niets bereikt van wat je werkelijk voor ogen had.</p><h2>Autonomie maakt de briefing belangrijker.</h2><p>Geef diezelfde opdracht vervolgens aan een agent, koppel die aan geheugen, mailbox, CRM en bedrijfsbestanden, en geef hem toestemming om zelfstandig te handelen. Tegen de middag zit misschien de halve organisatie administratief vast.</p><p>Dat is de kern. Autonomie maakt een onduidelijke vraag niet duidelijk. Ze vergroot het bereik van die onduidelijkheid.</p><h2>Van modelkeuze naar instructiemanagement.</h2><p>Daarom wordt de race tussen modellen over wie de meeste parameters heeft voor mij minder interessant. De bruikbare vragen zijn praktischer: welke bronnen mag een agent vertrouwen? Wat mag hij zelfstandig doen? Wanneer moet hij stoppen? En wanneer moet hij gewoon vragen: “Chef?”</p><p>Instructiemanagement wordt een belangrijk onderdeel van goed management. Goede agents zijn niet alleen een kwestie van een krachtig model kiezen. Ze zijn het resultaat van heldere context, afgebakende toestemming, bruikbare guardrails en een briefing die de agent een echte kans geeft om het juiste te doen.</p><p>Dus ja, mijn AI-agents zijn beter dan die van jou. Of toch minstens beter gebrieft.</p>",
+    "image": "assets/media/ai-agents-instruction-management/agents-briefed-poster.jpg",
+    "video": "assets/media/ai-agents-instruction-management/agents-briefed.mp4",
+    "gallery": [], "videos": [],
+    "link": "https://www.linkedin.com/posts/benurbain_aiagents-agenticai-instructionmanagement-ugcPost-7507743242059202560-EqtG/",
+    "linkText": "Lees de oorspronkelijke post op LinkedIn",
+    "seo": "AI-agents nemen ambiguïteit niet weg, ze schalen ze op. Waarom heldere instructies, betrouwbare bronnen, toestemming en stopmomenten belangrijker worden naarmate agents meer autonomie krijgen.",
+    "published": "2026-09-21"
+  },
+  {
     "name": "Van AI-experiment naar campagnebeeld.",
     "slug": "subito-ai-consultancy-de-kwekerij",
     "monthYear": "september 2026",

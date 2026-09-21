@@ -428,6 +428,13 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/kmo-portefeuille"/>
   </url>
   <url>
+    <loc>https://glossy.tv/news/ai-agents-are-only-as-good-as-their-brief.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/ai-agents-are-only-as-good-as-their-brief.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news/ai-agents-are-only-as-good-as-their-brief.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news/ai-agents-are-only-as-good-as-their-brief.html"/>
+  </url>
+  <url>
     <loc>https://glossy.tv/news/brand-strategy-for-hotel-du-parc</loc>
     <lastmod>2026-09-02</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/brand-strategy-for-hotel-du-parc"/>
@@ -1133,6 +1140,13 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/kmo-portefeuille"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/kmo-portefeuille"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/kmo-portefeuille"/>
+  </url>
+  <url>
+    <loc>https://glossy.tv/nl/news/ai-agents-are-only-as-good-as-their-brief.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/ai-agents-are-only-as-good-as-their-brief.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news/ai-agents-are-only-as-good-as-their-brief.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news/ai-agents-are-only-as-good-as-their-brief.html"/>
   </url>
   <url>
     <loc>https://glossy.tv/nl/news/brand-strategy-for-hotel-du-parc</loc>

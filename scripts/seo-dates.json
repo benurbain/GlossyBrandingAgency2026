@@ -970,5 +970,17 @@
     "lastmod": "2026-09-09",
     "article_fingerprint": "d05f771e62f2556d20ea1c98749374f9bf3a835df40af725884047625149217e",
     "article_modified": "2026-09-09"
+  },
+  "news/ai-agents-are-only-as-good-as-their-brief.html": {
+    "fingerprint": "ea69919dd12f1d86f064ae9ec736e3abd2f0860103e7e6024e51e1e5695ff15e",
+    "lastmod": "2026-09-21",
+    "article_fingerprint": "2c3b63b164a6b87308849bcf8efdd1e1912f9bfac49dd3dce93d3374165a30fc",
+    "article_modified": null
+  },
+  "nl/news/ai-agents-are-only-as-good-as-their-brief.html": {
+    "fingerprint": "17cb872ce1cc0b93138cbbe20ac304a01c471947da9115688c1c424cc61df424",
+    "lastmod": "2026-09-21",
+    "article_fingerprint": "3ccec0c39f1ff498fe68954ccf19bf32202dce8e8e379c39c7ba20aa8a7b1632",
+    "article_modified": null
   }
 }
