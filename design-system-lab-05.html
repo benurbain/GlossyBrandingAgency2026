@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="nl"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Glossy · LAB 05 / Design system</title>
+<meta name="description" content="Het werkende handboek voor Glossy LAB 05, Zwart op wit: idee, Tone of Voice, typografie, kleur, grid, componenten, beweging, budget en de homepage van boven naar beneden.">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="preload" href="assets/fonts/SchibstedGrotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/lab-05.css?v=20260925">
+<link rel="stylesheet" href="assets/css/design-system-lab-05.css?v=20260925">
+<meta name="glossy-build" content="LAB05-20260925">
+</head>
+<body class="ds5">
+<a class="l5-skip" href="#main">Naar de inhoud</a>
+
+<div class="l5-labbar t-meta">
+  <div class="l5-shell">
+    <p><span class="t-strong">LAB 05 · Zwart op wit</span> · werkend handboek · 25 september 2026</p>
+    <p><a href="home-lab-05.html">Homepage-preview</a> · <a href="home-lab-05-en.html" hreflang="en" lang="en">English preview</a> · <a href="design-system-lab-03.html">LAB 03-handboek</a></p>
+  </div>
+</div>
+
+<header class="l5-header">
+  <div class="l5-shell l5-header__inner">
+    <a class="l5-logo" href="home-lab-05.html" aria-label="Glossy LAB 05, homepage-preview"><span class="l5-logo__anim"><img src="assets/img/logo.svg" alt="" width="154" height="58"></span></a>
+    <nav class="ds5-toc" aria-label="Hoofdstukken">
+      <a href="#idee">Idee</a><a href="#toon">Toon</a><a href="#type">Typografie</a><a href="#kleur">Kleur</a><a href="#grid">Grid</a><a href="#componenten">Componenten</a><a href="#beweging">Beweging</a><a href="#budget">Budget</a><a href="#homepage">Homepage</a><a href="#regels">Regels</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="ds5-cover l5-shell" aria-labelledby="cover-title">
+  <p class="t-label">Design system · LAB 05</p>
+  <h1 class="t-display" id="cover-title">Zwart op wit.</h1>
+  <p class="ds5-cover__lead t-lead">Glossy verkoopt keuzes. Dit systeem maakt ze zichtbaar: wit is ruimte en vraag, zwart is beslissing en actie. Wat alleen glans was, is weg.</p>
+  <div class="ds5-facts t-meta">
+    <div><span class="t-label">Versie</span><span>LAB 05, 25 september 2026</span></div>
+    <div><span class="t-label">Status</span><span>Lab, niet live. glossy.tv blijft LAB 03 tot Ben beslist.</span></div>
+    <div><span class="t-label">Basis</span><span>Homepage-review door vier specialisten: typografie, experience, copy en strategie.</span></div>
+    <div><span class="t-label">Bestanden</span><span><code>lab-05.css</code> · <code>lab-05.js</code> · <code>home-lab-05.html</code> · <code>home-lab-05-en.html</code></span></div>
+  </div>
+  <div class="ds5-cover__actions">
+    <a class="l5-button" href="home-lab-05.html"><span class="l5-button__surface"><span class="l5-button__icon" aria-hidden="true"><svg class="arrow" viewBox="0 0 19 12"><path d="M1 6h16M12 1l5 5-5 5"/></svg></span><span class="l5-button__label">Bekijk de homepage-preview</span></span></a>
+    <a class="l5-link" href="home-lab-05-en.html" hreflang="en"><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg>English preview</a>
+  </div>
+</section>
+
+<section class="l5-shell" aria-label="Inhoud">
+  <ol class="ds5-index">
+    <li><a href="#idee"><span class="t-label t-tnum">01</span><span><span class="t-strong">Het idee</span><span class="t-meta">Positie, publiek en drie toetsvragen.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+    <li><a href="#toon"><span class="t-label t-tnum">02</span><span><span class="t-strong">Tone of Voice</span><span class="t-meta">De regel, de stem en de woorden.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+    <li><a href="#type"><span class="t-label t-tnum">03</span><span><span class="t-strong">Typografie</span><span class="t-meta">Eén letter, negen rollen.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+    <li><a href="#kleur"><span class="t-label t-tnum">04</span><span><span class="t-strong">Kleur en materiaal</span><span class="t-meta">Papier, inkt en bewijs in kleur.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+    <li><a href="#grid"><span class="t-label t-tnum">05</span><span><span class="t-strong">Grid en ritme</span><span class="t-meta">Twaalf kolommen, een eenheid van acht.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+    <li><a href="#componenten"><span class="t-label t-tnum">06</span><span><span class="t-strong">Componenten</span><span class="t-meta">Van knop tot voorwaardenblok.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+    <li><a href="#beweging"><span class="t-label t-tnum">07</span><span><span class="t-strong">Beweging en interactie</span><span class="t-meta">Inversie is het enige overgangswoord.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+    <li><a href="#budget"><span class="t-label t-tnum">08</span><span><span class="t-strong">Budget</span><span class="t-meta">Minder dan een megabyte.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+    <li><a href="#homepage"><span class="t-label t-tnum">09</span><span><span class="t-strong">De homepage</span><span class="t-meta">Van boven naar beneden, sectie per sectie.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+    <li><a href="#regels"><span class="t-label t-tnum">10</span><span><span class="t-strong">Regels en open punten</span><span class="t-meta">Checklists en wat Ben nog moet aanleveren.</span></span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+  </ol>
+</section>
+
+<!-- 01 · Het idee -->
+<section class="ds5-chapter l5-shell" id="idee" aria-labelledby="idee-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">01 · Het idee</p>
+    <h2 class="t-head" id="idee-title"><span class="nw">Maken werd makkelijk.</span> <span class="nw">Kiezen niet.</span></h2>
+    <p class="t-lead">AI en tools maakten output goedkoop. Wat een merk overeind houdt, is de keuze: voor wie je er bent, wat je belooft en wat je laat liggen. Bij de meeste teams staat die keuze nergens op papier. Glossy zet ze zwart op wit.</p>
+  </header>
+
+  <div class="ds5-block">
+    <h3 class="t-label">De positie</h3>
+    <p class="ds5-statement t-title">Glossy is de senior merkpartner die eerst kiest en dan bouwt: het oordeel dat je merk overeind houdt nu je team en je tools elke dag meer maken.</p>
+  </div>
+
+  <div class="ds5-block ds5-three">
+    <div class="ds5-prose"><h3 class="t-label">Primair publiek</h3><p>De merkverantwoordelijke in Belgische kmo's, scale-ups en middelgrote organisaties: marketing- of communicatieverantwoordelijke, CMO, oprichter-CEO. Iemand die klem zit tussen AI-druk en merkverantwoordelijkheid.</p></div>
+    <div class="ds5-prose"><h3 class="t-label">Secundair publiek</h3><p>De directie die een positionering of een AI-plan moet verantwoorden en een senior gesprekspartner wil, geen accountlaag.</p></div>
+    <div class="ds5-prose"><h3 class="t-label">Bewust niet</h3><p>Wie een logo wil zonder keuze, een transformatiedeck, AI die mensen vervangt of productievolume. Op de homepage ook niet: vakgenoten, studenten en toolfans.</p></div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Wat zwart op wit betekent</h3>
+    <ol class="ds5-rules">
+      <li><div><p class="t-strong">Wit is ruimte en vraag.</p><p>Het papier draagt de pagina. Leegte is een keuze, nooit restruimte.</p></div></li>
+      <li><div><p class="t-strong">Zwart is beslissing en actie.</p><p>Alleen wat je aanraakt of wat vastligt, wordt zwart: de knop, de kaart onder je cursor of focus, het voorwaardenblok. Niets decoratiefs is zwart.</p></div></li>
+      <li><div><p class="t-strong">Kleur komt alleen binnen via bewijs.</p><p>Klantwerk staat in rust in zijn eigen kleur. De interface blijft zwart op wit.</p></div></li>
+    </ol>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">De drie toetsvragen</h3>
+    <p class="ds5-caption">Elke sectie, elk component en elke zin moet alle drie doorstaan.</p>
+    <div class="ds5-table-wrap" style="margin-top:var(--s-card)">
+      <table class="ds5-table">
+        <thead><tr><th>Vraag</th><th>Slaagt</th><th>Zakt</th></tr></thead>
+        <tbody>
+          <tr><td>1. Wat ligt hier vast? Een keuze, een feit, een voorwaarde of een weigering, in één zin.</td><td>"Vanaf €1.200 per dag."</td><td>"Werk dat vooruitgaat." · de herovideo · het label "Wat we doen"</td></tr>
+          <tr><td>2. Waar is het bewijs, in dezelfde blik? Een naam, een case, een cijfer, een prijs of een gezicht.</td><td>"Van 2.000 naar 3.000 gebruikers" onder BattMobility</td><td>"Proof, not promises" boven drie tags</td></tr>
+          <tr><td>3. Werkt het ook zonder glans? Haal effect, beweging, textuur en bijvoeglijk naamwoord weg.</td><td>De inversie van een kaart: de link werkt ook zonder</td><td>Fotonegatief bij hover · grijs tot hover · fake print</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Wat verdween, en waarom</h3>
+    <div class="ds5-table-wrap">
+      <table class="ds5-table">
+        <thead><tr><th>Uit LAB 03 of LAB 04</th><th>Probleem</th><th>In LAB 05</th></tr></thead>
+        <tbody>
+          <tr><td>Menukaart als H1</td><td>"Merkstrategie, identiteit en AI-systemen die samenwerken." beschrijft een categorie, geen positie.</td><td>Een standpunt over kiezen, met AI als context.</td></tr>
+          <tr><td>Zwevende knop "Wacht efkes."</td><td>Bedekte lead, hero-actie en de juridische links in de footer.</td><td>Ontvouwt in de hero, onder de knop. Geen overlay.</td></tr>
+          <tr><td>Herovideo en CTA-video</td><td>3,1 MB voor een beeld dat door de filter bijna onzichtbaar was.</td><td>Geen video op de homepage.</td></tr>
+          <tr><td>Grijswaarden op klantwerk</td><td>Verstopte het bewijs; op touch nooit kleur.</td><td>Werk in eigen kleur, in rust.</td></tr>
+          <tr><td>Scroll-reveals</td><td>Koppen lazen 900 ms lang grijs.</td><td>Uitspraken staan er meteen.</td></tr>
+          <tr><td>Constructiegrid</td><td>Vaste overlay, uitgespaarde witte vlakken, geen betekenis.</td><td>Niet meer getekend. <code>?grid</code> toont het voor ontwikkelaars.</td></tr>
+          <tr><td>Fake-printlaag (LAB 04)</td><td>Gesimuleerd ambacht, zwaar op mobiel, lag over de focusring.</td><td>Niet als merkdrager.</td></tr>
+          <tr><td>Rethink Sans</td><td>I en l zijn identiek: "AI" leest als "Al".</td><td>Schibsted Grotesk.</td></tr>
+          <tr><td>Grijze tekst</td><td>Kicker op de hero haalde maar 4,39:1.</td><td>Alle tekst in inkt of papier.</td></tr>
+          <tr><td>Eindeloze logoloop</td><td>WCAG 2.2.2; in de helft van de screenshots stond het woord half.</td><td>Eén cyclus per sessie, landt op AGENCY.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ds5-caption t-meta" style="margin-top:.75rem">Wat bleef: de inversie binnen dezelfde buitenmaat, de pijlcelknop, de linkeras, het woordmerk met wisselwoord, de vier fasen, "in dezelfde kamer" en de open prijs.</p>
+  </div>
+</section>
+
+<!-- 02 · Tone of Voice -->
+<section class="ds5-chapter l5-shell" id="toon" aria-labelledby="toon-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">02 · Tone of Voice</p>
+    <h2 class="t-head" id="toon-title"><span class="nw">De regel</span> <span class="nw">en de stem.</span></h2>
+    <p class="t-lead">Glossy klinkt als een ervaren vakmens aan tafel: nuchter, precies en warm, met een Gentse knipoog. En elke zin zet iets vast.</p>
+  </header>
+
+  <div class="ds5-block">
+    <h3 class="t-label">De stem, in vijf kenmerken</h3>
+    <ol class="ds5-rules">
+      <li><div><p class="t-strong">Nuchter, niet opgeblazen.</p><p>“Vanaf €1.200 per dag”, geen “impactvolle oplossingen”.</p></div></li>
+      <li><div><p class="t-strong">Precies, niet vaag.</p><p>Namen, cijfers en werkwoorden, geen bijvoeglijke glans.</p></div></li>
+      <li><div><p class="t-strong">Warm, niet joviaal.</p><p>Spreektaal met mate. Geen “Hey!” en geen uitroeptekens.</p></div></li>
+      <li><div><p class="t-strong">Eerlijk, niet verkoperig.</p><p>We zeggen ook wat we niet doen.</p></div></li>
+      <li><div><p class="t-strong">Eigen, niet inwisselbaar.</p><p>Kan een ander bureau de zin tekenen, dan is hij niet af.</p></div></li>
+    </ol>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Twee registers</h3>
+    <p class="ds5-caption">De regel bepaalt wát er staat, de stem hoe warm het klinkt. Eén register per blok, nooit wisselen binnen een zin. Waar een prijs, cijfer of voorwaarde staat, spreekt altijd de regel.</p>
+    <div class="ds5-two" style="margin-top:var(--s-card)">
+      <div class="ds5-stage">
+        <p class="t-label">Zwart op wit · de regel</p>
+        <p class="t-title" style="margin-block:.75rem">Stellend, kort, controleerbaar: een keuze, een feit, een voorwaarde of een weigering.</p>
+        <p class="t-meta">Waar: koppen, diensten, cases, prijzen, voorwaarden, UI, formulieren, meta.</p>
+        <ul class="ds5-check" style="margin-top:1rem"><li>“Voor er werk start, krijg je een vaste offerte.”</li><li>“Merkstrategie vanaf €10.000. AI-consultancy vanaf €1.200 per dag.”</li></ul>
+      </div>
+      <div class="ds5-stage">
+        <p class="t-label">Wacht efkes. · de stem</p>
+        <p class="t-title" style="margin-block:.75rem">Spreektaal met een knipoog, zoals Ben het aan tafel zegt.</p>
+        <p class="t-meta">Waar: het gewone antwoord onder de hero, de footerzin, posts en mails in Bens ik-vorm.</p>
+        <ul class="ds5-check" style="margin-top:1rem"><li>“Wacht efkes. Wat doet Glossy eigenlijk?”</li><li>“Je hoeft nog niet te weten wat je nodig hebt. Vertel gewoon wat er wringt.”</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Vijf toonregels</h3>
+    <div class="ds5-pairs">
+      <div><p class="t-strong">1. Werkwoord boven etiket.</p><p class="t-meta">Een zin die iets doet, onthoud je; een opsomming niet.</p></div>
+      <div class="ds5-pair"><div class="ds5-pair__do"><p class="t-label">Juist</p><p class="t-title">Maken werd makkelijk. Kiezen niet.</p></div><div class="ds5-pair__dont"><p class="t-label">Fout</p><p class="t-title">Merkstrategie, identiteit en AI-systemen die samenwerken.</p></div></div>
+      <div><p class="t-strong">2. Begin bij de vraag van de klant.</p><p class="t-meta">De lezer herkent zijn eigen vraag sneller dan onze dienstnaam.</p></div>
+      <div class="ds5-pair"><div class="ds5-pair__do"><p class="t-label">Juist</p><p class="t-title">“Waarom zou iemand voor ons kiezen?”</p></div><div class="ds5-pair__dont"><p class="t-label">Fout</p><p class="t-title">Onder deze studio zit twintig jaar merkwerk.</p></div></div>
+      <div><p class="t-strong">3. Geen claim zonder bewijs in dezelfde blik.</p><p class="t-meta">Naam, case, cijfer, prijs of gezicht staan naast de bewering.</p></div>
+      <div class="ds5-pair"><div class="ds5-pair__do"><p class="t-label">Juist</p><p class="t-title">Van 2.000 naar 3.000 gebruikers.</p><p class="t-meta">Onder BattMobility.</p></div><div class="ds5-pair__dont"><p class="t-label">Fout</p><p class="t-title">Strategie wordt zichtbaar.</p><p class="t-meta">Boven drie disciplinetags.</p></div></div>
+      <div><p class="t-strong">4. Zeg ook wat je niet doet.</p><p class="t-meta">Een weigering maakt elke belofte geloofwaardiger.</p></div>
+      <div class="ds5-pair"><div class="ds5-pair__do"><p class="t-label">Juist</p><p class="t-title">Zijn we niet de juiste partner, dan zeggen we dat in het eerste gesprek.</p></div><div class="ds5-pair__dont"><p class="t-label">Fout</p><p class="t-title">Scherpe keuzes. Sterke merken.</p></div></div>
+      <div><p class="t-strong">5. Eén woord per ding, één taal per pagina.</p><p class="t-meta">Wie twee namen ziet, denkt aan twee diensten.</p></div>
+      <div class="ds5-pair"><div class="ds5-pair__do"><p class="t-label">Juist</p><p class="t-title">Bekijk alle 54 cases</p><p class="t-meta">En overal “Cases”.</p></div><div class="ds5-pair__dont"><p class="t-label">Fout</p><p class="t-title">See all 54 cases</p><p class="t-meta">Op een NL-pagina, met “Werk” in de footer naast “Cases” in de nav.</p></div></div>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Het werkwoord van het merk</h3>
+    <p class="ds5-caption">Het hoofdwerkwoord is <strong class="t-strong">kiezen</strong>: het staat in de H1, de werkwijze en de footer. Verankeren geldt voor alle drie de poten.</p>
+    <div class="ds5-table-wrap" style="margin-top:var(--s-card)">
+      <table class="ds5-table">
+        <thead><tr><th>Werkwoord</th><th>Poot</th><th>Woorden die erbij horen</th></tr></thead>
+        <tbody>
+          <tr><td>kiezen · <span lang="en">choose</span></td><td>Merkstrategie</td><td>positionering, propositie, marktaanpak, voor wie je er bent, wat je belooft, wat je bewust niet doet</td></tr>
+          <tr><td>maken · <span lang="en">make</span></td><td>Identiteit en campagnes</td><td>naam, identiteit, website, campagne, design system, beeld, taal</td></tr>
+          <tr><td>bouwen · <span lang="en">build</span></td><td>AI voor marketingteams</td><td>workflows, afgesproken tools, gedeelde prompts, beeldmodellen die je huisstijl kennen, templates</td></tr>
+          <tr><td>verankeren · <span lang="en">embed</span></td><td>Alle drie, fase 04</td><td>documenteren, overdragen, opleiden, “tot je team zonder ons verder kan”</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ds5-caption t-meta" style="margin-top:.75rem">Niet: ontzorgen (we dragen over, we nemen niet over), transformeren, empoweren, faciliteren.</p>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Woordenlijst</h3>
+    <div class="ds5-two">
+      <div>
+        <p class="t-label" style="margin-bottom:var(--s-tight)">Schrappen</p>
+        <div class="ds5-table-wrap">
+          <table class="ds5-table" style="min-width:0">
+            <thead><tr><th>Woord</th><th>Waarom</th></tr></thead>
+            <tbody>
+              <tr><td>innovatief, impactvol, naadloos, holistisch</td><td>Elk bureau kan het tekenen, en het bewijst niets.</td></tr>
+              <tr><td>op maat, full-service, 360°</td><td>Iedereen belooft het. Zeg wat je aanpast.</td></tr>
+              <tr><td>oplossingen, transformatie, AI-powered, future-proof</td><td>Hype, en net wat de AI-pagina afwijst.</td></tr>
+              <tr><td>sterke merken, passie, actuele inzichten, updates</td><td>Glans of vulling zonder inhoud.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="ds5-caption t-meta" style="margin-top:.75rem">Klantcitaten blijven letterlijk. Deze lijst geldt voor onze eigen zinnen.</p>
+      </div>
+      <div>
+        <p class="t-label" style="margin-bottom:var(--s-tight)">Vervangen</p>
+        <div class="ds5-table-wrap">
+          <table class="ds5-table" style="min-width:0">
+            <thead><tr><th>Oud</th><th>Nieuw</th></tr></thead>
+            <tbody>
+              <tr><td>Plan een gratis intakegesprek</td><td>Vraag een gratis intake aan</td></tr>
+              <tr><td>Glossy Branding, Glossy Gent</td><td>Glossy</td></tr>
+              <tr><td>Identiteit &amp; activatie</td><td>Identiteit en campagnes</td></tr>
+              <tr><td>Merk- &amp; AI-systemen, Brand &amp; AI consultancy</td><td>AI voor marketingteams</td></tr>
+              <tr><td>Senior geleid vanuit Gent</td><td>Je werkt rechtstreeks met oprichter Ben Urbain.</td></tr>
+              <tr><td>twintig jaar merkwerk</td><td>sinds 2004</td></tr>
+              <tr><td>slechts zo goed als</td><td>maar zo goed als</td></tr>
+              <tr><td>KMO Portefeuille</td><td>KMO-portefeuille: wat kan nog?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="t-label" style="margin:var(--s-head) 0 var(--s-tight)">Vaste termen: één woord per ding</p>
+    <div class="ds5-table-wrap">
+      <table class="ds5-table">
+        <thead><tr><th>NL</th><th>EN</th><th>Regel</th></tr></thead>
+        <tbody>
+          <tr><td>Merkstrategie · Identiteit en campagnes · AI voor marketingteams</td><td lang="en">Brand strategy · Identity and campaigns · AI for marketing teams</td><td>Altijd deze drie namen.</td></tr>
+          <tr><td>AI-consultancy</td><td lang="en">AI consultancy</td><td>Categorie, pagina en navigatie. De dienst zelf heet AI voor marketingteams.</td></tr>
+          <tr><td>cases</td><td lang="en">cases</td><td>Niet “werk” of “portfolio”.</td></tr>
+          <tr><td>gratis intake</td><td lang="en">free intake</td><td>Niet “intakegesprek” of “kennismaking”.</td></tr>
+          <tr><td>Glossy</td><td>Glossy</td><td>Voluit (Glossy Branding Agency) alleen in footer, juridische tekst en alt.</td></tr>
+          <tr><td>oprichter Ben Urbain, daarna Ben</td><td lang="en">founder Ben Urbain, then Ben</td><td></td></tr>
+          <tr><td>brandingbureau</td><td lang="en">branding agency</td><td>In title, meta en feitregel; niet in de H1.</td></tr>
+          <tr><td>Verkennen · Kiezen · Vormgeven · Verankeren</td><td lang="en">Discover · Choose · Design · Embed</td><td>EN-fase 02 heet “Choose”, niet meer “Decide”.</td></tr>
+          <tr><td>vaste offerte</td><td lang="en">fixed quote</td><td></td></tr>
+          <tr><td>design system</td><td>design system</td><td>Enkelvoud, niet vertalen.</td></tr>
+          <tr><td>KMO-portefeuille</td><td>KMO-portefeuille</td><td>Eigennaam; kmo's in lopende tekst.</td></tr>
+          <tr><td>je (jouw alleen voor nadruk)</td><td lang="en">you</td><td>Nooit “u”.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ds5-block ds5-two">
+    <div>
+      <h3 class="t-title">Vlaams en spreektaal</h3>
+      <ol class="ds5-rules">
+        <li><div><p class="t-strong">Dosering.</p><p>Hoogstens twee spreektaalwoorden per blok, nooit twee in één zin. Per pagina één spreektaalblok (het gewone antwoord) plus de footerzin.</p></div></li>
+        <li><div><p class="t-strong">Wel.</p><p>Het gewone antwoord, de footerzin, het eerste formulierveld, posts en mails in Bens ik-vorm.</p></div></li>
+        <li><div><p class="t-strong">Nooit.</p><p>Koppen die informatie dragen, prijzen, voorwaarden, knoppen, foutmeldingen, cookiebalk, juridische tekst, meta en alt-teksten.</p></div></li>
+        <li><div><p class="t-strong">Toegelaten, want al in gebruik.</p><p>efkes, schoon allemaal, voilà, wat er wringt, de handen uit de mouwen steken, het verkeerde nummer, tegenspreken. Nieuwe woorden pas na Bens akkoord. Geen fonetische spelling (da's, 't, effe).</p></div></li>
+        <li><div><p class="t-strong">De toets.</p><p>Zou Ben het zo zeggen in een intake, en begrijpt een lezer in Hasselt of Amsterdam het zonder uitleg? Twee keer ja, dan mag het.</p></div></li>
+      </ol>
+    </div>
+    <div>
+      <h3 class="t-title">Engels</h3>
+      <p class="ds5-caption" style="margin-bottom:var(--s-card)">In het Engels wordt het dialect droog understatement. Korte zinnen, samentrekkingen in de stem (<span lang="en">don't, we'll</span>), geen hype (<span lang="en">awesome, game-changing, solutions</span>). Britse spelling: <span lang="en">organisation, recognise, colour, programme, judgement</span>.</p>
+      <div class="ds5-table-wrap">
+        <table class="ds5-table" style="min-width:0">
+          <thead><tr><th>NL</th><th>EN</th></tr></thead>
+          <tbody>
+            <tr><td>Maken werd makkelijk. Kiezen niet.</td><td lang="en">Making got easy. Choosing didn’t.</td></tr>
+            <tr><td>Eerst kiezen. Dan maken.</td><td lang="en">Choose first. Then make.</td></tr>
+            <tr><td>Wacht efkes. Wat doet Glossy eigenlijk?</td><td lang="en">Hang on a second. What does Glossy actually do?</td></tr>
+            <tr><td>Vertel gewoon wat er wringt.</td><td lang="en">Just tell us what’s not working.</td></tr>
+            <tr><td>Ons logo kan niet kiezen. Wij wel.</td><td lang="en">Our logo can’t decide. We can.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Schrijfregels</h3>
+    <ol class="ds5-rules">
+      <li><div><p class="t-strong">Nooit een em dash.</p><p>Regel van Ben. Gebruik een dubbelpunt voor uitleg, een komma voor een bijzin, een puntkomma tussen verwante zinnen, haakjes voor een terzijde, of maak er twee zinnen van. Ook geen los koppelteken tussen spaties als vervanging.</p></div></li>
+      <li><div><p class="t-strong">En dash alleen in reeksen.</p><p>Zonder spaties: 2004–2026, 45–65 tekens.</p></div></li>
+      <li><div><p class="t-strong">Cijfers en prijzen.</p><p>NL: €1.200, €10.000, “vanaf … per dag”. EN: €1,200, €10,000, “from … a day”. Geen spatie na €. Een tot twaalf voluit (drie vragen), cijfers bij tellingen (54 cases).</p></div></li>
+      <li><div><p class="t-strong">Data.</p><p>NL “september 2026”, EN “September 2026”. Geen 25-09-2026 in copy.</p></div></li>
+      <li><div><p class="t-strong">Hoofdletters.</p><p>Zinsnaam in koppen en knoppen. Labels typ je in zinsnaam; de kapitalen komen uit CSS. Enige uitzondering: AGENCY, BUREAU en COUNCIL in de footerzin, als citaat van het logo. Merknamen zoals de klant ze schrijft (Madison.Partners, iMinds).</p></div></li>
+      <li><div><p class="t-strong">Aanhalingstekens.</p><p>“ ” voor citaten en klantvragen, ’ als apostrof. Weglatingen in een citaat als (…).</p></div></li>
+      <li><div><p class="t-strong">Zinslengte.</p><p>Gemiddeld onder twintig woorden. Een lead telt hoogstens twee zinnen, een knop hoogstens vijf woorden, een H1 minder dan 45 tekens.</p></div></li>
+      <li><div><p class="t-strong">De punt.</p><p>Een kop die een stelling is, eindigt op een punt. Een vraag krijgt een vraagteken. Beschrijvende titels, labels, knoppen en links krijgen geen punt.</p></div></li>
+      <li><div><p class="t-strong">Middenpunt.</p><p>Met spaties, als scheiding in labels en bewijsregels: “Sinds 2004 · 54 cases”.</p></div></li>
+      <li><div><p class="t-strong">“Zwart op wit”.</p><p>Hoogstens twee keer per pagina (lead en voorwaarden), nooit als kop of slogan.</p></div></li>
+    </ol>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Koppenformules</h3>
+    <div class="ds5-two">
+      <div class="ds5-pair__do" style="display:grid;gap:1rem;padding:var(--s-card);border-radius:var(--radius)">
+        <p class="t-label">Wel</p>
+        <div><p class="t-strong">Twee korte zinnen, feit en prik</p><p>“Maken werd makkelijk. Kiezen niet.” · “Andere vragen. Dezelfde aanpak.”</p></div>
+        <div><p class="t-strong">Stelling met punt</p><p>“Strategie, systemen en smaak horen in dezelfde kamer.”</p></div>
+        <div><p class="t-strong">De vraag van de klant, tussen aanhalingstekens</p><p>“Hoe gebruiken we AI zonder ons merk te verliezen?”</p></div>
+        <div><p class="t-strong">Open vraag aan de lezer</p><p>“Wat wil je veranderen?”</p></div>
+      </div>
+      <div class="ds5-pair__dont" style="display:grid;gap:1rem;align-content:start;padding:var(--s-card);border-radius:var(--radius)">
+        <p class="t-label">Niet</p>
+        <div><p class="t-strong">De dienstenlijst</p><p>“Merkstrategie, identiteit en AI-systemen die samenwerken.” Een menukaart, geen positie.</p></div>
+        <div><p class="t-strong">De sfeerkop</p><p>“Werk dat vooruitgaat.” · “Actuele inzichten en praktische tests.” Het klinkt als een kop, maar er ligt niets vast.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Microcopy</h3>
+    <div class="ds5-table-wrap">
+      <table class="ds5-table">
+        <thead><tr><th>Plek</th><th>NL</th><th>EN</th></tr></thead>
+        <tbody>
+          <tr><td>Navigatie</td><td>Cases · Diensten &amp; aanpak · AI-consultancy · Nieuws</td><td lang="en">Cases · Services &amp; approach · AI consultancy · News</td></tr>
+          <tr><td>Taalwissel</td><td>EN (aria: “English version”)</td><td lang="en">NL (aria: “Nederlandse versie”)</td></tr>
+          <tr><td>Headerknop, ook op mobiel</td><td>Gratis intake</td><td lang="en">Free intake</td></tr>
+          <tr><td>Primaire knop</td><td>Vraag een gratis intake aan</td><td lang="en">Request a free intake</td></tr>
+          <tr><td>Ontvouwknop (+ is een icoon)</td><td>Wacht efkes. Wat doet Glossy eigenlijk?</td><td lang="en">Hang on a second. What does Glossy actually do?</td></tr>
+          <tr><td>Collectieknop</td><td>Toon meer</td><td lang="en">Show more</td></tr>
+          <tr><td>Tekstlinks</td><td>Bekijk alle 54 cases · Bekijk onze aanpak · Bekijk formats en tarieven · Meer uit de studio</td><td lang="en">See all 54 cases · See our approach · See formats and rates · More from the studio</td></tr>
+          <tr><td>Velden</td><td>Naam · Werkmail · Bedrijf of organisatie</td><td lang="en">Name · Work email · Company or organisation</td></tr>
+          <tr><td>Keuzeveld</td><td>Waarmee kunnen we helpen? Merkstrategie · Identiteit en campagnes · AI voor marketingteams · Weet ik nog niet</td><td lang="en">What can we help with? Brand strategy · Identity and campaigns · AI for marketing teams · Not sure yet</td></tr>
+          <tr><td>Eerste tekstveld</td><td>Vertel gewoon wat er wringt</td><td lang="en">Just tell us what’s not working</td></tr>
+          <tr><td>Bevestiging</td><td>Bedankt. Je vraag is aangekomen. [antwoordtermijn: aan te leveren door Ben]</td><td lang="en">Thank you. Your question has arrived.</td></tr>
+          <tr><td>Fout: leeg veld</td><td>Vul dit veld in.</td><td lang="en">Please fill in this field.</td></tr>
+          <tr><td>Fout: mailadres</td><td>Dit mailadres klopt niet. Kijk het even na.</td><td lang="en">This email address doesn’t look right.</td></tr>
+          <tr><td>Fout: versturen</td><td>Versturen lukte niet. Probeer opnieuw of mail naar info@glossy.tv.</td><td lang="en">Sending failed. Please try again or email info@glossy.tv.</td></tr>
+          <tr><td>Lege toestand</td><td>Hier staat nog niets. Bekijk intussen de cases.</td><td lang="en">Nothing here yet. See the cases in the meantime.</td></tr>
+          <tr><td>Cookiebalk, zin</td><td>We onthouden je taal en je privacykeuze. Met je toestemming meten we ook bezoeken en laden we ingesloten video’s.</td><td lang="en">We remember your language and privacy choice. With your permission, we also measure visits and load embedded videos.</td></tr>
+          <tr><td>Cookiebalk, knoppen</td><td>Alles accepteren · Alleen noodzakelijke · Zelf kiezen</td><td lang="en">Accept all · Necessary only · Let me choose</td></tr>
+          <tr><td>404</td><td>Deze pagina bestaat niet. Verhuisd of nooit gemaakt: ga naar de homepage of bekijk de cases.</td><td lang="en">This page doesn’t exist. Moved, or never made: go to the homepage or see the cases.</td></tr>
+          <tr><td>Footerlabels</td><td>Ontdek · Volg · Erkenning</td><td lang="en">Explore · Follow · Recognition</td></tr>
+          <tr><td>Juridisch</td><td>Privacy- en cookiebeleid · KMO-portefeuille: wat kan nog? · Cookievoorkeuren</td><td lang="en">Privacy &amp; cookie policy · KMO-portefeuille: what still qualifies? · Cookie preferences</td></tr>
+          <tr><td>Footerzin</td><td>AGENCY, BUREAU of COUNCIL? Ons logo kan niet kiezen. Wij wel.</td><td lang="en">AGENCY, BUREAU or COUNCIL? Our logo can’t decide. We can.</td></tr>
+          <tr><td>Terug · skiplink</td><td>Naar boven · Ga naar inhoud</td><td lang="en">Back to top · Skip to content</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ds5-caption t-meta" style="margin-top:.75rem">Laat de cookietekst juridisch nakijken: dit handboek is geen juridisch advies.</p>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Checklist vóór publicatie</h3>
+    <ul class="ds5-check">
+      <li><span class="t-strong">Wat ligt hier vast?</span> Een keuze, feit, voorwaarde of weigering, in één zin.</li>
+      <li><span class="t-strong">Waar is het bewijs, in dezelfde blik?</span> Naam, case, cijfer, prijs of gezicht; wat ontbreekt staat als [aan te leveren door Ben].</li>
+      <li><span class="t-strong">Werkt het ook zonder glans?</span> Lees de tekst zonder beeld, beweging en bijvoeglijke naamwoorden.</li>
+      <li><span class="t-strong">Geen em dash.</span> Een zoekactie op U+2014 in HTML, meta en alt geeft niets, en er staat geen los koppelteken tussen spaties als vervanging.</li>
+      <li><span class="t-strong">Eén taal per pagina.</span> Alleen eigennamen, de logowoorden en KMO-portefeuille zijn uitgezonderd.</li>
+      <li><span class="t-strong">Vaste termen.</span> Overal dezelfde woorden, zie de woordenlijst.</li>
+      <li><span class="t-strong">Eén vraag.</span> Overal “Vraag een gratis intake aan”, in de header “Gratis intake”. Nergens “Plan”.</li>
+      <li><span class="t-strong">Schrijfregels.</span> Prijzen, data, aanhalingstekens en punten kloppen; “zwart op wit” staat er hoogstens twee keer.</li>
+      <li><span class="t-strong">Spreektaaltoets.</span> Hoogstens twee spreektaalwoorden per blok, alleen waar het mag. Zou Ben het zo zeggen?</li>
+      <li><span class="t-strong">NL en EN zeggen hetzelfde</span>, ook in title, meta, alt en aria. Bij AI Act-onderwerpen staat “geen juridisch advies”.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 03 · Typografie -->
+<section class="ds5-chapter l5-shell" id="type" aria-labelledby="type-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">03 · Typografie</p>
+    <h2 class="t-head" id="type-title"><span class="nw">Eén letter.</span> <span class="nw">Negen rollen.</span></h2>
+    <p class="t-lead">Schibsted Grotesk, ontworpen voor een Noorse mediagroep: een letter uit de krant, de letter van wat op papier staat. Het karakter zit in de zetting, niet in een tweede familie.</p>
+  </header>
+
+  <div class="ds5-block ds5-glyphs">
+    <div><p class="t-label">Schibsted Grotesk · LAB 05</p><p class="ds5-glyphs__big">AI · Al · Il1</p><p class="t-meta">De I heeft schreven, de l een staart. "AI" leest als AI, op 128 en op 12 pixels.</p></div>
+    <div><p class="t-label">Rethink Sans · LAB 03</p><p class="ds5-glyphs__big ds5-rethink">AI · Al · Il1</p><p class="t-meta">I en l hebben dezelfde vorm (84 × 700 eenheden). Voor een AI-consultancy is dat een echt probleem.</p></div>
+  </div>
+
+  <div class="ds5-block ds5-two">
+    <div class="ds5-prose">
+      <h3 class="t-label">Waarom deze letter</h3>
+      <p>Getest tegen Rethink Sans, Funnel Sans, Object Sans, Hanken Grotesk, Instrument Sans en Geist op vijf punten: I ≠ l, koppelteken, tabulaire cijfers, zetbreedte en rendering op 15px/500. Funnel Sans en Object Sans vielen af op de I/l-test.</p>
+      <p>Schibsted zet even breed als Rethink (1090 tegen 1094 eenheden voor "Merkstrategie, identiteit"), dus regelvallen blijven staan. De punt is zwaarder: een stellende zin eindigt zichtbaar.</p>
+    </div>
+    <div class="ds5-prose">
+      <h3 class="t-label">Het bestand</h3>
+      <p><code>assets/fonts/SchibstedGrotesk-var-latin.woff2</code>: 47 KB, variabel 400 tot 900, Latijnse subset, versie 1.100. SIL Open Font License 1.1, zelf gehost, geen verzoeken naar Google. We gebruiken alleen 400 en 500.</p>
+      <p>De x-hoogte is groter dan bij Rethink: body staat daarom op 17px, dat oogt als Rethink op 18.</p>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">De rollen</h3>
+    <div class="ds5-table-wrap">
+      <table class="ds5-table">
+        <thead><tr><th>Rol</th><th>Gebruik</th><th>1440</th><th>390</th><th>Regelhoogte</th><th>Spatiëring</th><th>Gewicht</th><th>Token</th></tr></thead>
+        <tbody>
+          <tr><td>Display</td><td>H1 van de homepage</td><td class="num">127px</td><td class="num">44px</td><td class="num">1,0</td><td class="num">−0,04 em</td><td class="num">400</td><td><code>--t-display</code></td></tr>
+          <tr><td>Head</td><td>H2, CTA-kop</td><td class="num">48px</td><td class="num">28px</td><td class="num">1,08</td><td class="num">−0,025 em</td><td class="num">400</td><td><code>--t-head</code></td></tr>
+          <tr><td>Title</td><td>Kaarttitel, voorwaarden</td><td class="num">26px</td><td class="num">20px</td><td class="num">1,15</td><td class="num">−0,015 em</td><td class="num">400</td><td><code>--t-title</code></td></tr>
+          <tr><td>Lead</td><td>Hero, intro, Ben</td><td class="num">22px</td><td class="num">18px</td><td class="num">1,4</td><td class="num">0</td><td class="num">400</td><td><code>--t-lead</code></td></tr>
+          <tr><td>Body</td><td>Lopende tekst</td><td class="num">17px</td><td class="num">16px</td><td class="num">1,5</td><td class="num">0</td><td class="num">400</td><td><code>--t-body</code></td></tr>
+          <tr><td>Body sterk</td><td>Resultaat, fasen, nieuwstitels</td><td class="num">17px</td><td class="num">16px</td><td class="num">1,5</td><td class="num">0</td><td class="num">500</td><td><code>.t-strong</code></td></tr>
+          <tr><td>UI</td><td>Navigatie, knoppen, tekstlinks</td><td class="num">15px</td><td class="num">15px</td><td class="num">1,2</td><td class="num">0</td><td class="num">500</td><td><code>--t-ui</code></td></tr>
+          <tr><td>Meta</td><td>Bewijsregel, juridisch</td><td class="num">13px</td><td class="num">13px</td><td class="num">1,4</td><td class="num">0</td><td class="num">400</td><td><code>--t-meta</code></td></tr>
+          <tr><td>Label</td><td>Data, fasen, sector · jaar</td><td class="num">12px</td><td class="num">12px</td><td class="num">1,35</td><td class="num">+0,06 em, kapitalen</td><td class="num">500</td><td><code>--t-label</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ds5-block ds5-type">
+    <div><div class="ds5-type__meta"><span class="t-label">Display</span><span class="t-meta">Eén zin per regel</span></div><p class="ds5-type__sample t-display">Kiezen niet.</p></div>
+    <div><div class="ds5-type__meta"><span class="t-label">Head</span><span class="t-meta">Twee korte zinnen</span></div><p class="ds5-type__sample t-head">Andere vragen. Dezelfde aanpak.</p></div>
+    <div><div class="ds5-type__meta"><span class="t-label">Title</span><span class="t-meta">De vraag van de klant</span></div><p class="ds5-type__sample t-title">“Hoe gebruiken we AI zonder ons merk te verliezen?”</p></div>
+    <div><div class="ds5-type__meta"><span class="t-label">Lead</span><span class="t-meta">Max. 28 em</span></div><p class="ds5-type__sample t-lead">Glossy zet eerst zwart op wit waar je merk voor staat.</p></div>
+    <div><div class="ds5-type__meta"><span class="t-label">Body en sterk</span><span class="t-meta">45 tot 65 tekens</span></div><p class="ds5-type__sample">Positionering, propositie en marktaanpak. <span class="t-strong">Vanaf €10.000.</span></p></div>
+    <div><div class="ds5-type__meta"><span class="t-label">UI</span><span class="t-meta">15px, 500</span></div><p class="ds5-type__sample t-ui">Vraag een gratis intake aan</p></div>
+    <div><div class="ds5-type__meta"><span class="t-label">Meta en label</span><span class="t-meta">13 en 12px</span></div><p class="ds5-type__sample"><span class="t-meta">Sinds 2004 · 54 cases</span> &nbsp; <span class="t-label">Gedeelde mobiliteit · 2025</span></p></div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Regels</h3>
+    <ol class="ds5-rules">
+      <li><div><p class="t-strong">Display volgt de zin.</p><p>Vanaf 480px staat elke zin op één regel. De maat komt uit de zinslengte: <code>calc((100vw − 2 × gutter) / 10,4)</code>, begrensd door <code>16svh</code> en 128px. Een langere zin krijgt een kleinere maat, geen extra regel.</p></div></li>
+      <li><div><p class="t-strong">Koppen breken op betekenis.</p><p>Nooit op een koppelteken, nooit een voegwoord of stompje aan het regeleinde. Zet <code>.nw</code> rond samenstellingen en rond elke zin van een kop; <code>text-wrap: balance</code> doet de rest.</p></div></li>
+      <li><div><p class="t-strong">Geen grijze tekst.</p><p>Hiërarchie komt uit grootte, gewicht en kast. <code>--line</code> is voor lijnen, nooit voor letters.</p></div></li>
+      <li><div><p class="t-strong">Twee gewichten.</p><p>400 vanaf 17px. 500 voor UI, labels en wat een feit benoemt. Geen bold, geen italic.</p></div></li>
+      <li><div><p class="t-strong">Tabulaire cijfers alleen in kolommen.</p><p>In Schibsted maakt <code>tnum</code> ook punt en komma breed. Gebruik <code>.t-tnum</code> voor nummers en data die onder elkaar staan, nooit in lopende tekst of prijzen.</p></div></li>
+      <li><div><p class="t-strong">Een label benoemt een feit.</p><p>Sector · jaar, een datum, een fase. Nooit het sectietype.</p></div></li>
+    </ol>
+  </div>
+
+  <div class="ds5-block ds5-pairs">
+    <div class="ds5-pair">
+      <div class="ds5-pair__do"><p class="t-label">Juist</p><p class="t-title">Maken werd makkelijk.<br>Kiezen niet.</p><p class="t-meta">Twee zinnen, twee regels, elk met een punt.</p></div>
+      <div class="ds5-pair__dont"><p class="t-label">Fout</p><p class="t-title">Merkstrategie, identiteit en AI-<br>systemen die samenwerken.</p><p class="t-meta">Breekt op het koppelteken, en is een menukaart.</p></div>
+    </div>
+    <div class="ds5-pair">
+      <div class="ds5-pair__do"><p class="t-label">Juist</p><p><span class="t-label">Gedeelde mobiliteit · 2025</span></p><p class="t-meta">Het label draagt een feit.</p></div>
+      <div class="ds5-pair__dont"><p class="t-label">Fout</p><p><span class="t-label">Wat we doen</span></p><p class="t-meta">Het label kondigt alleen de sectie aan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · Kleur -->
+<section class="ds5-chapter l5-shell" id="kleur" aria-labelledby="kleur-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">04 · Kleur en materiaal</p>
+    <h2 class="t-head" id="kleur-title"><span class="nw">Papier draagt.</span> <span class="nw">Inkt beslist.</span></h2>
+    <p class="t-lead">Twee kleuren dragen betekenis, twee zijn alleen structuur. Geen accent, geen verloop, geen schaduw, geen textuur.</p>
+  </header>
+  <div class="ds5-block ds5-swatches">
+    <div class="ds5-swatch"><div class="ds5-swatch__chip" style="background:#fff"></div><p class="t-strong">Paper <span class="t-tnum">#FFFFFF</span></p><p class="t-meta"><code>--paper</code> · ruimte en vraag</p></div>
+    <div class="ds5-swatch"><div class="ds5-swatch__chip" style="background:#111;border-color:#111"></div><p class="t-strong">Ink <span class="t-tnum">#111111</span></p><p class="t-meta"><code>--ink</code> · tekst, beslissing, actie</p></div>
+    <div class="ds5-swatch"><div class="ds5-swatch__chip" style="background:#e2e2e2"></div><p class="t-strong">Line <span class="t-tnum">#E2E2E2</span></p><p class="t-meta"><code>--line</code> · lijnen, nooit tekst</p></div>
+    <div class="ds5-swatch"><div class="ds5-swatch__chip" style="background:#f3f1f1"></div><p class="t-strong">Smoke <span class="t-tnum">#F3F1F1</span></p><p class="t-meta"><code>--smoke</code> · plaatshouder voor beeld</p></div>
+  </div>
+  <div class="ds5-block ds5-two">
+    <div class="ds5-table-wrap">
+      <table class="ds5-table" style="min-width:0">
+        <thead><tr><th>Combinatie</th><th>Contrast</th><th>Gebruik</th></tr></thead>
+        <tbody>
+          <tr><td>Ink op paper</td><td class="num">18,9:1</td><td>Alle tekst</td></tr>
+          <tr><td>Paper op ink</td><td class="num">18,9:1</td><td>Voorwaardenblok, knop, inversie</td></tr>
+          <tr><td>Line op paper</td><td class="num">1,3:1</td><td>Alleen lijnen</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol class="ds5-rules">
+      <li><div><p class="t-strong">Eén inktblok per pagina.</p><p>Op de homepage is dat het voorwaardenblok. Het inverteert nooit zelf.</p></div></li>
+      <li><div><p class="t-strong">Inversie is de enige toestand.</p><p>Hover, focus en tik maken een vlak zwart en de tekst wit. Nooit met <code>filter: invert()</code> op beeld: dat maakt een fotonegatief.</p></div></li>
+      <li><div><p class="t-strong">Klantwerk in eigen kleur.</p><p>In rust, op elk toestel. Het zwarte kader bij hover omlijst het beeld, het ontkleurt het niet.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 05 · Grid -->
+<section class="ds5-chapter l5-shell" id="grid" aria-labelledby="grid-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">05 · Grid en ritme</p>
+    <h2 class="t-head" id="grid-title"><span class="nw">Twaalf kolommen.</span> <span class="nw">Een eenheid van acht.</span></h2>
+    <p class="t-lead">Het grid wordt gevoeld in de randen, niet getekend. Elke tekstrand valt op een kolomlijn.</p>
+  </header>
+  <div class="ds5-block">
+    <div class="ds5-griddemo" aria-hidden="true">
+      <span class="col t-tnum">1</span><span class="col">2</span><span class="col">3</span><span class="col">4</span><span class="col">5</span><span class="col">6</span><span class="col">7</span><span class="col">8</span><span class="col">9</span><span class="col">10</span><span class="col">11</span><span class="col">12</span>
+      <span class="span-12 ink">12 · H1, één zin per regel</span>
+      <span class="span-7">7 · lead, max. 28 em</span>
+      <span class="span-4">4 · case</span><span class="span-4">4 · case</span><span class="span-4">4 · case</span>
+      <span class="span-9">9 · H2</span>
+    </div>
+    <p class="ds5-caption t-meta" style="margin-top:.75rem">Desktop 12 kolommen, mobiel (tot 680px) 4. Voeg <code>?grid</code> aan een LAB 05-URL toe om de kolommen over de pagina te zien.</p>
+  </div>
+  <div class="ds5-block ds5-two">
+    <div class="ds5-table-wrap">
+      <table class="ds5-table" style="min-width:0">
+        <thead><tr><th>Token</th><th>Waarde</th><th>1440 / 390</th></tr></thead>
+        <tbody>
+          <tr><td><code>--shell</code></td><td>max. 1760px</td><td class="num">·</td></tr>
+          <tr><td><code>--gutter</code></td><td>clamp(1.25rem, 4.3vw, 5.5rem)</td><td class="num">62 / 20</td></tr>
+          <tr><td><code>--gap</code></td><td>clamp(1rem, 2vw, 2rem)</td><td class="num">29 / 16</td></tr>
+          <tr><td><code>--s-section</code></td><td>clamp(3.5rem, 2.4rem + 3vw, 5.5rem)</td><td class="num">82 / 56</td></tr>
+          <tr><td><code>--s-head</code></td><td>kop → inhoud, kaartrij → kaartrij</td><td class="num">48 / 32</td></tr>
+          <tr><td><code>--s-card</code></td><td>binnen kaarten</td><td class="num">24 / 16</td></tr>
+          <tr><td><code>--s-label</code></td><td>label → kop</td><td class="num">16 / 12</td></tr>
+          <tr><td><code>--s-tight</code></td><td>kleine stap</td><td class="num">12 / 8</td></tr>
+          <tr><td><code>--radius</code></td><td>5px, cirkels nooit</td><td class="num">·</td></tr>
+          <tr><td><code>--button</code></td><td>52px, compact 44px</td><td class="num">·</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol class="ds5-rules">
+      <li><div><p class="t-strong">De hero krijgt de hoogte van zijn inhoud.</p><p>Nooit van het scherm. Elke afstand in de hero luistert ook naar de schermhoogte (<code>svh</code>), zodat de intakeknop op een laptop van 1366 × 657 boven de vouw staat.</p></div></li>
+      <li><div><p class="t-strong">Geen wezen.</p><p>Drie items op drie kolommen, niet vijf op vier. Een kolom die leeg blijft, is een keuze.</p></div></li>
+      <li><div><p class="t-strong">Kaarten meten niet in hover-stand.</p><p>Het zwarte vlak gaat 16px naar buiten; de tekst herbreekt nooit.</p></div></li>
+      <li><div><p class="t-strong">Maximaal vijf schermen op 1440.</p><p>Wordt het meer, dan valt eerst het nieuws, nooit de werkwijze of de voorwaarden.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 06 · Componenten -->
+<section class="ds5-chapter l5-shell" id="componenten" aria-labelledby="comp-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">06 · Componenten</p>
+    <h2 class="t-head" id="comp-title"><span class="nw">Van knop</span> <span class="nw">tot voorwaardenblok.</span></h2>
+    <p class="t-lead">Negen componenten dragen de homepage. Een variant bestaat alleen als zijn functie verschilt.</p>
+  </header>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Acties</h3>
+    <div class="ds5-two">
+      <div class="ds5-stage" style="display:grid;gap:1.5rem;justify-items:start">
+        <a class="l5-button" href="home-lab-05.html"><span class="l5-button__surface"><span class="l5-button__icon" aria-hidden="true"><svg class="arrow" viewBox="0 0 19 12"><path d="M1 6h16M12 1l5 5-5 5"/></svg></span><span class="l5-button__label">Vraag een gratis intake aan</span></span></a>
+        <a class="l5-button l5-button--compact" href="home-lab-05.html"><span class="l5-button__surface"><span class="l5-button__icon" aria-hidden="true"><svg class="arrow" viewBox="0 0 19 12"><path d="M1 6h16M12 1l5 5-5 5"/></svg></span><span class="l5-button__label">Gratis intake</span></span></a>
+        <a class="l5-link" href="home-lab-05.html"><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg>Bekijk alle 54 cases</a>
+        <button class="l5-disclosure" type="button" aria-controls="ds5-demo-plain" aria-expanded="false" data-l5-disclosure hidden>Wacht efkes. Wat doet Glossy eigenlijk?<span class="l5-disclosure__plus" aria-hidden="true"></span></button>
+        <div class="l5-plain" id="ds5-demo-plain" style="grid-column:auto"><div class="l5-plain__inner"><div class="l5-plain__text"><p>Je weet wat je bedrijf in huis heeft. Nu de buitenwereld nog.</p><p>Je hoeft nog niet te weten wat je nodig hebt. Vertel gewoon wat er wringt.</p></div></div></div>
+      </div>
+      <ol class="ds5-rules">
+        <li><div><p class="t-strong">Primair: één per scherm.</p><p>Pijlcel van 52px, label 15/500. Hover: een wit vlak veegt vanuit de pijlcel over de knop (200 ms), de pijl schuift 4px. Indrukken: schaal 0,97.</p></div></li>
+        <li><div><p class="t-strong">Compact: alleen in de header.</p><p>44px hoog. Verschijnt pas als de heroknop uit beeld is: nooit twee intakeknoppen tegelijk.</p></div></li>
+        <li><div><p class="t-strong">Tekstactie: onderstreept.</p><p>Hover en focus maken er een zwart vlak van, zonder schaalspel. De tekst zegt waar de link heen gaat.</p></div></li>
+        <li><div><p class="t-strong">Ontvouwen: "Wacht efkes."</p><p>Een knop met <code>aria-expanded</code>. Het plus draait naar een kruis, de tekst ontvouwt in 280 ms. Zonder script staat de tekst gewoon open.</p></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Case: vraag, bijdrage, resultaat</h3>
+    <div class="ds5-two">
+      <div class="ds5-stage">
+        <article class="l5-case">
+          <figure class="l5-case__media"><img src="assets/img/lab-05/case-battmobility-800.jpg" width="800" height="450" alt="Campagnebeeld van BattMobility: een vrouw met haar telefoon naast een elektrische deelwagen." loading="lazy" decoding="async"></figure>
+          <div class="l5-case__body">
+            <p class="t-label">Gedeelde mobiliteit · 2025</p>
+            <h4 class="l5-case__name t-title"><a class="l5-case__link" href="nl/cases/battmobility.html">BattMobility</a></h4>
+            <dl class="l5-case__facts">
+              <div><dt class="t-label">Vraag</dt><dd>Hoe maak je van gedeelde elektrische mobiliteit een merk dat mensen vertrouwen?</dd></div>
+              <div><dt class="t-label">Bijdrage</dt><dd>Positionering, identiteit, design system, een AI-beeldpipeline en eigen marketingtools.</dd></div>
+              <div><dt class="t-label">Resultaat</dt><dd class="t-strong">Van 2.000 naar 3.000 gebruikers. Het team maakt zelf posts en e-mails binnen het merk.</dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+      <ol class="ds5-rules">
+        <li><div><p class="t-strong">Beeld 16:9, in kleur.</p><p>800 en 1600 breed via <code>srcset</code>. Geen video in de kaart.</p></div></li>
+        <li><div><p class="t-strong">Eén link: de klantnaam.</p><p>Het klikvlak rekt uit over de hele kaart (<code>::after</code>). Een schermlezer hoort de naam, niet de hele kaart.</p></div></li>
+        <li><div><p class="t-strong">Drie vaste rijen.</p><p>Vraag, Bijdrage, Resultaat. Het resultaat is een cijfer of een klantcitaat. Resultaten en citaten komen er gaandeweg bij; ontbreekt er nog een, verzin er dan geen en toon wat het team nu zelf kan.</p></div></li>
+        <li><div><p class="t-strong">Hover, focus en tik: zwart kader.</p><p>Het vlak gaat 16px naar buiten, de tekst wordt wit, het beeld blijft in kleur.</p></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Aanbod: de vraag van de klant</h3>
+    <div class="ds5-two">
+      <div class="ds5-stage">
+        <ul class="l5-offer" style="grid-template-columns:1fr">
+          <li class="l5-offer__item" style="grid-column:1/-1">
+            <p class="t-label">AI voor marketingteams</p>
+            <h4 class="t-title">“Hoe gebruiken we AI zonder ons merk te verliezen?”</h4>
+            <p>Afgesproken tools, gedeelde prompts en beeldmodellen die je huisstijl kennen. En een team dat ermee kan werken.</p>
+            <p class="l5-offer__price t-strong">Vanaf €1.200 per dag</p>
+            <a class="l5-link" href="nl/brand-ai-consultancy.html"><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg>Bekijk formats en tarieven</a>
+          </li>
+        </ul>
+      </div>
+      <ol class="ds5-rules">
+        <li><div><p class="t-strong">De vraag leidt, de dienst volgt.</p><p>De titel is de vraag van de klant, tussen aanhalingstekens. De dienstnaam staat als label.</p></div></li>
+        <li><div><p class="t-strong">Altijd een prijsregel.</p><p>Een open prijs of "Vaste offerte na de gratis intake". Nooit "op aanvraag".</p></div></li>
+        <li><div><p class="t-strong">Subgrid.</p><p>Label, vraag, uitleg, prijs en link lijnen uit over de drie kaarten, ook als een vraag twee regels telt.</p></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Werkwijze</h3>
+    <div class="l5-steps" style="margin-top:0">
+      <h4 class="t-title">Eerst kiezen. Dan maken.</h4>
+      <ol>
+        <li><span class="t-label t-tnum">01</span><p class="t-strong">Verkennen.</p><p>We luisteren en zoeken uit welke keuze er echt voorligt.</p></li>
+        <li><span class="t-label t-tnum">02</span><p class="t-strong">Kiezen.</p><p>Voor wie je er bent, wat je belooft en wat je bewust niet doet.</p></li>
+        <li><span class="t-label t-tnum">03</span><p class="t-strong">Vormgeven.</p><p>De keuze krijgt vorm: identiteit, taal, website, campagne of tool.</p></li>
+        <li><span class="t-label t-tnum">04</span><p class="t-strong">Verankeren.</p><p>We documenteren en dragen over, tot je team zonder ons verder kan.</p></li>
+      </ol>
+    </div>
+    <p class="ds5-caption t-meta" style="margin-top:.75rem">Nummering is hier inhoud: het is een echte volgorde. Elke fase eindigt met een punt en één regel van maximaal twaalf woorden.</p>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Studiolijst</h3>
+    <div class="ds5-two">
+      <ul class="l5-list">
+        <li><a class="l5-list__item" href="nl/news/ai-agents-are-only-as-good-as-their-brief.html"><span class="t-label t-tnum">september 2026</span><span class="t-strong">AI-agents zijn maar zo goed als hun briefing</span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+        <li><a class="l5-list__item" href="nl/news/subito-ai-consultancy-de-kwekerij.html"><span class="t-label t-tnum">september 2026</span><span class="t-strong">SUBITO: van AI-experiment naar campagnebeeld</span><svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a></li>
+      </ul>
+      <ol class="ds5-rules">
+        <li><div><p class="t-strong">Standpunten, geen toolnieuws.</p><p>Maximaal drie op de homepage, zonder beeld. Een nieuwe Midjourney-versie is geen standpunt.</p></div></li>
+        <li><div><p class="t-strong">De rij inverteert als geheel.</p><p>Datum, titel en pijl vormen één link.</p></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ds5-block">
+    <h3 class="t-title">Voorwaardenblok</h3>
+    <div class="ds5-stage ds5-stage--ink l5-ink">
+      <div class="l5-terms__grid">
+        <div class="l5-terms__intro">
+          <p class="t-label">Gratis intake</p>
+          <h4 class="t-head">Wat wil je veranderen?</h4>
+          <p class="t-lead">Zwart op wit, vóór we beginnen.</p>
+          <a class="l5-button l5-button--paper" href="nl/contact.html#intake"><span class="l5-button__surface"><span class="l5-button__icon" aria-hidden="true"><svg class="arrow" viewBox="0 0 19 12"><path d="M1 6h16M12 1l5 5-5 5"/></svg></span><span class="l5-button__label">Vraag een gratis intake aan</span></span></a>
+        </div>
+        <ol class="l5-terms__list t-title">
+          <li><span>De intake is gratis en duurt hoogstens 30 minuten. Je spreekt rechtstreeks met Ben.</span></li>
+          <li><span>Voor er werk start, krijg je een vaste offerte.</span></li>
+          <li><span>Zijn we niet de juiste partner, dan zeggen we dat in het eerste gesprek.</span></li>
+        </ol>
+      </div>
+    </div>
+    <p class="ds5-caption t-meta" style="margin-top:.75rem">Het enige inktblok van de pagina, randloos over de volle breedte. Elke regel is een verbintenis die Glossy moet kunnen waarmaken. Hier ingekort tot drie regels; op de homepage staan er vijf.</p>
+  </div>
+
+  <div class="ds5-block ds5-two">
+    <div class="ds5-prose">
+      <h3 class="t-title">Wie-blok</h3>
+      <p>Een echt portret van Ben (4 kolommen, 4:5, in kleur, zonder kader), een lead over wie hij is, één zin over wat je niet krijgt, een feitenregel, een typografische lijst van klantnamen en de studiolijst. Geen logocarrousel, geen tellers.</p>
+      <p class="t-meta">Het portret staat zelf zwart op wit: zwart jasje, wit shirt, lichte achtergrond. Nieuwe portretten volgen dezelfde regel.</p>
+    </div>
+    <div class="ds5-prose">
+      <h3 class="t-title">Header en footer</h3>
+      <p>Header: papier, 72px, een lijn verschijnt na het scrollen; geen glas. Onder 960px een menu onder de header, met "Gratis intake" naast de menuknop. Footer: logo met de zin "AGENCY, BUREAU of COUNCIL? Ons logo kan niet kiezen. Wij wel.", Ontdek, Volg, Erkenning in tekst in plaats van badges, en de juridische regel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · Beweging -->
+<section class="ds5-chapter l5-shell" id="beweging" aria-labelledby="beweging-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">07 · Beweging en interactie</p>
+    <h2 class="t-head" id="beweging-title">Inversie is het enige overgangswoord.</h2>
+    <p class="t-lead">Beweging antwoordt of bewijst. Uitspraken staan er meteen. Niets bestaat alleen op hover.</p>
+  </header>
+  <div class="ds5-block ds5-table-wrap">
+    <table class="ds5-table">
+      <thead><tr><th>Wat</th><th>Wanneer</th><th>Duur</th><th>Easing</th><th>Reduced motion</th><th>Wat het oplevert</th></tr></thead>
+      <tbody>
+        <tr><td>Inversie</td><td>Hover, focus, tik op kaarten, links en navigatie</td><td class="num">180 ms</td><td>ease-out (.23, 1, .32, 1)</td><td>Direct</td><td>Toont wat je aanraakt, binnen dezelfde buitenmaat</td></tr>
+        <tr><td>Knopveeg</td><td>Hover op de primaire knop</td><td class="num">200 ms</td><td>ease-in-out (.77, 0, .175, 1)</td><td>Direct</td><td>De enige plek waar actie een richting krijgt</td></tr>
+        <tr><td>Gewoon antwoord</td><td>Klik op "Wacht efkes."</td><td class="num">280 ms</td><td>ease-out, alleen hoogte</td><td>Direct open</td><td>De helderste uitleg waar de bezoeker beslist, zonder overlay</td></tr>
+        <tr><td>Logo</td><td>Eerste bezoek per sessie; opnieuw bij hover of focus</td><td class="num">4,2 s</td><td>Inline SVG met CSS: zes woorden schuiven als een lint van rechts naar links, 250 ms per wissel (ease-in-out), landt op AGENCY</td><td>Staat stil op AGENCY</td><td>De knipoog landt één keer, daarna leest de naam; geen bibliotheek, ±20 KB</td></tr>
+        <tr><td>Sectielijn</td><td>Eerste keer in beeld</td><td class="num">900 ms</td><td>ease-in-out</td><td>Staat er meteen</td><td>Een rustig signaal dat een nieuw deel begint</td></tr>
+        <tr><td>Kaart naar case (later)</td><td>Klik op een case</td><td class="num">450 ms</td><td>ease-in-out</td><td><code>navigation: none</code></td><td>Continuïteit: het beeld groeit uit tot de casehero</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ds5-block ds5-two">
+    <ol class="ds5-rules">
+      <li><div><p class="t-strong">Niets fadet in.</p><p>Geen scroll-reveals op tekst. Wat gelezen moet worden, staat er bij het laden.</p></div></li>
+      <li><div><p class="t-strong">Niets ligt over inhoud.</p><p>Geen zwevende knop, geen overlay, geen textuurlaag. De cookiebalk neemt maximaal een kwart van een mobiel scherm.</p></div></li>
+      <li><div><p class="t-strong">Alles werkt zonder muis.</p><p>Tik, toetsenbord en reduced motion krijgen dezelfde informatie. Focus is een ring van 2px in inkt (in papier op het inktblok).</p></div></li>
+    </ol>
+    <ol class="ds5-rules">
+      <li><div><p class="t-strong">Eén link per kaart.</p><p>Met een uitgerekt klikvlak. De toegankelijke naam is de klantnaam of de linktekst.</p></div></li>
+      <li><div><p class="t-strong">Verborgen is niet focusbaar.</p><p>De headerknop is <code>visibility: hidden</code> zolang de heroknop in beeld is.</p></div></li>
+      <li><div><p class="t-strong">Taal op het element.</p><p>Engelse woorden op een Nederlandse pagina krijgen <code>lang="en"</code>.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 08 · Budget -->
+<section class="ds5-chapter l5-shell" id="budget" aria-labelledby="budget-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">08 · Budget</p>
+    <h2 class="t-head" id="budget-title">Minder dan een megabyte.</h2>
+    <p class="t-lead">Een pagina die oordeel predikt, laadt geen twintig megabyte. De preview weegt 319 KB; de live homepage vandaag 19,7 MB.</p>
+  </header>
+  <div class="ds5-block ds5-two">
+    <div class="ds5-table-wrap">
+      <table class="ds5-table" style="min-width:0">
+        <thead><tr><th>Budget</th><th>Mobiel</th><th>Desktop</th></tr></thead>
+        <tbody>
+          <tr><td>Eerste scherm</td><td class="num">≤ 1 MB</td><td class="num">≤ 1,5 MB</td></tr>
+          <tr><td>Hele pagina</td><td class="num">≤ 2,5 MB</td><td class="num">≤ 4 MB</td></tr>
+          <tr><td>Eén video</td><td class="num">≤ 400 KB</td><td class="num">≤ 800 KB</td></tr>
+          <tr><td>LCP op 4G</td><td class="num">≤ 2,0 s</td><td class="num">≤ 2,0 s</td></tr>
+          <tr><td>CLS</td><td class="num">≤ 0,05</td><td class="num">≤ 0,05</td></tr>
+          <tr><td>INP</td><td class="num">≤ 200 ms</td><td class="num">≤ 200 ms</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ds5-table-wrap">
+      <table class="ds5-table" style="min-width:0">
+        <thead><tr><th>Gemeten, 25-09-2026</th><th>Live nu</th><th>LAB 05</th></tr></thead>
+        <tbody>
+          <tr><td>Requests</td><td class="num">41</td><td class="num">10</td></tr>
+          <tr><td>Gewicht</td><td class="num">19,7 MB</td><td class="num">319 KB</td></tr>
+          <tr><td>Grootste bestand</td><td>12,8 MB video</td><td>86 KB, een casebeeld</td></tr>
+          <tr><td>Font</td><td>TTF, 120 KB</td><td>woff2, 47 KB</td></tr>
+          <tr><td>CLS</td><td class="num">0,027</td><td class="num">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="ds5-caption t-meta" style="margin-top:.75rem">Gemeten in headless Chrome, lokaal en zonder throttling: de tijden zijn best case, de gewichten niet. Het logo is sinds 25 september inline SVG met CSS: de Lottie-bibliotheek en haar JSON (samen 327 KB) zijn weg.</p>
+  <div class="ds5-block">
+    <ol class="ds5-rules">
+      <li><div><p class="t-strong">Geen video op de homepage.</p><p>Casevideo's horen op casepagina's: in beeld, gepauzeerd buiten beeld, zonder audiospoor, per video onder het budget.</p></div></li>
+      <li><div><p class="t-strong">Beeld in twee maten.</p><p>800 en 1600 breed met <code>srcset</code> en <code>sizes</code>, JPEG rond kwaliteit 75 tot 80, of AVIF en WebP zodra de pijplijn dat toelaat.</p></div></li>
+      <li><div><p class="t-strong">Eén font, zelf gehost, als woff2.</p><p>Met <code>preload</code> en <code>font-display: swap</code>.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 09 · Homepage -->
+<section class="ds5-chapter l5-shell" id="homepage" aria-labelledby="home-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">09 · De homepage</p>
+    <h2 class="t-head" id="home-title"><span class="nw">Van boven</span> <span class="nw">naar beneden.</span></h2>
+    <p class="t-lead">Bewijs vóór uitleg. Eén vraag, overal in dezelfde woorden. Vijf schermen op desktop.</p>
+  </header>
+  <div class="ds5-blueprint">
+    <article>
+      <span class="t-label t-tnum">01</span>
+      <div><h3 class="t-title">Header</h3><p class="t-meta">0,13 scherm op 1440, met labbalk</p></div>
+      <dl><dt>Doel</dt><dd>Oriëntatie en één vaste weg naar het gesprek.</dd><dt>Inhoud</dt><dd>Logo met wisselwoord, Cases, Diensten &amp; aanpak, AI-consultancy, Nieuws, taalwissel, knop "Gratis intake".</dd><dt>Visueel</dt><dd>Papier, 72px, een lijn na het scrollen. Geen glas.</dd><dt>Interactie</dt><dd>De knop verschijnt pas als de heroknop uit beeld is. Menu onder 960px.</dd><dt>CTA</dt><dd>Gratis intake.</dd></dl>
+    </article>
+    <article>
+      <span class="t-label t-tnum">02</span>
+      <div><h3 class="t-title">Hero</h3><p class="t-meta">0,75 scherm</p></div>
+      <dl><dt>Doel</dt><dd>In vijf seconden: wat, voor wie en waarom verder lezen.</dd><dt>Kernboodschap</dt><dd>Maken werd makkelijk. Kiezen niet.</dd><dt>Inhoud</dt><dd>Feitregel "Brandingbureau en AI-consultancy · Gent", H1, lead, bewijsregel, knop, "Wacht efkes. Wat doet Glossy eigenlijk?" met het gewone antwoord.</dd><dt>Visueel</dt><dd>Affichemaat, één zin per regel. Geen video. Hoogte uit de inhoud.</dd><dt>Interactie</dt><dd>Het gewone antwoord ontvouwt in 280 ms.</dd><dt>CTA</dt><dd>Vraag een gratis intake aan.</dd></dl>
+    </article>
+    <article>
+      <span class="t-label t-tnum">03</span>
+      <div><h3 class="t-title">Werk</h3><p class="t-meta">1,01 schermen</p></div>
+      <dl><dt>Doel</dt><dd>Het bewijs, vóór de uitleg.</dd><dt>Kernboodschap</dt><dd>Andere vragen. Dezelfde aanpak.</dd><dt>Inhoud</dt><dd>BattMobility, The Payroll Office en Fanfinity, elk met vraag, bijdrage en resultaat.</dd><dt>Visueel</dt><dd>Drie keer vier kolommen, beeld 16:9 in kleur. Tablet: beeld naast tekst.</dd><dt>Interactie</dt><dd>Hele kaart klikbaar via de klantnaam; zwart kader.</dd><dt>CTA</dt><dd>Bekijk alle 54 cases.</dd></dl>
+    </article>
+    <article>
+      <span class="t-label t-tnum">04</span>
+      <div><h3 class="t-title">Aanbod en werkwijze</h3><p class="t-meta">0,86 scherm</p></div>
+      <dl><dt>Doel</dt><dd>Wat je kunt kopen, wat het kost en hoe het verloopt.</dd><dt>Kernboodschap</dt><dd>Drie vragen. Eén werkwijze.</dd><dt>Inhoud</dt><dd>Drie vragen van de klant met dienst, uitleg en prijs; de vier fasen in één rij.</dd><dt>Visueel</dt><dd>Inktlijn bovenaan elke kaart; subgrid lijnt alles uit.</dd><dt>Interactie</dt><dd>Kaart inverteert.</dd><dt>CTA</dt><dd>Bekijk onze aanpak · de cases · formats en tarieven.</dd></dl>
+    </article>
+    <article>
+      <span class="t-label t-tnum">05</span>
+      <div><h3 class="t-title">Wie</h3><p class="t-meta">1,08 schermen</p></div>
+      <dl><dt>Doel</dt><dd>Een gezicht en een staat van dienst.</dd><dt>Kernboodschap</dt><dd>Strategie, systemen en smaak horen in dezelfde kamer.</dd><dt>Inhoud</dt><dd>Portret van Ben, wie hij is, wat je niet krijgt, feiten, klantnamen, drie standpunten uit de studio.</dd><dt>Visueel</dt><dd>Portret op vier kolommen, tekst op zes. Namen als typografische lijst.</dd><dt>Interactie</dt><dd>Studiorijen inverteren. Op mobiel één standpunt plus link.</dd><dt>CTA</dt><dd>Meer uit de studio.</dd></dl>
+    </article>
+    <article>
+      <span class="t-label t-tnum">06</span>
+      <div><h3 class="t-title">Voorwaarden</h3><p class="t-meta">0,64 scherm</p></div>
+      <dl><dt>Doel</dt><dd>De beslissing makkelijk maken.</dd><dt>Kernboodschap</dt><dd>Wat wil je veranderen? Zwart op wit, vóór we beginnen.</dd><dt>Inhoud</dt><dd>Gratis intake met Ben, vaste offerte, open prijzen, drie talen, eerlijk als we niet passen.</dd><dt>Visueel</dt><dd>Het enige inktblok, randloos. Genummerde lijst in de titelrol.</dd><dt>Interactie</dt><dd>Witte knop. Geen animatie bij aankomst.</dd><dt>CTA</dt><dd>Vraag een gratis intake aan.</dd></dl>
+    </article>
+    <article>
+      <span class="t-label t-tnum">07</span>
+      <div><h3 class="t-title">Footer</h3><p class="t-meta">0,49 scherm</p></div>
+      <dl><dt>Doel</dt><dd>Afsluiten en terugvinden.</dd><dt>Kernboodschap</dt><dd>AGENCY, BUREAU of COUNCIL? Ons logo kan niet kiezen. Wij wel.</dd><dt>Inhoud</dt><dd>Logo en logozin, Ontdek, Volg, Erkenning, juridische regel.</dd><dt>Visueel</dt><dd>Papier, dezelfde kolommen als de pagina.</dd><dt>Interactie</dt><dd>Links inverteren.</dd><dt>CTA</dt><dd>Geen. Naar boven.</dd></dl>
+    </article>
+  </div>
+  <p class="ds5-caption t-meta" style="margin-top:.75rem">Gemeten op de preview: 4,96 schermen op 1440 × 900, 4,26 op 1920 × 1080, 4,7 op tablet en 7,85 op 390 × 844. Mobiel ligt boven het doel van 6,2: de pagina draagt nu cases met resultaat, prijzen, werkwijze en voorwaarden. Volgende inkorting: de bijdrage-rij van de cases op mobiel inklappen.</p>
+</section>
+
+<!-- 10 · Regels -->
+<section class="ds5-chapter l5-shell" id="regels" aria-labelledby="regels-title">
+  <header class="ds5-chapter__head">
+    <p class="t-label">10 · Regels en open punten</p>
+    <h2 class="t-head" id="regels-title"><span class="nw">De regels</span> <span class="nw">maken het systeem.</span></h2>
+  </header>
+  <div class="ds5-two">
+    <div class="ds5-block" style="margin-top:0">
+      <h3 class="t-title">Checklist vóór publicatie</h3>
+      <ul class="ds5-check">
+        <li>Wat ligt hier vast? Elke sectie is in één zin te benoemen.</li>
+        <li>Staat het bewijs in dezelfde blik als de claim?</li>
+        <li>Blijft de betekenis staan zonder effect, beweging of bijvoeglijk naamwoord?</li>
+        <li>Eén gevulde knop per scherm, overal "Vraag een gratis intake aan".</li>
+        <li>Geen em dash. Zoek op het teken U+2014 in HTML, meta en alt-teksten.</li>
+        <li>Eén taal per pagina; anderstalige woorden krijgen <code>lang</code>.</li>
+        <li>Koppen breken op betekenis, op 390, 834, 1366 en 1440.</li>
+        <li>Niets ligt over inhoud, ook niet met de cookiebalk open.</li>
+        <li>Toetsenbord: skiplink, focusring, menu met Escape.</li>
+        <li>Budget: eerste scherm onder 1 MB op mobiel, CLS onder 0,05.</li>
+      </ul>
+    </div>
+    <div class="ds5-block" style="margin-top:0">
+      <h3 class="t-title">Beslist door Ben, 25 september 2026</h3>
+      <ol class="ds5-rules">
+        <li><div><p class="t-strong">Portret geleverd.</p><p>Staat in het wie-blok, NL en EN.</p></div></li>
+        <li><div><p class="t-strong">Merkstrategie vanaf €10.000.</p><p>Op de aanbodkaart en in het voorwaardenblok.</p></div></li>
+        <li><div><p class="t-strong">Geen €15.000 op de homepage.</p><p>Identiteit en campagnes krijgt "Vaste offerte na de gratis intake".</p></div></li>
+        <li><div><p class="t-strong">Resultaten en citaten komen gaandeweg.</p><p>De casekaart houdt er plaats voor; tot dan geen verzonnen cijfers.</p></div></li>
+        <li><div><p class="t-strong">Geen rood potlood, geen accentkleur.</p><p>"Cheap." LAB 05 blijft zwart op wit.</p></div></li>
+        <li><div><p class="t-strong">Intake: hoogstens 30 minuten.</p><p>In het voorwaardenblok, NL en EN.</p></div></li>
+        <li><div><p class="t-strong">Logo als SVG met CSS.</p><p>Gebouwd: één cyclus per sessie, geen Lottie meer.</p></div></li>
+      </ol>
+      <h3 class="t-title" style="margin-top:var(--s-head)">Nog open</h3>
+      <ul class="ds5-check">
+        <li>Vorm van de intake (online of in Gent) en de antwoordtermijn na een aanvraag.</li>
+        <li>Beslissing over uitrol: LAB 05 naar alle paginafamilies, in EN en NL.</li>
+      </ul>
+      <div class="ds5-note" style="margin-top:var(--s-card)">
+        <p class="t-label">Technische volgende stappen</p>
+        <p>View Transitions van kaart naar case. Videopijplijn met renditions per breekpunt. De casesjablonen en de builders (<code>scripts/_shell.py</code>) naar LAB 05.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="l5-footer l5-shell">
+  <div class="l5-footer__legal t-meta" style="border-top-color:var(--ink)">
+    <span>Glossy · LAB 05 · Zwart op wit · werkend handboek, 25 september 2026</span>
+    <a href="home-lab-05.html">Homepage-preview</a>
+    <a href="design-system-lab-03.html">LAB 03-handboek</a>
+    <a class="l5-footer__top" href="#main">Naar boven <svg class="arrow" viewBox="0 0 19 12" aria-hidden="true"><path d="M1 6h16M12 1l5 5-5 5"/></svg></a>
+  </div>
+</footer>
+
+<div class="l5-gridlayer" aria-hidden="true"><div class="l5-shell"><div class="l5-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+<script src="assets/js/lab-05.js?v=20260925"></script>
+</body></html>

@@ -1,0 +1,369 @@
+/* LAB 05 · Zwart op wit · 2026-09-25
+   One standalone system layer: it loads no LAB 03 CSS. Order: font → tokens →
+   base → type roles → layout → components → states → responsive → motion.
+   The idea: white is space and question, black is decision and action. Text is
+   ink or paper, never grey. One ink block per page. Client work keeps its colour. */
+
+@font-face{
+  font-family:"Schibsted Grotesk";
+  src:url("../fonts/SchibstedGrotesk-var-latin.woff2") format("woff2");
+  font-weight:400 900;font-style:normal;font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* 1. Tokens ------------------------------------------------------------- */
+:root{
+  /* Colour: two values carry meaning, two are structure only. */
+  --paper:#fff;
+  --ink:#111;
+  --line:#e2e2e2;          /* rules and dividers, never text */
+  --smoke:#f3f1f1;         /* media placeholder, never a page colour */
+
+  --font:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+
+  /* Layout */
+  --shell:1760px;
+  --gutter:clamp(1.25rem,4.3vw,5.5rem);
+  --gap:clamp(1rem,2vw,2rem);
+  --radius:5px;
+  --button:52px;
+  --header:72px;
+
+  /* Type roles. Display follows the sentence: one sentence per line from 480px. */
+  --t-display:clamp(2.75rem,min(calc((100vw - 2 * var(--gutter)) / 10.4),16svh),8rem);
+  --t-head:clamp(1.75rem,1.286rem + 1.905vw,3.25rem);   /* 28 → 48 at 1440 → 52 */
+  --t-title:clamp(1.25rem,1.11rem + .571vw,1.75rem);    /* 20 → 26 → 28 */
+  --t-lead:clamp(1.125rem,1.032rem + .381vw,1.5rem);    /* 18 → 22 → 24 */
+  --t-body:clamp(1rem,.96rem + .12vw,1.0625rem);        /* 16 → 17 */
+  --t-ui:.9375rem;                                      /* 15, weight 500 */
+  --t-meta:.8125rem;                                    /* 13 */
+  --t-label:.75rem;                                     /* 12, weight 500, capitals */
+
+  --lh-display:1;
+  --lh-head:1.08;
+  --lh-title:1.15;
+  --lh-lead:1.4;
+  --lh-body:1.5;
+
+  --tr-display:-.04em;
+  --tr-head:-.025em;
+  --tr-title:-.015em;
+  --tr-label:.06em;
+
+  /* Rhythm on an 8px unit. */
+  --s-section:clamp(3.5rem,2.4rem + 3vw,5.5rem);        /* 56 → 82 at 1440 → 88 */
+  --s-label:clamp(.75rem,.65rem + .3vw,1rem);           /* 12 → 16 */
+  --s-head:clamp(2rem,1.6rem + 1.1vw,3rem);             /* 32 → 48 */
+  --s-card:clamp(1rem,.8rem + .6vw,1.5rem);             /* 16 → 24 */
+  --s-tight:clamp(.5rem,.45rem + .2vw,.75rem);          /* 8 → 12 */
+
+  /* Motion: inversion is the only transition word. */
+  --ease:cubic-bezier(.23,1,.32,1);
+  --ease-io:cubic-bezier(.77,0,.175,1);
+  --fast:180ms;
+  --unfold:280ms;
+}
+
+/* 2. Base --------------------------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:clip}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font:400 var(--t-body)/var(--lh-body) var(--font);
+  font-kerning:normal;-webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+button{font:inherit;color:inherit}
+::selection{background:var(--ink);color:var(--paper)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.l5-ink :focus-visible{outline-color:var(--paper)}
+.l5-skip{position:fixed;top:.5rem;left:.5rem;z-index:60;padding:.75rem 1rem;background:var(--ink);color:var(--paper);font:500 var(--t-ui)/1.2 var(--font);transform:translateY(-160%)}
+.l5-skip:focus{transform:none}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.nw{white-space:nowrap}
+
+/* 3. Type roles ---------------------------------------------------------- */
+h1,h2,h3,h4{font-weight:400;text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+.t-display{font-size:var(--t-display);line-height:var(--lh-display);letter-spacing:var(--tr-display)}
+.t-head{font-size:var(--t-head);line-height:var(--lh-head);letter-spacing:var(--tr-head)}
+.t-title{font-size:var(--t-title);line-height:var(--lh-title);letter-spacing:var(--tr-title)}
+.t-lead{font-size:var(--t-lead);line-height:var(--lh-lead)}
+.t-body{font-size:var(--t-body);line-height:var(--lh-body)}
+.t-strong{font-weight:500}
+.t-ui{font-size:var(--t-ui);line-height:1.2;font-weight:500}
+.t-meta{font-size:var(--t-meta);line-height:1.4}
+.t-label{font-size:var(--t-label);line-height:1.35;font-weight:500;letter-spacing:var(--tr-label);text-transform:uppercase}
+/* Tabular figures only where digits line up (numbers, dates). In Schibsted, tnum
+   also widens the period and comma, so never on running text or prices. */
+.t-tnum{font-variant-numeric:tabular-nums}
+
+/* 4. Layout -------------------------------------------------------------- */
+.l5-shell{width:100%;max-width:var(--shell);margin-inline:auto;padding-inline:var(--gutter)}
+.l5-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+.l5-section{position:relative;padding-block:var(--s-section)}
+/* The section rule sits on the shell edges, not the viewport. */
+.l5-section+.l5-section::before{content:"";position:absolute;top:0;left:var(--gutter);right:var(--gutter);height:1px;background:var(--line);transform-origin:left center}
+@media(min-width:1841px){.l5-section+.l5-section::before{left:calc((100% - var(--shell)) / 2 + var(--gutter));right:calc((100% - var(--shell)) / 2 + var(--gutter))}}
+.l5-section__head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--s-label);align-items:end;margin-bottom:var(--s-head)}
+.l5-section__head>h2{grid-column:1/span 9}
+.l5-section__head>.l5-link{grid-column:10/-1;justify-self:end}
+
+/* 5. Components ---------------------------------------------------------- */
+
+/* 5.1 Lab strip: part of the flow, never over content. */
+.l5-labbar{border-bottom:1px solid var(--line)}
+.l5-labbar .l5-shell{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;align-items:center;justify-content:space-between;min-height:40px;padding-block:.5rem}
+.l5-labbar a{text-underline-offset:.2em}
+
+/* 5.2 Header */
+.l5-header{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid transparent;transition:border-color var(--fast) var(--ease)}
+.l5-header.is-scrolled{border-bottom-color:var(--line)}
+.l5-header__inner{display:flex;align-items:center;gap:var(--gap);min-height:var(--header)}
+.l5-logo{display:block;flex:none;width:clamp(104px,9vw,140px);border-radius:var(--radius)}
+.l5-logo__anim{display:block;width:100%;aspect-ratio:154/58}
+.l5-logo__anim img{width:100%;height:100%;object-fit:contain;object-position:left center}
+/* The wordmark as inline SVG. The third word runs once per session as a strip
+   from right to left (AGENCY, BUREAU, COUNCIL, FIRM, OFFICE, CABINET) and lands
+   on AGENCY again: 6 × 700 ms, each change 250 ms. No library, ±20 KB. */
+.l5-logo__svg{display:block;width:100%;height:auto;aspect-ratio:154/58;overflow:hidden}
+.l5-logo[data-play] .l5-logo__ticker{animation:l5-logo 4.2s var(--ease-io) both}
+@keyframes l5-logo{
+  0%,10.71%{transform:translateX(0)}
+  16.67%,27.38%{transform:translateX(-100px)}
+  33.33%,44.05%{transform:translateX(-200px)}
+  50%,60.71%{transform:translateX(-300px)}
+  66.67%,77.38%{transform:translateX(-400px)}
+  83.33%,94.05%{transform:translateX(-500px)}
+  100%{transform:translateX(-600px)}
+}
+.l5-nav{margin-inline-start:auto}
+.l5-nav__list{display:flex;align-items:center;gap:.125rem}
+.l5-nav__link{display:inline-flex;align-items:center;gap:.4em;min-height:44px;padding:.5rem .75rem;border-radius:var(--radius);font:500 var(--t-ui)/1.2 var(--font);text-decoration:none;white-space:nowrap;transition:background-color var(--fast) var(--ease),color var(--fast) var(--ease)}
+.l5-nav__link svg{width:15px;height:15px;flex:none}
+.l5-nav__link[aria-current="page"]{text-decoration:underline;text-underline-offset:.3em}
+.l5-header__cta{flex:none;transition:opacity var(--fast) var(--ease),visibility 0s linear 0s}
+.l5-header__cta[data-hidden]{opacity:0;visibility:hidden;transition:opacity var(--fast) var(--ease),visibility 0s linear var(--fast)}
+.l5-menu-toggle{display:none;width:44px;height:44px;padding:10px;border:0;border-radius:var(--radius);background:transparent;cursor:pointer}
+.l5-menu-toggle span{display:block;height:2px;background:currentColor;transition:transform var(--fast) var(--ease),opacity var(--fast) var(--ease)}
+.l5-menu-toggle span+span{margin-top:6px}
+
+/* 5.3 Actions: primary button, text action, disclosure. */
+.l5-button{display:inline-flex;min-height:var(--button);max-width:100%;padding:0;border:0;background:transparent;color:inherit;text-decoration:none;cursor:pointer}
+.l5-button__surface{position:relative;isolation:isolate;display:inline-grid;grid-template-columns:var(--button) minmax(0,auto);min-height:var(--button);max-width:100%;overflow:hidden;border:1px solid var(--ink);border-radius:var(--radius);background:var(--ink);transition:transform 160ms var(--ease)}
+.l5-button__surface::before{content:"";position:absolute;inset:0;z-index:0;background:var(--paper);clip-path:inset(0 calc(100% - var(--button)) 0 0);transition:clip-path 200ms var(--ease-io)}
+.l5-button__icon,.l5-button__label{position:relative;z-index:1;color:var(--paper);mix-blend-mode:difference}
+.l5-button__icon{display:grid;place-items:center;border-right:1px solid currentColor}
+.l5-button__icon svg{width:19px;height:12px;transition:transform 160ms var(--ease)}
+.l5-button__label{display:flex;align-items:center;padding:.75rem 1.25rem;font:500 var(--t-ui)/1.2 var(--font);overflow-wrap:anywhere}
+.l5-button:active .l5-button__surface{transform:scale(.97)}
+.l5-button:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.l5-button--compact{--button:44px}
+/* On the ink panel the button is paper: the decision is the white shape. */
+.l5-button--paper .l5-button__surface{border-color:var(--paper);background:var(--paper)}
+.l5-button--paper .l5-button__surface::before{background:var(--ink)}
+/* Icon and label keep mix-blend-mode:difference, so they read on either fill. */
+.l5-button--paper:focus-visible{outline-color:var(--paper)}
+
+.arrow{display:block;width:1.05em;height:.7em;flex:none;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:square;stroke-linejoin:miter}
+
+.l5-link{display:inline-flex;align-items:center;gap:.5em;min-height:44px;padding:.5rem .6rem;margin-inline:-.6rem;border-radius:var(--radius);font:500 var(--t-ui)/1.2 var(--font);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.35em;transition:background-color var(--fast) var(--ease),color var(--fast) var(--ease),text-decoration-color var(--fast) var(--ease)}
+
+.l5-disclosure{display:inline-flex;align-items:center;gap:.75em;min-height:44px;padding:.5rem .6rem;margin-inline:-.6rem;border:0;border-radius:var(--radius);background:transparent;font:500 var(--t-ui)/1.3 var(--font);text-align:start;cursor:pointer;transition:background-color var(--fast) var(--ease),color var(--fast) var(--ease)}
+.l5-disclosure__plus{position:relative;display:inline-block;width:14px;height:14px;flex:none;transition:transform var(--unfold) var(--ease)}
+.l5-disclosure__plus::before,.l5-disclosure__plus::after{content:"";position:absolute;left:0;right:0;top:50%;height:1.5px;margin-top:-.75px;background:currentColor}
+.l5-disclosure__plus::after{transform:rotate(90deg)}
+.l5-disclosure[aria-expanded="true"] .l5-disclosure__plus{transform:rotate(45deg)}
+
+/* 5.4 Hero: sized to what it holds, never to the viewport. */
+/* Every hero distance also listens to the viewport height: on a 1366 × 657 laptop
+   the intake button stays above the fold. */
+.l5-hero{padding-block:clamp(1.25rem,5svh,4rem) clamp(2.5rem,7svh,4rem)}
+.l5-hero__kicker{grid-column:1/-1;margin-bottom:clamp(.75rem,2.5svh,1.5rem)}
+.l5-hero h1{grid-column:1/-1;margin-inline-start:-.05em}
+.l5-hero__lead{grid-column:1/span 7;max-width:28em;margin-top:clamp(1.5rem,4.5svh,3rem)}
+.l5-hero__actions{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;margin-top:clamp(1rem,3svh,2rem)}
+.l5-hero__proof{grid-column:1/-1;margin-top:clamp(.75rem,2svh,1.5rem)}
+.l5-plain{grid-column:1/span 7;display:grid;grid-template-rows:1fr}
+.l5-js .l5-plain{grid-template-rows:0fr;transition:grid-template-rows var(--unfold) var(--ease)}
+.l5-js .l5-plain[data-open]{grid-template-rows:1fr}
+.l5-plain__inner{min-height:0;overflow:hidden}
+.l5-js .l5-plain:not([data-open]) .l5-plain__inner{visibility:hidden;transition:visibility 0s linear var(--unfold)}
+.l5-plain__text{display:grid;gap:.75em;max-width:30em;padding-top:clamp(1.5rem,1.25rem + .8vw,2rem)}
+.l5-plain__text p:last-child{font-weight:500}
+
+/* 5.5 Case: question, contribution, result. Colour at rest. */
+/* Three cases, one anatomy, equal weight: the proof is the content, not the layout. */
+.l5-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--s-head)}
+.l5-case{position:relative;isolation:isolate;display:grid;align-content:start;gap:var(--s-card)}
+.l5-case::before{content:"";position:absolute;inset:-16px;z-index:-1;border-radius:var(--radius);background:var(--ink);opacity:0;pointer-events:none;transition:opacity var(--fast) var(--ease)}
+.l5-case__media{overflow:hidden;border-radius:var(--radius);background:var(--smoke);aspect-ratio:16/9}
+.l5-case__media img{width:100%;height:100%;object-fit:cover}
+.l5-case__body{display:grid;align-content:start;gap:var(--s-tight);transition:color var(--fast) var(--ease)}
+.l5-case__name{margin-top:-.1em}
+.l5-case__link{text-decoration:none}
+.l5-case__link::after{content:"";position:absolute;inset:0;z-index:1}
+.l5-case__facts{display:grid;gap:var(--s-tight);margin-top:var(--s-tight)}
+.l5-case__facts div{display:grid;gap:.25rem;padding-top:var(--s-tight);border-top:1px solid var(--line);transition:border-color var(--fast) var(--ease)}
+.l5-case__quote{font-weight:500}
+
+/* 5.6 Offer: the client's question first, the service second. */
+.l5-offer{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--s-head)}
+.l5-offer__item{position:relative;isolation:isolate;grid-column:span 4;display:grid;grid-template-rows:subgrid;grid-row:span 5;align-content:start;row-gap:var(--s-tight);padding-top:var(--s-card);border-top:1px solid var(--ink);transition:color var(--fast) var(--ease),border-color var(--fast) var(--ease)}
+.l5-offer__item::before{content:"";position:absolute;inset:-16px;z-index:-1;border-radius:var(--radius);background:var(--ink);opacity:0;pointer-events:none;transition:opacity var(--fast) var(--ease)}
+.l5-offer__item :is(h3,h4){margin-top:var(--s-tight)}
+.l5-offer__price{align-self:end;margin-top:var(--s-card)}
+.l5-offer__item .l5-link{justify-self:start;align-self:end}
+.l5-offer__item .l5-link::after{content:"";position:absolute;inset:0;z-index:1}
+
+.l5-steps{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--s-card);margin-top:var(--s-head);padding-top:var(--s-card);border-top:1px solid var(--line)}
+.l5-steps>:is(h3,h4){grid-column:1/span 3}
+.l5-steps>ol{grid-column:4/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--s-card);counter-reset:none}
+.l5-steps li{display:grid;align-content:start;gap:var(--s-tight)}
+
+/* 5.7 Who: a person, a room, the names. */
+.l5-who{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--s-head);align-items:start}
+.l5-who__portrait{grid-column:1/span 4;aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius);background:var(--smoke)}
+.l5-who__portrait img{width:100%;height:100%;object-fit:cover}
+.l5-who__text{grid-column:6/span 6;display:grid;gap:var(--s-card)}
+.l5-who__facts{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;padding-block:var(--s-tight);border-block:1px solid var(--line)}
+.l5-names{display:flex;flex-wrap:wrap;gap:.35rem .9rem}
+.l5-names li:not(:last-child)::after{content:"·";margin-inline-start:.9rem}
+
+/* 5.8 Studio list: three links, no images. */
+.l5-list{border-top:1px solid var(--ink)}
+.l5-list__item{position:relative;display:grid;grid-template-columns:10rem minmax(0,1fr) auto;gap:.5rem var(--gap);align-items:baseline;padding:1.1rem 0;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color var(--fast) var(--ease),color var(--fast) var(--ease),padding var(--fast) var(--ease)}
+.l5-list__item .arrow{align-self:center}
+.l5-list__more{margin-top:var(--s-tight)}
+.l5-who__studio{display:grid;gap:var(--s-tight);margin-top:var(--s-tight)}
+.l5-who__studio .l5-list__item{grid-template-columns:8.5rem minmax(0,1fr) auto;padding-block:.8rem}
+
+/* 5.9 Terms: the only ink block. What is agreed, in black and white. */
+.l5-ink{background:var(--ink);color:var(--paper)}
+.l5-terms{padding-block:var(--s-section)}
+.l5-terms__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--s-head);align-items:start}
+.l5-terms__intro{grid-column:1/span 5;display:grid;gap:var(--s-card);justify-items:start}
+.l5-terms__list{grid-column:7/-1;counter-reset:term;border-top:1px solid var(--paper)}
+.l5-terms__list li{display:grid;grid-template-columns:3rem minmax(0,1fr);gap:1rem;padding-block:clamp(.75rem,.6rem + .5vw,1.25rem);border-bottom:1px solid rgb(255 255 255/.28)}
+.l5-terms__list li::before{counter-increment:term;content:counter(term,decimal-leading-zero);font:500 var(--t-label)/1.35 var(--font);letter-spacing:var(--tr-label);font-variant-numeric:tabular-nums;padding-top:.45em}
+
+/* 5.10 Footer */
+.l5-footer{padding-block:var(--s-section) 2rem}
+.l5-footer__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--s-head);align-items:start}
+.l5-footer__brand{grid-column:1/span 4;display:grid;gap:var(--s-card);justify-items:start}
+.l5-footer__brand img{width:clamp(110px,9vw,140px)}
+.l5-footer__brand p{max-width:22em}
+.l5-footer__col{display:grid;gap:.25rem;align-content:start}
+.l5-footer__col--explore{grid-column:6/span 2}
+.l5-footer__col--follow{grid-column:8/span 2}
+.l5-footer__col--proof{grid-column:10/-1}
+.l5-footer__col>.t-label{margin-bottom:var(--s-tight)}
+.l5-footer__col a{display:inline-flex;align-items:center;min-height:40px;margin-inline:-.5rem;padding:.25rem .5rem;border-radius:var(--radius);text-decoration:none;justify-self:start;transition:background-color var(--fast) var(--ease),color var(--fast) var(--ease)}
+.l5-footer__legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;align-items:center;padding-top:1.5rem;border-top:1px solid var(--line)}
+.l5-footer__legal a{text-underline-offset:.2em}
+.l5-footer__top{margin-inline-start:auto;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;white-space:nowrap}
+.l5-footer__top .arrow{transform:rotate(-90deg)}
+
+/* 6. States: hover is for a pointer, focus for the keyboard, active for a press. */
+@media(hover:hover) and (pointer:fine){
+  .l5-nav__link:hover,.l5-link:hover,.l5-disclosure:hover,.l5-footer__col a:hover{background:var(--ink);color:var(--paper);text-decoration-color:transparent}
+  .l5-button:hover .l5-button__surface::before{clip-path:inset(0)}
+  .l5-button:hover .l5-button__icon svg{transform:translateX(4px)}
+  .l5-case:hover::before,.l5-offer__item:hover::before{opacity:1}
+  .l5-case:hover .l5-case__body,.l5-offer__item:hover{color:var(--paper)}
+  .l5-case:hover .l5-case__facts div{border-top-color:rgb(255 255 255/.28)}
+  .l5-offer__item:hover{border-top-color:transparent}
+  .l5-offer__item:hover .l5-link{text-decoration-color:transparent}
+  .l5-list__item:hover{background:var(--ink);color:var(--paper);padding-inline:1rem;border-radius:var(--radius)}
+}
+.l5-nav__link:focus-visible,.l5-link:focus-visible,.l5-disclosure:focus-visible,.l5-footer__col a:focus-visible,.l5-list__item:focus-visible{background:var(--ink);color:var(--paper);outline-offset:2px;text-decoration-color:transparent}
+.l5-case:has(.l5-case__link:focus-visible)::before,.l5-offer__item:has(.l5-link:focus-visible)::before{opacity:1}
+.l5-case:has(.l5-case__link:focus-visible) .l5-case__body,.l5-offer__item:has(.l5-link:focus-visible){color:var(--paper)}
+.l5-case .l5-case__link:focus-visible,.l5-offer__item .l5-link:focus-visible{outline:none;background:transparent}
+.l5-case:has(.l5-case__link:focus-visible),.l5-offer__item:has(.l5-link:focus-visible){outline:2px solid var(--ink);outline-offset:20px;border-radius:var(--radius)}
+.l5-list__item:focus-visible{padding-inline:1rem;border-radius:var(--radius)}
+.l5-ink .l5-link:hover,.l5-ink .l5-link:focus-visible{background:var(--paper);color:var(--ink)}
+
+/* Dev layer: ?grid shows the twelve columns. The page itself draws no grid. */
+.l5-gridlayer{position:fixed;inset:0;z-index:80;pointer-events:none;display:none}
+.l5-gridlayer .l5-shell{height:100%}
+.l5-gridlayer .l5-grid{height:100%}
+.l5-gridlayer span{background:rgb(255 0 0/.06);border-inline:1px solid rgb(255 0 0/.18)}
+.l5-show-grid .l5-gridlayer{display:block}
+
+/* 7. Responsive ---------------------------------------------------------- */
+@media(max-width:1100px) and (min-width:681px){
+  .l5-cases{grid-template-columns:1fr}
+  .l5-case{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+  .l5-case>.l5-case__media{grid-column:1/span 6}
+  .l5-case>.l5-case__body{grid-column:7/-1}
+}
+@media(max-width:1100px){
+  .l5-steps>:is(h3,h4){grid-column:1/-1}
+  .l5-steps>ol{grid-column:1/-1}
+  .l5-who__portrait{grid-column:1/span 5}
+  .l5-who__text{grid-column:7/-1}
+}
+@media(max-width:960px){
+  :root{--header:64px}
+  .l5-menu-toggle{display:block}
+  .l5-nav{position:static;margin-inline-start:auto}
+  .l5-nav__list{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;padding:.75rem var(--gutter) 1.25rem;background:var(--paper);border-bottom:1px solid var(--line);max-height:calc(100svh - var(--header));overflow-y:auto}
+  .l5-nav[data-open] .l5-nav__list{display:flex}
+  .l5-nav__link{min-height:52px;padding-inline:.5rem;margin-inline:-.5rem;font-size:clamp(1.25rem,1rem + 1vw,1.5rem);font-weight:400}
+  .l5-nav__list>li:last-child{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--line)}
+  .l5-nav__list>li:last-child .l5-nav__link{font-size:var(--t-ui);font-weight:500}
+  .l5-nav[data-open] .l5-menu-toggle span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .l5-nav[data-open] .l5-menu-toggle span:nth-child(2){opacity:0}
+  .l5-nav[data-open] .l5-menu-toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .l5-header__inner{gap:.75rem}
+  .l5-header__cta{margin-inline-start:auto;order:2}
+  .l5-nav{order:3;margin-inline-start:0}
+  .l5-offer__item{grid-column:1/-1;grid-row:auto;grid-template-rows:none}
+  .l5-offer__price{margin-top:var(--s-tight)}
+  .l5-steps>ol{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .l5-terms__intro,.l5-terms__list{grid-column:1/-1}
+  .l5-footer__brand{grid-column:1/-1}
+  .l5-footer__col--explore{grid-column:1/span 4}
+  .l5-footer__col--follow{grid-column:5/span 4}
+  .l5-footer__col--proof{grid-column:9/-1}
+}
+@media(max-width:680px){
+  .l5-grid,.l5-section__head,.l5-offer,.l5-steps,.l5-who,.l5-terms__grid,.l5-footer__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .l5-cases{grid-template-columns:1fr}
+  .l5-section__head>h2,.l5-section__head>.l5-link{grid-column:1/-1;justify-self:start}
+  .l5-hero__lead,.l5-plain{grid-column:1/-1}
+  .l5-hero h1{line-height:1.02}
+  .l5-hero__actions{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .l5-steps>ol{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* Run-in labels save a line per fact; the news list yields first (D's rule). */
+  .l5-case__facts div{display:block}
+  .l5-case__facts dt{display:inline;margin-inline-end:.5em}
+  .l5-case__facts dd{display:inline}
+  .l5-who__studio .l5-list>li:nth-child(n+2){display:none}
+  .l5-who__portrait{grid-column:1/span 2}
+  .l5-who__studio .l5-list__item{grid-template-columns:minmax(0,1fr) auto}
+  .l5-who__text{grid-column:1/-1}
+  .l5-list__item{grid-template-columns:minmax(0,1fr) auto}
+  .l5-list__item .t-label{grid-column:1/-1}
+  .l5-terms__list li{grid-template-columns:2.25rem minmax(0,1fr)}
+  .l5-footer__col--explore{grid-column:1/span 2}
+  .l5-footer__col--follow{grid-column:3/span 2}
+  .l5-footer__col--proof{grid-column:1/-1}
+  .l5-gridlayer span:nth-child(n+5){display:none}
+  .l5-footer__top{margin-inline-start:0}
+  .l5-case::before,.l5-offer__item::before{inset:-12px}
+}
+
+/* 8. Motion -------------------------------------------------------------- */
+/* Statements never fade in. Only the section rule draws itself, once. */
+.l5-js .l5-section+.l5-section:not(.is-drawn)::before{transform:scaleX(0)}
+.l5-js .l5-section+.l5-section::before{transition:transform 900ms var(--ease-io)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0s!important;transition-delay:0s!important;animation:none!important;scroll-behavior:auto!important}
+  .l5-js .l5-section+.l5-section:not(.is-drawn)::before{transform:none}
+  .l5-button:hover .l5-button__icon svg{transform:none}
+}
