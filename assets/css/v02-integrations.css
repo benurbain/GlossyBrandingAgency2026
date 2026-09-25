@@ -1,4 +1,6 @@
-:root{--space-2xs:.5rem;--space-xs:.75rem;--space-s:1rem;--space-m:1.5rem;--space-l:2rem;--space-xl:3rem;--space-2xl:5rem;--step--1:.875rem;--step-0:1rem;--step-1:var(--type-small-heading);--step-2:var(--type-card-heading);--weight-heading-editorial:400;--measure:60ch;--gray-on-dark:#ccc;--cream:#fff;--dur:180ms;--ease:var(--ease-out)}
+/* Component scale: fixed steps for the internals of consent, FAQ and forms.
+   Page rhythm (sections, heads, cards, rows) always uses the fluid LAB roles in lab-03-system.css. */
+:root{--space-2xs:.5rem;--space-xs:.75rem;--space-s:1rem;--space-m:1.5rem;--space-l:2rem;--space-xl:3rem;--space-2xl:5rem;--step--1:.875rem;--step-0:1rem;--step-1:var(--type-small-heading);--step-2:var(--type-card-heading);--weight-heading-editorial:400;--measure:60ch;--gray-on-dark:#ccc;--dur:180ms;--ease:var(--ease-out)}
 /* V02 consent surfaces. Own both foreground and background in every state. */
 .cookie-bar{position:fixed;inset:auto 0 0;z-index:1500;display:none;gap:var(--space-l);align-items:center;justify-content:space-between;padding:var(--space-m) var(--gutter);background:var(--ink);color:var(--paper);border-top:1px solid rgb(255 255 255/.22);font-size:var(--step--1);transform:translateY(100%);transition:transform 420ms var(--ease)}
 .cookie-bar[data-open]{display:flex}
@@ -130,7 +132,8 @@
   font: inherit;
   padding: 0.75em 0;
   border: 0;
-  border-bottom: 1px solid var(--line);
+  /* --gray, not --line: the underline is the field boundary and needs 3:1 (WCAG 1.4.11). */
+  border-bottom: 1px solid var(--gray);
   border-radius: 0;
   background: none;
   color: inherit;

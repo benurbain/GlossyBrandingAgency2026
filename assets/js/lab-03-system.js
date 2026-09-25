@@ -1,7 +1,10 @@
-/* LAB rollout: background loops follow the owner’s always-on direction. */
+/* LAB rollout: background loops follow the owner’s always-on direction,
+   except for visitors who ask for reduced motion (WCAG 2.2.2). */
 (function(){
   if(!document.body.classList.contains("lab-system")) return;
+  var reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
   function resumeBackgrounds(){
+    if(reducedMotion.matches) return;
     document.querySelectorAll('video[data-always-animate]').forEach(function(video){
       var play=video.play();
       if(play && play.catch) play.catch(function(){ /* Keep the poster if the browser blocks autoplay. */ });

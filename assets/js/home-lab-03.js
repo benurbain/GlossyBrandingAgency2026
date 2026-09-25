@@ -26,6 +26,8 @@
 
 (function () {
   if (!window.lottie) return;
+  // Reduced motion: keep the static SVG logo instead of the looping animation (WCAG 2.2.2).
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   document.querySelectorAll('[data-lottie]').forEach(function (element) {
     var animation = window.lottie.loadAnimation({
@@ -108,13 +110,19 @@
   }
 })();
 
-/* Keep poster frames and layout available when motion is reduced. */
+/* Loops play for everyone except visitors who ask for reduced motion: they get
+   the poster frame, also for data-always-animate videos (WCAG 2.2.2). */
 (function () {
   var reduced = matchMedia('(prefers-reduced-motion: reduce)');
   function sync() {
-    document.querySelectorAll('video[autoplay]').forEach(function (video) {
-      if (reduced.matches && !video.hasAttribute('data-always-animate')) video.pause();
-      else { var play = video.play(); if (play && play.catch) play.catch(function () {}); }
+    document.querySelectorAll('video[autoplay], video[data-always-animate], video[data-autoplay-paused]').forEach(function (video) {
+      if (reduced.matches) {
+        if (video.autoplay) { video.autoplay = false; video.setAttribute('data-autoplay-paused', ''); }
+        video.pause();
+      } else {
+        if (video.hasAttribute('data-autoplay-paused')) { video.removeAttribute('data-autoplay-paused'); video.autoplay = true; }
+        var play = video.play(); if (play && play.catch) play.catch(function () {});
+      }
     });
   }
   sync();

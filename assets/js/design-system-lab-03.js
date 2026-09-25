@@ -48,7 +48,7 @@
       else link.removeAttribute('aria-current');
     });
     document.getElementById('current-topic').textContent=names[id];
-    document.title='Glossy — '+names[id]+' / LAB 03';
+    document.title='Glossy · '+names[id]+' / LAB 03';
     if(currentView && currentView!==id) pauseVideo();
     currentView=id;
     if(focus && !tabFocus){

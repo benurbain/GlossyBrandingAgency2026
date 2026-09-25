@@ -224,6 +224,10 @@
   .ds-state-controls button:not([aria-pressed="true"]):hover{background:rgb(17 17 17/.04);color:var(--ink)}
 }
 @media(min-width:1800px){.ds-page{--ds-sidebar:256px}.ds-sidebar{padding-inline:32px}}
+/* Mirrors of case-preview-v02.css and the full-link service card (.lab-service-card). */
+.ds-specimen:is([data-demo-state="hover"],[data-demo-state="pressed"],[data-demo-state="focus"]) .project figure>:is(img,video){filter:none}
+.ds-specimen:is([data-demo-state="hover"],[data-demo-state="pressed"],[data-demo-state="focus"]) .lab-service-card[data-card-ready]{padding:var(--card-inset);border-radius:var(--radius);filter:invert(1)}
+.ds-specimen[data-demo-state="focus"] .lab-service-card{outline:2px solid var(--ink);outline-offset:-3px}
 @media(max-width:1200px){
   .ds-page{--ds-sidebar:204px;--ds-inset:28px}
   .ds-sidebar{padding-inline:20px}

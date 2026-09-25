@@ -82,6 +82,7 @@
 .lab-system .nav__link[aria-current="page"]{text-decoration:underline;text-underline-offset:.25em}
 .lab-system .project h3{font-size:var(--type-project-heading);line-height:var(--leading-card)}
 .lab-system .project p{font-size:var(--type-meta)}
+.lab-system .news-grid p span,.lab-system .service-grid article>span{font-size:var(--type-label)}
 .lab-system .button{max-width:100%;min-width:0}
 .lab-system .button__surface{min-width:0;max-width:100%;grid-template-columns:52px minmax(0,1fr)}
 .lab-system .button__label{overflow-wrap:anywhere}
@@ -151,4 +152,7 @@
   .lab-system *, .lab-system *::before,.lab-system *::after{scroll-behavior:auto!important;transition:none!important}
   .lab-system :is(.button__surface,.button__icon .arrow-icon,.text-action__surface,.text-action__content){transform:none!important}
   .lab-system [data-reveal]{opacity:1!important;transform:none!important}
+  /* Always-on loops stay always-on, except for visitors who ask for reduced motion:
+     the CTA shows its still image (WCAG 2.2.2). Scripts pause the other videos. */
+  .lab-system .contact-visual video{display:none}
 }

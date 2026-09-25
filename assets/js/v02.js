@@ -2,6 +2,7 @@
 (function(){
   // Assign video sources only near the viewport. Once loaded, keep the owner's
   // uninterrupted muted loop: no scroll-out pausing and no new controls.
+  // Visitors who ask for reduced motion get the poster frame instead (WCAG 2.2.2).
   const pending=new Set();
   let observer;
   function loadVideo(video){
@@ -16,7 +17,9 @@
     if(!assigned)return;
     pending.delete(video);observer?.unobserve(video);
     video.dataset.videoLoaded='true';video.muted=true;
-    video.load();video.play().catch(()=>{});
+    const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(still&&video.autoplay){video.autoplay=false;video.setAttribute('data-autoplay-paused','');}
+    video.load();if(!still)video.play().catch(()=>{});
   }
   if('IntersectionObserver' in window)observer=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{if(entry.isIntersecting)loadVideo(entry.target);});

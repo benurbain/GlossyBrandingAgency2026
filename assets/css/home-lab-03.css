@@ -178,7 +178,8 @@ main,
   .hero-panel{min-height:calc(100svh - 76px)}
 }
 @media(max-width:680px){
-  :root{--section:4rem;--type-home-heading:clamp(2.75rem,1.5rem + 5.5vw,3.5rem);--type-hero-heading:clamp(2.25rem,1rem + 5.5vw,2.75rem);--type-section-heading:clamp(1.75rem,1rem + 3.5vw,2.25rem);--type-case-baseline:1.45rem}
+  /* Mobile maxima end at or below the desktop value at 681px, so no role shrinks when the layout widens. */
+  :root{--section:4rem;--type-home-heading:clamp(2.75rem,1.5rem + 5.5vw,3.5rem);--type-hero-heading:clamp(2.25rem,1rem + 5.5vw,2.6875rem);--type-section-heading:clamp(1.75rem,1rem + 3.5vw,2.0625rem);--type-case-baseline:1.425rem}
   .site-header__inner,.hero-content,.hero-intro,.section-head,.footer{grid-template-columns:repeat(4,minmax(0,1fr))}
   .site-header__inner>.nav{grid-column:4}
   .hero-content{padding:1.5rem var(--gutter)}

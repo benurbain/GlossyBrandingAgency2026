@@ -46,7 +46,7 @@
     {name:'Footer',height:400,grid:'Afsluiten / vier groepen',source:'.footer + .footer-legal',anatomy:'Merk, navigatie, social en erkenningen. Beide logo’s onder elkaar. 48–80px bovenruimte, met een compacte juridische onderregel.',draw:function(){return grid(400)+line(G,0,W-G)+text(G,100,'Glossy',42)+text(x(3),70,'EXPLORE',12)+lines(x(3),110,col(2),7)+text(x(6),70,'FOLLOW',12)+lines(x(6),110,col(2),5)+text(x(9),70,'RECOGNISED BY',12)+rect(x(9),105,145,28,'#eee')+rect(x(9),158,145,28,'#eee')+line(G,310,W-G)+text(G,365,'Privacy / KMO',12)+text(x(6),365,'© Glossy Branding',12)+text(x(10),365,'Back to top ↑',12);}}
   ];
   function svg(s,scale) {
-    return '<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+s.name+' — schematische opbouw op '+(scale*100)+' procent" width="'+(W*scale)+'" height="'+(s.height*scale)+'" viewBox="0 0 '+W+' '+s.height+'">'+s.draw()+'</svg>';
+    return '<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+s.name+', schematische opbouw op '+(scale*100)+' procent" width="'+(W*scale)+'" height="'+(s.height*scale)+'" viewBox="0 0 '+W+' '+s.height+'">'+s.draw()+'</svg>';
   }
   specs.forEach(function (s,i) {
     var article=document.createElement('article');
@@ -54,7 +54,7 @@
     article.innerHTML='<header><span class="ds-label">'+String(i+1).padStart(2,'0')+'</span><h3>'+s.name+'</h3></header>'+
       '<div class="ds-wireframe-scroll" tabindex="0" role="region" aria-label="'+s.name+' op 25 procent, indien nodig horizontaal schuifbaar"><div class="ds-wireframe-stage">'+svg(s,.25)+'</div></div>'+
       '<div class="ds-wireframe-meta"><span>'+s.grid+'</span><span>1440 → 360px</span></div><p>'+s.anatomy+'</p><code>'+s.source+'</code>'+
-      '<button class="ds-control" type="button" data-pattern-index="'+i+'" aria-haspopup="dialog">Bekijk op 100% <span class="visually-hidden">— '+s.name+'</span></button>';
+      '<button class="ds-control" type="button" data-pattern-index="'+i+'" aria-haspopup="dialog">Bekijk op 100%<span class="visually-hidden">: '+s.name+'</span></button>';
     atlas.appendChild(article);
   });
   var dialog=document.getElementById('pattern-dialog');
