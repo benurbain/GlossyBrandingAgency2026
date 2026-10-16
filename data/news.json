@@ -1,5 +1,28 @@
 [
   {
+    "name": "FLUX 3 Image Has No Benchmark Yet. We Tested It Anyway.",
+    "slug": "flux-3-image-no-benchmark-yet",
+    "monthYear": "October 2026",
+    "subtitle": "Black Forest Labs launches its third generation. The leaderboards are still silent. Our eyes are not.",
+    "excerpt": "FLUX 3 Image is out, but independent benchmarks are not. We tested it the way we test every model: with our own brief, real typography and a laughing man called Benito.",
+    "body": "<p><strong>Benito doesn't need a camera.</strong> He has grillz, a platinum mullet and a laugh you can hear all the way to Freiburg. He also doesn't exist. He was made with FLUX 3 Image and brought to life with Seedance 2.5.</p><h2>What is FLUX 3?</h2><p>Black Forest Labs, the Freiburg lab behind FLUX, announced FLUX 3 on 23 July 2026: one multimodal model trained jointly on images, video and audio (<a href=\"https://venturebeat.com/technology/black-forest-labs-launches-flux-3-capable-of-generating-images-and-20-second-video-with-audio-but-in-limited-release-to-start\" rel=\"noopener\">VentureBeat</a>). FLUX 3 Image followed on 1 October through the BFL API. On 15 October came the open weights of FLUX 3 Image Klein: 5.6 billion parameters, runs from 8 GB of VRAM, free for commercial use below 5 million dollars in annual revenue (<a href=\"https://venturebeat.com/technology/black-forest-labs-opens-flux-3-image-klein-weights-with-free-commercial-use-limited-to-smaller-businesses\" rel=\"noopener\">VentureBeat</a>).</p><p>On paper: native 4K (about 16 megapixels), up to 10 reference images, layout control with bounding boxes and web grounding switched on by default. A 1K image costs 0.048 dollars, a 4K image 0.607 dollars (<a href=\"https://kingy.ai/blog/flux-3-image-specs-benchmarks-comparison/\" rel=\"noopener\">Kingy AI</a>).</p><h2>And the benchmarks?</h2><p>There aren't any yet. At the time of writing FLUX 3 Image does not appear on the <a href=\"https://artificialanalysis.ai/text-to-image/arena\" rel=\"noopener\">Artificial Analysis</a> or Arena text-to-image and editing leaderboards. The top spots there belong to GPT Image 2.5 (1197 Elo), Nano Banana 2 (1125) and Seedream 5.0 Pro (1081). FLUX.2 [max] sits at 1021.</p><p>What does exist comes from BFL itself: internal tests in which Klein beats other open models, and a 91 Elo gain in text-to-image over FLUX.2 [klein] 9B. Interesting, but not independent. Even the video figures (93% preference over Luma Ray 3.2, 52% over Seedance 2.0) are labelled by BFL as a preliminary evaluation.</p><h2>So we did what we always do.</h2><p>We looked. No Elo score tells you whether an image is right for your brand. Typography that is actually legible, skin that doesn't turn to plastic, light that comes from somewhere: you only see it when you try it yourself.</p><p>The images below are 4K frames from FLUX 3, rendered through Krea. FLUX 3 is one model for image and video: we had it shoot static, locked-off takes and picked the sharpest frame. What struck us: short words and display type come out sharp and correctly spelled almost every time. Materials (chrome, gold leaf, lead type, wet cobblestones) feel photographed, not rendered. Small text in reflections and mirrored type remain a weak spot, as with every model. Look closely at the bakery shelf.</p><h2>Our advice</h2><p>Don't pick a model from a leaderboard. Pick it for what your brand needs, and test it with your own brief. Want to know which model fits your visual language? An intake at Glossy is free.</p>",
+    "image": "assets/media/flux-3-image/benito-flux-3-poster.jpg",
+    "video": "assets/media/flux-3-image/benito-flux-3-seedance.mp4",
+    "gallery": [
+      "assets/media/flux-3-image/flux-3-grillz.jpg",
+      "assets/media/flux-3-image/flux-3-kiezen.jpg",
+      "assets/media/flux-3-image/flux-3-poster.jpg",
+      "assets/media/flux-3-image/flux-3-prompt.jpg",
+      "assets/media/flux-3-image/flux-3-bakery.jpg",
+      "assets/media/flux-3-image/benito-flux-3-closeup.jpg"
+    ],
+    "videos": [],
+    "link": "/contact",
+    "linkText": "Book a free intake",
+    "seo": "FLUX 3 Image by Black Forest Labs: specs, pricing, what the benchmarks do and don't say yet, and our own typographic and photographic tests.",
+    "published": "2026-10-16"
+  },
+  {
     "name": "AI Agents Are Only as Good as Their Brief",
     "slug": "ai-agents-are-only-as-good-as-their-brief",
     "monthYear": "September 2026",
@@ -8,7 +31,8 @@
     "body": "<p><strong>AI agents do not remove ambiguity. They scale it.</strong></p><p>We are all talking about AI agents, and some of us are already using them every day. I am too. The more I work with them, the more they remind me of a Belgian Rijkswachter in 1991: always ready, dutiful and perfectly willing to execute a bad instruction thoroughly and completely blindly. Orders are orders.</p><p>Give a contained LLM coding session a vague, hastily written assignment and you get a strange analysis or half-baked code that tries to say and do everything, yet achieves none of what you had in mind.</p><h2>Autonomy makes the brief matter more.</h2><p>Now give that same assignment to an agent, connect it to memory, a mailbox, CRM and company files, then give it permission to act independently. By lunchtime, half the organisation could be administratively detained.</p><p>That is the point. Autonomy does not turn an unclear request into a clear one. It increases the reach of the unclear request.</p><h2>From model choice to instruction management.</h2><p>That is why the model race over who has the most parameters is becoming less interesting to me. The more useful questions are practical ones: which sources can an agent trust? What may it do independently? When should it stop? And when should it simply ask: “Chief?”</p><p>Instruction management will become an important part of good management. Good agents are not only a matter of choosing a powerful model. They are the result of clear context, defined permissions, useful guardrails and a brief that gives the agent a real chance of doing the right thing.</p><p>So yes, my AI agents are better than yours. Or at least better briefed.</p>",
     "image": "assets/media/ai-agents-instruction-management/agents-briefed-poster.jpg",
     "video": "assets/media/ai-agents-instruction-management/agents-briefed.mp4",
-    "gallery": [], "videos": [],
+    "gallery": [],
+    "videos": [],
     "link": "https://www.linkedin.com/posts/benurbain_aiagents-agenticai-instructionmanagement-ugcPost-7507743242059202560-EqtG/",
     "linkText": "Read the original post on LinkedIn",
     "seo": "AI agents do not remove ambiguity. They scale it. Why clear instructions, trustworthy sources, permissions and stopping points matter more as agents gain autonomy.",

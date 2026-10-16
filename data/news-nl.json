@@ -1,5 +1,28 @@
 [
   {
+    "name": "FLUX 3 Image heeft nog geen benchmark. Wij testten het toch.",
+    "slug": "flux-3-image-no-benchmark-yet",
+    "monthYear": "oktober 2026",
+    "subtitle": "Black Forest Labs lanceert zijn derde generatie. De leaderboards zwijgen nog, onze ogen niet.",
+    "excerpt": "FLUX 3 Image is er, onafhankelijke benchmarks nog niet. We testten het zoals we elk model testen: met onze eigen briefing, echte typografie en een lachende man die Benito heet.",
+    "body": "<p><strong>Benito heeft geen camera nodig.</strong> Hij heeft grillz, een platinablonde mullet en een lach die je tot in Freiburg hoort. Hij bestaat ook niet. Hij is gemaakt met FLUX 3 Image en daarna tot leven gewekt met Seedance 2.5.</p><h2>Wat is FLUX 3?</h2><p>Black Forest Labs, het lab uit Freiburg achter FLUX, kondigde FLUX 3 aan op 23 juli 2026. Het is één multimodaal model, getraind op beeld, video en audio tegelijk (<a href=\"https://venturebeat.com/technology/black-forest-labs-launches-flux-3-capable-of-generating-images-and-20-second-video-with-audio-but-in-limited-release-to-start\" rel=\"noopener\">VentureBeat</a>). FLUX 3 Image volgde op 1 oktober via de BFL API. Op 15 oktober kwamen de open weights van FLUX 3 Image Klein: 5,6 miljard parameters, draait vanaf 8 GB VRAM, gratis commercieel bruikbaar voor bedrijven onder 5 miljoen dollar omzet (<a href=\"https://venturebeat.com/technology/black-forest-labs-opens-flux-3-image-klein-weights-with-free-commercial-use-limited-to-smaller-businesses\" rel=\"noopener\">VentureBeat</a>).</p><p>De specs op papier: native 4K (ongeveer 16 megapixel), tot 10 referentiebeelden, layout-controle met bounding boxes en web-grounding standaard aan. Een 1K-beeld kost 0,048 dollar, een 4K-beeld 0,607 dollar (<a href=\"https://kingy.ai/blog/flux-3-image-specs-benchmarks-comparison/\" rel=\"noopener\">Kingy AI</a>).</p><h2>En de benchmarks?</h2><p>Die zijn er nog niet. Op het moment van schrijven staat FLUX 3 Image niet op de text-to-image- of editing-leaderboards van <a href=\"https://artificialanalysis.ai/text-to-image/arena\" rel=\"noopener\">Artificial Analysis</a> of Arena. De bovenste plekken zijn daar voor GPT Image 2.5 (1197 Elo), Nano Banana 2 (1125) en Seedream 5.0 Pro (1081). FLUX.2 [max] staat op 1021.</p><p>Wat er wel is, komt van BFL zelf: interne tests waarin Klein de andere open modellen verslaat, en een plus van 91 Elo bij text-to-image tegenover FLUX.2 [klein] 9B. Interessant, maar niet onafhankelijk. Ook de videocijfers (93% voorkeur tegenover Luma Ray 3.2, 52% tegenover Seedance 2.0) noemt BFL zelf een voorlopige evaluatie.</p><h2>Dus deden we wat we altijd doen.</h2><p>We keken. Geen Elo-score vertelt je of een beeld klopt voor je merk. Typografie die echt leesbaar is, huid die geen plastic wordt, licht dat ergens vandaan komt: dat zie je pas als je het zelf probeert.</p><p>De beelden hieronder zijn 4K-frames uit FLUX 3, gerenderd via Krea. FLUX 3 is één model voor beeld en video: we lieten het stilstaande shots met een vaste camera maken en kozen het scherpste frame. Wat ons opviel: korte woorden en display-typografie komen er bijna altijd scherp en juist gespeld uit. Materialen (chroom, goudblad, lood, natte kasseien) voelen gefotografeerd en niet gerenderd. Kleine tekst in reflecties en gespiegelde letters blijven een werkpunt, zoals bij elk model. Kijk maar eens goed naar de plank van de bakker.</p><h2>Ons advies</h2><p>Kies geen model op basis van een leaderboard. Kies een model op basis van wat je merk nodig heeft, en test het met je eigen briefing. Wil je weten welk model bij jouw beeldtaal past? Een intake bij Glossy is gratis.</p>",
+    "image": "assets/media/flux-3-image/benito-flux-3-poster.jpg",
+    "video": "assets/media/flux-3-image/benito-flux-3-seedance.mp4",
+    "gallery": [
+      "assets/media/flux-3-image/flux-3-grillz.jpg",
+      "assets/media/flux-3-image/flux-3-kiezen.jpg",
+      "assets/media/flux-3-image/flux-3-poster.jpg",
+      "assets/media/flux-3-image/flux-3-prompt.jpg",
+      "assets/media/flux-3-image/flux-3-bakery.jpg",
+      "assets/media/flux-3-image/benito-flux-3-closeup.jpg"
+    ],
+    "videos": [],
+    "link": "/nl/contact",
+    "linkText": "Plan een gratis intake",
+    "seo": "FLUX 3 Image van Black Forest Labs: specs, prijzen, wat de benchmarks wel en niet zeggen, en onze eigen typografische en fotografische tests.",
+    "published": "2026-10-16"
+  },
+  {
     "name": "AI-agents zijn slechts zo goed als hun briefing",
     "slug": "ai-agents-are-only-as-good-as-their-brief",
     "monthYear": "september 2026",
@@ -8,7 +31,8 @@
     "body": "<p><strong>AI-agents nemen ambiguïteit niet weg. Ze schalen ze op.</strong></p><p>We hebben het allemaal over AI-agents en sommigen onder ons gebruiken ze al elke dag. Ik ook. Hoe meer ik ermee werk, hoe meer ze me doen denken aan een Belgische Rijkswachter in 1991: altijd bereid, plichtsbewust en perfect bereid om een slechte instructie grondig en volledig blind uit te voeren. Bevel is bevel.</p><p>Geef een afgebakende LLM-codesessie een vage, haastig geschreven opdracht en je krijgt een vreemde analyse of halfbakken code die alles probeert te zeggen en te doen, maar niets bereikt van wat je werkelijk voor ogen had.</p><h2>Autonomie maakt de briefing belangrijker.</h2><p>Geef diezelfde opdracht vervolgens aan een agent, koppel die aan geheugen, mailbox, CRM en bedrijfsbestanden, en geef hem toestemming om zelfstandig te handelen. Tegen de middag zit misschien de halve organisatie administratief vast.</p><p>Dat is de kern. Autonomie maakt een onduidelijke vraag niet duidelijk. Ze vergroot het bereik van die onduidelijkheid.</p><h2>Van modelkeuze naar instructiemanagement.</h2><p>Daarom wordt de race tussen modellen over wie de meeste parameters heeft voor mij minder interessant. De bruikbare vragen zijn praktischer: welke bronnen mag een agent vertrouwen? Wat mag hij zelfstandig doen? Wanneer moet hij stoppen? En wanneer moet hij gewoon vragen: “Chef?”</p><p>Instructiemanagement wordt een belangrijk onderdeel van goed management. Goede agents zijn niet alleen een kwestie van een krachtig model kiezen. Ze zijn het resultaat van heldere context, afgebakende toestemming, bruikbare guardrails en een briefing die de agent een echte kans geeft om het juiste te doen.</p><p>Dus ja, mijn AI-agents zijn beter dan die van jou. Of toch minstens beter gebrieft.</p>",
     "image": "assets/media/ai-agents-instruction-management/agents-briefed-poster.jpg",
     "video": "assets/media/ai-agents-instruction-management/agents-briefed.mp4",
-    "gallery": [], "videos": [],
+    "gallery": [],
+    "videos": [],
     "link": "https://www.linkedin.com/posts/benurbain_aiagents-agenticai-instructionmanagement-ugcPost-7507743242059202560-EqtG/",
     "linkText": "Lees de oorspronkelijke post op LinkedIn",
     "seo": "AI-agents nemen ambiguïteit niet weg, ze schalen ze op. Waarom heldere instructies, betrouwbare bronnen, toestemming en stopmomenten belangrijker worden naarmate agents meer autonomie krijgen.",

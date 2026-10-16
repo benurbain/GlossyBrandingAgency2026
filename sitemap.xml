@@ -408,14 +408,14 @@
   </url>
   <url>
     <loc>https://glossy.tv/contact</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/contact"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/contact"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/contact"/>
   </url>
   <url>
     <loc>https://glossy.tv/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/"/>
@@ -454,6 +454,13 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/embrace-the-holiday-season-with-glossys-free-seasonal-gift-wrap-super-bundle"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news/embrace-the-holiday-season-with-glossys-free-seasonal-gift-wrap-super-bundle"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news/embrace-the-holiday-season-with-glossys-free-seasonal-gift-wrap-super-bundle"/>
+  </url>
+  <url>
+    <loc>https://glossy.tv/news/flux-3-image-no-benchmark-yet.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/flux-3-image-no-benchmark-yet.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news/flux-3-image-no-benchmark-yet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news/flux-3-image-no-benchmark-yet.html"/>
   </url>
   <url>
     <loc>https://glossy.tv/news/gen-ai-workshop-mediafin</loc>
@@ -709,7 +716,7 @@
   </url>
   <url>
     <loc>https://glossy.tv/news</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news"/>
@@ -1122,14 +1129,14 @@
   </url>
   <url>
     <loc>https://glossy.tv/nl/contact</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/contact"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/contact"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/contact"/>
   </url>
   <url>
     <loc>https://glossy.tv/nl/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/"/>
@@ -1168,6 +1175,13 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/embrace-the-holiday-season-with-glossys-free-seasonal-gift-wrap-super-bundle"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news/embrace-the-holiday-season-with-glossys-free-seasonal-gift-wrap-super-bundle"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news/embrace-the-holiday-season-with-glossys-free-seasonal-gift-wrap-super-bundle"/>
+  </url>
+  <url>
+    <loc>https://glossy.tv/nl/news/flux-3-image-no-benchmark-yet.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news/flux-3-image-no-benchmark-yet.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news/flux-3-image-no-benchmark-yet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news/flux-3-image-no-benchmark-yet.html"/>
   </url>
   <url>
     <loc>https://glossy.tv/nl/news/gen-ai-workshop-mediafin</loc>
@@ -1423,7 +1437,7 @@
   </url>
   <url>
     <loc>https://glossy.tv/nl/news</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://glossy.tv/news"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/news"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/news"/>

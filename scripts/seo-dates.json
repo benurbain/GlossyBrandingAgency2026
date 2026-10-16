@@ -1,11 +1,11 @@
 {
   "index.html": {
-    "fingerprint": "1f3f75ab752fbda4eb1a4c7369b9d5228b6a7f565eaf67e6588d6a467864933d",
-    "lastmod": "2026-09-10"
+    "fingerprint": "42be2d7a0b2561d5aec70dc80c4fd9defa734270076b706f2db98a053d8bf26f",
+    "lastmod": "2026-10-16"
   },
   "nl/index.html": {
-    "fingerprint": "48b7587e5f8a56a36069fef18f7eb7e8660d2dcab8ce4daaeaded5d98111c4ed",
-    "lastmod": "2026-09-10"
+    "fingerprint": "f59edf7a00828572830b1209395b262b35928557177b2057aef63d9d5383d258",
+    "lastmod": "2026-10-16"
   },
   "about.html": {
     "fingerprint": "db524d45ba0c4eb7fd832e7bc04d6a2e38c47762e8e7ef4c1f7141a300cb55a6",
@@ -32,20 +32,20 @@
     "lastmod": "2026-09-10"
   },
   "news.html": {
-    "fingerprint": "c89657313acb9449380e1558637974758e7551d9b5245adf951263b49f5ef13f",
-    "lastmod": "2026-09-09"
+    "fingerprint": "d98808233d0c4169c6b8c9e14c2cae4a62dbedc88903720fac5fca7a804e358d",
+    "lastmod": "2026-10-16"
   },
   "nl/news.html": {
-    "fingerprint": "74e6235275d1b0c96ea7c17a6136565037f15854a962f59be888ae964f65f99b",
-    "lastmod": "2026-09-09"
+    "fingerprint": "fe13bfe1e67bf23c84bd337a1bcf9a15d36e8b18f11a28c12aa3cfe0b86545ed",
+    "lastmod": "2026-10-16"
   },
   "contact.html": {
-    "fingerprint": "769641762079578b09ffa5bf89e14a5f3289091ec0f6db8de8576e15dee520a5",
-    "lastmod": "2026-09-10"
+    "fingerprint": "3fa202f3f16a667470e9b08c5ea1057295fe556d2cc2d9a7769d81bfabe7faf7",
+    "lastmod": "2026-10-16"
   },
   "nl/contact.html": {
-    "fingerprint": "6f174663dd407364af6bb524971cb5c700369ad057e0018b36f10f5e61696d64",
-    "lastmod": "2026-09-10"
+    "fingerprint": "467d50955010f9ba8eb0868cc72ea56638dd167cc3c07407c43b51b990982051",
+    "lastmod": "2026-10-16"
   },
   "kmo-portefeuille.html": {
     "fingerprint": "1764f8b89d8ba471f52d9ca6550950c2436acba181cfcec24fd5a2bcec5b88e7",
@@ -981,6 +981,18 @@
     "fingerprint": "17cb872ce1cc0b93138cbbe20ac304a01c471947da9115688c1c424cc61df424",
     "lastmod": "2026-09-21",
     "article_fingerprint": "3ccec0c39f1ff498fe68954ccf19bf32202dce8e8e379c39c7ba20aa8a7b1632",
+    "article_modified": null
+  },
+  "news/flux-3-image-no-benchmark-yet.html": {
+    "fingerprint": "5b2421adbabb6397eed66eed055cbf930f3399b5383f262d5d060df72d8e880d",
+    "lastmod": "2026-10-16",
+    "article_fingerprint": "949b3816c76e8f0f35ceba63ae192a157210375d47fd67d5c861a65e38d39cab",
+    "article_modified": null
+  },
+  "nl/news/flux-3-image-no-benchmark-yet.html": {
+    "fingerprint": "a42f7e102619ebfb48b77b085436b37c1d364a916a87483cc244cb8944d3efcb",
+    "lastmod": "2026-10-16",
+    "article_fingerprint": "d12a61ee3ca4b6d54401ec07ce474086b14919083077f831d19c92b1e957c041",
     "article_modified": null
   }
 }
