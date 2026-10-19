@@ -984,15 +984,15 @@
     "article_modified": null
   },
   "news/flux-3-image-no-benchmark-yet.html": {
-    "fingerprint": "5b2421adbabb6397eed66eed055cbf930f3399b5383f262d5d060df72d8e880d",
-    "lastmod": "2026-10-16",
-    "article_fingerprint": "949b3816c76e8f0f35ceba63ae192a157210375d47fd67d5c861a65e38d39cab",
-    "article_modified": null
+    "fingerprint": "9b9398a9dc27a27cfec5f4a1d4795930055265f4b7b0163460311f9077b3ae1d",
+    "lastmod": "2026-10-19",
+    "article_fingerprint": "66f7784c4bf68c3de36d4d0cae979c170fd9e9d387766d84398b53dafb9b3035",
+    "article_modified": "2026-10-19"
   },
   "nl/news/flux-3-image-no-benchmark-yet.html": {
-    "fingerprint": "a42f7e102619ebfb48b77b085436b37c1d364a916a87483cc244cb8944d3efcb",
-    "lastmod": "2026-10-16",
-    "article_fingerprint": "d12a61ee3ca4b6d54401ec07ce474086b14919083077f831d19c92b1e957c041",
-    "article_modified": null
+    "fingerprint": "c53ee2d833f5af529e82608218a16f105b38c1372558462f2f8342f0f6e8e882",
+    "lastmod": "2026-10-19",
+    "article_fingerprint": "ea25fcd21c495f0fdf70f08c337b464a89e0a1b1cb0aee6d5acf18bd86732246",
+    "article_modified": "2026-10-19"
   }
 }
