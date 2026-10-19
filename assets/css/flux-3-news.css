@@ -1,10 +1,2 @@
-/* FLUX 3 article gallery: even 4:3 tiles, one portrait over two rows, a full-width close. */
-.flux-gallery .article-media img{aspect-ratio:4/3;object-fit:cover}
-.flux-gallery .is-tall{grid-row:span 2;display:flex;flex-direction:column}
-.flux-gallery .is-tall img{flex:1;min-height:0;height:100%;aspect-ratio:auto}
-.flux-gallery .is-wide{grid-column:1/-1}
-.flux-gallery .is-wide img{aspect-ratio:16/9}
-@media(max-width:680px){
-  .flux-gallery .is-tall{grid-row:auto;display:block}
-  .flux-gallery .is-tall img{height:auto;aspect-ratio:1800/2416}
-}
+/* FLUX 3 article gallery: six 16:9 studio portraits in an even grid. */
+.flux-gallery .article-media img{aspect-ratio:16/9;object-fit:cover}
