@@ -1,10 +1,10 @@
 [
   {
-    "name": "FLUX 3 Image heeft nog geen benchmark. Wij testten het toch.",
+    "name": "FLUX 3 Image: we testten het met onze eigen briefing",
     "slug": "flux-3-image-no-benchmark-yet",
     "monthYear": "oktober 2026",
-    "subtitle": "Black Forest Labs lanceert zijn derde generatie. De leaderboards zwijgen nog, onze ogen niet.",
-    "excerpt": "FLUX 3 Image is er, onafhankelijke benchmarks nog niet. We testten het zoals we elk model testen: met onze eigen briefing, echte typografie en een lachende man die Benito heet.",
+    "subtitle": "Een benchmark geeft context. Een eigen briefing toont wat een model echt kan.",
+    "excerpt": "FLUX 3 Image staat op plaats 12 bij Artificial Analysis. Wij testten het met onze eigen briefing: een jaarboekportret, olieverf, een collage en Benito met zijn grillz.",
     "body": "<p><strong>Dit is Benito.</strong> Grillz, een platinablonde mullet en een lach die weinig uitleg nodig heeft. Hij bestaat niet. We maakten hem met FLUX 3 en brachten hem tot leven met Seedance 2.5.</p><p>We proberen regelmatig nieuwe modellen uit. Om te zien wat we ermee kunnen maken, waar ze goed in zijn en hoeveel werk er nog nodig is voor een beeld bruikbaar is.</p><h2>Wat is FLUX 3?</h2><p>FLUX 3 komt van Black Forest Labs, het team uit Freiburg achter de eerdere FLUX-modellen. Het is getraind op beeld, video en audio. Die gedeelde basis wordt gebruikt voor verschillende toepassingen, waaronder FLUX 3 Image en FLUX 3 Video.</p><p>De beeldversie is sinds 1 oktober beschikbaar. Je kunt beelden genereren tot native 4K, tot tien referentiebeelden meegeven en met bounding boxes aangeven waar elementen moeten komen. Interessant als je een compositie wilt uitwerken of gericht iets wilt aanpassen.</p><p>Sinds 15 oktober is er ook Klein: een kleinere versie met open weights die je lokaal kunt draaien.</p><h2>Wat zeggen de benchmarks?</h2><p>FLUX 3 Image staat op 19 oktober op plaats 12 bij <a href=\"https://artificialanalysis.ai/image/leaderboard/text-to-image\" rel=\"noopener\">Artificial Analysis</a> voor beeldgeneratie. Black Forest Labs publiceert daarnaast eigen tests waarin Klein goed scoort tegenover andere open modellen.</p><p>Dat geeft wat context. Voor ons begint het pas echt bij een eigen briefing. Hoe volgt het model je aanwijzingen? Blijft een personage herkenbaar? Kun je verder bouwen op een beeld zonder telkens opnieuw te beginnen?</p><h2>En wat vonden wij?</h2><p>Voor deze reeks werkten we in Krea. We probeerden verschillende richtingen uit: een jaarboekportret uit de jaren 90, olieverf, een collage van gescheurd papier.</p><p>Vooral de materialen vielen op. Huid met textuur, overtuigend chroom en acryl dat het licht mooi opvangt. Ook korte woorden en grote typografie kwamen in onze tests goed uit de beelden.</p><p>Kleine tekst en tekst in reflecties blijven aandacht vragen. Je moet blijven selecteren en bijsturen. Een sterk resultaat betekent nog niet dat de volgende generatie even goed zal zijn.</p><h2>Welk model moet je dan kiezen?</h2><p>Dat hangt af van wat je wilt maken. Een portret, een verpakking en een campagnebeeld stellen andere eisen. Daarom testen we modellen met concrete briefings en eigen referenties.</p><p>Zo ontdek je vrij snel welk model bij je beeldtaal past en waar je tijd verliest aan correcties.</p><p>Wil je dat voor jouw merk uitzoeken? Bij Glossy kijken we graag mee. <a href=\"/nl/contact#intake\">Een eerste intake is gratis.</a></p>",
     "image": "assets/media/flux-3-image/benito-flux-3-poster.jpg",
     "video": "assets/media/flux-3-image/benito-flux-3-seedance.mp4",
@@ -19,7 +19,7 @@
     "videos": [],
     "link": "/nl/contact",
     "linkText": "Plan een gratis intake",
-    "seo": "FLUX 3 Image van Black Forest Labs: specs, prijzen, wat de benchmarks wel en niet zeggen, en onze eigen typografische en fotografische tests.",
+    "seo": "FLUX 3 Image van Black Forest Labs getest: wat het model kan, waar het staat in de benchmarks en waar je nog moet bijsturen.",
     "published": "2026-10-16"
   },
   {

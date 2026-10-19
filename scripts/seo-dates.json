@@ -1,11 +1,11 @@
 {
   "index.html": {
-    "fingerprint": "42be2d7a0b2561d5aec70dc80c4fd9defa734270076b706f2db98a053d8bf26f",
-    "lastmod": "2026-10-16"
+    "fingerprint": "c5e6a3824491a11c942dfd4458d39afdb0f6b80bb1b7355dc4ebec79eea3baf6",
+    "lastmod": "2026-10-19"
   },
   "nl/index.html": {
-    "fingerprint": "f59edf7a00828572830b1209395b262b35928557177b2057aef63d9d5383d258",
-    "lastmod": "2026-10-16"
+    "fingerprint": "6fc32a0a48eb53bbe7ecb344727ebafe2547f19522905520fa461f9e66de2178",
+    "lastmod": "2026-10-19"
   },
   "about.html": {
     "fingerprint": "db524d45ba0c4eb7fd832e7bc04d6a2e38c47762e8e7ef4c1f7141a300cb55a6",
@@ -32,12 +32,12 @@
     "lastmod": "2026-09-10"
   },
   "news.html": {
-    "fingerprint": "d98808233d0c4169c6b8c9e14c2cae4a62dbedc88903720fac5fca7a804e358d",
-    "lastmod": "2026-10-16"
+    "fingerprint": "4e2e128be233c28da5f2660537d01d50a8858b7ad5ae77e9f43a420b439bfbb9",
+    "lastmod": "2026-10-19"
   },
   "nl/news.html": {
-    "fingerprint": "fe13bfe1e67bf23c84bd337a1bcf9a15d36e8b18f11a28c12aa3cfe0b86545ed",
-    "lastmod": "2026-10-16"
+    "fingerprint": "072e2666ed00af358c4315a31b206a5acb6abff891298b9ce7783d1233a7c442",
+    "lastmod": "2026-10-19"
   },
   "contact.html": {
     "fingerprint": "3fa202f3f16a667470e9b08c5ea1057295fe556d2cc2d9a7769d81bfabe7faf7",
@@ -984,15 +984,15 @@
     "article_modified": null
   },
   "news/flux-3-image-no-benchmark-yet.html": {
-    "fingerprint": "7506177d1cbfcfaf3e8b4f0e0e6bc764257afa6abafdcb23bd5f9d4a2aa96015",
+    "fingerprint": "f7f194dd7e6027aff7f75ee64310f4c23a87efeeec218d8b67fc0b22c716fc7d",
     "lastmod": "2026-10-19",
-    "article_fingerprint": "15a8fc864946267e7c6b015c543d2c735affd7d4ba07baeb927062748dbdf638",
+    "article_fingerprint": "e176f00ec730f9c69842052e5ca2bbd1239d6a444207a6c3b94b952c01e284f8",
     "article_modified": "2026-10-19"
   },
   "nl/news/flux-3-image-no-benchmark-yet.html": {
-    "fingerprint": "fc2f5b9cc3ebff4553bd1402a0b05c8a612305a1de2abb7e6db1996a3016a124",
+    "fingerprint": "e716d68c38bcc1f3f28a74598ed4f64a135d01e45fc362a8f06bcc8884253dff",
     "lastmod": "2026-10-19",
-    "article_fingerprint": "1f381de97ee31c1daf6e7d9fda3025df80573b5a8f159828f3d5d8e3c0e3a8f2",
+    "article_fingerprint": "e9922e3a9cd4672ea3945531477e575b67ea2ce307c439534257fb7530d9eec6",
     "article_modified": "2026-10-19"
   }
 }
