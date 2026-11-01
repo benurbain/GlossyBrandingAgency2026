@@ -62,7 +62,7 @@ def main():
         aliases['/'+p.relative_to(ROOT).as_posix()]=parsed.path
         aliases[parsed.path]=parsed.path
     for u,d in docs.items():
-        assert set(d.alternates)=={'en','nl','x-default'},(u,'languages')
+        assert set(d.alternates)==({'nl'} if u=='https://glossy.tv/nl/cases/live-is-live-2024' else {'en','nl','x-default'}),(u,'languages')
         for language,v in d.alternates.items():
             assert v in docs and u in docs[v].alternates.values(),(u,'missing reciprocal language',v)
         for a in d.anchors:

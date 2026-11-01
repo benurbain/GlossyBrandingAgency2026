@@ -1456,4 +1456,9 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/privacy-policy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://glossy.tv/privacy-policy"/>
   </url>
+  <url>
+    <loc>https://glossy.tv/nl/cases/live-is-live-2024</loc>
+    <lastmod>2026-11-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://glossy.tv/nl/cases/live-is-live-2024"/>
+  </url>
 </urlset>
