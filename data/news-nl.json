@@ -1,5 +1,30 @@
 [
   {
+    "name": "Welk beeldmodel begrijpt typografie?",
+    "slug": "which-image-model-understands-typography",
+    "monthYear": "november 2026",
+    "subtitle": "We lieten vier nieuwe beeldmodellen een lettertype ontwerpen. Eén model springt eruit.",
+    "excerpt": "GPT Image 2.6 Flare en Sunburst, Muse Image en Nano Banana 2.1 kregen dezelfde masterprompt van een professionele typograaf. Nano Banana 2.1 is de beste, zonder twijfel.",
+    "body": "<p><strong>Kan een beeldmodel een lettertype ontwerpen?</strong> We legden vier recente modellen exact dezelfde opdracht voor: GPT Image 2.6 Flare en Sunburst van OpenAI, Muse Image van Meta en Nano Banana 2.1 van Google.</p><h2>Hoe we testten</h2><p>Een professionele typograaf schreef de masterprompt: zo'n 30.000 tekens over constructie, ritme, optische correcties en spatiëring. Elk model kreeg die tekst ongewijzigd, met dezelfde briefing.</p><p>Daarna volgden drie stappen. Eerst een zin, alleen op basis van tekst. Die zin werd de referentie voor de volledige tekenset. De tekenset werd op zijn beurt de referentie voor een affiche. Eén poging per beeld, niets opnieuw gegenereerd, niets bijgewerkt. We deden dat in drie rondes en scherpten de prompt telkens aan.</p><h2>Wat we zagen</h2><p><strong>Nano Banana 2.1 en Muse</strong> zijn duidelijk getraind op professionele typografie. Hun specimens lijken op wat een foundry publiceert: verzorgde proporties, rustige spatiëring, geloofwaardige cijfers.</p><p><strong>OpenAI probeert creatief te zijn, maar begrijpt het niet.</strong> Flare en Sunburst kiezen voor opvallende vormen, zoals stencilsneden en uitlopende stammen, die eerder als effect werken dan als letterontwerp.</p><p><strong>Geen enkel model gebruikt een referentie echt goed.</strong> Muse wisselde tussen zin en tekenset van een schreefloze naar een klassieke serif. Andere modellen vervingen rechte aanhalingstekens door gekrulde of voegden tekst toe waar niemand om vroeg. Echte creativiteit vonden we nergens: de letters zijn verzorgd, maar zelden verrassend.</p><h2>Conclusie</h2><p><strong>Nano Banana 2.1 is de beste.</strong> Niet het meest gewaagde model, wel het meest professionele en betrouwbare. Wil je een lettertype verkennen, een richting testen of een specimen visualiseren, dan begin je daar.</p><p>Een type designer vervangt het niet. Een model levert een beeld van letters, geen bruikbaar font. Benieuwd wat AI voor jouw merkidentiteit kan doen? <a href=\"/nl/contact#intake\">Een eerste intake is gratis.</a></p>",
+    "image": "assets/media/imagegen-typography/card-16x9.jpg",
+    "video": "",
+    "gallery": [
+      "assets/media/imagegen-typography/nano-banana-2-1-characters.jpg",
+      "assets/media/imagegen-typography/nano-banana-2-1-poster.jpg",
+      "assets/media/imagegen-typography/muse-image-characters.jpg",
+      "assets/media/imagegen-typography/muse-image-poster.jpg",
+      "assets/media/imagegen-typography/gpt-image-2-6-flare-characters.jpg",
+      "assets/media/imagegen-typography/gpt-image-2-6-flare-poster.jpg",
+      "assets/media/imagegen-typography/gpt-image-2-6-sunburst-characters.jpg",
+      "assets/media/imagegen-typography/gpt-image-2-6-sunburst-poster.jpg"
+    ],
+    "videos": [],
+    "link": "/nl/contact",
+    "linkText": "Plan een gratis intake",
+    "seo": "We lieten vier nieuwe beeldmodellen een lettertype ontwerpen met dezelfde professionele briefing. Nano Banana 2.1 komt als beste uit de test.",
+    "published": "2026-11-07"
+  },
+  {
     "name": "FLUX 3 Image: we testten het met onze eigen briefing",
     "slug": "flux-3-image-no-benchmark-yet",
     "monthYear": "oktober 2026",

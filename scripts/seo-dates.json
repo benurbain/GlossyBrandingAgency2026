@@ -1,11 +1,11 @@
 {
   "index.html": {
-    "fingerprint": "c5e6a3824491a11c942dfd4458d39afdb0f6b80bb1b7355dc4ebec79eea3baf6",
-    "lastmod": "2026-10-19"
+    "fingerprint": "7249164034e1da1f0cea74063f8c55d509515f6d0d3b229d7cbdc2330274550d",
+    "lastmod": "2026-11-07"
   },
   "nl/index.html": {
-    "fingerprint": "6fc32a0a48eb53bbe7ecb344727ebafe2547f19522905520fa461f9e66de2178",
-    "lastmod": "2026-10-19"
+    "fingerprint": "712996a3930ef64d5cf41b93527824cdd1b9288e9a377c14008091d328560905",
+    "lastmod": "2026-11-07"
   },
   "about.html": {
     "fingerprint": "db524d45ba0c4eb7fd832e7bc04d6a2e38c47762e8e7ef4c1f7141a300cb55a6",
@@ -24,20 +24,20 @@
     "lastmod": "2026-09-10"
   },
   "cases.html": {
-    "fingerprint": "6d09775b01f6354710a18e3abc3241db10e18c1715c8aca78e8cbdcabf6403be",
-    "lastmod": "2026-09-10"
+    "fingerprint": "b3975900baabedae715babb31620b21c5802f9086ffdf773aaed1dcae3261074",
+    "lastmod": "2026-11-07"
   },
   "nl/cases.html": {
-    "fingerprint": "18b08aa8035c1f2552daa59d011dc4ebab6d9af3388c52a149027c69f60e3ffe",
-    "lastmod": "2026-09-10"
+    "fingerprint": "f1ab82fca34b818defea80cf835403758d9ba4ed07a21ae958c5cb3281d454c4",
+    "lastmod": "2026-11-07"
   },
   "news.html": {
-    "fingerprint": "4e2e128be233c28da5f2660537d01d50a8858b7ad5ae77e9f43a420b439bfbb9",
-    "lastmod": "2026-10-19"
+    "fingerprint": "28151703132076aeab63f4ae1d807c78a3d614b617030b22cd4ee2a00a1db262",
+    "lastmod": "2026-11-07"
   },
   "nl/news.html": {
-    "fingerprint": "072e2666ed00af358c4315a31b206a5acb6abff891298b9ce7783d1233a7c442",
-    "lastmod": "2026-10-19"
+    "fingerprint": "ddde275195b808a9772b80c295abd6a7e9c2a39087c632b52781e0c43f1ed54a",
+    "lastmod": "2026-11-07"
   },
   "contact.html": {
     "fingerprint": "3fa202f3f16a667470e9b08c5ea1057295fe556d2cc2d9a7769d81bfabe7faf7",
@@ -994,5 +994,25 @@
     "lastmod": "2026-10-19",
     "article_fingerprint": "5216894d49e2097611ebbe31f8ead708f85a1653d30875dd62b6e388c1c467e9",
     "article_modified": "2026-10-19"
+  },
+  "cases/live-is-live-2024.html": {
+    "fingerprint": "22b0fee4a47ec39e6d69c790071d17ce21a03c20cba05a9c1c4b1bcad66d44ac",
+    "lastmod": "2026-11-01"
+  },
+  "news/which-image-model-understands-typography.html": {
+    "fingerprint": "b158b7b338c0456b4e1d9a6c810e8ce11754b08bade07e5c6b6d1a46f4651c5e",
+    "lastmod": "2026-11-07",
+    "article_fingerprint": "b22d9c1a8ecdacde32c3170997e2a3217a56c76894cbca197791512fa7a72986",
+    "article_modified": null
+  },
+  "nl/cases/live-is-live-2024.html": {
+    "fingerprint": "49a22e53778408e452eb989eb9a62e9f7214ab0f549249dba610fb5a415876b3",
+    "lastmod": "2026-11-01"
+  },
+  "nl/news/which-image-model-understands-typography.html": {
+    "fingerprint": "bafe5b2d2349df61fb452f6f496eebf1a3c92972dc4a1bba543b8b0df2642787",
+    "lastmod": "2026-11-07",
+    "article_fingerprint": "691e975fa634411813c3719db2e4b53d305195dea088093498cd6916619e6bd2",
+    "article_modified": null
   }
 }

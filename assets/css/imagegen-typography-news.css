@@ -1,0 +1,45 @@
+/* Image models and typography (Nov 2026): rebuilt node structure + model gallery. */
+.flow{margin:0}
+.flow__canvas{
+  --flow-bg:#111;--flow-node:#1b1b1b;--flow-line:#3a3a3a;--flow-ink:#f4f4f4;--flow-soft:#a8a8a8;--flow-accent:#ff4a1c;
+  position:relative;display:grid;align-items:center;gap:clamp(.75rem,1.6vw,1.25rem);
+  grid-template-columns:minmax(0,1.05fr) auto minmax(0,.8fr) auto minmax(0,2.6fr);
+  padding:clamp(1.25rem,3vw,2.5rem);border-radius:14px;color:var(--flow-ink);
+  background-color:var(--flow-bg);
+  background-image:radial-gradient(circle,rgba(255,255,255,.09) 1px,transparent 1.2px);
+  background-size:22px 22px;
+}
+.flow__col{display:grid;gap:.75rem}
+.flow__stages{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:.6rem}
+.flow__node{
+  display:grid;gap:.3rem;padding:.8rem .9rem .9rem;border:1px solid var(--flow-line);border-radius:10px;
+  background:var(--flow-node);font-size:.8125rem;line-height:1.4;box-shadow:0 1px 0 rgba(255,255,255,.04) inset;
+}
+.flow__node strong{font-size:.95rem;font-weight:600;letter-spacing:-.005em;color:var(--flow-ink)}
+.flow__node span:not(.flow__type){color:var(--flow-soft)}
+.flow__type{
+  display:inline-flex;align-items:center;gap:.4rem;font-size:.6875rem;letter-spacing:.06em;text-transform:uppercase;color:var(--flow-soft);
+}
+.flow__type::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#7d7d7d}
+.flow__node--merge .flow__type::before{background:#d8d8d8}
+.flow__node--image{border-color:#565656}
+.flow__node--image .flow__type::before{background:var(--flow-accent)}
+.flow__arrow{display:grid;justify-items:center;gap:.25rem;color:var(--flow-soft);font-size:.625rem;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.flow__arrow svg{width:1.6rem;height:.9rem;stroke:currentColor;stroke-width:1.4;fill:none}
+.flow__arrow--ref{color:var(--flow-accent)}
+.flow__models{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:clamp(1rem,2vw,1.5rem);
+  padding-top:clamp(1rem,2vw,1.5rem);border-top:1px solid var(--flow-line);font-size:.8125rem;color:var(--flow-soft);
+  grid-column:1/-1;
+}
+.flow__chip{padding:.3rem .65rem;border:1px solid var(--flow-line);border-radius:999px;color:var(--flow-ink);background:var(--flow-node)}
+.flow__models span:last-child{margin-left:auto}
+
+@media (max-width:900px){
+  .flow__canvas,.flow__stages{grid-template-columns:minmax(0,1fr)}
+  .flow__arrow svg{transform:rotate(90deg)}
+  .flow__models span:last-child{margin-left:0;width:100%}
+}
+
+/* Model gallery: characters + poster per model, model name in the caption. */
+.typo-gallery .article-media img{aspect-ratio:3/2;object-fit:cover;width:100%;height:auto}
