@@ -1,10 +1,10 @@
 {
   "index.html": {
-    "fingerprint": "7249164034e1da1f0cea74063f8c55d509515f6d0d3b229d7cbdc2330274550d",
+    "fingerprint": "ee65e231f5c2a40c819242ac5f8345ad7e4a5282aa9d7efe6451250d0f54d726",
     "lastmod": "2026-11-07"
   },
   "nl/index.html": {
-    "fingerprint": "712996a3930ef64d5cf41b93527824cdd1b9288e9a377c14008091d328560905",
+    "fingerprint": "5037b757fdcbc12d0ba782644abcff3b1a73ac844848efa17707484680aed4ad",
     "lastmod": "2026-11-07"
   },
   "about.html": {
@@ -32,11 +32,11 @@
     "lastmod": "2026-11-07"
   },
   "news.html": {
-    "fingerprint": "28151703132076aeab63f4ae1d807c78a3d614b617030b22cd4ee2a00a1db262",
+    "fingerprint": "8820549bb915f7a221220ad524a5e6acff4c1db0d5bef60fedfe1a38babe1d5b",
     "lastmod": "2026-11-07"
   },
   "nl/news.html": {
-    "fingerprint": "ddde275195b808a9772b80c295abd6a7e9c2a39087c632b52781e0c43f1ed54a",
+    "fingerprint": "3fc3528311a555fd9a2159a07e2fde3f1f5ec97cfa468d5e26bc8158201286cf",
     "lastmod": "2026-11-07"
   },
   "contact.html": {
@@ -1000,19 +1000,19 @@
     "lastmod": "2026-11-01"
   },
   "news/which-image-model-understands-typography.html": {
-    "fingerprint": "b158b7b338c0456b4e1d9a6c810e8ce11754b08bade07e5c6b6d1a46f4651c5e",
+    "fingerprint": "889e4e07bed925d4d292ce0bc8f9c031928583a0ef53a69ccdd4a29d9d2595f9",
     "lastmod": "2026-11-07",
-    "article_fingerprint": "b22d9c1a8ecdacde32c3170997e2a3217a56c76894cbca197791512fa7a72986",
-    "article_modified": null
+    "article_fingerprint": "0413217f49d3a58df06edb27b38594444cf62f36b5e172e48bdbf8de92a3a286",
+    "article_modified": "2026-11-07"
   },
   "nl/cases/live-is-live-2024.html": {
     "fingerprint": "49a22e53778408e452eb989eb9a62e9f7214ab0f549249dba610fb5a415876b3",
     "lastmod": "2026-11-01"
   },
   "nl/news/which-image-model-understands-typography.html": {
-    "fingerprint": "bafe5b2d2349df61fb452f6f496eebf1a3c92972dc4a1bba543b8b0df2642787",
+    "fingerprint": "07ba0eef5aaec23d1fc4708725de24d0bc4d9e8c64079a3da1000b4485252137",
     "lastmod": "2026-11-07",
-    "article_fingerprint": "691e975fa634411813c3719db2e4b53d305195dea088093498cd6916619e6bd2",
-    "article_modified": null
+    "article_fingerprint": "98d5b996d188f75579641b0a4306c0fb729cb661757e07201ccd037e52b42ddb",
+    "article_modified": "2026-11-07"
   }
 }
