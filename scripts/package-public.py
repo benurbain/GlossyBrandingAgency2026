@@ -14,7 +14,7 @@ from urllib.parse import urlsplit, urljoin
 from xml.etree import ElementTree as ET
 
 ROOT=Path(__file__).resolve().parent.parent
-DIRECTORIES=('assets','data','cases','news','nl','bento')
+DIRECTORIES=('assets','data','cases','news','nl','bento','poster-generator')
 FILES=('CNAME','robots.txt','sitemap.xml','.nojekyll')
 
 class Head(HTMLParser):
@@ -49,7 +49,7 @@ def main():
         u=entry.find('{*}loc').text;mod=entry.find('{*}lastmod').text
         assert date.fromisoformat(mod)<=date.today(),(u,'future modification date')
         parsed=urlsplit(u);assert parsed.netloc=='glossy.tv'
-        assert not parsed.path.startswith(('/scripts/','/bento/','/experiments/'))
+        assert not parsed.path.startswith(('/scripts/','/bento/','/poster-generator/','/experiments/'))
         p=target(parsed.path);assert p.is_file(),u
         d=Head(p.read_text());docs[u]=d;lastmods[u]=mod
         assert d.canonical==[u],(u,'canonical mismatch')
@@ -70,6 +70,7 @@ def main():
             if p.netloc in ('glossy.tv','www.glossy.tv') and p.path in aliases:
                 assert p.netloc=='glossy.tv' and p.path==aliases[p.path],(u,'noncanonical internal link',a)
     assert 'noindex' in ','.join(Head((ROOT/'bento/index.html').read_text()).robots)
+    assert 'noindex' in ','.join(Head((ROOT/'poster-generator/index.html').read_text()).robots)
     selected=[p for p in ROOT.glob('*.html')]+[ROOT/f for f in FILES]
     for folder in DIRECTORIES:selected.extend(p for p in (ROOT/folder).rglob('*') if p.is_file())
     assert all(not p.is_symlink() for p in selected),'Symlinks are not publishable'

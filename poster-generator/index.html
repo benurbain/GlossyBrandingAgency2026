@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Glossy Poster Generator</title>
+<meta name="description" content="Een poster generator van Glossy: 23 recepten, 20 paletten, halftoon en overdruk. De generator gooit, de ontwerper kiest.">
+<link rel="canonical" href="https://glossy.tv/poster-generator/">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://glossy.tv/poster-generator/">
+<meta property="og:title" content="Glossy Poster Generator">
+<meta property="og:description" content="23 recepten, 20 paletten, halftoon en overdruk. De generator gooit, de ontwerper kiest.">
+<meta property="og:image" content="https://glossy.tv/assets/img/og-default.png">
+<style>
+:root{--ink:#111;--paper:#fff;--smoke:#f3f1f1;--line:#e2e2e2;--radius:5px;--font:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%;margin:0}
+body{font:400 14px/1.4 var(--font);color:var(--ink);background:var(--smoke);display:grid;grid-template-columns:minmax(0,1fr) 340px;grid-template-rows:auto minmax(0,1fr);height:100vh;overflow:hidden}
+header{grid-column:1/-1;display:flex;align-items:baseline;gap:14px;padding:13px 20px;background:var(--paper);border-bottom:1px solid var(--line)}
+header h1{margin:0;font-weight:800;font-size:16px;letter-spacing:-.01em}
+header a{color:inherit;text-decoration:none}
+header a:hover{text-decoration:underline}
+header .muted,.muted{color:#777}
+header .keys{margin-left:auto;font-size:12px;color:#777}
+#stage{position:relative;min-height:0;overflow:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px}
+#poster{flex:none;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.06),0 14px 44px rgba(0,0,0,.14)}
+#poster svg{display:block;width:100%;height:100%}
+#info{margin:0;font-size:12px;color:#555}
+#sheet{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px 16px;width:100%;align-self:flex-start}
+#stage.sheet{justify-content:flex-start}
+.thumb{all:unset;cursor:pointer;display:block}
+.thumb svg{display:block;width:100%;height:auto;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.1);transition:transform 180ms cubic-bezier(.23,1,.32,1)}
+.thumb:hover svg,.thumb:focus-visible svg{transform:translateY(-3px)}
+.thumb span{display:block;margin-top:7px;font-size:11px;color:#555}
+#panel{background:var(--paper);border-left:1px solid var(--line);overflow-y:auto;min-height:0}
+#panel section{padding:16px 18px;border-bottom:1px solid var(--line)}
+#panel h2{margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#777}
+label{display:block;font-size:12px;color:#555;margin:10px 0 0}
+label:first-of-type{margin-top:0}
+input[type=text],input[type=number],textarea,select{width:100%;margin-top:4px;padding:8px 9px;font:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid #cfcfcf;border-radius:var(--radius)}
+textarea{resize:vertical;min-height:38px;line-height:1.3}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+input[type=range]{width:100%;margin:6px 0 0;accent-color:var(--ink)}
+button{font:inherit;font-weight:600;font-size:13px;padding:9px 12px;border:1px solid var(--ink);border-radius:var(--radius);background:#fff;color:var(--ink);cursor:pointer}
+button:hover{background:var(--smoke)}
+button.primary{background:var(--ink);color:#fff;width:100%;padding:12px;font-size:15px}
+button.primary:hover{background:#333}
+button[disabled]{opacity:.5;cursor:default}
+.row{display:flex;gap:8px;margin-top:8px;align-items:center}
+.row>*{flex:1}
+.seed button{flex:none;width:40px}
+.seed input{margin-top:0;text-align:center;font-variant-numeric:tabular-nums}
+.seg button{border-color:#cfcfcf;font-weight:500}
+.seg button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink)}
+.check input{accent-color:var(--ink);width:15px;height:15px;margin:0}
+.note{font-size:12px;color:#777;margin:8px 0 0}
+.note a{color:inherit}
+.drop{outline:2px dashed var(--ink);outline-offset:-10px}
+input[type=file]{display:none}
+@media (max-width:820px){
+  body{display:block;height:auto;overflow:auto}
+  header .keys{display:none}
+  #stage{min-height:70vh;padding:16px}
+  #panel{border-left:0;border-top:1px solid var(--line)}
+  #sheet{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media print{
+  body{display:block;height:auto;overflow:visible;background:#fff}
+  header,#panel,#info,#sheet{display:none!important}
+  #stage{display:block;padding:0;overflow:visible}
+  #poster{width:100vw!important;height:100vh!important;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1><a href="/" title="Naar glossy.tv">Glossy</a> Poster Generator</h1><span class="muted">Proef 02 · 23 recepten · 20 paletten</span>
+  <span class="keys">Spatie: nieuwe worp · ← →: nummer · P: proefvel · G: grid</span>
+</header>
+
+<main id="stage">
+  <div id="poster" aria-label="Poster"></div>
+  <div id="sheet" hidden></div>
+  <p id="info" aria-live="polite"></p>
+</main>
+
+<aside id="panel">
+  <section>
+    <button id="roll" class="primary">Nieuwe worp</button>
+    <div class="row seed">
+      <button id="prev" aria-label="Vorig nummer">←</button>
+      <input id="seed" type="number" min="1" max="9999" aria-label="Nummer van de worp">
+      <button id="next" aria-label="Volgend nummer">→</button>
+    </div>
+    <div class="row seg">
+      <button data-view="poster" aria-pressed="true">Poster</button>
+      <button data-view="sheet" aria-pressed="false">Proefvel van 20</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Inhoud</h2>
+    <label>Titel<textarea data-k="title" rows="2"></textarea></label>
+    <label>Afzender<input type="text" data-k="kicker"></label>
+    <label>Tekst<textarea data-k="body" rows="3"></textarea></label>
+    <label>Datum, plaats<textarea data-k="meta" rows="2"></textarea></label>
+    <label>Kast<select data-k="kast">
+      <option value="auto">Willekeurig</option><option value="zoals">Zoals getypt</option><option value="hoog">HOOFDLETTERS</option><option value="laag">onderkast</option>
+    </select></label>
+  </section>
+
+  <section>
+    <h2>Systeem</h2>
+    <label>Formaat<select data-k="format" id="format"></select></label>
+    <label>Recept<select data-k="recipe" id="recipe"></select></label>
+    <label>Palet<select data-k="palette" id="palette"></select></label>
+    <label>Durf<input type="range" data-k="durf" min="0" max="1" step="0.01"></label>
+    <p class="note">Op Willekeurig beslist de worp. Kies een waarde om ze vast te zetten. Durf bepaalt hoe vaak de worp ingrijpt: stickers, plakband, spookvormen, gedraaide paletten, lichte gewichten en scheve druk.</p>
+  </section>
+
+  <section>
+    <h2>Beeld</h2>
+    <div class="row">
+      <button id="pick">Beeld kiezen</button>
+      <button id="sample">Voorbeeld</button>
+    </div>
+    <div class="row">
+      <button id="cutout" disabled>Vrijstaand maken</button>
+      <button id="clear" disabled>Verwijderen</button>
+    </div>
+    <input type="file" id="file" accept="image/*">
+    <p class="note" id="imgnote">Geen beeld geladen. Sleep een foto op de poster, of werk zonder: dan tekent de generator zelf een vorm.</p>
+    <p class="note">Je beeld blijft in je browser: er wordt niets geüpload. Vrijstaand maken laadt bij de eerste klik een model via <a href="https://github.com/imgly/background-removal-js" rel="noopener">@imgly/background-removal</a> (AGPL).</p>
+    <label>Behandeling<select data-k="treatment" id="treatment"></select></label>
+    <label>Rasterfijnheid<input type="range" data-k="raster" min="24" max="120" step="1"></label>
+    <label>Contrast<input type="range" data-k="contrast" min="0.6" max="3" step="0.05"></label>
+    <label>Helderheid<input type="range" data-k="licht" min="-0.4" max="0.4" step="0.01"></label>
+  </section>
+
+  <section>
+    <h2>Afwerking</h2>
+    <label>Korrel<input type="range" data-k="grain" min="0" max="1" step="0.01"></label>
+    <label>Misregistratie<input type="range" data-k="misreg" min="0" max="1" step="0.01"></label>
+    <label class="check" style="margin-top:12px"><input type="checkbox" data-k="grid">Grid tonen</label>
+  </section>
+
+  <section>
+    <h2>Letter</h2>
+    <button id="pickfont">Eigen font laden</button>
+    <input type="file" id="fontfile" accept=".woff2,.woff,.otf,.ttf">
+    <p class="note" id="fontnote">Schibsted Grotesk, variabel 400 tot 900.</p>
+  </section>
+
+  <section>
+    <h2>Export</h2>
+    <div class="row">
+      <button id="xsvg">SVG</button>
+      <button id="xpng">PNG</button>
+      <button id="xpdf">PDF</button>
+    </div>
+    <p class="note">SVG en PDF zijn vector, met het font ingesloten. PNG is 3000 px breed.</p>
+  </section>
+</aside>
+
+<script src="font.js"></script>
+<script src="voorbeeld.js"></script>
+<script>
+(() => {
+'use strict';
+/* ------------------------------------------------------------------ helpers */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const f = n => Math.round(n * 10) / 10;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const uniq = a => [...new Set(a)];
+const pad = n => String(n).padStart(4, '0');
+
+/* Reproduceerbaar toeval: elke worp heeft een nummer, elk aspect een eigen stroom. */
+function hash(str) {
+  let h = 1779033703 ^ str.length;
+  for (let i = 0; i < str.length; i++) { h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = h << 13 | h >>> 19; }
+  h = Math.imul(h ^ h >>> 16, 2246822507); h = Math.imul(h ^ h >>> 13, 3266489909);
+  return (h ^= h >>> 16) >>> 0;
+}
+function rngFor(seed, stream) {
+  let a = hash(seed + ':' + stream);
+  const r = () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  r.pick = arr => arr[Math.floor(r() * arr.length)];
+  r.range = (lo, hi) => lo + r() * (hi - lo);
+  r.int = (lo, hi) => Math.floor(r.range(lo, hi + 1));
+  r.chance = p => r() < p;
+  return r;
+}
+function shuffle(arr, rng) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+/* ------------------------------------------------------------------ kleur */
+const rgb = hex => { const n = parseInt(hex.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+function lumOf(hex) { const [r, g, b] = rgb(hex).map(v => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; }); return .2126 * r + .7152 * g + .0722 * b; }
+function contrast(a, b) { const x = lumOf(a), y = lumOf(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); }
+const on = (bg, pal) => contrast(bg, pal.ink) >= contrast(bg, pal.paper) ? pal.ink : pal.paper;
+
+/* ------------------------------------------------------------------ systeem */
+const FORMATS = {
+  a:  {name: 'A-formaat (A3, A2, A1)', w: 1000, h: 1414, mm: [297, 420]},
+  b:  {name: '50 × 70 cm', w: 1000, h: 1400, mm: [500, 700]},
+  ig: {name: '4:5 (Instagram)', w: 1000, h: 1250, mm: [216, 270]},
+  st: {name: '9:16 (Story)', w: 1000, h: 1778, mm: [180, 320]},
+};
+const PALETTES = [
+  {id: 'zwartwit', name: 'Zwart op wit', paper: '#ffffff', ink: '#111111', a: '#111111', b: '#d9d9d9'},
+  {id: 'signaal',  name: 'Signaalrood',  paper: '#f1ece2', ink: '#141414', a: '#e5321f', b: '#141414'},
+  {id: 'kobalt',   name: 'Kobalt',       paper: '#ebe7dd', ink: '#101010', a: '#1d3fd8', b: '#f2b90c'},
+  {id: 'geel',     name: 'Verkeersgeel', paper: '#f7d500', ink: '#111111', a: '#111111', b: '#ffffff'},
+  {id: 'mint',     name: 'Mint',         paper: '#86e08f', ink: '#111111', a: '#ffffff', b: '#111111'},
+  {id: 'nacht',    name: 'Nacht',        paper: '#121212', ink: '#f1ece2', a: '#ff4a26', b: '#f1ece2'},
+  {id: 'riso',     name: 'Riso',         paper: '#f3ead8', ink: '#1f2f72', a: '#ff5a87', b: '#ffd23c'},
+  {id: 'oranje',   name: 'Oranje',       paper: '#ff5a1c', ink: '#111111', a: '#f1ece2', b: '#111111'},
+  {id: 'krant',    name: 'Krant',        paper: '#e9e6dc', ink: '#1a1a1a', a: '#1a1a1a', b: '#e3120b'},
+  {id: 'bordeaux', name: 'Bordeaux',     paper: '#ead9c6', ink: '#3a0d16', a: '#b3122e', b: '#e9a2b0'},
+  {id: 'zee',      name: 'Zeegroen',     paper: '#dfe9df', ink: '#0e2a2a', a: '#0c7c6b', b: '#ff7a45'},
+  {id: 'lila',     name: 'Lila',         paper: '#c9b8f5', ink: '#161225', a: '#ff4f1f', b: '#fdf6e3'},
+  {id: 'beton',    name: 'Beton',        paper: '#c9c9c4', ink: '#161616', a: '#f4f400', b: '#ffffff'},
+  {id: 'neon',     name: 'Neon',         paper: '#0d0d12', ink: '#f3f3f3', a: '#c6ff1a', b: '#ff2bd1'},
+  {id: 'pruim',    name: 'Pruim',        paper: '#2a1033', ink: '#f6e9d8', a: '#ff9b21', b: '#e84a8a'},
+  {id: 'zand',     name: 'Zand',         paper: '#e3d3b5', ink: '#2b1d12', a: '#c2491d', b: '#2f5d50'},
+  {id: 'ijs',      name: 'IJsblauw',     paper: '#bfe3f5', ink: '#0b1d3a', a: '#0b1d3a', b: '#ff3d2e'},
+  {id: 'bos',      name: 'Bos',          paper: '#12352b', ink: '#efe7d3', a: '#f2c230', b: '#e9603a'},
+  {id: 'snoep',    name: 'Snoep',        paper: '#ffc2d6', ink: '#22104a', a: '#3b2bd9', b: '#ffe14a'},
+  {id: 'klei',     name: 'Terracotta',   paper: '#d9623a', ink: '#1b120e', a: '#f3e3c8', b: '#1d3d6b'},
+];
+const TREATMENTS = [
+  {id: 'halftoon', name: 'Halftoon (vector)'},
+  {id: 'lijnen',   name: 'Lijnraster (vector)'},
+  {id: 'duotoon',  name: 'Duotoon'},
+  {id: 'drempel',  name: 'Drempel (fotokopie)'},
+];
+
+const DEFAULTS = {
+  seed: 1, format: 'a', recipe: 'auto', palette: 'auto', treatment: 'auto', kast: 'auto',
+  title: 'Vijftig posters', kicker: 'Glossy Branding',
+  body: 'Een grid, een letter, een beeld en één beperking. De generator gooit, de ontwerper kiest.',
+  meta: 'Proef 01\nNovember 2026',
+  raster: 64, contrast: 1.25, licht: 0, grain: .3, misreg: .3, durf: .5, grid: false,
+};
+const STORE = 'glossy-poster-v1', KEEP = !/[?&]proef\b/.test(location.search); /* ?proef: niets bewaren */
+let state = {...DEFAULTS};
+if (KEEP) try { const old = JSON.parse(localStorage.getItem(STORE) || '{}'); if (old.durf == null) delete old.kast; Object.assign(state, old); } catch (e) {}
+let view = 'poster';
+
+/* ------------------------------------------------------------------ letter */
+const FONT = {family: 'Schibsted Grotesk', b64: window.POSTER_FONT_B64 || '', mime: 'font/woff2', range: '400 900', min: 400, max: 900, fixed: false};
+function b64ToBytes(b64) { const bin = atob(b64); const u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; }
+function bytesToB64(buf) { let s = ''; const u = new Uint8Array(buf); for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s); }
+async function loadFont() {
+  if (!FONT.b64) return;
+  const face = new FontFace(FONT.family, b64ToBytes(FONT.b64).buffer, {weight: FONT.range});
+  await face.load(); document.fonts.add(face);
+}
+const wt = w => clamp(Math.round(w), FONT.min, FONT.max);
+
+/* Meten op inkt, niet op de em-box: zo staat grote typo optisch strak tegen het grid. */
+const mctx = document.createElement('canvas').getContext('2d');
+const mcache = new Map();
+function ink(text, weight) {
+  const k = FONT.family + '|' + weight + '|' + text;
+  let m = mcache.get(k);
+  if (!m) {
+    mctx.font = `${weight} 200px "${FONT.family}", "Helvetica Neue", Arial, sans-serif`;
+    const t = mctx.measureText(text);
+    m = {adv: t.width / 200, l: t.actualBoundingBoxLeft / 200, r: t.actualBoundingBoxRight / 200, a: t.actualBoundingBoxAscent / 200, d: t.actualBoundingBoxDescent / 200};
+    mcache.set(k, m);
+  }
+  return m;
+}
+
+/* Eén regel: inkt links op x, inkt boven op top, inktbreedte = width (of vaste size). */
+function fitLine(text, x, top, width, o = {}) {
+  const weight = wt(o.weight ?? 900), ls = o.ls ?? -.03;
+  const m = ink(text, weight), n = [...text].length;
+  const wEm = Math.max(.05, m.l + m.r + ls * (n - 1));
+  let size = o.size ?? width / wEm;
+  if (o.maxH && m.a * size > o.maxH) size = o.maxH / m.a;
+  const paint = o.stroke ? `fill="none" stroke="${o.stroke}" stroke-width="${f(o.sw || 2)}" stroke-linejoin="round"` : `fill="${o.fill}"`;
+  return {
+    svg: `<text x="${f(x + m.l * size)}" y="${f(top + m.a * size)}" font-size="${f(size)}" font-weight="${weight}" letter-spacing="${ls}em" ${paint}${o.op != null ? ` opacity="${o.op}"` : ''}>${esc(text)}</text>`,
+    size, h: m.a * size, desc: Math.max(0, m.d) * size, w: wEm * size,
+  };
+}
+/* Gestapelde regels, elk op breedte gezet. Past het niet in maxH, dan krimpt het hele blok. */
+function stack(lines, x, top, width, maxH, o = {}) {
+  const build = w => {
+    let y = top, svg = '';
+    for (const t of lines) {
+      const g = fitLine(t, x, y, w, {...o, maxH: w * (o.lineMax ?? .42)});
+      svg += g.svg; y += g.h + g.desc * .5 + w * .035;
+    }
+    return {svg, h: y - top - w * .035, w};
+  };
+  let r = build(width);
+  if (r.h > maxH) r = build(width * maxH / r.h);
+  return r;
+}
+/* Zonder eigen regeleindes: woorden verdelen over regels van vergelijkbare lengte. */
+function balance(words) {
+  const total = words.join(' ').length, L = clamp(Math.round(total / 10), 1, 4);
+  if (words.length <= L) return words.slice();
+  const target = total / L, lines = []; let cur = '';
+  for (const w of words) { const t = cur ? cur + ' ' + w : w; if (cur && t.length > target * 1.15 && lines.length < L - 1) { lines.push(cur); cur = w; } else cur = t; }
+  if (cur) lines.push(cur);
+  return lines;
+}
+function para(text, x, y, width, size, o = {}) {
+  const weight = wt(o.weight ?? 500), lh = o.lh ?? 1.3, max = o.max ?? 99, lines = [];
+  const wof = s => ink(s, weight).adv * size;
+  for (const raw of String(text).split('\n')) {
+    let cur = '';
+    for (const w of raw.split(/\s+/).filter(Boolean)) { const t = cur ? cur + ' ' + w : w; if (cur && wof(t) > width) { lines.push(cur); cur = w; } else cur = t; }
+    if (cur) lines.push(cur);
+  }
+  const L = lines.slice(0, max);
+  return {n: L.length, svg: L.length ? `<text font-size="${f(size)}" font-weight="${weight}" fill="${o.fill}">${L.map((l, i) => `<tspan x="${f(x)}" y="${f(y + i * size * lh)}">${esc(l)}</tspan>`).join('')}</text>` : ''};
+}
+const label = (c, t, x, y, fill, anchor) => `<text x="${f(x)}" y="${f(y)}" font-size="${f(c.s1)}" font-weight="600" fill="${fill}"${anchor ? ` text-anchor="${anchor}"` : ''}>${esc(t)}</text>`;
+
+/* ------------------------------------------------------------------ beeld */
+const IMG = {has: false, w: 0, h: 0, L: null, A: null, S: null, blob: null, alpha: false, ver: 0};
+function lumBuffer(img, w, h) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const x = c.getContext('2d', {willReadFrequently: true}); x.drawImage(img, 0, 0, w, h);
+  const d = x.getImageData(0, 0, w, h).data, L = new Float32Array(w * h), A = new Float32Array(w * h);
+  for (let i = 0, p = 0; p < L.length; i += 4, p++) { L[p] = (.2126 * d[i] + .7152 * d[i + 1] + .0722 * d[i + 2]) / 255; A[p] = d[i + 3] / 255; }
+  return {w, h, L, A};
+}
+async function setImage(source) {
+  const blob = typeof source === 'string' ? await (await fetch(source)).blob() : source;
+  const img = await createImageBitmap(blob);
+  const s = Math.min(1, 1500 / Math.max(img.width, img.height));
+  const big = lumBuffer(img, Math.round(img.width * s), Math.round(img.height * s));
+  const k = Math.min(1, 260 / big.w);
+  const small = lumBuffer(img, Math.max(2, Math.round(big.w * k)), Math.max(2, Math.round(big.h * k)));
+  img.close();
+  /* automatische niveaus op de dekkende pixels: 1% tot 99% */
+  const hist = new Uint32Array(256); let tot = 0, hasA = false;
+  for (let p = 0; p < big.L.length; p++) { if (big.A[p] < .98) hasA = true; if (big.A[p] > .5) { hist[Math.round(big.L[p] * 255)]++; tot++; } }
+  let lo = 0, hi = 255, acc = 0;
+  for (let i = 0; i < 256; i++) { acc += hist[i]; if (acc >= tot * .01) { lo = i; break; } }
+  acc = 0; for (let i = 255; i >= 0; i--) { acc += hist[i]; if (acc >= tot * .01) { hi = i; break; } }
+  const a0 = lo / 255, a1 = Math.max(a0 + .05, hi / 255);
+  for (const B of [big, small]) for (let p = 0; p < B.L.length; p++) B.L[p] = clamp((B.L[p] - a0) / (a1 - a0), 0, 1);
+  for (const m of maskCache.values()) URL.revokeObjectURL(m.url);
+  maskCache.clear();
+  Object.assign(IMG, {has: true, w: big.w, h: big.h, L: big.L, A: big.A, S: small, blob, alpha: hasA, ver: IMG.ver + 1});
+}
+const tone = l => clamp((l - .5) * state.contrast + .5 + state.licht, 0, 1);
+/* Beeld vult het vlak (cover), met het zwaartepunt iets boven het midden. */
+function cover(rect) {
+  const ri = IMG.w / IMG.h, rr = rect.w / rect.h;
+  if (ri > rr) { const h = rect.h, w = h * ri; return {x: rect.x - (w - rect.w) / 2, y: rect.y, w, h}; }
+  const w = rect.w, h = w / ri; return {x: rect.x, y: rect.y - (h - rect.h) * .3, w, h};
+}
+/* Geeft per punt de "papierwaarde": 1 = geen inkt, 0 = vol inkt. */
+function lumSampler(rect, inv) {
+  const g = cover(rect), S = IMG.S;
+  return (px, py) => {
+    const x = clamp((px - g.x) / g.w, 0, 1) * (S.w - 1), y = clamp((py - g.y) / g.h, 0, 1) * (S.h - 1);
+    const x0 = x | 0, y0 = y | 0, x1 = Math.min(S.w - 1, x0 + 1), y1 = Math.min(S.h - 1, y0 + 1), fx = x - x0, fy = y - y0;
+    const i00 = y0 * S.w + x0, i10 = y0 * S.w + x1, i01 = y1 * S.w + x0, i11 = y1 * S.w + x1;
+    const bl = B => (B[i00] * (1 - fx) + B[i10] * fx) * (1 - fy) + (B[i01] * (1 - fx) + B[i11] * fx) * fy;
+    const l = tone(bl(S.L));
+    return 1 - (inv ? l : 1 - l) * bl(S.A);
+  };
+}
+/* Zonder foto tekent de generator zelf een vorm om te rasteren. */
+function procSampler(rect, rng, inv) {
+  const kind = rng.pick(['bol', 'bol', 'verloop', 'golf']);
+  const asp = rect.h / rect.w, cx = rng.range(.38, .62), cy = rng.range(.4, .6) * asp, R = rng.range(.3, .42) * Math.min(1, asp);
+  const ang = rng.range(0, Math.PI * 2), lx = Math.cos(ang), ly = Math.sin(ang), fr = rng.range(1.5, 4);
+  return (px, py) => {
+    const u = (px - rect.x) / rect.w, v = (py - rect.y) / rect.w;
+    let l;
+    if (kind === 'bol') {
+      const dx = (u - cx) / R, dy = (v - cy) / R, d2 = dx * dx + dy * dy;
+      if (d2 > 1) return 1;
+      l = clamp(.06 + .94 * (-dx * .48 - dy * .58 + Math.sqrt(1 - d2) * .66), 0, 1);
+    } else if (kind === 'verloop') l = clamp(.5 + ((u - .5) * lx + (v - asp / 2) * ly) * 1.15, 0, 1);
+    else l = .5 + .5 * Math.sin((u * lx + v * ly) * fr * Math.PI * 2 + Math.sin(v * fr * 2.1) * 1.4);
+    return inv ? 1 - l : l;
+  };
+}
+const circ = (x, y, r) => `M${f(x - r)} ${f(y)}a${f(r)} ${f(r)} 0 1 0 ${f(2 * r)} 0a${f(r)} ${f(r)} 0 1 0 ${f(-2 * r)} 0`;
+function halftone(rect, S, pitch, angle, color) {
+  const cx = rect.x + rect.w / 2, cy = rect.y + rect.h / 2, n = Math.ceil(Math.hypot(rect.w, rect.h) / 2 / pitch);
+  const ca = Math.cos(angle), sa = Math.sin(angle); let d = '';
+  for (let i = -n; i <= n; i++) for (let j = -n; j <= n; j++) {
+    const x = cx + (i * ca - j * sa) * pitch, y = cy + (i * sa + j * ca) * pitch;
+    if (x < rect.x || x > rect.x + rect.w || y < rect.y || y > rect.y + rect.h) continue;
+    const r = pitch * .74 * Math.sqrt(1 - S(x, y));
+    if (r > pitch * .07) d += circ(x, y, r);
+  }
+  return `<path d="${d}" fill="${color}"/>`;
+}
+function lineRaster(rect, S, pitch, color) {
+  let d = ''; const step = Math.max(3, pitch * .3), x1 = rect.x + rect.w;
+  for (let y = rect.y + pitch / 2; y < rect.y + rect.h; y += pitch) {
+    const up = [], dn = [];
+    for (let x = rect.x; ; x += step) {
+      const xx = Math.min(x, x1), t = pitch * .94 * (1 - S(xx, y)) / 2;
+      up.push(f(xx) + ' ' + f(y - t)); dn.push(f(xx) + ' ' + f(y + t));
+      if (xx >= x1) break;
+    }
+    d += 'M' + up.join('L') + 'L' + dn.reverse().join('L') + 'Z';
+  }
+  return `<path d="${d}" fill="${color}"/>`;
+}
+/* Duotoon en drempel: één grijsmasker per behandeling, de kleur komt uit het palet. */
+const maskCache = new Map();
+function dataToBlob(data) { const [head, b64] = data.split(','); return new Blob([b64ToBytes(b64)], {type: head.slice(5, head.indexOf(';'))}); }
+function getMask(kind, inv) {
+  const key = [kind, inv, state.contrast, state.licht, IMG.ver].join('|');
+  let m = maskCache.get(key);
+  if (m) return m;
+  const {w, h, L, A} = IMG, c = document.createElement('canvas'); c.width = w; c.height = h;
+  const x = c.getContext('2d'), id = x.createImageData(w, h), d = id.data;
+  for (let p = 0, i = 0; p < L.length; p++, i += 4) {
+    const l = tone(L[p]); let cov = kind === 'drempel' ? (l < .5 ? 1 : 0) : 1 - l;
+    if (inv) cov = 1 - cov;
+    d[i] = d[i + 1] = d[i + 2] = Math.round(cov * A[p] * 255); d[i + 3] = 255;
+  }
+  x.putImageData(id, 0, 0);
+  const data = c.toDataURL(kind === 'drempel' ? 'image/png' : 'image/jpeg', .84);
+  m = {data, url: URL.createObjectURL(dataToBlob(data))};
+  if (maskCache.size > 12) { const [k0, v0] = maskCache.entries().next().value; URL.revokeObjectURL(v0.url); maskCache.delete(k0); }
+  maskCache.set(key, m);
+  return m;
+}
+function imageLayer(c, rect, color, inv, frame = rect, treat) {
+  let t = treat || c.treatment;
+  if (!IMG.has && t !== 'lijnen') t = 'halftoon';
+  c.used = t;
+  const pitch = c.W / (c.thumb ? Math.min(40, state.raster) : state.raster);
+  if (t === 'halftoon' || t === 'lijnen') {
+    const S = IMG.has ? lumSampler(frame, inv) : procSampler(frame, rngFor(c.seed, 'vorm'), inv);
+    return t === 'lijnen' ? lineRaster(rect, S, pitch * 1.2, color) : halftone(rect, S, pitch, c.angle, color);
+  }
+  const m = getMask(t, inv), g = cover(frame), id = c.id();
+  c.defs.push(`<mask id="${id}" maskUnits="userSpaceOnUse" x="${f(rect.x)}" y="${f(rect.y)}" width="${f(rect.w)}" height="${f(rect.h)}"><image href="${m.url}" x="${f(g.x)}" y="${f(g.y)}" width="${f(g.w)}" height="${f(g.h)}" preserveAspectRatio="none"/></mask>`);
+  return `<rect x="${f(rect.x)}" y="${f(rect.y)}" width="${f(rect.w)}" height="${f(rect.h)}" fill="${color}" mask="url(#${id})"/>`;
+}
+
+/* ------------------------------------------------------------------ vaste onderdelen */
+function topStrip(c, fg, o = {}) {
+  const y = c.m + c.s1 * .78;
+  return label(c, c.st.kicker, c.m, y, fg) + (o.right === false ? '' : label(c, 'Nr. ' + pad(c.seed), c.W - c.m, y, fg, 'end'));
+}
+function foot(c, fg, o = {}) {
+  const y0 = c.footTop + c.s2 * 1.5;
+  let s = o.rule === false ? '' : `<rect x="${c.m}" y="${f(c.footTop)}" width="${c.Wi}" height="${f(c.rule)}" fill="${fg}"/>`;
+  s += para(c.st.meta, c.gx(0), y0, c.gw(2) - c.gut, c.s2, {weight: 700, fill: fg, max: c.footLines, lh: 1.22}).svg;
+  s += para(c.st.body, c.gx(2), y0, c.gw(3) - c.gut, c.s2 * .94, {weight: 450, fill: fg, max: c.footLines}).svg;
+  s += para(c.colophon(), c.gx(5), y0, c.gw(1), c.s1, {weight: 500, fill: fg, max: c.footLines + 1, lh: 1.36}).svg;
+  return s;
+}
+
+/* ------------------------------------------------------------------ bouwstenen voor de recepten */
+/* Grond: papier of, bij een omgekeerde worp, het accent als achtergrond. */
+function ground(c, p = .3) {
+  const {pal, rng, W, H} = c;
+  const inv = rng.chance(p) && contrast(pal.a, pal.paper) > 1.25;
+  const bg = inv ? pal.a : pal.paper, fg = on(bg, pal);
+  let acc = inv ? pal.b : pal.a;
+  if (acc === bg || contrast(acc, bg) < 1.35) acc = inv ? pal.paper : pal.b;
+  if (acc === bg || contrast(acc, bg) < 1.35) acc = fg;
+  return {bg, fg, acc, s: inv ? `<rect width="${W}" height="${H}" fill="${bg}"/>` : ''};
+}
+function clip(c, shape, content) { const id = c.id(); c.defs.push(`<clipPath id="${id}">${shape}</clipPath>`); return `<g clip-path="url(#${id})">${content}</g>`; }
+const box = (r, fill, extra = '') => `<rect x="${f(r.x)}" y="${f(r.y)}" width="${f(r.w)}" height="${f(r.h)}" fill="${fill}"${extra}/>`;
+function fieldFor(pal) { let fld = pal.a; if (contrast(fld, pal.paper) < 1.2) fld = pal.b; if (contrast(fld, pal.paper) < 1.2) fld = pal.ink; return fld; }
+function mix(a, b, t) { const x = rgb(a), y = rgb(b); return '#' + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, '0')).join(''); }
+/* Tekst op een cirkel: herhaalt de tekst tot de omtrek precies vol is. */
+function ringText(c, text, cx, cy, r, size, o = {}) {
+  const weight = wt(o.weight ?? 700), unit = text + ' · ';
+  const C = 2 * Math.PI * r, k = Math.max(1, Math.round(C / (ink(unit, weight).adv * size)));
+  const str = unit.repeat(k), sz = C / ink(str, weight).adv * .997, id = c.id();
+  c.defs.push(`<path id="${id}" d="M${f(cx)} ${f(cy - r)}a${f(r)} ${f(r)} 0 1 1 0 ${f(2 * r)}a${f(r)} ${f(r)} 0 1 1 0 ${f(-2 * r)}"/>`);
+  return `<text font-size="${f(sz)}" font-weight="${weight}" fill="${o.fill}"${o.rot ? ` transform="rotate(${f(o.rot)} ${f(cx)} ${f(cy)})"` : ''}><textPath href="#${id}">${esc(str)}</textPath></text>`;
+}
+
+/* Ingrepen: wat de worp bovenop of onder het recept legt. Hoe meer durf, hoe vaker. */
+function extras(c, st) {
+  const durf = st.durf ?? .5, x = rngFor(st.seed, 'ingreep'), {W, H, m, pal} = c;
+  const cols = uniq([pal.a, pal.b, pal.ink]);
+  let over = '', under = '';
+  if (x.chance(durf * .42)) { /* sticker met het nummer van de worp */
+    const r = W * x.range(.075, .125), cx = x.range(m + r, W - m - r), cy = x.range(m + r, c.footTop - r), col = x.pick(cols), fg = on(col, pal);
+    let shape;
+    if (x.chance(.4)) {
+      const n = x.pick([12, 16, 20, 24]); let d = '';
+      for (let i = 0; i < n * 2; i++) { const a = i / (n * 2) * Math.PI * 2, rr = i % 2 ? r * .88 : r * 1.07; d += (i ? 'L' : 'M') + f(cx + Math.cos(a) * rr) + ' ' + f(cy + Math.sin(a) * rr); }
+      shape = `<path d="${d}Z" fill="${col}"/>`;
+    } else shape = `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}" fill="${col}"/>`;
+    const txt = String(st.meta).split('\n')[0].trim() || st.kicker || 'Proef';
+    over += `<g transform="rotate(${f(x.range(-25, 25))} ${f(cx)} ${f(cy)})">${shape}<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r * .82)}" fill="none" stroke="${fg}" stroke-width="${f(r * .018)}"/>${ringText(c, txt, cx, cy, r * .56, r * .19, {weight: 700, fill: fg})}<text x="${f(cx)}" y="${f(cy + r * .12)}" font-size="${f(r * .36)}" font-weight="800" fill="${fg}" text-anchor="middle" letter-spacing="-0.03em">${pad(st.seed)}</text></g>`;
+  }
+  if (x.chance(durf * .22)) { /* plakband met de afzender */
+    const col = x.pick(cols), fg = on(col, pal), h = W * x.range(.032, .055), ang = x.pick([-45, -30, -12, 8, 20, 35, 90]), y = x.range(.15, .8) * H;
+    const unit = (st.kicker || 'Glossy') + '  ·  ', size = h * .5, str = unit.repeat(Math.min(60, Math.ceil(2.4 * H / (ink(unit, 700).adv * size))));
+    over += `<g transform="translate(${W / 2} ${f(y)}) rotate(${ang})"><rect x="${f(-1.2 * H)}" y="${f(-h / 2)}" width="${f(2.4 * H)}" height="${f(h)}" fill="${col}"/><text x="${f(-1.2 * H + x() * 200)}" y="${f(size * .36)}" font-size="${f(size)}" font-weight="700" fill="${fg}">${esc(str)}</text></g>`;
+  }
+  if (x.chance(durf * .34)) { /* spookvorm onder de compositie */
+    const tint = mix(pal.paper, pal.ink, x.range(.06, .12)), kind = x.pick(['letter', 'letter', 'cirkel', 'strepen']);
+    if (kind === 'letter') {
+      const ch = [...c.one].find(k => /\p{L}|\p{N}/u.test(k)) || 'A', g = fitLine(ch, 0, 0, W * x.range(.9, 1.4), {weight: 900, ls: 0, fill: tint, maxH: H * 1.1});
+      const gx = (W - g.w) / 2 + x.range(-.2, .2) * W, gy = (H - g.h) / 2 + x.range(-.15, .15) * H;
+      under += `<g transform="rotate(${x.pick([0, 0, 90, -90, 180, 12, -12])} ${W / 2} ${H / 2})">${fitLine(ch, gx, gy, 0, {size: g.size, weight: 900, ls: 0, fill: tint}).svg}</g>`;
+    } else if (kind === 'cirkel') {
+      for (let i = x.int(1, 3); i--;) under += `<circle cx="${f(x.range(0, W))}" cy="${f(x.range(0, H))}" r="${f(W * x.range(.25, .6))}" fill="${x.chance(.5) ? tint : 'none'}" stroke="${tint}" stroke-width="${f(W * x.range(.01, .05))}"/>`;
+    } else {
+      const n = x.int(6, 16), ang = x.pick([45, -45, 20, -70, 90]); let q = '';
+      for (let i = 0; i < n; i++) q += `<rect x="${-2 * H}" y="${f(-H + i * 2 * H / n)}" width="${4 * H}" height="${f(H / n * x.range(.3, 1))}"/>`;
+      under += `<g fill="${tint}" transform="translate(${W / 2} ${H / 2}) rotate(${ang})">${q}</g>`;
+    }
+  }
+  const tilt = durf > .55 && x.chance((durf - .5) * .5) ? x.pick([-8, -5, -3, 3, 5, 8]) : 0;
+  return {over, under, tilt};
+}
+/* Paletrollen omdraaien: hetzelfde palet, een andere poster. */
+function twist(pal, rng) {
+  const k = rng.pick(['pa', 'pa', 'ab', 'pb']);
+  const p = k === 'pa' ? {...pal, paper: pal.a, a: pal.paper} : k === 'ab' ? {...pal, a: pal.b, b: pal.a} : {...pal, paper: pal.b, b: pal.paper};
+  p.ink = [pal.ink, pal.paper, '#111111', '#f4f0e6'].reduce((best, q) => contrast(q, p.paper) > contrast(best, p.paper) ? q : best);
+  if (contrast(p.ink, p.paper) < 5 || (p.paper === pal.paper && p.a === pal.a)) return pal;
+  return {...p, name: pal.name + ', gedraaid'};
+}
+
+/* ------------------------------------------------------------------ recepten */
+const RECIPES = [
+{id: 'vlak', name: 'Uit het vlak', draw(c) {
+  const {W, H, m, rng, pal} = c;
+  const inv = rng.chance(.3) && pal.a !== pal.paper, bg = inv ? pal.a : pal.paper, fg = on(bg, pal);
+  let big = inv ? fg : pal.a; if (contrast(big, bg) < 1.35) big = fg;
+  let s = inv ? `<rect width="${W}" height="${H}" fill="${bg}"/>` : '';
+  const word = c.twords.reduce((a, b) => b.length > a.length ? b : a, c.twords[0]);
+  const yA = m + c.s1 * 2.8, yB = c.footTop - c.gap, cid = c.id();
+  c.defs.push(`<clipPath id="${cid}"><rect x="0" y="0" width="${W}" height="${f(yB)}"/></clipPath>`);
+  if (rng.chance(.45)) {
+    /* staand: het woord loopt van onder naar boven en valt rechts en boven uit het vlak */
+    const g = fitLine(word, 0, 0, H * rng.range(1, 1.4), {weight: c.wB, ls: -.045, fill: big, maxH: W * rng.range(.42, .6)});
+    const X = rng.chance(.5) ? W - g.h * .9 : W - m - g.h;
+    const Y = g.w > yB ? yB + (g.w - yB) * rng.range(.2, .8) : yB;
+    s += `<g clip-path="url(#${cid})">` + c.plate(`<g transform="translate(${f(X)} ${f(Y)}) rotate(-90)">${g.svg}</g>`, big) + '</g>';
+    s += stack(c.titleLines, m, yA + c.gap * .5, Math.min(c.gw(3) - c.gut, X - m - c.gut), (yB - yA) * .45, {weight: c.wT, fill: fg}).svg;
+    s += topStrip(c, fg, {right: false}); c.noTop = true;
+  } else {
+    const zone = yB - yA;
+    const g0 = fitLine(word, 0, 0, W * rng.range(1.1, 1.6), {weight: c.wB, ls: -.045, maxH: zone * rng.range(.5, .7)});
+    const below = rng.chance(.5);
+    const gy = below ? yB - g0.h - g0.desc - c.gap * .4 : yA + c.gap * .6;
+    const gx = g0.w > W ? (W - g0.w) * rng.range(.15, .85) : m;
+    const g = fitLine(word, gx, gy, 0, {weight: c.wB, ls: -.045, fill: big, size: g0.size});
+    s += `<g clip-path="url(#${cid})">` + c.plate(g.svg, big) + '</g>';
+    const free = zone - g0.h - g0.desc - c.gap * 2.4;
+    const st = stack(c.titleLines, m, 0, c.gw(4) - c.gut, free * .8, {weight: c.wT, fill: fg});
+    const ty = below ? yA + c.gap * .8 : yB - st.h;
+    s += `<g transform="translate(0 ${f(ty)})">${st.svg}</g>` + topStrip(c, fg);
+  }
+  return s + foot(c, fg);
+}},
+
+{id: 'echo', name: 'Echo', draw(c) {
+  const {W, H, m, Wi, rng, pal} = c;
+  const inv = rng.chance(.25) && pal.a !== pal.paper, bg = inv ? pal.a : pal.paper, fg = on(bg, pal);
+  let hiCol = inv ? pal.b : pal.a; if (hiCol === bg || contrast(hiCol, bg) < 1.35) hiCol = fg;
+  let s = inv ? `<rect width="${W}" height="${H}" fill="${bg}"/>` : '';
+  const mode = rng.pick(['gewicht', 'omlijnd', 'vervagen']), t = c.one;
+  const yA = m + c.s1 * 3, yB = c.footTop - c.gap * 1.2;
+  const g0 = fitLine(t, m, 0, Wi, {weight: 900, ls: -.035, maxH: (yB - yA) * .3});
+  const span = yB - yA - g0.h - g0.desc;
+  const n = clamp(Math.floor(span / (g0.h + Math.max(g0.desc * .7, g0.h * .16))) + 1, 2, 18);
+  const P = span / (n - 1), hi = rng.int(0, n - 1), flip = rng.chance(.5);
+  for (let i = 0; i < n; i++) {
+    const k = i / (n - 1), kk = flip ? 1 - k : k;
+    const o = {ls: -.035, size: g0.size, weight: 900, fill: fg};
+    let accent = false;
+    if (mode === 'gewicht') o.weight = FONT.min + (FONT.max - FONT.min) * kk;
+    else if (mode === 'omlijnd') { if (i === hi) { o.fill = hiCol; accent = true; } else { o.stroke = fg; o.sw = W * .0026; } }
+    else if (i === hi) { o.fill = hiCol; accent = true; } else o.op = f(1 - kk * .88);
+    const g = fitLine(t, m, yA + i * P, Wi, o);
+    s += accent && hiCol !== fg ? c.plate(g.svg, hiCol) : g.svg;
+  }
+  return s + topStrip(c, fg) + foot(c, fg);
+}},
+
+{id: 'raster', name: 'Raster', img: 2, draw(c) {
+  const {H, m, Wi, rng, pal} = c, fg = pal.ink;
+  let acc = pal.a; if (acc === fg || contrast(acc, pal.paper) < 1.3) acc = pal.b !== fg && contrast(pal.b, pal.paper) > 1.3 ? pal.b : null;
+  const n = rng.pick(IMG.has ? [14, 18, 22, 28] : [6, 8, 10, 12]), cell = Wi / n, yA = m + c.s1 * 3;
+  const titleH = H * rng.range(.1, .16), gb = c.footTop - c.gap * 2 - titleH, rows = Math.max(2, Math.floor((gb - yA) / cell));
+  const rect = {x: m, y: yA, w: Wi, h: rows * cell};
+  const mode = IMG.has ? 'beeld' : rng.pick(['vol', 'vol', 'verloop', 'bol']);
+  const S = IMG.has ? lumSampler(rect, false) : mode === 'bol' ? procSampler(rect, c.rngImg, false) : null;
+  const dir = rng.int(0, 3); let dI = '', dA = '';
+  for (let r = 0; r < rows; r++) for (let q = 0; q < n; q++) {
+    const cx = m + (q + .5) * cell, cy = yA + (r + .5) * cell; let rad;
+    if (S) rad = cell * .5 * Math.sqrt(1 - S(cx, cy));
+    else if (mode === 'verloop') rad = cell * .47 * (.08 + .92 * [(r + .5) / rows, 1 - (r + .5) / rows, (q + .5) / n, 1 - (q + .5) / n][dir]);
+    else rad = cell * .42;
+    const skip = mode === 'vol' && rng.chance(.05), isA = acc && !IMG.has && rng.chance(.07);
+    if (skip || rad < cell * .04) continue;
+    if (isA) dA += circ(cx, cy, rad); else dI += circ(cx, cy, rad);
+  }
+  if (IMG.has) c.used = 'raster';
+  let s = `<path d="${dI}" fill="${fg}"/>` + (dA ? c.plate(`<path d="${dA}" fill="${acc}"/>`, acc) : '');
+  const st = stack(c.tlines, m, 0, Wi, titleH, {weight: c.wT, fill: fg});
+  s += `<g transform="translate(0 ${f(c.footTop - c.gap - st.h)})">${st.svg}</g>`;
+  return s + topStrip(c, fg) + foot(c, fg);
+}},
+
+{id: 'portret', name: 'Beeld op vlak', img: 3, draw(c) {
+  const {W, H, m, Wi, rng, pal} = c;
+  let field = pal.a; if (contrast(field, pal.paper) < 1.2) field = pal.b; if (contrast(field, pal.paper) < 1.2) field = pal.ink;
+  const v = rng.pick(['boven', 'boven', 'blok', 'vol']), ic = on(field, pal), inv = lumOf(ic) > lumOf(field);
+  const yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+  let s = '', rect, fg = pal.ink;
+  const box = r => `<rect x="${f(r.x)}" y="${f(r.y)}" width="${f(r.w)}" height="${f(r.h)}" fill="${field}"/>`;
+  if (v === 'vol') { s += `<rect width="${W}" height="${H}" fill="${field}"/>`; fg = ic; rect = {x: 0, y: 0, w: W, h: H * rng.range(.56, .66)}; c.noTop = true; }
+  else if (v === 'boven') { rect = {x: 0, y: 0, w: W, h: H * rng.range(.5, .62)}; s += c.plate(box(rect), field); c.noTop = true; }
+  else { const x = c.gx(rng.pick([0, 1, 2])); rect = {x, y: yA, w: W - x, h: H * rng.range(.46, .58)}; s += c.plate(box(rect), field); }
+  s += imageLayer(c, rect, ic, inv);
+  const tTop = rect.y + rect.h + c.gap * 1.2;
+  s += stack(c.titleLines, m, tTop, rng.pick([c.gw(4), c.gw(5), Wi]), yB - tTop, {weight: c.wT, fill: fg}).svg;
+  if (!c.noTop) s += topStrip(c, pal.ink);
+  return s + foot(c, fg);
+}},
+
+{id: 'banden', name: 'Banden', draw(c) {
+  const {W, m, Wi, rng, pal} = c;
+  const base = c.tlines.length > 1 ? c.tlines : c.twords; let items = base.slice();
+  while (items.length < 4) items.push(...base);
+  items = items.slice(0, 10);
+  const cols = shuffle(uniq([pal.a, pal.ink, pal.paper, pal.b]), rng), n = items.length;
+  let off = 0; while (cols[(n - 1 + off) % cols.length] === pal.paper && off < cols.length) off++;
+  const yB = c.footTop - c.gap, bh = yB / n;
+  let s = '', txt = '';
+  items.forEach((t, i) => {
+    const col = cols[(i + off) % cols.length], y = i * bh;
+    const r = `<rect x="0" y="${f(y)}" width="${W}" height="${f(bh + .4)}" fill="${col}"/>`;
+    if (col !== pal.paper) s += col === pal.ink ? r : c.plate(r, col);
+    const g0 = fitLine(t, m, 0, Wi, {weight: c.wT, maxH: bh * .6});
+    txt += fitLine(t, m, y + (bh - g0.h) / 2, Wi, {weight: c.wT, maxH: bh * .6, fill: on(col, pal)}).svg;
+  });
+  c.noTop = true;
+  return s + txt + foot(c, pal.ink, {rule: false});
+}},
+
+{id: 'vormen', name: 'Compositie', draw(c) {
+  const {W, H, m, Wi, rng, pal} = c, fg = pal.ink;
+  const bleed = rng.chance(.45), n = rng.pick([3, 4, 4, 5, 6]), x0 = bleed ? 0 : m, cell = (bleed ? W : Wi) / n, y0 = bleed ? 0 : m + c.s1 * 3;
+  const titleH = H * rng.range(.11, .17), gb = c.footTop - c.gap * 2 - titleH, rows = Math.max(1, Math.floor((gb - y0) / cell)), h = f(cell / 2), d = f(cell);
+  const cols = uniq([pal.ink, pal.a, pal.b]).filter(k => contrast(k, pal.paper) > 1.15), by = {};
+  const kinds = rng.pick([['q', 'q', 'q', 'c', 'e'], ['q', 'h', 'c', 's', 'e'], ['q', 'q', 'h', 'e'], ['c', 'c', 'h', 'q', 'e']]);
+  const shape = {
+    q: `<path d="M${-h} ${-h}H${h}A${d} ${d} 0 0 1 ${-h} ${h}Z"/>`,
+    h: `<path d="M${-h} ${-h}A${h} ${h} 0 0 0 ${h} ${-h}Z"/>`,
+    c: `<circle r="${h}"/>`,
+    s: `<rect x="${-h}" y="${-h}" width="${d}" height="${d}"/>`,
+  };
+  for (let r = 0; r < rows; r++) for (let q = 0; q < n; q++) {
+    const kind = rng.pick(kinds), col = rng.pick(cols), rot = rng.int(0, 3) * 90;
+    if (kind === 'e') continue;
+    by[col] = (by[col] || '') + `<g transform="translate(${f(x0 + (q + .5) * cell)} ${f(y0 + (r + .5) * cell)}) rotate(${rot})">${shape[kind]}</g>`;
+  }
+  let s = '';
+  for (const col of cols) if (by[col]) { const g = `<g fill="${col}">${by[col]}</g>`; s += col === pal.ink ? g : c.plate(g, col); }
+  const st = stack(c.titleLines, m, 0, Wi, titleH, {weight: c.wT, fill: fg});
+  s += `<g transform="translate(0 ${f(c.footTop - c.gap - st.h)})">${st.svg}</g>`;
+  if (bleed) c.noTop = true; else s += topStrip(c, fg);
+  return s + foot(c, fg);
+}},
+{id: 'ring', name: 'Ronde', img: 1, draw(c) {
+  const {W, H, m, Wi, rng, pal} = c, g = ground(c, .3), yA = m, yB = c.footTop - c.gap;
+  const cx = W / 2 + (rng.chance(.4) ? rng.range(-.22, .22) * W : 0), cy = (yA + yB) / 2 + rng.range(-.05, .05) * H;
+  const R = Math.min(Wi, yB - yA) / 2 * rng.range(.98, 1.3), inner = IMG.has ? rng.range(.42, .55) : rng.range(.14, .4);
+  const n = rng.int(3, 7), stepR = R * (1 - inner) / n, hi = rng.int(0, n - 1), spin = rng.range(8, 40), alt = rng.chance(.5);
+  let s = '';
+  for (let i = 0; i < n; i++) {
+    const isHi = i === hi && g.acc !== g.fg;
+    const t = ringText(c, c.one, cx, cy, R - (i + .86) * stepR, stepR * .98, {weight: alt ? (i % 2 ? FONT.min : FONT.max) : c.wT, fill: isHi ? g.acc : g.fg, rot: i * spin});
+    s += isHi ? c.plate(t, g.acc) : t;
+  }
+  const rc = R * inner - stepR * .15, disc = `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(rc)}"`;
+  if (IMG.has || rng.chance(.6)) {
+    const fld = g.acc, ic = on(fld, pal), rect = {x: cx - rc, y: cy - rc, w: 2 * rc, h: 2 * rc};
+    s += disc + ` fill="${fld}"/>` + clip(c, disc + '/>', imageLayer(c, rect, ic, lumOf(ic) > lumOf(fld)));
+  } else s += c.plate(disc + ` fill="${g.acc}"/>`, g.acc);
+  c.noTop = true;
+  return g.s + clip(c, `<rect width="${W}" height="${f(yB)}"/>`, s) + foot(c, g.fg);
+}},
+
+{id: 'diag', name: 'Diagonaal', draw(c) {
+  const {W, H, rng, pal} = c, g = ground(c, .35), yB = c.footTop - c.gap;
+  const ang = rng.pick([-45, -30, -60, -18, 24, -90, 90]), D = Math.hypot(W, yB), bh = H * rng.range(.06, .15), n = Math.ceil(D / bh) + 1;
+  const unit = c.one + '   ', pattern = rng.pick([['f', 'o'], ['f', 'o', 'o'], ['f', 'b'], ['f', 'o', 'b', 'o'], ['f', 'f', 'b']]);
+  const w0 = wt(c.wB), capEm = ink(c.one, w0).a, size = bh * .64 / capEm, advU = ink(unit, w0).adv * size;
+  const str = unit.repeat(Math.min(40, Math.ceil(D / advU) + 2)).trimEnd();
+  let rows = '';
+  for (let j = 0; j < n; j++) {
+    const y = -D / 2 + j * bh, kind = pattern[j % pattern.length], x = -D / 2 - rng() * advU, top = y + (bh - capEm * size) / 2;
+    if (kind === 'b') rows += c.plate(`<rect x="${f(-D)}" y="${f(y)}" width="${f(2 * D)}" height="${f(bh + .4)}" fill="${g.acc}"/>`, g.acc) + fitLine(str, x, top, 0, {size, weight: w0, fill: on(g.acc, pal)}).svg;
+    else rows += fitLine(str, x, top, 0, kind === 'o' ? {size, weight: w0, stroke: g.fg, sw: W * .0024} : {size, weight: w0, fill: g.fg}).svg;
+  }
+  c.noTop = true;
+  return g.s + clip(c, `<rect width="${W}" height="${f(yB)}"/>`, `<g transform="translate(${W / 2} ${f(yB / 2)}) rotate(${ang})">${rows}</g>`) + foot(c, g.fg);
+}},
+
+{id: 'snede', name: 'Snede', draw(c) {
+  const {W, H, m, Wi, rng} = c, g = ground(c, .3), yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+  const maxH = (yB - yA) * rng.range(.7, .96), mk = fill => stack(c.titleLines, m, 0, Wi, maxH, {weight: c.wB, fill, lineMax: .7});
+  const a = mk(g.fg), b = mk(g.acc), ty = yA + (yB - yA - a.h) * rng.range(.2, .8);
+  const vert = rng.chance(.3), n = rng.int(5, 14), amp = W * rng.range(.03, .16), span = vert ? Wi : a.h * 1.12, o0 = vert ? m : -a.h * .04;
+  let s = '';
+  for (let i = 0; i < n; i++) {
+    const d = rng.chance(.25) ? 0 : (rng() - .5) * 2 * amp, useAcc = g.acc !== g.fg && rng.chance(.2), p0 = o0 + span * i / n, p1 = span / n + .6;
+    const shape = vert ? `<rect x="${f(p0)}" y="${-H}" width="${f(p1)}" height="${3 * H}"/>` : `<rect x="${-W}" y="${f(p0)}" width="${3 * W}" height="${f(p1)}"/>`;
+    const piece = clip(c, shape, `<g transform="translate(${vert ? 0 : f(d)} ${vert ? f(d) : 0})">${(useAcc ? b : a).svg}</g>`);
+    s += useAcc ? c.plate(piece, g.acc) : piece;
+  }
+  return g.s + clip(c, `<rect y="${f(yA - c.gap * .3)}" width="${W}" height="${f(yB - yA + c.gap * .3)}"/>`, `<g transform="translate(0 ${f(ty)})">${s}</g>`) + topStrip(c, g.fg) + foot(c, g.fg);
+}},
+
+{id: 'letter', name: 'Beeld in letter', img: 2, draw(c) {
+  const {m, Wi, rng, pal} = c, fg = pal.ink, yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+  const fld = fieldFor(pal), ic = on(fld, pal), inv = lumOf(ic) > lumOf(fld), o = {weight: 900, fill: '#000', lineMax: .75};
+  const one = stack(c.titleLines, m, 0, Wi, 1e9, o), reps = clamp(Math.floor(((yB - yA) + Wi * .035) / (one.h + Wi * .035)), 1, 6);
+  const lines = Array(reps).fill(c.titleLines).flat();
+  const st0 = stack(lines, m, 0, Wi, (yB - yA) * .97, o), ty = yA + (yB - yA - st0.h) * rng.pick([0, .5, 1]);
+  const st = stack(lines, m, ty, st0.w, 1e9, o), rect = {x: m, y: ty, w: st.w, h: st.h * 1.04};
+  return clip(c, st.svg, box(rect, fld) + imageLayer(c, rect, ic, inv)) + topStrip(c, fg) + foot(c, fg);
+}},
+
+{id: 'cijfer', name: 'Nummer', draw(c) {
+  const {W, m, rng} = c, g = ground(c, .4), yA = m + c.s1 * 3, yB = c.footTop - c.gap, zone = yB - yA;
+  const num = ((c.st.title + ' ' + c.st.meta).match(/\d+/) || [String(c.seed % 100).padStart(2, '0')])[0].slice(0, 3);
+  const outline = rng.chance(.35) || (g.acc === g.fg && rng.chance(.5));
+  const g0 = fitLine(num, 0, 0, W * rng.range(.9, 1.35), {weight: c.wB, ls: -.05, maxH: zone * rng.range(.5, .72)});
+  const right = rng.chance(.5), topSide = rng.chance(.5);
+  const x = right ? W - g0.w + W * rng.range(0, .08) : -W * rng.range(0, .08), y = topSide ? yA + c.gap * .3 : yB - g0.h - c.gap * .3;
+  const o = outline ? {stroke: g.acc, sw: W * rng.range(.004, .012)} : {fill: g.acc};
+  let s = clip(c, `<rect width="${W}" height="${f(yB)}"/>`, c.plate(fitLine(num, x, y, 0, {...o, weight: c.wB, ls: -.05, size: g0.size}).svg, g.acc));
+  const st = stack(c.titleLines, m, 0, c.gw(rng.pick([3, 4, 5])) - c.gut, (zone - g0.h - c.gap * 2) * .85, {weight: c.wT, fill: g.fg});
+  s += `<g transform="translate(0 ${f(topSide ? yB - st.h : yA + c.gap * .6)})">${st.svg}</g>`;
+  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+}},
+
+{id: 'lijst', name: 'Programma', draw(c) {
+  const {W, m, Wi, rng, pal} = c, g = ground(c, .25), yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+  let words = uniq(String(c.st.body).split(/\s+/).map(w => c.kast(w.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ''))).filter(w => w.length > 3));
+  if (words.length < 3) words = c.twords.concat(c.twords, c.twords);
+  const N = clamp(rng.int(4, 9), 3, words.length); words = words.slice(0, N);
+  const head = fitLine(c.one, m, yA, Wi, {weight: c.wT, fill: g.fg, maxH: (yB - yA) * rng.range(.08, .16)});
+  const y0 = yA + head.h + head.desc + c.gap * 1.4, rh = (yB - y0) / N, hi = rng.int(0, N - 1), right = rng.chance(.4);
+  let s = head.svg;
+  words.forEach((w, i) => {
+    const y = y0 + i * rh, isHi = i === hi, col = isHi ? on(g.acc, pal) : g.fg;
+    s += isHi ? c.plate(`<rect x="0" y="${f(y)}" width="${W}" height="${f(rh)}" fill="${g.acc}"/>`, g.acc) : `<rect x="${m}" y="${f(y)}" width="${Wi}" height="${f(c.rule)}" fill="${g.fg}"/>`;
+    const t0 = fitLine(w, 0, 0, c.gw(5) - c.gut, {weight: c.wT, maxH: rh * .56});
+    s += `<text x="${f(right ? W - m : m)}" y="${f(y + rh * .5 + c.s2 * .35)}" font-size="${f(c.s2)}" font-weight="600" fill="${col}"${right ? ' text-anchor="end"' : ''}>${String(i + 1).padStart(2, '0')}</text>`;
+    s += fitLine(w, right ? m : c.gx(1), y + (rh - t0.h) / 2, c.gw(5) - c.gut, {weight: c.wT, maxH: rh * .56, fill: col}).svg;
+  });
+  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+}},
+
+{id: 'opart', name: 'Op-art', draw(c) {
+  const {W, H, m, rng, pal} = c, fg = pal.ink, yB = c.footTop - c.gap;
+  const col = fieldFor(pal), mode = rng.pick(['stralen', 'ringen', 'golven', 'strepen', 'ruit']);
+  const cx = W * rng.range(-.1, 1.1), cy = yB * rng.range(-.1, 1.1), D = Math.hypot(W, yB) * 1.3;
+  let p = '';
+  if (mode === 'stralen') {
+    const n = rng.pick([12, 16, 24, 32, 48]) * 2;
+    for (let i = 0; i < n; i += 2) { const a0 = i / n * Math.PI * 2, a1 = (i + 1) / n * Math.PI * 2; p += `<path d="M${f(cx)} ${f(cy)}L${f(cx + Math.cos(a0) * D)} ${f(cy + Math.sin(a0) * D)}L${f(cx + Math.cos(a1) * D)} ${f(cy + Math.sin(a1) * D)}Z"/>`; }
+  } else if (mode === 'ringen') {
+    const grow = rng.chance(.5) ? rng.range(1.02, 1.09) : 1; let t = W * rng.range(.014, .05), r = t;
+    for (let i = 0; r < D && i < 90; i++) { p += `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}" fill="none" stroke="${col}" stroke-width="${f(t)}"/>`; t *= grow; r += t * 2; }
+  } else if (mode === 'golven') {
+    const pitch = H * rng.range(.018, .05), amp = pitch * rng.range(.6, 2.2), k = rng.range(1, 4) * Math.PI * 2 / W, ph = rng.range(.2, 1.2);
+    for (let y = -amp * 2; y < yB + amp * 2; y += pitch * 2) {
+      const up = [], dn = [];
+      for (let x = 0; x <= W; x += 12) { const o = Math.sin(x * k + y / pitch * ph * .35) * amp, th = pitch * (.5 + .35 * Math.sin(x * k * .5 + y * .004)); up.push(f(x) + ' ' + f(y + o - th)); dn.push(f(x) + ' ' + f(y + o + th)); }
+      p += `<path d="M${up.join('L')}L${dn.reverse().join('L')}Z"/>`;
+    }
+  } else if (mode === 'strepen') {
+    const n = rng.int(10, 34), ang = rng.pick([0, 90, 45, -45, 20, -70]); let q = '';
+    for (let i = 0; i < n; i++) q += `<rect x="${f(-D)}" y="${f(-D / 2 + i * D / n)}" width="${f(2 * D)}" height="${f(D / n * (.08 + .9 * (i + .5) / n))}"/>`;
+    p = `<g transform="translate(${W / 2} ${f(yB / 2)}) rotate(${ang})">${q}</g>`;
+  } else {
+    const n = rng.pick([4, 6, 8, 10, 14]), cw = W / n, rows = Math.ceil(yB / cw) + 1;
+    for (let r = 0; r < rows; r++) for (let q = 0; q < n; q++) {
+      const x = (q + .5) * cw, y = (r + .5) * cw, hw = cw / 2 * clamp(1.08 - Math.hypot(x - cx, y - cy) / (W * .95), .1, 1);
+      p += `<path d="M${f(x - hw)} ${f(y)}L${f(x)} ${f(y - hw)}L${f(x + hw)} ${f(y)}L${f(x)} ${f(y + hw)}Z"/>`;
+    }
+  }
+  let s = clip(c, `<rect width="${W}" height="${f(yB)}"/>`, c.plate(`<g fill="${col}">${p}</g>`, col));
+  /* de titel op een etiket */
+  const lw = c.gw(rng.pick([3, 4, 5])), pd = c.gap * .9, st = stack(c.titleLines, 0, 0, lw - 2 * pd, yB * .34, {weight: c.wT, fill: fg});
+  const bw = st.w + 2 * pd, bh = st.h + 2 * pd, lx = rng.pick([m, m, W - m - bw]), ly = rng.pick([m, yB - bh - c.gap, (yB - bh) / 2]);
+  s += `<rect x="${f(lx)}" y="${f(ly)}" width="${f(bw)}" height="${f(bh)}" fill="${pal.paper}"/><g transform="translate(${f(lx + pd)} ${f(ly + pd)})">${st.svg}</g>`;
+  c.noTop = true;
+  return s + foot(c, fg);
+}},
+
+{id: 'overdruk', name: 'Overdruk', draw(c) {
+  const {W, m, rng, pal} = c, fg = pal.ink, yA = m + c.s1 * 3, yB = c.footTop - c.gap, light = lumOf(pal.paper) > .4;
+  let cols = uniq([pal.a, pal.b, pal.ink]).filter(k => contrast(k, pal.paper) > 1.2); if (!cols.length) cols = [pal.ink];
+  const n = rng.int(3, 5), kind0 = rng.pick(['c', 'c', 's', 'mix', 'h', 't']); let s = '';
+  for (let i = 0; i < n; i++) {
+    const col = cols[i % cols.length], r = W * rng.range(.2, .42), x = rng.range(m + r * .5, W - m - r * .5), y = rng.range(yA + r * .5, yB - r * .7);
+    const kind = kind0 === 'mix' ? rng.pick(['c', 's', 'h', 't']) : kind0, rot = rng.int(0, 7) * 45;
+    const shape = kind === 'c' ? `<circle r="${f(r)}"/>` : kind === 's' ? `<rect x="${f(-r)}" y="${f(-r)}" width="${f(2 * r)}" height="${f(2 * r)}"/>` : kind === 'h' ? `<path d="M${f(-r)} 0A${f(r)} ${f(r)} 0 0 1 ${f(r)} 0Z"/>` : `<path d="M0 ${f(-r)}L${f(r)} ${f(r * .8)}L${f(-r)} ${f(r * .8)}Z"/>`;
+    s += `<g transform="translate(${f(x)} ${f(y)}) rotate(${rot})" fill="${col}" fill-opacity="${light && lumOf(col) < .05 ? .3 : .92}" style="mix-blend-mode:${light ? 'multiply' : 'screen'}">${shape}</g>`;
+  }
+  s = clip(c, `<rect width="${W}" height="${f(yB)}"/>`, s);
+  const st = stack(c.titleLines, m, 0, c.gw(rng.pick([3, 4])) - c.gut, (yB - yA) * .3, {weight: c.wT, fill: fg});
+  s += `<g transform="translate(0 ${f(rng.chance(.5) ? yA + c.gap * .5 : yB - st.h)})">${st.svg}</g>`;
+  return s + topStrip(c, fg) + foot(c, fg);
+}},
+
+{id: 'reeks', name: 'Reeks', img: 2, draw(c) {
+  const {W, H, m, Wi, rng, pal} = c, fg = pal.ink, bleed = rng.chance(.4), y0 = bleed ? 0 : m + c.s1 * 3, x0 = bleed ? 0 : m, w = bleed ? W : Wi;
+  const titleH = H * rng.range(.09, .15), gb = c.footTop - c.gap * 2 - titleH;
+  const [nc, nr] = rng.pick([[2, 2], [2, 3], [3, 3], [3, 4], [1, 3], [4, 4], [3, 2]]), cw = w / nc, ch = (gb - y0) / nr;
+  const fields = shuffle(uniq([pal.a, pal.ink, pal.paper, pal.b]), rng), vary = c.st.treatment === 'auto' && IMG.has && rng.chance(.5), kinds = shuffle(TREATMENTS.map(t => t.id), rng);
+  let s = '';
+  for (let r = 0; r < nr; r++) for (let q = 0; q < nc; q++) {
+    const i = r * nc + q, fld = fields[(i + (nc % fields.length === 0 ? r : 0)) % fields.length], ic = on(fld, pal), rect = {x: x0 + q * cw, y: y0 + r * ch, w: cw + .4, h: ch + .4};
+    s += (fld === pal.paper ? '' : fld === pal.ink ? box(rect, fld) : c.plate(box(rect, fld), fld)) + clip(c, box(rect, '#000'), imageLayer(c, rect, ic, lumOf(ic) > lumOf(fld), rect, vary ? kinds[i % kinds.length] : undefined));
+  }
+  const st = stack(c.tlines, m, 0, Wi, titleH, {weight: c.wT, fill: fg});
+  s += `<g transform="translate(0 ${f(c.footTop - c.gap - st.h)})">${st.svg}</g>`;
+  if (bleed) c.noTop = true; else s += topStrip(c, fg);
+  return s + foot(c, fg);
+}},
+
+{id: 'lamel', name: 'Lamellen', img: 2, draw(c) {
+  const {W, H, m, Wi, rng, pal} = c, yA = m + c.s1 * 3, yB = c.footTop - c.gap, fg = pal.ink;
+  const fld = fieldFor(pal), ic = on(fld, pal), full = rng.chance(.6);
+  const rect = full ? {x: 0, y: 0, w: W, h: H * rng.range(.5, .64)} : {x: m, y: yA, w: Wi, h: H * rng.range(.44, .56)};
+  const horiz = rng.chance(.3), n = rng.pick([4, 6, 8, 10, 14, 20]), mode = rng.pick(['schuif', 'schuif', 'negatief', 'trap']), amp = (horiz ? rect.w : rect.h) * rng.range(.04, .16);
+  let s = '';
+  for (let i = 0; i < n; i++) {
+    const r = horiz ? {x: rect.x, y: rect.y + i * rect.h / n, w: rect.w, h: rect.h / n + .4} : {x: rect.x + i * rect.w / n, y: rect.y, w: rect.w / n + .4, h: rect.h};
+    const d = mode === 'schuif' ? (i % 2 ? amp : -amp) : mode === 'trap' ? (i / (n - 1) - .5) * 2 * amp : 0, neg = mode === 'negatief' && i % 2;
+    const frame = horiz ? {...rect, x: rect.x + d} : {...rect, y: rect.y + d}, a = neg ? ic : fld, b = neg ? fld : ic;
+    s += box(r, a) + clip(c, box(r, '#000'), imageLayer(c, r, b, lumOf(b) > lumOf(a), frame));
+  }
+  if (full) c.noTop = true; else s += topStrip(c, fg);
+  const tTop = rect.y + rect.h + c.gap * 1.2;
+  s += stack(c.titleLines, m, tTop, rng.pick([c.gw(4), c.gw(5), Wi]), yB - tTop, {weight: c.wT, fill: fg}).svg;
+  return s + foot(c, fg);
+}},
+
+{id: 'kader', name: 'Kader', img: 1, draw(c) {
+  const {W, H, m, Wi, rng, pal} = c, g = ground(c, .3), w0 = wt(c.wT), sz = W * rng.range(.034, .075);
+  const cap = ink(c.one, w0).a * sz, unit = c.one + ' · ', adv = ink(unit, w0).adv * sz;
+  let s = '';
+  [[m, m, 0, Wi], [W - m, m, 90, H - 2 * m], [W - m, H - m, 180, Wi], [m, H - m, 270, H - 2 * m]].forEach(([x, y, rot, len], i) => {
+    const L = len - cap - c.gap * .6, str = unit.repeat(Math.max(1, Math.ceil(L / adv))).replace(/ · $/, '');
+    s += `<g transform="translate(${f(x)} ${f(y)}) rotate(${rot})">${fitLine(str, 0, 0, L, {weight: w0, ls: 0, fill: i % 2 && g.acc !== g.fg ? g.acc : g.fg}).svg}</g>`;
+  });
+  const ins = m + cap + c.gap, iw = W - 2 * ins, ih = H - 2 * ins;
+  const nBody = para(c.st.body, 0, 0, iw * .6, c.s2 * .94, {weight: 450}).n, ah = ih - c.s2 * 1.3 * Math.max(nBody, 3) - c.gap;
+  const kind = rng.pick(['cirkel', 'boog', 'vlak', 'ruit']), r = Math.min(iw, ah) / 2 * rng.range(.8, 1), rv = Math.min(r * 1.3, ah / 2), cx = W / 2, cy = ins + ah / 2;
+  const shape = kind === 'cirkel' ? `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}"/>`
+    : kind === 'boog' ? `<path d="M${f(cx - r)} ${f(ins + ah)}V${f(ins + r)}A${f(r)} ${f(r)} 0 0 1 ${f(cx + r)} ${f(ins + r)}V${f(ins + ah)}Z"/>`
+    : kind === 'ruit' ? `<path d="M${f(cx)} ${f(cy - rv)}L${f(cx + r)} ${f(cy)}L${f(cx)} ${f(cy + rv)}L${f(cx - r)} ${f(cy)}Z"/>`
+    : `<rect x="${f(ins)}" y="${f(ins)}" width="${f(iw)}" height="${f(ah)}"/>`;
+  const rect = kind === 'vlak' ? {x: ins, y: ins, w: iw, h: ah} : kind === 'boog' ? {x: cx - r, y: ins, w: 2 * r, h: ah} : kind === 'ruit' ? {x: cx - r, y: cy - rv, w: 2 * r, h: 2 * rv} : {x: cx - r, y: cy - r, w: 2 * r, h: 2 * r};
+  const fld = g.acc, ic = on(fld, pal);
+  s += c.plate(shape.replace('/>', ` fill="${fld}"/>`), fld) + clip(c, shape, imageLayer(c, rect, ic, lumOf(ic) > lumOf(fld)));
+  const y0 = ins + ah + c.gap + c.s2;
+  s += para(c.st.body, ins, y0, iw * .6, c.s2 * .94, {weight: 450, fill: g.fg}).svg + para(c.st.meta + '\nNr. ' + pad(c.seed), ins + iw * .68, y0, iw * .32, c.s2 * .94, {weight: 700, fill: g.fg}).svg;
+  c.noTop = true;
+  return g.s + s;
+}},
+
+{id: 'veld', name: 'Letterveld', draw(c) {
+  const {m, Wi, rng} = c, g = ground(c, .3), yA = m + c.s1 * 3.4, yB = c.footTop - c.gap;
+  const chars = [...c.one.replace(/\s+/g, '')], cols = rng.pick([7, 9, 11, 13, 16, 20]), cell = Wi / cols, rows = Math.max(3, Math.round((yB - yA) / (cell * 1.12))), ch = (yB - yA) / rows;
+  const mode = rng.pick(['radiaal', 'golf', 'diagonaal', 'ruis']), how = FONT.fixed ? 'maat' : rng.pick(['gewicht', 'gewicht', 'maat', 'beide']);
+  const fx = rng.range(.1, .9) * cols, fy = rng.range(.1, .9) * rows, k1 = rng.range(.25, .8), k2 = rng.range(.2, .7), flow = rng.chance(.7);
+  let a = '', b = '';
+  for (let r = 0; r < rows; r++) for (let q = 0; q < cols; q++) {
+    const v = clamp(mode === 'radiaal' ? 1 - Math.hypot(q - fx, (r - fy) * ch / cell) / (cols * .75) : mode === 'golf' ? .5 + .5 * Math.sin(q * k1 + Math.sin(r * k2) * 2.4) : mode === 'diagonaal' ? (q / cols + r / rows) * .58 : rng(), 0, 1);
+    const w = how === 'maat' ? wt(c.wT) : Math.round((FONT.min + (FONT.max - FONT.min) * v) / 50) * 50, size = cell * 1.12 * (how === 'gewicht' ? 1 : .3 + .8 * v);
+    const el = `<text x="${f(m + (q + .5) * cell)}" y="${f(yA + (r + .5) * ch + size * .35)}" font-size="${f(size)}" font-weight="${w}">${esc(chars[(flow ? r * cols + q : q + r) % chars.length])}</text>`;
+    if (v > .9 && g.acc !== g.fg) b += el; else a += el;
+  }
+  const s = `<g text-anchor="middle" fill="${g.fg}">${a}</g>` + (b ? c.plate(`<g text-anchor="middle" fill="${g.acc}">${b}</g>`, g.acc) : '');
+  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+}},
+
+{id: 'letter1', name: 'Eén letter', draw(c) {
+  const {W, H, m, rng} = c, g = ground(c, .4), yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+  const pool = [...c.twords[0]].filter(k => /\p{L}|\p{N}/u.test(k)), ch = (rng.chance(.6) ? pool[0] : rng.pick(pool.length ? pool : ['A'])) || 'A';
+  const w0 = rng.pick([FONT.max, FONT.max, FONT.min]), outline = g.acc === g.fg || rng.chance(.3);
+  const g0 = fitLine(ch, 0, 0, W * rng.range(.8, 1.35), {weight: w0, ls: 0, maxH: yB * rng.range(.7, 1.2)});
+  const x = (W - g0.w) / 2 + rng.range(-.22, .22) * W, y = (yB - g0.h) / 2 + rng.range(-.12, .12) * H, rot = rng.pick([0, 0, 0, 90, -90, 180, -14, 14]);
+  const t = fitLine(ch, x, y, 0, {size: g0.size, weight: w0, ls: 0, ...(outline ? {stroke: g.acc, sw: W * rng.range(.004, .014)} : {fill: g.acc})});
+  let s = clip(c, `<rect width="${W}" height="${f(yB)}"/>`, c.plate(`<g transform="rotate(${rot} ${f(x + g0.w / 2)} ${f(y + g0.h / 2)})">${t.svg}</g>`, g.acc));
+  /* de volledige titel klein op een etiket, precies op het grid */
+  const pd = c.gap * .5, st = stack(c.titleLines, 0, 0, c.gw(2) - c.gut, (yB - yA) * .22, {weight: c.wT, fill: g.fg});
+  const tx = c.gx(rng.pick([0, 2, 4])), ty = rng.pick([yA + c.gap * .4, yB - st.h - 2 * pd, (yA + yB - st.h) / 2 - pd]);
+  s += `<rect x="${f(tx)}" y="${f(ty)}" width="${f(st.w + 2 * pd)}" height="${f(st.h + 2 * pd)}" fill="${g.bg}"/><g transform="translate(${f(tx + pd)} ${f(ty + pd)})">${st.svg}</g>`;
+  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+}},
+
+{id: 'collage', name: 'Collage', img: 2, draw(c) {
+  const {W, H, m, Wi, rng, pal} = c, fg = pal.ink, yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+  const cols = uniq([pal.a, pal.b, pal.ink]).filter(k => contrast(k, pal.paper) > 1.15); let s = '';
+  const scrap = () => {
+    const col = rng.pick(cols), w = W * rng.range(.18, .55), h = W * rng.range(.12, .5), k = rng.pick(['r', 'r', 'c', 'h']);
+    const sh = k === 'r' ? `<rect width="${f(w)}" height="${f(h)}"/>` : k === 'c' ? `<circle cx="${f(w / 2)}" cy="${f(w / 2)}" r="${f(w / 2)}"/>` : `<path d="M0 ${f(w / 2)}A${f(w / 2)} ${f(w / 2)} 0 0 1 ${f(w)} ${f(w / 2)}Z"/>`;
+    return c.plate(`<g transform="translate(${f(rng.range(-.05, .8) * W)} ${f(rng.range(0, .7) * yB)}) rotate(${f(rng.range(-28, 28))})" fill="${col}">${sh}</g>`, col);
+  };
+  for (let i = rng.int(1, 3); i--;) s += scrap();
+  /* het beeld als uitgeknipt stuk */
+  const fld = fieldFor(pal), ic = on(fld, pal), iw = W * rng.range(.45, .72), ih = iw * rng.range(1, 1.35), ix = rng.range(m, W - m - iw), iy = rng.range(yA, Math.max(yA, yB - ih - H * .12)), r = iw / 2, rect = {x: ix, y: iy, w: iw, h: ih};
+  const kind = rng.pick(['r', 'r', 'c', 'boog']), shape = kind === 'r' ? box(rect, '#000') : kind === 'c' ? `<ellipse cx="${f(ix + r)}" cy="${f(iy + ih / 2)}" rx="${f(r)}" ry="${f(ih / 2)}"/>` : `<path d="M${f(ix)} ${f(iy + ih)}V${f(iy + r)}A${f(r)} ${f(r)} 0 0 1 ${f(ix + iw)} ${f(iy + r)}V${f(iy + ih)}Z"/>`;
+  s += `<g transform="rotate(${f(rng.range(-9, 9))} ${f(ix + r)} ${f(iy + ih / 2)})">` + clip(c, shape, box(rect, fld) + imageLayer(c, rect, ic, lumOf(ic) > lumOf(fld))) + '</g>';
+  if (rng.chance(.6)) s += scrap();
+  /* de titel als losse etiketten */
+  let ly = rng.range(.45, .62) * yB; const lx0 = rng.pick([m, m, c.gx(1)]), lcols = uniq([pal.ink, pal.paper, pal.a]);
+  for (const line of c.titleLines) {
+    const col = rng.pick(lcols), tw = Math.min(Wi * rng.range(.5, .95), W - m - lx0), pd = W * .016;
+    const t = fitLine(line, pd, pd, tw, {weight: c.wT, fill: on(col, pal), maxH: (yB - ly) / c.titleLines.length * .55});
+    s += `<g transform="translate(${f(lx0 + rng.range(-.02, .05) * W)} ${f(ly)}) rotate(${f(rng.range(-5, 5))})"><rect width="${f(t.w + 2 * pd)}" height="${f(t.h + t.desc + 2 * pd)}" fill="${col}"/>${t.svg}</g>`;
+    ly += t.h + t.desc + 2 * pd + W * .012;
+  }
+  return clip(c, `<rect width="${W}" height="${f(yB)}"/>`, s) + topStrip(c, fg) + foot(c, fg);
+}},
+
+{id: 'vakken', name: 'Vakken', img: 1, draw(c) {
+  const {W, m, Wi, rng, pal} = c, fg = pal.ink, bleed = rng.chance(.4), yB = c.footTop - c.gap, y0 = m + c.s1 * 3;
+  const area = bleed ? {x: 0, y: 0, w: W, h: yB} : {x: m, y: y0, w: Wi, h: yB - y0}, leaves = [];
+  const split = (r, d) => {
+    if (d === 0 || (d < 3 && rng.chance(.18)) || Math.min(r.w, r.h) < W * .12) return leaves.push(r);
+    const k = rng.pick([1 / 3, .5, 2 / 3, .382, .618]);
+    if (r.w / r.h > rng.range(.7, 1.4)) { split({x: r.x, y: r.y, w: r.w * k, h: r.h}, d - 1); split({x: r.x + r.w * k, y: r.y, w: r.w * (1 - k), h: r.h}, d - 1); }
+    else { split({x: r.x, y: r.y, w: r.w, h: r.h * k}, d - 1); split({x: r.x, y: r.y + r.h * k, w: r.w, h: r.h * (1 - k)}, d - 1); }
+  };
+  split(area, rng.int(3, 5));
+  const order = leaves.slice().sort((a, b) => b.w * b.h - a.w * a.h), lw = W * rng.pick([0, .004, .008, .014]);
+  const fills = [pal.paper, pal.paper, pal.a, pal.b, pal.ink].filter((k, i) => i < 2 || contrast(k, pal.paper) > 1.15), fld = fieldFor(pal), ic = on(fld, pal);
+  const imgLeaf = order[rng.int(0, Math.min(1, order.length - 1))], titleLeaf = order.find(l => l !== imgLeaf && l.w > W * .28) || order[order.length - 1];
+  let s = '', lines = '';
+  for (const r of leaves) {
+    if (r === imgLeaf) s += box(r, fld) + clip(c, box(r, '#000'), imageLayer(c, r, ic, lumOf(ic) > lumOf(fld)));
+    else {
+      const col = rng.pick(fills), pd = Math.min(r.w, r.h) * .1;
+      if (col !== pal.paper) s += col === pal.ink ? box(r, col) : c.plate(box(r, col), col);
+      if (r === titleLeaf) s += stack(c.titleLines, r.x + pd, r.y + pd, r.w - 2 * pd, r.h - 2 * pd, {weight: c.wT, fill: on(col, pal)}).svg;
+      else if (rng.chance(.22)) s += fitLine(rng.pick(c.twords), r.x + pd, r.y + pd, r.w - 2 * pd, {weight: c.wT, fill: on(col, pal), maxH: r.h - 2 * pd}).svg;
+      else if (rng.chance(.2)) s += `<circle cx="${f(r.x + r.w / 2)}" cy="${f(r.y + r.h / 2)}" r="${f(Math.min(r.w, r.h) * .32)}" fill="${on(col, pal)}"/>`;
+    }
+    if (lw) lines += box(r, 'none', ` stroke="${fg}" stroke-width="${f(lw)}"`);
+  }
+  if (bleed) c.noTop = true; else s += topStrip(c, fg);
+  return s + lines + foot(c, fg);
+}},
+
+{id: 'spiegel', name: 'Spiegel', draw(c) {
+  const {W, m, Wi, rng} = c, g = ground(c, .35), yA = m + c.s1 * 3, yB = c.footTop - c.gap, mode = rng.pick(['onder', 'onder', 'vier', 'zij']), gp = c.gap * .25;
+  const alt = g.acc === g.fg || rng.chance(.35) ? {stroke: g.acc, sw: W * .003} : {fill: g.acc};
+  const mk = (w, h, o, lm) => stack(c.titleLines, 0, 0, w, h, {weight: c.wB, lineMax: lm, ...o});
+  let s = '';
+  if (mode === 'vier') {
+    const cx = W / 2, cy = (yA + yB) / 2, a = mk(Wi / 2 - gp, (yB - yA) / 2 - gp, {fill: g.fg}, .7), b = mk(Wi / 2 - gp, (yB - yA) / 2 - gp, alt, .7);
+    const put = (st, sx, sy) => `<g transform="translate(${f(cx)} ${f(cy)}) scale(${sx} ${sy}) translate(${f(-st.w - gp)} ${f(-st.h - gp)})">${st.svg}</g>`;
+    s = put(a, 1, 1) + c.plate(put(b, -1, 1) + put(b, 1, -1), g.acc) + put(a, -1, -1);
+  } else if (mode === 'onder') {
+    const hh = (yB - yA) / 2 - gp, a = mk(Wi, hh, {fill: g.fg}, .7), b = mk(Wi, hh, alt, .7), ym = (yA + yB) / 2;
+    s = `<g transform="translate(${m} ${f(ym - gp - a.h)})">${a.svg}</g>` + c.plate(`<g transform="translate(${m} ${f(ym + gp + b.h)}) scale(1 -1)">${b.svg}</g>`, g.acc);
+  } else {
+    const a = mk(Wi / 2 - gp, (yB - yA) * .9, {fill: g.fg}, .9), b = mk(Wi / 2 - gp, (yB - yA) * .9, alt, .9), ty = yA + (yB - yA - a.h) / 2, cx = W / 2;
+    s = `<g transform="translate(${f(cx - gp - a.w)} ${f(ty)})">${a.svg}</g>` + c.plate(`<g transform="translate(${f(cx + gp + b.w)} ${f(ty)}) scale(-1 1)">${b.svg}</g>`, g.acc);
+  }
+  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+}},
+
+{id: 'matrix', name: 'Matrix', draw(c) {
+  const {m, Wi, rng} = c, g = ground(c, .35), yA = m + c.s1 * 3.2, yB = c.footTop - c.gap;
+  const cols = rng.pick([24, 30, 38, 48, 60]), w0 = wt(900);
+  /* de titel op een klein canvas zetten en per pixel een vorm tekenen */
+  const unitRows = c.titleLines.reduce((n, t) => { const k = ink(t, w0), size = Math.min(cols / (k.l + k.r), cols * .7 / k.a); return n + k.a * size + Math.max(k.d, 0) * size * .5 + cols * .05; }, 0);
+  const reps = rng.chance(.55) ? clamp(Math.floor((yB - yA) / (Wi / cols) / unitRows), 1, 5) : 1;
+  let rowsN = 0;
+  const lay = Array(reps).fill(c.titleLines).flat().map(t => { const k = ink(t, w0), size = Math.min(cols / (k.l + k.r), cols * .7 / k.a), L = {t, k, size, top: rowsN}; rowsN += k.a * size + Math.max(k.d, 0) * size * .5 + cols * .05; return L; });
+  rowsN = Math.max(1, Math.ceil(rowsN - cols * .05));
+  const cv = document.createElement('canvas'); cv.width = cols; cv.height = rowsN;
+  const x = cv.getContext('2d', {willReadFrequently: true}); x.fillStyle = '#000';
+  for (const L of lay) { x.font = `${w0} ${L.size}px "${FONT.family}", "Helvetica Neue", Arial, sans-serif`; x.fillText(L.t, L.k.l * L.size, L.top + L.k.a * L.size); }
+  const d = x.getImageData(0, 0, cols, rowsN).data, cell = Math.min(Wi / cols, (yB - yA) / rowsN), y0 = yA + (yB - yA - rowsN * cell) * rng.pick([0, .5, 1]);
+  const shape = rng.pick(['c', 'c', 's', 'plus', 'ruit']), trace = rng.chance(.4), accRow = rng.int(0, rowsN - 1), band = Math.max(1, Math.round(rowsN * rng.range(.08, .25)));
+  let a = '', b = '', tr = '';
+  for (let r = 0; r < rowsN; r++) for (let q = 0; q < cols; q++) {
+    const v = d[(r * cols + q) * 4 + 3] / 255, cx = m + (q + .5) * cell, cy = y0 + (r + .5) * cell;
+    if (v < .12) { if (trace) tr += circ(cx, cy, cell * .07); continue; }
+    const h = cell * .48 * Math.sqrt(v);
+    const p = shape === 'c' ? circ(cx, cy, h) : shape === 's' ? `M${f(cx - h)} ${f(cy - h)}h${f(2 * h)}v${f(2 * h)}h${f(-2 * h)}z` : shape === 'ruit' ? `M${f(cx - h)} ${f(cy)}L${f(cx)} ${f(cy - h)}L${f(cx + h)} ${f(cy)}L${f(cx)} ${f(cy + h)}z`
+      : `M${f(cx - h)} ${f(cy - h * .3)}h${f(h * .7)}v${f(-h * .7)}h${f(h * .6)}v${f(h * .7)}h${f(h * .7)}v${f(h * .6)}h${f(-h * .7)}v${f(h * .7)}h${f(-h * .6)}v${f(-h * .7)}h${f(-h * .7)}z`;
+    if (g.acc !== g.fg && r >= accRow && r < accRow + band) b += p; else a += p;
+  }
+  const s = (tr ? `<path d="${tr}" fill="${g.fg}" opacity=".5"/>` : '') + `<path d="${a}" fill="${g.fg}"/>` + (b ? c.plate(`<path d="${b}" fill="${g.acc}"/>`, g.acc) : '');
+  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+}},
+];
+
+/* ------------------------------------------------------------------ opbouw */
+let UID = 0;
+function buildPoster(st, opt = {}) {
+  const F = FORMATS[st.format] || FORMATS.a, W = F.w, H = F.h, uid = 'p' + (++UID);
+  const durf = st.durf ?? .5, tw = rngFor(st.seed, 'draai');
+  let pal = PALETTES.find(p => p.id === st.palette);
+  if (!pal) { pal = rngFor(st.seed, 'palet').pick(PALETTES); if (tw.chance(durf * .4)) pal = twist(pal, tw); }
+  const pool = RECIPES.flatMap(r => Array(IMG.has && r.img ? 1 + r.img * 2 : 1).fill(r.id));
+  const recipe = RECIPES.find(r => r.id === st.recipe) || RECIPES.find(r => r.id === rngFor(st.seed, 'recept').pick(pool));
+  const autoT = rngFor(st.seed, 'beeld').pick(TREATMENTS).id;
+  const m = Math.round(W * .056), Wi = W - 2 * m;
+  const mis = rngFor(st.seed, 'mis'), ma = mis.range(0, Math.PI * 2), md = st.misreg * W * .008;
+  const km = st.kast === 'auto' ? rngFor(st.seed, 'kast').pick(['zoals', 'zoals', 'zoals', 'hoog', 'laag']) : st.kast;
+  const kast = t => km === 'hoog' ? t.toUpperCase() : km === 'laag' ? t.toLowerCase() : t;
+  const title = kast(String(st.title).trim()) || 'Titel';
+  const c = {
+    W, H, m, Wi, uid, n: 0, st, seed: st.seed, pal, thumb: !!opt.thumb, defs: [], used: null, noTop: false,
+    treatment: TREATMENTS.some(t => t.id === st.treatment) ? st.treatment : autoT,
+    rng: rngFor(st.seed, 'layout'), rngImg: rngFor(st.seed, 'vorm'),
+    angle: rngFor(st.seed, 'hoek').pick([15, 45, 45, 75]) * Math.PI / 180,
+    s1: W * .0148, s2: W * .0205, gap: W * .028, gut: W * .02, rule: Math.max(1.5, W * .0022),
+    gx: i => m + i * Wi / 6, gw: k => k * Wi / 6,
+    id() { return uid + '-' + (this.n++); },
+    plate(svg, col) {
+      const mult = lumOf(pal.paper) > .4 && lumOf(col) < .75;
+      if (!md && !mult) return svg;
+      return `<g${md ? ` transform="translate(${f(Math.cos(ma) * md)} ${f(Math.sin(ma) * md)})"` : ''}${mult ? ' style="mix-blend-mode:multiply"' : ''}>${svg}</g>`;
+    },
+    colophon() { return (this.noTop ? st.kicker + '\n' : '') + recipe.name + '\n' + pal.name + '\nNr. ' + pad(st.seed); },
+    title, tlines: title.split(/\n+/).map(s => s.trim()).filter(Boolean), twords: title.split(/\s+/).filter(Boolean),
+  };
+  c.one = c.twords.join(' ');
+  const gwt = rngFor(st.seed, 'gewicht');
+  c.kast = kast; c.wB = durf < .2 ? 900 : gwt.pick([900, 900, 900, 800, 700, 400]); c.wT = durf < .2 ? 800 : gwt.pick([800, 800, 800, 700, 900, 600, 500]);
+  c.titleLines = c.tlines.length > 1 ? c.tlines : balance(c.twords);
+  /* voethoogte volgt de langste kolom */
+  const nBody = para(st.body, 0, 0, c.gw(3) - c.gut, c.s2 * .94, {weight: 450}).n, nMeta = para(st.meta, 0, 0, c.gw(2) - c.gut, c.s2, {weight: 700}).n;
+  c.footLines = clamp(Math.max(nBody, nMeta, 3), 3, 6);
+  c.footTop = H - m - c.s2 * 1.5 - c.s2 * .94 * 1.3 * (c.footLines - 1);
+
+  const ex = extras(c, st);
+  let body = ex.under + recipe.draw(c) + ex.over;
+  if (ex.tilt) body = `<g transform="translate(${W / 2} ${H / 2}) rotate(${ex.tilt}) scale(${Math.round((1 - Math.abs(ex.tilt) * .012) * 1000) / 1000}) translate(${-W / 2} ${-H / 2})">${body}</g>`;
+  const light = lumOf(pal.paper) > .4, gid = uid + '-g', clip = uid + '-c';
+  let defs = `<clipPath id="${clip}"><rect width="${W}" height="${H}"/></clipPath>` + c.defs.join('');
+  let grain = '';
+  if (st.grain > 0) {
+    const k = f(.9 + st.grain * 1.3), v = light ? 0 : 1;
+    defs += `<filter id="${gid}" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="${opt.thumb ? .7 : 1.1}" numOctaves="2" seed="${st.seed % 997}"/><feColorMatrix type="matrix" values="0 0 0 0 ${v}  0 0 0 0 ${v}  0 0 0 0 ${v}  0 0 0 ${k} ${f(-k * .47)}"/></filter>`;
+    grain = `<rect width="${W}" height="${H}" filter="url(#${gid})" opacity="${Math.round((.06 + st.grain * .34) * (opt.thumb ? 60 : 100)) / 100}"/>`;
+  }
+  let grid = '';
+  if (st.grid && !opt.thumb && !opt.export) {
+    for (let i = 0; i <= 6; i++) grid += `<line x1="${f(c.gx(i))}" y1="0" x2="${f(c.gx(i))}" y2="${H}"/>`;
+    for (const y of [m, c.footTop, H - m]) grid += `<line x1="0" y1="${f(y)}" x2="${W}" y2="${f(y)}"/>`;
+    grid = `<g stroke="#ff00aa" stroke-width="1" opacity=".8">${grid}</g>`;
+  }
+  const size = opt.export ? ` width="${opt.mm ? F.mm[0] + 'mm' : W}" height="${opt.mm ? F.mm[1] + 'mm' : H}"` : '';
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"${size} font-family="'${FONT.family}', 'Helvetica Neue', Arial, sans-serif" text-rendering="geometricPrecision"><defs>${defs}</defs><g clip-path="url(#${clip})"><rect width="${W}" height="${H}" fill="${pal.paper}"/>${body}${grain}${grid}</g></svg>`;
+  const tname = c.used === 'raster' ? null : c.used ? TREATMENTS.find(t => t.id === c.used).name.replace(/ \(.*/, '') : null;
+  return {svg, F, recipe, pal, label: ['Nr. ' + pad(st.seed), recipe.name, pal.name, tname].filter(Boolean).join(' · ')};
+}
+
+/* ------------------------------------------------------------------ scherm */
+const posterEl = $('#poster'), sheetEl = $('#sheet'), stageEl = $('#stage'), infoEl = $('#info');
+let current = null, raf = 0;
+function fitStage() {
+  if (!current) return;
+  const aw = stageEl.clientWidth - 48, ah = stageEl.clientHeight - 48 - 30, ar = current.F.w / current.F.h;
+  const w = Math.max(160, Math.min(aw, ah * ar));
+  posterEl.style.width = w + 'px'; posterEl.style.height = w / ar + 'px';
+}
+function render() {
+  cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(() => {
+    if (KEEP) try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) {}
+    $('#seed').value = state.seed;
+    stageEl.classList.toggle('sheet', view === 'sheet');
+    posterEl.hidden = view !== 'poster'; sheetEl.hidden = view !== 'sheet';
+    if (view === 'poster') {
+      current = buildPoster(state);
+      posterEl.innerHTML = current.svg; infoEl.textContent = current.label; fitStage();
+    } else {
+      sheetEl.innerHTML = '';
+      for (let i = 0; i < 20; i++) {
+        const seed = (state.seed - 1 + i) % 9999 + 1, r = buildPoster({...state, seed}, {thumb: true});
+        const b = document.createElement('button'); b.className = 'thumb';
+        b.innerHTML = r.svg + `<span>${esc(r.label)}</span>`;
+        b.addEventListener('click', () => { state.seed = seed; setView('poster'); });
+        sheetEl.append(b);
+      }
+      infoEl.textContent = 'Klik op een proef om ermee verder te werken. Pijl rechts toont de volgende reeks.';
+    }
+  });
+}
+function setView(v) { view = v; $$('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v))); render(); }
+function step(d) { const k = view === 'sheet' ? 20 * d : d; state.seed = ((state.seed - 1 + k) % 9999 + 9999) % 9999 + 1; render(); }
+function roll() { state.seed = 1 + Math.floor(Math.random() * 9999); render(); }
+
+/* ------------------------------------------------------------------ bediening */
+function fill(sel, items, auto) { sel.innerHTML = (auto ? '<option value="auto">Willekeurig</option>' : '') + items.map(([v, n]) => `<option value="${v}">${esc(n)}</option>`).join(''); }
+fill($('#format'), Object.entries(FORMATS).map(([k, v]) => [k, v.name]));
+fill($('#recipe'), RECIPES.map(r => [r.id, r.name]), true);
+fill($('#palette'), PALETTES.map(p => [p.id, p.name]), true);
+fill($('#treatment'), TREATMENTS.map(t => [t.id, t.name]), true);
+$$('[data-k]').forEach(el => {
+  const k = el.dataset.k;
+  if (el.type === 'checkbox') el.checked = !!state[k]; else el.value = state[k];
+  el.addEventListener('input', () => {
+    state[k] = el.type === 'checkbox' ? el.checked : el.type === 'range' ? parseFloat(el.value) : el.value;
+    render();
+  });
+});
+$('#roll').addEventListener('click', roll);
+$('#prev').addEventListener('click', () => step(-1));
+$('#next').addEventListener('click', () => step(1));
+$('#seed').addEventListener('change', e => { state.seed = clamp(parseInt(e.target.value, 10) || 1, 1, 9999); render(); });
+$$('[data-view]').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+addEventListener('resize', fitStage);
+addEventListener('keydown', e => {
+  if (e.target.closest('input,textarea,select') || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.code === 'Space') { e.preventDefault(); roll(); }
+  else if (e.key === 'ArrowRight') step(1);
+  else if (e.key === 'ArrowLeft') step(-1);
+  else if (e.key === 'p' || e.key === 'P') setView(view === 'poster' ? 'sheet' : 'poster');
+  else if (e.key === 'g' || e.key === 'G') { state.grid = !state.grid; $('[data-k=grid]').checked = state.grid; render(); }
+});
+
+/* beeld */
+const imgNote = $('#imgnote');
+async function useImage(src, name) {
+  try {
+    imgNote.textContent = 'Beeld laden…';
+    await setImage(src);
+    imgNote.textContent = `${name}, ${IMG.w} × ${IMG.h} px${IMG.alpha ? ', vrijstaand' : ''}. Zet Recept op Beeld op vlak of Raster om het zeker te gebruiken.`;
+    $('#cutout').disabled = IMG.alpha; $('#clear').disabled = false;
+    render();
+  } catch (err) { imgNote.textContent = 'Dit beeld kon niet gelezen worden.'; console.error(err); }
+}
+$('#pick').addEventListener('click', () => $('#file').click());
+$('#file').addEventListener('change', e => { const fl = e.target.files[0]; if (fl) useImage(fl, fl.name); e.target.value = ''; });
+$('#sample').addEventListener('click', () => window.POSTER_SAMPLE ? useImage(window.POSTER_SAMPLE, 'Voorbeeld') : (imgNote.textContent = 'voorbeeld.js ontbreekt.'));
+$('#clear').addEventListener('click', () => {
+  IMG.has = false; IMG.blob = null; $('#clear').disabled = true; $('#cutout').disabled = true;
+  imgNote.textContent = 'Geen beeld geladen. De generator tekent zelf een vorm.'; render();
+});
+$('#cutout').addEventListener('click', async () => {
+  const btn = $('#cutout'); btn.disabled = true;
+  try {
+    imgNote.textContent = 'Model laden en vrijstaand maken. De eerste keer duurt dat even…';
+    const mod = await import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/+esm');
+    const out = await (mod.removeBackground || mod.default)(IMG.blob);
+    await useImage(out, 'Vrijstaand beeld');
+  } catch (err) { console.error(err); imgNote.textContent = 'Vrijstaand maken lukte niet in deze browser: ' + (err && err.message || err); btn.disabled = false; }
+});
+['dragenter', 'dragover'].forEach(t => stageEl.addEventListener(t, e => { e.preventDefault(); stageEl.classList.add('drop'); }));
+['dragleave', 'drop'].forEach(t => stageEl.addEventListener(t, e => { e.preventDefault(); stageEl.classList.remove('drop'); }));
+stageEl.addEventListener('drop', e => {
+  const fl = e.dataTransfer.files[0]; if (!fl) return;
+  if (/\.(woff2?|otf|ttf)$/i.test(fl.name)) useFont(fl); else if (fl.type.startsWith('image/')) useImage(fl, fl.name);
+});
+
+/* eigen font */
+let fontCount = 0;
+async function useFont(file) {
+  try {
+    const buf = await file.arrayBuffer(), family = 'Poster Eigen ' + (++fontCount);
+    const face = new FontFace(family, buf, {weight: '100 900'}); await face.load(); document.fonts.add(face);
+    const ext = file.name.split('.').pop().toLowerCase();
+    Object.assign(FONT, {family, b64: bytesToB64(buf), mime: 'font/' + ext, range: '100 900', min: 100, max: 900});
+    mcache.clear(); FONT.fixed = ink('Hamburgefonts', 100).adv === ink('Hamburgefonts', 900).adv;
+    $('#fontnote').textContent = file.name + ' geladen. Een statisch font heeft één gewicht: het recept Echo toont dan geen gewichtsverloop.';
+    render();
+  } catch (err) { console.error(err); $('#fontnote').textContent = 'Dit font kon niet geladen worden.'; }
+}
+$('#pickfont').addEventListener('click', () => $('#fontfile').click());
+$('#fontfile').addEventListener('change', e => { const fl = e.target.files[0]; if (fl) useFont(fl); e.target.value = ''; });
+
+/* ------------------------------------------------------------------ export */
+function exportSVG(mm) {
+  let {svg} = buildPoster(state, {export: true, mm});
+  for (const m of maskCache.values()) svg = svg.split(m.url).join(m.data);
+  const face = FONT.b64 ? `@font-face{font-family:"${FONT.family}";src:url(data:${FONT.mime};base64,${FONT.b64});font-weight:${FONT.range};}` : '';
+  return svg.replace('<defs>', `<defs><style>${face}</style>`);
+}
+function download(blob, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }
+const fileBase = () => `glossy-poster-${pad(state.seed)}-${current ? current.recipe.id : 'proef'}`;
+async function rasterize(width) {
+  const url = URL.createObjectURL(new Blob([exportSVG(false)], {type: 'image/svg+xml'}));
+  try {
+    const img = new Image(); await new Promise((ok, no) => { img.onload = ok; img.onerror = () => no(new Error('SVG kon niet gerasterd worden')); img.src = url; });
+    const F = FORMATS[state.format], cv = document.createElement('canvas'); cv.width = width; cv.height = Math.round(width * F.h / F.w);
+    const x = cv.getContext('2d'); x.drawImage(img, 0, 0, cv.width, cv.height);
+    await new Promise(r => setTimeout(r, 60)); x.drawImage(img, 0, 0, cv.width, cv.height); /* tweede pas: font zeker geladen */
+    return cv;
+  } finally { URL.revokeObjectURL(url); }
+}
+$('#xsvg').addEventListener('click', () => download(new Blob([exportSVG(true)], {type: 'image/svg+xml'}), fileBase() + '.svg'));
+$('#xpng').addEventListener('click', async () => { const cv = await rasterize(3000); cv.toBlob(b => download(b, fileBase() + '.png'), 'image/png'); });
+$('#xpdf').addEventListener('click', () => {
+  if (view !== 'poster') setView('poster');
+  const F = FORMATS[state.format]; let st = $('#pagesize');
+  if (!st) { st = document.createElement('style'); st.id = 'pagesize'; document.head.append(st); }
+  st.textContent = `@page{size:${F.mm[0]}mm ${F.mm[1]}mm;margin:0}`;
+  setTimeout(() => window.print(), 80);
+});
+
+/* ------------------------------------------------------------------ start */
+window.posterLab = {state, IMG, FONT, buildPoster, exportSVG, rasterize, render, useImage, setView};
+loadFont().catch(e => console.error(e)).then(() => document.fonts.ready).then(render);
+})();
+</script>
+</body>
+</html>
