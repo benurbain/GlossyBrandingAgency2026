@@ -1,6 +1,5 @@
-/* Case cards keep their original media playing; only the colour state changes. */
-.project figure>:is(img,video) {filter:grayscale(1)}
-.project:is(:active,:focus-visible) figure>:is(img,video) {filter:none}
-@media (hover:hover) and (pointer:fine) {
-  .project:hover figure>:is(img,video) {filter:none}
-}
+/* Case cards rest in full colour: the work carries the colour, the site stays black and white.
+   On hover, focus or (on touch) first view, assets/js/card-glitch.js draws a short RGB glitch
+   on this canvas. It sits over the media and is invisible the rest of the time. */
+.project figure{position:relative}
+.project figure>.glitch-canvas{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;opacity:0;pointer-events:none}

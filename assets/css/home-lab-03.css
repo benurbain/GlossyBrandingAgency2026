@@ -131,7 +131,7 @@ a.text-link:not(.text-action){min-height:44px;text-decoration:underline;text-dec
 .project h3{font-size:var(--type-project-heading);letter-spacing:-.02em;overflow-wrap:anywhere}
 .project p{color:var(--gray);font-size:.8rem;overflow-wrap:anywhere}
 .news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
-.news-grid img,.news-grid video{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--smoke);filter:grayscale(1);border-radius:var(--radius)}
+.news-grid img,.news-grid video{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--smoke);border-radius:var(--radius);transition:filter 180ms var(--ease-out)}
 .news-grid p{padding-block:.8rem;border-bottom:1px solid var(--line);font-size:1rem}
 .news-grid p span{display:block;margin-block-end:.35rem;color:var(--gray);font-size:.72rem;text-transform:uppercase}
 .why-copy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);color:var(--ink-soft)}
@@ -392,6 +392,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .service-grid article[data-card-ready]:has(>.text-link:is(:active,:focus-visible)){
   padding:var(--card-inset);border-radius:var(--radius);filter:invert(1)
 }
+/* News images are in colour. The card inverts as a whole, so the image is inverted back. */
+.news-grid>a[data-card-ready]:is(:active,:focus-visible) :is(img,video){filter:invert(1)}
 .home-motion.motion-ready :is(.service-grid article,.lab-service-card,.news-grid>a).motion-reveal{
   transition-property:opacity,transform,filter;
   transition-duration:var(--motion-duration,760ms),var(--motion-duration,760ms),180ms;
@@ -404,6 +406,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
   .project:hover>div{filter:invert(1)}
   .news-grid>a[data-card-ready]:hover,
   .service-grid article[data-card-ready].service-hover-active{padding:var(--card-inset);border-radius:var(--radius);filter:invert(1)}
+  .news-grid>a[data-card-ready]:hover :is(img,video){filter:invert(1)}
 }
 /* Measurement excludes all active states, including keyboard focus. */
 .card-measuring{height:auto!important;padding:0!important;transition:none!important}
@@ -431,5 +434,5 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 
 @media(prefers-reduced-motion:reduce){
   .hero-video,.contact-visual video{display:none}
-  .project::before,.project>div,.news-grid>a,.service-grid article,.inline-link{transition:none}
+  .project::before,.project>div,.news-grid>a,.news-grid :is(img,video),.service-grid article,.inline-link{transition:none}
 }
