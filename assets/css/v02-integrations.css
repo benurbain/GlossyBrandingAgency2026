@@ -10,7 +10,7 @@
 .cookie-bar__text{max-width:68ch;margin:0;color:var(--gray-on-dark)}
 .cookie-bar__text a,.cookie-link{text-decoration:underline;text-underline-offset:.22em}
 .cookie-bar__actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:var(--space-xs)}
-.btn.cookie-btn{justify-content:center;min-height:44px;border:1px solid var(--paper);background:var(--paper);color:var(--ink);white-space:normal;text-align:center;box-shadow:none;transition:box-shadow 180ms var(--ease)}
+.btn.cookie-btn{justify-content:center;min-height:var(--btn-h-sm,36px);border:1px solid var(--paper);background:var(--paper);color:var(--ink);white-space:normal;text-align:center;box-shadow:none;transition:box-shadow 180ms var(--ease)}
 .btn.cookie-btn:hover,.btn.cookie-btn:focus-visible{background:var(--ink);color:var(--paper);border-color:var(--paper)}
 .btn.cookie-btn:active{background:var(--ink-soft);color:var(--paper);border-color:var(--paper);box-shadow:inset 0 0 0 2px var(--ink)}
 .cookie-link{display:inline-flex;align-items:center;min-height:44px;padding:.5em .25em;border:0;background:transparent;color:inherit;font-size:var(--step--1)}

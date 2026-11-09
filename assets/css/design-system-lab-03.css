@@ -122,9 +122,6 @@
 .ds-action-stage>div>.ds-label{margin-bottom:24px}
 .ds-action-stage .ds-inline-demo{grid-column:1/-1;border-top:1px solid var(--line);padding-top:28px}
 .ds-action-stage .ds-inline-demo>.ds-label{margin-bottom:12px}
-.ds-action-stage .text-action__surface{min-height:var(--button-height);padding-inline:1.2rem;border:1px solid transparent;border-radius:var(--radius)}
-.ds-action-stage .text-action__content{padding-block:0}
-.ds-action-stage .text-action__surface::after{inset-inline:1.2rem}
 .ds-playground-caption{display:flex;justify-content:space-between;gap:24px;padding:16px 20px;border-top:1px solid var(--line);font-size:12px;color:var(--gray)}
 .ds-playground-caption>span{flex:none}
 .ds-card-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)}
@@ -200,14 +197,12 @@
 
 /* Forced states are documentation-only mirrors of the source selectors.
    Active is shown on its own (not automatically combined with hover). */
-.ds-specimen[data-demo-state="hover"] .button__surface::before{clip-path:inset(0)}
-.ds-specimen[data-demo-state="hover"] .button__icon .arrow-icon{transform:translateX(4px)}
-.ds-specimen[data-demo-state="pressed"] .button__surface{transform:scale(.97)}
+.ds-specimen[data-demo-state="hover"] .button__surface{background:var(--paper);color:var(--ink)}
+.ds-specimen[data-demo-state="hover"] :is(.button__icon,.text-action__content)>.arrow-icon{translate:3px 0}
+.ds-specimen[data-demo-state="pressed"] .button__surface{transform:scale(.98)}
 .ds-specimen[data-demo-state="focus"] :is(.button,.text-action){outline:2px solid var(--ink);outline-offset:4px}
-.ds-specimen:is([data-demo-state="hover"],[data-demo-state="pressed"]) .text-action__surface::before{opacity:1}
-.ds-specimen:is([data-demo-state="hover"],[data-demo-state="pressed"]) .text-action__surface::after{opacity:0}
-.ds-specimen:is([data-demo-state="hover"],[data-demo-state="pressed"]) .text-action__content{transform:scale(.8);filter:invert(1)}
-.ds-specimen[data-demo-state="pressed"] .text-action__surface{transform:scale(.97)}
+.ds-specimen:is([data-demo-state="hover"],[data-demo-state="pressed"]) .text-action__content>span{text-decoration-thickness:2px}
+.ds-specimen[data-demo-state="pressed"] .text-action__surface{transform:scale(.98)}
 .ds-specimen:is([data-demo-state="hover"],[data-demo-state="pressed"],[data-demo-state="focus"]) .inline-link{background:var(--ink);color:var(--paper);text-decoration-color:transparent}
 .ds-specimen[data-demo-state="focus"] .inline-link{outline:2px solid var(--ink);outline-offset:4px}
 .ds-specimen:is([data-demo-state="hover"],[data-demo-state="pressed"],[data-demo-state="focus"]) .project[data-card-ready]{padding:var(--card-inset)}

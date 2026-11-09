@@ -84,7 +84,7 @@
 .lab-system .project p{font-size:var(--type-meta)}
 .lab-system .news-grid p span,.lab-system .service-grid article>span{font-size:var(--type-label)}
 .lab-system .button{max-width:100%;min-width:0}
-.lab-system .button__surface{min-width:0;max-width:100%;grid-template-columns:52px minmax(0,1fr)}
+.lab-system .button__surface{min-width:0;max-width:100%}
 .lab-system .button__label{overflow-wrap:anywhere}
 .lab-system .text-link{min-height:44px}
 .lab-system .text-action{min-height:0}

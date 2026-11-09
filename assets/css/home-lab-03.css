@@ -7,7 +7,7 @@
 :root{
   --paper:#fff;--ink:#111;--ink-soft:#333;--gray:#737373;--smoke:#f3f1f1;--line:#e2e2e2;
   --gutter:clamp(1.25rem,4.3vw,5.5rem);--section:clamp(4rem,8vw,8rem);--gap:clamp(1rem,2vw,2rem);
-  --radius:5px;--card-inset:20px;--button-height:52px;
+  --radius:5px;--card-inset:20px;--button-height:52px;--btn-h:44px;--btn-h-sm:36px;
   --type-home-heading:clamp(3rem,1.5rem + 4.8vw,6.5rem);
   --type-hero-heading:clamp(2.25rem,1.25rem + 3.4vw,4.5rem);
   --type-section-heading:clamp(1.75rem,1rem + 2.5vw,3.5rem);
@@ -105,7 +105,13 @@ main,
 .section-head h2,.contact h2,.why h2{font-size:var(--type-section-heading)}
 .section-head>.section-link{grid-column:11/-1;grid-row:1;justify-self:end}
 .section-head>.section-summary{grid-column:1/span 5;grid-row:3;max-width:52ch;color:var(--ink-soft);font-size:clamp(1.05rem,1.4vw,1.35rem)}
-.text-link{display:inline-flex;align-items:center;gap:.42em;padding-block:.35rem;border-bottom:1px solid currentColor}
+/* Text link A: the label carries its own hairline and the arrow follows it. Used bare inside
+   cards that are themselves the link; interactive links add .text-action (see below). */
+.text-link{display:inline-flex;align-items:center;gap:.6em;font-weight:500}
+.text-link>span:not([class]){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.34em}
+.text-link>.arrow-icon{order:2;width:1.07em;height:.68em;transition:translate 160ms var(--ease-out)}
+.text-link>.arrow-icon--back{order:0}
+a.text-link:not(.text-action){min-height:44px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.34em}
 .section-link{font-size:inherit}
 
 /* Cards: shared media, metadata and three-column editorial grids. */
@@ -198,11 +204,12 @@ main,
   .contact-content{grid-template-columns:repeat(4,minmax(0,1fr))}
   .contact-content>h2,.contact-content>p:not(.kicker),.contact-content>.button{grid-column:1/-1}
 }
-/* Button v0: a fixed arrow cell gives the CTA a graphic Glossy signature.
-   The animated surface lives inside the anchor so grid placement and the full
-   hit area remain stable during hover and press feedback. */
+/* Button A (2026-11-09): one ink surface, the arrow follows the label.
+   Markup is unchanged: .button > .button__surface > (.button__icon + .button__label).
+   --button-height (52px) stays for form fields; buttons use --btn-h. */
+@media(pointer:coarse){:root{--btn-h:48px;--btn-h-sm:44px}}
 .button{
-  min-height:var(--button-height);
+  min-height:var(--btn-h);
   display:inline-flex;
   padding:0;
   border:0;
@@ -211,147 +218,89 @@ main,
   color:inherit;
 }
 .button__surface{
-  position:relative;
-  isolation:isolate;
-  min-height:var(--button-height);
-  display:inline-grid;
-  grid-template-columns:52px auto;
-  align-items:stretch;
-  overflow:hidden;
+  min-height:var(--btn-h);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:.5rem 18px;
   border:1px solid var(--ink);
   border-radius:var(--radius);
   background:var(--ink);
-  transform-origin:center;
-  transition:transform 160ms var(--ease-out);
-}
-.button__surface::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  background:var(--paper);
-  clip-path:inset(0 calc(100% - 52px) 0 0);
-  transition:clip-path 200ms var(--ease-in-out);
-}
-.button__icon,
-.button__label{
-  position:relative;
-  z-index:1;
   color:var(--paper);
-  mix-blend-mode:difference;
+  font-size:.9375rem;
+  font-weight:500;
+  line-height:1.2;
+  transform-origin:center;
+  transition:background-color 160ms var(--ease-out),color 160ms var(--ease-out),transform 140ms var(--ease-out);
 }
 .button__icon{
-  display:grid;
+  order:2;
+  display:inline-grid;
+  flex:none;
   place-items:center;
-  border-right:1px solid currentColor;
 }
 .button__icon .arrow-icon{
-  width:19px;
-  height:12px;
-  transition:transform 160ms var(--ease-out);
+  width:16px;
+  height:10px;
+  stroke-width:1.5;
+  transition:translate 160ms var(--ease-out);
 }
-.button__label{
-  display:flex;
-  align-items:center;
-  padding:.65rem 1.2rem;
-}
+.button__label{display:block}
 .button:focus-visible{
   outline:2px solid var(--ink);
-  outline-offset:4px;
+  outline-offset:3px;
 }
 @media(hover:hover) and (pointer:fine){
-  .button:hover .button__surface::before{clip-path:inset(0)}
-  .button:hover .button__icon .arrow-icon{transform:translateX(4px)}
+  .button:hover .button__surface{background:var(--paper);color:var(--ink)}
+  .button:hover .button__icon .arrow-icon{translate:3px 0}
 }
-.button:active .button__surface{
-  transform:scale(.97);
-  transition-duration:140ms;
-}
+.button:active .button__surface{transform:scale(.98)}
 
-/* Secondary text actions reuse the inverse/padding philosophy inside their
-   original measured box. Content scales inward; the surface never grows. */
+/* Text action A: the label carries its own hairline; the arrow follows it.
+   Markup is unchanged: .text-action > __surface > __content > (svg + span). */
 .text-action{
   position:relative;
   padding:0;
   border-bottom:0;
   overflow:visible;
+  font-size:.9375rem;
+  font-weight:500;
 }
 .text-action__surface{
-  position:relative;
-  isolation:isolate;
-  display:inline-grid;
-  place-items:center;
-  transform-origin:left center;
-  transition:transform 160ms var(--ease-out);
-}
-.text-action__content{
-  position:relative;
-  z-index:1;
   display:inline-flex;
   align-items:center;
-  gap:.42em;
-  padding-block:.35rem;
-  transform-origin:center;
-  transition:
-    transform 180ms var(--ease-out),
-    filter 180ms var(--ease-out);
+  transform-origin:left center;
+  transition:transform 140ms var(--ease-out);
 }
 .section-link .text-action__surface{transform-origin:right center}
-.text-action__surface::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  border-radius:var(--radius);
-  background:var(--ink);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 180ms var(--ease-out);
+.text-action__content{
+  display:inline-flex;
+  align-items:center;
+  gap:.6em;
 }
-.text-action__surface::after{
-  content:"";
-  position:absolute;
-  inset:auto 0 0;
-  z-index:1;
-  height:1px;
-  background:var(--ink);
-  opacity:1;
-  transition:opacity 180ms var(--ease-out);
+.text-action__content>span{
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.34em;
 }
+.text-action__content>.arrow-icon{
+  order:2;
+  width:1.07em;
+  height:.68em;
+  transition:translate 160ms var(--ease-out);
+}
+.text-action__content>.arrow-icon--back{order:0}
 @media(hover:hover) and (pointer:fine){
-  .text-action:hover .text-action__surface::before{opacity:1}
-  .text-action:hover .text-action__content{
-    transform:scale(.8);
-    filter:invert(1);
-  }
-  .text-action:hover .text-action__surface::after{opacity:0}
+  .text-action:hover .text-action__content>span{text-decoration-thickness:2px}
+  .text-action:hover .text-action__content>.arrow-icon{translate:3px 0}
+  .text-action:hover .text-action__content>.arrow-icon--back{translate:-3px 0}
+  a:hover>.text-link>.arrow-icon{translate:3px 0}
 }
-.text-action:active .text-action__surface{
-  transform:scale(.97);
-  transition-duration:140ms;
-}
-.text-action:active .text-action__surface::before{opacity:1}
-.text-action:active .text-action__content{
-  transform:scale(.8);
-  filter:invert(1);
-}
-.text-action:active .text-action__surface::after{opacity:0}
+.text-action:active .text-action__surface{transform:scale(.98)}
 .text-action:focus-visible{
   outline:2px solid var(--ink);
   outline-offset:4px;
 }
-
-/* The large secondary hero action shares the primary button's fixed height.
-   Its resting underline remains inset beneath the label, while hover and
-   active states fill the complete 52px surface without changing layout. */
-.hero .actions .text-action__surface{
-  min-height:var(--button-height);
-  padding-inline:1.2rem;
-  border:1px solid transparent;
-  border-radius:var(--radius);
-}
-.hero .actions .text-action__content{padding-block:0}
-.hero .actions .text-action__surface::after{inset-inline:1.2rem}
 
 /* Footer study: a quiet, structured index on the same twelve-column grid.
    Hierarchy comes from grouping and spacing; the palette remains untouched. */
@@ -462,16 +411,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .card-measuring.card-measuring-inset{padding:var(--card-inset)!important}
 @media(prefers-reduced-motion:reduce){
   .button__surface,
-  .button__surface::before,
-  .button__icon .arrow-icon{transition:none}
-  .button:hover .button__icon .arrow-icon,
-  .button:active .button__surface{transform:none}
+  .button__icon .arrow-icon,
   .text-action__surface,
-  .text-action__surface::before,
-  .text-action__content{transition:none}
-  .text-action:hover .text-action__content,
-  .text-action:active .text-action__surface,
-  .text-action:active .text-action__content{transform:none}
+  .text-action__content>.arrow-icon,
+  .text-link>.arrow-icon{transition:none}
+  .button:hover .button__icon .arrow-icon,
+  .text-action:hover .text-action__content>.arrow-icon{translate:none}
+  .button:active .button__surface,
+  .text-action:active .text-action__surface{transform:none}
   .home-motion.motion-ready .motion-reveal,
   .home-motion.motion-ready .motion-reveal--kicker,
   .home-motion.motion-ready .motion-reveal--heading,
