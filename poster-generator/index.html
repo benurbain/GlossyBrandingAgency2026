@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Glossy Poster Generator</title>
-<meta name="description" content="Een poster generator van Glossy: 23 recepten, 20 paletten, halftoon en overdruk. De generator gooit, de ontwerper kiest.">
+<meta name="description" content="A poster generator by Glossy: recipes, palettes, halftone and overprint. The generator rolls, the designer chooses.">
 <link rel="canonical" href="https://glossy.tv/poster-generator/">
 <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://glossy.tv/poster-generator/">
 <meta property="og:title" content="Glossy Poster Generator">
-<meta property="og:description" content="23 recepten, 20 paletten, halftoon en overdruk. De generator gooit, de ontwerper kiest.">
+<meta property="og:description" content="Recipes, palettes, halftone and overprint. The generator rolls, the designer chooses.">
 <meta property="og:image" content="https://glossy.tv/assets/img/og-default.png">
 <style>
 :root{--ink:#111;--paper:#fff;--smoke:#f3f1f1;--line:#e2e2e2;--radius:5px;--font:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif}
@@ -61,6 +61,27 @@ button[disabled]{opacity:.5;cursor:default}
 .note a{color:inherit}
 .drop{outline:2px dashed var(--ink);outline-offset:-10px}
 input[type=file]{display:none}
+#poster{touch-action:none}
+#poster svg{user-select:none;-webkit-user-select:none}
+#poster [data-obj]{cursor:move}
+#sel{position:fixed;z-index:5;pointer-events:none;outline:1.5px solid #1a6dff;box-shadow:0 0 0 1px rgba(255,255,255,.9)}
+#sel i{position:absolute;width:13px;height:13px;background:#fff;border:1.5px solid #1a6dff;border-radius:50%;pointer-events:auto;touch-action:none}
+#sel i[data-h=nw]{left:0;top:0;transform:translate(-50%,-50%);cursor:nwse-resize}
+#sel i[data-h=ne]{right:0;top:0;transform:translate(50%,-50%);cursor:nesw-resize}
+#sel i[data-h=se]{right:0;bottom:0;transform:translate(50%,50%);cursor:nwse-resize}
+#sel i[data-h=sw]{left:0;bottom:0;transform:translate(-50%,50%);cursor:nesw-resize}
+label.on{color:#1a6dff}
+label.on textarea{border-color:#1a6dff}
+#welcome{position:fixed;inset:0;z-index:20;background:#111;color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:clamp(20px,4vw,56px);cursor:pointer;transition:opacity .45s cubic-bezier(.23,1,.32,1),transform .45s cubic-bezier(.23,1,.32,1)}
+#welcome.out{opacity:0;transform:translateY(-2%);pointer-events:none}
+#welcome p{margin:0;font-weight:800;font-size:min(10.5vw,20vh);line-height:.9;letter-spacing:-.045em;max-width:9.6em}
+#welcome p span{display:inline-block;opacity:0;transform:translateY(.3em);animation:rise .6s cubic-bezier(.23,1,.32,1) forwards;animation-delay:calc(var(--i)*85ms + 150ms)}
+html:not(.ready) #welcome p span{animation-play-state:paused}
+@keyframes rise{to{opacity:1;transform:none}}
+#welcome .go{display:flex;align-items:center;gap:16px}
+#welcome button{background:#fff;color:#111;border-color:#fff;font-size:17px;padding:14px 22px}
+#welcome small{color:#999;font-size:13px}
+@media (prefers-reduced-motion:reduce){#welcome{transition:none}#welcome p span{animation:none;opacity:1;transform:none}}
 @media (max-width:820px){
   body{display:block;height:auto;overflow:auto}
   header .keys{display:none}
@@ -70,7 +91,7 @@ input[type=file]{display:none}
 }
 @media print{
   body{display:block;height:auto;overflow:visible;background:#fff}
-  header,#panel,#info,#sheet{display:none!important}
+  header,#panel,#info,#sheet,#sel,#welcome{display:none!important}
   #stage{display:block;padding:0;overflow:visible}
   #poster{width:100vw!important;height:100vh!important;box-shadow:none}
 }
@@ -78,8 +99,8 @@ input[type=file]{display:none}
 </head>
 <body>
 <header>
-  <h1><a href="/" title="Naar glossy.tv">Glossy</a> Poster Generator</h1><span class="muted">Proef 02 · 23 recepten · 20 paletten</span>
-  <span class="keys">Spatie: nieuwe worp · ← →: nummer · P: proefvel · G: grid</span>
+  <h1><a href="/" title="Go to glossy.tv">Glossy</a> Poster Generator</h1><span class="muted" id="counts"></span>
+  <span class="keys">Space: randomize · ← →: variations · P: proof sheet · G: grid</span>
 </header>
 
 <main id="stage">
@@ -87,72 +108,76 @@ input[type=file]{display:none}
   <div id="sheet" hidden></div>
   <p id="info" aria-live="polite"></p>
 </main>
+<div id="sel" hidden><i data-h="nw"></i><i data-h="ne"></i><i data-h="se"></i><i data-h="sw"></i></div>
 
 <aside id="panel">
   <section>
-    <button id="roll" class="primary">Nieuwe worp</button>
+    <button id="roll" class="primary">Randomize</button>
     <div class="row seed">
-      <button id="prev" aria-label="Vorig nummer">←</button>
-      <input id="seed" type="number" min="1" max="9999" aria-label="Nummer van de worp">
-      <button id="next" aria-label="Volgend nummer">→</button>
+      <button id="prev" aria-label="Previous variation">←</button>
+      <input id="seed" type="number" min="1" max="9999" aria-label="Number of this roll">
+      <button id="next" aria-label="Next variation">→</button>
     </div>
     <div class="row seg">
       <button data-view="poster" aria-pressed="true">Poster</button>
-      <button data-view="sheet" aria-pressed="false">Proefvel van 20</button>
+      <button data-view="sheet" aria-pressed="false">Proof sheet of 20</button>
     </div>
+    <p class="note">Randomize rolls everything again, the recipe included. The arrows step through variations with the settings below.</p>
   </section>
 
   <section>
-    <h2>Inhoud</h2>
-    <label>Titel<textarea data-k="title" rows="2"></textarea></label>
-    <label>Afzender<input type="text" data-k="kicker"></label>
-    <label>Tekst<textarea data-k="body" rows="3"></textarea></label>
-    <label>Datum, plaats<textarea data-k="meta" rows="2"></textarea></label>
-    <label>Kast<select data-k="kast">
-      <option value="auto">Willekeurig</option><option value="zoals">Zoals getypt</option><option value="hoog">HOOFDLETTERS</option><option value="laag">onderkast</option>
+    <h2>Text</h2>
+    <label>Text 1<textarea data-k="t1" rows="2"></textarea></label>
+    <label>Text 2<textarea data-k="t2" rows="2"></textarea></label>
+    <label>Text 3<textarea data-k="t3" rows="1"></textarea></label>
+    <label>Text 4<textarea data-k="t4" rows="1"></textarea></label>
+    <label>Case<select data-k="kast">
+      <option value="auto">Random</option><option value="zoals">As typed</option><option value="hoog">UPPERCASE</option><option value="laag">lowercase</option>
     </select></label>
+    <p class="note">Drag any text on the poster to move it, drag a corner to scale it. Arrow keys nudge, plus and minus scale, double-click puts it back.</p>
+    <div class="row"><button id="resetlayout">Reset positions</button></div>
   </section>
 
   <section>
-    <h2>Systeem</h2>
-    <label>Formaat<select data-k="format" id="format"></select></label>
-    <label>Recept<select data-k="recipe" id="recipe"></select></label>
-    <label>Palet<select data-k="palette" id="palette"></select></label>
-    <label>Durf<input type="range" data-k="durf" min="0" max="1" step="0.01"></label>
-    <p class="note">Op Willekeurig beslist de worp. Kies een waarde om ze vast te zetten. Durf bepaalt hoe vaak de worp ingrijpt: stickers, plakband, spookvormen, gedraaide paletten, lichte gewichten en scheve druk.</p>
+    <h2>System</h2>
+    <label>Format<select data-k="format" id="format"></select></label>
+    <label>Recipe<select data-k="recipe" id="recipe"></select></label>
+    <label>Palette<select data-k="palette" id="palette"></select></label>
+    <label>Wildness<input type="range" data-k="durf" min="0" max="1" step="0.01"></label>
+    <p class="note">On Random the roll decides. Pick a value to lock it for the variations. Wildness sets how often the roll interferes: stickers, tape, ghost shapes, flipped palettes, light weights and crooked printing.</p>
   </section>
 
   <section>
-    <h2>Beeld</h2>
+    <h2>Image</h2>
     <div class="row">
-      <button id="pick">Beeld kiezen</button>
-      <button id="sample">Voorbeeld</button>
+      <button id="pick">Choose image</button>
+      <button id="sample">Sample</button>
     </div>
     <div class="row">
-      <button id="cutout" disabled>Vrijstaand maken</button>
-      <button id="clear" disabled>Verwijderen</button>
+      <button id="cutout" disabled>Cut out</button>
+      <button id="clear" disabled>Remove</button>
     </div>
     <input type="file" id="file" accept="image/*">
-    <p class="note" id="imgnote">Geen beeld geladen. Sleep een foto op de poster, of werk zonder: dan tekent de generator zelf een vorm.</p>
-    <p class="note">Je beeld blijft in je browser: er wordt niets geüpload. Vrijstaand maken laadt bij de eerste klik een model via <a href="https://github.com/imgly/background-removal-js" rel="noopener">@imgly/background-removal</a> (AGPL).</p>
-    <label>Behandeling<select data-k="treatment" id="treatment"></select></label>
-    <label>Rasterfijnheid<input type="range" data-k="raster" min="24" max="120" step="1"></label>
+    <p class="note" id="imgnote">No image loaded. Drop a photo on the poster, or work without one: the generator then draws a shape of its own.</p>
+    <p class="note">Your image stays in your browser: nothing is uploaded. Cut out loads a model on first use through <a href="https://github.com/imgly/background-removal-js" rel="noopener">@imgly/background-removal</a> (AGPL).</p>
+    <label>Treatment<select data-k="treatment" id="treatment"></select></label>
+    <label>Screen ruling<input type="range" data-k="raster" min="24" max="120" step="1"></label>
     <label>Contrast<input type="range" data-k="contrast" min="0.6" max="3" step="0.05"></label>
-    <label>Helderheid<input type="range" data-k="licht" min="-0.4" max="0.4" step="0.01"></label>
+    <label>Brightness<input type="range" data-k="licht" min="-0.4" max="0.4" step="0.01"></label>
   </section>
 
   <section>
-    <h2>Afwerking</h2>
-    <label>Korrel<input type="range" data-k="grain" min="0" max="1" step="0.01"></label>
-    <label>Misregistratie<input type="range" data-k="misreg" min="0" max="1" step="0.01"></label>
-    <label class="check" style="margin-top:12px"><input type="checkbox" data-k="grid">Grid tonen</label>
+    <h2>Finish</h2>
+    <label>Grain<input type="range" data-k="grain" min="0" max="1" step="0.01"></label>
+    <label>Misregistration<input type="range" data-k="misreg" min="0" max="1" step="0.01"></label>
+    <label class="check" style="margin-top:12px"><input type="checkbox" data-k="grid">Show grid</label>
   </section>
 
   <section>
-    <h2>Letter</h2>
-    <button id="pickfont">Eigen font laden</button>
+    <h2>Type</h2>
+    <button id="pickfont">Load your own font</button>
     <input type="file" id="fontfile" accept=".woff2,.woff,.otf,.ttf">
-    <p class="note" id="fontnote">Schibsted Grotesk, variabel 400 tot 900.</p>
+    <p class="note" id="fontnote">Schibsted Grotesk, variable from 400 to 900.</p>
   </section>
 
   <section>
@@ -162,9 +187,14 @@ input[type=file]{display:none}
       <button id="xpng">PNG</button>
       <button id="xpdf">PDF</button>
     </div>
-    <p class="note">SVG en PDF zijn vector, met het font ingesloten. PNG is 3000 px breed.</p>
+    <p class="note">SVG and PDF are vector, with the font embedded. PNG is 3000 px wide.</p>
   </section>
 </aside>
+
+<div id="welcome" role="dialog" aria-modal="true" aria-label="Welcome">
+  <p><span style="--i:0">Welcome</span> <span style="--i:1">human,</span> <span style="--i:2">let’s</span> <span style="--i:3">make</span> <span style="--i:4">a</span> <span style="--i:5">poster,</span> <span style="--i:6">shall</span> <span style="--i:7">we?</span></p>
+  <div class="go"><button id="go">Yes, let’s</button><small>or press space</small></div>
+</div>
 
 <script src="font.js"></script>
 <script src="voorbeeld.js"></script>
@@ -180,7 +210,7 @@ const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const uniq = a => [...new Set(a)];
 const pad = n => String(n).padStart(4, '0');
 
-/* Reproduceerbaar toeval: elke worp heeft een nummer, elk aspect een eigen stroom. */
+/* Reproducible chance: every roll has a number, every aspect its own stream. */
 function hash(str) {
   let h = 1779033703 ^ str.length;
   for (let i = 0; i < str.length; i++) { h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = h << 13 | h >>> 19; }
@@ -198,61 +228,61 @@ function rngFor(seed, stream) {
 }
 function shuffle(arr, rng) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 
-/* ------------------------------------------------------------------ kleur */
+/* ------------------------------------------------------------------ colour */
 const rgb = hex => { const n = parseInt(hex.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
 function lumOf(hex) { const [r, g, b] = rgb(hex).map(v => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; }); return .2126 * r + .7152 * g + .0722 * b; }
 function contrast(a, b) { const x = lumOf(a), y = lumOf(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); }
 const on = (bg, pal) => contrast(bg, pal.ink) >= contrast(bg, pal.paper) ? pal.ink : pal.paper;
 
-/* ------------------------------------------------------------------ systeem */
+/* ------------------------------------------------------------------ system */
 const FORMATS = {
-  a:  {name: 'A-formaat (A3, A2, A1)', w: 1000, h: 1414, mm: [297, 420]},
+  a:  {name: 'A series (A3, A2, A1)', w: 1000, h: 1414, mm: [297, 420]},
   b:  {name: '50 × 70 cm', w: 1000, h: 1400, mm: [500, 700]},
   ig: {name: '4:5 (Instagram)', w: 1000, h: 1250, mm: [216, 270]},
   st: {name: '9:16 (Story)', w: 1000, h: 1778, mm: [180, 320]},
 };
 const PALETTES = [
-  {id: 'zwartwit', name: 'Zwart op wit', paper: '#ffffff', ink: '#111111', a: '#111111', b: '#d9d9d9'},
-  {id: 'signaal',  name: 'Signaalrood',  paper: '#f1ece2', ink: '#141414', a: '#e5321f', b: '#141414'},
-  {id: 'kobalt',   name: 'Kobalt',       paper: '#ebe7dd', ink: '#101010', a: '#1d3fd8', b: '#f2b90c'},
-  {id: 'geel',     name: 'Verkeersgeel', paper: '#f7d500', ink: '#111111', a: '#111111', b: '#ffffff'},
+  {id: 'zwartwit', name: 'Black on white', paper: '#ffffff', ink: '#111111', a: '#111111', b: '#d9d9d9'},
+  {id: 'signaal',  name: 'Signal red',  paper: '#f1ece2', ink: '#141414', a: '#e5321f', b: '#141414'},
+  {id: 'kobalt',   name: 'Cobalt',       paper: '#ebe7dd', ink: '#101010', a: '#1d3fd8', b: '#f2b90c'},
+  {id: 'geel',     name: 'Traffic yellow', paper: '#f7d500', ink: '#111111', a: '#111111', b: '#ffffff'},
   {id: 'mint',     name: 'Mint',         paper: '#86e08f', ink: '#111111', a: '#ffffff', b: '#111111'},
-  {id: 'nacht',    name: 'Nacht',        paper: '#121212', ink: '#f1ece2', a: '#ff4a26', b: '#f1ece2'},
+  {id: 'nacht',    name: 'Night',        paper: '#121212', ink: '#f1ece2', a: '#ff4a26', b: '#f1ece2'},
   {id: 'riso',     name: 'Riso',         paper: '#f3ead8', ink: '#1f2f72', a: '#ff5a87', b: '#ffd23c'},
-  {id: 'oranje',   name: 'Oranje',       paper: '#ff5a1c', ink: '#111111', a: '#f1ece2', b: '#111111'},
-  {id: 'krant',    name: 'Krant',        paper: '#e9e6dc', ink: '#1a1a1a', a: '#1a1a1a', b: '#e3120b'},
+  {id: 'oranje',   name: 'Orange',       paper: '#ff5a1c', ink: '#111111', a: '#f1ece2', b: '#111111'},
+  {id: 'krant',    name: 'Newsprint',        paper: '#e9e6dc', ink: '#1a1a1a', a: '#1a1a1a', b: '#e3120b'},
   {id: 'bordeaux', name: 'Bordeaux',     paper: '#ead9c6', ink: '#3a0d16', a: '#b3122e', b: '#e9a2b0'},
-  {id: 'zee',      name: 'Zeegroen',     paper: '#dfe9df', ink: '#0e2a2a', a: '#0c7c6b', b: '#ff7a45'},
-  {id: 'lila',     name: 'Lila',         paper: '#c9b8f5', ink: '#161225', a: '#ff4f1f', b: '#fdf6e3'},
-  {id: 'beton',    name: 'Beton',        paper: '#c9c9c4', ink: '#161616', a: '#f4f400', b: '#ffffff'},
+  {id: 'zee',      name: 'Sea green',     paper: '#dfe9df', ink: '#0e2a2a', a: '#0c7c6b', b: '#ff7a45'},
+  {id: 'lila',     name: 'Lilac',         paper: '#c9b8f5', ink: '#161225', a: '#ff4f1f', b: '#fdf6e3'},
+  {id: 'beton',    name: 'Concrete',        paper: '#c9c9c4', ink: '#161616', a: '#f4f400', b: '#ffffff'},
   {id: 'neon',     name: 'Neon',         paper: '#0d0d12', ink: '#f3f3f3', a: '#c6ff1a', b: '#ff2bd1'},
-  {id: 'pruim',    name: 'Pruim',        paper: '#2a1033', ink: '#f6e9d8', a: '#ff9b21', b: '#e84a8a'},
-  {id: 'zand',     name: 'Zand',         paper: '#e3d3b5', ink: '#2b1d12', a: '#c2491d', b: '#2f5d50'},
-  {id: 'ijs',      name: 'IJsblauw',     paper: '#bfe3f5', ink: '#0b1d3a', a: '#0b1d3a', b: '#ff3d2e'},
-  {id: 'bos',      name: 'Bos',          paper: '#12352b', ink: '#efe7d3', a: '#f2c230', b: '#e9603a'},
-  {id: 'snoep',    name: 'Snoep',        paper: '#ffc2d6', ink: '#22104a', a: '#3b2bd9', b: '#ffe14a'},
+  {id: 'pruim',    name: 'Plum',        paper: '#2a1033', ink: '#f6e9d8', a: '#ff9b21', b: '#e84a8a'},
+  {id: 'zand',     name: 'Sand',         paper: '#e3d3b5', ink: '#2b1d12', a: '#c2491d', b: '#2f5d50'},
+  {id: 'ijs',      name: 'Ice blue',     paper: '#bfe3f5', ink: '#0b1d3a', a: '#0b1d3a', b: '#ff3d2e'},
+  {id: 'bos',      name: 'Forest',          paper: '#12352b', ink: '#efe7d3', a: '#f2c230', b: '#e9603a'},
+  {id: 'snoep',    name: 'Candy',        paper: '#ffc2d6', ink: '#22104a', a: '#3b2bd9', b: '#ffe14a'},
   {id: 'klei',     name: 'Terracotta',   paper: '#d9623a', ink: '#1b120e', a: '#f3e3c8', b: '#1d3d6b'},
 ];
 const TREATMENTS = [
-  {id: 'halftoon', name: 'Halftoon (vector)'},
-  {id: 'lijnen',   name: 'Lijnraster (vector)'},
-  {id: 'duotoon',  name: 'Duotoon'},
-  {id: 'drempel',  name: 'Drempel (fotokopie)'},
+  {id: 'halftoon', name: 'Halftone (vector)'},
+  {id: 'lijnen',   name: 'Line screen (vector)'},
+  {id: 'duotoon',  name: 'Duotone'},
+  {id: 'drempel',  name: 'Threshold (photocopy)'},
 ];
 
 const DEFAULTS = {
   seed: 1, format: 'a', recipe: 'auto', palette: 'auto', treatment: 'auto', kast: 'auto',
-  title: 'Vijftig posters', kicker: 'Glossy Branding',
-  body: 'Een grid, een letter, een beeld en één beperking. De generator gooit, de ontwerper kiest.',
-  meta: 'Proef 01\nNovember 2026',
+  t1: 'Fifty posters', t2: 'The generator rolls, the designer chooses.', t3: 'Glossy Branding', t4: '2026',
   raster: 64, contrast: 1.25, licht: 0, grain: .3, misreg: .3, durf: .5, grid: false,
+  tf: {}, /* what the user moved or scaled on the poster, per object */
 };
-const STORE = 'glossy-poster-v1', KEEP = !/[?&]proef\b/.test(location.search); /* ?proef: niets bewaren */
+const STORE = 'glossy-poster-v3', KEEP = !/[?&]proef\b/.test(location.search); /* ?proef: a trial run that stores nothing and skips the welcome */
 let state = {...DEFAULTS};
-if (KEEP) try { const old = JSON.parse(localStorage.getItem(STORE) || '{}'); if (old.durf == null) delete old.kast; Object.assign(state, old); } catch (e) {}
+if (KEEP) try { Object.assign(state, JSON.parse(localStorage.getItem(STORE) || '{}')); } catch (e) {}
+if (!state.tf || typeof state.tf !== 'object') state.tf = {};
 let view = 'poster';
 
-/* ------------------------------------------------------------------ letter */
+/* ------------------------------------------------------------------ type */
 const FONT = {family: 'Schibsted Grotesk', b64: window.POSTER_FONT_B64 || '', mime: 'font/woff2', range: '400 900', min: 400, max: 900, fixed: false};
 function b64ToBytes(b64) { const bin = atob(b64); const u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; }
 function bytesToB64(buf) { let s = ''; const u = new Uint8Array(buf); for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s); }
@@ -263,7 +293,7 @@ async function loadFont() {
 }
 const wt = w => clamp(Math.round(w), FONT.min, FONT.max);
 
-/* Meten op inkt, niet op de em-box: zo staat grote typo optisch strak tegen het grid. */
+/* Measure the ink, not the em box: large type then sits optically flush on the grid. */
 const mctx = document.createElement('canvas').getContext('2d');
 const mcache = new Map();
 function ink(text, weight) {
@@ -278,7 +308,7 @@ function ink(text, weight) {
   return m;
 }
 
-/* Eén regel: inkt links op x, inkt boven op top, inktbreedte = width (of vaste size). */
+/* One line: ink left on x, ink top on top, ink width = width (or a fixed size). */
 function fitLine(text, x, top, width, o = {}) {
   const weight = wt(o.weight ?? 900), ls = o.ls ?? -.03;
   const m = ink(text, weight), n = [...text].length;
@@ -291,7 +321,7 @@ function fitLine(text, x, top, width, o = {}) {
     size, h: m.a * size, desc: Math.max(0, m.d) * size, w: wEm * size,
   };
 }
-/* Gestapelde regels, elk op breedte gezet. Past het niet in maxH, dan krimpt het hele blok. */
+/* Stacked lines, each set to the full width. If it does not fit maxH, the whole block shrinks. */
 function stack(lines, x, top, width, maxH, o = {}) {
   const build = w => {
     let y = top, svg = '';
@@ -305,9 +335,9 @@ function stack(lines, x, top, width, maxH, o = {}) {
   if (r.h > maxH) r = build(width * maxH / r.h);
   return r;
 }
-/* Zonder eigen regeleindes: woorden verdelen over regels van vergelijkbare lengte. */
+/* Without line breaks of its own: spread the words over lines of similar length. */
 function balance(words) {
-  const total = words.join(' ').length, L = clamp(Math.round(total / 10), 1, 4);
+  const total = words.join(' ').length, L = clamp(Math.ceil(total / 9), 1, 4);
   if (words.length <= L) return words.slice();
   const target = total / L, lines = []; let cur = '';
   for (const w of words) { const t = cur ? cur + ' ' + w : w; if (cur && t.length > target * 1.15 && lines.length < L - 1) { lines.push(cur); cur = w; } else cur = t; }
@@ -323,11 +353,10 @@ function para(text, x, y, width, size, o = {}) {
     if (cur) lines.push(cur);
   }
   const L = lines.slice(0, max);
-  return {n: L.length, svg: L.length ? `<text font-size="${f(size)}" font-weight="${weight}" fill="${o.fill}">${L.map((l, i) => `<tspan x="${f(x)}" y="${f(y + i * size * lh)}">${esc(l)}</tspan>`).join('')}</text>` : ''};
+  return {n: L.length, w: Math.max(0, ...L.map(wof)), svg: L.length ? `<text font-size="${f(size)}" font-weight="${weight}" fill="${o.fill}"${o.end ? ' text-anchor="end"' : ''}>${L.map((l, i) => `<tspan x="${f(x)}" y="${f(y + i * size * lh)}">${esc(l)}</tspan>`).join('')}</text>` : ''};
 }
-const label = (c, t, x, y, fill, anchor) => `<text x="${f(x)}" y="${f(y)}" font-size="${f(c.s1)}" font-weight="600" fill="${fill}"${anchor ? ` text-anchor="${anchor}"` : ''}>${esc(t)}</text>`;
 
-/* ------------------------------------------------------------------ beeld */
+/* ------------------------------------------------------------------ image */
 const IMG = {has: false, w: 0, h: 0, L: null, A: null, S: null, blob: null, alpha: false, ver: 0};
 function lumBuffer(img, w, h) {
   const c = document.createElement('canvas'); c.width = w; c.height = h;
@@ -344,7 +373,7 @@ async function setImage(source) {
   const k = Math.min(1, 260 / big.w);
   const small = lumBuffer(img, Math.max(2, Math.round(big.w * k)), Math.max(2, Math.round(big.h * k)));
   img.close();
-  /* automatische niveaus op de dekkende pixels: 1% tot 99% */
+  /* automatic levels on the opaque pixels: 1% to 99% */
   const hist = new Uint32Array(256); let tot = 0, hasA = false;
   for (let p = 0; p < big.L.length; p++) { if (big.A[p] < .98) hasA = true; if (big.A[p] > .5) { hist[Math.round(big.L[p] * 255)]++; tot++; } }
   let lo = 0, hi = 255, acc = 0;
@@ -357,13 +386,13 @@ async function setImage(source) {
   Object.assign(IMG, {has: true, w: big.w, h: big.h, L: big.L, A: big.A, S: small, blob, alpha: hasA, ver: IMG.ver + 1});
 }
 const tone = l => clamp((l - .5) * state.contrast + .5 + state.licht, 0, 1);
-/* Beeld vult het vlak (cover), met het zwaartepunt iets boven het midden. */
+/* The image covers the field, with its weight a little above the middle. */
 function cover(rect) {
   const ri = IMG.w / IMG.h, rr = rect.w / rect.h;
   if (ri > rr) { const h = rect.h, w = h * ri; return {x: rect.x - (w - rect.w) / 2, y: rect.y, w, h}; }
   const w = rect.w, h = w / ri; return {x: rect.x, y: rect.y - (h - rect.h) * .3, w, h};
 }
-/* Geeft per punt de "papierwaarde": 1 = geen inkt, 0 = vol inkt. */
+/* Returns the "paper value" per point: 1 = no ink, 0 = full ink. */
 function lumSampler(rect, inv) {
   const g = cover(rect), S = IMG.S;
   return (px, py) => {
@@ -375,7 +404,7 @@ function lumSampler(rect, inv) {
     return 1 - (inv ? l : 1 - l) * bl(S.A);
   };
 }
-/* Zonder foto tekent de generator zelf een vorm om te rasteren. */
+/* Without a photo the generator draws a shape of its own to screen. */
 function procSampler(rect, rng, inv) {
   const kind = rng.pick(['bol', 'bol', 'verloop', 'golf']);
   const asp = rect.h / rect.w, cx = rng.range(.38, .62), cy = rng.range(.4, .6) * asp, R = rng.range(.3, .42) * Math.min(1, asp);
@@ -417,7 +446,7 @@ function lineRaster(rect, S, pitch, color) {
   }
   return `<path d="${d}" fill="${color}"/>`;
 }
-/* Duotoon en drempel: één grijsmasker per behandeling, de kleur komt uit het palet. */
+/* Duotone and threshold: one grey mask per treatment, the colour comes from the palette. */
 const maskCache = new Map();
 function dataToBlob(data) { const [head, b64] = data.split(','); return new Blob([b64ToBytes(b64)], {type: head.slice(5, head.indexOf(';'))}); }
 function getMask(kind, inv) {
@@ -452,22 +481,8 @@ function imageLayer(c, rect, color, inv, frame = rect, treat) {
   return `<rect x="${f(rect.x)}" y="${f(rect.y)}" width="${f(rect.w)}" height="${f(rect.h)}" fill="${color}" mask="url(#${id})"/>`;
 }
 
-/* ------------------------------------------------------------------ vaste onderdelen */
-function topStrip(c, fg, o = {}) {
-  const y = c.m + c.s1 * .78;
-  return label(c, c.st.kicker, c.m, y, fg) + (o.right === false ? '' : label(c, 'Nr. ' + pad(c.seed), c.W - c.m, y, fg, 'end'));
-}
-function foot(c, fg, o = {}) {
-  const y0 = c.footTop + c.s2 * 1.5;
-  let s = o.rule === false ? '' : `<rect x="${c.m}" y="${f(c.footTop)}" width="${c.Wi}" height="${f(c.rule)}" fill="${fg}"/>`;
-  s += para(c.st.meta, c.gx(0), y0, c.gw(2) - c.gut, c.s2, {weight: 700, fill: fg, max: c.footLines, lh: 1.22}).svg;
-  s += para(c.st.body, c.gx(2), y0, c.gw(3) - c.gut, c.s2 * .94, {weight: 450, fill: fg, max: c.footLines}).svg;
-  s += para(c.colophon(), c.gx(5), y0, c.gw(1), c.s1, {weight: 500, fill: fg, max: c.footLines + 1, lh: 1.36}).svg;
-  return s;
-}
-
-/* ------------------------------------------------------------------ bouwstenen voor de recepten */
-/* Grond: papier of, bij een omgekeerde worp, het accent als achtergrond. */
+/* ------------------------------------------------------------------ building blocks for the recipes */
+/* Ground: paper or, on an inverted roll, the accent as background. */
 function ground(c, p = .3) {
   const {pal, rng, W, H} = c;
   const inv = rng.chance(p) && contrast(pal.a, pal.paper) > 1.25;
@@ -475,13 +490,14 @@ function ground(c, p = .3) {
   let acc = inv ? pal.b : pal.a;
   if (acc === bg || contrast(acc, bg) < 1.35) acc = inv ? pal.paper : pal.b;
   if (acc === bg || contrast(acc, bg) < 1.35) acc = fg;
+  c.bg = bg; c.fg = fg;
   return {bg, fg, acc, s: inv ? `<rect width="${W}" height="${H}" fill="${bg}"/>` : ''};
 }
 function clip(c, shape, content) { const id = c.id(); c.defs.push(`<clipPath id="${id}">${shape}</clipPath>`); return `<g clip-path="url(#${id})">${content}</g>`; }
 const box = (r, fill, extra = '') => `<rect x="${f(r.x)}" y="${f(r.y)}" width="${f(r.w)}" height="${f(r.h)}" fill="${fill}"${extra}/>`;
 function fieldFor(pal) { let fld = pal.a; if (contrast(fld, pal.paper) < 1.2) fld = pal.b; if (contrast(fld, pal.paper) < 1.2) fld = pal.ink; return fld; }
 function mix(a, b, t) { const x = rgb(a), y = rgb(b); return '#' + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, '0')).join(''); }
-/* Tekst op een cirkel: herhaalt de tekst tot de omtrek precies vol is. */
+/* Text on a circle: repeats the text until the circumference is exactly full. */
 function ringText(c, text, cx, cy, r, size, o = {}) {
   const weight = wt(o.weight ?? 700), unit = text + ' · ';
   const C = 2 * Math.PI * r, k = Math.max(1, Math.round(C / (ink(unit, weight).adv * size)));
@@ -490,28 +506,28 @@ function ringText(c, text, cx, cy, r, size, o = {}) {
   return `<text font-size="${f(sz)}" font-weight="${weight}" fill="${o.fill}"${o.rot ? ` transform="rotate(${f(o.rot)} ${f(cx)} ${f(cy)})"` : ''}><textPath href="#${id}">${esc(str)}</textPath></text>`;
 }
 
-/* Ingrepen: wat de worp bovenop of onder het recept legt. Hoe meer durf, hoe vaker. */
+/* Interventions: what the roll puts on top of or under the recipe. The wilder, the more often. */
 function extras(c, st) {
   const durf = st.durf ?? .5, x = rngFor(st.seed, 'ingreep'), {W, H, m, pal} = c;
   const cols = uniq([pal.a, pal.b, pal.ink]);
   let over = '', under = '';
-  if (x.chance(durf * .42)) { /* sticker met het nummer van de worp */
-    const r = W * x.range(.075, .125), cx = x.range(m + r, W - m - r), cy = x.range(m + r, c.footTop - r), col = x.pick(cols), fg = on(col, pal);
+  if (x.chance(durf * .42)) { /* a sticker with the number of the roll */
+    const r = W * x.range(.075, .125), cx = x.range(m + r, W - m - r), cy = x.range(m + r, H - m - r), col = x.pick(cols), fg = on(col, pal);
     let shape;
     if (x.chance(.4)) {
       const n = x.pick([12, 16, 20, 24]); let d = '';
       for (let i = 0; i < n * 2; i++) { const a = i / (n * 2) * Math.PI * 2, rr = i % 2 ? r * .88 : r * 1.07; d += (i ? 'L' : 'M') + f(cx + Math.cos(a) * rr) + ' ' + f(cy + Math.sin(a) * rr); }
       shape = `<path d="${d}Z" fill="${col}"/>`;
     } else shape = `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}" fill="${col}"/>`;
-    const txt = String(st.meta).split('\n')[0].trim() || st.kicker || 'Proef';
-    over += `<g transform="rotate(${f(x.range(-25, 25))} ${f(cx)} ${f(cy)})">${shape}<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r * .82)}" fill="none" stroke="${fg}" stroke-width="${f(r * .018)}"/>${ringText(c, txt, cx, cy, r * .56, r * .19, {weight: 700, fill: fg})}<text x="${f(cx)}" y="${f(cy + r * .12)}" font-size="${f(r * .36)}" font-weight="800" fill="${fg}" text-anchor="middle" letter-spacing="-0.03em">${pad(st.seed)}</text></g>`;
+    const txt = String(st.t3 || st.t4 || '').split('\n')[0].trim() || 'Poster';
+    over += c.obj('sticker', `<g transform="rotate(${f(x.range(-25, 25))} ${f(cx)} ${f(cy)})">${shape}<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r * .82)}" fill="none" stroke="${fg}" stroke-width="${f(r * .018)}"/>${ringText(c, txt, cx, cy, r * .56, r * .19, {weight: 700, fill: fg})}<text x="${f(cx)}" y="${f(cy + r * .12)}" font-size="${f(r * .36)}" font-weight="800" fill="${fg}" text-anchor="middle" letter-spacing="-0.03em">${pad(st.seed)}</text></g>`);
   }
-  if (x.chance(durf * .22)) { /* plakband met de afzender */
+  if (x.chance(durf * .22)) { /* a strip of tape with a line of text */
     const col = x.pick(cols), fg = on(col, pal), h = W * x.range(.032, .055), ang = x.pick([-45, -30, -12, 8, 20, 35, 90]), y = x.range(.15, .8) * H;
-    const unit = (st.kicker || 'Glossy') + '  ·  ', size = h * .5, str = unit.repeat(Math.min(60, Math.ceil(2.4 * H / (ink(unit, 700).adv * size))));
-    over += `<g transform="translate(${W / 2} ${f(y)}) rotate(${ang})"><rect x="${f(-1.2 * H)}" y="${f(-h / 2)}" width="${f(2.4 * H)}" height="${f(h)}" fill="${col}"/><text x="${f(-1.2 * H + x() * 200)}" y="${f(size * .36)}" font-size="${f(size)}" font-weight="700" fill="${fg}">${esc(str)}</text></g>`;
+    const unit = (String(st.t3 || st.t1 || '').split('\n')[0].trim() || 'Glossy') + '  ·  ', size = h * .5, str = unit.repeat(Math.min(60, Math.ceil(2.4 * H / (ink(unit, 700).adv * size))));
+    over += c.obj('tape', `<g transform="translate(${W / 2} ${f(y)}) rotate(${ang})"><rect x="${f(-1.2 * H)}" y="${f(-h / 2)}" width="${f(2.4 * H)}" height="${f(h)}" fill="${col}"/><text x="${f(-1.2 * H + x() * 200)}" y="${f(size * .36)}" font-size="${f(size)}" font-weight="700" fill="${fg}">${esc(str)}</text></g>`);
   }
-  if (x.chance(durf * .34)) { /* spookvorm onder de compositie */
+  if (x.chance(durf * .34)) { /* a ghost shape under the composition */
     const tint = mix(pal.paper, pal.ink, x.range(.06, .12)), kind = x.pick(['letter', 'letter', 'cirkel', 'strepen']);
     if (kind === 'letter') {
       const ch = [...c.one].find(k => /\p{L}|\p{N}/u.test(k)) || 'A', g = fitLine(ch, 0, 0, W * x.range(.9, 1.4), {weight: 900, ls: 0, fill: tint, maxH: H * 1.1});
@@ -528,33 +544,67 @@ function extras(c, st) {
   const tilt = durf > .55 && x.chance((durf - .5) * .5) ? x.pick([-8, -5, -3, 3, 5, 8]) : 0;
   return {over, under, tilt};
 }
-/* Paletrollen omdraaien: hetzelfde palet, een andere poster. */
+/* Flip the palette roles: the same palette, a different poster. */
 function twist(pal, rng) {
   const k = rng.pick(['pa', 'pa', 'ab', 'pb']);
   const p = k === 'pa' ? {...pal, paper: pal.a, a: pal.paper} : k === 'ab' ? {...pal, a: pal.b, b: pal.a} : {...pal, paper: pal.b, b: pal.paper};
   p.ink = [pal.ink, pal.paper, '#111111', '#f4f0e6'].reduce((best, q) => contrast(q, p.paper) > contrast(best, p.paper) ? q : best);
   if (contrast(p.ink, p.paper) < 5 || (p.paper === pal.paper && p.a === pal.a)) return pal;
-  return {...p, name: pal.name + ', gedraaid'};
+  return {...p, name: pal.name + ', flipped'};
 }
 
-/* ------------------------------------------------------------------ recepten */
+const rectB = c => `<rect width="${c.W}" height="${f(c.bot)}"/>`;
+const pathOf = pts => 'M' + pts.map(p => f(p[0]) + ' ' + f(p[1])).join('L') + 'Z';
+/* a soft closed shape through jittered points on a circle */
+function blob(cx, cy, r, rng, n = 8, jit = .3) {
+  const pts = [];
+  for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2, rr = r * (1 - jit + rng() * jit * 2); pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]); }
+  let d = `M${f(pts[0][0])} ${f(pts[0][1])}`;
+  for (let i = 0; i < n; i++) {
+    const p0 = pts[(i + n - 1) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
+    d += `C${f(p1[0] + (p2[0] - p0[0]) / 6)} ${f(p1[1] + (p2[1] - p0[1]) / 6)} ${f(p2[0] - (p3[0] - p1[0]) / 6)} ${f(p2[1] - (p3[1] - p1[1]) / 6)} ${f(p2[0])} ${f(p2[1])}`;
+  }
+  return d + 'Z';
+}
+/* a rectangle with a torn or hand-cut edge */
+function torn(x, y, w, h, rng, step = 46, jit = 16) {
+  const pts = [], side = (x0, y0, x1, y1) => { const k = Math.max(2, Math.round(Math.hypot(x1 - x0, y1 - y0) / step)); for (let i = 0; i < k; i++) { const t = i / k; pts.push([x0 + (x1 - x0) * t + (rng() - .5) * jit, y0 + (y1 - y0) * t + (rng() - .5) * jit]); } };
+  side(x, y, x + w, y); side(x + w, y, x + w, y + h); side(x + w, y + h, x, y + h); side(x, y + h, x, y);
+  return pathOf(pts);
+}
+function filt(c, body) { const id = c.id(); c.defs.push(`<filter id="${id}" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">${body}</filter>`); return id; }
+/* a smooth open curve through points, with its approximate length */
+function spline(pts) {
+  let d = `M${f(pts[0][0])} ${f(pts[0][1])}`, len = 0;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+    const a = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], b = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += `C${f(a[0])} ${f(a[1])} ${f(b[0])} ${f(b[1])} ${f(p2[0])} ${f(p2[1])}`;
+    let px = p1[0], py = p1[1];
+    for (let t = 1; t <= 12; t++) { const u = t / 12, v = 1 - u, x = v * v * v * p1[0] + 3 * v * v * u * a[0] + 3 * v * u * u * b[0] + u * u * u * p2[0], y = v * v * v * p1[1] + 3 * v * v * u * a[1] + 3 * v * u * u * b[1] + u * u * u * p2[1]; len += Math.hypot(x - px, y - py); px = x; py = y; }
+  }
+  return {d, len};
+}
+const star = (cx, cy, r, n, k = .82) => { let d = ''; for (let i = 0; i < n * 2; i++) { const a = i / (n * 2) * Math.PI * 2 - Math.PI / 2, rr = i % 2 ? r * k : r; d += (i ? 'L' : 'M') + f(cx + Math.cos(a) * rr) + ' ' + f(cy + Math.sin(a) * rr); } return d + 'Z'; };
+
+/* ------------------------------------------------------------------ recipes */
 const RECIPES = [
-{id: 'vlak', name: 'Uit het vlak', draw(c) {
+{id: 'vlak', name: 'Off the edge', draw(c) {
   const {W, H, m, rng, pal} = c;
   const inv = rng.chance(.3) && pal.a !== pal.paper, bg = inv ? pal.a : pal.paper, fg = on(bg, pal);
   let big = inv ? fg : pal.a; if (contrast(big, bg) < 1.35) big = fg;
+  c.bg = bg; c.fg = fg;
   let s = inv ? `<rect width="${W}" height="${H}" fill="${bg}"/>` : '';
   const word = c.twords.reduce((a, b) => b.length > a.length ? b : a, c.twords[0]);
-  const yA = m + c.s1 * 2.8, yB = c.footTop - c.gap, cid = c.id();
-  c.defs.push(`<clipPath id="${cid}"><rect x="0" y="0" width="${W}" height="${f(yB)}"/></clipPath>`);
+  const yA = c.top, yB = c.yB, cid = c.id();
+  c.defs.push(`<clipPath id="${cid}"><rect x="0" y="0" width="${W}" height="${f(c.bot)}"/></clipPath>`);
   if (rng.chance(.45)) {
-    /* staand: het woord loopt van onder naar boven en valt rechts en boven uit het vlak */
+    /* upright: the word runs from bottom to top and falls off the sheet at the right and the top */
     const g = fitLine(word, 0, 0, H * rng.range(1, 1.4), {weight: c.wB, ls: -.045, fill: big, maxH: W * rng.range(.42, .6)});
     const X = rng.chance(.5) ? W - g.h * .9 : W - m - g.h;
     const Y = g.w > yB ? yB + (g.w - yB) * rng.range(.2, .8) : yB;
-    s += `<g clip-path="url(#${cid})">` + c.plate(`<g transform="translate(${f(X)} ${f(Y)}) rotate(-90)">${g.svg}</g>`, big) + '</g>';
-    s += stack(c.titleLines, m, yA + c.gap * .5, Math.min(c.gw(3) - c.gut, X - m - c.gut), (yB - yA) * .45, {weight: c.wT, fill: fg}).svg;
-    s += topStrip(c, fg, {right: false}); c.noTop = true;
+    s += `<g clip-path="url(#${cid})">` + c.obj('t1b', c.plate(`<g transform="translate(${f(X)} ${f(Y)}) rotate(-90)">${g.svg}</g>`, big)) + '</g>';
+    s += c.obj('t1', stack(c.titleLines, m, yA + c.gap * .5, Math.min(c.gw(3) - c.gut, X - m - c.gut), (yB - yA) * .45, {weight: c.wT, fill: fg}).svg);
   } else {
     const zone = yB - yA;
     const g0 = fitLine(word, 0, 0, W * rng.range(1.1, 1.6), {weight: c.wB, ls: -.045, maxH: zone * rng.range(.5, .7)});
@@ -562,26 +612,28 @@ const RECIPES = [
     const gy = below ? yB - g0.h - g0.desc - c.gap * .4 : yA + c.gap * .6;
     const gx = g0.w > W ? (W - g0.w) * rng.range(.15, .85) : m;
     const g = fitLine(word, gx, gy, 0, {weight: c.wB, ls: -.045, fill: big, size: g0.size});
-    s += `<g clip-path="url(#${cid})">` + c.plate(g.svg, big) + '</g>';
+    s += `<g clip-path="url(#${cid})">` + c.obj('t1b', c.plate(g.svg, big)) + '</g>';
     const free = zone - g0.h - g0.desc - c.gap * 2.4;
     const st = stack(c.titleLines, m, 0, c.gw(4) - c.gut, free * .8, {weight: c.wT, fill: fg});
     const ty = below ? yA + c.gap * .8 : yB - st.h;
-    s += `<g transform="translate(0 ${f(ty)})">${st.svg}</g>` + topStrip(c, fg);
+    s += c.obj('t1', `<g transform="translate(0 ${f(ty)})">${st.svg}</g>`);
   }
-  return s + foot(c, fg);
+  return s;
 }},
 
 {id: 'echo', name: 'Echo', draw(c) {
   const {W, H, m, Wi, rng, pal} = c;
   const inv = rng.chance(.25) && pal.a !== pal.paper, bg = inv ? pal.a : pal.paper, fg = on(bg, pal);
   let hiCol = inv ? pal.b : pal.a; if (hiCol === bg || contrast(hiCol, bg) < 1.35) hiCol = fg;
+  c.bg = bg; c.fg = fg;
   let s = inv ? `<rect width="${W}" height="${H}" fill="${bg}"/>` : '';
   const mode = rng.pick(['gewicht', 'omlijnd', 'vervagen']), t = c.one;
-  const yA = m + c.s1 * 3, yB = c.footTop - c.gap * 1.2;
+  const yA = c.top, yB = c.yB;
   const g0 = fitLine(t, m, 0, Wi, {weight: 900, ls: -.035, maxH: (yB - yA) * .3});
   const span = yB - yA - g0.h - g0.desc;
   const n = clamp(Math.floor(span / (g0.h + Math.max(g0.desc * .7, g0.h * .16))) + 1, 2, 18);
   const P = span / (n - 1), hi = rng.int(0, n - 1), flip = rng.chance(.5);
+  let ln = '';
   for (let i = 0; i < n; i++) {
     const k = i / (n - 1), kk = flip ? 1 - k : k;
     const o = {ls: -.035, size: g0.size, weight: 900, fill: fg};
@@ -590,16 +642,16 @@ const RECIPES = [
     else if (mode === 'omlijnd') { if (i === hi) { o.fill = hiCol; accent = true; } else { o.stroke = fg; o.sw = W * .0026; } }
     else if (i === hi) { o.fill = hiCol; accent = true; } else o.op = f(1 - kk * .88);
     const g = fitLine(t, m, yA + i * P, Wi, o);
-    s += accent && hiCol !== fg ? c.plate(g.svg, hiCol) : g.svg;
+    ln += accent && hiCol !== fg ? c.plate(g.svg, hiCol) : g.svg;
   }
-  return s + topStrip(c, fg) + foot(c, fg);
+  return s + c.obj('t1', ln);
 }},
 
-{id: 'raster', name: 'Raster', img: 2, draw(c) {
+{id: 'raster', name: 'Dot grid', img: 2, draw(c) {
   const {H, m, Wi, rng, pal} = c, fg = pal.ink;
   let acc = pal.a; if (acc === fg || contrast(acc, pal.paper) < 1.3) acc = pal.b !== fg && contrast(pal.b, pal.paper) > 1.3 ? pal.b : null;
-  const n = rng.pick(IMG.has ? [14, 18, 22, 28] : [6, 8, 10, 12]), cell = Wi / n, yA = m + c.s1 * 3;
-  const titleH = H * rng.range(.1, .16), gb = c.footTop - c.gap * 2 - titleH, rows = Math.max(2, Math.floor((gb - yA) / cell));
+  const n = rng.pick(IMG.has ? [14, 18, 22, 28] : [6, 8, 10, 12]), cell = Wi / n, yA = c.top;
+  const titleH = H * rng.range(.1, .16), gb = c.yB - c.gap - titleH, rows = Math.max(2, Math.floor((gb - yA) / cell));
   const rect = {x: m, y: yA, w: Wi, h: rows * cell};
   const mode = IMG.has ? 'beeld' : rng.pick(['vol', 'vol', 'verloop', 'bol']);
   const S = IMG.has ? lumSampler(rect, false) : mode === 'bol' ? procSampler(rect, c.rngImg, false) : null;
@@ -616,51 +668,49 @@ const RECIPES = [
   if (IMG.has) c.used = 'raster';
   let s = `<path d="${dI}" fill="${fg}"/>` + (dA ? c.plate(`<path d="${dA}" fill="${acc}"/>`, acc) : '');
   const st = stack(c.tlines, m, 0, Wi, titleH, {weight: c.wT, fill: fg});
-  s += `<g transform="translate(0 ${f(c.footTop - c.gap - st.h)})">${st.svg}</g>`;
-  return s + topStrip(c, fg) + foot(c, fg);
+  s += c.obj('t1', `<g transform="translate(0 ${f(c.yB - st.h)})">${st.svg}</g>`);
+  return s;
 }},
 
-{id: 'portret', name: 'Beeld op vlak', img: 3, draw(c) {
+{id: 'portret', name: 'Image on colour', img: 3, draw(c) {
   const {W, H, m, Wi, rng, pal} = c;
   let field = pal.a; if (contrast(field, pal.paper) < 1.2) field = pal.b; if (contrast(field, pal.paper) < 1.2) field = pal.ink;
   const v = rng.pick(['boven', 'boven', 'blok', 'vol']), ic = on(field, pal), inv = lumOf(ic) > lumOf(field);
-  const yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+  const yA = c.top, yB = c.yB;
   let s = '', rect, fg = pal.ink;
   const box = r => `<rect x="${f(r.x)}" y="${f(r.y)}" width="${f(r.w)}" height="${f(r.h)}" fill="${field}"/>`;
-  if (v === 'vol') { s += `<rect width="${W}" height="${H}" fill="${field}"/>`; fg = ic; rect = {x: 0, y: 0, w: W, h: H * rng.range(.56, .66)}; c.noTop = true; }
-  else if (v === 'boven') { rect = {x: 0, y: 0, w: W, h: H * rng.range(.5, .62)}; s += c.plate(box(rect), field); c.noTop = true; }
+  if (v === 'vol') { s += `<rect width="${W}" height="${H}" fill="${field}"/>`; fg = ic; c.bg = field; c.fg = ic; rect = {x: 0, y: 0, w: W, h: H * rng.range(.56, .66)}; }
+  else if (v === 'boven') { rect = {x: 0, y: 0, w: W, h: H * rng.range(.5, .62)}; s += c.plate(box(rect), field); }
   else { const x = c.gx(rng.pick([0, 1, 2])); rect = {x, y: yA, w: W - x, h: H * rng.range(.46, .58)}; s += c.plate(box(rect), field); }
   s += imageLayer(c, rect, ic, inv);
   const tTop = rect.y + rect.h + c.gap * 1.2;
-  s += stack(c.titleLines, m, tTop, rng.pick([c.gw(4), c.gw(5), Wi]), yB - tTop, {weight: c.wT, fill: fg}).svg;
-  if (!c.noTop) s += topStrip(c, pal.ink);
-  return s + foot(c, fg);
+  s += c.obj('t1', stack(c.titleLines, m, tTop, rng.pick([c.gw(4), c.gw(5), Wi]), yB - tTop, {weight: c.wT, fill: fg}).svg);
+  return s;
 }},
 
-{id: 'banden', name: 'Banden', draw(c) {
+{id: 'banden', name: 'Bands', draw(c) {
   const {W, m, Wi, rng, pal} = c;
   const base = c.tlines.length > 1 ? c.tlines : c.twords; let items = base.slice();
   while (items.length < 4) items.push(...base);
   items = items.slice(0, 10);
   const cols = shuffle(uniq([pal.a, pal.ink, pal.paper, pal.b]), rng), n = items.length;
   let off = 0; while (cols[(n - 1 + off) % cols.length] === pal.paper && off < cols.length) off++;
-  const yB = c.footTop - c.gap, bh = yB / n;
+  const bh = c.bot / n;
   let s = '', txt = '';
   items.forEach((t, i) => {
     const col = cols[(i + off) % cols.length], y = i * bh;
     const r = `<rect x="0" y="${f(y)}" width="${W}" height="${f(bh + .4)}" fill="${col}"/>`;
     if (col !== pal.paper) s += col === pal.ink ? r : c.plate(r, col);
     const g0 = fitLine(t, m, 0, Wi, {weight: c.wT, maxH: bh * .6});
-    txt += fitLine(t, m, y + (bh - g0.h) / 2, Wi, {weight: c.wT, maxH: bh * .6, fill: on(col, pal)}).svg;
+    txt += c.obj('t1.' + i, fitLine(t, m, y + (bh - g0.h) / 2, Wi, {weight: c.wT, maxH: bh * .6, fill: on(col, pal)}).svg);
   });
-  c.noTop = true;
-  return s + txt + foot(c, pal.ink, {rule: false});
+  return s + txt;
 }},
 
-{id: 'vormen', name: 'Compositie', draw(c) {
+{id: 'vormen', name: 'Tiles', draw(c) {
   const {W, H, m, Wi, rng, pal} = c, fg = pal.ink;
-  const bleed = rng.chance(.45), n = rng.pick([3, 4, 4, 5, 6]), x0 = bleed ? 0 : m, cell = (bleed ? W : Wi) / n, y0 = bleed ? 0 : m + c.s1 * 3;
-  const titleH = H * rng.range(.11, .17), gb = c.footTop - c.gap * 2 - titleH, rows = Math.max(1, Math.floor((gb - y0) / cell)), h = f(cell / 2), d = f(cell);
+  const bleed = rng.chance(.45), n = rng.pick([3, 4, 4, 5, 6]), x0 = bleed ? 0 : m, cell = (bleed ? W : Wi) / n, y0 = bleed ? 0 : c.top;
+  const titleH = H * rng.range(.11, .17), gb = c.yB - c.gap - titleH, rows = Math.max(1, Math.floor((gb - y0) / cell)), h = f(cell / 2), d = f(cell);
   const cols = uniq([pal.ink, pal.a, pal.b]).filter(k => contrast(k, pal.paper) > 1.15), by = {};
   const kinds = rng.pick([['q', 'q', 'q', 'c', 'e'], ['q', 'h', 'c', 's', 'e'], ['q', 'q', 'h', 'e'], ['c', 'c', 'h', 'q', 'e']]);
   const shape = {
@@ -677,32 +727,31 @@ const RECIPES = [
   let s = '';
   for (const col of cols) if (by[col]) { const g = `<g fill="${col}">${by[col]}</g>`; s += col === pal.ink ? g : c.plate(g, col); }
   const st = stack(c.titleLines, m, 0, Wi, titleH, {weight: c.wT, fill: fg});
-  s += `<g transform="translate(0 ${f(c.footTop - c.gap - st.h)})">${st.svg}</g>`;
-  if (bleed) c.noTop = true; else s += topStrip(c, fg);
-  return s + foot(c, fg);
+  s += c.obj('t1', `<g transform="translate(0 ${f(c.yB - st.h)})">${st.svg}</g>`);
+  return s;
 }},
-{id: 'ring', name: 'Ronde', img: 1, draw(c) {
-  const {W, H, m, Wi, rng, pal} = c, g = ground(c, .3), yA = m, yB = c.footTop - c.gap;
+{id: 'ring', name: 'Rings', img: 1, draw(c) {
+  const {W, H, m, Wi, rng, pal} = c, g = ground(c, .3), yA = 0, yB = c.bot;
   const cx = W / 2 + (rng.chance(.4) ? rng.range(-.22, .22) * W : 0), cy = (yA + yB) / 2 + rng.range(-.05, .05) * H;
   const R = Math.min(Wi, yB - yA) / 2 * rng.range(.98, 1.3), inner = IMG.has ? rng.range(.42, .55) : rng.range(.14, .4);
   const n = rng.int(3, 7), stepR = R * (1 - inner) / n, hi = rng.int(0, n - 1), spin = rng.range(8, 40), alt = rng.chance(.5);
-  let s = '';
+  let s = '', rings = '';
   for (let i = 0; i < n; i++) {
     const isHi = i === hi && g.acc !== g.fg;
     const t = ringText(c, c.one, cx, cy, R - (i + .86) * stepR, stepR * .98, {weight: alt ? (i % 2 ? FONT.min : FONT.max) : c.wT, fill: isHi ? g.acc : g.fg, rot: i * spin});
-    s += isHi ? c.plate(t, g.acc) : t;
+    rings += isHi ? c.plate(t, g.acc) : t;
   }
+  s += c.obj('t1', rings);
   const rc = R * inner - stepR * .15, disc = `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(rc)}"`;
   if (IMG.has || rng.chance(.6)) {
     const fld = g.acc, ic = on(fld, pal), rect = {x: cx - rc, y: cy - rc, w: 2 * rc, h: 2 * rc};
     s += disc + ` fill="${fld}"/>` + clip(c, disc + '/>', imageLayer(c, rect, ic, lumOf(ic) > lumOf(fld)));
   } else s += c.plate(disc + ` fill="${g.acc}"/>`, g.acc);
-  c.noTop = true;
-  return g.s + clip(c, `<rect width="${W}" height="${f(yB)}"/>`, s) + foot(c, g.fg);
+  return g.s + clip(c, `<rect width="${W}" height="${f(c.bot)}"/>`, s);
 }},
 
-{id: 'diag', name: 'Diagonaal', draw(c) {
-  const {W, H, rng, pal} = c, g = ground(c, .35), yB = c.footTop - c.gap;
+{id: 'diag', name: 'Diagonal', draw(c) {
+  const {W, H, rng, pal} = c, g = ground(c, .35), yB = c.bot;
   const ang = rng.pick([-45, -30, -60, -18, 24, -90, 90]), D = Math.hypot(W, yB), bh = H * rng.range(.06, .15), n = Math.ceil(D / bh) + 1;
   const unit = c.one + '   ', pattern = rng.pick([['f', 'o'], ['f', 'o', 'o'], ['f', 'b'], ['f', 'o', 'b', 'o'], ['f', 'f', 'b']]);
   const w0 = wt(c.wB), capEm = ink(c.one, w0).a, size = bh * .64 / capEm, advU = ink(unit, w0).adv * size;
@@ -713,12 +762,11 @@ const RECIPES = [
     if (kind === 'b') rows += c.plate(`<rect x="${f(-D)}" y="${f(y)}" width="${f(2 * D)}" height="${f(bh + .4)}" fill="${g.acc}"/>`, g.acc) + fitLine(str, x, top, 0, {size, weight: w0, fill: on(g.acc, pal)}).svg;
     else rows += fitLine(str, x, top, 0, kind === 'o' ? {size, weight: w0, stroke: g.fg, sw: W * .0024} : {size, weight: w0, fill: g.fg}).svg;
   }
-  c.noTop = true;
-  return g.s + clip(c, `<rect width="${W}" height="${f(yB)}"/>`, `<g transform="translate(${W / 2} ${f(yB / 2)}) rotate(${ang})">${rows}</g>`) + foot(c, g.fg);
+  return g.s + clip(c, `<rect width="${W}" height="${f(c.bot)}"/>`, c.obj('t1', `<g transform="translate(${W / 2} ${f(yB / 2)}) rotate(${ang})">${rows}</g>`));
 }},
 
-{id: 'snede', name: 'Snede', draw(c) {
-  const {W, H, m, Wi, rng} = c, g = ground(c, .3), yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+{id: 'snede', name: 'Slice', draw(c) {
+  const {W, H, m, Wi, rng} = c, g = ground(c, .3), yA = c.top, yB = c.yB;
   const maxH = (yB - yA) * rng.range(.7, .96), mk = fill => stack(c.titleLines, m, 0, Wi, maxH, {weight: c.wB, fill, lineMax: .7});
   const a = mk(g.fg), b = mk(g.acc), ty = yA + (yB - yA - a.h) * rng.range(.2, .8);
   const vert = rng.chance(.3), n = rng.int(5, 14), amp = W * rng.range(.03, .16), span = vert ? Wi : a.h * 1.12, o0 = vert ? m : -a.h * .04;
@@ -729,41 +777,41 @@ const RECIPES = [
     const piece = clip(c, shape, `<g transform="translate(${vert ? 0 : f(d)} ${vert ? f(d) : 0})">${(useAcc ? b : a).svg}</g>`);
     s += useAcc ? c.plate(piece, g.acc) : piece;
   }
-  return g.s + clip(c, `<rect y="${f(yA - c.gap * .3)}" width="${W}" height="${f(yB - yA + c.gap * .3)}"/>`, `<g transform="translate(0 ${f(ty)})">${s}</g>`) + topStrip(c, g.fg) + foot(c, g.fg);
+  return g.s + clip(c, `<rect width="${W}" height="${f(c.bot)}"/>`, c.obj('t1', `<g transform="translate(0 ${f(ty)})">${s}</g>`));
 }},
 
-{id: 'letter', name: 'Beeld in letter', img: 2, draw(c) {
-  const {m, Wi, rng, pal} = c, fg = pal.ink, yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+{id: 'letter', name: 'Image in type', img: 2, draw(c) {
+  const {m, Wi, rng, pal} = c, fg = pal.ink, yA = c.top, yB = c.yB;
   const fld = fieldFor(pal), ic = on(fld, pal), inv = lumOf(ic) > lumOf(fld), o = {weight: 900, fill: '#000', lineMax: .75};
   const one = stack(c.titleLines, m, 0, Wi, 1e9, o), reps = clamp(Math.floor(((yB - yA) + Wi * .035) / (one.h + Wi * .035)), 1, 6);
   const lines = Array(reps).fill(c.titleLines).flat();
   const st0 = stack(lines, m, 0, Wi, (yB - yA) * .97, o), ty = yA + (yB - yA - st0.h) * rng.pick([0, .5, 1]);
   const st = stack(lines, m, ty, st0.w, 1e9, o), rect = {x: m, y: ty, w: st.w, h: st.h * 1.04};
-  return clip(c, st.svg, box(rect, fld) + imageLayer(c, rect, ic, inv)) + topStrip(c, fg) + foot(c, fg);
+  return c.obj('t1', clip(c, st.svg, box(rect, fld) + imageLayer(c, rect, ic, inv)));
 }},
 
-{id: 'cijfer', name: 'Nummer', draw(c) {
-  const {W, m, rng} = c, g = ground(c, .4), yA = m + c.s1 * 3, yB = c.footTop - c.gap, zone = yB - yA;
-  const num = ((c.st.title + ' ' + c.st.meta).match(/\d+/) || [String(c.seed % 100).padStart(2, '0')])[0].slice(0, 3);
+{id: 'cijfer', name: 'Numeral', draw(c) {
+  const {W, m, rng} = c, g = ground(c, .4), yA = c.top, yB = c.yB, zone = yB - yA;
+  const num = ([c.st.t1, c.st.t2, c.st.t3, c.st.t4].join(' ').match(/\d+/) || [String(c.seed % 100).padStart(2, '0')])[0].slice(0, 3);
   const outline = rng.chance(.35) || (g.acc === g.fg && rng.chance(.5));
   const g0 = fitLine(num, 0, 0, W * rng.range(.9, 1.35), {weight: c.wB, ls: -.05, maxH: zone * rng.range(.5, .72)});
   const right = rng.chance(.5), topSide = rng.chance(.5);
   const x = right ? W - g0.w + W * rng.range(0, .08) : -W * rng.range(0, .08), y = topSide ? yA + c.gap * .3 : yB - g0.h - c.gap * .3;
   const o = outline ? {stroke: g.acc, sw: W * rng.range(.004, .012)} : {fill: g.acc};
-  let s = clip(c, `<rect width="${W}" height="${f(yB)}"/>`, c.plate(fitLine(num, x, y, 0, {...o, weight: c.wB, ls: -.05, size: g0.size}).svg, g.acc));
+  let s = clip(c, `<rect width="${W}" height="${f(c.bot)}"/>`, c.obj('t1b', c.plate(fitLine(num, x, y, 0, {...o, weight: c.wB, ls: -.05, size: g0.size}).svg, g.acc)));
   const st = stack(c.titleLines, m, 0, c.gw(rng.pick([3, 4, 5])) - c.gut, (zone - g0.h - c.gap * 2) * .85, {weight: c.wT, fill: g.fg});
-  s += `<g transform="translate(0 ${f(topSide ? yB - st.h : yA + c.gap * .6)})">${st.svg}</g>`;
-  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+  s += c.obj('t1', `<g transform="translate(0 ${f(topSide ? yB - st.h : yA + c.gap * .6)})">${st.svg}</g>`);
+  return g.s + s;
 }},
 
-{id: 'lijst', name: 'Programma', draw(c) {
-  const {W, m, Wi, rng, pal} = c, g = ground(c, .25), yA = m + c.s1 * 3, yB = c.footTop - c.gap;
-  let words = uniq(String(c.st.body).split(/\s+/).map(w => c.kast(w.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ''))).filter(w => w.length > 3));
+{id: 'lijst', name: 'Programme', draw(c) {
+  const {W, m, Wi, rng, pal} = c, g = ground(c, .25), yA = c.top, yB = c.yB;
+  let words = uniq([c.st.t2, c.st.t3, c.st.t4].join(' ').split(/\s+/).map(w => c.kast(w.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ''))).filter(w => w.length > 3));
   if (words.length < 3) words = c.twords.concat(c.twords, c.twords);
   const N = clamp(rng.int(4, 9), 3, words.length); words = words.slice(0, N);
   const head = fitLine(c.one, m, yA, Wi, {weight: c.wT, fill: g.fg, maxH: (yB - yA) * rng.range(.08, .16)});
   const y0 = yA + head.h + head.desc + c.gap * 1.4, rh = (yB - y0) / N, hi = rng.int(0, N - 1), right = rng.chance(.4);
-  let s = head.svg;
+  let s = c.obj('t1', head.svg);
   words.forEach((w, i) => {
     const y = y0 + i * rh, isHi = i === hi, col = isHi ? on(g.acc, pal) : g.fg;
     s += isHi ? c.plate(`<rect x="0" y="${f(y)}" width="${W}" height="${f(rh)}" fill="${g.acc}"/>`, g.acc) : `<rect x="${m}" y="${f(y)}" width="${Wi}" height="${f(c.rule)}" fill="${g.fg}"/>`;
@@ -771,11 +819,11 @@ const RECIPES = [
     s += `<text x="${f(right ? W - m : m)}" y="${f(y + rh * .5 + c.s2 * .35)}" font-size="${f(c.s2)}" font-weight="600" fill="${col}"${right ? ' text-anchor="end"' : ''}>${String(i + 1).padStart(2, '0')}</text>`;
     s += fitLine(w, right ? m : c.gx(1), y + (rh - t0.h) / 2, c.gw(5) - c.gut, {weight: c.wT, maxH: rh * .56, fill: col}).svg;
   });
-  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+  return g.s + s;
 }},
 
-{id: 'opart', name: 'Op-art', draw(c) {
-  const {W, H, m, rng, pal} = c, fg = pal.ink, yB = c.footTop - c.gap;
+{id: 'opart', name: 'Op art', draw(c) {
+  const {W, H, m, rng, pal} = c, fg = pal.ink, yB = c.bot;
   const col = fieldFor(pal), mode = rng.pick(['stralen', 'ringen', 'golven', 'strepen', 'ruit']);
   const cx = W * rng.range(-.1, 1.1), cy = yB * rng.range(-.1, 1.1), D = Math.hypot(W, yB) * 1.3;
   let p = '';
@@ -803,17 +851,16 @@ const RECIPES = [
       p += `<path d="M${f(x - hw)} ${f(y)}L${f(x)} ${f(y - hw)}L${f(x + hw)} ${f(y)}L${f(x)} ${f(y + hw)}Z"/>`;
     }
   }
-  let s = clip(c, `<rect width="${W}" height="${f(yB)}"/>`, c.plate(`<g fill="${col}">${p}</g>`, col));
-  /* de titel op een etiket */
+  let s = clip(c, `<rect width="${W}" height="${f(c.bot)}"/>`, c.plate(`<g fill="${col}">${p}</g>`, col));
+  /* the title on a label */
   const lw = c.gw(rng.pick([3, 4, 5])), pd = c.gap * .9, st = stack(c.titleLines, 0, 0, lw - 2 * pd, yB * .34, {weight: c.wT, fill: fg});
-  const bw = st.w + 2 * pd, bh = st.h + 2 * pd, lx = rng.pick([m, m, W - m - bw]), ly = rng.pick([m, yB - bh - c.gap, (yB - bh) / 2]);
-  s += `<rect x="${f(lx)}" y="${f(ly)}" width="${f(bw)}" height="${f(bh)}" fill="${pal.paper}"/><g transform="translate(${f(lx + pd)} ${f(ly + pd)})">${st.svg}</g>`;
-  c.noTop = true;
-  return s + foot(c, fg);
+  const bw = st.w + 2 * pd, bh = st.h + 2 * pd, lx = rng.pick([m, m, W - m - bw]), ly = rng.pick([c.top, c.yB - bh, (yB - bh) / 2]);
+  s += c.obj('t1', `<rect x="${f(lx)}" y="${f(ly)}" width="${f(bw)}" height="${f(bh)}" fill="${pal.paper}"/><g transform="translate(${f(lx + pd)} ${f(ly + pd)})">${st.svg}</g>`);
+  return s;
 }},
 
-{id: 'overdruk', name: 'Overdruk', draw(c) {
-  const {W, m, rng, pal} = c, fg = pal.ink, yA = m + c.s1 * 3, yB = c.footTop - c.gap, light = lumOf(pal.paper) > .4;
+{id: 'overdruk', name: 'Overprint', draw(c) {
+  const {W, m, rng, pal} = c, fg = pal.ink, yA = c.top, yB = c.yB, light = lumOf(pal.paper) > .4;
   let cols = uniq([pal.a, pal.b, pal.ink]).filter(k => contrast(k, pal.paper) > 1.2); if (!cols.length) cols = [pal.ink];
   const n = rng.int(3, 5), kind0 = rng.pick(['c', 'c', 's', 'mix', 'h', 't']); let s = '';
   for (let i = 0; i < n; i++) {
@@ -822,15 +869,15 @@ const RECIPES = [
     const shape = kind === 'c' ? `<circle r="${f(r)}"/>` : kind === 's' ? `<rect x="${f(-r)}" y="${f(-r)}" width="${f(2 * r)}" height="${f(2 * r)}"/>` : kind === 'h' ? `<path d="M${f(-r)} 0A${f(r)} ${f(r)} 0 0 1 ${f(r)} 0Z"/>` : `<path d="M0 ${f(-r)}L${f(r)} ${f(r * .8)}L${f(-r)} ${f(r * .8)}Z"/>`;
     s += `<g transform="translate(${f(x)} ${f(y)}) rotate(${rot})" fill="${col}" fill-opacity="${light && lumOf(col) < .05 ? .3 : .92}" style="mix-blend-mode:${light ? 'multiply' : 'screen'}">${shape}</g>`;
   }
-  s = clip(c, `<rect width="${W}" height="${f(yB)}"/>`, s);
+  s = clip(c, `<rect width="${W}" height="${f(c.bot)}"/>`, s);
   const st = stack(c.titleLines, m, 0, c.gw(rng.pick([3, 4])) - c.gut, (yB - yA) * .3, {weight: c.wT, fill: fg});
-  s += `<g transform="translate(0 ${f(rng.chance(.5) ? yA + c.gap * .5 : yB - st.h)})">${st.svg}</g>`;
-  return s + topStrip(c, fg) + foot(c, fg);
+  s += c.obj('t1', `<g transform="translate(0 ${f(rng.chance(.5) ? yA + c.gap * .5 : yB - st.h)})">${st.svg}</g>`);
+  return s;
 }},
 
-{id: 'reeks', name: 'Reeks', img: 2, draw(c) {
-  const {W, H, m, Wi, rng, pal} = c, fg = pal.ink, bleed = rng.chance(.4), y0 = bleed ? 0 : m + c.s1 * 3, x0 = bleed ? 0 : m, w = bleed ? W : Wi;
-  const titleH = H * rng.range(.09, .15), gb = c.footTop - c.gap * 2 - titleH;
+{id: 'reeks', name: 'Series', img: 2, draw(c) {
+  const {W, H, m, Wi, rng, pal} = c, fg = pal.ink, bleed = rng.chance(.4), y0 = bleed ? 0 : c.top, x0 = bleed ? 0 : m, w = bleed ? W : Wi;
+  const titleH = H * rng.range(.09, .15), gb = c.yB - c.gap - titleH;
   const [nc, nr] = rng.pick([[2, 2], [2, 3], [3, 3], [3, 4], [1, 3], [4, 4], [3, 2]]), cw = w / nc, ch = (gb - y0) / nr;
   const fields = shuffle(uniq([pal.a, pal.ink, pal.paper, pal.b]), rng), vary = c.st.treatment === 'auto' && IMG.has && rng.chance(.5), kinds = shuffle(TREATMENTS.map(t => t.id), rng);
   let s = '';
@@ -839,13 +886,12 @@ const RECIPES = [
     s += (fld === pal.paper ? '' : fld === pal.ink ? box(rect, fld) : c.plate(box(rect, fld), fld)) + clip(c, box(rect, '#000'), imageLayer(c, rect, ic, lumOf(ic) > lumOf(fld), rect, vary ? kinds[i % kinds.length] : undefined));
   }
   const st = stack(c.tlines, m, 0, Wi, titleH, {weight: c.wT, fill: fg});
-  s += `<g transform="translate(0 ${f(c.footTop - c.gap - st.h)})">${st.svg}</g>`;
-  if (bleed) c.noTop = true; else s += topStrip(c, fg);
-  return s + foot(c, fg);
+  s += c.obj('t1', `<g transform="translate(0 ${f(c.yB - st.h)})">${st.svg}</g>`);
+  return s;
 }},
 
-{id: 'lamel', name: 'Lamellen', img: 2, draw(c) {
-  const {W, H, m, Wi, rng, pal} = c, yA = m + c.s1 * 3, yB = c.footTop - c.gap, fg = pal.ink;
+{id: 'lamel', name: 'Strips', img: 2, draw(c) {
+  const {W, H, m, Wi, rng, pal} = c, yA = c.top, yB = c.yB, fg = pal.ink;
   const fld = fieldFor(pal), ic = on(fld, pal), full = rng.chance(.6);
   const rect = full ? {x: 0, y: 0, w: W, h: H * rng.range(.5, .64)} : {x: m, y: yA, w: Wi, h: H * rng.range(.44, .56)};
   const horiz = rng.chance(.3), n = rng.pick([4, 6, 8, 10, 14, 20]), mode = rng.pick(['schuif', 'schuif', 'negatief', 'trap']), amp = (horiz ? rect.w : rect.h) * rng.range(.04, .16);
@@ -856,13 +902,12 @@ const RECIPES = [
     const frame = horiz ? {...rect, x: rect.x + d} : {...rect, y: rect.y + d}, a = neg ? ic : fld, b = neg ? fld : ic;
     s += box(r, a) + clip(c, box(r, '#000'), imageLayer(c, r, b, lumOf(b) > lumOf(a), frame));
   }
-  if (full) c.noTop = true; else s += topStrip(c, fg);
   const tTop = rect.y + rect.h + c.gap * 1.2;
-  s += stack(c.titleLines, m, tTop, rng.pick([c.gw(4), c.gw(5), Wi]), yB - tTop, {weight: c.wT, fill: fg}).svg;
-  return s + foot(c, fg);
+  s += c.obj('t1', stack(c.titleLines, m, tTop, rng.pick([c.gw(4), c.gw(5), Wi]), yB - tTop, {weight: c.wT, fill: fg}).svg);
+  return s;
 }},
 
-{id: 'kader', name: 'Kader', img: 1, draw(c) {
+{id: 'kader', name: 'Frame', img: 1, draw(c) {
   const {W, H, m, Wi, rng, pal} = c, g = ground(c, .3), w0 = wt(c.wT), sz = W * rng.range(.034, .075);
   const cap = ink(c.one, w0).a * sz, unit = c.one + ' · ', adv = ink(unit, w0).adv * sz;
   let s = '';
@@ -870,8 +915,9 @@ const RECIPES = [
     const L = len - cap - c.gap * .6, str = unit.repeat(Math.max(1, Math.ceil(L / adv))).replace(/ · $/, '');
     s += `<g transform="translate(${f(x)} ${f(y)}) rotate(${rot})">${fitLine(str, 0, 0, L, {weight: w0, ls: 0, fill: i % 2 && g.acc !== g.fg ? g.acc : g.fg}).svg}</g>`;
   });
+  s = c.obj('t1', s);
   const ins = m + cap + c.gap, iw = W - 2 * ins, ih = H - 2 * ins;
-  const nBody = para(c.st.body, 0, 0, iw * .6, c.s2 * .94, {weight: 450}).n, ah = ih - c.s2 * 1.3 * Math.max(nBody, 3) - c.gap;
+  const ah = ih;
   const kind = rng.pick(['cirkel', 'boog', 'vlak', 'ruit']), r = Math.min(iw, ah) / 2 * rng.range(.8, 1), rv = Math.min(r * 1.3, ah / 2), cx = W / 2, cy = ins + ah / 2;
   const shape = kind === 'cirkel' ? `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}"/>`
     : kind === 'boog' ? `<path d="M${f(cx - r)} ${f(ins + ah)}V${f(ins + r)}A${f(r)} ${f(r)} 0 0 1 ${f(cx + r)} ${f(ins + r)}V${f(ins + ah)}Z"/>`
@@ -880,14 +926,11 @@ const RECIPES = [
   const rect = kind === 'vlak' ? {x: ins, y: ins, w: iw, h: ah} : kind === 'boog' ? {x: cx - r, y: ins, w: 2 * r, h: ah} : kind === 'ruit' ? {x: cx - r, y: cy - rv, w: 2 * r, h: 2 * rv} : {x: cx - r, y: cy - r, w: 2 * r, h: 2 * r};
   const fld = g.acc, ic = on(fld, pal);
   s += c.plate(shape.replace('/>', ` fill="${fld}"/>`), fld) + clip(c, shape, imageLayer(c, rect, ic, lumOf(ic) > lumOf(fld)));
-  const y0 = ins + ah + c.gap + c.s2;
-  s += para(c.st.body, ins, y0, iw * .6, c.s2 * .94, {weight: 450, fill: g.fg}).svg + para(c.st.meta + '\nNr. ' + pad(c.seed), ins + iw * .68, y0, iw * .32, c.s2 * .94, {weight: 700, fill: g.fg}).svg;
-  c.noTop = true;
   return g.s + s;
 }},
 
-{id: 'veld', name: 'Letterveld', draw(c) {
-  const {m, Wi, rng} = c, g = ground(c, .3), yA = m + c.s1 * 3.4, yB = c.footTop - c.gap;
+{id: 'veld', name: 'Letter field', draw(c) {
+  const {m, Wi, rng} = c, g = ground(c, .3), yA = c.top, yB = c.yB;
   const chars = [...c.one.replace(/\s+/g, '')], cols = rng.pick([7, 9, 11, 13, 16, 20]), cell = Wi / cols, rows = Math.max(3, Math.round((yB - yA) / (cell * 1.12))), ch = (yB - yA) / rows;
   const mode = rng.pick(['radiaal', 'golf', 'diagonaal', 'ruis']), how = FONT.fixed ? 'maat' : rng.pick(['gewicht', 'gewicht', 'maat', 'beide']);
   const fx = rng.range(.1, .9) * cols, fy = rng.range(.1, .9) * rows, k1 = rng.range(.25, .8), k2 = rng.range(.2, .7), flow = rng.chance(.7);
@@ -899,26 +942,26 @@ const RECIPES = [
     if (v > .9 && g.acc !== g.fg) b += el; else a += el;
   }
   const s = `<g text-anchor="middle" fill="${g.fg}">${a}</g>` + (b ? c.plate(`<g text-anchor="middle" fill="${g.acc}">${b}</g>`, g.acc) : '');
-  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+  return g.s + c.obj('t1', s);
 }},
 
-{id: 'letter1', name: 'Eén letter', draw(c) {
-  const {W, H, m, rng} = c, g = ground(c, .4), yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+{id: 'letter1', name: 'One letter', draw(c) {
+  const {W, H, m, rng} = c, g = ground(c, .4), yA = c.top, yB = c.yB;
   const pool = [...c.twords[0]].filter(k => /\p{L}|\p{N}/u.test(k)), ch = (rng.chance(.6) ? pool[0] : rng.pick(pool.length ? pool : ['A'])) || 'A';
   const w0 = rng.pick([FONT.max, FONT.max, FONT.min]), outline = g.acc === g.fg || rng.chance(.3);
   const g0 = fitLine(ch, 0, 0, W * rng.range(.8, 1.35), {weight: w0, ls: 0, maxH: yB * rng.range(.7, 1.2)});
   const x = (W - g0.w) / 2 + rng.range(-.22, .22) * W, y = (yB - g0.h) / 2 + rng.range(-.12, .12) * H, rot = rng.pick([0, 0, 0, 90, -90, 180, -14, 14]);
   const t = fitLine(ch, x, y, 0, {size: g0.size, weight: w0, ls: 0, ...(outline ? {stroke: g.acc, sw: W * rng.range(.004, .014)} : {fill: g.acc})});
-  let s = clip(c, `<rect width="${W}" height="${f(yB)}"/>`, c.plate(`<g transform="rotate(${rot} ${f(x + g0.w / 2)} ${f(y + g0.h / 2)})">${t.svg}</g>`, g.acc));
-  /* de volledige titel klein op een etiket, precies op het grid */
+  let s = clip(c, `<rect width="${W}" height="${f(c.bot)}"/>`, c.obj('t1b', c.plate(`<g transform="rotate(${rot} ${f(x + g0.w / 2)} ${f(y + g0.h / 2)})">${t.svg}</g>`, g.acc)));
+  /* the full title small on a label, exactly on the grid */
   const pd = c.gap * .5, st = stack(c.titleLines, 0, 0, c.gw(2) - c.gut, (yB - yA) * .22, {weight: c.wT, fill: g.fg});
   const tx = c.gx(rng.pick([0, 2, 4])), ty = rng.pick([yA + c.gap * .4, yB - st.h - 2 * pd, (yA + yB - st.h) / 2 - pd]);
-  s += `<rect x="${f(tx)}" y="${f(ty)}" width="${f(st.w + 2 * pd)}" height="${f(st.h + 2 * pd)}" fill="${g.bg}"/><g transform="translate(${f(tx + pd)} ${f(ty + pd)})">${st.svg}</g>`;
-  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+  s += c.obj('t1', `<rect x="${f(tx)}" y="${f(ty)}" width="${f(st.w + 2 * pd)}" height="${f(st.h + 2 * pd)}" fill="${g.bg}"/><g transform="translate(${f(tx + pd)} ${f(ty + pd)})">${st.svg}</g>`);
+  return g.s + s;
 }},
 
 {id: 'collage', name: 'Collage', img: 2, draw(c) {
-  const {W, H, m, Wi, rng, pal} = c, fg = pal.ink, yA = m + c.s1 * 3, yB = c.footTop - c.gap;
+  const {W, H, m, Wi, rng, pal} = c, fg = pal.ink, yA = c.top, yB = c.yB;
   const cols = uniq([pal.a, pal.b, pal.ink]).filter(k => contrast(k, pal.paper) > 1.15); let s = '';
   const scrap = () => {
     const col = rng.pick(cols), w = W * rng.range(.18, .55), h = W * rng.range(.12, .5), k = rng.pick(['r', 'r', 'c', 'h']);
@@ -926,25 +969,25 @@ const RECIPES = [
     return c.plate(`<g transform="translate(${f(rng.range(-.05, .8) * W)} ${f(rng.range(0, .7) * yB)}) rotate(${f(rng.range(-28, 28))})" fill="${col}">${sh}</g>`, col);
   };
   for (let i = rng.int(1, 3); i--;) s += scrap();
-  /* het beeld als uitgeknipt stuk */
+  /* the image as a cut-out piece */
   const fld = fieldFor(pal), ic = on(fld, pal), iw = W * rng.range(.45, .72), ih = iw * rng.range(1, 1.35), ix = rng.range(m, W - m - iw), iy = rng.range(yA, Math.max(yA, yB - ih - H * .12)), r = iw / 2, rect = {x: ix, y: iy, w: iw, h: ih};
   const kind = rng.pick(['r', 'r', 'c', 'boog']), shape = kind === 'r' ? box(rect, '#000') : kind === 'c' ? `<ellipse cx="${f(ix + r)}" cy="${f(iy + ih / 2)}" rx="${f(r)}" ry="${f(ih / 2)}"/>` : `<path d="M${f(ix)} ${f(iy + ih)}V${f(iy + r)}A${f(r)} ${f(r)} 0 0 1 ${f(ix + iw)} ${f(iy + r)}V${f(iy + ih)}Z"/>`;
   s += `<g transform="rotate(${f(rng.range(-9, 9))} ${f(ix + r)} ${f(iy + ih / 2)})">` + clip(c, shape, box(rect, fld) + imageLayer(c, rect, ic, lumOf(ic) > lumOf(fld))) + '</g>';
   if (rng.chance(.6)) s += scrap();
-  /* de titel als losse etiketten */
+  /* the title as separate labels */
   let ly = rng.range(.45, .62) * yB; const lx0 = rng.pick([m, m, c.gx(1)]), lcols = uniq([pal.ink, pal.paper, pal.a]);
-  for (const line of c.titleLines) {
+  for (const [li, line] of c.titleLines.entries()) {
     const col = rng.pick(lcols), tw = Math.min(Wi * rng.range(.5, .95), W - m - lx0), pd = W * .016;
     const t = fitLine(line, pd, pd, tw, {weight: c.wT, fill: on(col, pal), maxH: (yB - ly) / c.titleLines.length * .55});
-    s += `<g transform="translate(${f(lx0 + rng.range(-.02, .05) * W)} ${f(ly)}) rotate(${f(rng.range(-5, 5))})"><rect width="${f(t.w + 2 * pd)}" height="${f(t.h + t.desc + 2 * pd)}" fill="${col}"/>${t.svg}</g>`;
+    s += c.obj('t1.' + li, `<g transform="translate(${f(lx0 + rng.range(-.02, .05) * W)} ${f(ly)}) rotate(${f(rng.range(-5, 5))})"><rect width="${f(t.w + 2 * pd)}" height="${f(t.h + t.desc + 2 * pd)}" fill="${col}"/>${t.svg}</g>`);
     ly += t.h + t.desc + 2 * pd + W * .012;
   }
-  return clip(c, `<rect width="${W}" height="${f(yB)}"/>`, s) + topStrip(c, fg) + foot(c, fg);
+  return clip(c, `<rect width="${W}" height="${f(c.bot)}"/>`, s);
 }},
 
-{id: 'vakken', name: 'Vakken', img: 1, draw(c) {
-  const {W, m, Wi, rng, pal} = c, fg = pal.ink, bleed = rng.chance(.4), yB = c.footTop - c.gap, y0 = m + c.s1 * 3;
-  const area = bleed ? {x: 0, y: 0, w: W, h: yB} : {x: m, y: y0, w: Wi, h: yB - y0}, leaves = [];
+{id: 'vakken', name: 'Panels', img: 1, draw(c) {
+  const {W, m, Wi, rng, pal} = c, fg = pal.ink, bleed = rng.chance(.4), yB = c.yB, y0 = c.top;
+  const area = bleed ? {x: 0, y: 0, w: W, h: c.bot} : {x: m, y: y0, w: Wi, h: yB - y0}, leaves = [];
   const split = (r, d) => {
     if (d === 0 || (d < 3 && rng.chance(.18)) || Math.min(r.w, r.h) < W * .12) return leaves.push(r);
     const k = rng.pick([1 / 3, .5, 2 / 3, .382, .618]);
@@ -961,18 +1004,17 @@ const RECIPES = [
     else {
       const col = rng.pick(fills), pd = Math.min(r.w, r.h) * .1;
       if (col !== pal.paper) s += col === pal.ink ? box(r, col) : c.plate(box(r, col), col);
-      if (r === titleLeaf) s += stack(c.titleLines, r.x + pd, r.y + pd, r.w - 2 * pd, r.h - 2 * pd, {weight: c.wT, fill: on(col, pal)}).svg;
+      if (r === titleLeaf) s += c.obj('t1', stack(c.titleLines, r.x + pd, r.y + pd, r.w - 2 * pd, r.h - 2 * pd, {weight: c.wT, fill: on(col, pal)}).svg);
       else if (rng.chance(.22)) s += fitLine(rng.pick(c.twords), r.x + pd, r.y + pd, r.w - 2 * pd, {weight: c.wT, fill: on(col, pal), maxH: r.h - 2 * pd}).svg;
       else if (rng.chance(.2)) s += `<circle cx="${f(r.x + r.w / 2)}" cy="${f(r.y + r.h / 2)}" r="${f(Math.min(r.w, r.h) * .32)}" fill="${on(col, pal)}"/>`;
     }
     if (lw) lines += box(r, 'none', ` stroke="${fg}" stroke-width="${f(lw)}"`);
   }
-  if (bleed) c.noTop = true; else s += topStrip(c, fg);
-  return s + lines + foot(c, fg);
+  return s + lines;
 }},
 
-{id: 'spiegel', name: 'Spiegel', draw(c) {
-  const {W, m, Wi, rng} = c, g = ground(c, .35), yA = m + c.s1 * 3, yB = c.footTop - c.gap, mode = rng.pick(['onder', 'onder', 'vier', 'zij']), gp = c.gap * .25;
+{id: 'spiegel', name: 'Mirror', draw(c) {
+  const {W, m, Wi, rng} = c, g = ground(c, .35), yA = c.top, yB = c.yB, mode = rng.pick(['onder', 'onder', 'vier', 'zij']), gp = c.gap * .25;
   const alt = g.acc === g.fg || rng.chance(.35) ? {stroke: g.acc, sw: W * .003} : {fill: g.acc};
   const mk = (w, h, o, lm) => stack(c.titleLines, 0, 0, w, h, {weight: c.wB, lineMax: lm, ...o});
   let s = '';
@@ -987,13 +1029,13 @@ const RECIPES = [
     const a = mk(Wi / 2 - gp, (yB - yA) * .9, {fill: g.fg}, .9), b = mk(Wi / 2 - gp, (yB - yA) * .9, alt, .9), ty = yA + (yB - yA - a.h) / 2, cx = W / 2;
     s = `<g transform="translate(${f(cx - gp - a.w)} ${f(ty)})">${a.svg}</g>` + c.plate(`<g transform="translate(${f(cx + gp + b.w)} ${f(ty)}) scale(-1 1)">${b.svg}</g>`, g.acc);
   }
-  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+  return g.s + c.obj('t1', s);
 }},
 
 {id: 'matrix', name: 'Matrix', draw(c) {
-  const {m, Wi, rng} = c, g = ground(c, .35), yA = m + c.s1 * 3.2, yB = c.footTop - c.gap;
+  const {m, Wi, rng} = c, g = ground(c, .35), yA = c.top, yB = c.yB;
   const cols = rng.pick([24, 30, 38, 48, 60]), w0 = wt(900);
-  /* de titel op een klein canvas zetten en per pixel een vorm tekenen */
+  /* set the title on a small canvas and draw one shape per pixel */
   const unitRows = c.titleLines.reduce((n, t) => { const k = ink(t, w0), size = Math.min(cols / (k.l + k.r), cols * .7 / k.a); return n + k.a * size + Math.max(k.d, 0) * size * .5 + cols * .05; }, 0);
   const reps = rng.chance(.55) ? clamp(Math.floor((yB - yA) / (Wi / cols) / unitRows), 1, 5) : 1;
   let rowsN = 0;
@@ -1014,17 +1056,601 @@ const RECIPES = [
     if (g.acc !== g.fg && r >= accRow && r < accRow + band) b += p; else a += p;
   }
   const s = (tr ? `<path d="${tr}" fill="${g.fg}" opacity=".5"/>` : '') + `<path d="${a}" fill="${g.fg}"/>` + (b ? c.plate(`<path d="${b}" fill="${g.acc}"/>`, g.acc) : '');
-  return g.s + s + topStrip(c, g.fg) + foot(c, g.fg);
+  return g.s + c.obj('t1', s);
+}},
+
+/* ---- recipes distilled from poster competitions, the canon and current practice ---- */
+
+{id: 'arcs', name: 'Arc progression', draw(c) {
+  const {W, m, rng} = c, g = ground(c, .3), B = c.bot;
+  const cx = W * rng.pick([.18, .3, .7, .82]), cy = B * rng.pick([.3, .42, .6, .72]), n = rng.int(5, 8), grow = rng.range(1.5, 2);
+  const turn = rng.pick([18, 22.5, 30, 45]) * (rng.chance(.5) ? 1 : -1), sweep = rng.pick([90, 135, 180, 270]), large = sweep > 180 ? 1 : 0;
+  let r = W * rng.range(.03, .05), w = W * rng.range(.012, .02), a0 = rng.int(0, 7) * 45, p = '';
+  const P = (rr, a) => f(cx + Math.cos(a) * rr) + ' ' + f(cy + Math.sin(a) * rr);
+  for (let i = 0; i < n; i++) {
+    const A = a0 * Math.PI / 180, Z = (a0 + sweep) * Math.PI / 180, r1 = r + w;
+    p += `M${P(r, A)}A${f(r)} ${f(r)} 0 ${large} 1 ${P(r, Z)}L${P(r1, Z)}A${f(r1)} ${f(r1)} 0 ${large} 0 ${P(r1, A)}Z`;
+    r = r1 + w * .5; w *= grow; a0 += turn;
+  }
+  /* the title sits in the quiet corner, away from the centre of the arcs */
+  const st = stack(c.titleLines, 0, 0, c.gw(2.6), B * .2, {weight: c.wT, fill: g.fg});
+  return g.s + clip(c, rectB(c), c.plate(`<path d="${p}" fill="${g.acc}"/>`, g.acc))
+    + c.obj('t1', `<g transform="translate(${f(cx > W / 2 ? m : W - m - st.w)} ${f(cy > B / 2 ? c.top : c.yB - st.h)})">${st.svg}</g>`);
+}},
+
+{id: 'contour', name: 'Contour echo', draw(c) {
+  const {W, Wi, rng} = c, g = ground(c, .3), B = c.bot, o = {weight: 900, lineMax: .7};
+  const st0 = stack(c.titleLines, 0, 0, Wi * rng.range(.45, .75), (c.yB - c.top) * .45, o);
+  const x = (W - st0.w) / 2 + rng.range(-.1, .1) * W, y = (B - st0.h) / 2 + rng.range(-.15, .15) * B, n = rng.int(8, 16), stepW = W * rng.range(.024, .05);
+  let s = '';
+  for (let i = n; i >= 1; i--) s += stack(c.titleLines, x, y, st0.w, 1e9, {...o, stroke: i % 2 ? g.bg : g.acc, sw: i * stepW * 2}).svg;
+  s += stack(c.titleLines, x, y, st0.w, 1e9, {...o, fill: g.fg}).svg;
+  return g.s + clip(c, rectB(c), c.obj('t1', s));
+}},
+
+{id: 'counter', name: 'Counterchange', draw(c) {
+  const {W, m, Wi, rng, pal} = c, B = c.bot, a = pal.paper, b = fieldFor(pal), kind = rng.pick(['v', 'd', 'd', 'curve', 'h', 'circle']);
+  let shape;
+  if (kind === 'v') shape = `<rect x="${f(W * rng.pick([.38, .5, .62]))}" width="${W}" height="${f(B)}"/>`;
+  else if (kind === 'h') shape = `<rect y="${f(B * rng.pick([.38, .5, .62]))}" width="${W}" height="${f(B)}"/>`;
+  else if (kind === 'd') shape = `<path d="M${f(W * rng.range(.15, .85))} 0H${W}V${f(B)}H${f(W * rng.range(.15, .85))}Z"/>`;
+  else if (kind === 'curve') { const x = W * rng.range(.35, .65), k = W * rng.range(.2, .45) * (rng.chance(.5) ? 1 : -1); shape = `<path d="M${f(x)} 0C${f(x + k)} ${f(B * .33)} ${f(x - k)} ${f(B * .66)} ${f(x)} ${f(B)}H${W}V0Z"/>`; }
+  else shape = `<circle cx="${f(W * rng.range(.3, .7))}" cy="${f(B * rng.range(.3, .7))}" r="${f(W * rng.range(.3, .48))}"/>`;
+  const maxH = (c.yB - c.top) * rng.range(.6, .95), mk = fill => stack(c.titleLines, m, 0, Wi, maxH, {weight: c.wB, fill, lineMax: .8});
+  const A = mk(b), Z = mk(a), tr = `translate(0 ${f(c.top + (c.yB - c.top - A.h) * rng.range(.2, .8))})`;
+  /* the same text twice under one object id: one copy per colour field, so both move together */
+  return c.obj('t1', `<g transform="${tr}">${A.svg}</g>`) + clip(c, shape, `<rect width="${W}" height="${f(B)}" fill="${b}"/>` + c.obj('t1', `<g transform="${tr}">${Z.svg}</g>`));
+}},
+
+{id: 'steps', name: 'Stepped rules', draw(c) {
+  const {W, m, rng, pal} = c, g = ground(c, .3), words = c.twords, n = clamp(words.length * rng.int(1, 3), 4, 9);
+  const sh = (c.yB - c.top) / n, right = rng.chance(.5), run = W * rng.range(.45, .75), hi = rng.int(0, n - 1), w0 = wt(c.wT), capEm = ink('H', w0).a;
+  let s = '';
+  for (let i = 0; i < n; i++) {
+    const y = c.top + i * sh, bh = sh * rng.range(.5, .86), off = run * i / n, col = i === hi ? g.acc : g.fg, x0 = right ? off : 0, x1 = right ? W : W - off;
+    const word = words[i % words.length], size = bh * .52 / capEm, tw = (ink(word, w0).adv + .22 * [...word].length) * size;
+    s += `<rect x="${f(x0)}" y="${f(y)}" width="${f(x1 - x0)}" height="${f(bh)}" fill="${col}"/>`
+      + fitLine(word, right ? x0 + bh * .3 : Math.max(m, x1 - bh * .3 - tw), y + (bh - ink(word, w0).a * size) / 2, 0, {size, weight: w0, ls: .22, fill: on(col, pal)}).svg;
+  }
+  return g.s + c.obj('t1', s);
+}},
+
+{id: 'moire', name: 'Moiré', draw(c) {
+  const {W, m, rng, pal} = c, g = ground(c, .25), B = c.bot, rings = rng.chance(.5), p = W * rng.range(.011, .02), a0 = rng.range(0, 180), da = rng.range(3, 9);
+  const cols = [g.acc, g.fg === g.acc ? mix(g.bg, g.fg, .55) : g.fg], light = lumOf(g.bg) > .4;
+  let s = '';
+  for (let k = 0; k < 2; k++) {
+    let layer = '';
+    if (rings) {
+      const cx = W * (.5 + (k ? 1 : -1) * rng.range(.03, .09)), cy = B * (.45 + (k ? 1 : -1) * rng.range(0, .05));
+      for (let r = p; r < W * 1.2; r += p * 2) layer += `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}"/>`;
+      layer = `<g fill="none" stroke="${cols[k]}" stroke-width="${f(p * .9)}">${layer}</g>`;
+    } else {
+      const id = c.id();
+      c.defs.push(`<pattern id="${id}" width="${f(p * 2)}" height="${f(p * 2)}" patternUnits="userSpaceOnUse" patternTransform="rotate(${f(a0 + k * da)})"><rect width="${f(p * 2)}" height="${f(p)}" fill="${cols[k]}"/></pattern>`);
+      layer = `<rect width="${W}" height="${f(B)}" fill="url(#${id})"/>`;
+    }
+    s += `<g style="mix-blend-mode:${light ? 'multiply' : 'screen'}">` + clip(c, `<path d="${blob(W * rng.range(.3, .7), B * rng.range(.3, .7), W * rng.range(.45, .7), rng, 9, .25)}"/>`, layer) + '</g>';
+  }
+  /* the title on a plain bar, so it stays readable on the interference */
+  const st = stack(c.titleLines, 0, 0, c.gw(3), B * .16, {weight: c.wT, fill: g.bg}), pd = c.gap * .7, bx = rng.pick([m, W - m - st.w - 2 * pd]), by = rng.pick([c.top, c.yB - st.h - 2 * pd]);
+  return g.s + clip(c, rectB(c), s) + c.obj('t1', `<rect x="${f(bx)}" y="${f(by)}" width="${f(st.w + 2 * pd)}" height="${f(st.h + 2 * pd)}" fill="${g.fg}"/><g transform="translate(${f(bx + pd)} ${f(by + pd)})">${st.svg}</g>`);
+}},
+
+{id: 'icons', name: 'Icon pixels', img: 2, draw(c) {
+  const {H, m, Wi, rng, pal} = c, fg = pal.ink, light = lumOf(pal.paper) > .4;
+  const acc = pal.a !== fg && contrast(pal.a, pal.paper) > 1.3 ? pal.a : pal.b !== fg && contrast(pal.b, pal.paper) > 1.3 ? pal.b : null;
+  const n = rng.pick([18, 24, 30, 38]), cell = Wi / n, h = cell / 2, titleH = H * rng.range(.09, .14), rows = Math.max(3, Math.floor((c.yB - c.gap - titleH - c.top) / cell)), rect = {x: m, y: c.top, w: Wi, h: rows * cell};
+  const S = IMG.has ? lumSampler(rect, false) : procSampler(rect, rngFor(c.seed, 'vorm'), false);
+  /* five signs, from heavy to light: the image from afar, a system up close */
+  const icon = (k, x, y, flip) => k === 0 ? `M${f(x - h)} ${f(y - h)}h${f(cell)}v${f(cell)}h${f(-cell)}z` : k === 1 ? circ(x, y, h * .96)
+    : k === 2 ? (flip ? `M${f(x + h)} ${f(y + h)}h${f(-cell)}L${f(x + h)} ${f(y - h)}z` : `M${f(x - h)} ${f(y - h)}h${f(cell)}L${f(x - h)} ${f(y + h)}z`) : k === 3 ? circ(x, y, h * .9) + circ(x, y, h * .48) : circ(x, y, h * .3);
+  let a = '', b = '';
+  for (let r = 0; r < rows; r++) for (let q = 0; q < n; q++) {
+    const x = m + (q + .5) * cell, y = c.top + (r + .5) * cell, lv = Math.min(5, Math.floor(S(x, y) * 6));
+    if (lv < 5) a += icon(lv, x, y, (q + r) % 2);
+    if (acc) { const lv2 = Math.min(5, Math.floor(S(x + cell * 1.5, y + cell) * 6)); if (lv2 < 4) b += icon((lv2 + 2) % 5, x, y, (q + r + 1) % 2); }
+  }
+  c.used = 'raster';
+  let s = (b ? c.plate(`<path d="${b}" fill="${acc}" fill-rule="evenodd"/>`, acc) : '') + `<path d="${a}" fill="${fg}" fill-rule="evenodd"${light ? ' style="mix-blend-mode:multiply"' : ''}/>`;
+  const st = stack(c.tlines, m, 0, Wi, titleH, {weight: c.wT, fill: fg});
+  return s + c.obj('t1', `<g transform="translate(0 ${f(c.yB - st.h)})">${st.svg}</g>`);
+}},
+
+{id: 'emblem', name: 'Emblem', draw(c) {
+  const {W, Wi, rng} = c, g = ground(c, .35), zone = c.yB - c.top, cx = W / 2, kind = rng.pick(['disc', 'disc', 'ring', 'half', 'square', 'rays']);
+  const r = Math.min(Wi * rng.range(.3, .46), zone * .3), cy = c.top + r + zone * rng.range(.03, .1);
+  let e;
+  if (kind === 'disc') e = `<circle cx="${cx}" cy="${f(cy)}" r="${f(r)}"/>`;
+  else if (kind === 'ring') e = `<circle cx="${cx}" cy="${f(cy)}" r="${f(r * .82)}" fill="none" stroke="${g.acc}" stroke-width="${f(r * rng.range(.18, .36))}"/>`;
+  else if (kind === 'half') e = `<path d="M${f(cx - r)} ${f(cy)}A${f(r)} ${f(r)} 0 0 1 ${f(cx + r)} ${f(cy)}Z" transform="rotate(${rng.pick([0, 180, 90, -90])} ${cx} ${f(cy)})"/>`;
+  else if (kind === 'square') e = `<rect x="${f(cx - r * .74)}" y="${f(cy - r * .74)}" width="${f(r * 1.48)}" height="${f(r * 1.48)}" transform="rotate(${rng.pick([0, 45])} ${cx} ${f(cy)})"/>`;
+  else { const n = rng.pick([12, 16, 24, 32]); e = `<path d="${star(cx, cy, r, n, rng.range(.45, .7))}"/>`; }
+  /* one large mass, one small mark and one line of type on a single axis */
+  const my = cy + r + zone * .07, mark = rng.chance(.5) ? `<rect x="${f(cx - r * .45)}" y="${f(my)}" width="${f(r * .9)}" height="${f(r * .08)}" fill="${g.fg}"/>` : `<circle cx="${cx}" cy="${f(my + r * .1)}" r="${f(r * .1)}" fill="${g.fg}"/>`;
+  const L = fitLine(c.one, 0, 0, Wi * rng.range(.4, .8), {weight: c.wT, fill: g.fg, maxH: zone * .085});
+  return g.s + c.plate(`<g fill="${g.acc}">${e}</g>`, g.acc) + mark + c.obj('t1', `<g transform="translate(${f(cx - L.w / 2)} ${f(Math.min(c.yB - L.h - L.desc, my + r * .5))})">${L.svg}</g>`);
+}},
+
+{id: 'lines', name: 'Line field', draw(c) {
+  const {W, m, Wi, rng} = c, g = ground(c, .3), B = c.bot, p = W * rng.range(.011, .02), ang = rng.pick([0, 0, 90, 45, -45, 20]), D = Math.hypot(W, B), o = {weight: 900, lineMax: .8};
+  const line = t => { let d = ''; for (let y = -D / 2; y < D / 2; y += p) d += `M${f(-D)} ${f(y)}h${f(2 * D)}v${f(t)}h${f(-2 * D)}z`; return d; };
+  const rot = `translate(${W / 2} ${f(B / 2)}) rotate(${ang})`, st0 = stack(c.titleLines, m, 0, Wi, (c.yB - c.top) * .9, o);
+  const st = stack(c.titleLines, m, c.top + (c.yB - c.top - st0.h) * rng.range(.2, .8), st0.w, 1e9, o);
+  /* the sheet is nothing but lines: the letters appear where the lines thicken */
+  return g.s + clip(c, rectB(c), `<path d="${line(p * .16)}" fill="${g.fg}" transform="${rot}"/>`)
+    + c.obj('t1', clip(c, st.svg, `<path d="${line(p * rng.range(.62, .86))}" fill="${g.acc}" transform="${rot}"/>`));
+}},
+
+{id: 'liquid', name: 'Liquid', draw(c) {
+  const {W, m, Wi, rng} = c, g = ground(c, .35), B = c.bot;
+  const fid = filt(c, `<feTurbulence type="fractalNoise" baseFrequency="${rng.range(.002, .005).toFixed(4)} ${rng.range(.003, .008).toFixed(4)}" numOctaves="1" seed="${c.seed % 911}" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="${f(W * rng.range(.035, .09))}" xChannelSelector="R" yChannelSelector="G"/>`);
+  const st = stack(c.titleLines, m + Wi * .05, 0, Wi * .9, (c.yB - c.top) * .82, {weight: c.wB, fill: g.fg, lineMax: .8});
+  let bars = '';
+  if (g.acc !== g.fg && rng.chance(.65)) { const n = rng.int(4, 12), bh = B / n; for (let i = 0; i < n; i += 2) bars += `<rect x="${-W}" y="${f(i * bh)}" width="${3 * W}" height="${f(bh * rng.range(.3, .9))}"/>`; }
+  return g.s + clip(c, rectB(c), (bars ? `<g fill="${g.acc}" filter="url(#${fid})">${bars}</g>` : '')
+    + c.obj('t1', `<g filter="url(#${fid})"><g transform="translate(0 ${f(c.top + (c.yB - c.top - st.h) / 2)})">${st.svg}</g></g>`));
+}},
+
+{id: 'melt', name: 'Melt', draw(c) {
+  const {W, m, Wi, rng} = c, g = ground(c, .35), zone = c.yB - c.top;
+  const mk = wd => { let y = 0, svg = ''; for (const t of c.titleLines) { const L = fitLine(t, 0, y, wd, {weight: 900, ls: -.06, fill: g.acc, maxH: wd * .5}); svg += L.svg; y += L.h * .97; } return {svg, h: y, w: wd}; };
+  let b = mk(Wi * rng.range(.8, 1)); if (b.h > zone * .78) b = mk(b.w * zone * .78 / b.h);
+  /* blur, then harden the edge: the letters run into each other and drip */
+  let drips = '';
+  for (let i = rng.int(4, 10); i--;) { const x = b.w * rng.range(.04, .96), r = W * rng.range(.008, .02), len = b.h * rng.range(.1, .45); drips += `<rect x="${f(x - r)}" y="${f(b.h * .8)}" width="${f(2 * r)}" height="${f(len)}" rx="${f(r)}" fill="${g.acc}"/><circle cx="${f(x)}" cy="${f(b.h * .8 + len)}" r="${f(r * rng.range(1, 1.6))}" fill="${g.acc}"/>`; }
+  const fid = filt(c, `<feGaussianBlur stdDeviation="${f(W * rng.range(.0045, .009))}"/><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -11"/>`);
+  return g.s + c.obj('t1', c.plate(`<g filter="url(#${fid})" transform="translate(${f(m + (Wi - b.w) / 2)} ${f(c.top + (zone - b.h * 1.3) * rng.range(.1, .6))})">${b.svg}${drips}</g>`, g.acc));
+}},
+
+{id: 'aura', name: 'Aura', draw(c) {
+  const {W, m, rng, pal} = c, B = c.bot, bg = rng.chance(.5) ? pal.paper : pal.ink, fg = bg === pal.paper ? pal.ink : pal.paper;
+  c.bg = bg; c.fg = fg;
+  let cols = uniq([pal.a, pal.b, mix(pal.a, pal.b, .5), mix(pal.a, fg, .35)]).filter(k => contrast(k, bg) > 1.2); if (!cols.length) cols = [mix(bg, fg, .5)];
+  let discs = '';
+  for (let i = 0, n = rng.int(1, 3); i < n; i++) discs += `<circle cx="${f(W * rng.range(.15, .85))}" cy="${f(B * rng.range(.2, .8))}" r="${f(W * rng.range(.22, .46))}" fill="${cols[i % cols.length]}"/>`;
+  const fid = filt(c, `<feGaussianBlur stdDeviation="${f(W * rng.range(.05, .1))}"/>`);
+  /* soft against sharp: the colour carries the mood, the type only labels it */
+  const L = fitLine(c.one, 0, 0, c.gw(rng.pick([1.6, 2.2, 3])), {weight: c.wT, fill: fg}), pos = rng.pick(['c', 'tl', 'bl', 'br']);
+  const x = pos === 'c' ? (W - L.w) / 2 : pos === 'br' ? W - m - L.w : m, y = pos === 'c' ? (B - L.h) / 2 : pos === 'tl' ? c.top : c.yB - L.h - L.desc;
+  return (bg === pal.paper ? '' : `<rect width="${W}" height="${f(B)}" fill="${bg}"/>`) + clip(c, rectB(c), `<g filter="url(#${fid})">${discs}</g>`) + c.obj('t1', `<g transform="translate(${f(x)} ${f(y)})">${L.svg}</g>`);
+}},
+
+{id: 'thread', name: 'Thread', draw(c) {
+  const {W, rng, pal} = c, g = ground(c, .3), B = c.bot, pts = [[-W * .1, B * rng.range(.1, .9)]];
+  for (let i = rng.int(5, 9); i--;) pts.push([W * rng.range(.08, .92), B * rng.range(.06, .94)]);
+  pts.push([W * 1.1, B * rng.range(.1, .9)]);
+  const sp = spline(pts), ribbon = rng.chance(.45), size = W * (ribbon ? rng.range(.03, .05) : rng.range(.034, .07)), w0 = wt(c.wT), unit = c.one + ' · ', id = c.id();
+  c.defs.push(`<path id="${id}" d="${sp.d}"/>`);
+  /* all copy as one line: a single gesture decides the reading order */
+  let s = ribbon ? c.plate(`<path d="${sp.d}" fill="none" stroke="${g.acc}" stroke-width="${f(size * 1.7)}" stroke-linecap="round" stroke-linejoin="round"/>`, g.acc) : '';
+  s += `<text font-size="${f(size)}" font-weight="${w0}" fill="${ribbon ? on(g.acc, pal) : g.fg}"${ribbon ? ` dy="${f(size * .36)}"` : ''}><textPath href="#${id}">${esc(unit.repeat(Math.max(1, Math.ceil(sp.len / (ink(unit, w0).adv * size)))))}</textPath></text>`;
+  return g.s + clip(c, rectB(c), c.obj('t1', s));
+}},
+
+{id: 'trail', name: 'Echo trail', draw(c) {
+  const {W, Wi, rng} = c, g = ground(c, .35), B = c.bot, n = rng.int(8, 36), outline = rng.chance(.45), o = {weight: c.wB, lineMax: .7};
+  const base = stack(c.titleLines, 0, 0, Wi * rng.range(.45, .8), (c.yB - c.top) * .4, {...o, fill: g.fg}), cx = base.w / 2, cy = base.h / 2;
+  const ghost = stack(c.titleLines, 0, 0, base.w, 1e9, outline ? {...o, stroke: g.acc, sw: W * .0022} : {...o, fill: 'currentColor'}).svg;
+  const x0 = (W - base.w) / 2 + rng.range(-.15, .15) * W, y0 = c.top + (c.yB - c.top - base.h) * rng.range(.15, .85);
+  const dx = W * rng.range(-.02, .02), dy = B * rng.range(-.02, .02), rot = rng.chance(.7) ? rng.range(-9, 9) : 0, sc = rng.range(.93, 1.05);
+  /* frozen motion: the copies sweep away from one sharp frame */
+  let s = '';
+  for (let i = n; i >= 1; i--) s += `<g style="color:${mix(g.acc, g.bg, i / n * .85)}" transform="translate(${f(x0 + dx * i + cx)} ${f(y0 + dy * i + cy)}) rotate(${f(rot * i)}) scale(${(sc ** i).toFixed(3)}) translate(${f(-cx)} ${f(-cy)})">${ghost}</g>`;
+  return g.s + clip(c, rectB(c), c.obj('t1', s + `<g transform="translate(${f(x0)} ${f(y0)})">${base.svg}</g>`));
+}},
+
+{id: 'cross', name: 'Crossword', draw(c) {
+  const {m, Wi, rng} = c, g = ground(c, .25), zone = c.yB - c.top;
+  const clean = w => [...String(w).toUpperCase()].filter(ch => /\p{L}|\p{N}/u.test(ch)).join('');
+  let words = uniq(c.twords.concat(String(c.st.t2 || '').split(/\s+/), String(c.st.t3 || '').split(/\s+/)).map(clean).filter(w => w.length > 1)).slice(0, 9);
+  if (!words.length) words = ['POSTER'];
+  const cells = new Map(), key = (x, y) => x + ',' + y, placed = [], at = (p, i) => p.hz ? [p.x + i, p.y] : [p.x, p.y + i];
+  const fits = (w, x, y, hz) => {
+    let cross = 0;
+    if (cells.has(key(hz ? x - 1 : x, hz ? y : y - 1)) || cells.has(key(hz ? x + w.length : x, hz ? y : y + w.length))) return -1;
+    for (let i = 0; i < w.length; i++) {
+      const px = hz ? x + i : x, py = hz ? y : y + i, ex = cells.get(key(px, py));
+      if (ex) { if (ex !== w[i]) return -1; cross++; }
+      else if (cells.has(key(hz ? px : px - 1, hz ? py - 1 : py)) || cells.has(key(hz ? px : px + 1, hz ? py + 1 : py))) return -1;
+    }
+    return cross;
+  };
+  const put = (w, x, y, hz) => { [...w].forEach((ch, i) => cells.set(key(hz ? x + i : x, hz ? y : y + i), ch)); placed.push({w, x, y, hz}); };
+  put(words[0], 0, 0, true);
+  for (const w of words.slice(1)) {
+    const opts = [];
+    for (const p of placed) for (let i = 0; i < p.w.length; i++) for (let j = 0; j < w.length; j++) if (p.w[i] === w[j]) {
+      const [ax, ay] = at(p, i), x = p.hz ? ax : ax - j, y = p.hz ? ay - j : ay;
+      if (fits(w, x, y, !p.hz) > 0) opts.push([x, y, !p.hz]);
+    }
+    if (opts.length) put(w, ...rng.pick(opts));
+  }
+  const xs = [...cells.keys()].map(k => +k.split(',')[0]), ys = [...cells.keys()].map(k => +k.split(',')[1]), x0 = Math.min(...xs), y0 = Math.min(...ys), cols = Math.max(...xs) - x0 + 1, rows = Math.max(...ys) - y0 + 1;
+  const cell = Math.min(Wi / cols, zone / rows), ox = m + (Wi - cols * cell) * rng.pick([0, .5]), oy = c.top + (zone - rows * cell) * rng.range(.2, .7), black = rng.chance(.5), lw = Math.max(1.5, cell * .035);
+  let s = '', first = new Set(placed.map(p => key(p.x, p.y)));
+  for (let r = 0; r < rows; r++) for (let q = 0; q < cols; q++) {
+    const k = key(q + x0, r + y0), ch = cells.get(k), x = ox + q * cell, y = oy + r * cell, hot = placed[0].hz && r + y0 === 0 && q + x0 >= 0 && q + x0 < placed[0].w.length && g.acc !== g.fg;
+    if (!ch) { if (black) s += `<rect x="${f(x)}" y="${f(y)}" width="${f(cell)}" height="${f(cell)}" fill="${g.fg}"/>`; continue; }
+    s += `<rect x="${f(x)}" y="${f(y)}" width="${f(cell)}" height="${f(cell)}" fill="${hot ? g.acc : g.bg}" stroke="${g.fg}" stroke-width="${f(lw)}"/>`
+      + `<text x="${f(x + cell / 2)}" y="${f(y + cell * .72)}" font-size="${f(cell * .62)}" font-weight="800" text-anchor="middle" fill="${hot ? on(g.acc, c.pal) : g.fg}">${esc(ch)}</text>`
+      + (first.has(k) ? `<text x="${f(x + cell * .08)}" y="${f(y + cell * .22)}" font-size="${f(cell * .16)}" font-weight="600" fill="${hot ? on(g.acc, c.pal) : g.fg}">${placed.findIndex(p => key(p.x, p.y) === k) + 1}</text>` : '');
+  }
+  return g.s + c.obj('t1', s);
+}},
+
+{id: 'badges', name: 'Badges', draw(c) {
+  const {W, rng, pal} = c, g = ground(c, .3), items = c.titleLines.concat(['No. ' + pad(c.seed)]), n = items.length;
+  let cols = uniq([g.fg, g.acc, pal.b, pal.a]).filter(k => contrast(k, g.bg) > 1.3); if (!cols.length) cols = [g.fg];
+  const cy0 = (c.top + c.yB) / 2, span = Math.min((c.yB - c.top) * .62, W * .32 * n);
+  /* one container per fact: each badge can be moved on its own */
+  return g.s + items.map((t, i) => {
+    const col = cols[i % cols.length], fg = on(col, pal), r = W * (i === 0 ? rng.range(.26, .34) : rng.range(.13, .21)), kind = rng.pick(['disc', 'burst', 'pill', 'diamond']);
+    const x = W / 2 + rng.range(-.2, .2) * W, y = cy0 + (n > 1 ? (i / (n - 1) - .5) * span : 0) + rng.range(-.04, .04) * W;
+    const L = fitLine(t, 0, 0, r * (kind === 'pill' ? 2.1 : kind === 'diamond' ? 1.1 : 1.3), {weight: c.wT, fill: fg, maxH: r * .5});
+    const shape = kind === 'disc' ? `<circle r="${f(r)}" fill="${col}"/>` + ringText(c, c.one, 0, 0, r * .8, r * .13, {weight: 700, fill: fg})
+      : kind === 'burst' ? `<path d="${star(0, 0, r, rng.pick([12, 16, 20]), .86)}" fill="${col}"/>`
+      : kind === 'pill' ? `<rect x="${f(-L.w / 2 - r * .35)}" y="${f(-L.h / 2 - r * .24)}" width="${f(L.w + r * .7)}" height="${f(L.h + r * .48)}" rx="${f(L.h / 2 + r * .24)}" fill="${col}"/>`
+      : `<rect x="${f(-r * .8)}" y="${f(-r * .8)}" width="${f(r * 1.6)}" height="${f(r * 1.6)}" fill="${col}" transform="rotate(45)"/>`;
+    return c.obj('t1.' + i, `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(rng.range(-14, 14))})">${shape}<g transform="translate(${f(-L.w / 2)} ${f(-L.h / 2)})">${L.svg}</g></g>`);
+  }).join('');
+}},
+
+{id: 'spine', name: 'Spine', draw(c) {
+  const {W, m, rng} = c, g = ground(c, .35), B = c.bot, right = rng.chance(.5), bleed = rng.chance(.4);
+  const L = fitLine(c.one, 0, 0, bleed ? B * rng.range(1.02, 1.2) : c.yB - c.top, {weight: 900, ls: -.04, fill: g.acc, maxH: W * rng.range(.22, .42)});
+  const X = right ? W - (bleed ? L.h * .88 : m + L.h) : bleed ? -L.h * .12 : m, Y = bleed ? B + (L.w - B) / 2 : c.yB;
+  /* two reading axes: the headline runs the full height, everything else stays small */
+  const rx = right ? X - c.gap : X + L.h + c.gap;
+  return g.s + `<rect x="${f(rx)}" y="${f(c.top)}" width="${f(c.rule)}" height="${f(c.yB - c.top)}" fill="${g.fg}"/>`
+    + clip(c, rectB(c), c.obj('t1', c.plate(`<g transform="translate(${f(X)} ${f(Y)}) rotate(-90)">${L.svg}</g>`, g.acc)));
+}},
+
+{id: 'ransom', name: 'Ransom note', draw(c) {
+  const {m, Wi, rng, pal} = c, g = ground(c, .25), lines = c.twords.length <= 4 ? c.twords : c.titleLines, zone = c.yB - c.top;
+  let cols = uniq([g.fg, g.acc, pal.b]).filter(k => contrast(k, g.bg) > 1.4); if (!cols.length) cols = [g.fg];
+  const rowH = Math.min(zone / lines.length, Wi * .5), y0 = c.top + (zone - rowH * lines.length) * rng.range(.2, .8);
+  /* one family, controlled inconsistency: every letter is its own object */
+  let s = '', k = 0;
+  lines.forEach((line, r) => {
+    const base = Math.min(rowH * .86, Wi / (ink(line, 800).adv * 1.2)); let x = m;
+    for (const ch of [...line]) {
+      if (ch === ' ') { x += base * .3; continue; }
+      const w = wt(rng.pick([FONT.min, 600, 800, FONT.max])), size = base * rng.range(.78, 1.22), aw = ink(ch, w).adv * size, col = rng.pick(cols), kind = rng.pick(['solid', 'solid', 'outline', 'box', 'box']), pd = size * .08;
+      const el = kind === 'box' ? `<rect x="${f(-pd)}" y="${f(-size * .84)}" width="${f(aw + 2 * pd)}" height="${f(size * 1.06)}" fill="${col}"/><text font-size="${f(size)}" font-weight="${w}" fill="${on(col, pal)}">${esc(ch)}</text>`
+        : `<text font-size="${f(size)}" font-weight="${w}" ${kind === 'outline' ? `fill="none" stroke="${col}" stroke-width="${f(size * .028)}"` : `fill="${col}"`}>${esc(ch)}</text>`;
+      s += c.obj('t1.' + (k++), `<g transform="translate(${f(x)} ${f(y0 + r * rowH + rowH * .8 + rng.range(-.06, .06) * rowH)}) rotate(${f(rng.range(-9, 9))})">${el}</g>`);
+      x += aw + pd * (kind === 'box' ? 2.6 : .6);
+    }
+  });
+  return g.s + s;
+}},
+
+{id: 'double', name: 'Double print', draw(c) {
+  const {W, m, Wi, rng, pal} = c, light = lumOf(pal.paper) > .4, zone = c.yB - c.top, ca = fieldFor(pal);
+  let cb = pal.b !== ca && contrast(pal.b, pal.paper) > 1.2 ? pal.b : pal.ink; if (cb === ca) cb = mix(pal.paper, pal.ink, .55);
+  const A = stack(c.titleLines, 0, 0, Wi, zone * rng.range(.5, .8), {weight: 900, fill: ca, lineMax: .8}), Z = stack(c.titleLines, 0, 0, A.w, 1e9, {weight: FONT.min, fill: cb, lineMax: .8});
+  const ty = c.top + (zone - Math.max(A.h, Z.h)) * rng.range(.15, .7), dx = W * rng.range(-.04, .04), dy = W * rng.range(.01, .06), bl = ` style="mix-blend-mode:${light ? 'multiply' : 'screen'}"`;
+  /* two inks, two voices: each print can be moved on its own, like re-registering by hand */
+  return c.obj('t1', `<g transform="translate(${m} ${f(ty)})"${bl}>${A.svg}</g>`) + c.obj('t1b', `<g transform="translate(${f(m + dx)} ${f(ty + dy)})"${bl}>${Z.svg}</g>`);
+}},
+
+{id: 'proof', name: 'Proof sheet', draw(c) {
+  const {W, m, Wi, rng, pal} = c, g = ground(c, .15), top = c.top, bot = c.yB, hair = Math.max(.9, W * .001), cols = rng.pick([6, 8, 12]), cw = Wi / cols, rows = Math.max(3, Math.round((bot - top) / cw)), rh = (bot - top) / rows, ts = W * .0085;
+  let s = '', t = '';
+  for (let i = 0; i <= cols; i++) s += `<rect x="${f(m + i * cw - hair / 2)}" y="${f(top)}" width="${f(hair)}" height="${f(bot - top)}"/>`;
+  for (let j = 0; j <= rows; j++) s += `<rect x="${m}" y="${f(top + j * rh - hair / 2)}" width="${Wi}" height="${f(hair)}"/>`;
+  /* fine print as texture: coordinates at the nodes, register marks, a numbered swatch strip */
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) if ((i + j) % 2 === 0) t += `<text x="${f(m + i * cw + ts * .5)}" y="${f(top + j * rh + ts * 1.5)}">${String.fromCharCode(65 + i % 26)}${j + 1}</text>`;
+  const reg = (x, y, r) => `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" fill="none" stroke="${g.fg}" stroke-width="${f(hair)}"/><path d="M${f(x - r * 1.7)} ${f(y)}h${f(r * 3.4)}M${f(x)} ${f(y - r * 1.7)}v${f(r * 3.4)}" stroke="${g.fg}" stroke-width="${f(hair)}"/>`;
+  const rr = W * .012; s = `<g fill="${g.fg}">${s}</g>` + reg(m + Wi / 2, top + rh / 2, rr) + reg(m + cw / 2, top + (rows - .5) * rh, rr) + reg(m + Wi - cw / 2, top + rows * rh / 2, rr);
+  const sw = uniq([pal.a, pal.b, pal.ink, pal.paper, mix(pal.a, pal.paper, .5), mix(pal.ink, pal.paper, .5)]), sz = Math.min(cw * .62, rh * .62), sx = m + (cols - 1) * cw + (cw - sz) / 2;
+  sw.slice(0, rows - 1).forEach((col, i) => { const y = top + (i + 1) * rh + (rh - sz) / 2; s += `<rect x="${f(sx)}" y="${f(y)}" width="${f(sz)}" height="${f(sz)}" fill="${col}" stroke="${g.fg}" stroke-width="${f(hair)}"/>`; t += `<text x="${f(sx)}" y="${f(y - ts * .5)}">${String(i + 1).padStart(2, '0')} ${col.toUpperCase()}</text>`; });
+  t += `<text x="${m}" y="${f(bot + ts * 1.8)}">${esc(pal.name)} / No. ${pad(c.seed)} / ${W} × ${Math.round(c.H)}</text>`;
+  const span = rng.int(Math.ceil(cols / 2), cols - 2), col0 = rng.int(0, cols - 2 - span + 1), row0 = rng.int(1, Math.max(1, rows - 3));
+  const st = stack(c.titleLines, 0, 0, span * cw - cw * .16, rh * 2.4, {weight: c.wT, fill: g.fg}), bx = m + col0 * cw, by = top + row0 * rh, bh = Math.ceil((st.h + cw * .16) / rh) * rh;
+  return g.s + s + `<g font-size="${f(ts)}" font-weight="500" fill="${g.fg}">${t}</g>`
+    + c.obj('t1', `<rect x="${f(bx + hair)}" y="${f(by + hair)}" width="${f(span * cw - 2 * hair)}" height="${f(bh - 2 * hair)}" fill="${g.acc === g.fg ? g.bg : g.acc}"/><g transform="translate(${f(bx + cw * .08)} ${f(by + cw * .08)})"${g.acc === g.fg ? '' : ` style="color:${on(g.acc, pal)}"`}>${g.acc === g.fg ? st.svg : st.svg.split(`fill="${g.fg}"`).join(`fill="${on(g.acc, pal)}"`)}</g>`);
+}},
+
+{id: 'ruled', name: 'Ruled from type', draw(c) {
+  const {W, m, Wi, rng} = c, g = ground(c, .3), B = c.bot, zone = c.yB - c.top, hair = Math.max(1, W * .0012), lines = c.titleLines;
+  const mk = w => { let y = 0; const L = lines.map(t => { const k = fitLine(t, 0, y, w, {weight: c.wB, fill: g.fg, maxH: w * .42}); k.top = y; y += k.h + k.desc * .5 + w * .06; return k; }); return {L, w, h: y - w * .06}; };
+  let b = mk(Wi * rng.range(.55, 1)); if (b.h > zone * .7) b = mk(b.w * zone * .7 / b.h);
+  const x0 = m + (Wi - b.w) * rng.pick([0, 0, 1, .5]), y0 = c.top + (zone - b.h) * rng.range(.15, .85);
+  /* type first, grid second: baselines, cap heights and word edges are extended across the sheet */
+  let rules = '', txt = '';
+  for (const k of b.L) {
+    rules += `<rect x="${-W}" y="${f(y0 + k.top - hair / 2)}" width="${3 * W}" height="${f(hair)}"/><rect x="${-W}" y="${f(y0 + k.top + k.h - hair / 2)}" width="${3 * W}" height="${f(hair)}"/>`
+      + `<rect x="${f(x0 - hair / 2)}" y="${-B}" width="${f(hair)}" height="${3 * B}"/><rect x="${f(x0 + k.w - hair / 2)}" y="${-B}" width="${f(hair)}" height="${3 * B}"/>`;
+    txt += k.svg;
+  }
+  return g.s + clip(c, rectB(c), c.obj('t1', `<g fill="${g.acc}">${rules}</g><g transform="translate(${f(x0)} ${f(y0)})">${txt}</g>`));
+}},
+
+{id: 'shape', name: 'Shaped block', draw(c) {
+  const {W, Wi, rng} = c, g = ground(c, .35), zone = c.yB - c.top, kind = rng.pick(['circle', 'circle', 'tri', 'tridown', 'diamond', 'arch']);
+  const R = Math.min(Wi, zone) / 2, cx = W / 2, cy = c.top + zone / 2, rows = rng.int(7, 15), rh = 2 * R / rows, w0 = wt(c.wT), chars = [...(c.one + ' ')], capEm = ink('H', w0).a;
+  const chord = t => 2 * R * (kind === 'circle' ? Math.sqrt(Math.max(0, 1 - (2 * t - 1) ** 2)) : kind === 'tri' ? t : kind === 'tridown' ? 1 - t : kind === 'diamond' ? 1 - Math.abs(2 * t - 1) : t < .5 ? Math.sqrt(Math.max(0, 1 - (1 - 2 * t) ** 2)) : 1);
+  /* every line is fitted to the width of the shape at that height: the outline of the block is the image */
+  let s = '', k = 0;
+  for (let r = 0; r < rows; r++) {
+    const wC = chord((r + .5) / rows) * .96, size0 = rh * .8 / capEm; let str = '';
+    if (wC < rh * .9) continue;
+    while (ink(str.trim() || 'i', w0).adv * size0 < wC && str.length < 160) str += chars[k++ % chars.length];
+    str = str.trim(); if (!str) continue;
+    const L = fitLine(str, 0, 0, wC, {weight: w0, ls: -.02, fill: r % 2 && g.acc !== g.fg ? g.acc : g.fg, maxH: rh * .86});
+    s += `<g transform="translate(${f(cx - L.w / 2)} ${f(cy - R + r * rh + (rh - L.h) / 2)})">${L.svg}</g>`;
+  }
+  return g.s + c.obj('t1', s);
+}},
+
+{id: 'surface', name: 'Surface', draw(c) {
+  const {W, m, rng, pal} = c, B = c.bot, light = lumOf(pal.paper) > .4;
+  let cols = uniq([pal.a, pal.b, pal.ink, mix(pal.a, pal.paper, .5)]).filter(k => contrast(k, pal.paper) > 1.12); if (!cols.length) cols = [pal.ink];
+  /* the poster as a surface: flat blotches layered until the image becomes a texture */
+  let s = '';
+  for (let i = 0, n = rng.int(3, 5); i < n; i++) {
+    const [r, gg, b] = rgb(cols[i % cols.length]).map(v => (v / 255).toFixed(3)), thr = rng.range(.43, .56);
+    const fid = filt(c, `<feTurbulence type="fractalNoise" baseFrequency="${rng.range(.0025, .009).toFixed(4)} ${rng.range(.0025, .009).toFixed(4)}" numOctaves="${rng.int(1, 3)}" seed="${(c.seed * 7 + i * 131) % 9973}"/><feColorMatrix type="matrix" values="0 0 0 0 ${r}  0 0 0 0 ${gg}  0 0 0 0 ${b}  40 0 0 0 ${(-40 * thr).toFixed(2)}"/>`);
+    s += `<rect width="${W}" height="${f(B)}" filter="url(#${fid})" style="mix-blend-mode:${light ? 'multiply' : 'screen'}" opacity="${rng.range(.7, 1).toFixed(2)}"/>`;
+  }
+  if (rng.chance(.5)) { const size = W * .011, unit = c.one + '  ', per = Math.ceil(W / (ink(unit, 600).adv * size)) + 2; let rows = ''; for (let y = size, i = 0; y < B; y += size * rng.range(1.4, 2.6), i++) rows += `<tspan x="${f(-(i * 53 % 100) / 100 * size * 10)}" y="${f(y)}">${esc(unit.repeat(per))}</tspan>`; s += `<text font-size="${f(size)}" font-weight="600" fill="${pal.ink}" opacity=".55">${rows}</text>`; }
+  /* one calm spot: all information on a small label */
+  const st = stack(c.titleLines, 0, 0, c.gw(rng.pick([2, 2.6, 3.2])), B * .16, {weight: c.wT, fill: pal.ink}), pd = c.gap * .7, bw = st.w + 2 * pd, bh = st.h + 2 * pd;
+  const bx = rng.range(m, W - m - bw), by = rng.range(c.top, c.yB - bh);
+  return clip(c, rectB(c), s) + c.obj('t1', `<rect x="${f(bx)}" y="${f(by)}" width="${f(bw)}" height="${f(bh)}" fill="${pal.paper}"/><g transform="translate(${f(bx + pd)} ${f(by + pd)})">${st.svg}</g>`);
+}},
+
+{id: 'decol', name: 'Décollage', draw(c) {
+  const {W, m, rng, pal} = c, B = c.bot, grounds = shuffle(uniq([pal.a, pal.b, pal.ink, pal.paper, mix(pal.a, pal.paper, .5)]), rng), words = c.twords;
+  const layer = (i, bgc) => {
+    const fg = on(bgc, pal), L = fitLine(words[i % words.length], 0, 0, W * rng.range(.9, 1.8), {weight: 900, ls: -.04, fill: i % 2 === 0 && contrast(pal.a, bgc) > 1.6 ? pal.a : fg, maxH: B * rng.range(.25, .6)});
+    return `<rect x="${-W}" y="${-B}" width="${3 * W}" height="${3 * B}" fill="${bgc}"/><g transform="translate(${f(rng.range(-.3, .3) * W)} ${f(rng.range(0, .75) * B)}) rotate(${f(rng.pick([0, 0, -90, 90, rng.range(-20, 20)]))} ${f(L.w / 2)} ${f(L.h / 2)})">${L.svg}</g>`;
+  };
+  /* posters pasted over posters, then torn away: every layer is a fragment of a complete sheet */
+  let s = layer(0, grounds[0]);
+  for (let i = 1, n = rng.int(2, 4); i <= n; i++) {
+    const d = torn(rng.range(-.1, .7) * W, rng.range(-.05, .7) * B, W * rng.range(.35, .85), B * rng.range(.2, .6), rng, W * .05, W * .03);
+    s += `<path d="${d}" fill="#fff" stroke="#fff" stroke-width="${f(W * .012)}" stroke-linejoin="round"/>` + clip(c, `<path d="${d}"/>`, layer(i, grounds[i % grounds.length]));
+  }
+  const st = stack(c.titleLines, 0, 0, c.gw(3.2), B * .18, {weight: c.wT, fill: pal.paper}), pd = c.gap * .7, bx = rng.pick([m, W - m - st.w - 2 * pd]), by = rng.pick([c.top, c.yB - st.h - 2 * pd]);
+  return clip(c, rectB(c), s) + c.obj('t1', `<rect x="${f(bx)}" y="${f(by)}" width="${f(st.w + 2 * pd)}" height="${f(st.h + 2 * pd)}" fill="${pal.ink}"/><g transform="translate(${f(bx + pd)} ${f(by + pd)})">${st.svg}</g>`);
+}},
+
+{id: 'stickers', name: 'Stickers', draw(c) {
+  const {W, rng, pal} = c, g = ground(c, .4), cx = W / 2, cy = (c.top + c.yB) / 2, R0 = W * rng.range(.2, .27);
+  let cols = uniq([pal.a, pal.b, pal.ink, pal.paper, g.acc]).filter(k => k !== g.bg); if (!cols.length) cols = [g.fg];
+  const rim = lumOf(g.bg) > .9 ? pal.ink : '#ffffff';
+  const icons = [
+    r => `<path d="${star(0, 0, r, 5, .42)}"/>`, r => `<path d="${star(0, 0, r, 12, .72)}"/>`,
+    r => `<path d="M0 ${f(r * .9)}C${f(-r * 1.6)} ${f(-r * .2)} ${f(-r * .6)} ${f(-r * 1.3)} 0 ${f(-r * .45)}C${f(r * .6)} ${f(-r * 1.3)} ${f(r * 1.6)} ${f(-r * .2)} 0 ${f(r * .9)}Z"/>`,
+    r => [0, 1, 2, 3, 4].map(i => `<circle cx="${f(Math.cos(i * 1.2566) * r * .55)}" cy="${f(Math.sin(i * 1.2566) * r * .55)}" r="${f(r * .45)}"/>`).join(''),
+    r => `<path d="M${f(r * .2)} ${f(-r)}L${f(-r * .6)} ${f(r * .15)}H0L${f(-r * .2)} ${f(r)}L${f(r * .6)} ${f(-r * .15)}H0Z"/>`,
+    r => `<path d="M${f(-r * .3)} ${f(-r)}h${f(r * .6)}v${f(r * .7)}h${f(r * .7)}v${f(r * .6)}h${f(-r * .7)}v${f(r * .7)}h${f(-r * .6)}v${f(-r * .7)}h${f(-r * .7)}v${f(-r * .6)}h${f(r * .7)}z"/>`,
+    r => `<path d="M${f(-r)} ${f(-r * .3)}h${f(r)}v${f(-r * .5)}L${f(r)} 0L0 ${f(r * .8)}v${f(-r * .5)}h${f(-r)}z"/>`,
+    (r, fg) => `<circle r="${f(r)}"/><g stroke="none" fill="${fg}"><circle cx="${f(-r * .35)}" cy="${f(-r * .2)}" r="${f(r * .13)}"/><circle cx="${f(r * .35)}" cy="${f(-r * .2)}" r="${f(r * .13)}"/></g><path d="M${f(-r * .5)} ${f(r * .2)}Q0 ${f(r * .85)} ${f(r * .5)} ${f(r * .2)}" fill="none" stroke="${fg}" stroke-width="${f(r * .13)}" stroke-linecap="round"/>`,
+    r => `<path d="${blob(0, 0, r, rng, 7, .28)}"/>`,
+  ];
+  /* a sticker pack: nothing is serious, and every sticker can be peeled off and moved */
+  let s = '';
+  for (let i = 0, n = rng.int(18, 34); i < n; i++) {
+    const a = rng.range(0, Math.PI * 2), d = R0 * rng.range(1.15, 2.6), r = W * rng.range(.032, .072), col = rng.pick(cols);
+    s += c.obj('s' + i, `<g transform="translate(${f(cx + Math.cos(a) * d)} ${f(cy + Math.sin(a) * d * 1.25)}) rotate(${f(rng.range(-40, 40))})" fill="${col}" stroke="${rim}" stroke-width="${f(r * .2)}" stroke-linejoin="round" paint-order="stroke">${rng.pick(icons)(r, on(col, pal))}</g>`);
+  }
+  const col = g.acc, st = stack(c.titleLines, 0, 0, R0 * 1.25, R0 * .9, {weight: c.wT, fill: on(col, pal)});
+  return g.s + s + c.obj('t1', `<g transform="translate(${f(cx)} ${f(cy)}) rotate(${f(rng.range(-8, 8))})"><path d="${blob(0, 0, R0, rng, 9, .12)}" fill="${col}" stroke="${rim}" stroke-width="${f(R0 * .07)}" paint-order="stroke"/><g transform="translate(${f(-st.w / 2)} ${f(-st.h / 2)})">${st.svg}</g></g>`);
+}},
+
+{id: 'signs', name: 'Signs', draw(c) {
+  const {m, Wi, rng} = c, g = ground(c, .3), titleH = c.H * .1, zone = c.yB - c.top - titleH - c.gap, one = rng.chance(.3), cols = one ? 1 : rng.pick([3, 4, 5]);
+  const size = one ? Math.min(Wi, zone) : Wi / cols, rows = one ? 1 : Math.max(2, Math.floor(zone / size)), sw = size * (one ? .085 : .1), hot = rng.int(0, cols * rows - 1);
+  /* invented signs from a few strokes on a 3 x 3 grid: they read as characters and as figures */
+  const glyph = (x, y) => {
+    const u = size * .26, P = () => [x + size / 2 + (rng.int(0, 2) - 1) * u, y + size / 2 + (rng.int(0, 2) - 1) * u]; let d = '', dots = '';
+    for (let k = rng.int(3, 5); k--;) {
+      const t = rng.pick(['bar', 'bar', 'arc', 'dot', 'ring']), a = P(), b = P();
+      if (t === 'bar') d += `M${f(a[0])} ${f(a[1])}L${f(b[0])} ${f(b[1])}`;
+      else if (t === 'arc') d += `M${f(a[0] - u)} ${f(a[1])}A${f(u)} ${f(u)} 0 0 ${rng.int(0, 1)} ${f(a[0] + u)} ${f(a[1])}`;
+      else if (t === 'dot') dots += `<circle cx="${f(a[0])}" cy="${f(a[1])}" r="${f(sw * .8)}" stroke="none"/>`;
+      else d += circ(a[0], a[1], u * .5);
+    }
+    return `<path d="${d}" fill="none" stroke-width="${f(sw)}" stroke-linecap="round" stroke-linejoin="round"/>${dots}`;
+  };
+  let s = '';
+  const ox = m + (Wi - cols * size) / 2;
+  for (let r = 0; r < rows; r++) for (let q = 0; q < cols; q++) { const col = r * cols + q === hot ? g.acc : g.fg; s += `<g stroke="${col}" fill="${col}">${glyph(ox + q * size, c.top + r * size)}</g>`; }
+  const st = stack(c.tlines, m, 0, Wi, titleH, {weight: c.wT, fill: g.fg});
+  return g.s + s + c.obj('t1', `<g transform="translate(0 ${f(c.yB - st.h)})">${st.svg}</g>`);
+}},
+
+{id: 'cut', name: 'Cut paper', draw(c) {
+  const {W, m, Wi, rng, pal} = c, B = c.bot, bg = fieldFor(pal), fg = on(bg, pal), other = [pal.paper, pal.ink, pal.b, pal.a].find(k => k !== bg && k !== fg && contrast(k, bg) > 1.3) || fg;
+  c.bg = bg; c.fg = fg;
+  let s = `<rect width="${W}" height="${f(B)}" fill="${bg}"/>`;
+  const j = () => (rng() - .5) * W * .05;
+  /* rough edges read as human: a jagged symbol held between a few uneven bars */
+  for (let i = rng.int(2, 4); i--;) { const y = B * rng.range(.05, .85), h = B * rng.range(.03, .12); s += `<path d="${pathOf([[j() - W * .03, y + j()], [W + W * .03 + j(), y + j()], [W + W * .03 + j(), y + h + j()], [j() - W * .03, y + h + j()]])}" fill="${rng.chance(.5) ? other : fg}"/>`; }
+  const cx = W * rng.range(.35, .65), cy = c.top + (c.yB - c.top) * rng.range(.3, .5), R = W * rng.range(.24, .36), n = rng.int(7, 13), pts = [];
+  for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2 + rng.range(-.15, .15), r = R * (i % 2 ? rng.range(.3, .6) : rng.range(.8, 1.15)); pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); }
+  s += `<path d="${pathOf(pts)}" fill="${fg === other ? fg : rng.pick([fg, other])}"/>`;
+  /* the title dances on its baseline */
+  const lines = c.titleLines, rowH = Math.min((c.yB - c.top) * .3 / lines.length, Wi * .22); let t = '';
+  lines.forEach((line, r) => {
+    const size = Math.min(rowH * .95, Wi * .8 / ink(line, 800).adv); let x = m;
+    for (const ch of [...line]) { if (ch !== ' ') t += `<text x="${f(x)}" y="${f(c.yB - (lines.length - 1 - r) * rowH - rowH * .1 + rng.range(-.07, .07) * size)}" font-size="${f(size * rng.range(.9, 1.1))}" font-weight="800" fill="${fg}" transform="rotate(${f(rng.range(-6, 6))} ${f(x)} ${f(c.yB - (lines.length - 1 - r) * rowH)})">${esc(ch)}</text>`; x += (ch === ' ' ? .28 : ink(ch, 800).adv) * size; }
+  });
+  return clip(c, rectB(c), s) + c.obj('t1', t);
+}},
+
+{id: 'face', name: 'Primitive face', draw(c) {
+  const {m, Wi, rng, pal} = c, fg = pal.ink, titleH = c.H * rng.range(.08, .12), top = c.top, bot = c.yB - titleH - c.gap, cw = Wi / 4, rh = (bot - top) / 5;
+  const P = shuffle(uniq([pal.a, pal.b, mix(pal.a, pal.paper, .5), mix(pal.b, pal.paper, .45), mix(pal.ink, pal.paper, .78)]).filter(k => contrast(k, pal.paper) > 1.06), rng), pick = () => rng.chance(.3) || !P.length ? null : rng.pick(P);
+  /* a face from a handful of primitives on a strict grid, each cell its own flat colour */
+  let s = '';
+  for (let r = 0; r < 5; r++) for (let q = 0; q < 4; q++) { const col = pick(); if (col) s += c.plate(`<rect x="${f(m + q * cw)}" y="${f(top + r * rh)}" width="${f(cw + .4)}" height="${f(rh + .4)}" fill="${col}"/>`, col); }
+  const X = q => m + q * cw, Y = r => top + r * rh, e = Math.min(cw, rh), eye = rng.pick(['disc', 'half', 'ring', 'bar']), hair = rng.pick(['block', 'arcs', 'none', 'fringe']);
+  if (hair === 'block') s += `<rect x="${f(X(0))}" y="${f(Y(0))}" width="${f(Wi)}" height="${f(rh * rng.range(.5, 1))}" fill="${fg}"/>`;
+  else if (hair === 'arcs') for (let q = 0; q < 4; q++) s += `<path d="M${f(X(q))} ${f(Y(1))}A${f(cw / 2)} ${f(cw / 2)} 0 0 1 ${f(X(q + 1))} ${f(Y(1))}Z" fill="${fg}"/>`;
+  else if (hair === 'fringe') for (let q = 0; q < 8; q++) s += `<path d="M${f(X(q / 2))} ${f(Y(0))}h${f(cw / 2)}L${f(X(q / 2) + cw / 4)} ${f(Y(0) + rh * .8)}Z" fill="${fg}"/>`;
+  for (const q of [1, 2]) {
+    const x = X(q) + cw / 2, y = Y(1) + rh / 2 + rh * .4;
+    s += eye === 'disc' ? `<circle cx="${f(x)}" cy="${f(y)}" r="${f(e * .32)}" fill="${fg}"/><circle cx="${f(x + e * .08)}" cy="${f(y - e * .08)}" r="${f(e * .1)}" fill="${pal.paper}"/>`
+      : eye === 'half' ? `<path d="M${f(x - e * .36)} ${f(y)}A${f(e * .36)} ${f(e * .36)} 0 0 0 ${f(x + e * .36)} ${f(y)}Z" fill="${fg}"/>`
+      : eye === 'ring' ? `<circle cx="${f(x)}" cy="${f(y)}" r="${f(e * .27)}" fill="none" stroke="${fg}" stroke-width="${f(e * .11)}"/>` : `<rect x="${f(x - e * .34)}" y="${f(y - e * .07)}" width="${f(e * .68)}" height="${f(e * .14)}" fill="${fg}"/>`;
+  }
+  const nx = m + Wi / 2, nose = rng.pick(['bar', 'tri', 'l']);
+  s += nose === 'bar' ? `<rect x="${f(nx - e * .07)}" y="${f(Y(2) + rh * .2)}" width="${f(e * .14)}" height="${f(rh * 1.1)}" fill="${fg}"/>` : nose === 'tri' ? `<path d="M${f(nx)} ${f(Y(2) + rh * .2)}L${f(nx + e * .3)} ${f(Y(3) + rh * .3)}H${f(nx - e * .3)}Z" fill="${fg}"/>` : `<path d="M${f(nx)} ${f(Y(2) + rh * .2)}V${f(Y(3) + rh * .3)}H${f(nx + e * .34)}" fill="none" stroke="${fg}" stroke-width="${f(e * .12)}"/>`;
+  const mc = P.length && contrast(P[0], pal.paper) > 1.5 ? P[0] : fg, my = Y(4) + rh * .2, mouth = rng.pick(['smile', 'bar', 'o']);
+  s += mouth === 'smile' ? `<path d="M${f(nx - cw * .7)} ${f(my)}A${f(cw * .7)} ${f(cw * .7)} 0 0 0 ${f(nx + cw * .7)} ${f(my)}Z" fill="${mc}"/>` : mouth === 'bar' ? `<rect x="${f(nx - cw * .7)}" y="${f(my + rh * .15)}" width="${f(cw * 1.4)}" height="${f(rh * .2)}" fill="${mc}"/>` : `<circle cx="${f(nx)}" cy="${f(my + rh * .3)}" r="${f(e * .26)}" fill="${mc}"/>`;
+  const st = stack(c.tlines, m, 0, Wi, titleH, {weight: c.wT, fill: fg});
+  return s + c.obj('t1', `<g transform="translate(0 ${f(c.yB - st.h)})">${st.svg}</g>`);
+}},
+
+{id: 'dissolve', name: 'Dissolve', draw(c) {
+  const {W, m, Wi, rng, pal} = c, B = c.bot, bg = lumOf(pal.ink) < lumOf(pal.paper) ? pal.ink : pal.paper, fg = bg === pal.ink ? pal.paper : pal.ink, mid = mix(bg, fg, rng.range(.35, .55));
+  c.bg = bg; c.fg = fg;
+  const w1 = c.twords[0], w2 = c.twords[1] || w1, y = c.top + (c.yB - c.top) * rng.pick([.38, .62]);
+  const A = fitLine(w1, 0, 0, Wi * rng.range(.6, .86), {weight: c.wB, fill: fg, ls: -.04}), Z = fitLine(w2, 0, 0, 0, {weight: c.wB, fill: mid, ls: -.04, size: A.size});
+  /* two words overlap like a film dissolve, on a line that divides the sheet at about three to five */
+  return (bg === pal.paper ? '' : `<rect width="${W}" height="${f(B)}" fill="${bg}"/>`) + `<rect x="${m}" y="${f(y + A.size * .12)}" width="${Wi}" height="${f(c.rule)}" fill="${fg}"/>`
+    + clip(c, rectB(c), c.obj('t1b', `<g transform="translate(${f(m + A.w * rng.range(.3, .65))} ${f(y - A.h - Z.h * rng.range(.25, .6))})">${Z.svg}</g>`))
+    + c.obj('t1', `<g transform="translate(${m} ${f(y - A.h)})">${A.svg}</g>`);
+}},
+
+{id: 'page', name: 'One size', draw(c) {
+  const {W, m, Wi, rng, pal} = c, g = ground(c, .3), zone = c.yB - c.top, size = W * rng.range(.05, .1), w0 = wt(c.wT), lh = 1.04, n = Math.max(2, Math.floor(zone / (size * lh)));
+  /* everything in one size and one weight: the sheet reads like a page, with a single interruption */
+  const words = c.one.split(' '), lines = []; let cur = '', k = 0;
+  while (lines.length < n && k < 4000) { const w = words[k++ % words.length], t = cur ? cur + ' ' + w : w; if (cur && ink(t, w0).adv * size * .98 > Wi) { lines.push(cur); cur = w; } else cur = t; }
+  const hi = rng.int(0, lines.length - 1); let s = '';
+  lines.forEach((l, i) => {
+    const y = c.top + i * size * lh, hot = i === hi;
+    if (hot) s += `<rect x="0" y="${f(y - size * .03)}" width="${W}" height="${f(size * lh)}" fill="${g.acc}"/>`;
+    s += `<text x="${m}" y="${f(y + size * .8)}" font-size="${f(size)}" font-weight="${w0}" letter-spacing="-0.02em" fill="${hot ? on(g.acc, pal) : g.fg}">${esc(l)}</text>`;
+  });
+  return g.s + c.obj('t1', s);
+}},
+
+{id: 'macro', name: 'Macro micro', draw(c) {
+  const {W, m, Wi, rng} = c, g = ground(c, .3), zone = c.yB - c.top, o = {weight: 900, fill: '#000', lineMax: .8};
+  const one = stack(c.titleLines, m, 0, Wi, 1e9, o), reps = clamp(Math.floor((zone + Wi * .035) / (one.h + Wi * .035)), 1, 4), lines = Array(reps).fill(c.titleLines).flat();
+  const st0 = stack(lines, m, 0, Wi, zone * .97, o), ty = c.top + (zone - st0.h) * rng.pick([0, .5, 1]), st = stack(lines, m, ty, st0.w, 1e9, o);
+  /* two reading distances: a word from afar, a text up close */
+  const size = W * rng.range(.0085, .014), w0 = wt(rng.pick([500, 700])), src = [c.one, c.st.t2, c.st.t3, c.st.t4].filter(Boolean).join(' · ') + ' · ', per = Math.ceil(st.w / (ink(src, w0).adv * size)) + 1;
+  let micro = '';
+  for (let y = ty, i = 0; y < ty + st.h * 1.05; y += size * 1.12, i++) micro += `<tspan x="${f(m - (i * 37 % 100) / 100 * size * 12)}" y="${f(y + size * .8)}">${esc(src.repeat(per))}</tspan>`;
+  return g.s + c.obj('t1', clip(c, st.svg, `<text font-size="${f(size)}" font-weight="${w0}" fill="${g.fg}">${micro}</text>`));
+}},
+
+{id: 'stretch', name: 'Stretch', draw(c) {
+  const {W, m, Wi, rng, pal} = c, g = ground(c, .3), bleed = rng.chance(.4), x0 = bleed ? 0 : m, w = bleed ? W : Wi, top = bleed ? 0 : c.top, bot = bleed ? c.bot : c.yB;
+  const lines = c.twords.length <= 5 ? c.twords : c.titleLines, parts = lines.map(() => rng.range(.6, 2.2)), sum = parts.reduce((a, b) => a + b, 0), gapY = bleed ? 0 : c.gap * .35;
+  /* the font has no width axis, so the letters themselves are stretched to fill each row edge to edge */
+  let y = top, s = '';
+  lines.forEach((t, i) => {
+    const rh = (bot - top - gapY * (lines.length - 1)) * parts[i] / sum, wgt = wt(rng.pick([FONT.max, FONT.max, 700, FONT.min])), k = ink(t, wgt), wEm = k.l + k.r - .02 * ([...t].length - 1), hEm = k.a + Math.max(0, k.d);
+    const band = bleed && i % 2 && g.acc !== g.fg, col = band ? on(g.acc, pal) : !bleed && i % 2 && g.acc !== g.fg ? g.acc : g.fg, pd = bleed ? rh * .06 : 0;
+    if (band) s += `<rect x="0" y="${f(y)}" width="${W}" height="${f(rh + .5)}" fill="${g.acc}"/>`;
+    s += `<g transform="translate(${f(x0 + pd)} ${f(y + pd)}) scale(${((w - 2 * pd) / (wEm * 100)).toFixed(4)} ${((rh - 2 * pd) / (hEm * 100)).toFixed(4)})">${fitLine(t, 0, 0, 0, {size: 100, weight: wgt, ls: -.02, fill: col}).svg}</g>`;
+    y += rh + gapY;
+  });
+  return g.s + c.obj('t1', s);
+}},
+
+{id: 'cells', name: 'Puzzle cells', draw(c) {
+  const {W, m, Wi, rng, pal} = c, g = ground(c, .2), bleed = rng.chance(.5), area = bleed ? {x: 0, y: 0, w: W, h: c.bot} : {x: m, y: c.top, w: Wi, h: c.yB - c.top};
+  const chars = [...c.one.replace(/\s+/g, '')].slice(0, 14), cells = [area];
+  while (cells.length < chars.length) {
+    cells.sort((a, b) => b.w * b.h - a.w * a.h);
+    const r = cells.shift(), k = rng.pick([.38, .5, .5, .62]);
+    if (r.w > r.h * rng.range(.8, 1.2)) cells.push({x: r.x, y: r.y, w: r.w * k, h: r.h}, {x: r.x + r.w * k, y: r.y, w: r.w * (1 - k), h: r.h});
+    else cells.push({x: r.x, y: r.y, w: r.w, h: r.h * k}, {x: r.x, y: r.y + r.h * k, w: r.w, h: r.h * (1 - k)});
+  }
+  cells.sort((a, b) => Math.round(a.y / 30) - Math.round(b.y / 30) || a.x - b.x);
+  /* heavy rules divide the sheet, and every letter is scaled to fill its cell: the grid is the image */
+  const lw = W * rng.range(.006, .014), hot = rng.int(0, cells.length - 1); let s = '', rules = '';
+  cells.forEach((r, i) => {
+    const wgt = wt(r.w / r.h > 1.4 ? 600 : FONT.max), k = ink(chars[i], wgt), pd = Math.min(r.w, r.h) * .1 + lw, isHot = i === hot && g.acc !== g.fg;
+    if (isHot) s += box(r, g.acc);
+    s += `<g transform="translate(${f(r.x + pd)} ${f(r.y + pd)}) scale(${((r.w - 2 * pd) / ((k.l + k.r) * 100)).toFixed(4)} ${((r.h - 2 * pd) / ((k.a + Math.max(0, k.d)) * 100)).toFixed(4)})">${fitLine(chars[i], 0, 0, 0, {size: 100, weight: wgt, ls: 0, fill: isHot ? on(g.acc, pal) : g.fg}).svg}</g>`;
+    rules += box(r, 'none', ` stroke="${g.fg}" stroke-width="${f(lw)}"`);
+  });
+  return g.s + c.obj('t1', s + rules);
+}},
+
+{id: 'lowink', name: 'Low ink', draw(c) {
+  const {W, m, Wi, rng, pal} = c, B = c.bot, ink1 = fieldFor(pal), zone = c.yB - c.top, o = {weight: 900, fill: ink1, lineMax: .8};
+  const one = stack(c.titleLines, m, 0, Wi, 1e9, o), reps = clamp(Math.floor((zone + Wi * .035) / (one.h + Wi * .035)), 1, 4), st = stack(Array(reps).fill(c.titleLines).flat(), m, c.top, Wi, zone * .98, o);
+  /* one ink running out: what survives gets read */
+  const gid = c.id(), mid = c.id(), dir = rng.pick([[0, 0, 0, 1], [0, 1, 0, 0], [0, 0, 1, 1], [1, 0, 0, 1]]);
+  let streaks = ''; for (let i = rng.int(5, 14); i--;) streaks += `<rect y="${f(B * rng.range(0, 1))}" width="${W}" height="${f(W * rng.range(.002, .02))}" fill="#000" opacity="${rng.range(.5, 1).toFixed(2)}"/>`;
+  const nid = filt(c, `<feTurbulence type="fractalNoise" baseFrequency="${rng.range(.004, .012).toFixed(4)} ${rng.range(.5, .9).toFixed(2)}" numOctaves="2" seed="${c.seed % 733}"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 3.2 -1.3"/>`);
+  c.defs.push(`<linearGradient id="${gid}" x1="${dir[0]}" y1="${dir[1]}" x2="${dir[2]}" y2="${dir[3]}"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#bbb"/><stop offset="1" stop-color="#2a2a2a"/></linearGradient><mask id="${mid}" maskUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${f(B)}"><rect width="${W}" height="${f(B)}" fill="url(#${gid})"/><rect width="${W}" height="${f(B)}" filter="url(#${nid})"/>${streaks}</mask>`);
+  return c.obj('t1', `<g mask="url(#${mid})" transform="rotate(${rng.range(-1.2, 1.2).toFixed(2)} ${W / 2} ${f(B / 2)})">${st.svg}</g>`);
+}},
+
+{id: 'weave', name: 'Depth weave', draw(c) {
+  const {W, m, Wi, rng, pal} = c, g = ground(c, .3), zone = c.yB - c.top, lines = c.twords.length > 1 && c.twords.length <= 5 ? c.twords : c.titleLines;
+  const mk = w => { let y = 0; const L = lines.map(t => { const k = fitLine(t, 0, y, w, {weight: c.wB, fill: g.fg, maxH: w * .45}); y += k.h + k.desc * .5 + w * .04; return k; }); return {L, w, h: y - w * .04}; };
+  let b = mk(Wi); if (b.h > zone * .9) b = mk(Wi * zone * .9 / b.h);
+  const y0 = c.top + (zone - b.h) * rng.range(.2, .8), tr = `translate(${m} ${f(y0)})`;
+  /* shapes and headline share one field: some words pass behind the shapes, some in front */
+  let cols = uniq([g.acc, pal.b, pal.a]).filter(k => k !== g.fg && contrast(k, g.bg) > 1.25); if (!cols.length) cols = [mix(g.bg, g.fg, .45)];
+  let shapes = '';
+  for (let i = rng.int(3, 6); i--;) { const col = rng.pick(cols), x = m + b.w * rng.range(0, 1), y = y0 + b.h * rng.range(0, 1), r = W * rng.range(.1, .26); shapes += rng.chance(.65) ? `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" fill="${col}"/>` : `<rect x="${f(x - r * 1.6)}" y="${f(y - r * .3)}" width="${f(r * 3.2)}" height="${f(r * .6)}" fill="${col}" transform="rotate(${f(rng.range(-50, 50))} ${f(x)} ${f(y)})"/>`; }
+  const back = b.L.filter((k, i) => i % 2 === 0).map(k => k.svg).join(''), front = b.L.filter((k, i) => i % 2).map(k => k.svg).join('');
+  return g.s + c.obj('t1', `<g transform="${tr}">${back}</g>`) + shapes + (front ? c.obj('t1', `<g transform="${tr}">${front}</g>`) : '');
 }},
 ];
 
-/* ------------------------------------------------------------------ opbouw */
+/* ------------------------------------------------------------------ texts 2 to 4 */
+/* The free texts sit in a band above or below the art, or float over it on a label.
+   Every text is its own object, so it can be dragged and scaled on the poster. */
+function layoutTexts(c, st) {
+  const {W, H, m} = c, t = [st.t2, st.t3, st.t4].map(s => String(s || '').trim());
+  if (!t.some(Boolean)) return {top: 0, bottom: 0, render: () => ''};
+  const sA = W * .03, sB = W * .0215, pad = c.gap * .9, w2 = c.gw(3.6) - c.gut, wS = c.gw(2);
+  const oA = {weight: 600, lh: 1.16}, oB = {weight: 700, lh: 1.25}, oC = {weight: 500, lh: 1.25};
+  const h2 = para(t[0], 0, 0, w2, sA, oA).n * sA * oA.lh, h3 = para(t[1], 0, 0, wS, sB, oB).n * sB * oB.lh, h4 = para(t[2], 0, 0, wS, sB, oC).n * sB * oC.lh;
+  let mode = rngFor(st.seed, 'text').pick(['bottom', 'bottom', 'bottom', 'top', 'split', 'split']), top = 0, bottom = 0;
+  if (mode === 'bottom') bottom = pad + Math.max(h2, h3 + h4) + m;
+  else if (mode === 'top') top = m + Math.max(h2, h3 + h4) + pad;
+  else if (mode === 'split') { top = t[1] || t[2] ? m + Math.max(h3, h4) + pad : 0; bottom = t[0] ? pad + h2 + m : 0; }
+  if (top + bottom > H * .34) { mode = 'over'; top = bottom = 0; }
+  return {top, bottom, render(c) {
+    const fg = c.fg, bg = c.bg; let s = '';
+    if (bg !== c.pal.paper) {
+      if (top) s += `<rect width="${W}" height="${f(top + .5)}" fill="${bg}"/>`;
+      if (bottom) s += `<rect y="${f(H - bottom - .5)}" width="${W}" height="${f(bottom + .5)}" fill="${bg}"/>`;
+    }
+    const put = (id, text, x, y, w, size, o, end) => {
+      if (!text) return '';
+      const p = para(text, x, y + size * .74, w, size, {...o, fill: fg, end});
+      if (mode !== 'over') return c.obj(id, p.svg);
+      const pd = size * .55, bh = (p.n - 1) * size * o.lh + size * .95;
+      return c.obj(id, `<rect x="${f((end ? x - p.w : x) - pd)}" y="${f(y - pd)}" width="${f(p.w + 2 * pd)}" height="${f(bh + 2 * pd)}" fill="${bg}"/>` + p.svg);
+    };
+    if (mode === 'bottom' || mode === 'top') {
+      const y0 = mode === 'top' ? m : H - bottom + pad, x3 = t[0] ? c.gx(4) : m;
+      s += put('t2', t[0], m, y0, w2, sA, oA) + put('t3', t[1], x3, y0, wS, sB, oB) + put('t4', t[2], x3, y0 + (t[1] ? h3 + sB * .3 : 0), wS, sB, oC);
+    } else if (mode === 'split') {
+      s += put('t3', t[1], m, m, wS, sB, oB) + put('t4', t[2], W - m, m, wS, sB, oC, true) + put('t2', t[0], m, H - bottom + pad, w2, sA, oA);
+    } else {
+      s += put('t3', t[1], m, m, wS, sB, oB) + put('t4', t[2], W - m, m, wS, sB, oC, true) + put('t2', t[0], m, H - m - h2 + sA * .2, w2, sA, oA);
+    }
+    return s;
+  }};
+}
+
+/* ------------------------------------------------------------------ build */
+const tfString = t => `translate(${f(t.cx + t.dx)} ${f(t.cy + t.dy)}) scale(${Math.round(t.s * 1000) / 1000}) translate(${f(-t.cx)} ${f(-t.cy)})`;
 let UID = 0;
 function buildPoster(st, opt = {}) {
   const F = FORMATS[st.format] || FORMATS.a, W = F.w, H = F.h, uid = 'p' + (++UID);
-  const durf = st.durf ?? .5, tw = rngFor(st.seed, 'draai');
+  const wild = st.durf ?? .5, tw = rngFor(st.seed, 'draai');
   let pal = PALETTES.find(p => p.id === st.palette);
-  if (!pal) { pal = rngFor(st.seed, 'palet').pick(PALETTES); if (tw.chance(durf * .4)) pal = twist(pal, tw); }
+  if (!pal) { pal = rngFor(st.seed, 'palet').pick(PALETTES); if (tw.chance(wild * .4)) pal = twist(pal, tw); }
   const pool = RECIPES.flatMap(r => Array(IMG.has && r.img ? 1 + r.img * 2 : 1).fill(r.id));
   const recipe = RECIPES.find(r => r.id === st.recipe) || RECIPES.find(r => r.id === rngFor(st.seed, 'recept').pick(pool));
   const autoT = rngFor(st.seed, 'beeld').pick(TREATMENTS).id;
@@ -1032,56 +1658,59 @@ function buildPoster(st, opt = {}) {
   const mis = rngFor(st.seed, 'mis'), ma = mis.range(0, Math.PI * 2), md = st.misreg * W * .008;
   const km = st.kast === 'auto' ? rngFor(st.seed, 'kast').pick(['zoals', 'zoals', 'zoals', 'hoog', 'laag']) : st.kast;
   const kast = t => km === 'hoog' ? t.toUpperCase() : km === 'laag' ? t.toLowerCase() : t;
-  const title = kast(String(st.title).trim()) || 'Titel';
+  const title = kast(String(st.t1 || '').trim()) || 'Poster';
+  const tf = opt.thumb ? {} : st.tf || {};
   const c = {
-    W, H, m, Wi, uid, n: 0, st, seed: st.seed, pal, thumb: !!opt.thumb, defs: [], used: null, noTop: false,
+    W, H, m, Wi, uid, n: 0, st, seed: st.seed, pal, thumb: !!opt.thumb, defs: [], used: null, bg: pal.paper, fg: pal.ink, kast,
     treatment: TREATMENTS.some(t => t.id === st.treatment) ? st.treatment : autoT,
     rng: rngFor(st.seed, 'layout'), rngImg: rngFor(st.seed, 'vorm'),
     angle: rngFor(st.seed, 'hoek').pick([15, 45, 45, 75]) * Math.PI / 180,
     s1: W * .0148, s2: W * .0205, gap: W * .028, gut: W * .02, rule: Math.max(1.5, W * .0022),
     gx: i => m + i * Wi / 6, gw: k => k * Wi / 6,
     id() { return uid + '-' + (this.n++); },
+    /* an object the user can move and scale on the poster */
+    obj(id, svg) { const t = tf[id]; return `<g data-obj="${id}"${t ? ` transform="${tfString(t)}"` : ''}>${svg}</g>`; },
     plate(svg, col) {
       const mult = lumOf(pal.paper) > .4 && lumOf(col) < .75;
       if (!md && !mult) return svg;
       return `<g${md ? ` transform="translate(${f(Math.cos(ma) * md)} ${f(Math.sin(ma) * md)})"` : ''}${mult ? ' style="mix-blend-mode:multiply"' : ''}>${svg}</g>`;
     },
-    colophon() { return (this.noTop ? st.kicker + '\n' : '') + recipe.name + '\n' + pal.name + '\nNr. ' + pad(st.seed); },
     title, tlines: title.split(/\n+/).map(s => s.trim()).filter(Boolean), twords: title.split(/\s+/).filter(Boolean),
   };
   c.one = c.twords.join(' ');
-  const gwt = rngFor(st.seed, 'gewicht');
-  c.kast = kast; c.wB = durf < .2 ? 900 : gwt.pick([900, 900, 900, 800, 700, 400]); c.wT = durf < .2 ? 800 : gwt.pick([800, 800, 800, 700, 900, 600, 500]);
   c.titleLines = c.tlines.length > 1 ? c.tlines : balance(c.twords);
-  /* voethoogte volgt de langste kolom */
-  const nBody = para(st.body, 0, 0, c.gw(3) - c.gut, c.s2 * .94, {weight: 450}).n, nMeta = para(st.meta, 0, 0, c.gw(2) - c.gut, c.s2, {weight: 700}).n;
-  c.footLines = clamp(Math.max(nBody, nMeta, 3), 3, 6);
-  c.footTop = H - m - c.s2 * 1.5 - c.s2 * .94 * 1.3 * (c.footLines - 1);
+  const gwt = rngFor(st.seed, 'gewicht');
+  c.wB = wild < .2 ? 900 : gwt.pick([900, 900, 900, 800, 700, 400]); c.wT = wild < .2 ? 800 : gwt.pick([800, 800, 800, 700, 900, 600, 500]);
 
-  const ex = extras(c, st);
-  let body = ex.under + recipe.draw(c) + ex.over;
+  /* the art gets what the text bands leave over */
+  const L = layoutTexts(c, st), ex = extras(c, st);
+  c.H = H - L.top - L.bottom; c.bot = c.H;
+  c.top = L.top ? c.gap * .6 : m; c.yB = c.H - (L.bottom ? c.gap * .6 : m);
+  const art = recipe.draw(c);
+  let body = ex.under + (L.top ? `<g transform="translate(0 ${f(L.top)})">${art}</g>` : art) + L.render(c) + ex.over;
   if (ex.tilt) body = `<g transform="translate(${W / 2} ${H / 2}) rotate(${ex.tilt}) scale(${Math.round((1 - Math.abs(ex.tilt) * .012) * 1000) / 1000}) translate(${-W / 2} ${-H / 2})">${body}</g>`;
-  const light = lumOf(pal.paper) > .4, gid = uid + '-g', clip = uid + '-c';
-  let defs = `<clipPath id="${clip}"><rect width="${W}" height="${H}"/></clipPath>` + c.defs.join('');
+
+  const light = lumOf(pal.paper) > .4, gid = uid + '-g', clipId = uid + '-c';
+  let defs = `<clipPath id="${clipId}"><rect width="${W}" height="${H}"/></clipPath>` + c.defs.join('');
   let grain = '';
   if (st.grain > 0) {
     const k = f(.9 + st.grain * 1.3), v = light ? 0 : 1;
     defs += `<filter id="${gid}" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="${opt.thumb ? .7 : 1.1}" numOctaves="2" seed="${st.seed % 997}"/><feColorMatrix type="matrix" values="0 0 0 0 ${v}  0 0 0 0 ${v}  0 0 0 0 ${v}  0 0 0 ${k} ${f(-k * .47)}"/></filter>`;
-    grain = `<rect width="${W}" height="${H}" filter="url(#${gid})" opacity="${Math.round((.06 + st.grain * .34) * (opt.thumb ? 60 : 100)) / 100}"/>`;
+    grain = `<rect width="${W}" height="${H}" filter="url(#${gid})" opacity="${Math.round((.06 + st.grain * .34) * (opt.thumb ? 60 : 100)) / 100}" pointer-events="none"/>`;
   }
   let grid = '';
   if (st.grid && !opt.thumb && !opt.export) {
     for (let i = 0; i <= 6; i++) grid += `<line x1="${f(c.gx(i))}" y1="0" x2="${f(c.gx(i))}" y2="${H}"/>`;
-    for (const y of [m, c.footTop, H - m]) grid += `<line x1="0" y1="${f(y)}" x2="${W}" y2="${f(y)}"/>`;
-    grid = `<g stroke="#ff00aa" stroke-width="1" opacity=".8">${grid}</g>`;
+    for (const y of [m, H - m]) grid += `<line x1="0" y1="${f(y)}" x2="${W}" y2="${f(y)}"/>`;
+    grid = `<g stroke="#ff00aa" stroke-width="1" opacity=".8" pointer-events="none">${grid}</g>`;
   }
   const size = opt.export ? ` width="${opt.mm ? F.mm[0] + 'mm' : W}" height="${opt.mm ? F.mm[1] + 'mm' : H}"` : '';
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"${size} font-family="'${FONT.family}', 'Helvetica Neue', Arial, sans-serif" text-rendering="geometricPrecision"><defs>${defs}</defs><g clip-path="url(#${clip})"><rect width="${W}" height="${H}" fill="${pal.paper}"/>${body}${grain}${grid}</g></svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"${size} font-family="'${FONT.family}', 'Helvetica Neue', Arial, sans-serif" text-rendering="geometricPrecision"><defs>${defs}</defs><g clip-path="url(#${clipId})"><rect width="${W}" height="${H}" fill="${pal.paper}"/>${body}${grain}${grid}</g></svg>`;
   const tname = c.used === 'raster' ? null : c.used ? TREATMENTS.find(t => t.id === c.used).name.replace(/ \(.*/, '') : null;
-  return {svg, F, recipe, pal, label: ['Nr. ' + pad(st.seed), recipe.name, pal.name, tname].filter(Boolean).join(' · ')};
+  return {svg, F, recipe, pal, label: ['No. ' + pad(st.seed), recipe.name, pal.name, tname].filter(Boolean).join(' · ')};
 }
 
-/* ------------------------------------------------------------------ scherm */
+/* ------------------------------------------------------------------ screen */
 const posterEl = $('#poster'), sheetEl = $('#sheet'), stageEl = $('#stage'), infoEl = $('#info');
 let current = null, raf = 0;
 function fitStage() {
@@ -1090,35 +1719,111 @@ function fitStage() {
   const w = Math.max(160, Math.min(aw, ah * ar));
   posterEl.style.width = w + 'px'; posterEl.style.height = w / ar + 'px';
 }
+function persist() { if (KEEP) try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) {} }
 function render() {
   cancelAnimationFrame(raf);
   raf = requestAnimationFrame(() => {
-    if (KEEP) try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) {}
+    persist();
     $('#seed').value = state.seed;
     stageEl.classList.toggle('sheet', view === 'sheet');
     posterEl.hidden = view !== 'poster'; sheetEl.hidden = view !== 'sheet';
     if (view === 'poster') {
       current = buildPoster(state);
-      posterEl.innerHTML = current.svg; infoEl.textContent = current.label; fitStage();
+      posterEl.innerHTML = current.svg; infoEl.textContent = current.label; fitStage(); afterRender();
     } else {
-      sheetEl.innerHTML = '';
+      select(null); sheetEl.innerHTML = '';
       for (let i = 0; i < 20; i++) {
         const seed = (state.seed - 1 + i) % 9999 + 1, r = buildPoster({...state, seed}, {thumb: true});
         const b = document.createElement('button'); b.className = 'thumb';
         b.innerHTML = r.svg + `<span>${esc(r.label)}</span>`;
-        b.addEventListener('click', () => { state.seed = seed; setView('poster'); });
+        b.addEventListener('click', () => { state.seed = seed; state.tf = {}; setView('poster'); });
         sheetEl.append(b);
       }
-      infoEl.textContent = 'Klik op een proef om ermee verder te werken. Pijl rechts toont de volgende reeks.';
+      infoEl.textContent = 'Click a proof to keep working on it. The right arrow shows the next twenty.';
     }
   });
 }
-function setView(v) { view = v; $$('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v))); render(); }
-function step(d) { const k = view === 'sheet' ? 20 * d : d; state.seed = ((state.seed - 1 + k) % 9999 + 9999) % 9999 + 1; render(); }
-function roll() { state.seed = 1 + Math.floor(Math.random() * 9999); render(); }
 
-/* ------------------------------------------------------------------ bediening */
-function fill(sel, items, auto) { sel.innerHTML = (auto ? '<option value="auto">Willekeurig</option>' : '') + items.map(([v, n]) => `<option value="${v}">${esc(n)}</option>`).join(''); }
+/* ------------------------------------------------------------------ move and scale on the poster */
+const selEl = $('#sel');
+let selected = null, drag = null;
+const objEls = id => $$('[data-obj]', posterEl).filter(el => el.dataset.obj === id), objEl = id => objEls(id)[0];
+const centre = el => { const bb = el.getBBox(); return {dx: 0, dy: 0, s: 1, cx: bb.x + bb.width / 2, cy: bb.y + bb.height / 2}; };
+function afterRender() {
+  for (const el of $$('[data-obj]', posterEl)) {
+    let bb; try { bb = el.getBBox(); } catch (e) { continue; }
+    if (!bb.width || !bb.height) continue;
+    /* a hit area the size of the object, so thin letters are easy to grab */
+    const hit = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    for (const [k, v] of Object.entries({x: bb.x, y: bb.y, width: bb.width, height: bb.height, fill: 'none', 'pointer-events': 'all'})) hit.setAttribute(k, v);
+    el.prepend(hit);
+    const t = state.tf[el.dataset.obj];
+    if (t) { const cx = bb.x + bb.width / 2, cy = bb.y + bb.height / 2; if (Math.abs(cx - t.cx) > .5 || Math.abs(cy - t.cy) > .5) { t.cx = cx; t.cy = cy; el.setAttribute('transform', tfString(t)); } }
+  }
+  if (selected && !objEl(selected)) selected = null;
+  drawSel();
+}
+function drawSel() {
+  const el = selected && view === 'poster' ? objEl(selected) : null;
+  if (!el) { selEl.hidden = true; return; }
+  const r = el.getBoundingClientRect();
+  Object.assign(selEl.style, {left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px'});
+  selEl.hidden = false;
+}
+function select(id) {
+  selected = id;
+  $$('#panel label.on').forEach(l => l.classList.remove('on'));
+  const k = id && /^t[1-4]/.exec(id), fld = k && $(`[data-k="${k[0]}"]`);
+  if (fld) fld.closest('label').classList.add('on');
+  drawSel();
+}
+posterEl.addEventListener('pointerdown', e => {
+  const el = e.target.closest('[data-obj]');
+  if (!el) return select(null);
+  e.preventDefault();
+  const id = el.dataset.obj, t = state.tf[id] || (state.tf[id] = centre(el));
+  select(id);
+  drag = {mode: 'move', id, els: objEls(id), x0: e.clientX, y0: e.clientY, dx0: t.dx, dy0: t.dy, inv: el.parentNode.getScreenCTM().inverse()};
+  posterEl.setPointerCapture(e.pointerId);
+});
+selEl.addEventListener('pointerdown', e => {
+  const el = selected && objEl(selected);
+  if (!el || !e.target.dataset.h) return;
+  e.preventDefault(); e.stopPropagation();
+  const t = state.tf[selected] || (state.tf[selected] = centre(el)), r = el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  drag = {mode: 'scale', id: selected, els: objEls(selected), s0: t.s, cx, cy, d0: Math.hypot(e.clientX - cx, e.clientY - cy) || 1};
+  e.target.setPointerCapture(e.pointerId);
+});
+addEventListener('pointermove', e => {
+  if (!drag) return;
+  const t = state.tf[drag.id];
+  if (drag.mode === 'move') {
+    const dx = e.clientX - drag.x0, dy = e.clientY - drag.y0, i = drag.inv;
+    t.dx = drag.dx0 + i.a * dx + i.c * dy; t.dy = drag.dy0 + i.b * dx + i.d * dy;
+  } else t.s = clamp(drag.s0 * Math.hypot(e.clientX - drag.cx, e.clientY - drag.cy) / drag.d0, .05, 30);
+  for (const el of drag.els) el.setAttribute('transform', tfString(t));
+  drawSel();
+});
+const endDrag = () => { if (drag) { drag = null; persist(); } };
+addEventListener('pointerup', endDrag); addEventListener('pointercancel', endDrag);
+posterEl.addEventListener('dblclick', e => { const el = e.target.closest('[data-obj]'); if (el) { delete state.tf[el.dataset.obj]; render(); } });
+stageEl.addEventListener('pointerdown', e => { if (e.target === stageEl) select(null); });
+stageEl.addEventListener('scroll', drawSel);
+addEventListener('scroll', drawSel, true);
+addEventListener('resize', () => requestAnimationFrame(drawSel));
+
+function setView(v) { view = v; $$('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v))); render(); }
+/* a variation: a new number with the settings as they are */
+function step(d) { const k = view === 'sheet' ? 20 * d : d; state.seed = ((state.seed - 1 + k) % 9999 + 9999) % 9999 + 1; state.tf = {}; render(); }
+/* randomize: everything is rolled again, the recipe included */
+function roll() {
+  Object.assign(state, {recipe: 'auto', palette: 'auto', treatment: 'auto', tf: {}, seed: 1 + Math.floor(Math.random() * 9999)});
+  for (const k of ['recipe', 'palette', 'treatment']) $(`[data-k="${k}"]`).value = 'auto';
+  render();
+}
+
+/* ------------------------------------------------------------------ controls */
+function fill(sel, items, auto) { sel.innerHTML = (auto ? '<option value="auto">Random</option>' : '') + items.map(([v, n]) => `<option value="${v}">${esc(n)}</option>`).join(''); }
 fill($('#format'), Object.entries(FORMATS).map(([k, v]) => [k, v.name]));
 fill($('#recipe'), RECIPES.map(r => [r.id, r.name]), true);
 fill($('#palette'), PALETTES.map(p => [p.id, p.name]), true);
@@ -1128,17 +1833,38 @@ $$('[data-k]').forEach(el => {
   if (el.type === 'checkbox') el.checked = !!state[k]; else el.value = state[k];
   el.addEventListener('input', () => {
     state[k] = el.type === 'checkbox' ? el.checked : el.type === 'range' ? parseFloat(el.value) : el.value;
+    if (k === 'recipe' || k === 'format') state.tf = {};
     render();
   });
 });
 $('#roll').addEventListener('click', roll);
 $('#prev').addEventListener('click', () => step(-1));
 $('#next').addEventListener('click', () => step(1));
-$('#seed').addEventListener('change', e => { state.seed = clamp(parseInt(e.target.value, 10) || 1, 1, 9999); render(); });
+$('#seed').addEventListener('change', e => { state.seed = clamp(parseInt(e.target.value, 10) || 1, 1, 9999); state.tf = {}; render(); });
+$('#resetlayout').addEventListener('click', () => { state.tf = {}; select(null); render(); });
+$('#counts').textContent = `${RECIPES.length} recipes · ${PALETTES.length} palettes`;
 $$('[data-view]').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
 addEventListener('resize', fitStage);
+/* the welcome */
+const welcomeEl = $('#welcome');
+function closeWelcome() { if (!welcomeEl || welcomeEl.classList.contains('out')) return; welcomeEl.classList.add('out'); setTimeout(() => welcomeEl.remove(), 600); }
+if (KEEP) { welcomeEl.addEventListener('click', closeWelcome); $('#go').focus(); } else welcomeEl.remove();
+
 addEventListener('keydown', e => {
+  if (welcomeEl.isConnected && !welcomeEl.classList.contains('out')) {
+    if (e.code === 'Space' || e.key === 'Enter' || e.key === 'Escape') { e.preventDefault(); closeWelcome(); }
+    return;
+  }
   if (e.target.closest('input,textarea,select') || e.metaKey || e.ctrlKey || e.altKey) return;
+  const el = selected && view === 'poster' && objEl(selected);
+  if (el) { /* a selected text takes the arrow keys */
+    const t = state.tf[selected] || (state.tf[selected] = centre(el)), k = e.shiftKey ? 10 : 2; let used = true;
+    if (e.key === 'ArrowLeft') t.dx -= k; else if (e.key === 'ArrowRight') t.dx += k; else if (e.key === 'ArrowUp') t.dy -= k; else if (e.key === 'ArrowDown') t.dy += k;
+    else if (e.key === '+' || e.key === '=') t.s *= 1.04; else if (e.key === '-' || e.key === '_') t.s /= 1.04;
+    else if (e.key === 'Backspace' || e.key === 'Delete') delete state.tf[selected];
+    else if (e.key === 'Escape') select(null); else used = false;
+    if (used) { e.preventDefault(); render(); return; }
+  }
   if (e.code === 'Space') { e.preventDefault(); roll(); }
   else if (e.key === 'ArrowRight') step(1);
   else if (e.key === 'ArrowLeft') step(-1);
@@ -1146,32 +1872,32 @@ addEventListener('keydown', e => {
   else if (e.key === 'g' || e.key === 'G') { state.grid = !state.grid; $('[data-k=grid]').checked = state.grid; render(); }
 });
 
-/* beeld */
+/* image */
 const imgNote = $('#imgnote');
 async function useImage(src, name) {
   try {
-    imgNote.textContent = 'Beeld laden…';
+    imgNote.textContent = 'Loading image…';
     await setImage(src);
-    imgNote.textContent = `${name}, ${IMG.w} × ${IMG.h} px${IMG.alpha ? ', vrijstaand' : ''}. Zet Recept op Beeld op vlak of Raster om het zeker te gebruiken.`;
+    imgNote.textContent = `${name}, ${IMG.w} × ${IMG.h} px${IMG.alpha ? ', cut out' : ''}. Not every recipe uses the image: lock Recipe on Image on colour to be sure.`;
     $('#cutout').disabled = IMG.alpha; $('#clear').disabled = false;
     render();
-  } catch (err) { imgNote.textContent = 'Dit beeld kon niet gelezen worden.'; console.error(err); }
+  } catch (err) { imgNote.textContent = 'This image could not be read.'; console.error(err); }
 }
 $('#pick').addEventListener('click', () => $('#file').click());
 $('#file').addEventListener('change', e => { const fl = e.target.files[0]; if (fl) useImage(fl, fl.name); e.target.value = ''; });
-$('#sample').addEventListener('click', () => window.POSTER_SAMPLE ? useImage(window.POSTER_SAMPLE, 'Voorbeeld') : (imgNote.textContent = 'voorbeeld.js ontbreekt.'));
+$('#sample').addEventListener('click', () => window.POSTER_SAMPLE ? useImage(window.POSTER_SAMPLE, 'Sample') : (imgNote.textContent = 'The sample file is missing.'));
 $('#clear').addEventListener('click', () => {
   IMG.has = false; IMG.blob = null; $('#clear').disabled = true; $('#cutout').disabled = true;
-  imgNote.textContent = 'Geen beeld geladen. De generator tekent zelf een vorm.'; render();
+  imgNote.textContent = 'No image loaded. The generator draws a shape of its own.'; render();
 });
 $('#cutout').addEventListener('click', async () => {
   const btn = $('#cutout'); btn.disabled = true;
   try {
-    imgNote.textContent = 'Model laden en vrijstaand maken. De eerste keer duurt dat even…';
+    imgNote.textContent = 'Loading the model and cutting out. The first time takes a moment…';
     const mod = await import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/+esm');
     const out = await (mod.removeBackground || mod.default)(IMG.blob);
-    await useImage(out, 'Vrijstaand beeld');
-  } catch (err) { console.error(err); imgNote.textContent = 'Vrijstaand maken lukte niet in deze browser: ' + (err && err.message || err); btn.disabled = false; }
+    await useImage(out, 'Cut-out image');
+  } catch (err) { console.error(err); imgNote.textContent = 'Cutting out did not work in this browser: ' + (err && err.message || err); btn.disabled = false; }
 });
 ['dragenter', 'dragover'].forEach(t => stageEl.addEventListener(t, e => { e.preventDefault(); stageEl.classList.add('drop'); }));
 ['dragleave', 'drop'].forEach(t => stageEl.addEventListener(t, e => { e.preventDefault(); stageEl.classList.remove('drop'); }));
@@ -1180,7 +1906,7 @@ stageEl.addEventListener('drop', e => {
   if (/\.(woff2?|otf|ttf)$/i.test(fl.name)) useFont(fl); else if (fl.type.startsWith('image/')) useImage(fl, fl.name);
 });
 
-/* eigen font */
+/* your own font */
 let fontCount = 0;
 async function useFont(file) {
   try {
@@ -1189,9 +1915,9 @@ async function useFont(file) {
     const ext = file.name.split('.').pop().toLowerCase();
     Object.assign(FONT, {family, b64: bytesToB64(buf), mime: 'font/' + ext, range: '100 900', min: 100, max: 900});
     mcache.clear(); FONT.fixed = ink('Hamburgefonts', 100).adv === ink('Hamburgefonts', 900).adv;
-    $('#fontnote').textContent = file.name + ' geladen. Een statisch font heeft één gewicht: het recept Echo toont dan geen gewichtsverloop.';
+    $('#fontnote').textContent = file.name + ' loaded. A static font has one weight, so recipes that ramp the weight will look flat.';
     render();
-  } catch (err) { console.error(err); $('#fontnote').textContent = 'Dit font kon niet geladen worden.'; }
+  } catch (err) { console.error(err); $('#fontnote').textContent = 'This font could not be loaded.'; }
 }
 $('#pickfont').addEventListener('click', () => $('#fontfile').click());
 $('#fontfile').addEventListener('change', e => { const fl = e.target.files[0]; if (fl) useFont(fl); e.target.value = ''; });
@@ -1204,14 +1930,14 @@ function exportSVG(mm) {
   return svg.replace('<defs>', `<defs><style>${face}</style>`);
 }
 function download(blob, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }
-const fileBase = () => `glossy-poster-${pad(state.seed)}-${current ? current.recipe.id : 'proef'}`;
+const fileBase = () => `glossy-poster-${pad(state.seed)}-${current ? current.recipe.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'poster'}`;
 async function rasterize(width) {
   const url = URL.createObjectURL(new Blob([exportSVG(false)], {type: 'image/svg+xml'}));
   try {
-    const img = new Image(); await new Promise((ok, no) => { img.onload = ok; img.onerror = () => no(new Error('SVG kon niet gerasterd worden')); img.src = url; });
+    const img = new Image(); await new Promise((ok, no) => { img.onload = ok; img.onerror = () => no(new Error('The SVG could not be rasterized')); img.src = url; });
     const F = FORMATS[state.format], cv = document.createElement('canvas'); cv.width = width; cv.height = Math.round(width * F.h / F.w);
     const x = cv.getContext('2d'); x.drawImage(img, 0, 0, cv.width, cv.height);
-    await new Promise(r => setTimeout(r, 60)); x.drawImage(img, 0, 0, cv.width, cv.height); /* tweede pas: font zeker geladen */
+    await new Promise(r => setTimeout(r, 60)); x.drawImage(img, 0, 0, cv.width, cv.height); /* second pass: the font is certainly loaded */
     return cv;
   } finally { URL.revokeObjectURL(url); }
 }
@@ -1226,8 +1952,8 @@ $('#xpdf').addEventListener('click', () => {
 });
 
 /* ------------------------------------------------------------------ start */
-window.posterLab = {state, IMG, FONT, buildPoster, exportSVG, rasterize, render, useImage, setView};
-loadFont().catch(e => console.error(e)).then(() => document.fonts.ready).then(render);
+window.posterLab = {state, IMG, FONT, RECIPES, buildPoster, exportSVG, rasterize, render, useImage, setView, select, roll};
+loadFont().catch(e => console.error(e)).then(() => document.fonts.ready).then(() => { document.documentElement.classList.add('ready'); render(); });
 })();
 </script>
 </body>
