@@ -70,6 +70,8 @@ input[type=file]{display:none}
 #sel i[data-h=ne]{right:0;top:0;transform:translate(50%,-50%);cursor:nesw-resize}
 #sel i[data-h=se]{right:0;bottom:0;transform:translate(50%,50%);cursor:nwse-resize}
 #sel i[data-h=sw]{left:0;bottom:0;transform:translate(-50%,50%);cursor:nesw-resize}
+#sel b{position:absolute;right:-9px;top:-34px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:#1a6dff;color:#fff;font:600 17px/1 var(--font);cursor:pointer;pointer-events:auto;box-shadow:0 0 0 1px rgba(255,255,255,.9)}
+#sel b:hover{background:#111}
 label.on{color:#1a6dff}
 label.on textarea{border-color:#1a6dff}
 #welcome{position:fixed;inset:0;z-index:20;background:#111;color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:clamp(20px,4vw,56px);cursor:pointer;transition:opacity .45s cubic-bezier(.23,1,.32,1),transform .45s cubic-bezier(.23,1,.32,1)}
@@ -108,7 +110,7 @@ html:not(.ready) #welcome p span{animation-play-state:paused}
   <div id="sheet" hidden></div>
   <p id="info" aria-live="polite"></p>
 </main>
-<div id="sel" hidden><i data-h="nw"></i><i data-h="ne"></i><i data-h="se"></i><i data-h="sw"></i></div>
+<div id="sel" hidden><i data-h="nw"></i><i data-h="ne"></i><i data-h="se"></i><i data-h="sw"></i><b data-del title="Delete (Backspace)" aria-label="Delete">×</b></div>
 
 <aside id="panel">
   <section>
@@ -134,8 +136,8 @@ html:not(.ready) #welcome p span{animation-play-state:paused}
     <label>Case<select data-k="kast">
       <option value="auto">Random</option><option value="zoals">As typed</option><option value="hoog">UPPERCASE</option><option value="laag">lowercase</option>
     </select></label>
-    <p class="note">Drag any text on the poster to move it, drag a corner to scale it. Arrow keys nudge, plus and minus scale, double-click puts it back.</p>
-    <div class="row"><button id="resetlayout">Reset positions</button></div>
+    <p class="note">Drag any text on the poster to move it, drag a corner to scale it. Arrow keys nudge, plus and minus scale, double-click puts it back. Backspace or the × deletes what you selected.</p>
+    <div class="row"><button id="resetlayout">Reset layout</button></div>
   </section>
 
   <section>
@@ -144,7 +146,7 @@ html:not(.ready) #welcome p span{animation-play-state:paused}
     <label>Recipe<select data-k="recipe" id="recipe"></select></label>
     <label>Palette<select data-k="palette" id="palette"></select></label>
     <label>Wildness<input type="range" data-k="durf" min="0" max="1" step="0.01"></label>
-    <p class="note">On Random the roll decides. Pick a value to lock it for the variations. Wildness sets how often the roll interferes: stickers, tape, ghost shapes, flipped palettes, light weights and crooked printing.</p>
+    <p class="note">On Random the roll decides. Pick a value to lock it for the variations. Wildness sets how often the roll interferes: ghost shapes, flipped palettes, light weights and crooked printing.</p>
   </section>
 
   <section>
@@ -509,24 +511,7 @@ function ringText(c, text, cx, cy, r, size, o = {}) {
 /* Interventions: what the roll puts on top of or under the recipe. The wilder, the more often. */
 function extras(c, st) {
   const durf = st.durf ?? .5, x = rngFor(st.seed, 'ingreep'), {W, H, m, pal} = c;
-  const cols = uniq([pal.a, pal.b, pal.ink]);
   let over = '', under = '';
-  if (x.chance(durf * .42)) { /* a sticker with the number of the roll */
-    const r = W * x.range(.075, .125), cx = x.range(m + r, W - m - r), cy = x.range(m + r, H - m - r), col = x.pick(cols), fg = on(col, pal);
-    let shape;
-    if (x.chance(.4)) {
-      const n = x.pick([12, 16, 20, 24]); let d = '';
-      for (let i = 0; i < n * 2; i++) { const a = i / (n * 2) * Math.PI * 2, rr = i % 2 ? r * .88 : r * 1.07; d += (i ? 'L' : 'M') + f(cx + Math.cos(a) * rr) + ' ' + f(cy + Math.sin(a) * rr); }
-      shape = `<path d="${d}Z" fill="${col}"/>`;
-    } else shape = `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r)}" fill="${col}"/>`;
-    const txt = String(st.t3 || st.t4 || '').split('\n')[0].trim() || 'Poster';
-    over += c.obj('sticker', `<g transform="rotate(${f(x.range(-25, 25))} ${f(cx)} ${f(cy)})">${shape}<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r * .82)}" fill="none" stroke="${fg}" stroke-width="${f(r * .018)}"/>${ringText(c, txt, cx, cy, r * .56, r * .19, {weight: 700, fill: fg})}<text x="${f(cx)}" y="${f(cy + r * .12)}" font-size="${f(r * .36)}" font-weight="800" fill="${fg}" text-anchor="middle" letter-spacing="-0.03em">${pad(st.seed)}</text></g>`);
-  }
-  if (x.chance(durf * .22)) { /* a strip of tape with a line of text */
-    const col = x.pick(cols), fg = on(col, pal), h = W * x.range(.032, .055), ang = x.pick([-45, -30, -12, 8, 20, 35, 90]), y = x.range(.15, .8) * H;
-    const unit = (String(st.t3 || st.t1 || '').split('\n')[0].trim() || 'Glossy') + '  ·  ', size = h * .5, str = unit.repeat(Math.min(60, Math.ceil(2.4 * H / (ink(unit, 700).adv * size))));
-    over += c.obj('tape', `<g transform="translate(${W / 2} ${f(y)}) rotate(${ang})"><rect x="${f(-1.2 * H)}" y="${f(-h / 2)}" width="${f(2.4 * H)}" height="${f(h)}" fill="${col}"/><text x="${f(-1.2 * H + x() * 200)}" y="${f(size * .36)}" font-size="${f(size)}" font-weight="700" fill="${fg}">${esc(str)}</text></g>`);
-  }
   if (x.chance(durf * .34)) { /* a ghost shape under the composition */
     const tint = mix(pal.paper, pal.ink, x.range(.06, .12)), kind = x.pick(['letter', 'letter', 'cirkel', 'strepen']);
     if (kind === 'letter') {
@@ -1669,7 +1654,7 @@ function buildPoster(st, opt = {}) {
     gx: i => m + i * Wi / 6, gw: k => k * Wi / 6,
     id() { return uid + '-' + (this.n++); },
     /* an object the user can move and scale on the poster */
-    obj(id, svg) { const t = tf[id]; return `<g data-obj="${id}"${t ? ` transform="${tfString(t)}"` : ''}>${svg}</g>`; },
+    obj(id, svg) { const t = tf[id]; if (t && t.hidden) return ''; return `<g data-obj="${id}"${t ? ` transform="${tfString(t)}"` : ''}>${svg}</g>`; },
     plate(svg, col) {
       const mult = lumOf(pal.paper) > .4 && lumOf(col) < .75;
       if (!md && !mult) return svg;
@@ -1788,7 +1773,9 @@ posterEl.addEventListener('pointerdown', e => {
 });
 selEl.addEventListener('pointerdown', e => {
   const el = selected && objEl(selected);
-  if (!el || !e.target.dataset.h) return;
+  if (!el) return;
+  if (e.target.dataset.del != null) { e.preventDefault(); e.stopPropagation(); removeSelected(); return; }
+  if (!e.target.dataset.h) return;
   e.preventDefault(); e.stopPropagation();
   const t = state.tf[selected] || (state.tf[selected] = centre(el)), r = el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
   drag = {mode: 'scale', id: selected, els: objEls(selected), s0: t.s, cx, cy, d0: Math.hypot(e.clientX - cx, e.clientY - cy) || 1};
@@ -1804,6 +1791,13 @@ addEventListener('pointermove', e => {
   for (const el of drag.els) el.setAttribute('transform', tfString(t));
   drawSel();
 });
+/* delete the selected object: it stays away until the layout is reset or the poster is rolled again */
+function removeSelected() {
+  const el = selected && objEl(selected);
+  if (!el) return;
+  (state.tf[selected] || (state.tf[selected] = centre(el))).hidden = true;
+  select(null); render();
+}
 const endDrag = () => { if (drag) { drag = null; persist(); } };
 addEventListener('pointerup', endDrag); addEventListener('pointercancel', endDrag);
 posterEl.addEventListener('dblclick', e => { const el = e.target.closest('[data-obj]'); if (el) { delete state.tf[el.dataset.obj]; render(); } });
@@ -1855,13 +1849,13 @@ addEventListener('keydown', e => {
     if (e.code === 'Space' || e.key === 'Enter' || e.key === 'Escape') { e.preventDefault(); closeWelcome(); }
     return;
   }
-  if (e.target.closest('input,textarea,select') || e.metaKey || e.ctrlKey || e.altKey) return;
+  if ((e.target.closest && e.target.closest('input,textarea,select')) || e.metaKey || e.ctrlKey || e.altKey) return;
   const el = selected && view === 'poster' && objEl(selected);
   if (el) { /* a selected text takes the arrow keys */
     const t = state.tf[selected] || (state.tf[selected] = centre(el)), k = e.shiftKey ? 10 : 2; let used = true;
     if (e.key === 'ArrowLeft') t.dx -= k; else if (e.key === 'ArrowRight') t.dx += k; else if (e.key === 'ArrowUp') t.dy -= k; else if (e.key === 'ArrowDown') t.dy += k;
     else if (e.key === '+' || e.key === '=') t.s *= 1.04; else if (e.key === '-' || e.key === '_') t.s /= 1.04;
-    else if (e.key === 'Backspace' || e.key === 'Delete') delete state.tf[selected];
+    else if (e.key === 'Backspace' || e.key === 'Delete') { e.preventDefault(); removeSelected(); return; }
     else if (e.key === 'Escape') select(null); else used = false;
     if (used) { e.preventDefault(); render(); return; }
   }
