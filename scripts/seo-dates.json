@@ -1,27 +1,27 @@
 {
   "index.html": {
-    "fingerprint": "ee65e231f5c2a40c819242ac5f8345ad7e4a5282aa9d7efe6451250d0f54d726",
-    "lastmod": "2026-11-07"
+    "fingerprint": "cb08adea535b0d7ad1b3badc19382f0ce296374c4ae109e684e4e377e67464b4",
+    "lastmod": "2026-11-22"
   },
   "nl/index.html": {
-    "fingerprint": "5037b757fdcbc12d0ba782644abcff3b1a73ac844848efa17707484680aed4ad",
-    "lastmod": "2026-11-07"
+    "fingerprint": "3da129fd2c8849c915758d66dd8f7a4f952bd3f7f47f953d6774c6097c41e114",
+    "lastmod": "2026-11-22"
   },
   "about.html": {
-    "fingerprint": "db524d45ba0c4eb7fd832e7bc04d6a2e38c47762e8e7ef4c1f7141a300cb55a6",
-    "lastmod": "2026-09-09"
+    "fingerprint": "8fc6126ec3cbdfe9789e6a4bd83bc152af876491cb2e55d623bba8784c66b587",
+    "lastmod": "2026-11-22"
   },
   "nl/about.html": {
-    "fingerprint": "a04b0deb40c65f0abdd2c293f2db7a64ac464828e0b5f9223b2a94b87dda2ae9",
-    "lastmod": "2026-09-09"
+    "fingerprint": "598062047a48d2579a8b73932c9fbf31bd341ea91869f0e9f59c03122539caf3",
+    "lastmod": "2026-11-22"
   },
   "brand-ai-consultancy.html": {
-    "fingerprint": "9fd06c743f890775cd9f9f545dc4a4d0538fde9e265a6c20d25b9d8b66068bda",
-    "lastmod": "2026-09-10"
+    "fingerprint": "c403dfd750991302361372ddaa9e02fc65df375e29da7eb5a8c5a6dd6ccb336a",
+    "lastmod": "2026-11-22"
   },
   "nl/brand-ai-consultancy.html": {
-    "fingerprint": "f7b14c9ff66aafdf78f32ecbabad4cd0dc10a4b966af6f10f4b500eef96503b4",
-    "lastmod": "2026-09-10"
+    "fingerprint": "d9fea58d3ce1d770e803cfb783246aa95351cb8d3cc1bb2760e8f49ea5118a82",
+    "lastmod": "2026-11-22"
   },
   "cases.html": {
     "fingerprint": "b3975900baabedae715babb31620b21c5802f9086ffdf773aaed1dcae3261074",
@@ -32,12 +32,12 @@
     "lastmod": "2026-11-07"
   },
   "news.html": {
-    "fingerprint": "8820549bb915f7a221220ad524a5e6acff4c1db0d5bef60fedfe1a38babe1d5b",
-    "lastmod": "2026-11-07"
+    "fingerprint": "09eebe2962d8d1fddac1e22bb0d88f2be01bbdefabb4772265d91f81c0d17a90",
+    "lastmod": "2026-11-22"
   },
   "nl/news.html": {
-    "fingerprint": "3fc3528311a555fd9a2159a07e2fde3f1f5ec97cfa468d5e26bc8158201286cf",
-    "lastmod": "2026-11-07"
+    "fingerprint": "0aab35bb02b6475dbed04f2160afa4b3212cf1d5012ce5b0fd6f1cc02715c8a7",
+    "lastmod": "2026-11-22"
   },
   "contact.html": {
     "fingerprint": "3fa202f3f16a667470e9b08c5ea1057295fe556d2cc2d9a7769d81bfabe7faf7",
@@ -1014,5 +1014,17 @@
     "lastmod": "2026-11-07",
     "article_fingerprint": "98d5b996d188f75579641b0a4306c0fb729cb661757e07201ccd037e52b42ddb",
     "article_modified": "2026-11-07"
+  },
+  "news/old-tech-is-not-useless.html": {
+    "fingerprint": "e8f9ab5f8688700b544749a5db5a3dfef59d57a935ea3a96194de1c724b0df10",
+    "lastmod": "2026-11-22",
+    "article_fingerprint": "33b2e255393662de76cb65b63a56fc1aa20feb460b1734702b54ef406302ee42",
+    "article_modified": null
+  },
+  "nl/news/old-tech-is-not-useless.html": {
+    "fingerprint": "0a03d386e31ad763e46267bef6b6ef1b993d7dfee1eb003b0c32db7374754649",
+    "lastmod": "2026-11-22",
+    "article_fingerprint": "3b3aab9f1820ee48b0c9e4110f93d9d816425d8af91fa086a52999c3805f290b",
+    "article_modified": null
   }
 }

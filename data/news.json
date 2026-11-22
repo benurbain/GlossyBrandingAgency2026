@@ -1,5 +1,26 @@
 [
   {
+    "name": "Old Tech Isn't Useless",
+    "slug": "old-tech-is-not-useless",
+    "monthYear": "November 2026",
+    "subtitle": "An old TV, an Apple TV from 2015 and a personal app my daughter helped design.",
+    "excerpt": "In our living room stands an old TV with an Apple TV HD from 2015. We gave it a new job: a personal dashboard, one half for me and one half for my daughter.",
+    "body": "<p><strong>Old tech isn't useless.</strong> In our living room stands an old TV with an Apple TV HD from 2015. Too slow for the latest apps, too good to throw away. So we gave it a new job: a personal dashboard that is always on.</p><h2>Thinking first, then building</h2><p>We didn't start with code, but with a question: what do we actually want to see when we walk past in the morning? The answer was a screen split in two. The left half, in light blue, is mine. The right half, in light pink, belongs to my daughter.</p><p>We worked out the design in the browser first, as a prototype with the exact dimensions of the TV. Only when the look felt right did it become a real tvOS app, built with Claude Code.</p><h2>What's on the screen</h2><p>Along the top: a live view of the Ghent skyline, the weather, the clock and the forecast for the next five days.</p><p><strong>My half</strong> shows news from VRT NWS and Sporza, international AI news, traffic on the Flemish motorways and my agenda. At the bottom, headlines from VRT NWS and De Tijd scroll by.</p><p><strong>My daughter's half</strong> grew from her own ideas: the lunch menu at school, the activities for her class, a countdown to the next holiday and news about the topics she likes, from pop music to books.</p><h2>Made for an old box</h2><p>The Apple TV HD runs at 1080p, so the app does too. It keeps the screensaver off and shifts the image a few pixels every three minutes to prevent burn-in. With a free Apple ID, a home-made app only runs for seven days. A small script on the Mac solves that: it checks every four hours and reinstalls the app before it expires.</p><p>In the video, everything is public data except the agendas and the birthday. We blurred those.</p><h2>Not an app for everyone</h2><p>A device doesn't become worthless the moment it stops getting new apps. With a clear idea of what you want, you can build something that fits your life exactly. Not an app for everyone, but an app for us.</p><p>Curious what a custom tool could do for your team or your brand? <a href=\"/contact#intake\">A first intake is free.</a></p>",
+    "image": "assets/media/apple-tv-dashboard/apple-tv-dashboard-poster.jpg",
+    "video": "assets/media/apple-tv-dashboard/apple-tv-dashboard-loop.mp4",
+    "gallery": [
+      "assets/media/apple-tv-dashboard/dashboard-full.jpg",
+      "assets/media/apple-tv-dashboard/dashboard-papa.jpg",
+      "assets/media/apple-tv-dashboard/dashboard-daughter.jpg",
+      "assets/media/apple-tv-dashboard/dashboard-top.jpg"
+    ],
+    "videos": [],
+    "link": "/contact",
+    "linkText": "Book a free intake",
+    "seo": "An old TV and a 2015 Apple TV got a new job: a personal family dashboard, designed together with my daughter and built as a custom tvOS app.",
+    "published": "2026-11-22"
+  },
+  {
     "name": "Which Image Model Understands Typography?",
     "slug": "which-image-model-understands-typography",
     "monthYear": "November 2026",

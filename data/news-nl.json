@@ -1,5 +1,26 @@
 [
   {
+    "name": "Oude tech is niet nutteloos",
+    "slug": "old-tech-is-not-useless",
+    "monthYear": "november 2026",
+    "subtitle": "Een oude tv, een Apple TV uit 2015 en een eigen app die mijn dochter mee ontwierp.",
+    "excerpt": "In onze living staat een oude tv met een Apple TV HD uit 2015. We gaven hem een nieuwe taak: een persoonlijk dashboard, een helft voor mij en een helft voor mijn dochter.",
+    "body": "<p><strong>Oude tech is niet nutteloos.</strong> In onze living staat een oude tv met een Apple TV HD uit 2015. Te traag voor de nieuwste apps, te goed om weg te gooien. Dus gaven we hem een nieuwe taak: een persoonlijk dashboard dat altijd aanstaat.</p><h2>Eerst nadenken, dan bouwen</h2><p>We begonnen niet met code, maar met een vraag: wat willen we eigenlijk zien als we 's ochtends voorbijlopen? Het antwoord was een scherm in twee. De linkerhelft, in lichtblauw, is van mij. De rechterhelft, in lichtroze, is van mijn dochter.</p><p>Het ontwerp werkten we eerst uit in de browser, als prototype met exact de afmetingen van de tv. Pas toen het uitzicht goed zat, werd het een echte tvOS-app, gebouwd met Claude Code.</p><h2>Wat er op het scherm staat</h2><p>Bovenaan: een live beeld van de skyline van Gent, het weer, de klok en de verwachting voor de komende vijf dagen.</p><p><strong>Mijn helft</strong> toont nieuws van VRT NWS en Sporza, internationaal AI-nieuws, de files op de Vlaamse snelwegen en mijn agenda. Onderaan lopen de koppen van VRT NWS en De Tijd voorbij.</p><p><strong>De helft van mijn dochter</strong> groeide uit haar eigen ideeën: het middagmenu op school, de activiteiten van haar klas, een aftelling naar de volgende vakantie en nieuws over de onderwerpen die zij leuk vindt, van popmuziek tot boeken.</p><h2>Gemaakt voor een oud kastje</h2><p>De Apple TV HD draait op 1080p, de app dus ook. Hij houdt de schermbeveiliging uit en schuift het beeld om de drie minuten een paar pixels op, tegen inbranden. Met een gratis Apple ID werkt een zelfgemaakte app maar zeven dagen. Een klein script op de Mac lost dat op: het kijkt om de vier uur en zet de app opnieuw op de Apple TV voor hij vervalt.</p><p>In de video is alles openbare data, behalve de agenda's en de verjaardag. Die hebben we vervaagd.</p><h2>Geen app voor iedereen</h2><p>Een toestel wordt niet waardeloos op het moment dat het geen nieuwe apps meer krijgt. Met een helder idee van wat je wil, bouw je iets dat precies bij je leven past. Geen app voor iedereen, maar een app voor ons.</p><p>Benieuwd wat een eigen tool voor je team of je merk kan doen? <a href=\"/nl/contact#intake\">Een eerste intake is gratis.</a></p>",
+    "image": "assets/media/apple-tv-dashboard/apple-tv-dashboard-poster.jpg",
+    "video": "assets/media/apple-tv-dashboard/apple-tv-dashboard-loop.mp4",
+    "gallery": [
+      "assets/media/apple-tv-dashboard/dashboard-full.jpg",
+      "assets/media/apple-tv-dashboard/dashboard-papa.jpg",
+      "assets/media/apple-tv-dashboard/dashboard-daughter.jpg",
+      "assets/media/apple-tv-dashboard/dashboard-top.jpg"
+    ],
+    "videos": [],
+    "link": "/nl/contact",
+    "linkText": "Plan een gratis intake",
+    "seo": "Een oude tv en een Apple TV uit 2015 kregen een nieuwe taak: een persoonlijk gezinsdashboard, samen met mijn dochter bedacht en gebouwd als eigen tvOS-app.",
+    "published": "2026-11-22"
+  },
+  {
     "name": "Welk beeldmodel begrijpt typografie?",
     "slug": "which-image-model-understands-typography",
     "monthYear": "november 2026",
