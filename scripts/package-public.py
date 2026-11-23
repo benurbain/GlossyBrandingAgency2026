@@ -14,7 +14,7 @@ from urllib.parse import urlsplit, urljoin
 from xml.etree import ElementTree as ET
 
 ROOT=Path(__file__).resolve().parent.parent
-DIRECTORIES=('assets','data','cases','news','nl','bento','poster-generator')
+DIRECTORIES=('assets','data','cases','news','nl','bento','poster-generator','lanberghworkshop')
 FILES=('CNAME','robots.txt','sitemap.xml','.nojekyll')
 
 class Head(HTMLParser):
